@@ -6,7 +6,6 @@ import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as h
 import { HERO_LQIP } from './hero-lqip'
 import { TextReveal } from './components/text-reveal'
 import { AnimatedCounter } from './components/ui/animated-counter'
-import { GooeyNav } from './components/ui/gooey-nav'
 
 const data = raw as unknown as Dataset
 const P = makePlanner(data)
@@ -50,9 +49,19 @@ export default function App() {
   const variant = new URLSearchParams(location.search).get('v') ?? 'a'
   const [detail, setDetailRaw] = useState<string | null>(null)
   // Detail sheet is a history entry too: system back closes it.
-  const setDetail = (id: string | null) => { if (id) { if (!detail) history.pushState({ v: 'detail' }, ''); setDetailRaw(id) } else if (history.state?.v === 'detail') history.back(); else closeNow() }
+  // openedAt guards against the second half of a double tap landing on the fresh backdrop; dragged skips the exit animation (the finger already moved it off-screen).
+  const sheetRef = useRef({ open: false, openedAt: 0, dragged: false })
+  const setDetail = (id: string | null) => {
+    const r = sheetRef.current
+    if (id) { if (!r.open) { r.open = true; r.openedAt = Date.now(); if (history.state?.v !== 'detail') history.pushState({ v: 'detail' }, '') } setDetailRaw(id) }
+    else if (history.state?.v === 'detail') history.back(); else closeNow()
+  }
   const [closing, setClosing] = useState(false)
-  const closeNow = () => { setClosing(true); setTimeout(() => { setDetailRaw(null); setClosing(false) }, 180) }
+  const closeNow = () => {
+    const r = sheetRef.current; r.open = false
+    if (r.dragged) { r.dragged = false; setDetailRaw(null); return }
+    setClosing(true); setTimeout(() => { setDetailRaw(null); setClosing(false) }, 180)
+  }
   useEffect(() => { const f = () => closeNow(); window.addEventListener('popstate', f); return () => window.removeEventListener('popstate', f) }, [])
   // While the sheet is open: lock page scroll, move focus in, and give it back on close.
   useEffect(() => {
@@ -91,7 +100,7 @@ export default function App() {
     if (location.hash) history.replaceState(null, '', location.pathname + location.search)
     const top = () => window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
     top(); requestAnimationFrame(top)
-    const show = (e: PageTransitionEvent) => { if (e.persisted) { setEntered(false); setDetailRaw(null); setPickingRaw(false) } top() }
+    const show = (e: PageTransitionEvent) => { if (e.persisted) { setEntered(false); sheetRef.current.open = false; setDetailRaw(null); setPickingRaw(false); if (history.state?.v) history.back() } top() }
     window.addEventListener('pageshow', show); return () => window.removeEventListener('pageshow', show)
   }, [])
   const [tab, setTabRaw] = useState(() => +(sessionStorage.getItem('dhaak.tab') || 0))
@@ -123,7 +132,7 @@ export default function App() {
       e => {
         const cached = loadFix(); dispatch({ type: 'error', code: e.code, cached, now: Date.now() })
         if (e.code !== 1 && cached && Date.now() - cached.at < CACHE_MAX_AGE) apply(cached, 'cache')
-        else if (gesture) setSheet(true)
+        else if (gesture) { if (e.code === 1 || !geoOk) setSheet(true); else setToast('Couldn’t find you. Pick a zone.') }
       },
       { enableHighAccuracy: true, timeout: 7000, maximumAge: 60000 })
   }, [])
@@ -231,7 +240,7 @@ export default function App() {
           <div className={`art ${variant === 'b' ? 'art-frame' : 'art-bleed'}`}><HeroImg /></div>
           <div className="pt-7">
             <TextReveal as="h1" text="Raya and DP’s Pujo" split="word" className="title" blur={4} stagger={0.05} />
-            <p className="text-[17px] mt-1.5" style={{ color: 'var(--muted)' }}>For Raya, from DP.</p>
+            <p className="t-body muted mt-2">For Raya, from DP.</p>
           </div>
           <div className="pt-6">
             {chip && <div className="pb-3">{chip}</div>}
@@ -246,7 +255,7 @@ export default function App() {
       {picking && (
         <main className="flex-1 pt-6 pb-10">
           {loc.status === 'error' && loc.perm !== 'denied' && <Notice tone="gold">No location fix. Pick a station.</Notice>}
-          <h2 className="serif text-[34px] mt-4">Where are you?</h2>
+          <h2 className="title mt-4">Where are you?</h2>
           <div className="mt-4"><ZoneSwitch zone={zone ?? 'north'} onChange={setZone} /></div>
           <ul className="mt-5 border-t hair">
             {AREAS.filter(a => zoneOf(a) === (zone ?? 'north')).map((a, i) => (
@@ -271,39 +280,39 @@ export default function App() {
           </div>
           {plan.outOfRange ? (
             <div className="pt-8">
-              <h2 className="serif text-[34px]">Too far from Kolkata.</h2>
+              <h2 className="title">Too far from Kolkata.</h2>
               <p className="muted mt-2">Nearest pandal: {Math.round(plan.nearestKm)} km.</p>
               <button className="btn btn-primary w-full mt-8" onClick={() => setZone('central')}>Show Central Kolkata</button>
             </div>
           ) : (<>
             <div className="flex items-end justify-between">
               <div>
-                <p className="text-[14px] muted">From {view.label}{view.approx ? ' · approximate' : ''}{view.precise && fixAt ? <span className="normal-case tracking-normal font-normal"> · located {ago(now - fixAt)}</span> : null}</p>
-                <h2 className="serif text-[28px] mt-0.5 flex items-baseline gap-1.5">
+                <p className="t-foot muted">From {view.label}{view.approx ? ' · approximate' : ''}{view.precise && fixAt ? <span className="normal-case tracking-normal font-normal"> · located {ago(now - fixAt)}</span> : null}</p>
+                <h2 className="t-title mt-1 flex items-baseline gap-1.5">
                   <AnimatedCounter value={stops.length} /> <span>stops</span>{done > 0 && <span className="text-[15px] muted font-sans"> · {done} done</span>}
                 </h2>
-                <p className="muted text-[15px] mono-num">{walkMinutes(pathOf(view, stops))} min on foot · {fmtDist(pathOf(view, stops))} </p>
+                <p className="muted t-sub mono-num mt-0.5">{walkMinutes(pathOf(view, stops))} min on foot · {fmtDist(pathOf(view, stops))} </p>
               </div>
             </div>
 
-            {(() => { const line = rain ? `Rain likely ${rain.at - now < 50 * 60e3 ? 'within the hour' : 'around ' + new Date(rain.at).toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: 'numeric' })}` : dayTip(pujoDay(istDate), istHour(now)) ?? tips[0]; return line && <p className="mt-2 text-[14px] font-semibold" style={{ color: 'var(--ink)' }}>{line}</p> })()}
-            {live && <a href={live.link} target="_blank" rel="noopener" className="mt-2 flex items-baseline gap-2 text-[14px] min-h-[36px]"><span className="w-1.5 h-1.5 rounded-full shrink-0 translate-y-[-2px]" style={{ background: 'var(--sindoor)' }} /><span className="flex-1 line-clamp-2">{live.title}</span><span className="muted text-[12px] shrink-0">{ago(now - Date.parse(live.published))}</span></a>}
+            {(() => { const line = rain ? `Rain likely ${rain.at - now < 50 * 60e3 ? 'within the hour' : 'around ' + new Date(rain.at).toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: 'numeric' })}` : dayTip(pujoDay(istDate), istHour(now)) ?? tips[0]; return line && <p className="mt-3 t-sub font-medium">{line}</p> })()}
+            {live && <a href={live.link} target="_blank" rel="noopener" className="now-strip mt-3"><span className="now-dot" /><span className="flex-1 line-clamp-2">{live.title}</span><span className="muted t-cap shrink-0 mono-num">{ago(now - Date.parse(live.published))}</span></a>}
 
-            <div className="mt-5">
-              <GooeyNav items={['Route', 'Food', 'Toilets', 'Help']} value={tab} onChange={setTab} size="md" activeColor="var(--ink)" activeLabelColor="var(--bg)" aria-label="Sections" className="block w-full" />
+            <div className="mt-6">
+              <Segmented label="Sections" items={['Route', 'Food', 'Toilets', 'Help']} value={tab} onChange={setTab} />
             </div>
 
             {tab === 0 && (
-              <ol className="mt-4 space-y-2">
+              <ol className="group-list mt-4">
                 {stops.map((s, i) => {
                   return (
-                    <li key={s.id} id={`stop-${i}`} data-stop={i} className={`card p-4 rise scroll-mt-28 ${i === 0 ? 'diya' : ''}`} style={{ ['--i' as any]: i }}>
+                    <li key={s.id} id={`stop-${i}`} data-stop={i} className={`stop rise scroll-mt-28 ${i === 0 ? 'stop-next' : ''}`} style={{ ['--i' as any]: i }}>
                       <div className="flex gap-3">
-                        <span className="serif text-[24px] w-7 shrink-0 leading-[1.1] mono-num" style={{ color: i === 0 ? 'var(--ink)' : 'var(--muted)' }} aria-label={`Stop ${i + 1}`}>{i + 1}</span>
+                        <span className="stop-n mono-num" style={{ color: i === 0 ? 'var(--sindoor)' : 'var(--muted)' }} aria-label={`Stop ${i + 1}`}>{i + 1}</span>
                         <div className="min-w-0 flex-1">
-                          <button onClick={() => setDetail(s.id)} className="block text-left text-[18px] font-semibold leading-snug min-h-[28px]" aria-haspopup="dialog">{s.name}</button>
+                          <button onClick={() => setDetail(s.id)} className="t-headline block text-left min-h-[28px]" aria-haspopup="dialog">{s.name}</button>
                           <div className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(s.id, istDate, statusFile, now)} />{!(i === 0 && postsOf(xLive, s.id).some(q => q.photo)) && <PostsMark posts={postsOf(xLive, s.id)} fresh={fresh.has(s.id)} onClick={() => setDetail(s.id)} />}{xLive.crowd[s.id] && <a href={xLive.crowd[s.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[s.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[s.id].at))}</a>}</div>
-                          <p className="text-[14px] muted mt-0.5 mono-num">
+                          <p className="t-foot muted mt-0.5 mono-num">
                             {s.precision === 'station' ? 'Approximate' : i === 0 ? fmtDist(s.dist) : `+${fmtDist(hop(stops, i))}`}{i === 0 && s.precision !== 'station' && view?.precise && s.dist > 1200 ? ` · ~${carMin(s.dist)} min by car` : ''}{s.station ? ` · ${s.station}` : ''}
                           </p>
                           {(() => { const t = tagsFor(s, tagContext(P, s)); const one = s.reason ?? t[0]; return i === 0 && one && <div className="flex flex-wrap gap-1.5 mt-2">
@@ -311,15 +320,15 @@ export default function App() {
                           </div> })()}
                           {i === 0 && postsOf(xLive, s.id).find(q => q.photo) && <PostCard p={postsOf(xLive, s.id).find(q => q.photo)!} now={now} compact />}
                           {i === 0 && s.note && <p className="text-[14px] mt-2" style={{ color: 'var(--sindoor)' }}>{s.note}.</p>}
-                          {i === 0 && <div className="grid grid-cols-2 gap-2 mt-3 -ml-10 -mr-11">
-                            <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="btn btn-uber" style={{ minHeight: 56 }}>Uber here</a>
-                            <a href={mapsDirUrl(view?.precise ? view : null, [s])} target="_blank" rel="noopener" className="btn btn-ghost" style={{ minHeight: 56 }}>Maps</a>
-                            <button onClick={() => setDetail(s.id)} className="btn btn-ghost muted" style={{ minHeight: 48, fontWeight: 500 }}>Eat nearby</button>
-                            <button onClick={() => { setSkip(new Set(skip).add(s.id)); setDone(d => d + 1); window.scrollTo({ top: 0 }) }} className="btn btn-ghost muted" style={{ minHeight: 48, fontWeight: 500 }}>I'm here</button>
+                          {i === 0 && <div className="grid grid-cols-2 gap-2 mt-4 -ml-10 -mr-10">
+                            <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="btn btn-uber">Uber here</a>
+                            <a href={mapsDirUrl(view?.precise ? view : null, [s])} target="_blank" rel="noopener" className="btn btn-ghost">Maps</a>
+                            <button onClick={() => setDetail(s.id)} className="btn btn-quiet">Eat nearby</button>
+                            <button onClick={() => { setSkip(new Set(skip).add(s.id)); setDone(d => d + 1); window.scrollTo({ top: 0 }) }} className="btn btn-quiet">I'm here</button>
                           </div>}
-                          {i > 0 && <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="inline-flex items-center min-h-[44px] mt-1 text-[15px] font-semibold " style={{ color: 'var(--ink)' }}>Uber here</a>}
+                          {i > 0 && <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="link-action -mb-2">Uber here<Chev /></a>}
                         </div>
-                        <button onClick={() => setSkip(new Set(skip).add(s.id))} className="self-start text-[14px] muted min-h-[44px] min-w-[44px] px-2 -mr-3 -mt-2" aria-label={`Skip ${s.name}`}>Skip</button>
+                        <button onClick={() => setSkip(new Set(skip).add(s.id))} className="self-start t-foot muted min-h-[44px] min-w-[44px] px-2 -mr-2 -mt-2.5" aria-label={`Skip ${s.name}`}>Skip</button>
                       </div>
                     </li>
                   )
@@ -328,13 +337,13 @@ export default function App() {
               </ol>
             )}
             {tab === 0 && zone && (
-              <details className="mt-8 group" open>
+              <details className="mt-10 group" open>
                 <summary className="list-none cursor-pointer flex items-center justify-between min-h-[48px] border-b hair">
-                  <span className="serif text-[24px]">All {ZLABEL[zone]}</span><span className="muted text-[14px] mono-num">{zonePandals.length}</span>
+                  <span className="t-title2">All {ZLABEL[zone]}</span><span className="muted text-[14px] mono-num">{zonePandals.length}</span>
                 </summary>
-                <ul>{stable(suggested).map((p, r) => (
-                  <li key={p.id}><a href={mapsPlaceUrl(p, p.name + ' Durga Puja')} onClick={e => { e.preventDefault(); setDetail(p.id) }} className="flex justify-between gap-3 py-3 border-b hair">
-                    <span className="truncate"><span className="serif text-[18px] mono-num inline-block w-7" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span>{p.name}<StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline /></span><span className="flex items-center gap-2 shrink-0"><PostsMark posts={postsOf(xLive, p.id)} fresh={fresh.has(p.id)} />{p.precision !== 'station' && p.dist >= 50 && <span className="muted text-[14px] mono-num">{fmtDist(p.dist)}</span>}</span></a></li>))}</ul>
+                <ul className="group-list mt-3">{stable(suggested).map((p, r) => (
+                  <li key={p.id}><a href={mapsPlaceUrl(p, p.name + ' Durga Puja')} onClick={e => { e.preventDefault(); setDetail(p.id) }} className="row">
+                    <span className="truncate"><span className="row-n mono-num" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span>{p.name}<StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline /></span><span className="flex items-center gap-2 shrink-0"><PostsMark posts={postsOf(xLive, p.id)} fresh={fresh.has(p.id)} />{p.precision !== 'station' && p.dist >= 50 && <span className="muted text-[14px] mono-num">{fmtDist(p.dist)}</span>}</span></a></li>))}</ul>
               </details>
             )}
             {tab === 1 && help && <AmenityList items={help.food} empty="Nothing mapped nearby." meta={f => [f.notable ? 'Kolkata classic' : null, f.cuisine && f.cuisine[0].toUpperCase() + f.cuisine.slice(1)].filter(Boolean).join(' · ')} />}
@@ -357,28 +366,28 @@ export default function App() {
             const pick = view?.precise && !view.approx ? view : null
             const dest = (q: LatLng & { name: string }) => uberUrl({ lat: q.lat, lng: q.lng, name: q.name, address: `${q.name}, Kolkata` }, pick)
             return <>
-              <div className={`sheet-backdrop ${closing ? 'out' : ''}`} onClick={() => setDetail(null)} />
-              <div className={`sheet max-h-[88vh] overflow-y-auto overscroll-contain ${closing ? 'out' : ''}`} role="dialog" aria-modal="true" aria-label={p.name} {...dragToClose(() => setDetail(null))}>
-                <div className="mx-auto mb-3 h-1 w-10 rounded-full" style={{ background: 'var(--line)' }} />
+              <div className={`sheet-backdrop ${closing ? 'out' : ''}`} onClick={() => { if (Date.now() - sheetRef.current.openedAt > 400) setDetail(null) }} />
+              <div className={`sheet max-h-[88dvh] overflow-y-auto overscroll-contain ${closing ? 'out' : ''}`} role="dialog" aria-modal="true" aria-label={p.name} {...dragToClose(() => { sheetRef.current.dragged = true; setDetail(null) })}>
+                <div className="grabber" />
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <h2 className="serif text-[28px] leading-tight">{p.name}</h2>
+                    <h2 className="t-title">{p.name}</h2>
                     <div className="flex flex-wrap items-center gap-x-3 mt-1"><StatusDot s={st} />{xLive.crowd[p.id] && <a href={xLive.crowd[p.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[p.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[p.id].at))}</a>}</div>
                   </div>
-                  <button onClick={() => setDetail(null)} className="muted text-[15px] min-h-[44px] min-w-[44px]" aria-label="Close">Close</button>
+                  <button onClick={() => setDetail(null)} className="close-x mt-0.5" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 1.5l9 9M10.5 1.5l-9 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></button>
                 </div>
-                <p className="text-[15px] mt-2 mono-num"><span style={{ color: 'var(--ink)' }} className="font-semibold">#{zr} in {ZLABEL[zoneOf(p)]}</span>{p.reason ? ` · ${p.reason}` : ''}</p>
-                <p className="text-[14px] muted mono-num">{p.precision === 'station' ? `Approximate, near ${p.station}` : d != null ? `${fmtDist(d)}${d > 1200 && pick ? ` · ~${carMin(d)} min by car` : ` · ${walkMinutes(d)} min walk`}` : ''}{loo ? ` · Toilet ${fmtDist(loo.dist)}` : ''}</p>
-                {posts.length > 0 && <div className="mt-4 space-y-2">{posts.map(q => <PostCard key={q.url} p={q} now={now} />)}</div>}
-                <div className="grid grid-cols-2 gap-2 mt-4">
-                  <a href={dest(p)} className="btn btn-uber" style={{ minHeight: 56 }}>Uber here</a>
-                  <a href={mapsDirUrl(pick, [p])} target="_blank" rel="noopener" className="btn btn-ghost" style={{ minHeight: 56 }}>Maps</a>
+                <p className="t-sub mt-3 mono-num"><span className="font-semibold">#{zr} in {ZLABEL[zoneOf(p)]}</span>{p.reason ? ` · ${p.reason}` : ''}</p>
+                <p className="t-foot muted mono-num mt-0.5">{p.precision === 'station' ? `Approximate, near ${p.station}` : d != null ? `${fmtDist(d)}${d > 1200 && pick ? ` · ~${carMin(d)} min by car` : ` · ${walkMinutes(d)} min walk`}` : ''}{loo ? ` · Toilet ${fmtDist(loo.dist)}` : ''}</p>
+                {posts.length > 0 && <div className="mt-5 space-y-3">{posts.map(q => <PostCard key={q.url} p={q} now={now} />)}</div>}
+                <div className="grid grid-cols-2 gap-2 mt-5">
+                  <a href={dest(p)} className="btn btn-uber">Uber here</a>
+                  <a href={mapsDirUrl(pick, [p])} target="_blank" rel="noopener" className="btn btn-ghost">Maps</a>
                 </div>
-                {eats.length > 0 && <><h3 className="serif text-[22px] mt-6">Eat nearby</h3>
-                  <ul>{eats.map(f => <li key={f.id} className="flex items-center gap-3 py-2.5 border-b hair">
-                    <div className="min-w-0 flex-1"><p className="text-[16px] font-semibold truncate">{f.name}</p><p className="text-[13px] muted mono-num">{[(f as Curated).known, f.dist > 1200 ? `${carMin(f.dist)} min by car` : `${walkMinutes(f.dist)} min walk`].filter(Boolean).join(' · ')}</p></div>
-                    <a href={dest(f)} className="btn btn-ghost px-3 text-[14px]" style={{ minHeight: 44 }}>Uber</a>
-                    <a href={mapsPlaceUrl(f, f.name)} target="_blank" rel="noopener" className="btn btn-ghost px-3 text-[14px]" style={{ minHeight: 44 }}>Maps</a>
+                {eats.length > 0 && <><h3 className="t-section mt-8">Eat nearby</h3>
+                  <ul>{eats.map(f => <li key={f.id} className="flex items-center gap-2 py-3 border-b hair last:border-b-0">
+                    <div className="min-w-0 flex-1"><p className="t-body font-medium truncate">{f.name}</p><p className="t-foot muted mono-num">{[(f as Curated).known, f.dist > 1200 ? `${carMin(f.dist)} min by car` : `${walkMinutes(f.dist)} min walk`].filter(Boolean).join(' · ')}</p></div>
+                    <a href={dest(f)} className="pill">Uber</a>
+                    <a href={mapsPlaceUrl(f, f.name)} target="_blank" rel="noopener" className="pill">Maps</a>
                   </li>)}</ul></>}
               </div>
             </> })()}
@@ -386,10 +395,10 @@ export default function App() {
       )}
 
       {view && plan && !plan.outOfRange && !picking && routeUrl && (
-        <div className="fixed inset-x-0 bottom-0 z-20 safe-b px-5 pt-3" style={{ background: 'linear-gradient(transparent, var(--bg) 28%)' }}>
+        <div className="dock fixed inset-x-0 bottom-0 z-20 safe-b px-5 pt-3">
           <div className="mx-auto max-w-[560px] flex gap-2">
             <a href={routeUrl} target="_blank" rel="noopener" className="btn btn-walk flex-1">Walk all in Maps</a>
-            <button onClick={share} className="btn btn-ghost px-4" aria-label="Share route">Share</button>
+            <button onClick={share} className="btn btn-ghost px-5" aria-label="Share route">Share</button>
           </div>
         </div>
       )}
@@ -438,27 +447,41 @@ function PostsMark({ posts, fresh, onClick }: { posts: XPost[]; fresh?: boolean;
   const label = `${posts.length} post${posts.length > 1 ? 's' : ''} from visitors on X${fresh ? ', new' : ''}`
   return onClick ? <button onClick={onClick} className={`${cls} min-h-[28px]`} aria-label={label}>{body}</button> : <span className={cls} aria-label={label}>{body}</span>
 }
+const PUBS: Record<string, string> = { 'timesofindia.indiatimes.com': 'Times of India', 'telegraphindia.com': 'The Telegraph', 'anandabazar.com': 'Anandabazar', 'thehindu.com': 'The Hindu', 'indianexpress.com': 'Indian Express', 'hindustantimes.com': 'Hindustan Times', 'ndtv.com': 'NDTV', 'aninews.in': 'ANI', 'millenniumpost.in': 'Millennium Post', 'thestatesman.com': 'The Statesman' }
+/** Who said so: '@handle' for an X post, the publication for an article. */
+function sourceOf(url?: string): { name: string; x: boolean } | null {
+  if (!url) return null
+  try { const u = new URL(url), h = u.hostname.replace(/^(www|m|mobile)\./, '')
+    if (/^(x|twitter)\.com$/.test(h)) { const n = u.pathname.split('/')[1]; return n ? { name: '@' + n, x: true } : null }
+    return { name: PUBS[h] ?? h.split('.').slice(-3, -1).filter(p => p.length > 3).pop()?.replace(/^./, c => c.toUpperCase()) ?? h, x: false }
+  } catch { return null }
+}
+const XGlyph = () => <svg viewBox="0 0 24 24" width="10" height="10" aria-hidden="true"><path fill="currentColor" d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77L17.75 3Zm-1.08 16.2h1.7L7.4 4.73H5.58L16.67 19.2Z"/></svg>
 function StatusDot({ s, inline }: { s: ReturnType<typeof statusOf>; inline?: boolean }) {
   if (!s) return null
   const c = s.key === 'open' ? 'var(--sindoor)' : s.key === 'inaugurated' ? 'var(--ink)' : 'var(--muted)'
-  const body = <><span className="w-2 h-2 rounded-full" style={{ background: c }} /><span style={{ color: c }}>{s.label}</span></>
-  const cls = `inline-flex items-center gap-1.5 text-[13px] font-semibold ${inline ? 'ml-2' : 'mt-0.5'}`
-  return s.evidence && !inline ? <a href={s.evidence} target="_blank" rel="noopener" className={cls}>{body}</a> : <span className={cls}>{body}</span>
+  const src = sourceOf(s.evidence)
+  const via = src && <span className="status-src">{src.x ? <XGlyph /> : <span className="status-src-dot" />}{src.name}</span>
+  const body = <><span className="w-2 h-2 rounded-full" style={{ background: c }} /><span style={{ color: c }}>{s.label}</span>{via}</>
+  const cls = `status inline-flex items-center gap-1.5 ${inline ? 'ml-2' : 'mt-0.5 min-h-[28px]'}`
+  // Rows are already links to the sheet: show the source quietly there, make it tappable in the stop card and sheet.
+  return s.evidence && !inline ? <a href={s.evidence} target="_blank" rel="noopener" className={cls} aria-label={`${s.label}, source ${src?.name ?? ''}`}>{body}</a> : <span className={cls}>{body}</span>
 }
 function ZoneSwitch({ zone, onChange, mine }: { zone: Zone; onChange: (z: Zone) => void; mine?: Zone | null }) {
-  const i = ZONES.indexOf(zone)
-  const shown = i >= 0
+  return <Segmented label="Zone" value={ZONES.indexOf(zone)} onChange={i => onChange(ZONES[i])}
+    items={ZONES.map(z => <>{ZLABEL[z]}<span className="seg-count mono-num">{ZCOUNT[z]}</span>{mine === z && <span aria-label="you are here" className="seg-here" />}</>)} />
+}
+/** iOS segmented control: one sliding thumb, used for zones and sections alike. */
+function Segmented({ label, items, value, onChange }: { label: string; items: React.ReactNode[]; value: number; onChange: (i: number) => void }) {
+  const n = items.length
   return (
-    <div role="tablist" aria-label="Zone" className="relative grid grid-cols-3 p-[2px] rounded-[9px]" style={{ background: 'var(--chip)' }}>
-      <span aria-hidden="true" className="absolute top-[2px] bottom-[2px] left-[2px] rounded-[7px] zone-thumb" style={{ opacity: shown ? 1 : 0, width: 'calc((100% - 4px) / 3)', transform: `translateX(${i * 100}%)`, background: 'var(--surface)', boxShadow: '0 1px 2px rgba(28,23,20,.08)' }} />
-      {ZONES.map(z => (
-        <button key={z} role="tab" aria-selected={z === zone} onClick={() => onChange(z)} className="relative z-[1] min-h-[34px] text-[14px] font-medium flex items-center justify-center gap-1.5" style={{ color: z === zone ? 'var(--ink)' : 'var(--muted)' }}>
-          {ZLABEL[z]}<span className="text-[12px] font-medium muted mono-num">{ZCOUNT[z]}</span>{mine === z && <span aria-label="you are here" className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--sindoor)' }} />}
-        </button>
-      ))}
+    <div role="tablist" aria-label={label} className="seg" style={{ gridTemplateColumns: `repeat(${n}, 1fr)` }}>
+      <span aria-hidden="true" className="seg-thumb" style={{ opacity: value >= 0 ? 1 : 0, width: `calc((100% - 4px) / ${n})`, transform: `translateX(${Math.max(0, value) * 100}%)` }} />
+      {items.map((it, i) => <button key={i} role="tab" aria-selected={i === value} onClick={() => onChange(i)} className="seg-item">{it}</button>)}
     </div>
   )
 }
+const Chev = () => <svg width="7" height="12" viewBox="0 0 7 12" aria-hidden="true" className="ml-1"><path d="M1 1l5 5-5 5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
 const Back = () => <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
 function ThemeToggle() {
   const [dark, setDark] = useState(() => document.documentElement.dataset.theme === 'dark')
@@ -478,8 +501,8 @@ function LocationSheet({ perm, onClose, onRetry }: { perm: string; onClose: () =
   return (<>
     <div className="sheet-backdrop" onClick={onClose} />
     <div className="sheet" role="dialog" aria-modal="true" aria-label="Turn on location">
-      <div className="mx-auto w-10 h-1 rounded-full mb-5" style={{ background: 'var(--line)' }} />
-      <h2 className="serif text-[30px]">Turn on location</h2>
+      <div className="grabber" />
+      <h2 className="t-title">Turn on location</h2>
       <ol className="mt-4 space-y-3">{steps.map((s, i) => <li key={s} className="flex gap-3 text-[16px]"><span className="serif text-[20px] w-6 shrink-0" style={{ color: 'var(--ink)' }}>{i + 1}</span><span>{s}</span></li>)}</ol>
       <button className="btn btn-primary w-full mt-6" onClick={onRetry}>{perm === 'denied' ? 'Try again' : 'Allow location'}</button>
       <button className="btn w-full muted" style={{ minHeight: 48, fontWeight: 500 }} onClick={onClose}>Not now</button>
@@ -494,17 +517,17 @@ function postsOf(x: XLive, id: string): XPost[] { const v = x.posts[id]; const l
 function PostCard({ p, now, compact }: { p: XPost; now: number; compact?: boolean }) {
   const [ok, setOk] = useState(false), [bad, setBad] = useState(false), [open, setOpen] = useState(false)
   const big = !compact
-  return <div className={`post ${compact ? '-ml-10 -mr-11 mt-3' : ''}`}>
-    <button onClick={() => setOpen(o => !o)} aria-expanded={open} className={`w-full text-left ${big ? 'block' : 'flex gap-3'} p-2.5`}>
+  return <div className={`post ${compact ? '-ml-10 -mr-10 mt-3' : ''}`}>
+    <button onClick={() => setOpen(o => !o)} aria-expanded={open} className={`w-full text-left ${big ? 'block' : 'flex gap-3'} p-3`}>
       {p.photo && !bad && <span className="post-img shrink-0" style={big ? { width: '100%', aspectRatio: `${Math.max(+(p.w ?? 4) / +(p.h ?? 3), 4 / 5)}` } : { width: 64, height: 64 }}>
         <img src={sized(p.photo!, 'large')} alt="" width={p.w} height={p.h} loading={big ? 'eager' : 'lazy'} decoding="async" ref={el => { if (el?.complete && el.naturalWidth) setOk(true) }} onLoad={() => setOk(true)} onError={() => setBad(true)} style={{ opacity: ok ? 1 : 0 }} />
       </span>}
-      <span className={`min-w-0 flex-1 block ${big ? 'mt-2.5' : ''}`}>
+      <span className={`min-w-0 flex-1 block ${big ? 'mt-3 px-0.5' : ''}`}>
         <span className="flex items-center gap-1.5 text-[13px]">{p.avatar && <img src={p.avatar} alt="" loading="lazy" className="w-4 h-4 rounded-full" />}<span className="font-semibold">@{p.handle}</span><span className="muted">{ago(now - Date.parse(p.at))}</span></span>
-        <span className={`block text-[15px] leading-[1.4] mt-0.5 ${open ? '' : compact ? 'line-clamp-2' : 'line-clamp-3'}`}>{p.text}</span>
+        <span className={`block t-sub leading-[1.45] mt-1 ${open ? '' : compact ? 'line-clamp-2' : 'line-clamp-3'}`}>{p.text}</span>
       </span>
     </button>
-    {open && <a href={p.url} target="_blank" rel="noopener" className="block px-2.5 pb-2.5 text-[14px] font-semibold" style={{ color: 'var(--sindoor)' }}>Open on X</a>}
+    {open && <a href={p.url} target="_blank" rel="noopener" className="link-action px-3 pb-1">Open on X<Chev /></a>}
   </div>
 }
 function HeroImg({ className = '' }: { className?: string }) {
@@ -520,7 +543,7 @@ function dragToClose(close: () => void) {
   return {
     onPointerDown: (e: React.PointerEvent<HTMLElement>) => { el = e.currentTarget; if (el.scrollTop > 0) { el = null; return } y0 = e.clientY; dy = 0; el.style.transition = 'none' },
     onPointerMove: (e: React.PointerEvent<HTMLElement>) => { if (!el) return; dy = Math.max(0, e.clientY - y0); if (dy > 4) el.style.transform = `translateY(${dy}px)` },
-    onPointerUp: () => { if (!el) return; el.style.transition = 'transform .24s var(--spring)'; if (dy > 110) { el.style.transform = 'translateY(100%)'; const e = el; setTimeout(() => { close(); e.style.transform = ''; e.style.transition = '' }, 180) } else el.style.transform = ''; el = null },
+    onPointerUp: () => { if (!el) return; el.style.transition = 'transform .24s var(--spring)'; if (dy > 110) { el.style.transform = 'translateY(100%)'; setTimeout(close, 200) } else el.style.transform = ''; el = null },
     onPointerCancel: () => { if (el) { el.style.transform = ''; el = null } },
   }
 }
@@ -534,12 +557,12 @@ function Notice({ children, tone }: { children: React.ReactNode; tone: 'gold' })
 function AmenityList({ items, empty, meta }: { items: Array<Amenity & { dist: number }>; empty: string; meta: (a: Amenity) => string }) {
   if (!items.length) return <p className="mt-6 muted text-[15px]">{empty}</p>
   return (
-    <ul className="mt-4 border-t hair">
+    <ul className="group-list mt-4">
       {items.map((a, i) => (
         <li key={a.id} className="rise" style={{ ['--i' as any]: i }}>
-          <a href={mapsPlaceUrl(a)} target="_blank" rel="noopener" className="flex items-center justify-between gap-3 py-4 border-b hair">
-            <span className="min-w-0"><span className="block text-[17px] font-medium truncate">{a.name}</span>{meta(a) && <span className="block text-[13.5px] muted truncate">{meta(a)}</span>}</span>
-            <span className="text-[14px] muted mono-num shrink-0">{fmtDist(a.dist)} · {walkMinutes(a.dist)} min</span>
+          <a href={mapsPlaceUrl(a)} target="_blank" rel="noopener" className="flex items-center justify-between gap-3 min-h-[60px] py-3 px-4">
+            <span className="min-w-0"><span className="block t-body font-medium truncate">{a.name}</span>{meta(a) && <span className="block t-foot muted truncate">{meta(a)}</span>}</span>
+            <span className="t-foot muted mono-num shrink-0">{fmtDist(a.dist)} · {walkMinutes(a.dist)} min</span>
           </a>
         </li>
       ))}
