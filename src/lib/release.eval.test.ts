@@ -41,3 +41,23 @@ describe('release eval', () => {
     expect(src).not.toMatch(/lorem|ipsum|TODO|FIXME|coming soon|seamless|elevate your|unlock|delve|embark|tapestry|vibrant|curated experience/i)
   })
 })
+import audit from '../../pipeline/raw/pin_audit.json'
+import { haversine } from './geo'
+describe('pin accuracy (two sources agree within 250 m; see pipeline/raw/pin_audit.json)', () => {
+  const by = Object.fromEntries(d.pandals.map(p => [p.id, p]))
+  // Hand-checked fixtures, South first.
+  const FIX: Record<string, [number, number]> = {
+    'rajdanga-naba-uday-sangha': [22.5157, 88.3904], 'barisha-club': [22.4807, 88.3130], 'bosepukur-sitala-mandir': [22.5192, 88.3848],
+    'naba-durga': [22.4625, 88.3809], 'naktala-udayan-sangha': [22.4745, 88.3666], 'chetla-agrani': [22.5164, 88.3372], 'hindusthan-club': [22.5197, 88.3607],
+  }
+  it('South fixtures are exact (within 120 m)', () => {
+    for (const [id, [lat, lng]] of Object.entries(FIX)) { const p = by[id]; expect(p.precision, id).toBe('osm'); expect(haversine(p as any, { lat, lng }), id).toBeLessThan(120) }
+  })
+  it('every audited pin is what ships; unresolved ones stay approximate (no distance shown)', () => {
+    for (const [id, a] of Object.entries(audit as Record<string, any>)) {
+      const p = by[id]
+      if (a.verdict === 'verified' || a.verdict === 'corrected') { expect(p.lat, id).toBe(a.lat); expect(p.lng, id).toBe(a.lng); expect(p.precision, id).toBe('osm') }
+      if (a.verdict === 'unresolved-approx') expect(p.precision, id).not.toBe('osm')
+    }
+  })
+})

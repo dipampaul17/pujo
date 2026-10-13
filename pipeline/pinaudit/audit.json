@@ -1,0 +1,1436 @@
+[
+ {
+  "id": "22-pally-northern-park",
+  "name": "22 Pally / Northern Park",
+  "prec": "station",
+  "ours": [
+   22.533182,
+   88.345927
+  ],
+  "agamoni": "22 Palli Northern Park",
+  "A": [
+   22.53534,
+   88.35011
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "23-pally",
+  "name": "23 Pally",
+  "prec": "osm",
+  "ours": [
+   22.525463,
+   88.344083
+  ],
+  "agamoni": "23 Palli Pandal",
+  "A": [
+   22.52552,
+   88.34409
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 6
+ },
+ {
+  "id": "66-pally",
+  "name": "66 Pally",
+  "prec": "osm",
+  "ours": [
+   22.518244,
+   88.342864
+  ],
+  "agamoni": "66 Pally",
+  "A": [
+   22.5180613,
+   88.3427526
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 23
+ },
+ {
+  "id": "68-pally",
+  "name": "68 Pally",
+  "prec": "osm",
+  "ours": [
+   22.528882,
+   88.346288
+  ],
+  "agamoni": "68 Pally Durga Puja",
+  "A": [
+   22.5287674,
+   88.3463414
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 14
+ },
+ {
+  "id": "76-pally",
+  "name": "76 Pally",
+  "prec": "osm",
+  "ours": [
+   22.533736,
+   88.34305
+  ],
+  "agamoni": "76 Palli Club",
+  "A": [
+   22.5337976,
+   88.3425906
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 48
+ },
+ {
+  "id": "ae-block",
+  "name": "AE Block",
+  "prec": "osm",
+  "ours": [
+   22.599992,
+   88.412182
+  ],
+  "agamoni": "Salt Lake Ae Block",
+  "A": [
+   22.6008801,
+   88.412819
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 118
+ },
+ {
+  "id": "agradut-udaya-sangha",
+  "name": "Agradut Udaya Sangha",
+  "prec": "station",
+  "ours": [
+   22.533182,
+   88.345927
+  ],
+  "agamoni": "Agradut Udaya Sangha",
+  "A": [
+   22.5338208,
+   88.3419442
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "ahiritola-sarbojanin",
+  "name": "Ahiritola Sarbojanin",
+  "prec": "osm",
+  "ours": [
+   22.594838,
+   88.357193
+  ],
+  "agamoni": "Ahiritola Sarbojonin Durgotsab",
+  "A": [
+   22.5944,
+   88.3549
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 240
+ },
+ {
+  "id": "ajeya-sanghati",
+  "name": "Ajeya Sanghati",
+  "prec": "osm",
+  "ours": [
+   22.480962,
+   88.337529
+  ],
+  "agamoni": "Ajeya Sanghati",
+  "A": [
+   22.480553,
+   88.337418
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 47
+ },
+ {
+  "id": "arjunpur-amra-sabai-club",
+  "name": "Arjunpur Amra Sabai Club",
+  "prec": "station",
+  "ours": [
+   22.605924,
+   88.386391
+  ],
+  "agamoni": "Arjunpur Amra Sabai Club",
+  "A": [
+   22.624705,
+   88.424566
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "badamtala-ashar-sangha",
+  "name": "Badamtala Ashar Sangha",
+  "prec": "osm",
+  "ours": [
+   22.517927,
+   88.344165
+  ],
+  "agamoni": "Badamtala Ashar Sangha",
+  "A": [
+   22.5179668,
+   88.3437245
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 45
+ },
+ {
+  "id": "baghbazar-sarbojanin",
+  "name": "Baghbazar Sarbojanin",
+  "prec": "osm",
+  "ours": [
+   22.604699,
+   88.366135
+  ],
+  "agamoni": "Bagbazar Sarbojanin Durgotsav",
+  "A": [
+   22.6012079,
+   88.3668234
+  ],
+  "verdict": "conflict",
+  "d": 395,
+  "nom": [
+   [
+    22.6046989,
+    88.3661347,
+    "Bagbazar Sarbojanin Durgotsav, Bagbazar Street, Chitpur Nort"
+   ]
+  ]
+ },
+ {
+  "id": "baishnabghata-balak-samity",
+  "name": "Baishnabghata Balak Samity",
+  "prec": "none",
+  "ours": [
+   null,
+   null
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "unresolved"
+ },
+ {
+  "id": "bakul-bagan",
+  "name": "Bakul Bagan",
+  "prec": "osm",
+  "ours": [
+   22.527056,
+   88.351805
+  ],
+  "agamoni": "Bakul Bagan Sarbojanin",
+  "A": [
+   22.5267621,
+   88.34826
+  ],
+  "verdict": "corrected",
+  "by": "agamoni+nominatim",
+  "pin": [
+   22.52723,
+   88.349221
+  ],
+  "osm": "Bakul Bagan Road, Bhowanipore, Kolkata, Kolkata Metropolitan",
+  "d": 366
+ },
+ {
+  "id": "ballygunge-cultural",
+  "name": "Ballygunge Cultural",
+  "prec": "osm",
+  "ours": [
+   22.515884,
+   88.355817
+  ],
+  "agamoni": "Ballygunge Cultural Association",
+  "A": [
+   22.5162122,
+   88.3558059
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 37
+ },
+ {
+  "id": "barisha-club",
+  "name": "Barisha Club",
+  "prec": "station",
+  "ours": [
+   22.494769,
+   88.345088
+  ],
+  "agamoni": "Barisha Club",
+  "A": [
+   22.4811935,
+   88.312912
+  ],
+  "verdict": "corrected",
+  "by": "agamoni+nominatim",
+  "pin": [
+   22.480954,
+   88.312932
+  ],
+  "osm": "Barisha Club, James Long Sarani, Thakurpukur, Kolkata, Kolka",
+  "d": null
+ },
+ {
+  "id": "beniatola-sarbojanin",
+  "name": "Beniatola Sarbojanin",
+  "prec": "osm",
+  "ours": [
+   22.598457,
+   88.355584
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "osm-only"
+ },
+ {
+  "id": "bhowanipur-75-pally",
+  "name": "Bhowanipur 75 Pally",
+  "prec": "osm",
+  "ours": [
+   22.532596,
+   88.345442
+  ],
+  "agamoni": "Bhowanipur 75 Pally",
+  "A": [
+   22.5391961,
+   88.3264565
+  ],
+  "verdict": "conflict",
+  "d": 2083,
+  "nom": []
+ },
+ {
+  "id": "bj-block",
+  "name": "BJ Block",
+  "prec": "osm",
+  "ours": [
+   22.590224,
+   88.426747
+  ],
+  "agamoni": "Salt Lake Bj Block",
+  "A": [
+   22.5910133,
+   88.4265803
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 89
+ },
+ {
+  "id": "bosepukur-sitala-mandir",
+  "name": "Bosepukur Sitala Mandir",
+  "prec": "station",
+  "ours": [
+   22.516875,
+   88.345845
+  ],
+  "agamoni": "Bosepukur Sitala Mandir",
+  "A": [
+   22.5192181,
+   88.3848576
+  ],
+  "verdict": "corrected",
+  "by": "agamoni+nominatim",
+  "pin": [
+   22.519191,
+   88.384799
+  ],
+  "osm": "Bosepukur Sitala Mandir, Rash Behari Avenue Connector, Ruby ",
+  "d": null
+ },
+ {
+  "id": "chakraberia-sarbojanin",
+  "name": "Chakraberia Sarbojanin",
+  "prec": "osm",
+  "ours": [
+   22.533573,
+   88.352198
+  ],
+  "agamoni": "Chakraberia Sarbojanin Durgotsab",
+  "A": [
+   22.5336065,
+   88.3519214
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 29
+ },
+ {
+  "id": "chaltabagan-lohapatty",
+  "name": "Chaltabagan Lohapatty",
+  "prec": "station",
+  "ours": [
+   22.587145,
+   88.362942
+  ],
+  "agamoni": "Manicktala Chaltabagan Lohapatty",
+  "A": [
+   22.5848905,
+   88.3721509
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "chetla-agrani",
+  "name": "Chetla Agrani",
+  "prec": "osm",
+  "ours": [
+   22.516435,
+   88.337189
+  ],
+  "agamoni": "Chetla Agrani Club",
+  "A": [
+   22.5163997,
+   88.3368366
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 36
+ },
+ {
+  "id": "chorebagan-sarbojanin",
+  "name": "Chorebagan Sarbojanin",
+  "prec": "osm",
+  "ours": [
+   22.583511,
+   88.363163
+  ],
+  "agamoni": "Chorebagan Sarbojanin",
+  "A": [
+   22.5834284,
+   88.3610216
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 220
+ },
+ {
+  "id": "college-square",
+  "name": "College Square",
+  "prec": "osm",
+  "ours": [
+   22.574653,
+   88.363905
+  ],
+  "agamoni": "College Square Sarbojanin",
+  "A": [
+   22.574024,
+   88.362707
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 141
+ },
+ {
+  "id": "dakshindari-youth",
+  "name": "Dakshindari Youth",
+  "prec": "station",
+  "ours": [
+   22.605924,
+   88.386391
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "unresolved"
+ },
+ {
+  "id": "dakshinpara",
+  "name": "Dakshinpara",
+  "prec": "station",
+  "ours": [
+   22.605924,
+   88.386391
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "unresolved"
+ },
+ {
+  "id": "deshapriya-park",
+  "name": "Deshapriya Park",
+  "prec": "osm",
+  "ours": [
+   22.518435,
+   88.353515
+  ],
+  "agamoni": "Deshapriya Park",
+  "A": [
+   22.5185819,
+   88.3534607
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 17
+ },
+ {
+  "id": "dum-dum-park-bharat-chakra",
+  "name": "Dum Dum Park Bharat Chakra",
+  "prec": "station",
+  "ours": [
+   22.605924,
+   88.386391
+  ],
+  "agamoni": "Dum Dum Park Bharat Chakra",
+  "A": [
+   22.6108213,
+   88.4146001
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "dum-dum-park-sarbajanin",
+  "name": "Dum Dum Park Sarbajanin",
+  "prec": "station",
+  "ours": [
+   22.605924,
+   88.386391
+  ],
+  "agamoni": "Dum Dum Park Sarbojanin Durga Puja Samity",
+  "A": [
+   22.6094363,
+   88.4164052
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "dum-dum-park-tarun-dal",
+  "name": "Dum Dum Park Tarun Dal",
+  "prec": "station",
+  "ours": [
+   22.605924,
+   88.386391
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "unresolved"
+ },
+ {
+  "id": "ekdalia-evergreen",
+  "name": "Ekdalia Evergreen",
+  "prec": "osm",
+  "ours": [
+   22.521283,
+   88.366234
+  ],
+  "agamoni": "Ekdalia Evergreen Club",
+  "A": [
+   22.5212187,
+   88.3665629
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 35
+ },
+ {
+  "id": "fd-block",
+  "name": "FD Block",
+  "prec": "osm",
+  "ours": [
+   22.584003,
+   88.415849
+  ],
+  "agamoni": "Salt Lake Fd Block",
+  "A": [
+   22.583241,
+   88.4126689
+  ],
+  "verdict": "corrected",
+  "by": "agamoni+nominatim",
+  "pin": [
+   22.582823,
+   88.412496
+  ],
+  "osm": "FD Block, FC Block, Sector III, Bidhannagar, Kolkata Metropo",
+  "d": 337
+ },
+ {
+  "id": "forward-club",
+  "name": "Forward Club",
+  "prec": "osm",
+  "ours": [
+   22.523125,
+   88.343633
+  ],
+  "agamoni": "Forward Club",
+  "A": [
+   22.5229851,
+   88.343973
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 38
+ },
+ {
+  "id": "garia-mitali",
+  "name": "Garia Mitali",
+  "prec": "osm",
+  "ours": [
+   22.461627,
+   88.378168
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "osm-only"
+ },
+ {
+  "id": "golaghata-sammilani",
+  "name": "Golaghata Sammilani",
+  "prec": "station",
+  "ours": [
+   22.605924,
+   88.386391
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "unresolved"
+ },
+ {
+  "id": "haridevpur-41-pally",
+  "name": "Haridevpur 41 Pally",
+  "prec": "station",
+  "ours": [
+   22.494769,
+   88.345088
+  ],
+  "agamoni": "Haridevpur 41 Pally Club",
+  "A": [
+   22.48303,
+   88.338509
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "harish-park",
+  "name": "Harish Park",
+  "prec": "osm",
+  "ours": [
+   22.530533,
+   88.343728
+  ],
+  "agamoni": "Harish Park Puja",
+  "A": [
+   22.530655,
+   88.343681
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 14
+ },
+ {
+  "id": "hatibagan-nabinpally",
+  "name": "Hatibagan Nabinpally",
+  "prec": "station",
+  "ours": [
+   22.601335,
+   88.372497
+  ],
+  "agamoni": "Hatibagan Nabinpally",
+  "A": [
+   22.5959028,
+   88.3734176
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "hatibagan-sarbojanin",
+  "name": "Hatibagan Sarbojanin",
+  "prec": "osm",
+  "ours": [
+   22.594957,
+   88.370928
+  ],
+  "agamoni": "Hatibagan Sarbojanin",
+  "A": [
+   22.5943863,
+   88.3720004
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 127
+ },
+ {
+  "id": "hindusthan-club",
+  "name": "Hindusthan Club",
+  "prec": "station",
+  "ours": [
+   22.516875,
+   88.345845
+  ],
+  "agamoni": "Gariahat Hindusthan Club",
+  "A": [
+   22.5201571,
+   88.3609098
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "hindusthan-park",
+  "name": "Hindusthan Park",
+  "prec": "osm",
+  "ours": [
+   22.51597,
+   88.36124
+  ],
+  "agamoni": "Hindusthan Park Sarbojanin",
+  "A": [
+   22.5176792,
+   88.3620716
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 208
+ },
+ {
+  "id": "jagat-mukherjee-park",
+  "name": "Jagat Mukherjee Park",
+  "prec": "osm",
+  "ours": [
+   22.599704,
+   88.366186
+  ],
+  "agamoni": "Jagat Mukherjee Park",
+  "A": [
+   22.5997,
+   88.36619
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 1
+ },
+ {
+  "id": "janbazar-rajbari",
+  "name": "Janbazar Rajbari",
+  "prec": "station",
+  "ours": [
+   22.567012,
+   88.354158
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "unresolved"
+ },
+ {
+  "id": "jorasanko-sadharan",
+  "name": "Jorasanko Sadharan",
+  "prec": "station",
+  "ours": [
+   22.587145,
+   88.362942
+  ],
+  "agamoni": "Jorasanko Sadharan Durgotsav Samity",
+  "A": [
+   22.5862387,
+   88.3605571
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "kamdahari-purbapara",
+  "name": "Kamdahari Purbapara",
+  "prec": "station",
+  "ours": [
+   22.46425,
+   88.38046
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "unresolved"
+ },
+ {
+  "id": "kapalitola-sarbajanin",
+  "name": "Kapalitola Sarbajanin",
+  "prec": "station",
+  "ours": [
+   22.572486,
+   88.358743
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "unresolved"
+ },
+ {
+  "id": "kashi-bose-lane",
+  "name": "Kashi Bose Lane",
+  "prec": "osm",
+  "ours": [
+   22.591006,
+   88.368965
+  ],
+  "agamoni": "Kashi Bose Lane Durga Puja Samity",
+  "A": [
+   22.5908979,
+   88.3689174
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 13
+ },
+ {
+  "id": "kumartuli-park",
+  "name": "Kumartuli Park",
+  "prec": "station",
+  "ours": [
+   22.595881,
+   88.3652
+  ],
+  "agamoni": "Kumartuli Park Sarbojanin",
+  "A": [
+   22.5989827,
+   88.3614663
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "kumartuli-sarbojanin",
+  "name": "Kumartuli Sarbojanin",
+  "prec": "station",
+  "ours": [
+   22.595881,
+   88.3652
+  ],
+  "agamoni": "Kumartuli Sarbojanin",
+  "A": [
+   22.6008819,
+   88.3623171
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "lalabagan-nabankur",
+  "name": "Lalabagan Nabankur",
+  "prec": "station",
+  "ours": [
+   22.601335,
+   88.372497
+  ],
+  "agamoni": "Lalabagan Nabankur",
+  "A": [
+   22.588247,
+   88.377106
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "maddox-square",
+  "name": "Maddox Square",
+  "prec": "osm",
+  "ours": [
+   22.526296,
+   88.354656
+  ],
+  "agamoni": "Maddox Square Durga Puja",
+  "A": [
+   22.5265634,
+   88.3546477
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 30
+ },
+ {
+  "id": "matri-mandir",
+  "name": "Matri Mandir",
+  "prec": "osm",
+  "ours": [
+   22.519511,
+   88.35075
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "osm-only"
+ },
+ {
+  "id": "mudiali",
+  "name": "Mudiali",
+  "prec": "osm",
+  "ours": [
+   22.510081,
+   88.346449
+  ],
+  "agamoni": "Mudiali Club",
+  "A": [
+   22.510194,
+   88.3463122
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 19
+ },
+ {
+  "id": "muhammad-ali-park",
+  "name": "Muhammad Ali Park",
+  "prec": "osm",
+  "ours": [
+   22.57724,
+   88.360737
+  ],
+  "agamoni": "Mohammad Ali Park",
+  "A": [
+   22.5772089,
+   88.3608075
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 8
+ },
+ {
+  "id": "naba-durga",
+  "name": "Naba Durga",
+  "prec": "station",
+  "ours": [
+   22.46425,
+   88.38046
+  ],
+  "agamoni": "Garia Nabadurga",
+  "A": [
+   22.46248,
+   88.38092
+  ],
+  "verdict": "corrected",
+  "by": "agamoni+nominatim",
+  "pin": [
+   22.462482,
+   88.380918
+  ],
+  "osm": "Naba Durga, Garia Station Road, Garia, Rajpur Sonarpur, Kolk",
+  "d": null
+ },
+ {
+  "id": "naktala-pally-unnayan-samity",
+  "name": "Naktala Pally Unnayan Samity",
+  "prec": "station",
+  "ours": [
+   22.480993,
+   88.346
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "unresolved"
+ },
+ {
+  "id": "naktala-udayan-sangha",
+  "name": "Naktala Udayan Sangha",
+  "prec": "none",
+  "ours": [
+   null,
+   null
+  ],
+  "agamoni": "Naktala Udayan Sangha",
+  "A": [
+   22.47435,
+   88.36653
+  ],
+  "verdict": "corrected",
+  "by": "agamoni+nominatim",
+  "pin": [
+   22.474421,
+   88.366552
+  ],
+  "osm": "Naktala Udayan Sangha, Nagtala Road, Bansdroni, Bijoygarh, K",
+  "d": null
+ },
+ {
+  "id": "nalin-sarkar-street",
+  "name": "Nalin Sarkar Street",
+  "prec": "osm",
+  "ours": [
+   22.595346,
+   88.373396
+  ],
+  "agamoni": "Nalin Sarkar Street",
+  "A": [
+   22.5950018,
+   88.3738975
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 64
+ },
+ {
+  "id": "new-sporting-club",
+  "name": "New Sporting Club",
+  "prec": "station",
+  "ours": [
+   22.494769,
+   88.345088
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "unresolved"
+ },
+ {
+  "id": "nwapara-udayan-sangha",
+  "name": "Nwapara Udayan Sangha",
+  "prec": "none",
+  "ours": [
+   null,
+   null
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "unresolved"
+ },
+ {
+  "id": "paddapukur-youth",
+  "name": "Paddapukur Youth",
+  "prec": "osm",
+  "ours": [
+   22.529362,
+   88.34971
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "osm-only"
+ },
+ {
+  "id": "pally-mangal",
+  "name": "Pally Mangal",
+  "prec": "osm",
+  "ours": [
+   22.49312,
+   88.386019
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "osm-only"
+ },
+ {
+  "id": "patuli-sarbojanin",
+  "name": "Patuli Sarbojanin",
+  "prec": "osm",
+  "ours": [
+   22.472309,
+   88.381175
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "osm-only"
+ },
+ {
+  "id": "rajdanga-naba-uday-sangha",
+  "name": "Rajdanga Naba Uday Sangha",
+  "prec": "station",
+  "ours": [
+   22.516875,
+   88.345845
+  ],
+  "agamoni": "Rajdanga Naba Uday Sangha",
+  "A": [
+   22.515675,
+   88.390442
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "regent-park",
+  "name": "Regent Park",
+  "prec": "none",
+  "ours": [
+   null,
+   null
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "unresolved"
+ },
+ {
+  "id": "roynagar-unyan-samity",
+  "name": "Roynagar Unyan Samity",
+  "prec": "none",
+  "ours": [
+   null,
+   null
+  ],
+  "agamoni": "Roynagar Unnayan Samity",
+  "A": [
+   22.47242,
+   88.360176
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "santosh-mitra-square",
+  "name": "Santosh Mitra Square",
+  "prec": "osm",
+  "ours": [
+   22.565863,
+   88.365539
+  ],
+  "agamoni": "Santosh Mitra Square",
+  "A": [
+   22.5660201,
+   88.3656532
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 21
+ },
+ {
+  "id": "santoshpur-lake-pally",
+  "name": "Santoshpur Lake Pally",
+  "prec": "osm",
+  "ours": [
+   22.491383,
+   88.382766
+  ],
+  "agamoni": "Santoshpur Lake Pally",
+  "A": [
+   22.49176,
+   88.38293
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 45
+ },
+ {
+  "id": "santoshpur-trikon-park",
+  "name": "Santoshpur Trikon Park",
+  "prec": "station",
+  "ours": [
+   22.471109,
+   88.398099
+  ],
+  "agamoni": "Santoshpur Trikon Park Durgotsab",
+  "A": [
+   22.49307,
+   88.3784
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "sealdah-athletic-club",
+  "name": "Sealdah Athletic Club",
+  "prec": "osm",
+  "ours": [
+   22.571027,
+   88.371874
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "osm-only"
+ },
+ {
+  "id": "shib-mandir",
+  "name": "Shib Mandir",
+  "prec": "osm",
+  "ours": [
+   22.51106,
+   88.350024
+  ],
+  "agamoni": "Shibmandir Sarbojanin",
+  "A": [
+   22.5109975,
+   88.3498496
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 19
+ },
+ {
+  "id": "shyama-pally",
+  "name": "Shyama Pally",
+  "prec": "station",
+  "ours": [
+   22.46425,
+   88.38046
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "unresolved"
+ },
+ {
+  "id": "sikdar-bagan",
+  "name": "Sikdar Bagan",
+  "prec": "osm",
+  "ours": [
+   22.596611,
+   88.372616
+  ],
+  "agamoni": "Sikdar Bagan Durga Puja",
+  "A": [
+   22.596625,
+   88.3721388
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 49
+ },
+ {
+  "id": "simla-byayam-samity",
+  "name": "Simla Byayam Samity",
+  "prec": "osm",
+  "ours": [
+   22.58539,
+   88.365127
+  ],
+  "agamoni": "Simla Byayam Samity",
+  "A": [
+   22.5853272,
+   88.3650301
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 12
+ },
+ {
+  "id": "singhi-park",
+  "name": "Singhi Park",
+  "prec": "osm",
+  "ours": [
+   22.521224,
+   88.363011
+  ],
+  "agamoni": "Singhi Park Sarbojanin",
+  "A": [
+   22.52095,
+   88.36299
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 31
+ },
+ {
+  "id": "sinthee-sarbojanin",
+  "name": "Sinthee Sarbojanin",
+  "prec": "station",
+  "ours": [
+   22.621114,
+   88.392897
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "unresolved"
+ },
+ {
+  "id": "sovabazar-rajbari",
+  "name": "Sovabazar Rajbari",
+  "prec": "osm",
+  "ours": [
+   22.596826,
+   88.367193
+  ],
+  "agamoni": "Sovabazar Rajbari",
+  "A": [
+   22.5962644,
+   88.3673797
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 65
+ },
+ {
+  "id": "sree-bhumi-sporting-club",
+  "name": "Sree Bhumi Sporting Club",
+  "prec": "osm",
+  "ours": [
+   22.600318,
+   88.40259
+  ],
+  "agamoni": "Sree Bhumi Sporting Club",
+  "A": [
+   22.5988987,
+   88.4029328
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 162
+ },
+ {
+  "id": "subodh-mallick-square",
+  "name": "Subodh Mallick Square",
+  "prec": "osm",
+  "ours": [
+   22.563863,
+   88.359691
+  ],
+  "agamoni": "Raja Subodh Mallick Square Park",
+  "A": [
+   22.5635842,
+   88.3595075
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 36
+ },
+ {
+  "id": "suruchi-sangha",
+  "name": "Suruchi Sangha",
+  "prec": "osm",
+  "ours": [
+   22.509097,
+   88.334183
+  ],
+  "agamoni": "Suruchi Sangha",
+  "A": [
+   22.5089855,
+   88.3339522
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 27
+ },
+ {
+  "id": "swadhin-sangha",
+  "name": "Swadhin Sangha",
+  "prec": "station",
+  "ours": [
+   22.533182,
+   88.345927
+  ],
+  "agamoni": "Bhowanipur Swadhin Sangha",
+  "A": [
+   22.531992,
+   88.346237
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "tala-park",
+  "name": "Tala Park",
+  "prec": "osm",
+  "ours": [
+   22.608923,
+   88.382266
+  ],
+  "agamoni": "Tala Prattoy",
+  "A": [
+   22.6104572,
+   88.3846031
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 294
+ },
+ {
+  "id": "tala-prattoy",
+  "name": "Tala Prattoy",
+  "prec": "osm",
+  "ours": [
+   22.608923,
+   88.382266
+  ],
+  "agamoni": "Tala Prattoy",
+  "A": [
+   22.6104572,
+   88.3846031
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 294
+ },
+ {
+  "id": "taltala-sarbojanin",
+  "name": "Taltala Sarbojanin",
+  "prec": "osm",
+  "ours": [
+   22.554545,
+   88.362175
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "osm-only"
+ },
+ {
+  "id": "tarun-sathi",
+  "name": "Tarun Sathi",
+  "prec": "station",
+  "ours": [
+   22.46425,
+   88.38046
+  ],
+  "agamoni": null,
+  "A": null,
+  "verdict": "unresolved"
+ },
+ {
+  "id": "telengabagan",
+  "name": "Telengabagan",
+  "prec": "station",
+  "ours": [
+   22.605924,
+   88.386391
+  ],
+  "agamoni": "Telengabagan",
+  "A": [
+   22.59408,
+   88.38356
+  ],
+  "verdict": "unresolved",
+  "d": null,
+  "nom": []
+ },
+ {
+  "id": "tridhara-sammilani",
+  "name": "Tridhara Sammilani",
+  "prec": "osm",
+  "ours": [
+   22.519576,
+   88.355349
+  ],
+  "agamoni": "Tridhara Sammilani",
+  "A": [
+   22.5195286,
+   88.3554398
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 11
+ },
+ {
+  "id": "vivekananda-park",
+  "name": "Vivekananda Park",
+  "prec": "osm",
+  "ours": [
+   22.481364,
+   88.337312
+  ],
+  "agamoni": "Vivekananda Park Athletic Club",
+  "A": [
+   22.481016,
+   88.336967
+  ],
+  "verdict": "verified",
+  "by": "osm+agamoni",
+  "d": 52
+ }
+]

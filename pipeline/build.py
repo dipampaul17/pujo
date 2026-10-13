@@ -85,6 +85,7 @@ assert len({p['id'] for p in pandals})==len(pandals)
 key=lambda x:x['id']
 data={'version':1,'source':{'guide':'Travel With Preet, Kolkata Durga Puja Pandal Hopping Guide 2026','places':'OpenStreetMap contributors (ODbL), via Overpass + Photon','fetched':sys.argv[3]},
  'pandals':sorted(pandals,key=key),'food':sorted(food,key=key),'toilets':sorted(toilets,key=key),'medical':sorted(medical,key=key),'police':sorted(police,key=key),'stations':stations}
+sys.path.insert(0,os.path.dirname(os.path.abspath(__file__))); import apply_pins; print('pin audit applied',apply_pins.apply(data))
 s=json.dumps(data,separators=(',',':'),ensure_ascii=False); data['hash']=hashlib.sha1(s.encode()).hexdigest()[:8]
 os.makedirs('src/data',exist_ok=True); json.dump(data,open(sys.argv[2],'w'),separators=(',',':'),ensure_ascii=False)
 from collections import Counter

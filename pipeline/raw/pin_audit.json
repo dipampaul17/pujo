@@ -1,0 +1,730 @@
+{
+ "22-pally-northern-park": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "agamoni"
+  ]
+ },
+ "23-pally": {
+  "lat": 22.525463,
+  "lng": 88.344083,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "66-pally": {
+  "lat": 22.518244,
+  "lng": 88.342864,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "68-pally": {
+  "lat": 22.528882,
+  "lng": 88.346288,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "76-pally": {
+  "lat": 22.533736,
+  "lng": 88.34305,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "ae-block": {
+  "lat": 22.599992,
+  "lng": 88.412182,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "agradut-udaya-sangha": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "agamoni"
+  ]
+ },
+ "ahiritola-sarbojanin": {
+  "lat": 22.594838,
+  "lng": 88.357193,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "ajeya-sanghati": {
+  "lat": 22.480962,
+  "lng": 88.337529,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "arjunpur-amra-sabai-club": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "agamoni",
+   "pujoparikramaguide"
+  ]
+ },
+ "badamtala-ashar-sangha": {
+  "lat": 22.517927,
+  "lng": 88.344165,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "baghbazar-sarbojanin": {
+  "lat": 22.604699,
+  "lng": 88.366135,
+  "sources": [
+   "osm",
+   "pujoparikramaguide"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "baishnabghata-balak-samity": {
+  "verdict": "unresolved-approx",
+  "have": []
+ },
+ "bakul-bagan": {
+  "lat": 22.526762,
+  "lng": 88.34826,
+  "sources": [
+   "agamoni",
+   "pujoparikramaguide"
+  ],
+  "moved_m": 366,
+  "verdict": "corrected"
+ },
+ "ballygunge-cultural": {
+  "lat": 22.515884,
+  "lng": 88.355817,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "barisha-club": {
+  "lat": 22.481193,
+  "lng": 88.312912,
+  "sources": [
+   "agamoni",
+   "pujoparikramaguide"
+  ],
+  "moved_m": 3634,
+  "verdict": "corrected"
+ },
+ "beniatola-sarbojanin": {
+  "verdict": "osm-single-source",
+  "have": [
+   "osm"
+  ]
+ },
+ "bhowanipur-75-pally": {
+  "lat": 22.532596,
+  "lng": 88.345442,
+  "sources": [
+   "osm",
+   "pujoparikramaguide"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "bj-block": {
+  "lat": 22.590224,
+  "lng": 88.426747,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "bosepukur-sitala-mandir": {
+  "lat": 22.519218,
+  "lng": 88.384858,
+  "sources": [
+   "agamoni",
+   "pujoparikramaguide"
+  ],
+  "moved_m": 4016,
+  "verdict": "corrected"
+ },
+ "chakraberia-sarbojanin": {
+  "lat": 22.533573,
+  "lng": 88.352198,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "chaltabagan-lohapatty": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "agamoni",
+   "pujoparikramaguide"
+  ]
+ },
+ "chetla-agrani": {
+  "lat": 22.516435,
+  "lng": 88.337189,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "chorebagan-sarbojanin": {
+  "lat": 22.583511,
+  "lng": 88.363163,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "college-square": {
+  "lat": 22.574653,
+  "lng": 88.363905,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "dakshindari-youth": {
+  "verdict": "unresolved-approx",
+  "have": []
+ },
+ "dakshinpara": {
+  "verdict": "unresolved-approx",
+  "have": []
+ },
+ "deshapriya-park": {
+  "lat": 22.518435,
+  "lng": 88.353515,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "dum-dum-park-bharat-chakra": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "agamoni",
+   "pujoparikramaguide"
+  ]
+ },
+ "dum-dum-park-sarbajanin": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "agamoni",
+   "pujoparikramaguide"
+  ]
+ },
+ "dum-dum-park-tarun-dal": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "pujoparikramaguide"
+  ]
+ },
+ "ekdalia-evergreen": {
+  "lat": 22.521283,
+  "lng": 88.366234,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "fd-block": {
+  "lat": 22.583241,
+  "lng": 88.412669,
+  "sources": [
+   "agamoni",
+   "nominatim"
+  ],
+  "moved_m": 337,
+  "verdict": "corrected"
+ },
+ "forward-club": {
+  "lat": 22.523125,
+  "lng": 88.343633,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "garia-mitali": {
+  "verdict": "osm-single-source",
+  "have": [
+   "osm"
+  ]
+ },
+ "golaghata-sammilani": {
+  "verdict": "unresolved-approx",
+  "have": []
+ },
+ "haridevpur-41-pally": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "agamoni"
+  ]
+ },
+ "harish-park": {
+  "lat": 22.530533,
+  "lng": 88.343728,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "hatibagan-nabinpally": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "agamoni",
+   "pujoparikramaguide"
+  ]
+ },
+ "hatibagan-sarbojanin": {
+  "lat": 22.594957,
+  "lng": 88.370928,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "hindusthan-club": {
+  "lat": 22.520157,
+  "lng": 88.36091,
+  "sources": [
+   "agamoni",
+   "pujoparikramaguide"
+  ],
+  "moved_m": 1590,
+  "verdict": "corrected"
+ },
+ "hindusthan-park": {
+  "lat": 22.51597,
+  "lng": 88.36124,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "jagat-mukherjee-park": {
+  "lat": 22.599704,
+  "lng": 88.366186,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "janbazar-rajbari": {
+  "verdict": "unresolved-approx",
+  "have": []
+ },
+ "jorasanko-sadharan": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "agamoni"
+  ]
+ },
+ "kamdahari-purbapara": {
+  "verdict": "unresolved-approx",
+  "have": []
+ },
+ "kapalitola-sarbajanin": {
+  "verdict": "unresolved-approx",
+  "have": []
+ },
+ "kashi-bose-lane": {
+  "lat": 22.591006,
+  "lng": 88.368965,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "kumartuli-park": {
+  "lat": 22.598983,
+  "lng": 88.361466,
+  "sources": [
+   "agamoni",
+   "pujoparikramaguide"
+  ],
+  "moved_m": 516,
+  "verdict": "corrected"
+ },
+ "kumartuli-sarbojanin": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "agamoni"
+  ]
+ },
+ "lalabagan-nabankur": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "agamoni",
+   "pujoparikramaguide"
+  ]
+ },
+ "maddox-square": {
+  "lat": 22.526296,
+  "lng": 88.354656,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "matri-mandir": {
+  "verdict": "osm-single-source",
+  "have": [
+   "osm"
+  ]
+ },
+ "mudiali": {
+  "lat": 22.510081,
+  "lng": 88.346449,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "muhammad-ali-park": {
+  "lat": 22.57724,
+  "lng": 88.360737,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "naba-durga": {
+  "lat": 22.46248,
+  "lng": 88.38092,
+  "sources": [
+   "agamoni",
+   "nominatim"
+  ],
+  "moved_m": 202,
+  "verdict": "corrected"
+ },
+ "naktala-pally-unnayan-samity": {
+  "verdict": "unresolved-approx",
+  "have": []
+ },
+ "naktala-udayan-sangha": {
+  "lat": 22.47435,
+  "lng": 88.36653,
+  "sources": [
+   "agamoni",
+   "pujoparikramaguide"
+  ],
+  "moved_m": null,
+  "verdict": "corrected"
+ },
+ "nalin-sarkar-street": {
+  "lat": 22.595346,
+  "lng": 88.373396,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "new-sporting-club": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "pujaparikrama.in"
+  ]
+ },
+ "nwapara-udayan-sangha": {
+  "verdict": "unresolved-approx",
+  "have": []
+ },
+ "paddapukur-youth": {
+  "verdict": "osm-single-source",
+  "have": [
+   "osm"
+  ]
+ },
+ "pally-mangal": {
+  "verdict": "osm-single-source",
+  "have": [
+   "osm"
+  ]
+ },
+ "patuli-sarbojanin": {
+  "lat": 22.472309,
+  "lng": 88.381175,
+  "sources": [
+   "osm",
+   "pujoparikramaguide"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "rajdanga-naba-uday-sangha": {
+  "lat": 22.515675,
+  "lng": 88.390442,
+  "sources": [
+   "agamoni",
+   "exa.ai place"
+  ],
+  "moved_m": 4583,
+  "verdict": "corrected"
+ },
+ "regent-park": {
+  "verdict": "unresolved-approx",
+  "have": []
+ },
+ "roynagar-unyan-samity": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "agamoni"
+  ]
+ },
+ "santosh-mitra-square": {
+  "lat": 22.565863,
+  "lng": 88.365539,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "santoshpur-lake-pally": {
+  "lat": 22.491383,
+  "lng": 88.382766,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "santoshpur-trikon-park": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "agamoni",
+   "pujoparikramaguide"
+  ]
+ },
+ "sealdah-athletic-club": {
+  "verdict": "osm-single-source",
+  "have": [
+   "osm"
+  ]
+ },
+ "shib-mandir": {
+  "lat": 22.51106,
+  "lng": 88.350024,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "shyama-pally": {
+  "verdict": "unresolved-approx",
+  "have": []
+ },
+ "sikdar-bagan": {
+  "lat": 22.596611,
+  "lng": 88.372616,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "simla-byayam-samity": {
+  "lat": 22.58539,
+  "lng": 88.365127,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "singhi-park": {
+  "lat": 22.521224,
+  "lng": 88.363011,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "sinthee-sarbojanin": {
+  "verdict": "unresolved-approx",
+  "have": []
+ },
+ "sovabazar-rajbari": {
+  "lat": 22.596826,
+  "lng": 88.367193,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "sree-bhumi-sporting-club": {
+  "lat": 22.600318,
+  "lng": 88.40259,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "subodh-mallick-square": {
+  "lat": 22.563863,
+  "lng": 88.359691,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "suruchi-sangha": {
+  "lat": 22.509097,
+  "lng": 88.334183,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "swadhin-sangha": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "agamoni"
+  ]
+ },
+ "tala-park": {
+  "lat": 22.608923,
+  "lng": 88.382266,
+  "sources": [
+   "osm",
+   "pujoparikramaguide"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "tala-prattoy": {
+  "lat": 22.608923,
+  "lng": 88.382266,
+  "sources": [
+   "osm",
+   "pujoparikramaguide"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "taltala-sarbojanin": {
+  "lat": 22.554545,
+  "lng": 88.362175,
+  "sources": [
+   "osm",
+   "pujoparikramaguide"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "tarun-sathi": {
+  "verdict": "unresolved-approx",
+  "have": []
+ },
+ "telengabagan": {
+  "verdict": "unresolved-approx",
+  "have": [
+   "agamoni",
+   "pujoparikramaguide"
+  ]
+ },
+ "tridhara-sammilani": {
+  "lat": 22.519576,
+  "lng": 88.355349,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ },
+ "vivekananda-park": {
+  "lat": 22.481364,
+  "lng": 88.337312,
+  "sources": [
+   "osm",
+   "agamoni"
+  ],
+  "moved_m": 0,
+  "verdict": "verified"
+ }
+}

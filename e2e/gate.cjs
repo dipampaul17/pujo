@@ -34,6 +34,20 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
       const moved = await p.evaluate(() => document.querySelector('[role=dialog]').getBoundingClientRect().top); ok(moved > bx.y + 100, T('sheet does not follow the finger')); await p.mouse.up(); await p.waitForTimeout(500); ok(await open() === 0, T('drag does not close'))
       ok(await p.evaluate(() => history.state?.v) !== 'detail', T('stale history entry after close'))
       await c.close() }
+    // Distance is from the live fix and follows the user as they move (Chetla -> Gariahat), never from a zone centre.
+    { const [c, p] = await mk(SPOTS.chetla); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(1500)
+      const hv = (a, b) => { const r = x => x * Math.PI / 180, h = Math.sin(r(b[0] - a[0]) / 2) ** 2 + Math.cos(r(a[0])) * Math.cos(r(b[0])) * Math.sin(r(b[1] - a[1]) / 2) ** 2; return 2 * 6371000 * Math.asin(Math.sqrt(h)) }
+      const fmt = m => m < 950 ? `${Math.round(m / 10) * 10} m` : `${(m / 1000).toFixed(1)} km`
+      const SMS = [22.516435, 88.337189] // Chetla Agrani verified pin
+      const rowDist = async () => { const t = await p.locator('details ul li a, ul li button[aria-haspopup=dialog]').filter({ hasText: 'Chetla Agrani' }).first().innerText().catch(() => ''); return (t.match(/[\d.]+ (?:m|km)/) || [''])[0] }
+      ok(await rowDist() === fmt(hv(SPOTS.chetla, SMS)), T(`distance at Chetla: got "${await rowDist()}" want "${fmt(hv(SPOTS.chetla, SMS))}"`))
+      await c.setGeolocation({ latitude: SPOTS.gariahat[0], longitude: SPOTS.gariahat[1], accuracy: 15 }); await p.waitForTimeout(2500)
+      ok(await rowDist() === fmt(hv(SPOTS.gariahat, SMS)), T(`distance after moving to Gariahat: got "${await rowDist()}" want "${fmt(hv(SPOTS.gariahat, SMS))}"`))
+      // Browsing another zone keeps distances from me, not that zone's metro
+      await p.locator('[role=tab]', { hasText: 'Central' }).first().tap(); await p.waitForTimeout(800)
+      const t = await p.locator('details ul li a, ul li button[aria-haspopup=dialog]').first().innerText(); const km = parseFloat((t.match(/([\d.]+) km/) || [0, 0])[1])
+      ok(km > 1.5, T(`Central list distance not from my position: "${t.replace(/\n/g, ' ')}"`))
+      await c.close() }
     // Denied: help sheet, zones still work. Far away: finite distance.
     { const [c, p] = await mk(null); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(1200)
       ok(await p.locator('[role=dialog]').count() === 1, T('denied: no help sheet')); await p.getByRole('button', { name: 'Not now' }).tap().catch(() => {}); await p.waitForTimeout(300)

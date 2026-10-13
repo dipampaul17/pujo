@@ -183,7 +183,9 @@ export default function App() {
   const plan: Plan | null = useMemo(() => (view ? P.plan(view, 8 + skip.size, Object.fromEntries(Object.keys(statusFile?.open ?? {}).map(id => [id, [4, 2, 0, 0][tier(statusOf(id, istDate, statusFile, now))]]))) : null), [view?.lat, view?.lng, skip.size, statusFile])
   // At your own position the list is "Near you" across zone lines (the nearest pandal may sit just over a boundary); a picked zone lists that zone.
   const nearYou = !!view?.precise && !!zone && zone === ownZone
-  const zonePandals = useMemo(() => (zone && view ? P.located.filter(p => nearYou ? hav(view, p) < 5000 || zoneOf(p) === zone : zoneOf(p) === zone).map(p => ({ ...p, dist: hav(view, p) })).sort((x, y) => x.dist - y.dist) : []), [zone, view?.lat, view?.lng])
+  // Distances shown are always from the live fix (never a zone centre or metro); without a fix none are shown.
+  const me: LatLng | null = origin?.precise && !origin.approx ? origin : null
+  const zonePandals = useMemo(() => (zone && view ? P.located.filter(p => nearYou ? hav(view, p) < 5000 || zoneOf(p) === zone : zoneOf(p) === zone).map(p => ({ ...p, dist: hav(view, p), my: me ? hav(me, p) : null })).sort((x, y) => x.dist - y.dist) : []), [zone, nearYou, view?.lat, view?.lng, me?.lat, me?.lng])
   const suggested = useMemo(() => suggest(zonePandals, id => statusOf(id, istDate, statusFile, now), view?.precise ? view : null), [zonePandals, statusFile, istDate, view?.precise, Math.floor(now / 600e3)])
   const stable = useStableOrder()
   const stops = useMemo(() => (plan ? plan.stops.filter(s => !skip.has(s.id)).slice(0, 8) : []), [plan, skip])
@@ -295,7 +297,7 @@ export default function App() {
                           <button onClick={() => setDetail(s.id)} className="t-headline block text-left min-h-[44px] -my-2" aria-haspopup="dialog">{s.name}</button>
                           <div className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(s.id, istDate, statusFile, now)} />{!(i === 0 && postsOf(xLive, s.id).some(q => q.photo)) && <PostsMark posts={postsOf(xLive, s.id)} fresh={fresh.has(s.id)} onClick={() => setDetail(s.id)} />}{xLive.crowd[s.id] && <a href={xLive.crowd[s.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[s.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[s.id].at))}</a>}</div>
                           <p className="t-foot muted mt-0.5 mono-num">
-                            {s.precision === 'station' ? 'Approximate' : i === 0 ? fmtDist(s.dist) : `+${fmtDist(hop(stops, i))}`}{i === 0 && s.precision !== 'station' && view?.precise && s.dist > 1200 ? ` · ~${carMin(s.dist)} min by car` : ''}{s.station ? ` · ${s.station}` : ''}
+                            {s.precision === 'station' ? 'Approximate' : i === 0 ? (me ? fmtDist(hav(me, s)) : '') : `+${fmtDist(hop(stops, i))}`}{i === 0 && s.precision !== 'station' && me && hav(me, s) > 1200 ? ` · ~${carMin(hav(me, s))} min by car` : ''}{s.station ? ` · ${s.station}` : ''}
                           </p>
                           {(() => { const t = tagsFor(s, tagContext(P, s)); const one = s.reason ?? t[0]; return i === 0 && one && <div className="flex flex-wrap gap-1.5 mt-2">
                                                         {one && <span className={`tag ${/nearby/.test(one) ? 'tag-leaf' : 'tag-red'}`}>{one}</span>}
@@ -324,7 +326,7 @@ export default function App() {
                 </summary>
                 <ul className="group-list mt-3">{stable(suggested).map((p, r) => (
                   <li key={p.id}><a href={mapsPlaceUrl(p, p.name + ' Durga Puja')} onClick={e => { e.preventDefault(); setDetail(p.id) }} className="row">
-                    <span className="flex min-w-0"><span className="row-n mono-num" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span><span className="min-w-0"><span className="block truncate">{p.name}</span><StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline /></span></span><span className="flex items-center gap-2 shrink-0"><PostsMark posts={postsOf(xLive, p.id)} fresh={fresh.has(p.id)} />{p.precision !== 'station' && p.dist >= 50 && <span className="muted text-[14px] mono-num">{fmtDist(p.dist)}</span>}</span></a></li>))}</ul>
+                    <span className="flex min-w-0"><span className="row-n mono-num" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span><span className="min-w-0"><span className="block truncate">{p.name}</span><StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline /></span></span><span className="flex items-center gap-2 shrink-0"><PostsMark posts={postsOf(xLive, p.id)} fresh={fresh.has(p.id)} />{p.precision !== 'station' && p.my != null && <span className="muted text-[14px] mono-num">{fmtDist(p.my)}</span>}</span></a></li>))}</ul>
               </details>
             )}
             {tab === 1 && help && <AmenityList items={help.food} empty="Nothing mapped nearby." meta={f => [f.notable ? 'Kolkata classic' : null, f.cuisine && f.cuisine[0].toUpperCase() + f.cuisine.slice(1)].filter(Boolean).join(' · ')} />}
@@ -339,7 +341,7 @@ export default function App() {
 
           </>)}
           {detail && (() => { const p = P.located.find(x => x.id === detail); if (!p) return null
-            const d = view ? hav(view, p) : null, st = statusOf(p.id, istDate, statusFile, now), posts = postsOf(xLive, p.id)
+            const d = me ? hav(me, p) : null, st = statusOf(p.id, istDate, statusFile, now), posts = postsOf(xLive, p.id)
             const eats = eatsNear(P.around('food', p, 400, 3500))
             const loo = P.around('toilets', p, 1, 600)[0]
             const pick = view?.precise && !view.approx ? view : null
