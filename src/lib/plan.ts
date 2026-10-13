@@ -1,11 +1,13 @@
 import { GridIndex, orderRoute, rankScore, pathLength, walkMinutes, MAX_WAYPOINTS, type LatLng } from './geo'
 
-export type Pandal = LatLng & { id: string; name: string; station: string | null; line: string | null; circuits: string[]; precision: 'osm' | 'station' | 'none'; quality: number; note: string | null }
+export type Pandal = LatLng & { id: string; name: string; station: string | null; line: string | null; circuits: string[]; precision: 'osm' | 'station' | 'none'; quality: number; note: string | null; worth?: number; reason?: string | null }
 export type Amenity = LatLng & { id: string; name: string; kind?: string; cuisine?: string | null; notable?: boolean; fee?: string | null }
 export type Dataset = { version: number; hash: string; source: { guide: string; places: string; fetched: string }; pandals: Pandal[]; food: Amenity[]; toilets: Amenity[]; medical: Amenity[]; police: Amenity[]; stations: { name: string; lat: number; lng: number }[] }
 export type Stop = Pandal & { dist: number; query?: string }
 export type Plan = { stops: Stop[]; walkM: number; walkMin: number; nearestKm: number; outOfRange: boolean }
 
+/** Worth on the same 0-3 scale as guide quality, so it can pull at most ~1 km. */
+const w = (p: Pandal) => Math.min(3, (p.worth ?? p.quality) / 2.5)
 export function makePlanner(d: Dataset) {
   const located = d.pandals.filter(p => p.lat != null && p.lng != null && p.precision !== 'none')
   const pIdx = new GridIndex(located)
@@ -20,7 +22,7 @@ export function makePlanner(d: Dataset) {
     // Stops without a verified pin share their metro station's coordinate. Allow at most one per station
     // so the walk never lists several "places" at the same point.
     const usedStation = new Set<string>()
-    const picked = [...cand].sort((a, b) => rankScore(a.dist, a.quality) - rankScore(b.dist, b.quality) || a.id.localeCompare(b.id))
+    const picked = [...cand].sort((a, b) => rankScore(a.dist, w(a)) - rankScore(b.dist, w(b)) || a.id.localeCompare(b.id))
         .filter(p => { const k = `${p.lat},${p.lng}`; if (usedStation.has(k)) return false; usedStation.add(k); return true })
       .slice(0, Math.min(max, MAX_WAYPOINTS + 1))
     const withQuery: Stop[] = picked.map(p => (p.precision === 'station' ? { ...p, query: `${p.name} Durga Puja, Kolkata` } : p))
@@ -53,3 +55,63 @@ export function nudges(hour: number, ctx: { toiletM?: number; foodName?: string;
   if (ctx.walkMin > 90) out.push(`Long walk. Skip a stop if you're tired.`)
   return out
 }
+
+export type Zone = 'north' | 'central' | 'south'
+export const ZONES: Zone[] = ['north', 'central', 'south']
+/** Latitude bands, deterministic. Salt Lake (Karunamoyee, 22.586) falls in North. */
+export const zoneOf = (p: { lat: number }): Zone => (p.lat >= 22.575 ? 'north' : p.lat >= 22.53 ? 'central' : 'south')
+/** Zone start points: the guide's busiest metro in each belt. */
+export const ZONE_ANCHOR: Record<Zone, { name: string; lat: number; lng: number }> = {
+  north: { name: 'Shyambazar metro', lat: 22.601335, lng: 88.372497 },
+  central: { name: 'Netaji Bhavan metro', lat: 22.533182, lng: 88.345927 },
+  south: { name: 'Kalighat metro', lat: 22.516875, lng: 88.345845 },
+}
+export const zoneCounts = (d: Dataset) => {
+  const c: Record<Zone, number> = { north: 0, central: 0, south: 0 }
+  for (const p of d.pandals) if (p.lat != null) c[zoneOf(p)]++
+  return c
+}
+export const nextZone = (z: Zone, dir: 1 | -1): Zone => ZONES[Math.max(0, Math.min(2, ZONES.indexOf(z) + dir))]
+
+/** Up to 2 tags per pandal, from real data only: one identity tag from the guide's circuits, one utility tag from mapped places. */
+export function tagsFor(p: Pandal, near: { toiletM?: number; notableFoodM?: number }): string[] {
+  const c = p.circuits.join(' ')
+  const identity = /Big Pandal/.test(c) ? 'Iconic' : /Old Kolkata/.test(c) ? 'Heritage' : /Sreebhumi/.test(c) ? 'Big theme' : /Salt Lake/.test(c) ? 'Block pujo' : null
+  const utility = near.toiletM != null && near.toiletM <= 400 ? 'Toilet nearby' : near.notableFoodM != null && near.notableFoodM <= 500 ? 'Food nearby' : null
+  return [identity, utility].filter((x): x is string => !!x).slice(0, 2)
+}
+export function tagContext(planner: ReturnType<typeof makePlanner>, p: LatLng) {
+  const t = planner.around('toilets', p, 1, 400)[0]
+  const f = planner.around('food', p, 20, 500).find(x => x.notable)
+  return { toiletM: t?.dist, notableFoodM: f?.dist }
+}
+
+/** Pujo 2026 days (Puja Parikrama panjika): Shashthi 16-17, Saptami 18, Ashtami 19, Navami 20, Dashami 21 Oct. */
+export function pujoDay(istDate: string): string | null {
+  const m: Record<string, string> = { '2026-10-16': 'Shashthi', '2026-10-17': 'Shashthi', '2026-10-18': 'Saptami', '2026-10-19': 'Ashtami', '2026-10-20': 'Navami', '2026-10-21': 'Dashami' }
+  return m[istDate] ?? null
+}
+export function dayTip(day: string | null, hour: number): string | null {
+  if (day === 'Ashtami' && hour >= 7 && hour < 12) return 'Ashtami anjali this morning. Pandals fill early.'
+  if (day === 'Ashtami' || day === 'Navami' || day === 'Saptami') return hour >= 17 ? `${day} night. Biggest crowds of the year.` : null
+  if (day === 'Dashami') return 'Dashami. Sindoor khela, then immersions; some pandals close early.'
+  return null
+}
+export type NowItem = { title: string; source: string; link: string; published: string; zones: string[]; pandals: string[] }
+/** Only <6 h old and about this zone, these stops, or the whole city. */
+export function relevantNow(items: NowItem[], zone: string | null, stopIds: string[], now: number) {
+  return items.filter(i => now - Date.parse(i.published) < 6 * 3600e3 && (i.zones.includes('all') || (zone && i.zones.includes(zone)) || i.pandals.some(p => stopIds.includes(p))))
+}
+
+export type StatusFile = { updated: string; puja: { start: string; end: string }; open: Record<string, { since: string; evidence: string; note: string }> }
+export type Status = { key: 'open' | 'likely' | 'closed'; label: string; evidence?: string } | null
+/** Evidence beats calendar; calendar only says "Likely". Unknown shows nothing. */
+export function statusOf(id: string, istDate: string, s: StatusFile | null): Status {
+  if (!s) return null
+  if (istDate > s.puja.end) return { key: 'closed', label: 'Closed' }
+  const e = s.open[id]
+  if (e && e.since <= istDate) return { key: 'open', label: 'Open', evidence: e.evidence }
+  if (istDate >= s.puja.start) return { key: 'likely', label: 'Likely open' }
+  return null
+}
+export const statusRank = (s: Status) => (s?.key === 'open' ? 0 : s?.key === 'likely' ? 1 : s ? 3 : 2)

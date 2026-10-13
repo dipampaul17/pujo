@@ -1,0 +1,69 @@
+{
+ "at": "2026-10-13T09:23:53.837737+00:00",
+ "queries": [
+  {
+   "ids": [
+    "santosh-mitra-square",
+    "chaltabagan-lohapatty",
+    "suruchi-sangha",
+    "sree-bhumi-sporting-club",
+    "tala-prattoy",
+    "deshapriya-park"
+   ],
+   "args": {
+    "query": "(\"Santosh Mitra Square\" OR \"Chaltabagan Lohapatty\" OR \"Suruchi\" OR \"Sreebhumi\" OR \"Sree Bhumi\" OR \"Tala Prattoy\" OR \"Deshapriya Park\") -is:retweet -is:quote",
+    "max_results": 25,
+    "sort_order": "recency",
+    "start_time": "2026-10-12T09:23:53Z",
+    "expansions": "attachments.media_keys,author_id",
+    "media.fields": "url,preview_image_url,type,width,height",
+    "user.fields": "username,name,profile_image_url",
+    "post.fields": "created_at,text,attachments"
+   }
+  },
+  {
+   "ids": [
+    "bhowanipur-75-pally",
+    "bj-block",
+    "bosepukur-sitala-mandir",
+    "chakraberia-sarbojanin",
+    "chetla-agrani",
+    "chorebagan-sarbojanin",
+    "college-square",
+    "dakshindari-youth"
+   ],
+   "args": {
+    "query": "(\"Bhowanipur 75 Pally\" OR \"BJ Block\" OR \"Bosepukur Sitala Mandir\" OR \"Chakraberia\" OR \"Chetla Agrani\" OR \"Chorebagan\" OR \"College Square\" OR \"Dakshindari Youth\") -is:retweet -is:quote",
+    "max_results": 25,
+    "sort_order": "recency",
+    "start_time": "2026-10-12T09:23:53Z",
+    "expansions": "attachments.media_keys,author_id",
+    "media.fields": "url,preview_image_url,type,width,height",
+    "user.fields": "username,name,profile_image_url",
+    "post.fields": "created_at,text,attachments"
+   }
+  },
+  {
+   "ids": [
+    "dakshinpara",
+    "dum-dum-park-bharat-chakra",
+    "dum-dum-park-sarbajanin",
+    "dum-dum-park-tarun-dal",
+    "ekdalia-evergreen",
+    "fd-block",
+    "forward-club",
+    "garia-mitali"
+   ],
+   "args": {
+    "query": "(\"Dakshinpara\" OR \"Dum Dum Park Bharat Chakra\" OR \"Dum Dum Park\" OR \"Dum Dum Park Tarun Dal\" OR \"Ekdalia Evergreen\" OR \"FD Block\" OR \"Forward\" OR \"Garia Mitali\") -is:retweet -is:quote",
+    "max_results": 25,
+    "sort_order": "recency",
+    "start_time": "2026-10-12T09:23:53Z",
+    "expansions": "attachments.media_keys,author_id",
+    "media.fields": "url,preview_image_url,type,width,height",
+    "user.fields": "username,name,profile_image_url",
+    "post.fields": "created_at,text,attachments"
+   }
+  }
+ ]
+}

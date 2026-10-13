@@ -43,3 +43,18 @@ pipeline/guide.pdf ─pdftotext─▶ extract.py ─▶ geocode.py (Photon/OSM, 
 * Behala, Khidirpur, New Town and Lake Town are named in the guide without specific pandals, so they are not on the map.
 
 Sources: Travel With Preet, Kolkata Durga Puja Pandal Hopping Guide 2026. Place data © OpenStreetMap contributors (ODbL).
+
+## User journey
+1. **Open.** Landing shows the drum mark, "Near me", "Pick a station", and the North / Central / South switch. Location is requested on load; if the browser blocks it, the first tap asks again, and a denied state shows a chip with per-platform steps.
+2. **Located / zone.** A fix (or remembered station, or cached fix under 30 min) opens the route view for that zone. Swipe or tap the switch to change zone; the choice is remembered.
+3. **List.** The first card is the next stop: name, open status, one reason, walk time. Pips show progress. "All {zone}" lists every pinned pandal: open first, then by 2026 buzz.
+4. **Go.** "Uber here" opens the Uber app with pickup and drop prefilled; "Walk here" opens Google Maps walking; "Start walk in Maps" opens the whole ordered route (max 9 stops).
+5. **Arrive.** "I'm here · next stop" advances; the plan re-ranks as you move (>150 m). State survives backgrounding.
+6. **Needs.** Food, Toilets, Help tabs show the nearest OSM places; Help has Call 112 / Police 100.
+7. **Next / back.** Skip drops a stop; browser back closes the picker with scroll restored; no screen is a dead end.
+
+## Open status (accuracy rules)
+- **Open**: only with dated evidence (inauguration report or visitor posts). Tap the word to see the source.
+- **Likely open**: puja dates (16–21 Oct 2026) with no fresh evidence.
+- **Closed**: after Dashami (21 Oct).
+- Otherwise nothing is shown. Evidence: `pipeline/raw/x_status.json` (hand-checked X) + Google News "inaugurated" headlines (`pipeline/status.py`, run on every deploy). Pandals whose position could not be verified are hidden.

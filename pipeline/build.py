@@ -21,6 +21,10 @@ def load(n):
     except Exception: return []
 def pt(e): return (e.get('lat') or e.get('center',{}).get('lat'), e.get('lon') or e.get('center',{}).get('lon'))
 # --- pandals
+def _j(f):
+    try: return json.load(open(f))
+    except Exception: return {}
+BUZZ=_j(f'{R}/buzz.json'); XC={k:v for k,v in _j(f'{R}/x_counts.json').items() if not k.startswith('_')}
 raw=json.load(open(sys.argv[1])); seen={}; pandals=[]; rejected=[]
 FAMOUS={'Sree Bhumi Sporting Club':'Expect very long queues','Maddox Square':'Known for Pujo adda','Kumartuli Park':None}
 for p in raw:
@@ -35,8 +39,14 @@ for p in raw:
             rejected.append((p['name'],p.get('osmMatch'))); prec='station'
             if p.get('stationLatLng'): p['lat'],p['lng']=p['stationLatLng']
             else: p['lat']=p['lng']=None; prec='none'
+    OSM_ST={e['tags'].get('name','').split(' (')[0] for e in load('stations')}
+    if prec=='station' and p['stations'] and {'MG Road':'Mahatma Gandhi Road','Netaji / Kudghat':'Netaji'}.get(p['stations'][0],p['stations'][0]) not in OSM_ST:
+        prec='none'; p['lat']=p['lng']=None  # station itself only geocoded fuzzily: hide rather than guess
     q=min(3,len(p['circuits'])*1.5 + (1 if p['name'] in FAMOUS else 0) + (0.5 if p['stations'] else 0))
-    pandals.append({'id':k,'name':p['name'],'station':(p['stations'] or [None])[0],'line':p.get('line'),
+    buzz=BUZZ.get(k) or {}; x=XC.get(k,0); n=buzz.get('news2026',0); th=buzz.get('theme2026',0)
+    worth=round(q + math.log1p(n)*1.0 + math.log1p(x)*0.5 + min(th,2)*0.5, 2)
+    reason='Buzzing this week' if x>=50 else 'Big 2026 theme' if th>=1 else 'In the news' if n>=3 else None
+    pandals.append({'worth':worth,'reason':reason,'signals':{'news2026':n,'theme2026':th,'x7d':x},'id':k,'name':p['name'],'station':(p['stations'] or [None])[0],'line':p.get('line'),
         'circuits':p['circuits'],'lat':round(p['lat'],6) if p['lat'] else None,'lng':round(p['lng'],6) if p['lng'] else None,
         'precision':prec,'quality':q,'note':FAMOUS.get(p['name'])})
 def near_any(la,lo,r):

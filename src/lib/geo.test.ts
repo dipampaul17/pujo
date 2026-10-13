@@ -73,3 +73,19 @@ describe('mapsDirUrl', () => {
   })
   it('throws on empty', () => expect(() => mapsDirUrl(null, [])).toThrow())
 })
+import { uberUrl } from './geo'
+describe('uberUrl', () => {
+  it('my_location pickup + full dropoff', () => {
+    const u = new URL(uberUrl({ lat: 22.5168752, lng: 88.3458448, name: 'Suruchi Sangha', address: 'Suruchi Sangha, near Kalighat metro, Kolkata' }))
+    expect(u.origin + u.pathname).toBe('https://m.uber.com/ul/')
+    expect(u.searchParams.get('action')).toBe('setPickup'); expect(u.searchParams.get('pickup')).toBe('my_location')
+    expect(u.searchParams.get('dropoff[latitude]')).toBe('22.516875'); expect(u.searchParams.get('dropoff[longitude]')).toBe('88.345845')
+    expect(u.searchParams.get('dropoff[nickname]')).toBe('Suruchi Sangha')
+    expect(u.searchParams.get('dropoff[formatted_address]')).toBe('Suruchi Sangha, near Kalighat metro, Kolkata')
+  })
+  it('uses a known fix as pickup', () => {
+    const u = new URL(uberUrl({ lat: 1, lng: 2, name: 'X' }, { lat: 22.6, lng: 88.37 }))
+    expect(u.searchParams.get('pickup')).toBeNull(); expect(u.searchParams.get('pickup[latitude]')).toBe('22.600000')
+    expect(u.searchParams.get('dropoff[formatted_address]')).toBe('X, Kolkata')
+  })
+})
