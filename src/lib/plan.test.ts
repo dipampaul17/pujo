@@ -89,6 +89,7 @@ describe('open status', () => {
   const f = { updated: '', puja: { start: '2026-10-16', end: '2026-10-21' }, open: { a: { since: '2026-10-11', evidence: 'https://x.com/x', note: '' } } }
   it('evidence -> Open, calendar -> Likely, before -> nothing, after -> Closed', () => {
     expect(statusOf('a', '2026-10-13', f, Date.parse('2026-10-13T12:00:00+05:30'))?.label).toBe('Inaugurated')
+    expect(statusOf('a', '2026-10-13', { ...f, open: { a: { ...f.open.a, kind: 'visitors' } } }, Date.parse('2026-10-13T12:00:00+05:30'))?.label).toBe('Open')
     expect(statusOf('a', '2026-10-16', { ...f, puja: { ...f.puja, public_from: '2026-10-15T18:00:00+05:30' } }, Date.parse('2026-10-15T19:00:00+05:30'))?.label).toBe('Open')
     expect(statusOf('b', '2026-10-13', f)).toBeNull()
     expect(statusOf('b', '2026-10-18', f)?.label).toBe('Likely open')
