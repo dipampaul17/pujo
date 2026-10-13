@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { reduce, initial, onLoadAction, needsChip, shouldUpdate, platform, APPROX_M, CACHE_MAX_AGE, type Fix } from './lib/loc'
 import raw from './data/dhaak.v1.json'
-import { makePlanner, areas as getAreas, nudges, statusOf, suggest, tier, type StatusFile, relevantNow, type NowItem, tagsFor, tagContext, zoneOf, ZONES, ZONE_ANCHOR, zoneCounts, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
+import { makePlanner, areas as getAreas, statusOf, suggest, tier, type StatusFile, relevantNow, type NowItem, tagsFor, tagContext, zoneOf, ZONES, ZONE_ANCHOR, zoneCounts, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
 import { HERO_LQIP } from './hero-lqip'
 import { TextReveal } from './components/text-reveal'
@@ -16,7 +16,6 @@ const geoOk = typeof navigator !== 'undefined' && 'geolocation' in navigator
 const saveFix = (f: Fix) => { try { localStorage.setItem('dhaak.fix', JSON.stringify(f)) } catch {} }
 const loadFix = (): Fix | null => { try { return JSON.parse(localStorage.getItem('dhaak.fix') || 'null') } catch { return null } }
 
-const istHour = (t = Date.now()) => +new Date(t).toLocaleString('en-US', { timeZone: 'Asia/Kolkata', hour: 'numeric', hour12: false }) % 24
 
 const Pin = ({ small }: { small?: boolean }) => <svg width={small ? 14 : 20} height={small ? 14 : 20} viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="currentColor"/><circle cx="12" cy="10" r="2.6" fill="var(--bg)"/></svg>
 
@@ -32,8 +31,6 @@ export default function App() {
   const permRef = useRef<string>('')
   const originRef = useRef<Origin | null>(null)
   const swipe = useRef<{ x: number; y: number } | null>(null)
-  const [done, setDoneRaw] = useState(() => +(sessionStorage.getItem('dhaak.done') || 0))
-  const setDone = (f: number | ((d: number) => number)) => setDoneRaw(d => { const n = typeof f === 'function' ? f(d) : f; try { sessionStorage.setItem('dhaak.done', String(n)) } catch {}; return n })
   const [nowFeed, setNowFeed] = useState<NowItem[]>([])
   const [statusFile, setStatusFile] = useState<StatusFile | null>(null)
   const [xLive, setXLive] = useState<XLive>({ posts: {}, crowd: {} })
@@ -77,7 +74,6 @@ export default function App() {
     const load = () => { if (document.visibilityState !== 'visible') return; get('status.json').then(f => f && setStatusFile(f)); get('x.json').then(f => f && ingestX(f)) }
     load(); const t = setInterval(load, 2 * 60e3); document.addEventListener('visibilitychange', load); return () => { clearInterval(t); document.removeEventListener('visibilitychange', load) }
   }, [])
-  const [rain, setRain] = useState<{ at: number; p: number } | null>(null)
   useEffect(() => {
     const load = () => document.visibilityState === 'visible' && fetch(import.meta.env.BASE_URL + 'live/now.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(f => f && setNowFeed(f.items)).catch(() => {})
     load(); const t = setInterval(load, 5 * 60e3); return () => clearInterval(t)
@@ -109,7 +105,6 @@ export default function App() {
   const [toast, setToast] = useState<string | null>(null)
 
   const [now, setNow] = useState(Date.now())
-  const [fixAt, setFixAt] = useState<number | null>(null)
   useEffect(() => { const t = setInterval(() => setNow(Date.now()), 30000); return () => clearInterval(t) }, [])
   // Location: permission-aware, self-healing. Pure transitions live in lib/loc.ts.
   const [loc, dispatch] = useReducer(reduce, undefined, () => initial(geoOk ? 'prompt' : 'unsupported'))
@@ -119,7 +114,7 @@ export default function App() {
       if (o?.precise && source === 'gps' && !shouldUpdate(o.fix ?? null, f, hav(o, f))) return o
       return { lat: f.lat, lng: f.lng, label: 'you', precise: true, approx: source === 'cache' || f.acc > APPROX_M, fix: f }
     })
-    setFixAt(f.at); setPicking(false)
+    setPicking(false)
   }
   const locate = useCallback((gesture = false) => {
     if (gesture) setEntered(true)
@@ -203,15 +198,6 @@ export default function App() {
     medical: [...P.around('medical', hereish, 3, 2500), ...P.around('police', hereish, 2, 2500)].sort((a, b) => a.dist - b.dist),
     station: P.nearestStation(hereish),
   } : null
-  const rk = view ? `${view.lat.toFixed(2)},${view.lng.toFixed(2)}` : ''
-  useEffect(() => {
-    if (!view) return
-    const go = () => fetch(`https://api.open-meteo.com/v1/forecast?latitude=${view.lat.toFixed(3)}&longitude=${view.lng.toFixed(3)}&hourly=precipitation_probability&forecast_hours=3&timezone=Asia%2FKolkata`).then(r => r.json()).then(j => {
-      const ps: number[] = j.hourly?.precipitation_probability ?? []; const i = ps.findIndex(x => x >= 60)
-      setRain(i >= 0 ? { at: Date.parse(j.hourly.time[i] + ':00+05:30'), p: ps[i] } : null)
-    }).catch(() => {})
-    go(); const t = setInterval(go, 30 * 60e3); return () => clearInterval(t)
-  }, [rk])
   const here = zone ?? ownZone
   const xNow = [
     ...Object.entries(xLive.crowd).map(([id, c]) => ({ c, p: P.located.find(p => p.id === id) })).filter(({ c, p }) => p && zoneOf(p) === here && now - Date.parse(c.at) < 2 * 3600e3)
@@ -219,7 +205,6 @@ export default function App() {
     ...(xLive.area ?? []).filter(a => a.zone === here && now - Date.parse(a.at) < 2 * 3600e3).map(a => ({ title: `${a.area}: ${a.label}`, link: a.url, published: a.at })),
   ]
   const live = [...relevantNow(nowFeed, zone ?? ownZone, stops.map(s => s.id), now).slice(0, 1), ...xNow].sort((x, y) => Date.parse(y.published) - Date.parse(x.published))[0] as any
-  const tips = plan && help ? nudges(istHour(now), { walkMin: plan.walkMin, station: help.station?.name, stationM: help.station?.dist }) : []
 
   async function share() {
     if (!routeUrl) return
@@ -320,7 +305,7 @@ export default function App() {
                           {i === 0 && <div className="grid grid-cols-2 gap-2 mt-4 -ml-10 -mr-10">
                             <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="btn btn-uber">Uber here</a>
                             <a href={mapsDirUrl(view?.precise ? view : null, [s])} target="_blank" rel="noopener" className="btn btn-ghost">Maps</a>
-                            <button onClick={() => { setSkip(new Set(skip).add(s.id)); setDone(d => d + 1); window.scrollTo({ top: 0 }) }} className="btn btn-quiet col-span-2">I'm here</button>
+                            <button onClick={() => { setSkip(new Set(skip).add(s.id)); window.scrollTo({ top: 0 }) }} className="btn btn-quiet col-span-2">I'm here</button>
                           </div>}
                           {i > 0 && <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="link-action -mb-2">Uber here<Chev /></a>}
                         </div>
@@ -329,7 +314,7 @@ export default function App() {
                     </li>
                   )
                 })}
-                {skip.size > 0 && <button className="text-[14px] muted font-semibold mt-2 min-h-[44px]" onClick={() => { setSkip(new Set()); setDone(0) }}>Reset {skip.size} done or skipped</button>}
+                {skip.size > 0 && <button className="text-[14px] muted font-semibold mt-2 min-h-[44px]" onClick={() => { setSkip(new Set()) }}>Reset {skip.size} done or skipped</button>}
               </ol>
             )}
             {tab === 0 && zone && (
@@ -355,7 +340,6 @@ export default function App() {
           </>)}
           {detail && (() => { const p = P.located.find(x => x.id === detail); if (!p) return null
             const d = view ? hav(view, p) : null, st = statusOf(p.id, istDate, statusFile, now), posts = postsOf(xLive, p.id)
-            const zr = [...P.located.filter(x => zoneOf(x) === zoneOf(p))].sort((x, y) => (y.worth ?? 0) - (x.worth ?? 0)).findIndex(x => x.id === p.id) + 1
             const eats = eatsNear(P.around('food', p, 400, 3500))
             const loo = P.around('toilets', p, 1, 600)[0]
             const pick = view?.precise && !view.approx ? view : null
@@ -543,7 +527,6 @@ function dragToClose(close: () => void) {
   }
 }
 function ago(ms: number) { const m = Math.round(ms / 60000); return m < 1 ? 'just now' : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} d ago` }
-function pathOf(o: LatLng, s: LatLng[]) { let m = 0, c = o; for (const x of s) { m += hav(c, x); c = x } return m }
 function hop(s: LatLng[], i: number) { return hav(s[i - 1], s[i]) }
 
 function Notice({ children, tone }: { children: React.ReactNode; tone: 'gold' }) {

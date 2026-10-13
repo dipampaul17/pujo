@@ -123,6 +123,7 @@ export function statusOf(id: string, istDate: string, s: StatusFile | null, nowM
   if (!s) return null
   if (istDate > s.puja.end) return { key: 'closed', label: 'Closed' }
   const e = s.open[id], publicFrom = s.puja.public_from ? Date.parse(s.puja.public_from) : Date.parse(s.puja.start + 'T00:00:00+05:30')
+  if (e?.kind === 'closed') return { key: 'closed', label: 'Closed', evidence: e.evidence }
   if (e && e.since <= istDate) return nowMs < publicFrom && e.kind !== 'visitors' ? { key: 'inaugurated', label: 'Inaugurated', evidence: e.evidence } : { key: 'open', label: 'Open', evidence: e.evidence }
   if (istDate >= s.puja.start) return { key: 'likely', label: 'Likely open' }
   return null

@@ -29,12 +29,34 @@ def one(p):
         if d.year==2026 and d.month>=9 and norm(p['name']) in norm(t) and re.search(r'inaugurat',t,re.I) and not re.search(r'\b(to|will|set to|may|likely to) inaugurat',t,re.I):
             return p['id'],{'since':d.date().isoformat(),'evidence':it.findtext('link'),'note':re.sub(r' - [^-]+$','',t)}
     return None
+# Global rule (status_rules.py): gather every source per pandal, classify, merge sticky with what was published.
+from status_rules import classify, decide
+trusted={h.lower() for h in ['abasu4ever']}
+try: man={k:v for k,v in json.load(open(f'{H}/raw/status_sources.json')).items() if not k.startswith('_')}
+except Exception: man={}
+try: prev=json.load(open(out)).get('open',{})
+except Exception: prev={}
+src={}
+add=lambda k,s: src.setdefault(k,[]).append(s)
+for k,v in json.load(open(f'{H}/raw/x_status.json')).items():
+    if not k.startswith('_'): add(k,{'url':v['evidence'],'at':v['since'],'text':v.get('note',''),'hand':True,**({'kind_hint':v['kind']} if v.get('kind') else {})})
+for k,l in man.items():
+    for v in l: add(k,{**v,'hand':True})
+for k,v in xl.get('open',{}).items(): add(k,{'url':v['evidence'],'at':v['since'],'text':v.get('note','')})
+for k,l in list(xl.get('posts',{}).items())+list(pin.items()):
+    for q in (l if isinstance(l,list) else [l]): add(k,{'url':q['url'],'at':q.get('at',''),'text':q.get('text',''),**({'hand':True} if q.get('evidence') else {})})
 with ThreadPoolExecutor(6) as ex:
-    for r in ex.map(one,[p for p in data['pandals'] if p['id'] not in ev]):
-        if r: ev[r[0]]=r[1]
-for k,v in ev.items():  # inaugurated (ceremony seen) vs visitors (people actually inside); govt circular: public entry from Chaturthi 6 pm
-    n=v.get('note','')
-    v['kind']='visitors' if re.search(r'visit|crowd|queue|hopping|darshan|overflow|thronged|pandal (was|is|looks)',n,re.I) else 'inaugurated'
+    for r in ex.map(one,[p for p in data['pandals'] if p['id'] not in prev and p['id'] not in src]):
+        if r: add(r[0],{'url':r[1]['evidence'],'at':r[1]['since'],'text':r[1]['note'],'outlet':True})
+ids={p['id'] for p in data['pandals']}
+ev={}
+for k in ids:
+    got=[c for c in (classify(s,trusted) for s in src.get(k,[])) if c]
+    for c,s in zip(got,[s for s in src.get(k,[]) if classify(s,trusted)]):
+        if s.get('kind_hint')=='visitors' and c['kind']!='closed': c['kind']='visitors'
+    d=decide(prev.get(k),got)
+    if d and d['kind']!='closed': ev[k]=d
+    elif d: ev[k]=d  # closure is published too; the app shows it as closed
 os.makedirs(os.path.dirname(out),exist_ok=True)
 new={'puja':{'start':'2026-10-16','end':'2026-10-21'},'open':ev}
 json.dump({'updated':dt.datetime.now(dt.UTC).replace(microsecond=0,tzinfo=None).isoformat()+'Z','puja':{'start':'2026-10-16','end':'2026-10-21','public_from':'2026-10-15T18:00:00+05:30'},'open':ev},open(out,'w'),ensure_ascii=False,indent=1)

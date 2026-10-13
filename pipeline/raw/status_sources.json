@@ -1,0 +1,11 @@
+{
+ "_source": "Hand-checked open/visit evidence (url, date, what it says). Checked 2026-10-13. primary=true marks the source to show.",
+ "santosh-mitra-square": [
+  {"url": "https://x.com/Ei_Samay/status/2109495140574441756", "at": "2026-10-12", "text": "Crowds of visitors at Santosh Mitra Square on Pratipada (Ei Samay)", "outlet": true, "primary": true},
+  {"url": "https://x.com/abasu4ever/status/2109566442769461704", "at": "2026-10-12", "text": "Visited Santosh Mitra Square"},
+  {"url": "https://x.com/TheWallTweets/status/2109315970166841616", "at": "2026-10-11", "text": "Crowd at the Santosh Mitra Square mandap (The Wall)", "outlet": true}
+ ],
+ "barisha-club": [
+  {"url": "https://x.com/SudhanidhiB/status/2109688083897827734", "at": "2026-10-12", "text": "Visited Barisha Club. One outstanding creation."}
+ ]
+}
