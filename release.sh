@@ -6,7 +6,7 @@ step typecheck; npx tsc -p tsconfig.app.json --noEmit && npx tsc -p tsconfig.tes
 step vitest+evals; npx vitest run
 step pipeline-tests; (cd pipeline && python3 -c "
 import importlib,sys
-for m in ['test_status_rules','test_aliases','test_signals']:
+for m in ['test_status_rules','test_aliases','test_signals','test_xpoll']:
     t=importlib.import_module(m)
     for n in [n for n in dir(t) if n.startswith('test_')]: getattr(t,n)()
     print('ok',m)")

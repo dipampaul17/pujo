@@ -9,6 +9,7 @@ except Exception: xl={'open':{},'posts':{},'crowd':{}}
 for k,v in xl.get('open',{}).items(): ev.setdefault(k,v)
 try: pin=json.load(open(f'{H}/state/pinned.json'))
 except Exception: pin={}
+PASS=set(json.load(open(f'{H}/../src/data/passport.json'))['ids'])  # inauguration sweep: pass pandals first
 def _merge(a,b,cap=4):
     out,seen=[],set()
     for q in a+b:
@@ -46,7 +47,7 @@ for k,v in xl.get('open',{}).items(): add(k,{'url':v['evidence'],'at':v['since']
 for k,l in list(xl.get('posts',{}).items())+list(pin.items()):
     for q in (l if isinstance(l,list) else [l]): add(k,{'url':q['url'],'at':q.get('at',''),'text':q.get('text',''),**({'hand':True} if q.get('evidence') else {})})
 with ThreadPoolExecutor(6) as ex:
-    for r in ex.map(one,[p for p in data['pandals'] if p['id'] not in prev and p['id'] not in src]):
+    for r in ex.map(one,sorted([p for p in data['pandals'] if p['id'] not in prev and p['id'] not in src],key=lambda p:p['id'] not in PASS)):
         if r: add(r[0],{'url':r[1]['evidence'],'at':r[1]['since'],'text':r[1]['note'],'outlet':True})
 ids={p['id'] for p in data['pandals']}
 ev={}

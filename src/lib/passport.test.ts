@@ -8,8 +8,9 @@ describe('Pujor Passport', () => {
     for (const id of pass.ids) expect(ids.has(id), id).toBe(true)
     expect(new Set(pass.ids).size).toBe(pass.ids.length)
   })
-  it('covers exactly the matched committees', () => {
-    expect(pass.ids.length).toBe(28)
+  it('covers all 52 Pujor Passport pandals', () => {
+    expect(pass.ids.length).toBe(52)
+    for (const id of ['tala-barowari', 'behala-club', 'bantra-mohila-sangha', 'ichapur-shivaji-sangha', '25-pally-khidirpur']) expect(hasPass(id), id).toBe(true)
     expect(hasPass('66-pally')).toBe(true)
     expect(hasPass('haridevpur-41-pally')).toBe(true)
   })
@@ -34,5 +35,13 @@ describe('service worker freshness', () => {
     expect(sw).toMatch(/skipWaiting/); expect(sw).toMatch(/clients\.claim/)
     expect(sw).toMatch(/fetch\(e\.request, \{ cache: 'no-cache' \}\)/)
     expect(main).toMatch(/updateViaCache: 'none'/); expect(main).toMatch(/controllerchange/)
+  })
+})
+describe('added pass pandals', () => {
+  const P = (raw as any).pandals as any[]
+  it('verified pins only where two sources agreed; the rest are approximate (station), never invented', () => {
+    const pinned = ['tala-barowari', 'beleghata-33-pally', 'alipore-sarbojanin', 'samaj-sebi-sangha', 'behala-club']
+    for (const p of P.filter(p => ['tala-barowari','ahiritola-yubakbrinda','ultadanga-bidhan-sangha','beleghata-33-pally','dum-dum-park-tarun-sangha','keshtopur-prafulla-kanan','telipukur-yuba-sangha','new-town-sarbojanin','abasar-sarbojanin','alipore-sarbojanin','samaj-sebi-sangha','bosepukur-talbagan','purbachal-shakti-sangha','santoshpur-avenue-south','25-pally-khidirpur','pally-saradiya-khidirpur','behala-nutan-dal','behala-friends','behala-club','sb-park-sarbojanin','bantra-mohila-sangha','olabibitala-sarbojanin','salkia-alapani','ichapur-shivaji-sangha'].includes(p.id)))
+      expect(p.precision, p.id).toBe(pinned.includes(p.id) ? 'osm' : 'station')
   })
 })

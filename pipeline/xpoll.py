@@ -7,6 +7,7 @@ import json, re, sys, os, math, datetime as dt
 H=os.path.dirname(os.path.abspath(__file__)); ST=f'{H}/state'; os.makedirs(ST,exist_ok=True)
 D=json.load(open(f'{H}/../src/data/dhaak.v1.json'))['pandals']
 P=[p for p in D if p.get('lat')]
+PASS=set(json.load(open(f'{H}/../src/data/passport.json'))['ids'])  # Pujor Passport pandals: searched every run
 now=dt.datetime.now(dt.UTC)
 def load(f,d):
     try: return json.load(open(f))
@@ -40,13 +41,17 @@ def plan(n=3):
     are already confirmed are deprioritised for discovery (their evidence is sticky)."""
     top=sorted(P,key=lambda p:-(p.get('worth') or 0))[:6]
     opened=set(live.get('open',{}))|set(k for k in load(f'{H}/raw/x_status.json',{}) if not k.startswith('_'))
-    rest=sorted([p for p in P if p not in top],key=lambda p:(live['polled'].get(p['id'],''),p['id'] in opened))
+    stale=lambda p:(live['polled'].get(p['id'],''),p['id'] in opened)
+    pas=sorted([p for p in P if p not in top and p['id'] in PASS],key=stale)
+    rest=sorted([p for p in P if p not in top and p['id'] not in PASS],key=stale)
     since=(now-dt.timedelta(hours=24)).strftime('%Y-%m-%dT%H:%M:%SZ')
     k=int(now.timestamp()//300)%2  # alternate discovery flavour per run: opening/visit words, or any photo post
     tail=INTENT if k==0 else ' (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো) has:images -is:retweet'
     tq=' OR '.join(f'from:{h}' for h in sorted(TRUSTED))
-    groups=[(top,since,' -is:retweet')]+[(g,OPEN_FLOOR,tail) for g in pack(rest,tail)[:n-1]]
-    if k==1: groups=groups[:n-1]  # every other run the last slot goes to live street signals
+    # slot 1: top + trusted visitors; slot 2: stalest pass pandals (every run); slot 3: stalest of the rest,
+    # except every other run, when slot 3 is the live street-signal query.
+    groups=[(top,since,' -is:retweet')]+[(g,OPEN_FLOOR,tail) for g in (pack(pas,tail)[:1]+pack(rest,tail)[:1])][:n-1]
+    if k==1: groups=groups[:n-1]
     qs=[{'ids':[p['id'] for p in g],'args':{'query':(q_of(g,t)[:-len(t)]+' OR '+tq+')'+t).replace('(','((',1) if i==0 else q_of(g,t),'max_results':25,'sort_order':'recency','start_time':st,**FIELDS}} for i,(g,st,t) in enumerate(groups)]
     if k==1: qs.append({'ids':[],'args':{'query':SIGNAL_Q,'max_results':25,'sort_order':'recency','start_time':(now-dt.timedelta(hours=SIG.WINDOW_H)).strftime('%Y-%m-%dT%H:%M:%SZ'),**FIELDS}})
     json.dump({'at':now.isoformat(),'queries':qs},open(f'{ST}/xplan.json','w'),indent=1,ensure_ascii=False); print(json.dumps(qs,ensure_ascii=False)); return qs
