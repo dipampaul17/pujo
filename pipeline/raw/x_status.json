@@ -1,5 +1,5 @@
 {
- "_source": "X public posts and news, hand-checked 2026-10-13 (sweep 22:50 IST)",
+ "_source": "X public posts and news, hand-checked 2026-10-14 (sweep 00:28 IST; Samaj Sebi Sangha confirmed by @SudhanidhiB first-hand visit)",
  "santosh-mitra-square": {
   "since": "2026-10-11",
   "evidence": "https://x.com/ANI/status/2109450971617349957",
@@ -75,5 +75,22 @@
   "evidence": "https://x.com/goonereol/status/2109304631360901567",
   "note": "Yuba Sangha Telipukur 'Ek Pukur Bhalobasa' — first-hand visitor photos (4) starting @goonereol's pandal-hopping thread (11 Oct evening, preview pass)",
   "kind": "visitors"
+ },
+ "tala-barowari": {
+  "since": "2026-10-10",
+  "evidence": "https://x.com/IndiContractor/status/2108959990174323066",
+  "note": "📍 Tala Barowari, Kolkata — first-hand visitor video (@IndiContractor, 10 Oct)",
+  "kind": "visitors"
+ },
+ "bakul-bagan": {
+  "since": "2026-10-13",
+  "evidence": "https://x.com/SudhanidhiB/status/2110062708020461966",
+  "note": "#9 Visited Bakul Bagan — first-hand visitor photo (@SudhanidhiB trusted, 13 Oct evening)",
+  "kind": "visitors"
+ },
+ "samaj-sebi-sangha": {
+  "since": "2026-10-13",
+  "evidence": "https://x.com/SudhanidhiB/status/2110081026114584782",
+  "note": "First-hand visit by @SudhanidhiB 13 Oct (#12 Visited Samaj Sebi Sangha, Uttam Kumar centenary theme)"
  }
 }
