@@ -371,8 +371,8 @@ export default function App() {
                   </div>
                   <button onClick={() => setDetail(null)} className="close-x mt-0.5" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 1.5l9 9M10.5 1.5l-9 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></button>
                 </div>
-                <p className="t-sub mt-3 mono-num">{p.reason ?? ''}</p>
-                <p className="t-foot muted mono-num mt-0.5">{p.precision === 'station' ? `Approximate, near ${p.station}` : d != null ? `${fmtDist(d)}${d > 1200 && pick ? ` · ~${carMin(d)} min by car` : ` · ${walkMinutes(d)} min walk`}` : ''}{loo ? ` · Toilet ${fmtDist(loo.dist)}` : ''}</p>
+                {p.reason && <p className="t-sub mt-3">{p.reason}</p>}
+                <p className="t-foot muted mono-num mt-2">{p.precision === 'station' ? `Approximate, near ${p.station}` : d != null ? `${fmtDist(d)}${d > 1200 && pick ? ` · ~${carMin(d)} min by car` : ` · ${walkMinutes(d)} min walk`}` : ''}{loo ? ` · Toilet ${fmtDist(loo.dist)}` : ''}</p>
                 {posts.length > 0 && <div className="mt-5 space-y-3">{posts.map(q => <PostCard key={q.url} p={q} now={now} />)}</div>}
                 <div className="grid grid-cols-2 gap-2 mt-5">
                   <a href={dest(p)} className="btn btn-uber">Uber here</a>
