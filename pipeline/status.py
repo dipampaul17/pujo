@@ -23,7 +23,10 @@ def one(p):
 with ThreadPoolExecutor(6) as ex:
     for r in ex.map(one,[p for p in data['pandals'] if p['id'] not in ev]):
         if r: ev[r[0]]=r[1]
+for k,v in ev.items():  # inaugurated (ceremony seen) vs visitors (people actually inside); govt circular: public entry from Chaturthi 6 pm
+    n=v.get('note','')
+    v['kind']='visitors' if re.search(r'visit|crowd|queue|hopping|darshan|overflow|thronged|pandal (was|is|looks)',n,re.I) else 'inaugurated'
 os.makedirs(os.path.dirname(out),exist_ok=True)
 new={'puja':{'start':'2026-10-16','end':'2026-10-21'},'open':ev}
-json.dump({'updated':dt.datetime.now(dt.UTC).replace(microsecond=0,tzinfo=None).isoformat()+'Z','puja':{'start':'2026-10-16','end':'2026-10-21'},'open':ev},open(out,'w'),ensure_ascii=False,indent=1)
+json.dump({'updated':dt.datetime.now(dt.UTC).replace(microsecond=0,tzinfo=None).isoformat()+'Z','puja':{'start':'2026-10-16','end':'2026-10-21','public_from':'2026-10-15T18:00:00+05:30'},'open':ev},open(out,'w'),ensure_ascii=False,indent=1)
 print(len(ev),'with open evidence:',list(ev))

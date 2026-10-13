@@ -1,39 +1,64 @@
 {
- "updated": "2026-10-13T09:25:37Z",
+ "updated": "2026-10-13T10:02:01Z",
  "puja": {
   "start": "2026-10-16",
-  "end": "2026-10-21"
+  "end": "2026-10-21",
+  "public_from": "2026-10-15T18:00:00+05:30"
  },
  "open": {
   "santosh-mitra-square": {
    "since": "2026-10-11",
    "evidence": "https://x.com/ANI/status/2109450971617349957",
-   "note": "Inaugurated 11 Oct (ANI, CMO WB); crowd photos 11-12 Oct"
+   "note": "Inaugurated 11 Oct (ANI, CMO WB); crowd photos 11-12 Oct",
+   "kind": "visitors"
   },
   "sree-bhumi-sporting-club": {
    "since": "2026-10-11",
    "evidence": "https://x.com/cmowbgov/status/2109530787431465212",
-   "note": "Inaugurated 11 Oct (CMO WB); crowds reported on Prathama"
+   "note": "Inaugurated 11 Oct (CMO WB); crowds reported on Prathama",
+   "kind": "visitors"
   },
   "chetla-agrani": {
    "since": "2026-10-12",
    "evidence": "https://x.com/TheWallTweets/status/2109685707363238252",
-   "note": "CM Suvendu Adhikari inaugurated Chetla Agrani (The Wall, 12 Oct); visitor theme posts 12-13 Oct"
+   "note": "CM Suvendu Adhikari inaugurated Chetla Agrani (The Wall, 12 Oct); visitor theme posts 12-13 Oct",
+   "kind": "visitors"
   },
-  "suruchi-sangha": {
-   "since": "2026-10-13",
-   "evidence": "https://x.com/RitzyB94/status/2109904974893474142",
-   "note": "Visitor/ news post on X"
+  "college-square": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/PathakSounak/status/2109464905372008914",
+   "note": "Invited guest at the College Square inauguration (12 Oct); VIDA lighting tribute live same night",
+   "kind": "inaugurated"
+  },
+  "tala-prattoy": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/TheWallTweets/status/2109624632395595878",
+   "note": "CM Suvendu Adhikari inaugurated Tala Prattoy (The Wall 12 Oct, News Bangla 13 Oct)",
+   "kind": "inaugurated"
   },
   "chorebagan-sarbojanin": {
    "since": "2026-10-12",
    "evidence": "https://x.com/ANI/status/2109761171071152276",
-   "note": "Visitor/ news post on X"
+   "note": "CM inaugurated 12 Oct (ANI); organisers: public entry from Chaturthi 6 pm",
+   "kind": "inaugurated"
   },
-  "fd-block": {
+  "barisha-club": {
    "since": "2026-10-12",
-   "evidence": "https://x.com/grok/status/2109743295211462904",
-   "note": "Visitor/ news post on X"
+   "evidence": "https://x.com/SudhanidhiB/status/2109688083897827734",
+   "note": "#4 Visited Barisha Club One outstanding creation.",
+   "kind": "visitors"
+  },
+  "rajdanga-naba-uday-sangha": {
+   "since": "2026-10-11",
+   "evidence": "https://x.com/SudhanidhiB/status/2109349903600374159",
+   "note": "#2 Visited Didi @keyakahe's Durga Puja at Rajdanga Naba Uday Sangha. Unreal colour combination as theme.",
+   "kind": "visitors"
+  },
+  "nalin-sarkar-street": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/abasu4ever/status/2109541667170848837",
+   "note": "📍 Nalin Sarkar Street Sarbojanin. 🎨 Sanatan Dinda. 👉 The pandal was fantastic too. But, oh boy, I bet that it's gonna be as iconic as 2011 &",
+   "kind": "visitors"
   }
  }
 }

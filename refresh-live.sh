@@ -11,4 +11,4 @@ python3 pipeline/status.py src/data/dhaak.v1.json public/live/status.json >/dev/
 python3 pipeline/now.py src/data/dhaak.v1.json public/live/now.json >/dev/null 2>&1 || echo "now: kept last"
 after=$(cat public/live/status.json public/live/x.json public/live/now.json 2>/dev/null | python3 -c "import sys,json,hashlib,re;print(hashlib.sha1(re.sub(r'\"updated\": ?\"[^\"]*\"','',sys.stdin.read()).encode()).hexdigest())")
 if [ "$before" = "$after" ]; then echo "no change"; exit 0; fi
-SKIP_LIVE=1 ./deploy.sh >/tmp/dhaak-deploy.log 2>&1 && echo "changed, deployed" || { echo "deploy failed, see /tmp/dhaak-deploy.log"; exit 1; }
+pipeline/publish-live.sh >/tmp/dhaak-live.log 2>&1 && echo "changed, published" || { echo "publish failed, see /tmp/dhaak-live.log"; exit 1; }
