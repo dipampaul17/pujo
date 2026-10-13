@@ -319,7 +319,7 @@ export default function App() {
                         <span className="stop-n mono-num" style={{ color: i === 0 ? 'var(--sindoor)' : 'var(--muted)' }} aria-label={`Stop ${i + 1}`}>{i + 1}</span>
                         <div className="min-w-0 flex-1">
                           <button onClick={() => setDetail(s.id)} className="t-headline block text-left min-h-[44px] -my-2" aria-haspopup="dialog">{s.name}</button>
-                          <div className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(s.id, istDate, statusFile, now)} />{hasPass(s.id) && <PassMark />}{!(i === 0 && postsOf(xLive, s.id).some(q => q.photo)) && <PostsMark posts={postsOf(xLive, s.id)} fresh={fresh.has(s.id)} onClick={() => setDetail(s.id)} />}{xLive.crowd[s.id] && <a href={xLive.crowd[s.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[s.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[s.id].at))}</a>}</div>
+                          <div className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(s.id, istDate, statusFile, now)} />{!(i === 0 && postsOf(xLive, s.id).some(q => q.photo)) && <PostsMark posts={postsOf(xLive, s.id)} fresh={fresh.has(s.id)} onClick={() => setDetail(s.id)} />}{xLive.crowd[s.id] && <a href={xLive.crowd[s.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[s.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[s.id].at))}</a>}</div>
                           <p className="t-foot muted mt-0.5 mono-num">
                             {s.precision === 'station' ? `Approximate${s.station ? ` · near ${s.station}` : ''}` : i === 0 ? (me ? <TravelLine t={travel(s)} /> : null) : `+${fmtDist(hop(stops, i))}`}
                           </p>
@@ -381,7 +381,6 @@ export default function App() {
                   </div>
                   <button onClick={() => setDetail(null)} className="close-x mt-0.5" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 1.5l9 9M10.5 1.5l-9 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></button>
                 </div>
-                {hasPass(p.id) && <p className="pass-line mt-3"><PassGlyph />Pujor Passport · skip the queue</p>}
                 {p.reason && <p className="t-sub mt-3">{p.reason}</p>}
                 <p className="t-foot muted mono-num mt-2">{p.precision === 'station' ? `Approximate, near ${p.station}` : me ? <TravelLine t={travel(p)} /> : null}{loo ? ` · Toilet ${fmtDist(loo.dist)}` : ''}</p>
                 {posts.length > 0 && <div className="mt-5 space-y-3">{posts.map(q => <PostCard key={q.url} p={q} now={now} />)}</div>}
@@ -467,7 +466,7 @@ function PassGlyph() {
   return <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true" className="shrink-0"><path d="M1.75 4.25a1 1 0 0 1 1-1h8.5a1 1 0 0 1 1 1v1.1a1.65 1.65 0 0 0 0 3.3v1.1a1 1 0 0 1-1 1h-8.5a1 1 0 0 1-1-1v-1.1a1.65 1.65 0 0 0 0-3.3z" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round"/><path d="M8.75 3.5v1.1M8.75 6.45v1.1M8.75 9.4v1.1" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/></svg>
 }
 function PassMark() {
-  return <span className="pass-mark" title="Pujor Passport · skip the queue"><PassGlyph /><span>Pass</span><span className="sr-only">: Pujor Passport, skip the queue</span></span>
+  return <span className="pass-mark"><PassGlyph /><span aria-hidden="true">Pass</span><span className="sr-only">Pujor Passport</span></span>
 }
 function StatusDot({ s, inline }: { s: ReturnType<typeof statusOf>; inline?: boolean }) {
   if (!s) return null

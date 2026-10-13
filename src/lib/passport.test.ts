@@ -17,3 +17,12 @@ describe('Pujor Passport', () => {
     for (const id of ['tala-park', 'tala-prattoy', 'naktala-pally-unnayan-samity', 'suruchi-sangha', 'sree-bhumi-sporting-club']) expect(hasPass(id), id).toBe(false)
   })
 })
+import { readFileSync } from 'node:fs'
+describe('Pujor Passport placement', () => {
+  const app = readFileSync(new URL('../App.tsx', import.meta.url), 'utf8')
+  it('appears only in the listing rows, never in sheet or route stops', () => {
+    expect(app.match(/<PassMark \/>/g)?.length).toBe(1)
+    expect(app).not.toMatch(/skip the queue|pass-line/)
+    expect(app).toMatch(/inline \/>\{hasPass\(p\.id\) && <PassMark \/>\}/)
+  })
+})
