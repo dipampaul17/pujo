@@ -81,7 +81,7 @@ html { -webkit-tap-highlight-color: transparent; overscroll-behavior-y: none; }
 button, a, [role=tab], .chip, .navbar { touch-action: manipulation; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .frost, .navbar { background: var(--bg); }
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-.frost, .navbar { background: color-mix(in srgb, var(--bg) 92%, transparent); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(24px); } }
+.frost, .navbar { background: var(--bg); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(24px); } }
 .navbar { isolation: isolate; position: sticky; top: 0; z-index: 20; height: 52px; margin: 0 -20px; padding: env(safe-area-inset-top) 20px 0; box-sizing: content-box; border-bottom: 0.5px solid var(--line); }
 .sheet { touch-action: pan-y; will-change: transform; padding-bottom: max(20px, env(safe-area-inset-bottom)); }
 .card { border: 0.5px solid var(--line); border-radius: 16px; }
