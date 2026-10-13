@@ -1,4 +1,4 @@
-import { GridIndex, orderRoute, rankScore, pathLength, walkMinutes, MAX_WAYPOINTS, type LatLng } from './geo'
+import { GridIndex, haversine, orderRoute, rankScore, pathLength, walkMinutes, MAX_WAYPOINTS, type LatLng } from './geo'
 
 export type Pandal = LatLng & { id: string; name: string; station: string | null; line: string | null; circuits: string[]; precision: 'osm' | 'station' | 'none'; quality: number; note: string | null; worth?: number; reason?: string | null }
 export type Amenity = LatLng & { id: string; name: string; kind?: string; cuisine?: string | null; notable?: boolean; fee?: string | null }
@@ -27,7 +27,8 @@ export function makePlanner(d: Dataset) {
   const idx = { food: new GridIndex(dedupePlaces(d.food)), toilets: new GridIndex(dedupePlaces(d.toilets)), medical: new GridIndex(d.medical), police: new GridIndex(d.police), stations: new GridIndex(d.stations.map(s => ({ ...s, id: s.name }))) }
   const around = (kind: keyof typeof idx, p: LatLng, k = 5, r = 1500): Array<Amenity & { dist: number }> => idx[kind].near(p, r).slice(0, k) as any
 
-  function plan(origin: LatLng, max = 8, boost: Set<string> = new Set()): Plan {
+  function plan(origin: LatLng, max = 8, boost: Set<string> | Record<string, number> = new Set()): Plan {
+    const bo = (id: string) => boost instanceof Set ? (boost.has(id) ? 4 : 0) : (boost[id] ?? 0)
     let radius = 2500, cand = pIdx.near(origin, radius)
     while (cand.length < 4 && radius < 6000) { radius += 1500; cand = pIdx.near(origin, radius) }
     const nearest = pIdx.nearest(origin, 1, 50000)[0]
@@ -35,7 +36,7 @@ export function makePlanner(d: Dataset) {
     // Stops without a verified pin share their metro station's coordinate. Allow at most one per station
     // so the walk never lists several "places" at the same point.
     const usedStation = new Set<string>()
-    const picked = [...cand].sort((a, b) => rankScore(a.dist, w(a) + (boost.has(a.id) ? 4 : 0)) - rankScore(b.dist, w(b) + (boost.has(b.id) ? 4 : 0)) || a.id.localeCompare(b.id))
+    const picked = [...cand].sort((a, b) => rankScore(a.dist, w(a) + bo(a.id)) - rankScore(b.dist, w(b) + bo(b.id)) || a.id.localeCompare(b.id))
         .filter(p => { const k = `${p.lat},${p.lng}`; if (usedStation.has(k)) return false; usedStation.add(k); return true })
       .slice(0, Math.min(max, MAX_WAYPOINTS + 1))
     const withQuery: Stop[] = picked.map(p => (p.precision === 'station' ? { ...p, query: `${p.name} Durga Puja, Kolkata` } : p))
@@ -128,3 +129,12 @@ export function statusOf(id: string, istDate: string, s: StatusFile | null, nowM
   return null
 }
 export const statusRank = (s: Status) => (s?.key === 'open' || s?.key === 'inaugurated' ? 0 : s?.key === 'likely' ? 1 : s ? 3 : 2)
+
+/** Suggestion tier: Open, then Inaugurated, then Likely, then unknown. */
+export const tier = (s: Status) => (s?.key === 'open' ? 0 : s?.key === 'inaugurated' ? 1 : s?.key === 'likely' ? 2 : 3)
+/** Suggested order: status tier first; inside a tier, distance blended with grandeur when we know where you are
+ *  (a grander pandal up to ~1 km farther can still lead), else grandeur alone. */
+export function suggest<T extends Pandal>(ps: T[], status: (id: string) => Status, here: LatLng | null): T[] {
+  const k = (p: T) => here ? rankScore(haversine(here, p), w(p)) : -w(p) * 10
+  return ps.map(p => ({ p, t: tier(status(p.id)), k: k(p) })).sort((a, b) => a.t - b.t || a.k - b.k || a.p.id.localeCompare(b.p.id)).map(x => x.p)
+}

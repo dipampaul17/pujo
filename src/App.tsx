@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { reduce, initial, onLoadAction, needsChip, shouldUpdate, platform, APPROX_M, CACHE_MAX_AGE, type Fix } from './lib/loc'
 import raw from './data/dhaak.v1.json'
-import { makePlanner, areas as getAreas, nudges, statusOf, statusRank, type StatusFile, pujoDay, dayTip, relevantNow, type NowItem, tagsFor, tagContext, zoneOf, ZONES, ZONE_ANCHOR, zoneCounts, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
+import { makePlanner, areas as getAreas, nudges, statusOf, suggest, tier, type StatusFile, pujoDay, dayTip, relevantNow, type NowItem, tagsFor, tagContext, zoneOf, ZONES, ZONE_ANCHOR, zoneCounts, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
 import { HERO_LQIP } from './hero-lqip'
 import { TextReveal } from './components/text-reveal'
@@ -169,8 +169,11 @@ export default function App() {
   // Located people auto-select their zone; picking another zone plans from that zone's anchor station.
   useEffect(() => { if (ownZone) { setZoneRaw(ownZone); try { localStorage.setItem('dhaak.zone', ownZone) } catch {} } }, [ownZone])
   const view: Origin | null = !entered ? null : zone && zone !== ownZone ? { ...ZONE_ANCHOR[zone], label: ZONE_ANCHOR[zone].name, precise: false } : origin
-  const plan: Plan | null = useMemo(() => (view ? P.plan(view, 8 + skip.size, new Set(Object.keys(statusFile?.open ?? {}))) : null), [view?.lat, view?.lng, skip.size, statusFile])
+  const istDate = new Date(now).toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' })
+  const plan: Plan | null = useMemo(() => (view ? P.plan(view, 8 + skip.size, Object.fromEntries(Object.keys(statusFile?.open ?? {}).map(id => [id, [4, 2, 0, 0][tier(statusOf(id, istDate, statusFile, now))]]))) : null), [view?.lat, view?.lng, skip.size, statusFile])
   const zonePandals = useMemo(() => (zone && view ? P.located.filter(p => zoneOf(p) === zone).map(p => ({ ...p, dist: hav(view, p) })).sort((x, y) => x.dist - y.dist) : []), [zone, view?.lat, view?.lng])
+  const suggested = useMemo(() => suggest(zonePandals, id => statusOf(id, istDate, statusFile, now), view?.precise ? view : null), [zonePandals, statusFile, istDate, view?.precise, Math.floor(now / 600e3)])
+  const stable = useStableOrder()
   const stops = useMemo(() => (plan ? plan.stops.filter(s => !skip.has(s.id)).slice(0, 8) : []), [plan, skip])
 
   const pick = (a: (typeof AREAS)[number]) => { setEntered(true); localStorage.setItem('dhaak.station', a.name); setOrigin({ lat: a.lat, lng: a.lng, label: `${a.name} metro`, precise: false }); setZoneRaw(zoneOf(a)); scrollMem.current = 0; setPicking(false); setSkip(new Set()); setTab(0) }
@@ -192,7 +195,6 @@ export default function App() {
     }).catch(() => {})
     go(); const t = setInterval(go, 30 * 60e3); return () => clearInterval(t)
   }, [rk])
-  const istDate = new Date(now).toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' })
   const xNow = Object.entries(xLive.crowd).map(([id, c]) => ({ c, p: P.located.find(p => p.id === id) })).filter(({ c, p }) => p && zoneOf(p) === (zone ?? ownZone) && now - Date.parse(c.at) < 3 * 3600e3)
     .map(({ c, p }) => ({ title: `${c.label ?? 'Crowded'} at ${p!.name}`, link: c.url, source: 'X', published: c.at }))
   const live = [...relevantNow(nowFeed, zone ?? ownZone, stops.map(s => s.id), now).slice(0, 1), ...xNow].sort((x, y) => Date.parse(y.published) - Date.parse(x.published))[0] as any
@@ -323,7 +325,7 @@ export default function App() {
                 <summary className="list-none cursor-pointer flex items-center justify-between min-h-[48px] border-b hair">
                   <span className="serif text-[24px]">All {ZLABEL[zone]}</span><span className="muted text-[14px] mono-num">{zonePandals.length}</span>
                 </summary>
-                <ul>{[...zonePandals].sort((x, y) => statusRank(statusOf(x.id, istDate, statusFile, now)) - statusRank(statusOf(y.id, istDate, statusFile, now)) || (y.worth ?? 0) - (x.worth ?? 0) || x.dist - y.dist).map((p, r) => (
+                <ul>{stable(suggested).map((p, r) => (
                   <li key={p.id}><a href={mapsPlaceUrl(p, p.name + ' Durga Puja')} onClick={e => { e.preventDefault(); setDetail(p.id) }} className="flex justify-between gap-3 py-3 border-b hair">
                     <span className="truncate"><span className="serif text-[18px] mono-num inline-block w-7" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span>{p.name}<StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline /></span><span className="flex items-center gap-2 shrink-0"><PostsMark posts={postsOf(xLive, p.id)} fresh={fresh.has(p.id)} />{p.precision !== 'station' && p.dist >= 50 && <span className="muted text-[14px] mono-num">{fmtDist(p.dist)}</span>}</span></a></li>))}</ul>
               </details>
@@ -398,6 +400,22 @@ export default function App() {
 
 const Info = () => <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"/><path d="M12 11v6M12 7.5v.01" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"/></svg>
 /** Tiny stack of the latest visitor photos (or an X glyph) + count. A sindoor dot marks posts that arrived since last look. */
+/** Re-sorts land only when the hand is still: while touching/scrolling (or within 1.2 s after), keep the order on screen. */
+function useStableOrder() {
+  const shown = useRef<string[]>([]), [, kick] = useState(0), busy = useRef(0)
+  useEffect(() => {
+    const mark = () => { busy.current = Date.now() }
+    const evs = ['touchstart', 'touchmove', 'scroll', 'wheel', 'pointerdown'] as const
+    evs.forEach(e => window.addEventListener(e, mark, { passive: true }))
+    const t = setInterval(() => { if (Date.now() - busy.current > 1200) kick(k => k + 1) }, 1500)
+    return () => { evs.forEach(e => window.removeEventListener(e, mark)); clearInterval(t) }
+  }, [])
+  return <T extends { id: string }>(next: T[]): T[] => {
+    const ids = next.map(x => x.id), same = ids.length === shown.current.length && ids.every(id => shown.current.includes(id))
+    if (!same || Date.now() - busy.current > 1200) { shown.current = ids; return next }
+    const by = new Map(next.map(x => [x.id, x])); return shown.current.map(id => by.get(id)!)
+  }
+}
 function PostsMark({ posts, fresh, onClick }: { posts: XPost[]; fresh?: boolean; onClick?: () => void }) {
   if (!posts.length) return null
   const pics = posts.filter(q => q.photo).slice(0, 3)

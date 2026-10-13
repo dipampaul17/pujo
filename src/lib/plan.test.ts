@@ -104,3 +104,12 @@ it('dedupes places mapped twice', () => {
   expect(dedupePlaces([a, b, c]).map(x => x.id)).toEqual(['a', 'c'])
   expect(P.around('food', { lat: 22.51715, lng: 88.334742 }, 30, 700).filter(f => f.name.startsWith('Ikura')).length).toBe(1)
 })
+
+import { suggest } from './plan'
+it('suggests Open first, then Inaugurated, then by blended distance/grandeur', () => {
+  const mk = (id: string, lat: number, worth: number) => ({ id, name: id, lat, lng: 88.35, worth, quality: 0, station: null, line: null, circuits: [], precision: 'osm' as const, note: null })
+  const ps = [mk('far-grand', 22.507, 7.5), mk('near-plain', 22.5, 0), mk('open', 22.6, 0), mk('inaug', 22.55, 0)]
+  const st = (id: string) => id === 'open' ? { key: 'open' as const, label: 'Open' } : id === 'inaug' ? { key: 'inaugurated' as const, label: 'Inaugurated' } : null
+  expect(suggest(ps, st, { lat: 22.5, lng: 88.35 }).map(p => p.id)).toEqual(['open', 'inaug', 'far-grand', 'near-plain'])
+  expect(suggest(ps, st, null).map(p => p.id).slice(0, 3)).toEqual(['open', 'inaug', 'far-grand'])
+})
