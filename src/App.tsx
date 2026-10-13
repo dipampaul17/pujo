@@ -32,6 +32,14 @@ export default function App() {
   const [nowFeed, setNowFeed] = useState<NowItem[]>([])
   const [statusFile, setStatusFile] = useState<StatusFile | null>(null)
   const [xLive, setXLive] = useState<XLive>({ posts: {}, crowd: {} })
+  const [fresh, setFresh] = useState<Set<string>>(new Set())
+  const ingestX = (f: XLive) => {
+    setXLive(f)
+    let seen: string[] | null = null; try { seen = JSON.parse(localStorage.getItem('pujo.xseen') || 'null') } catch {}
+    const all = Object.entries(f.posts).flatMap(([pid, v]) => (Array.isArray(v) ? v : [v]).map(q => [pid, q.id ?? q.url] as const))
+    if (seen) { const old = new Set(seen), add = new Set(all.filter(([, id]) => !old.has(id)).map(([pid]) => pid)); if (add.size) setFresh(s => new Set([...s, ...add])) }
+    try { localStorage.setItem('pujo.xseen', JSON.stringify(all.map(([, id]) => id))) } catch {}
+  }
   const variant = new URLSearchParams(location.search).get('v') ?? 'a'
   const [detail, setDetailRaw] = useState<string | null>(null)
   // Detail sheet is a history entry too: system back closes it.
@@ -48,9 +56,10 @@ export default function App() {
     const esc = (e: KeyboardEvent) => e.key === 'Escape' && setDetail(null); window.addEventListener('keydown', esc)
     return () => { de.style.overflow = ''; window.removeEventListener('keydown', esc); back?.focus?.({ preventScroll: true }) }
   }, [detail])
+  useEffect(() => { if (detail && fresh.has(detail)) setFresh(s => { const n = new Set(s); n.delete(detail); return n }) }, [detail, fresh])
   useEffect(() => {
     const get = (f: string) => fetch(import.meta.env.BASE_URL + 'live/' + f, { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null)
-    const load = () => { if (document.visibilityState !== 'visible') return; get('status.json').then(f => f && setStatusFile(f)); get('x.json').then(f => f && setXLive(f)) }
+    const load = () => { if (document.visibilityState !== 'visible') return; get('status.json').then(f => f && setStatusFile(f)); get('x.json').then(f => f && ingestX(f)) }
     load(); const t = setInterval(load, 2 * 60e3); document.addEventListener('visibilitychange', load); return () => { clearInterval(t); document.removeEventListener('visibilitychange', load) }
   }, [])
   const [rain, setRain] = useState<{ at: number; p: number } | null>(null)
@@ -274,7 +283,7 @@ export default function App() {
                         <span className="serif text-[24px] w-7 shrink-0 leading-[1.1] mono-num" style={{ color: i === 0 ? 'var(--ink)' : 'var(--muted)' }} aria-label={`Stop ${i + 1}`}>{i + 1}</span>
                         <div className="min-w-0 flex-1">
                           <button onClick={() => setDetail(s.id)} className="block text-left text-[18px] font-semibold leading-snug min-h-[28px]" aria-haspopup="dialog">{s.name}</button>
-                          <div className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(s.id, istDate, statusFile, now)} />{xLive.crowd[s.id] && <a href={xLive.crowd[s.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[s.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[s.id].at))}</a>}</div>
+                          <div className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(s.id, istDate, statusFile, now)} />{!(i === 0 && postsOf(xLive, s.id).some(q => q.photo)) && <PostsMark posts={postsOf(xLive, s.id)} fresh={fresh.has(s.id)} onClick={() => setDetail(s.id)} />}{xLive.crowd[s.id] && <a href={xLive.crowd[s.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[s.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[s.id].at))}</a>}</div>
                           <p className="text-[14px] muted mt-0.5 mono-num">
                             {s.precision === 'station' ? 'Approximate' : i === 0 ? fmtDist(s.dist) : `+${fmtDist(hop(stops, i))}`}{i === 0 && s.precision !== 'station' && view?.precise && s.dist > 1200 ? ` · ~${carMin(s.dist)} min by car` : ''}{s.station ? ` · ${s.station}` : ''}
                           </p>
@@ -306,7 +315,7 @@ export default function App() {
                 </summary>
                 <ul>{[...zonePandals].sort((x, y) => statusRank(statusOf(x.id, istDate, statusFile, now)) - statusRank(statusOf(y.id, istDate, statusFile, now)) || (y.worth ?? 0) - (x.worth ?? 0) || x.dist - y.dist).map((p, r) => (
                   <li key={p.id}><a href={mapsPlaceUrl(p, p.name + ' Durga Puja')} onClick={e => { e.preventDefault(); setDetail(p.id) }} className="flex justify-between gap-3 py-3 border-b hair">
-                    <span className="truncate"><span className="serif text-[18px] mono-num inline-block w-7" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span>{p.name}<StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline /></span><span className="muted text-[14px] mono-num shrink-0">{p.precision === 'station' ? '≈ ' : ''}{fmtDist(p.dist)}</span></a></li>))}</ul>
+                    <span className="truncate"><span className="serif text-[18px] mono-num inline-block w-7" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span>{p.name}<StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline /></span><span className="flex items-center gap-2 shrink-0"><PostsMark posts={postsOf(xLive, p.id)} fresh={fresh.has(p.id)} /><span className="muted text-[14px] mono-num">{p.precision === 'station' ? '≈ ' : ''}{fmtDist(p.dist)}</span></span></a></li>))}</ul>
               </details>
             )}
             {tab === 1 && help && <AmenityList items={help.food} empty="Nothing mapped nearby." meta={f => [f.notable ? 'Kolkata classic' : null, f.cuisine && f.cuisine[0].toUpperCase() + f.cuisine.slice(1)].filter(Boolean).join(' · ')} />}
@@ -378,6 +387,22 @@ export default function App() {
 }
 
 const Info = () => <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"/><path d="M12 11v6M12 7.5v.01" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"/></svg>
+/** Tiny stack of the latest visitor photos (or an X glyph) + count. A sindoor dot marks posts that arrived since last look. */
+function PostsMark({ posts, fresh, onClick }: { posts: XPost[]; fresh?: boolean; onClick?: () => void }) {
+  if (!posts.length) return null
+  const pics = posts.filter(q => q.photo).slice(0, 3)
+  const body = <>
+    <span className="relative inline-flex">
+      {pics.length ? pics.map((q, k) => <img key={q.url} src={sized(q.photo!, 'small')} alt="" loading="lazy" decoding="async" className="xthumb" style={{ marginLeft: k ? -7 : 0, zIndex: 3 - k }} />)
+        : <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" style={{ color: 'var(--muted)' }}><path fill="currentColor" d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77L17.75 3Zm-1.08 16.2h1.7L7.4 4.73H5.58L16.67 19.2Z"/></svg>}
+      {fresh && <span className="xfresh" aria-label="New" />}
+    </span>
+    <span className="muted text-[13px] mono-num font-medium">{posts.length}</span>
+  </>
+  const cls = 'inline-flex items-center gap-1.5 align-middle'
+  const label = `${posts.length} post${posts.length > 1 ? 's' : ''} from visitors on X${fresh ? ', new' : ''}`
+  return onClick ? <button onClick={onClick} className={`${cls} min-h-[28px]`} aria-label={label}>{body}</button> : <span className={cls} aria-label={label}>{body}</span>
+}
 function StatusDot({ s, inline }: { s: ReturnType<typeof statusOf>; inline?: boolean }) {
   if (!s) return null
   const c = s.key === 'open' ? 'var(--sindoor)' : s.key === 'inaugurated' ? 'var(--ink)' : 'var(--muted)'

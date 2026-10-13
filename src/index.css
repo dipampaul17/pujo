@@ -107,3 +107,7 @@ button, a, [role=tab], .chip, .navbar { touch-action: manipulation; -webkit-user
 button:not(:disabled), a.btn { transition: transform .12s ease-out, background-color .15s ease, opacity .15s ease; }
 button:active:not(:disabled):not([role=tab]), a.btn:active { transform: scale(0.97); }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 8px; }
+
+.xthumb { width: 18px; height: 18px; border-radius: 5px; object-fit: cover; background: var(--chip); box-shadow: 0 0 0 1.5px var(--surface); position: relative; }
+.xfresh { position: absolute; top: -3px; right: -4px; width: 7px; height: 7px; border-radius: 9px; background: var(--sindoor); box-shadow: 0 0 0 1.5px var(--surface); z-index: 4; }
+@media (prefers-reduced-motion: no-preference) { .xfresh { animation: fade .4s ease-out both } }
