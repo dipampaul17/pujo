@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
+import { reduce, initial, onLoadAction, needsChip, shouldUpdate, platform, APPROX_M, CACHE_MAX_AGE, type Fix } from './lib/loc'
 import raw from './data/dhaak.v1.json'
 import { makePlanner, areas as getAreas, nudges, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
@@ -10,17 +11,20 @@ const data = raw as unknown as Dataset
 const P = makePlanner(data)
 const AREAS = getAreas(data)
 type Feed = { updated: string; via: string; items: { title: string; link: string; source: string; published: string; pandals: string[] }[] }
-type Origin = LatLng & { label: string; precise: boolean }
+type Origin = LatLng & { label: string; precise: boolean; approx?: boolean; fix?: Fix }
+const geoOk = typeof navigator !== 'undefined' && 'geolocation' in navigator
+const saveFix = (f: Fix) => { try { localStorage.setItem('dhaak.fix', JSON.stringify(f)) } catch {} }
+const loadFix = (): Fix | null => { try { return JSON.parse(localStorage.getItem('dhaak.fix') || 'null') } catch { return null } }
 
 const ist = (iso: string) => new Date(iso).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' }) + ' IST'
 const istHour = (t = Date.now()) => +new Date(t).toLocaleString('en-US', { timeZone: 'Asia/Kolkata', hour: 'numeric', hour12: false }) % 24
 
 const Arrow = () => <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-const Pin = () => <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="currentColor"/><circle cx="12" cy="10" r="2.6" fill="var(--bg)"/></svg>
+const Pin = ({ small }: { small?: boolean }) => <svg width={small ? 14 : 20} height={small ? 14 : 20} viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="currentColor"/><circle cx="12" cy="10" r="2.6" fill="var(--bg)"/></svg>
 
 export default function App() {
   const [origin, setOrigin] = useState<Origin | null>(null)
-  const [status, setStatus] = useState<'idle' | 'locating' | 'denied' | 'error'>('idle')
+  const permRef = useRef<string>('')
   const [picking, setPicking] = useState(false)
   const [tab, setTab] = useState(0)
   const [skip, setSkip] = useState<Set<string>>(new Set())
@@ -48,18 +52,59 @@ export default function App() {
     const t = setInterval(() => { if (document.visibilityState === 'visible') load() }, 4 * 60 * 1000)
     return () => { alive = false; clearInterval(t) }
   }, [])
-  // Re-rank as the person walks: only after a real move (>150 m), at most every 20 s.
+  // Location: permission-aware, self-healing. Pure transitions live in lib/loc.ts.
+  const [loc, dispatch] = useReducer(reduce, undefined, () => initial(geoOk ? 'prompt' : 'unsupported'))
+  const [sheet, setSheet] = useState(false)
+  const apply = (f: Fix, source: 'gps' | 'cache') => {
+    setOrigin(o => {
+      if (o?.precise && source === 'gps' && !shouldUpdate(o.fix ?? null, f, hav(o, f))) return o
+      return { lat: f.lat, lng: f.lng, label: 'You', precise: true, approx: source === 'cache' || f.acc > APPROX_M, fix: f }
+    })
+    setFixAt(f.at); setPicking(false)
+  }
+  const locate = useCallback((gesture = false) => {
+    if (gesture) setBeat(b => b + 1)
+    if (!geoOk) { setSheet(true); return }
+    dispatch({ type: 'request' })
+    navigator.geolocation.getCurrentPosition(
+      p => { const f = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy, at: Date.now() }; dispatch({ type: 'fix', fix: f }); saveFix(f); apply(f, 'gps'); setSkip(new Set()); setTab(0) },
+      e => {
+        const cached = loadFix(); dispatch({ type: 'error', code: e.code, cached, now: Date.now() })
+        if (e.code !== 1 && cached && Date.now() - cached.at < CACHE_MAX_AGE) apply(cached, 'cache')
+        else if (gesture) setPicking(true)
+      },
+      { enableHighAccuracy: true, timeout: 7000, maximumAge: 60000 })
+  }, [])
   useEffect(() => {
-    if (!origin?.precise || !('geolocation' in navigator)) return
-    let last = 0
+    if (!geoOk || !navigator.permissions?.query) return
+    let ps: PermissionStatus | null = null, alive = true
+    const sync = (state: PermissionState) => {
+      dispatch({ type: 'perm', perm: state })
+      if (onLoadAction(state) === 'locate') locate()
+    }
+    const recheck = () => navigator.permissions.query({ name: 'geolocation' }).then(s => { if (alive && s.state !== permRef.current) { permRef.current = s.state; sync(s.state) } }).catch(() => {})
+    navigator.permissions.query({ name: 'geolocation' }).then(s => {
+      if (!alive) return
+      ps = s; permRef.current = s.state; sync(s.state)
+      s.onchange = () => { permRef.current = s.state; sync(s.state) }
+    }).catch(() => {})
+    const onVis = () => document.visibilityState === 'visible' && recheck()
+    document.addEventListener('visibilitychange', onVis); window.addEventListener('focus', recheck)
+    return () => { alive = false; if (ps) ps.onchange = null; document.removeEventListener('visibilitychange', onVis); window.removeEventListener('focus', recheck) }
+  }, [locate])
+  // Denied + a remembered station: open that walk instead of an empty screen.
+  useEffect(() => {
+    if (loc.perm !== 'denied' || origin) return
+    const last = localStorage.getItem('dhaak.station'); const a = AREAS.find(x => x.name === last)
+    if (a) pick(a)
+  }, [loc.perm])
+  // Keep refining while walking: replace origin on a >150 m move or a much better accuracy.
+  useEffect(() => {
+    if (!origin?.precise || !geoOk) return
     const id = navigator.geolocation.watchPosition(p => {
-      const next = { lat: p.coords.latitude, lng: p.coords.longitude }
-      if (Date.now() - last < 20000) return
-      setOrigin(o => {
-        if (!o || !o.precise || hav(o, next) < 150) return o
-        last = Date.now(); setFixAt(Date.now()); return { ...next, label: 'You', precise: true }
-      })
-    }, () => {}, { enableHighAccuracy: true, maximumAge: 30000 })
+      const f = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy, at: Date.now() }
+      dispatch({ type: 'fix', fix: f }); saveFix(f); apply(f, 'gps')
+    }, () => {}, { enableHighAccuracy: true, maximumAge: 20000 })
     return () => navigator.geolocation.clearWatch(id)
   }, [origin?.precise])
   useEffect(() => { if (toast) { const t = setTimeout(() => setToast(null), 5000); return () => clearTimeout(t) } }, [toast])
@@ -70,16 +115,7 @@ export default function App() {
     const m = new Map<string, Feed['items'][number]>(); feed?.items.forEach(i => i.pandals.forEach(id => m.has(id) || m.set(id, i))); return m
   }, [feed])
 
-  function locate() {
-    setBeat(b => b + 1)
-    if (!('geolocation' in navigator)) { setStatus('error'); setPicking(true); return }
-    setStatus('locating')
-    navigator.geolocation.getCurrentPosition(
-      p => { setOrigin({ lat: p.coords.latitude, lng: p.coords.longitude, label: 'You', precise: true }); setFixAt(Date.now()); setStatus('idle'); setSkip(new Set()); setTab(0) },
-      e => { setStatus(e.code === 1 ? 'denied' : 'error'); setPicking(true) },
-      { enableHighAccuracy: true, timeout: 9000, maximumAge: 60000 })
-  }
-  const pick = (a: (typeof AREAS)[number]) => { setOrigin({ lat: a.lat, lng: a.lng, label: `${a.name} metro`, precise: false }); setPicking(false); setSkip(new Set()); setTab(0); window.scrollTo({ top: 0 }) }
+  const pick = (a: (typeof AREAS)[number]) => { localStorage.setItem('dhaak.station', a.name); setOrigin({ lat: a.lat, lng: a.lng, label: `${a.name} metro`, precise: false }); setPicking(false); setSkip(new Set()); setTab(0); window.scrollTo({ top: 0 }) }
 
   const routeUrl = origin && stops.length ? mapsDirUrl(origin, stops) : null
   const hereish: LatLng | null = stops[0] ?? origin
@@ -97,26 +133,29 @@ export default function App() {
     try { if (navigator.share) await navigator.share({ title: 'Dhaak route', text, url: routeUrl }); else { await navigator.clipboard.writeText(`${text}\n${routeUrl}`); setToast('Route link copied') } } catch { /* user cancelled */ }
   }
 
+  const chip = needsChip(loc) ? <button className="chip" onClick={() => setSheet(true)}><Pin small />Turn on location</button> : null
+
   return (
     <div className="mx-auto max-w-[560px] min-h-[100dvh] flex flex-col px-5">
       {(origin || picking) && <><header className="flex items-center justify-between pt-5 pb-3">
         <button onClick={() => { setOrigin(null); setPicking(false) }} className="flex items-baseline gap-2" aria-label="Dhaak home">
           <span className="serif text-[28px]" style={{ color: 'var(--sindoor)' }}>Dhaak</span>
         </button>
-        <span className="text-[13px] muted">Kolkata Pujo 2026</span>
+        <span className="flex items-center gap-1">{chip}<ThemeToggle /></span>
       </header>
       <div className="alpana" aria-hidden="true" /></>}
 
       {!origin && !picking && (
         <main className="flex-1 flex flex-col">
+          <div className="flex justify-end gap-1 pt-4">{chip}<ThemeToggle /></div>
           <div className="flex-1 flex flex-col items-center justify-center text-center">
             <Alpana />
             <TextReveal as="h1" text="Dhaak" split="char" className="serif text-[88px] -mt-4" blur={6} stagger={0.06} />
             <p className="serif italic text-[24px] muted rise" style={{ ['--i' as any]: 5 }}>Pujo, nearby.</p>
           </div>
           <div className="safe-b pb-2">
-            <button className={`btn btn-primary w-full ${beat ? 'beat' : ''}`} key={beat} onClick={locate} disabled={status === 'locating'}>
-              <Pin />{status === 'locating' ? 'Finding you…' : 'Near me'}
+            <button className={`btn btn-primary w-full ${beat ? 'beat' : ''}`} key={beat} onClick={() => locate(true)} disabled={loc.status === 'locating'}>
+              <Pin />{loc.status === 'locating' ? 'Finding you…' : 'Near me'}
             </button>
             <button className="btn w-full mt-1 muted" style={{ minHeight: 48, fontWeight: 500 }} onClick={() => setPicking(true)}>Pick a station</button>
           </div>
@@ -125,8 +164,7 @@ export default function App() {
 
       {picking && (
         <main className="flex-1 pt-6 pb-10">
-          {status === 'denied' && <Notice tone="gold">Location is off. Pick a station.</Notice>}
-          {status === 'error' && <Notice tone="gold">No location fix. Pick a station.</Notice>}
+          {loc.status === 'error' && loc.perm !== 'denied' && <Notice tone="gold">No location fix. Pick a station.</Notice>}
           <h2 className="serif text-[34px] mt-4">Where are you?</h2>
           <ul className="mt-5 border-t hair">
             {AREAS.map((a, i) => (
@@ -138,7 +176,7 @@ export default function App() {
               </li>
             ))}
           </ul>
-          <button className="btn btn-ghost w-full mt-6" onClick={() => { setPicking(false); setStatus('idle') }}>Back</button>
+          <button className="btn btn-ghost w-full mt-6" onClick={() => setPicking(false)}>Back</button>
         </main>
       )}
 
@@ -153,7 +191,7 @@ export default function App() {
           ) : (<>
             <div className="flex items-end justify-between">
               <div>
-                <p className="text-[13px] muted uppercase tracking-[.06em] font-semibold">From {origin.label}{origin.precise && fixAt ? <span className="normal-case tracking-normal font-normal"> · located {ago(now - fixAt)}</span> : null}</p>
+                <p className="text-[13px] muted uppercase tracking-[.06em] font-semibold">From {origin.label}{origin.approx ? ' · approximate' : ''}{origin.precise && fixAt ? <span className="normal-case tracking-normal font-normal"> · located {ago(now - fixAt)}</span> : null}</p>
                 <h2 className="serif text-[40px] mt-1 flex items-baseline gap-2">
                   <AnimatedCounter value={stops.length} /> <span>stops</span>
                 </h2>
@@ -237,6 +275,7 @@ export default function App() {
         <p className="pb-4">{data.source.guide}. Places © OpenStreetMap contributors, {data.source.fetched}. “Approximate” stops use the metro station. Data v{data.version} · {data.hash}</p>
       </details>
 
+      {sheet && <LocationSheet perm={loc.perm} onClose={() => setSheet(false)} onRetry={() => { setSheet(false); locate(true) }} />}
       {toast && <div role="status" className="fixed left-1/2 -translate-x-1/2 top-4 z-30 card px-4 py-2 text-[14px] rise">{toast}</div>}
     </div>
   )
@@ -256,6 +295,32 @@ function Alpana() {
   )
 }
 const Info = () => <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"/><path d="M12 11v6M12 7.5v.01" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"/></svg>
+function ThemeToggle() {
+  const [dark, setDark] = useState(() => document.documentElement.dataset.theme === 'dark')
+  const flip = () => { const d = !dark; setDark(d); if (d) document.documentElement.dataset.theme = 'dark'; else delete document.documentElement.dataset.theme; try { localStorage.setItem('dhaak.theme', d ? 'dark' : 'light') } catch {} }
+  return <button onClick={flip} aria-label={dark ? 'Light mode' : 'Dark mode'} className="w-11 h-11 grid place-items-center muted">
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">{dark ? <><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" strokeWidth="2" strokeLinecap="round">{[0,45,90,135,180,225,270,315].map(r => <path key={r} transform={`rotate(${r} 12 12)`} d="M12 2.5v2"/>)}</g></> : <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="currentColor"/>}</svg>
+  </button>
+}
+function LocationSheet({ perm, onClose, onRetry }: { perm: string; onClose: () => void; onRetry: () => void }) {
+  const p = platform(navigator.userAgent)
+  useEffect(() => { const k = (e: KeyboardEvent) => e.key === "Escape" && onClose(); window.addEventListener("keydown", k); return () => window.removeEventListener("keydown", k) }, [onClose])
+  const steps = p === 'ios'
+    ? ['Settings › Privacy & Security › Location Services: on', 'Settings › Safari › Location: Ask or Allow', 'Back here, tap Try again']
+    : p === 'android'
+    ? ['Tap the icon left of the address bar', 'Permissions › Location › Allow', 'Phone location (quick settings): on']
+    : ['Click the icon left of the address bar', 'Site settings › Location › Allow']
+  return (<>
+    <div className="sheet-backdrop" onClick={onClose} />
+    <div className="sheet" role="dialog" aria-modal="true" aria-label="Turn on location">
+      <div className="mx-auto w-10 h-1 rounded-full mb-5" style={{ background: 'var(--line)' }} />
+      <h2 className="serif text-[30px]">Turn on location</h2>
+      <ol className="mt-4 space-y-3">{steps.map((s, i) => <li key={s} className="flex gap-3 text-[16px]"><span className="serif text-[20px] w-6 shrink-0" style={{ color: 'var(--gold)' }}>{i + 1}</span><span>{s}</span></li>)}</ol>
+      <button className="btn btn-primary w-full mt-6" onClick={onRetry}>{perm === 'denied' ? 'Try again' : 'Allow location'}</button>
+      <button className="btn w-full muted" style={{ minHeight: 48, fontWeight: 500 }} onClick={onClose}>Not now</button>
+    </div>
+  </>)
+}
 function ago(ms: number) { const m = Math.round(ms / 60000); return m < 1 ? 'just now' : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} d ago` }
 function pathOf(o: LatLng, s: LatLng[]) { let m = 0, c = o; for (const x of s) { m += hav(c, x); c = x } return m }
 function hop(s: LatLng[], i: number) { return hav(s[i - 1], s[i]) }
