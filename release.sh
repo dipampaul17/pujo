@@ -2,7 +2,7 @@
 # Release gate: deploy only if every check is green.
 set -euo pipefail; cd "$(dirname "$0")"
 step() { printf '\n== %s\n' "$1"; }
-step typecheck; npx tsc -p tsconfig.app.json --noEmit
+step typecheck; npx tsc -p tsconfig.app.json --noEmit && npx tsc -p tsconfig.test.json --noEmit
 step vitest+evals; npx vitest run
 step pipeline-tests; (cd pipeline && python3 -c "
 import importlib,sys

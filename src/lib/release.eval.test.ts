@@ -1,6 +1,5 @@
 // Release eval: status accuracy vs a hand-verified fixture, link integrity, pin sanity, no filler copy.
 import { describe, it, expect } from 'vitest'
-// @ts-ignore node builtin; vitest runs in node
 import { readFileSync } from 'node:fs'
 import raw from '../data/dhaak.v1.json'
 import { statusOf, type StatusFile, type Dataset } from './plan'
