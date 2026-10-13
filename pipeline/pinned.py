@@ -43,6 +43,10 @@ if __name__=='__main__':
         if m and m.group(1) in tw and v.get('kind')!='official':
             it=item(*tw[m.group(1)])
             if it: pin[pid]=merge([it],pin.get(pid,[]))
+    tr={k:v for k,v in load(f'{H}/raw/x_trusted.json',{}).items() if not k.startswith('_')}
+    for pid,ids in tr.items():  # hand-checked first-hand visit posts from trusted visitors
+        its=[it for it in (item(*tw[i]) for i in ids if i in tw) if it]
+        if its: pin[pid]=merge([q for q in pin.get(pid,[]) if q.get('evidence')][:1]+its,pin.get(pid,[]))
     for pid,v in xl.items():  # anything once shown stays (live list fills remaining slots)
         pin[pid]=merge(pin.get(pid,[]),[dict(q,score=q.get('score',0)) for q in v])
     json.dump(pin,open(f'{ST}/pinned.json','w'),ensure_ascii=False,indent=1)

@@ -40,8 +40,9 @@ def plan(n=3):
     since=(now-dt.timedelta(hours=24)).strftime('%Y-%m-%dT%H:%M:%SZ')
     k=int(now.timestamp()//300)%2  # alternate discovery flavour per run: opening/visit words, or any photo post
     tail=INTENT if k==0 else ' (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো) has:images -is:retweet'
+    tq=' OR '.join(f'from:{h}' for h in sorted(TRUSTED))
     groups=[(top,since,' -is:retweet')]+[(g,OPEN_FLOOR,tail) for g in pack(rest,tail)[:n-1]]
-    qs=[{'ids':[p['id'] for p in g],'args':{'query':q_of(g,t),'max_results':25,'sort_order':'recency','start_time':st,**FIELDS}} for g,st,t in groups]
+    qs=[{'ids':[p['id'] for p in g],'args':{'query':(q_of(g,t)[:-len(t)]+' OR '+tq+')'+t).replace('(','((',1) if i==0 else q_of(g,t),'max_results':25,'sort_order':'recency','start_time':st,**FIELDS}} for i,(g,st,t) in enumerate(groups)]
     json.dump({'at':now.isoformat(),'queries':qs},open(f'{ST}/xplan.json','w'),indent=1,ensure_ascii=False); print(json.dumps(qs,ensure_ascii=False)); return qs
 PROMO=re.compile(r'\b(offer|discount|sale|book now|giveaway|sponsor|promo|ad\b|link in bio|watch live|subscribe|tickets?|to arrive|will inaugurate|to inaugurate|scheduled|throwback|last year|2025|2024|#tbt|AI generated|AI art|how to reach|walking route|route guide|kivabe)\b',re.I)
 OPEN=re.compile(r'(\b(inaugurat(ed|es|ing|ion)|opened|open (for|to) (the )?(public|visitors)|crowds?|queues?|visited|visiting|darshan|pandal[- ]hopping|thronged|footfall|(the )?pandal (was|is|looks)|we went|i went)\b|উদ্বোধন (করলেন|করেন|হল|হলো)|উদ্বোধনে|ভিড়)',re.I)
@@ -55,6 +56,10 @@ def open_hits(txt,c):
     return h if len(h)==1 or re.search(r'inaugurat|উদ্বোধন',txt,re.I) else []
 VISIT=re.compile(r'\b(today|tonight|this evening|right now|just (went|visited)|went to|visited|we are at|at the pandal|first day|i am at)\b',re.I)
 BOTS={'grok','threadreaderapp','pikaso_me'}
+# Hand-vetted visitors who post first-hand pandal visits ("📍 <pandal>" + own photos). One pinned pandal + photo + no future framing = a visit.
+TRUSTED={'abasu4ever'}
+def trusted_visit(u,txt,has_photo,c):
+    return u.lower() in TRUSTED and has_photo and txt.lstrip().startswith('📍') and c>=dt.datetime.fromisoformat(OPEN_FLOOR.replace('Z','+00:00')) and not FUTURE.search(re.sub(r'\b(19|20)\d\d\b','',txt))
 QUEUE=re.compile(r'\b(queue|long line|waiting line)\b(?:.{0,30}?(\d{1,3})\s*(min|mins|minutes|hours?|hrs?))?',re.I)
 CLOSED=re.compile(r'\b(entry (closed|stopped|suspended)|closed for (the )?public|pandal (closed|shut)|gates? closed)\b',re.I)
 TRAFFIC=re.compile(r'\b(traffic jam|road (closed|blocked)|diversion|gridlock|no[- ]entry)\b',re.I)
@@ -74,7 +79,11 @@ def ingest(files):
                 for p in open_hits(txt,c):
                     if p['id'] not in live['open']:
                         live['open'][p['id']]={'since':c.date().isoformat(),'evidence':f"https://x.com/{u0}/status/{x['id']}",'note':re.sub(r'\s+',' ',re.sub(r'https://t\.co/\S+','',txt)).strip()[:140]}
-            if txt.startswith('@') or PROMO.search(txt) or re.search(r'\btemple\b|mandir darshan',txt,re.I): continue  # replies are chatter, not reports
+            hit0=alias_hits(P,txt); ph0=any(media.get(k,{}).get('type')=='photo' for k in x.get('attachments',{}).get('media_keys',[]))
+            tv=len(hit0)==1 and trusted_visit(u0,txt,ph0,c)
+            if tv and hit0[0]['id'] not in live['open']:
+                live['open'][hit0[0]['id']]={'since':c.date().isoformat(),'evidence':f"https://x.com/{u0}/status/{x['id']}",'note':'Visited (@'+u0+', with photos): '+re.sub(r'\s+',' ',re.sub(r'https://t\.co/\S+','',txt)).strip()[:110]}
+            if not tv and (txt.startswith('@') or PROMO.search(txt)) or re.search(r'\btemple\b|mandir darshan',txt,re.I): continue  # replies are chatter, not reports
             hit=alias_hits(P,txt)
             if len(hit)!=1: continue  # ambiguous multi-pandal posts never get a photo
             p=hit[0]; u=users.get(x.get('author_id'),{}); pid=p['id']
@@ -92,7 +101,7 @@ def ingest(files):
             score=(3 if alias_match(p,txt) else 2) \
                   +(3 if VISIT.search(txt) else 0)+(2 if ph or any(m.get('preview_image_url') for m in [media.get(k,{}) for k in x.get('attachments',{}).get('media_keys',[])]) else 0)+(2 if age<6 else 1 if age<24 else 0)+min(2,math.log10(1+eng))
             nonlatin=sum(1 for ch in txt if ord(ch)>0x24F and ch.isalpha())/max(1,sum(ch.isalpha() for ch in txt))
-            if score<6 or not VISIT.search(txt) or nonlatin>0.15: continue  # first-hand visit, English text only
+            if not tv and (score<6 or not VISIT.search(txt) or nonlatin>0.15): continue  # first-hand visit, English text only
             clean=re.sub(r'[ \t]*\n\s*',' ',re.sub(r'[\u0900-\u09FF]+[^\nA-Za-z]*','',re.sub(r'https://t\.co/\S+','',txt))).strip()  # English only on screen
             item={'id':x['id'],'at':x['created_at'],'handle':u['username'],'avatar':u.get('profile_image_url',''),'score':round(score,2),
                   'text':clean if len(clean)<=280 else clean[:280].rsplit(' ',1)[0]+'…','url':f"https://x.com/{u['username']}/status/{x['id']}"}
