@@ -1,5 +1,5 @@
 {
- "_source": "X public posts and news, hand-checked 2026-10-13 (sweep 16:20 IST)",
+ "_source": "X public posts and news, hand-checked 2026-10-13 (sweep 22:50 IST)",
  "santosh-mitra-square": {
   "since": "2026-10-11",
   "evidence": "https://x.com/ANI/status/2109450971617349957",
@@ -29,5 +29,51 @@
   "since": "2026-10-12",
   "evidence": "https://x.com/ANI/status/2109761171071152276",
   "note": "CM inaugurated 12 Oct (ANI); organisers: public entry from Chaturthi 6 pm"
+ },
+ "santoshpur-lake-pally": {
+  "since": "2026-10-12",
+  "evidence": "https://x.com/SuvenduWB/status/2109717078550978709",
+  "note": "CM Suvendu Adhikari's own dated X post (12 Oct, with video) of his Dwitiya visits: '📍লেকপল্লী সার্বজনীন, সন্তোষপুর'; matches TOI itinerary"
+ },
+ "25-pally-khidirpur": {
+  "since": "2026-10-12",
+  "evidence": "https://x.com/SuvenduWB/status/2109717078550978709",
+  "note": "CM Suvendu Adhikari's own dated X post (12 Oct, with video): '📍২৫ পল্লী'; TOI itinerary names it Kidderpore 25 Pally"
+ },
+ "ballygunge-cultural": {
+  "since": "2026-10-11",
+  "evidence": "https://x.com/IndiContractor/status/2109357968911376776",
+  "note": "📍 Ballygunge Cultural Association, Kolkata — first-hand visitor video (@IndiContractor, 11 Oct)",
+  "kind": "visitors"
+ },
+ "sb-park-sarbojanin": {
+  "since": "2026-10-12",
+  "evidence": "https://x.com/Biswaru94784015/status/2109538049675936237",
+  "note": "SB PARK SARBOJANIN 📍 Theme: colliery (coal miners) — visitor photos 12 Oct",
+  "kind": "visitors"
+ },
+ "66-pally": {
+  "since": "2026-10-13",
+  "evidence": "https://x.com/abhishekojhaa2/status/2109996810538533291",
+  "note": "66 Pally 'Agni Yug' — first-hand visitor photos + video of the lit pandal with crowds (@abhishekojhaa2, 13 Oct evening)",
+  "kind": "visitors"
+ },
+ "bosepukur-sitala-mandir": {
+  "since": "2026-10-13",
+  "evidence": "https://x.com/rathindraOFC/status/2110020899969630508",
+  "note": "Speaker Rathindra Bose's own dated X post (13 Oct, with photos): inaugurated Bosepukur Sitala Mandir Durgotsav in Kasba today; corroboration The Wall",
+  "kind": "inaugurated"
+ },
+ "dum-dum-park-bharat-chakra": {
+  "since": "2026-10-13",
+  "evidence": "https://x.com/goonereol/status/2110045552402677947",
+  "note": "Dum Dum Park Bharat Chakra 'Bonger Rath Kotha' — first-hand visitor photos (4) of the lit pandal and pratima (@goonereol pandal-hopping thread, 13 Oct evening)",
+  "kind": "visitors"
+ },
+ "telipukur-yuba-sangha": {
+  "since": "2026-10-11",
+  "evidence": "https://x.com/goonereol/status/2109304631360901567",
+  "note": "Yuba Sangha Telipukur 'Ek Pukur Bhalobasa' — first-hand visitor photos (4) starting @goonereol's pandal-hopping thread (11 Oct evening, preview pass)",
+  "kind": "visitors"
  }
 }
