@@ -450,7 +450,7 @@ function PostsMark({ posts, fresh, onClick }: { posts: XPost[]; fresh?: boolean;
   </>
   const cls = 'inline-flex items-center gap-1.5 align-middle'
   const label = `${posts.length} post${posts.length > 1 ? 's' : ''} from visitors on X${fresh ? ', new' : ''}`
-  return onClick ? <button onClick={onClick} className={`${cls} min-h-[44px] -my-2`} aria-label={label}>{body}</button> : <span className={cls} aria-label={label}>{body}</span>
+  return onClick ? <button onClick={onClick} className={`${cls} min-h-[44px] min-w-[44px] justify-center -my-2`} aria-label={label}>{body}</button> : <span className={cls} aria-label={label}>{body}</span>
 }
 const PUBS: Record<string, string> = { 'timesofindia.indiatimes.com': 'Times of India', 'telegraphindia.com': 'The Telegraph', 'anandabazar.com': 'Anandabazar', 'thehindu.com': 'The Hindu', 'indianexpress.com': 'Indian Express', 'hindustantimes.com': 'Hindustan Times', 'ndtv.com': 'NDTV', 'aninews.in': 'ANI', 'millenniumpost.in': 'Millennium Post', 'thestatesman.com': 'The Statesman' }
 /** Who said so: '@handle' for an X post, the publication for an article. */
