@@ -161,15 +161,15 @@ export default function App() {
                 <h2 className="serif text-[40px] mt-1 flex items-baseline gap-2">
                   <AnimatedCounter value={stops.length} /> <span>stops</span>
                 </h2>
-                <p className="muted text-[15px] mono-num">about {walkMinutes(pathOf(origin, stops))} min walking, {fmtDist(pathOf(origin, stops))}, before queues</p>
+                <p className="muted text-[15px] mono-num">{walkMinutes(pathOf(origin, stops))} min on foot · {fmtDist(pathOf(origin, stops))} · plus queues</p>
               </div>
-              <button onClick={() => setPicking(true)} className="text-[14px] underline underline-offset-4 muted pb-2">Change</button>
+              <button onClick={() => setPicking(true)} className="text-[15px] underline underline-offset-4 muted min-h-[44px] px-2 -mr-2">Change</button>
             </div>
 
             {tips.map(t => <Notice key={t} tone="gold">{t}</Notice>)}
 
             <div className="mt-5">
-              <GooeyNav items={['Route', 'Food', 'Toilets', 'Help']} value={tab} onChange={setTab} size="md" activeColor="var(--ink)" activeLabelColor="var(--bg)" aria-label="Sections" />
+              <GooeyNav items={['Route', 'Food', 'Toilets', 'Help']} value={tab} onChange={setTab} size="md" activeColor="var(--ink)" activeLabelColor="var(--bg)" aria-label="Sections" className="block w-full" />
             </div>
 
             {tab === 0 && (
@@ -183,7 +183,7 @@ export default function App() {
                         <div className="min-w-0 flex-1">
                           <a href={mapsPlaceUrl(s, s.name + ' Durga Puja')} target="_blank" rel="noopener" className="block text-[18px] font-semibold leading-snug">{s.name}</a>
                           <p className="text-[14px] muted mt-0.5 mono-num">
-                            {s.precision === 'station' ? `Near ${s.station} metro, exact spot unverified` : `${i === 0 ? fmtDist(s.dist) + ' from you' : fmtDist(hop(stops, i)) + ' from previous'}${s.station ? ` · ${s.station} metro` : ''}`}
+                            {s.precision === 'station' ? 'Exact spot unverified' : i === 0 ? `${fmtDist(s.dist)} from you` : `${fmtDist(hop(stops, i))} from the last stop`}{s.station && <span className="block">{s.station} metro</span>}
                           </p>
                           <div className="flex flex-wrap gap-1.5 mt-2">
                             {i === 0 && <span className="tag tag-gold">Next</span>}
@@ -193,7 +193,7 @@ export default function App() {
                           </div>
                           {s.note && <p className="text-[14px] mt-2" style={{ color: 'var(--sindoor)' }}>{s.note}.</p>}
                         </div>
-                        <button onClick={() => setSkip(new Set(skip).add(s.id))} className="self-start text-[13px] muted px-2 py-1 -mr-2" aria-label={`Skip ${s.name}`}>Skip</button>
+                        <button onClick={() => setSkip(new Set(skip).add(s.id))} className="self-start text-[14px] muted min-h-[44px] min-w-[44px] px-2 -mr-3 -mt-2" aria-label={`Skip ${s.name}`}>Skip</button>
                       </div>
                     </li>
                   )
@@ -201,7 +201,7 @@ export default function App() {
                 {skip.size > 0 && <button className="text-[14px] muted underline underline-offset-4 mt-2" onClick={() => setSkip(new Set())}>Restore {skip.size} skipped</button>}
               </ol>
             )}
-            {tab === 1 && help && <AmenityList items={help.food} empty="No eateries mapped within 1.5 km of your first stop." meta={f => [f.notable ? 'Kolkata classic' : null, f.cuisine].filter(Boolean).join(' · ')} />}
+            {tab === 1 && help && <AmenityList items={help.food} empty="No eateries mapped within 1.5 km of your first stop." meta={f => [f.notable ? 'Kolkata classic' : null, f.cuisine && f.cuisine[0].toUpperCase() + f.cuisine.slice(1)].filter(Boolean).join(' · ')} />}
             {tab === 2 && help && help.toilets.length > 0 && help.toilets.length < 3 && <p className="mt-4 text-[14px] muted">Only {help.toilets.length} public toilet{help.toilets.length > 1 ? 's are' : ' is'} mapped near here. Big pandals often set up toilets by the gate; ask a volunteer.</p>}
             {tab === 2 && help && <AmenityList items={help.toilets} empty="No public toilets are mapped near here. Metro stations and pandal-side Pujo committee toilets are your best bet; ask a volunteer." meta={t => [t.fee === 'yes' ? 'Paid' : t.fee === 'no' ? 'Free' : null].filter(Boolean).join('')} />}
             {tab === 3 && help && (

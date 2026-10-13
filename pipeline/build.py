@@ -46,6 +46,7 @@ food=[]
 for e in load('food'):
     la,lo=pt(e); n=e['tags'].get('name')
     if not(la and n) or not near_any(la,lo,1200): continue
+    if re.fullmatch(r'(tea|chai|coffee|food|snacks?)\s*(shop|stall|corner|point)?|restaurant|hotel|cafe|dhaba|canteen',n.strip(),re.I): continue  # unnamed in practice
     food.append({'id':f"f{e['id']}",'name':n,'lat':round(la,6),'lng':round(lo,6),'kind':e['tags'].get('amenity'),
       'cuisine':(e['tags'].get('cuisine') or '').replace('_',' ').replace(';',', ') or None,'notable':any(k in n.lower() for k in NOTABLE)})
 def amen(n,kind,r=1500):

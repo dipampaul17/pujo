@@ -241,7 +241,7 @@ export function GooeyNav({
       className={cn("inline-block", className)}
       {...props}
     >
-      <ul className="flex items-center">
+      <ul className="flex w-full items-center">
         {items.map((item, i) => {
           const navItem = toItem(item);
           const isActive = i === active;
@@ -262,7 +262,7 @@ export function GooeyNav({
                 borderTopRightRadius: open(i + 1) ? corner : 0,
                 borderBottomRightRadius: open(i + 1) ? corner : 0,
               }}
-              className={cn(BAR, isActive ? FADE_IN : FADE_OUT)}
+              className={cn(BAR, "flex-1 [&>*]:w-full [&>*]:justify-center", isActive ? FADE_IN : FADE_OUT)}
               style={{ backgroundColor: isActive ? activeColor : undefined }}
             >
               <NavLabel
