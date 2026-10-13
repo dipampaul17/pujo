@@ -187,7 +187,9 @@ export default function App() {
   const view: Origin | null = !entered ? null : zone && zone !== ownZone ? { ...ZONE_ANCHOR[zone], label: ZONE_ANCHOR[zone].name, precise: false } : origin
   const istDate = new Date(now).toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' })
   const plan: Plan | null = useMemo(() => (view ? P.plan(view, 8 + skip.size, Object.fromEntries(Object.keys(statusFile?.open ?? {}).map(id => [id, [4, 2, 0, 0][tier(statusOf(id, istDate, statusFile, now))]]))) : null), [view?.lat, view?.lng, skip.size, statusFile])
-  const zonePandals = useMemo(() => (zone && view ? P.located.filter(p => zoneOf(p) === zone).map(p => ({ ...p, dist: hav(view, p) })).sort((x, y) => x.dist - y.dist) : []), [zone, view?.lat, view?.lng])
+  // At your own position the list is "Near you" across zone lines (the nearest pandal may sit just over a boundary); a picked zone lists that zone.
+  const nearYou = !!view?.precise && !!zone && zone === ownZone
+  const zonePandals = useMemo(() => (zone && view ? P.located.filter(p => nearYou ? hav(view, p) < 5000 || zoneOf(p) === zone : zoneOf(p) === zone).map(p => ({ ...p, dist: hav(view, p) })).sort((x, y) => x.dist - y.dist) : []), [zone, view?.lat, view?.lng])
   const suggested = useMemo(() => suggest(zonePandals, id => statusOf(id, istDate, statusFile, now), view?.precise ? view : null), [zonePandals, statusFile, istDate, view?.precise, Math.floor(now / 600e3)])
   const stable = useStableOrder()
   const stops = useMemo(() => (plan ? plan.stops.filter(s => !skip.has(s.id)).slice(0, 8) : []), [plan, skip])
@@ -339,7 +341,7 @@ export default function App() {
             {tab === 0 && zone && (
               <details className="mt-10 group" open>
                 <summary className="list-none cursor-pointer flex items-center justify-between min-h-[48px] border-b hair">
-                  <span className="t-title2">All {ZLABEL[zone]}</span><span className="muted text-[14px] mono-num">{zonePandals.length}</span>
+                  <span className="t-title2">{nearYou ? 'Near you' : `All ${ZLABEL[zone]}`}</span><span className="muted text-[14px] mono-num">{zonePandals.length}</span>
                 </summary>
                 <ul className="group-list mt-3">{stable(suggested).map((p, r) => (
                   <li key={p.id}><a href={mapsPlaceUrl(p, p.name + ' Durga Puja')} onClick={e => { e.preventDefault(); setDetail(p.id) }} className="row">

@@ -31,8 +31,7 @@ export function makePlanner(d: Dataset) {
     const bo = (id: string) => boost instanceof Set ? (boost.has(id) ? 4 : 0) : (boost[id] ?? 0)
     let radius = 2500, cand = pIdx.near(origin, radius)
     while (cand.length < 4 && radius < 6000) { radius += 1500; cand = pIdx.near(origin, radius) }
-    const nearest = pIdx.nearest(origin, 1, 50000)[0]
-    if (!cand.length) return { stops: [], walkM: 0, walkMin: 0, nearestKm: nearest ? nearest.dist / 1000 : Infinity, outOfRange: true }
+    if (!cand.length) return { stops: [], walkM: 0, walkMin: 0, nearestKm: Math.min(...located.map(p => haversine(origin, p))) / 1000, outOfRange: true }
     // Stops without a verified pin share their metro station's coordinate. Allow at most one per station
     // so the walk never lists several "places" at the same point.
     const usedStation = new Set<string>()

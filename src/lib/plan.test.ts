@@ -113,3 +113,9 @@ it('suggests Open first, then Inaugurated, then by blended distance/grandeur', (
   expect(suggest(ps, st, { lat: 22.5, lng: 88.35 }).map(p => p.id)).toEqual(['open', 'inaug', 'far-grand', 'near-plain'])
   expect(suggest(ps, st, null).map(p => p.id).slice(0, 3)).toEqual(['open', 'inaug', 'far-grand'])
 })
+it('far from Kolkata reports a finite nearest distance (regression: showed "Infinity km")', () => {
+  const p = P.plan({ lat: 28.6, lng: 77.2 })
+  expect(p.outOfRange).toBe(true)
+  expect(Number.isFinite(p.nearestKm)).toBe(true)
+  expect(p.nearestKm).toBeGreaterThan(1200)
+})
