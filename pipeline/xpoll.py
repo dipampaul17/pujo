@@ -79,7 +79,7 @@ VISIT=re.compile(r'\b(today|tonight|this evening|right now|just (went|visited)|w
 BOTS={'grok','threadreaderapp','pikaso_me'}
 # Hand-vetted visitors who post first-hand pandal visits ("📍 <pandal>" + own photos). One pinned pandal + photo + no future framing = a visit.
 TRUSTED={'abasu4ever','sudhanidhib',
-  'an1sh123','goonereol'}  # goonereol (vetted 13 Oct): personal pandal-hopping thread with own photos (Telipukur, Tala, Nalin Sarkar, Barisha, Dum Dum Park Bharat Chakra); an1sh123 (vetted 13 Oct): personal account, numbered '#N <pandal>' first-hand reviews with own photos, critical not promo
+  'an1sh123','goonereol','indicontractor','_epinephrine_'}  # _Epinephrine_ (vetted 14 Oct): personal '📍 <pandal>' thread with own photos (Tridhara, Singhi Park, Ballygunge Cultural, Badamtala, Hindustan Park); goonereol (vetted 13 Oct): personal pandal-hopping thread with own photos (Telipukur, Tala, Nalin Sarkar, Barisha, Dum Dum Park Bharat Chakra); an1sh123 (vetted 13 Oct): personal account, numbered '#N <pandal>' first-hand reviews with own photos, critical not promo; IndiContractor (vetted 13 Oct): 📍 <pandal> + own video visits (Ballygunge Cultural, Tala Barowari, Nalin Sarkar Street)
 # Inauguration sources: the CM and his office post dated '📍 <pandal>' lists of pujas he inaugurated. Searched every
 # even run inside the trusted-visitor slot (no extra X call).
 INAUGURATORS={'suvenduwb','cmowbgov'}  # '📍 <pandal>' threads; '#N Visited <pandal>' series

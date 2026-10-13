@@ -1,5 +1,5 @@
 {
- "_source": "X public posts and news, hand-checked 2026-10-14 (sweep 00:28 IST; Samaj Sebi Sangha confirmed by @SudhanidhiB first-hand visit)",
+ "_source": "X public posts and news, hand-checked 2026-10-14 (sweep 01:10 IST; Hindusthan Park + Singhi Park confirmed by @_Epinephrine_ first-hand photo visits)",
  "santosh-mitra-square": {
   "since": "2026-10-11",
   "evidence": "https://x.com/ANI/status/2109450971617349957",
@@ -92,5 +92,17 @@
   "since": "2026-10-13",
   "evidence": "https://x.com/SudhanidhiB/status/2110081026114584782",
   "note": "First-hand visit by @SudhanidhiB 13 Oct (#12 Visited Samaj Sebi Sangha, Uttam Kumar centenary theme)"
+ },
+ "hindusthan-park": {
+  "since": "2026-10-13",
+  "evidence": "https://x.com/_Epinephrine_/status/2110082080801739151",
+  "note": "📍Hindustan Park — first-hand visitor photos (4) in @_Epinephrine_'s pandal-hopping thread, 14 Oct 00:25 IST",
+  "kind": "visitors"
+ },
+ "singhi-park": {
+  "since": "2026-10-13",
+  "evidence": "https://x.com/_Epinephrine_/status/2110072254080127323",
+  "note": "📍Singhi Park — first-hand visitor photos (3) in @_Epinephrine_'s pandal-hopping thread, 13 Oct 23:46 IST",
+  "kind": "visitors"
  }
 }
