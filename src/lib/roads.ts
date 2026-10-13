@@ -17,7 +17,7 @@ export type Travel = { carMin: number; walkMin: number; carM: number; walkM: num
 const near = (roads: Roads, p: LatLng): number => { // index of the pandal pin this point sits on (≤ 60 m), else -1
   const pins = (roads as any)._pins ??= roads.ids.map((_, i) => i)
   let best = -1, bd = 60
-  for (const i of pins) { const q = (roads as any).pts?.[i]; if (!q) continue; const d = haversine(p, q); if (d < bd) { bd = d; best = i } }
+  for (const i of pins) { const q = (roads as any)._pt?.[i]; if (!q) continue; const d = haversine(p, q); if (d < bd) { bd = d; best = i } }
   return best
 }
 /** Per-metre road ratios at a grid cell for a destination, from the cell's own table row. */
@@ -30,7 +30,7 @@ function ratiosAt(roads: Roads, r: number, c: number, to: LatLng, j: number) {
   return { t: (ct * 10) / h, d: (cd * 10) / h, f: (fd * 10) / h, h }
 }
 /** Matrix columns are only valid while a pin sits where it was when the matrix was built (≤ 60 m). Moved pins fall back. */
-export function attachPins(roads: Roads, _pins?: Record<string, LatLng>) { (roads as any).pts = (roads.pts ?? []).map(([lat, lng]) => ({ lat, lng })); return roads }
+export function attachPins(roads: Roads, _pins?: Record<string, LatLng>) { (roads as any)._pt = (roads.pts ?? []).map(([lat, lng]) => ({ lat, lng })); return roads }
 
 /** Road estimate from → to. Uses the destination's column (to must be a pandal pin) with bilinear-weighted per-metre ratios
  *  from the 4 surrounding grid cells; pandal→pandal uses the exact pair table. Falls back to circuity × straight line. */
@@ -42,7 +42,7 @@ export function roadEstimate(roads: Roads | null, from: LatLng, to: LatLng): Tra
   const fallback = () => { const m = crow * TRAVEL.circuity; return fin((m / 1000 / TRAVEL.fallbackCarKmh) * 3600 / TRAVEL.trafficFactor, m, m, 'estimate') }
   if (!roads) return fallback()
   if (crow < 120) return fin(crow * 1.4 / 5, crow * 1.4, crow * 1.3, 'road')
-  let j = roads.ids.findIndex((_, i) => { const q = (roads as any).pts?.[i]; return q && haversine(q, to) < 40 })
+  let j = roads.ids.findIndex((_, i) => { const q = (roads as any)._pt?.[i]; return q && haversine(q, to) < 40 })
   if (j < 0 && (roads as any).dest) j = (roads as any).dest(to)
   if (j < 0) return fallback()
   const i = near(roads, from)
