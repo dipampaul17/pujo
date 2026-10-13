@@ -68,7 +68,7 @@ button:active:not(:disabled):not([role=tab]), a.btn:active, .pill:active { trans
 .seg { position: relative; display: grid; padding: 2px; border-radius: 9px; background: var(--chip); }
 .seg-thumb { position: absolute; top: 2px; bottom: 2px; left: 2px; border-radius: 7px; background: var(--surface); box-shadow: 0 2px 6px rgba(0,0,0,.05), 0 0 0 0.5px rgba(0,0,0,.04); transition: transform var(--t-sheet) var(--spring); }
 [data-theme='dark'] .seg-thumb { background: #3A3430; }
-.seg-item { position: relative; z-index: 1; min-height: 32px; display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 13.5px; font-weight: 500; color: var(--muted); transition: color var(--t-ui) ease, opacity var(--t-tap) ease; }
+.seg-item { position: relative; z-index: 1; min-height: 44px; /* 44pt tap target, enforced by e2e/quality.cjs */ display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 13.5px; font-weight: 500; color: var(--muted); transition: color var(--t-ui) ease, opacity var(--t-tap) ease; }
 .seg-item[aria-selected=true] { color: var(--ink); font-weight: 600; }
 .seg-item:active { opacity: .6; }
 .seg-count { font-size: 12px; font-weight: 500; color: var(--muted); }
@@ -135,7 +135,7 @@ a.status .status-src { text-decoration: underline; text-decoration-color: var(--
 /* ── Motion ── */
 @media (prefers-reduced-motion: no-preference) {
   .rise { animation: rise var(--t-ui) var(--ease) both; animation-delay: calc(min(var(--i, 0), 8) * 24ms); }
-  .sheet { animation: sheet var(--t-sheet) var(--spring) both }
+  .sheet { animation: sheet var(--t-sheet) var(--spring) backwards } /* backwards, not both: a held transform would block drag-to-close */
   .sheet-backdrop { animation: fade var(--t-ui) ease-out both }
   .art img { animation: settle .7s var(--ease) both }
   .xfresh { animation: fade .3s ease-out both }
