@@ -16,7 +16,7 @@ jobs:
       - run: npx vitest run
       - name: Refresh live award feed (keeps last good file on failure)
         run: python3 pipeline/awards.py src/data/dhaak.v1.json public/live/awards.json || true
-      - run: BASE=/dhaak/ npx vite build
+      - run: BASE=/pujo/ npx vite build
       - uses: actions/upload-pages-artifact@v3
         with: { path: dist }
   deploy:

@@ -1,5 +1,5 @@
 // Offline-ish: cache-first for the app shell and hashed assets, network-first for the live feed.
-const C = 'dhaak-v1'
+const C = 'pujo-v2'
 self.addEventListener('install', e => { self.skipWaiting(); e.waitUntil(caches.open(C).then(c => c.addAll(['./', './index.html']))) })
 self.addEventListener('activate', e => e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== C).map(k => caches.delete(k)))).then(() => self.clients.claim())))
 self.addEventListener('fetch', e => {

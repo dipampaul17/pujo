@@ -3,7 +3,7 @@
 # without touching whatever UI is in the working tree. The app polls these files at runtime.
 set -euo pipefail; cd "$(dirname "$0")/.."
 W=$(mktemp -d); trap 'rm -rf "$W"' EXIT
-GIT_TERMINAL_PROMPT=0 git clone -q --depth 1 -b gh-pages https://github.com/dipampaul17/dhaak.git "$W"
+GIT_TERMINAL_PROMPT=0 git clone -q --depth 1 -b gh-pages https://github.com/dipampaul17/pujo.git "$W"
 mkdir -p "$W/live"; cp public/live/*.json "$W/live/"
 cd "$W"; git add -A live
 git diff --cached --quiet && { echo "live: already current"; exit 0; }
