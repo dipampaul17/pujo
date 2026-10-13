@@ -25,6 +25,7 @@ const Pin = ({ small }: { small?: boolean }) => <svg width={small ? 14 : 20} hei
 export default function App() {
   const [origin, setOrigin] = useState<Origin | null>(null)
   const permRef = useRef<string>('')
+  const originRef = useRef<Origin | null>(null)
   const [picking, setPicking] = useState(false)
   const [tab, setTab] = useState(0)
   const [skip, setSkip] = useState<Set<string>>(new Set())
@@ -75,6 +76,17 @@ export default function App() {
       },
       { enableHighAccuracy: true, timeout: 7000, maximumAge: 60000 })
   }, [])
+  // Ask on load. If the browser silently ignores a non-gesture request (some iOS builds), the first tap anywhere asks again, once.
+  useEffect(() => {
+    if (!geoOk) return
+    if (!navigator.permissions?.query) locate()
+    let armed = true
+    const t = setTimeout(() => {
+      const onTap = () => { if (armed) { armed = false; if (!originRef.current && permRef.current !== 'denied') locate() } }
+      window.addEventListener('pointerdown', onTap, { once: true, capture: true })
+    }, 2500)
+    return () => { armed = false; clearTimeout(t) }
+  }, [locate])
   useEffect(() => {
     if (!geoOk || !navigator.permissions?.query) return
     let ps: PermissionStatus | null = null, alive = true
@@ -133,6 +145,7 @@ export default function App() {
     try { if (navigator.share) await navigator.share({ title: 'Dhaak route', text, url: routeUrl }); else { await navigator.clipboard.writeText(`${text}\n${routeUrl}`); setToast('Route link copied') } } catch { /* user cancelled */ }
   }
 
+  originRef.current = origin
   const chip = needsChip(loc) ? <button className="chip" onClick={() => setSheet(true)}><Pin small />Turn on location</button> : null
 
   return (

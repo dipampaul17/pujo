@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { reduce, initial, onLoadAction, needsChip, shouldUpdate, platform, CACHE_MAX_AGE } from './loc'
 const fix = (acc: number, at = 1000) => ({ lat: 22.5, lng: 88.35, acc, at })
 describe('permission state machine', () => {
-  it('granted locates without a tap, prompt waits, denied shows chip', () => {
-    expect(onLoadAction('granted')).toBe('locate'); expect(onLoadAction('prompt')).toBe('wait')
+  it('granted, prompt and unknown (no Permissions API) all request on load; denied shows chip', () => {
+    expect(onLoadAction('granted')).toBe('locate'); expect(onLoadAction('prompt')).toBe('locate'); expect(onLoadAction('unknown')).toBe('locate')
     expect(onLoadAction('denied')).toBe('chip'); expect(onLoadAction('unsupported')).toBe('chip')
   })
   it('request -> locating, but not when denied (no spam)', () => {

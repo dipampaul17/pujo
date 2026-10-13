@@ -12,9 +12,10 @@ export const CACHE_MAX_AGE = 30 * 60 * 1000
 
 export const initial = (perm: Perm = 'prompt'): LocState => ({ perm, status: 'idle', fix: null, approx: false, source: null })
 
-/** What to do right after the permission state is known. 'granted' locates without a tap; 'prompt' waits for a gesture. */
-export function onLoadAction(perm: Perm): 'locate' | 'wait' | 'chip' {
-  return perm === 'granted' ? 'locate' : perm === 'prompt' ? 'wait' : 'chip'
+/** What to do on load. 'granted' and 'prompt' both request right away so the native prompt shows immediately.
+ * Browsers that ignore non-gesture requests get a one-time first-tap fallback (see App). */
+export function onLoadAction(perm: Perm | 'unknown'): 'locate' | 'chip' {
+  return perm === 'denied' || perm === 'unsupported' ? 'chip' : 'locate'
 }
 /** Show the "Turn on location" chip on every screen? */
 export const needsChip = (s: LocState) => s.perm === 'denied' || s.perm === 'unsupported'
