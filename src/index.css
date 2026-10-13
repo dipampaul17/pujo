@@ -1,22 +1,20 @@
-@font-face { font-family: 'Tiro Bangla'; font-style: normal; font-weight: 400; font-display: swap; src: url('./fonts/tiro-bangla-sub.woff2') format('woff2'); unicode-range: U+0980-09FF; }
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   --bg: #FBF8F3; --surface: #FFFFFF; --ink: #1C1714; --muted: #6B625A; --line: rgba(28,23,20,0.09);
-  --sindoor: #B3261E; --sindoor-soft: #FBEAE7; --gold: #A86A00; --gold-soft: #FBF1DC; --leaf: #2F6B3A; --leaf-soft: #E8F1E6;
-  --serif: 'Instrument Serif', 'Tiro Bangla', Georgia, serif; --sans: 'Geist Variable', 'Tiro Bangla', system-ui, sans-serif; --bangla: 'Tiro Bangla', serif;
+  --sindoor: #B3261E; --sindoor-soft: #FBEAE7; --gold: #A86A00; --gold-soft: #FBF1DC; --leaf: #2F6B3A; --leaf-soft: #E8F1E6; --chip: #F1EBE2;
+  --serif: 'Instrument Serif', Georgia, serif; --sans: 'Geist Variable', system-ui, sans-serif;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #14110F; --surface: #1D1916; --ink: #F4EEE6; --muted: #A89E94; --line: rgba(244,238,230,0.10);
-    --sindoor: #F0675C; --sindoor-soft: #3A1A17; --gold: #F2B54A; --gold-soft: #33270F; --leaf: #8DCB95; --leaf-soft: #17291A; }
+    --sindoor: #F0675C; --sindoor-soft: #3A1A17; --gold: #F2B54A; --gold-soft: #33270F; --leaf: #8DCB95; --leaf-soft: #17291A; --chip: #2A2420; }
 }
 html, body { background: var(--bg); color: var(--ink); }
 body { font-family: var(--sans); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 .serif { font-family: var(--serif); letter-spacing: -0.02em; line-height: 1.02; font-weight: 400; }
-.bangla { font-family: var(--bangla); }
 .mono-num { font-variant-numeric: tabular-nums; }
 .muted { color: var(--muted); }
 .hair { border-color: var(--line); }

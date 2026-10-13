@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import raw from './data/dhaak.v1.json'
-import { makePlanner, areas as getAreas, bn, nudges, type Dataset, type Plan, type Amenity } from './lib/plan'
+import { makePlanner, areas as getAreas, nudges, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
 import { TextReveal } from './components/text-reveal'
 import { AnimatedCounter } from './components/ui/animated-counter'
@@ -13,7 +13,7 @@ type Feed = { updated: string; via: string; items: { title: string; link: string
 type Origin = LatLng & { label: string; precise: boolean }
 
 const ist = (iso: string) => new Date(iso).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' }) + ' IST'
-const istHour = () => +new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata', hour: 'numeric', hour12: false }) % 24
+const istHour = (t = Date.now()) => +new Date(t).toLocaleString('en-US', { timeZone: 'Asia/Kolkata', hour: 'numeric', hour12: false }) % 24
 
 const Arrow = () => <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
 const Pin = () => <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="currentColor"/><circle cx="12" cy="10" r="2.6" fill="var(--bg)"/></svg>
@@ -28,16 +28,40 @@ export default function App() {
   const [toast, setToast] = useState<string | null>(null)
   const [beat, setBeat] = useState(0)
 
+  const [now, setNow] = useState(Date.now())
+  const [fixAt, setFixAt] = useState<number | null>(null)
+  useEffect(() => { const t = setInterval(() => setNow(Date.now()), 30000); return () => clearInterval(t) }, [])
   useEffect(() => {
-    fetch(import.meta.env.BASE_URL + 'live/awards.json', { cache: 'no-cache' }).then(r => (r.ok ? r.json() : null)).then((f: Feed | null) => {
-      if (!f) return
-      setFeed(f)
+    let alive = true
+    const load = () => fetch(import.meta.env.BASE_URL + 'live/awards.json', { cache: 'no-cache' }).then(r => (r.ok ? r.json() : null)).then((f: Feed | null) => {
+      if (!f || !alive) return
+      setFeed(prev => {
+        if (prev && f.items[0] && f.items[0].published > (prev.items[0]?.published ?? '')) setToast('New award story just came in')
+        return f
+      })
       const seen = localStorage.getItem('dhaak.feed') ?? ''
       const fresh = f.items.filter(i => i.published > seen)
       if (seen && fresh.length) setToast(`${fresh.length} new award ${fresh.length > 1 ? 'stories' : 'story'} since your last visit`)
       if (f.items[0]) localStorage.setItem('dhaak.feed', f.items[0].published)
     }).catch(() => {})
+    load()
+    const t = setInterval(() => { if (document.visibilityState === 'visible') load() }, 4 * 60 * 1000)
+    return () => { alive = false; clearInterval(t) }
   }, [])
+  // Re-rank as the person walks: only after a real move (>150 m), at most every 20 s.
+  useEffect(() => {
+    if (!origin?.precise || !('geolocation' in navigator)) return
+    let last = 0
+    const id = navigator.geolocation.watchPosition(p => {
+      const next = { lat: p.coords.latitude, lng: p.coords.longitude }
+      if (Date.now() - last < 20000) return
+      setOrigin(o => {
+        if (!o || !o.precise || hav(o, next) < 150) return o
+        last = Date.now(); setFixAt(Date.now()); return { ...next, label: 'You', precise: true }
+      })
+    }, () => {}, { enableHighAccuracy: true, maximumAge: 30000 })
+    return () => navigator.geolocation.clearWatch(id)
+  }, [origin?.precise])
   useEffect(() => { if (toast) { const t = setTimeout(() => setToast(null), 5000); return () => clearTimeout(t) } }, [toast])
 
   const plan: Plan | null = useMemo(() => (origin ? P.plan(origin, 8 + skip.size) : null), [origin, skip.size])
@@ -51,7 +75,7 @@ export default function App() {
     if (!('geolocation' in navigator)) { setStatus('error'); setPicking(true); return }
     setStatus('locating')
     navigator.geolocation.getCurrentPosition(
-      p => { setOrigin({ lat: p.coords.latitude, lng: p.coords.longitude, label: 'You', precise: true }); setStatus('idle'); setSkip(new Set()); setTab(0) },
+      p => { setOrigin({ lat: p.coords.latitude, lng: p.coords.longitude, label: 'You', precise: true }); setFixAt(Date.now()); setStatus('idle'); setSkip(new Set()); setTab(0) },
       e => { setStatus(e.code === 1 ? 'denied' : 'error'); setPicking(true) },
       { enableHighAccuracy: true, timeout: 9000, maximumAge: 60000 })
   }
@@ -65,7 +89,7 @@ export default function App() {
     medical: [...P.around('medical', hereish, 3, 2500), ...P.around('police', hereish, 2, 2500)].sort((a, b) => a.dist - b.dist),
     station: P.nearestStation(hereish),
   } : null
-  const tips = plan && help ? nudges(istHour(), { walkMin: plan.walkMin, station: help.station?.name, stationM: help.station?.dist }) : []
+  const tips = plan && help ? nudges(istHour(now), { walkMin: plan.walkMin, station: help.station?.name, stationM: help.station?.dist }) : []
 
   async function share() {
     if (!routeUrl) return
@@ -77,10 +101,9 @@ export default function App() {
     <div className="mx-auto max-w-[560px] min-h-[100dvh] flex flex-col px-5">
       <header className="flex items-center justify-between pt-5 pb-3">
         <button onClick={() => { setOrigin(null); setPicking(false) }} className="flex items-baseline gap-2" aria-label="Dhaak home">
-          <span className="bangla text-[26px] leading-none" style={{ color: 'var(--sindoor)' }}>ঢাক</span>
-          <span className="serif text-[24px]">Dhaak</span>
+          <span className="serif text-[28px]" style={{ color: 'var(--sindoor)' }}>Dhaak</span>
         </button>
-        <span className="text-[13px] muted">Kolkata Pujo {bn(2026)}</span>
+        <span className="text-[13px] muted">Kolkata Pujo 2026</span>
       </header>
       <div className="alpana" aria-hidden="true" />
 
@@ -134,7 +157,7 @@ export default function App() {
           ) : (<>
             <div className="flex items-end justify-between">
               <div>
-                <p className="text-[13px] muted uppercase tracking-[.06em] font-semibold">From {origin.label}</p>
+                <p className="text-[13px] muted uppercase tracking-[.06em] font-semibold">From {origin.label}{origin.precise && fixAt ? <span className="normal-case tracking-normal font-normal"> · located {ago(now - fixAt)}</span> : null}</p>
                 <h2 className="serif text-[40px] mt-1 flex items-baseline gap-2">
                   <AnimatedCounter value={stops.length} /> <span>stops</span>
                 </h2>
@@ -156,7 +179,7 @@ export default function App() {
                   return (
                     <li key={s.id} className={`card p-4 rise ${i === 0 ? 'diya' : ''}`} style={{ ['--i' as any]: i }}>
                       <div className="flex gap-3">
-                        <span className="bangla text-[22px] w-7 shrink-0 leading-[1.2]" style={{ color: i === 0 ? 'var(--gold)' : 'var(--muted)' }} aria-label={`Stop ${i + 1}`}>{bn(i + 1)}</span>
+                        <span className="serif text-[24px] w-7 shrink-0 leading-[1.1] mono-num" style={{ color: i === 0 ? 'var(--gold)' : 'var(--muted)' }} aria-label={`Stop ${i + 1}`}>{i + 1}</span>
                         <div className="min-w-0 flex-1">
                           <a href={mapsPlaceUrl(s, s.name + ' Durga Puja')} target="_blank" rel="noopener" className="block text-[18px] font-semibold leading-snug">{s.name}</a>
                           <p className="text-[14px] muted mt-0.5 mono-num">
@@ -192,7 +215,7 @@ export default function App() {
             {feed && feed.items.length > 0 && tab === 0 && (
               <section className="mt-10">
                 <h3 className="serif text-[26px]">Award news</h3>
-                <p className="text-[13px] muted">Headlines from {feed.via}, checked {ist(feed.updated)}. We link the story; we don't call winners.</p>
+                <p className="text-[13px] muted">Headlines from {feed.via}, checked {ago(now - Date.parse(feed.updated))} ({ist(feed.updated)}). We link the story; we don't call winners.</p>
                 <ul className="mt-3 border-t hair">
                   {feed.items.slice(0, 4).map(i => (
                     <li key={i.link} className="border-b hair py-3"><a href={i.link} target="_blank" rel="noopener" className="block text-[15px] leading-snug">{i.title.replace(/ - [^-]+$/, '')}</a><span className="text-[12.5px] muted">{i.source} · {ist(i.published)}</span></li>
@@ -224,6 +247,7 @@ export default function App() {
   )
 }
 
+function ago(ms: number) { const m = Math.round(ms / 60000); return m < 1 ? 'just now' : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} d ago` }
 function pathOf(o: LatLng, s: LatLng[]) { let m = 0, c = o; for (const x of s) { m += hav(c, x); c = x } return m }
 function hop(s: LatLng[], i: number) { return hav(s[i - 1], s[i]) }
 

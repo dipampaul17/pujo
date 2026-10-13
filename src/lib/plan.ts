@@ -17,7 +17,12 @@ export function makePlanner(d: Dataset) {
     while (cand.length < 4 && radius < 6000) { radius += 1500; cand = pIdx.near(origin, radius) }
     const nearest = pIdx.nearest(origin, 1, 50000)[0]
     if (!cand.length) return { stops: [], walkM: 0, walkMin: 0, nearestKm: nearest ? nearest.dist / 1000 : Infinity, outOfRange: true }
-    const picked = [...cand].sort((a, b) => rankScore(a.dist, a.quality) - rankScore(b.dist, b.quality) || a.id.localeCompare(b.id)).slice(0, Math.min(max, MAX_WAYPOINTS + 1))
+    // Stops without a verified pin share their metro station's coordinate. Allow at most one per station
+    // so the walk never lists several "places" at the same point.
+    const usedStation = new Set<string>()
+    const picked = [...cand].sort((a, b) => rankScore(a.dist, a.quality) - rankScore(b.dist, b.quality) || a.id.localeCompare(b.id))
+        .filter(p => { const k = `${p.lat},${p.lng}`; if (usedStation.has(k)) return false; usedStation.add(k); return true })
+      .slice(0, Math.min(max, MAX_WAYPOINTS + 1))
     const withQuery: Stop[] = picked.map(p => (p.precision === 'station' ? { ...p, query: `${p.name} Durga Puja, Kolkata` } : p))
     const stops = orderRoute(origin, withQuery)
     const walkM = pathLength(origin, stops)
@@ -37,12 +42,12 @@ export function areas(d: Dataset) {
   }).sort((a, b) => b.lat - a.lat)
 }
 
-const BN = '০১২৩৪৫৬৭৮৯'
-export const bn = (n: number | string) => String(n).replace(/\d/g, d => BN[+d])
 
 /** Deterministic "right now" nudges. No network, no model. */
 export function nudges(hour: number, ctx: { toiletM?: number; foodName?: string; foodM?: number; station?: string; stationM?: number; walkMin: number }) {
   const out: string[] = []
+  if (hour >= 6 && hour < 15) out.push('Crowds are thinnest now. Starting in the afternoon beats starting after dark.')
+  if (hour >= 18 && hour < 22) out.push('Peak hours. Leave extra time between stops; a short hop on the map can take much longer tonight.')
   if (hour >= 15 && hour < 18) out.push('Queues grow fast after sunset. The first two stops are the ones to do now.')
   if (hour >= 22 || hour < 2) out.push(ctx.station ? `${ctx.station} metro is ${Math.round((ctx.stationM ?? 0) / 100) / 10} km away. Check the last train before your final stop.` : 'Check tonight’s last metro before your final stop.')
   if (ctx.walkMin > 90) out.push(`This loop is about ${ctx.walkMin} minutes on foot before queues. Drop a stop if your group is tired.`)

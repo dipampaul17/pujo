@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { makePlanner, areas, bn, nudges, type Dataset } from './plan'
+import { makePlanner, areas, nudges, type Dataset } from './plan'
 import data from '../data/dhaak.v1.json'
 import { mapsDirUrl, MAX_WAYPOINTS } from './geo'
 const d = data as unknown as Dataset
@@ -31,7 +31,14 @@ describe('planner on real data', () => {
     for (const p of P.located) { expect(p.lat).toBeGreaterThan(22.3); expect(p.lng).toBeGreaterThan(88.2) }
   })
 })
+describe('collapse guard', () => {
+  it('no two stops in any plan share identical coordinates', () => {
+    for (const a of areas(d)) {
+      const s = P.plan({ lat: a.lat, lng: a.lng }).stops
+      expect(new Set(s.map(x => `${x.lat},${x.lng}`)).size).toBe(s.length)
+    }
+  })
+})
 describe('helpers', () => {
-  it('bengali numerals', () => expect(bn(12)).toBe('১২'))
-  it('nudges by hour', () => { expect(nudges(23, { walkMin: 20 }).length).toBe(1); expect(nudges(12, { walkMin: 20 })).toEqual([]) })
+  it('nudges by hour', () => { expect(nudges(23, { walkMin: 20 }).length).toBe(1); expect(nudges(12, { walkMin: 20 })).toHaveLength(1); expect(nudges(3, { walkMin: 20 })).toEqual([]) })
 })

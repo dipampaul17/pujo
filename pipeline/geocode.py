@@ -24,28 +24,31 @@ def station(n):
     r=get('https://photon.komoot.io/api/?'+urllib.parse.urlencode({'q':f'{n} metro station Kolkata','limit':1,'lat':22.55,'lon':88.37}))
     f=(r or {}).get('features') or []
     if f: lo,la=f[0]['geometry']['coordinates']; st[n]=(la,lo); return st[n]
-pan=json.load(open(sys.argv[1]))
-def one(p):
-    anchor=None
-    if p['stations']: anchor=station(p['stations'][0]); p['stationLatLng']=anchor
-    best=None
-    for q in [f"{p['name']} Durga Puja Kolkata", f"{p['name']} Kolkata"]:
-        params={'q':q,'limit':5,'bbox':'88.25,22.40,88.52,22.72'}
-        if anchor: params.update(lat=anchor[0],lon=anchor[1])
-        r=get('https://photon.komoot.io/api/?'+urllib.parse.urlencode(params))
-        for f in (r or {}).get('features',[]):
-            lo,la=f['geometry']['coordinates']
-            d=hav(la,lo,*anchor) if anchor else 0
-            if anchor and d>3: continue
-            best=(la,lo,f['properties'].get('name'),round(d,2)); break
-        if best: break
-    if best: p.update(lat=best[0],lng=best[1],precision='osm',osmMatch=best[2])
-    elif anchor: p.update(lat=anchor[0],lng=anchor[1],precision='station')
-    else: p.update(lat=None,lng=None,precision='none')
-    print(p['name'],'->',p['precision'],p.get('osmMatch'),flush=True); return p
-from concurrent.futures import ThreadPoolExecutor
-for p in pan:
-    if p['stations']: station(p['stations'][0])
-with ThreadPoolExecutor(4) as ex: out=list(ex.map(one,pan))
-json.dump(cache,open(CACHE,'w')); json.dump({'stations':st},open(f'{H}/raw/stations_resolved.json','w'))
-json.dump(out,open(sys.argv[2],'w'),indent=1,ensure_ascii=False)
+def main():
+    global pan
+    pan=json.load(open(sys.argv[1]))
+    def one(p):
+        anchor=None
+        if p['stations']: anchor=station(p['stations'][0]); p['stationLatLng']=anchor
+        best=None
+        for q in [f"{p['name']} Durga Puja Kolkata", f"{p['name']} Kolkata"]:
+            params={'q':q,'limit':5,'bbox':'88.25,22.40,88.52,22.72'}
+            if anchor: params.update(lat=anchor[0],lon=anchor[1])
+            r=get('https://photon.komoot.io/api/?'+urllib.parse.urlencode(params))
+            for f in (r or {}).get('features',[]):
+                lo,la=f['geometry']['coordinates']
+                d=hav(la,lo,*anchor) if anchor else 0
+                if anchor and d>3: continue
+                best=(la,lo,f['properties'].get('name'),round(d,2)); break
+            if best: break
+        if best: p.update(lat=best[0],lng=best[1],precision='osm',osmMatch=best[2])
+        elif anchor: p.update(lat=anchor[0],lng=anchor[1],precision='station')
+        else: p.update(lat=None,lng=None,precision='none')
+        print(p['name'],'->',p['precision'],p.get('osmMatch'),flush=True); return p
+    from concurrent.futures import ThreadPoolExecutor
+    for p in pan:
+        if p['stations']: station(p['stations'][0])
+    with ThreadPoolExecutor(4) as ex: out=list(ex.map(one,pan))
+    json.dump(cache,open(CACHE,'w')); json.dump({'stations':st},open(f'{H}/raw/stations_resolved.json','w'))
+    json.dump(out,open(sys.argv[2],'w'),indent=1,ensure_ascii=False)
+if __name__=='__main__': main()

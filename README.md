@@ -1,4 +1,4 @@
-# Dhaak (ঢাক)
+# Dhaak
 
 Durga Puja 2026 in Kolkata: the best pandals near you, in walking order, with food, toilets and help on the way. One tap opens the whole walk in Google Maps.
 
@@ -29,11 +29,11 @@ pipeline/guide.pdf ─pdftotext─▶ extract.py ─▶ geocode.py (Photon/OSM, 
 * "Right now" nudges are deterministic rules on IST hour and route length. No model call. An AI layer can plug into `nudges()` later; this rule set stays as the fallback.
 * Live feed (`pipeline/awards.py`, every 30 min in Actions): Google News RSS for 2026 award coverage. Only headlines that name a guide pandal get matched. We link the story and never declare a winner. The app shows an in-app toast for stories newer than your last visit. Web push is not shipped (needs a push server and VAPID keys); in-app updates are the fallback.
 * Offline: `public/sw.js` caches the shell and hashed assets cache-first, the feed network-first.
-* Fonts: Instrument Serif (display), Geist (UI), Tiro Bangla subset to the 13 Bengali glyphs used (4.5 KB). All self-hosted with `font-display: swap`.
+* Fonts: Instrument Serif (display), Geist (UI), English only, no third font. All self-hosted with `font-display: swap`.
 
 ## Tests
 
-`npx vitest run`: haversine, grid index vs brute force, ranking, NN+2-opt never worse than input order, URL building and waypoint cap, planner on real data (North, South, out of range, determinism), Bengali numerals, nudges.
+`npx vitest run`: haversine, grid index vs brute force, ranking, NN+2-opt never worse than input order, URL building and waypoint cap, planner on real data (North, South, out of range, determinism), nudges, metro-placed stop collapse.
 
 ## Known gaps
 
