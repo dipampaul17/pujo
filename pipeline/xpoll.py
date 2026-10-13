@@ -35,6 +35,10 @@ INTENT=' (inaugurated OR inaugurates OR inauguration OR opened OR visited OR cro
 SIGNAL_Q=('((Kolkata OR pandal OR pujo OR puja OR কলকাতা OR পুজো OR Behala OR Gariahat OR Ballygunge OR Kalighat OR Chetla OR Jadavpur OR Tollygunge OR Bhowanipore OR "Park Street" OR Sealdah OR Shyambazar OR "Lake Town" OR "Salt Lake") '
   '(crowd OR queue OR "long line" OR rush OR packed OR stampede OR barricade OR bheer OR bhir OR bhid OR ভিড় OR "লম্বা লাইন" OR "road closed" OR diversion OR "one way" OR jaam OR যানজট OR waterlogging OR brishti OR বৃষ্টি OR "jol jomeche" OR "no cabs" OR "uber surge" OR "power cut" OR "entry closed" OR "gate closed")'
   ' OR from:KPTrafficDept OR from:KolkataPolice) -is:retweet')
+# Wide openings search, not tied to known names: English, Bengali, Banglish. Window overlaps the 10-min cadence.
+WIDE_MIN=30
+WIDE_Q=('((inaugurated OR inaugurates OR inauguration OR udbodhon OR "udbodhon holo" OR উদ্বোধন OR উদ্বোধনে OR "pandal open" OR "pandal opened" OR "opened to public" OR "open for visitors" OR "khule geche")'
+  ' (Kolkata OR Calcutta OR কলকাতা OR "durga puja" OR "durga pujo" OR দুর্গাপুজো OR দুর্গাপূজা OR pandal OR pujo OR পুজো)) -is:retweet')
 def plan(n=3):
     """Run plan: q1 = top-ranked (last 24h, for fresh photos/crowd); q2..n = stalest pandals packed densely,
     searched back to SEASON so an opening is caught even if nobody posted in the last day. Open pandals that
@@ -50,13 +54,18 @@ def plan(n=3):
     tq=' OR '.join(f'from:{h}' for h in sorted(TRUSTED))
     # slot 1: top + trusted visitors; slot 2: stalest pass pandals (every run); slot 3: stalest of the rest,
     # except every other run, when slot 3 is the live street-signal query.
-    groups=[(top,since,' -is:retweet')]+[(g,OPEN_FLOOR,tail) for g in (pack(pas,tail)[:1]+pack(rest,tail)[:1])][:n-1]
-    if k==1: groups=groups[:n-1]
-    qs=[{'ids':[p['id'] for p in g],'args':{'query':(q_of(g,t)[:-len(t)]+' OR '+tq+')'+t).replace('(','((',1) if i==0 else q_of(g,t),'max_results':25,'sort_order':'recency','start_time':st,**FIELDS}} for i,(g,st,t) in enumerate(groups)]
-    if k==1: qs.append({'ids':[],'args':{'query':SIGNAL_Q,'max_results':25,'sort_order':'recency','start_time':(now-dt.timedelta(hours=SIG.WINDOW_H)).strftime('%Y-%m-%dT%H:%M:%SZ'),**FIELDS}})
+    # Two-run cycle, 3 calls each. Even run: top+trusted visitors, pass pandals, WIDE openings search.
+    # Odd run: stalest other pandals, pass pandals, live street signals. Pass pandals are searched every run.
+    q=lambda g,st,t,trusted=False:{'ids':[p['id'] for p in g],'args':{'query':(q_of(g,t)[:-len(t)]+' OR '+tq+')'+t).replace('(','((',1) if trusted else q_of(g,t),'max_results':25,'sort_order':'recency','start_time':st,**FIELDS}}
+    pq=[q(g,OPEN_FLOOR,tail) for g in pack(pas,tail)[:1]]
+    if k==0:
+        qs=[q(top,since,' -is:retweet',True)]+pq+[{'ids':[],'kind':'wide','args':{'query':WIDE_Q,'max_results':50,'sort_order':'recency','start_time':(now-dt.timedelta(minutes=WIDE_MIN)).strftime('%Y-%m-%dT%H:%M:%SZ'),**FIELDS}}]
+    else:
+        qs=[q(g,OPEN_FLOOR,tail) for g in pack(rest,tail)[:1]]+pq+[{'ids':[],'kind':'signal','args':{'query':SIGNAL_Q,'max_results':25,'sort_order':'recency','start_time':(now-dt.timedelta(hours=SIG.WINDOW_H)).strftime('%Y-%m-%dT%H:%M:%SZ'),**FIELDS}}]
+    qs=qs[:n]
     json.dump({'at':now.isoformat(),'queries':qs},open(f'{ST}/xplan.json','w'),indent=1,ensure_ascii=False); print(json.dumps(qs,ensure_ascii=False)); return qs
 PROMO=re.compile(r'\b(offer|discount|sale|book now|giveaway|sponsor|promo|ad\b|link in bio|watch live|subscribe|tickets?|to arrive|will inaugurate|to inaugurate|scheduled|throwback|last year|2025|2024|#tbt|AI generated|AI art|how to reach|walking route|route guide|kivabe)\b',re.I)
-OPEN=re.compile(r'(\b(inaugurat(ed|es|ing|ion)|opened|open (for|to) (the )?(public|visitors)|crowds?|queues?|visited|visiting|darshan|pandal[- ]hopping|thronged|footfall|(the )?pandal (was|is|looks)|we went|i went)\b|উদ্বোধন (করলেন|করেন|হল|হলো)|উদ্বোধনে|ভিড়)',re.I)
+OPEN=re.compile(r'(\b(inaugurat(ed|es|ing|ion)|opened|open (for|to) (the )?(public|visitors)|crowds?|queues?|visited|visiting|darshan|pandal[- ]hopping|thronged|footfall|(the )?pandal (was|is|looks)|we went|i went)\b|\budbodhon (holo|hoye gelo|korlen|korlo)\b|উদ্বোধন (করলেন|করেন|হল|হলো)|উদ্বোধনে|ভিড়)',re.I)
 FUTURE=re.compile(r'\b(to (be )?inaugurat\w*|will (be )?(inaugurat\w*|open)|set to|scheduled|upcoming|countdown|days? to go|coming soon|last year|throwback|#tbt|(puja|pujo|durgapuja)\s?202[0-5]|will be open|opens? on|open for public \d|khuti|getting ready|still wip|wip|work in progress|walking route|route guide|how to reach|durga temple|mandir darshan|কীভাবে|khuti puja|kathamo|under construction|being built|preparation|preparing|work in progress)\b|উদ্বোধন করবেন|খুঁটি পুজো',re.I)
 CTX=re.compile(r'puja|pujo|pandal|durga|kolkata|calcutta|দুর্গা|পুজো|পূজা|মণ্ডপ',re.I)
 def open_hits(txt,c):
@@ -75,6 +84,20 @@ QUEUE=re.compile(r'\b(queue|long line|waiting line)\b(?:.{0,30}?(\d{1,3})\s*(min
 CLOSED=re.compile(r'\b(entry (closed|stopped|suspended)|closed for (the )?public|pandal (closed|shut)|gates? closed)\b',re.I)
 TRAFFIC=re.compile(r'\b(traffic jam|road (closed|blocked)|diversion|gridlock|no[- ]entry)\b',re.I)
 CROWD=re.compile(r'\b(crowd(ed)?|queue|long line|packed|jam[- ]?packed|huge rush|overflow\w*)\b',re.I)
+KOL=re.compile(r'kolkata|calcutta|কলকাতা|howrah|হাওড়া|salt ?lake|new ?town|behala|dum ?dum|south kolkata|north kolkata',re.I)
+CNAME=re.compile(r"\b((?:[A-Z0-9][\w'.&-]*\s){0,4}(?:Sarbojanin|Sarbajanin|Sarbojonin|Club|Sangha|Sangh|Samity|Samiti|Pally|Palli|Park|Square|Sammilani|Durgotsab|Durgotsav|Rajbari))\b")
+CANDS=f'{H}/raw/x_candidates.json'
+def CAND_OK(txt,c,u):
+    return (c>=dt.datetime.fromisoformat(OPEN_FLOOR.replace('Z','+00:00')) and not txt.startswith('@') and u.lower() not in BOTS
+            and re.search(r'inaugurat|উদ্বোধন|udbodhon|pandal open|opened',txt,re.I) and KOL.search(txt) and not FUTURE.search(txt) and not alias_hits(P,txt))
+def cand(txt,c,u,xid):
+    """Unmatched Kolkata opening: log for a human, never add to the app."""
+    d=load(CANDS,{'_':'Openings on X naming no app pandal. Review only; nothing here is shown in the app.','items':[]})
+    url=f'https://x.com/{u}/status/{xid}'
+    if any(i['url']==url for i in d['items']): return
+    names=sorted({m.strip() for m in CNAME.findall(txt) if m.strip().lower() not in {'park','club','square'}})
+    d['items'].append({'at':c.isoformat(),'url':url,'names':names,'text':re.sub(r'\s+',' ',txt)[:240]})
+    d['items']=d['items'][-500:]; json.dump(d,open(CANDS,'w'),ensure_ascii=False,indent=1)
 def ingest(files):
     for f in files:
         try: t=open(f).read(); d=json.loads(t[t.find('{'):t.rfind('}')+1])
@@ -90,6 +113,7 @@ def ingest(files):
                 for p in open_hits(txt,c):
                     if p['id'] not in live['open']:
                         live['open'][p['id']]={'since':c.date().isoformat(),'evidence':f"https://x.com/{u0}/status/{x['id']}",'note':re.sub(r'\s+',' ',re.sub(r'https://t\.co/\S+','',txt)).strip()[:140]}
+            if CAND_OK(txt,c,u0): cand(txt,c,u0,x['id'])
             hit0=alias_hits(P,txt); ph0=any(media.get(k,{}).get('type')=='photo' for k in x.get('attachments',{}).get('media_keys',[]))
             tv=len(hit0)==1 and trusted_visit(u0,txt,ph0,c)
             if tv and hit0[0]['id'] not in live['open']:
