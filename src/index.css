@@ -185,3 +185,14 @@ details > summary.border-b { border-bottom: 0; }
 .status-src-dot { width: 4px; height: 4px; border-radius: 9px; background: var(--muted); opacity: .6; }
 a.status .status-src { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
 .row .status-src { max-width: 96px; font-size: 12px; }
+/* v3.1 */
+.row { padding-top: 10px; padding-bottom: 10px; }
+.row-n { line-height: 1.55; flex-shrink: 0; }
+.row .status { display: flex; margin: 1px 0 0; }
+.row .status-src { max-width: 180px; }
+.stop:not(.stop-next) { padding-top: 12px; padding-bottom: 6px; }
+.seg-thumb { box-shadow: 0 2px 6px rgba(0,0,0,.05), 0 0 0 0.5px rgba(0,0,0,.04); }
+[data-theme='dark'] { --line: rgba(244,238,230,0.12); --chip: rgba(244,238,230,0.09); }
+[data-theme='dark'] .group-list, [data-theme='dark'] .now-strip, [data-theme='dark'] .post { box-shadow: 0 0 0 0.5px var(--line); }
+[data-theme='dark'] .grabber { background: rgba(244,238,230,.25); }
+[data-theme='dark'] .btn-ghost { box-shadow: none; }

@@ -5,7 +5,6 @@ import { makePlanner, areas as getAreas, nudges, statusOf, suggest, tier, type S
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
 import { HERO_LQIP } from './hero-lqip'
 import { TextReveal } from './components/text-reveal'
-import { AnimatedCounter } from './components/ui/animated-counter'
 
 const data = raw as unknown as Dataset
 const P = makePlanner(data)
@@ -213,8 +212,12 @@ export default function App() {
     }).catch(() => {})
     go(); const t = setInterval(go, 30 * 60e3); return () => clearInterval(t)
   }, [rk])
-  const xNow = Object.entries(xLive.crowd).map(([id, c]) => ({ c, p: P.located.find(p => p.id === id) })).filter(({ c, p }) => p && zoneOf(p) === (zone ?? ownZone) && now - Date.parse(c.at) < 3 * 3600e3)
-    .map(({ c, p }) => ({ title: `${c.label ?? 'Crowded'} at ${p!.name}`, link: c.url, source: 'X', published: c.at }))
+  const here = zone ?? ownZone
+  const xNow = [
+    ...Object.entries(xLive.crowd).map(([id, c]) => ({ c, p: P.located.find(p => p.id === id) })).filter(({ c, p }) => p && zoneOf(p) === here && now - Date.parse(c.at) < 2 * 3600e3)
+      .map(({ c, p }) => ({ title: `${p!.name}: ${c.label ?? 'Crowded'}`, link: c.url, published: c.at })),
+    ...(xLive.area ?? []).filter(a => a.zone === here && now - Date.parse(a.at) < 2 * 3600e3).map(a => ({ title: `${a.area}: ${a.label}`, link: a.url, published: a.at })),
+  ]
   const live = [...relevantNow(nowFeed, zone ?? ownZone, stops.map(s => s.id), now).slice(0, 1), ...xNow].sort((x, y) => Date.parse(y.published) - Date.parse(x.published))[0] as any
   const tips = plan && help ? nudges(istHour(now), { walkMin: plan.walkMin, station: help.station?.name, stationM: help.station?.dist }) : []
 
@@ -287,18 +290,13 @@ export default function App() {
               <button className="btn btn-primary w-full mt-8" onClick={() => setZone('central')}>Show Central Kolkata</button>
             </div>
           ) : (<>
-            <div className="flex items-end justify-between">
-              <div>
-                <p className="t-foot muted">From {view.label}{view.approx ? ' · approximate' : ''}{view.precise && fixAt ? <span className="normal-case tracking-normal font-normal"> · located {ago(now - fixAt)}</span> : null}</p>
-                <h2 className="t-title mt-1 flex items-baseline gap-1.5">
-                  <AnimatedCounter value={stops.length} /> <span>stops</span>{done > 0 && <span className="text-[15px] muted font-sans"> · {done} done</span>}
-                </h2>
-                <p className="muted t-sub mono-num mt-0.5">{walkMinutes(pathOf(view, stops))} min on foot · {fmtDist(pathOf(view, stops))} </p>
-              </div>
-            </div>
+            <header className="pt-4">
+              <h2 className="t-title2">Your walk</h2>
+              <p className="muted t-sub mono-num mt-1">{view.precise ? 'From you' : `From ${view.label}`}{view.approx ? ' (approximate)' : ''} · {walkMinutes(pathOf(view, stops))} min · {fmtDist(pathOf(view, stops))}{done > 0 ? ` · ${done} done` : ''}</p>
+            </header>
 
             {(() => { const line = rain ? `Rain likely ${rain.at - now < 50 * 60e3 ? 'within the hour' : 'around ' + new Date(rain.at).toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: 'numeric' })}` : dayTip(pujoDay(istDate), istHour(now)) ?? tips[0]; return line && <p className="mt-3 t-sub font-medium">{line}</p> })()}
-            {live && <a href={live.link} target="_blank" rel="noopener" className="now-strip mt-3"><span className="now-dot" /><span className="flex-1 line-clamp-2">{live.title}</span><span className="muted t-cap shrink-0 mono-num">{ago(now - Date.parse(live.published))}</span></a>}
+            {live && <a href={live.link} target="_blank" rel="noopener" className="now-strip mt-3"><span className="now-dot" /><span className="flex-1 line-clamp-2">{live.title}</span></a>}
 
             <div className="mt-6">
               <Segmented label="Sections" items={['Route', 'Food', 'Toilets', 'Help']} value={tab} onChange={setTab} />
@@ -345,7 +343,7 @@ export default function App() {
                 </summary>
                 <ul className="group-list mt-3">{stable(suggested).map((p, r) => (
                   <li key={p.id}><a href={mapsPlaceUrl(p, p.name + ' Durga Puja')} onClick={e => { e.preventDefault(); setDetail(p.id) }} className="row">
-                    <span className="truncate"><span className="row-n mono-num" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span>{p.name}<StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline /></span><span className="flex items-center gap-2 shrink-0"><PostsMark posts={postsOf(xLive, p.id)} fresh={fresh.has(p.id)} />{p.precision !== 'station' && p.dist >= 50 && <span className="muted text-[14px] mono-num">{fmtDist(p.dist)}</span>}</span></a></li>))}</ul>
+                    <span className="flex min-w-0"><span className="row-n mono-num" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span><span className="min-w-0"><span className="block truncate">{p.name}</span><StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline /></span></span><span className="flex items-center gap-2 shrink-0"><PostsMark posts={postsOf(xLive, p.id)} fresh={fresh.has(p.id)} />{p.precision !== 'station' && p.dist >= 50 && <span className="muted text-[14px] mono-num">{fmtDist(p.dist)}</span>}</span></a></li>))}</ul>
               </details>
             )}
             {tab === 1 && help && <AmenityList items={help.food} empty="Nothing mapped nearby." meta={f => [f.notable ? 'Kolkata classic' : null, f.cuisine && f.cuisine[0].toUpperCase() + f.cuisine.slice(1)].filter(Boolean).join(' · ')} />}
@@ -465,7 +463,7 @@ function StatusDot({ s, inline }: { s: ReturnType<typeof statusOf>; inline?: boo
   const src = sourceOf(s.evidence)
   const via = src && <span className="status-src">{src.x ? <XGlyph /> : <span className="status-src-dot" />}{src.name}</span>
   const body = <><span className="w-2 h-2 rounded-full" style={{ background: c }} /><span style={{ color: c }}>{s.label}</span>{via}</>
-  const cls = `status inline-flex items-center gap-1.5 ${inline ? 'ml-2' : 'mt-0.5 min-h-[28px]'}`
+  const cls = `status inline-flex items-center gap-1.5 ${inline ? '' : 'mt-0.5 min-h-[28px]'}`
   // Rows are already links to the sheet: show the source quietly there, make it tappable in the stop card and sheet.
   return s.evidence && !inline ? <a href={s.evidence} target="_blank" rel="noopener" className={cls} aria-label={`${s.label}, source ${src?.name ?? ''}`}>{body}</a> : <span className={cls}>{body}</span>
 }
@@ -512,7 +510,7 @@ function LocationSheet({ perm, onClose, onRetry }: { perm: string; onClose: () =
   </>)
 }
 type XPost = { media?: { src: string; w?: number; h?: number; video?: boolean }[]; id?: string; at: string; handle: string; avatar: string; text: string; photo?: string; score?: number; w?: number; h?: number; url: string }
-type XLive = { posts: Record<string, XPost[] | XPost>; crowd: Record<string, { at: string; url: string; label?: string; kind?: string }> }
+type XLive = { posts: Record<string, XPost[] | XPost>; crowd: Record<string, { at: string; url: string; label?: string; kind?: string; n?: number }>; area?: { area: string; zone: string; kind: string; label: string; at: string; url: string; n?: number }[] }
 const carMin = (m: number) => Math.max(5, Math.round((m * 1.35) / 1000 / 14 * 60 / 5) * 5)
 const sized = (u: string, n: string) => { const x = new URL(u); x.searchParams.set('name', n); if (!x.searchParams.has('format')) x.searchParams.set('format', 'jpg'); return x.toString() }
 function postsOf(x: XLive, id: string): XPost[] { const v = x.posts[id]; const l = !v ? [] : Array.isArray(v) ? v : [v]; return l.map(q => { const m = q.media?.find(m => !m.video); return q.photo || !m ? q : { ...q, photo: m.src, w: m.w, h: m.h } }) }
