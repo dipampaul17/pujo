@@ -320,8 +320,7 @@ export default function App() {
                           {i === 0 && <div className="grid grid-cols-2 gap-2 mt-4 -ml-10 -mr-10">
                             <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="btn btn-uber">Uber here</a>
                             <a href={mapsDirUrl(view?.precise ? view : null, [s])} target="_blank" rel="noopener" className="btn btn-ghost">Maps</a>
-                            <button onClick={() => setDetail(s.id)} className="btn btn-quiet">Eat nearby</button>
-                            <button onClick={() => { setSkip(new Set(skip).add(s.id)); setDone(d => d + 1); window.scrollTo({ top: 0 }) }} className="btn btn-quiet">I'm here</button>
+                            <button onClick={() => { setSkip(new Set(skip).add(s.id)); setDone(d => d + 1); window.scrollTo({ top: 0 }) }} className="btn btn-quiet col-span-2">I'm here</button>
                           </div>}
                           {i > 0 && <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="link-action -mb-2">Uber here<Chev /></a>}
                         </div>
@@ -372,7 +371,7 @@ export default function App() {
                   </div>
                   <button onClick={() => setDetail(null)} className="close-x mt-0.5" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 1.5l9 9M10.5 1.5l-9 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></button>
                 </div>
-                <p className="t-sub mt-3 mono-num"><span className="font-semibold">#{zr} in {ZLABEL[zoneOf(p)]}</span>{p.reason ? ` · ${p.reason}` : ''}</p>
+                <p className="t-sub mt-3 mono-num">{p.reason ?? ''}</p>
                 <p className="t-foot muted mono-num mt-0.5">{p.precision === 'station' ? `Approximate, near ${p.station}` : d != null ? `${fmtDist(d)}${d > 1200 && pick ? ` · ~${carMin(d)} min by car` : ` · ${walkMinutes(d)} min walk`}` : ''}{loo ? ` · Toilet ${fmtDist(loo.dist)}` : ''}</p>
                 {posts.length > 0 && <div className="mt-5 space-y-3">{posts.map(q => <PostCard key={q.url} p={q} now={now} />)}</div>}
                 <div className="grid grid-cols-2 gap-2 mt-5">
