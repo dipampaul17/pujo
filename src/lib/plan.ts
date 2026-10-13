@@ -46,10 +46,10 @@ export function areas(d: Dataset) {
 /** Deterministic "right now" nudges. No network, no model. */
 export function nudges(hour: number, ctx: { toiletM?: number; foodName?: string; foodM?: number; station?: string; stationM?: number; walkMin: number }) {
   const out: string[] = []
-  if (hour >= 6 && hour < 15) out.push('Crowds are thinnest now. Starting in the afternoon beats starting after dark.')
-  if (hour >= 18 && hour < 22) out.push('Peak hours. Leave extra time between stops; a short hop on the map can take much longer tonight.')
-  if (hour >= 15 && hour < 18) out.push('Queues grow fast after sunset. The first two stops are the ones to do now.')
-  if (hour >= 22 || hour < 2) out.push(ctx.station ? `${ctx.station} metro is ${Math.round((ctx.stationM ?? 0) / 100) / 10} km away. Check the last train before your final stop.` : 'Check tonight’s last metro before your final stop.')
-  if (ctx.walkMin > 90) out.push(`This loop is about ${ctx.walkMin} minutes on foot before queues. Drop a stop if your group is tired.`)
+  if (hour >= 6 && hour < 15) out.push('Quiet hours. Good time to go.')
+  if (hour >= 18 && hour < 22) out.push('Peak crowds. Allow extra time.')
+  if (hour >= 15 && hour < 18) out.push('Queues grow after sunset. Do the first two now.')
+  if (hour >= 22 || hour < 2) out.push(ctx.station ? `Last metro? ${ctx.station} is ${Math.round((ctx.stationM ?? 0) / 100) / 10} km away.` : 'Check the last metro.')
+  if (ctx.walkMin > 90) out.push(`Long walk. Skip a stop if you're tired.`)
   return out
 }

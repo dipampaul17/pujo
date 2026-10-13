@@ -38,6 +38,8 @@ body { font-family: var(--sans); font-size: 17px; line-height: 1.55; -webkit-fon
   .beat { animation: beat 0.9s cubic-bezier(.3,1.6,.5,1) 2; }
   .rise { animation: rise .55s cubic-bezier(0.16,1,0.3,1) both; animation-delay: calc(var(--i, 0) * 55ms); }
 }
+@media (prefers-reduced-motion: no-preference) { .alpana-spin { animation: rise .8s cubic-bezier(0.16,1,0.3,1) both, spin 120s linear infinite; } }
+@keyframes spin { to { transform: rotate(360deg) } }
 @keyframes flicker { 0%,100% { opacity: .75 } 50% { opacity: 1 } }
 @keyframes beat { 0% { transform: scale(1) } 18% { transform: scale(1.08) } 36% { transform: scale(1) } 52% { transform: scale(1.05) } 70%,100% { transform: scale(1) } }
 @keyframes rise { from { opacity: 0; transform: translateY(10px) } to { opacity: 1; transform: none } }

@@ -99,39 +99,35 @@ export default function App() {
 
   return (
     <div className="mx-auto max-w-[560px] min-h-[100dvh] flex flex-col px-5">
-      <header className="flex items-center justify-between pt-5 pb-3">
+      {(origin || picking) && <><header className="flex items-center justify-between pt-5 pb-3">
         <button onClick={() => { setOrigin(null); setPicking(false) }} className="flex items-baseline gap-2" aria-label="Dhaak home">
           <span className="serif text-[28px]" style={{ color: 'var(--sindoor)' }}>Dhaak</span>
         </button>
         <span className="text-[13px] muted">Kolkata Pujo 2026</span>
       </header>
-      <div className="alpana" aria-hidden="true" />
+      <div className="alpana" aria-hidden="true" /></>}
 
       {!origin && !picking && (
-        <main className="flex-1 flex flex-col pt-14">
-          <TextReveal as="h1" text="The best pandals near you, in walking order." className="serif text-[46px] sm:text-[54px]" blur={4} stagger={0.045} />
-          <p className="mt-5 text-[17px] muted max-w-[34ch] rise" style={{ ['--i' as any]: 4 }}>
-            {data.pandals.length} pandals from the Travel With Preet guide. Share your location and you get a short walk you can open in Google Maps, plus food and toilets on the way.
-          </p>
-          <div className="mt-10 grid grid-cols-3 gap-2 text-[13px] rise" style={{ ['--i' as any]: 6 }}>
-            <Stat n={data.pandals.length} label="pandals" /><Stat n={data.food.length} label="eateries" /><Stat n={data.toilets.length} label="toilets" />
+        <main className="flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col items-center justify-center text-center">
+            <Alpana />
+            <TextReveal as="h1" text="Dhaak" split="char" className="serif text-[88px] -mt-4" blur={6} stagger={0.06} />
+            <p className="serif italic text-[24px] muted rise" style={{ ['--i' as any]: 5 }}>Pujo, nearby.</p>
           </div>
-          <div className="flex-1" />
-          <div className="sticky bottom-0 safe-b pt-4 pb-2" style={{ background: 'linear-gradient(transparent, var(--bg) 30%)' }}>
+          <div className="safe-b pb-2">
             <button className={`btn btn-primary w-full ${beat ? 'beat' : ''}`} key={beat} onClick={locate} disabled={status === 'locating'}>
-              <Pin />{status === 'locating' ? 'Finding you…' : 'Find pandals near me'}
+              <Pin />{status === 'locating' ? 'Finding you…' : 'Near me'}
             </button>
-            <button className="btn w-full mt-1 muted" style={{ minHeight: 48, fontWeight: 500 }} onClick={() => setPicking(true)}>Or pick a metro station</button>
+            <button className="btn w-full mt-1 muted" style={{ minHeight: 48, fontWeight: 500 }} onClick={() => setPicking(true)}>Pick a station</button>
           </div>
         </main>
       )}
 
       {picking && (
         <main className="flex-1 pt-6 pb-10">
-          {status === 'denied' && <Notice tone="gold">Location is off for this site, so pick the metro station you are at or heading to. You can turn location on later in browser settings.</Notice>}
-          {status === 'error' && <Notice tone="gold">Couldn't get a location fix. Pick the nearest metro station instead.</Notice>}
+          {status === 'denied' && <Notice tone="gold">Location is off. Pick a station.</Notice>}
+          {status === 'error' && <Notice tone="gold">No location fix. Pick a station.</Notice>}
           <h2 className="serif text-[34px] mt-4">Where are you?</h2>
-          <p className="muted text-[15px] mt-1">Stations from the guide, north to south.</p>
           <ul className="mt-5 border-t hair">
             {AREAS.map((a, i) => (
               <li key={a.name} className="rise" style={{ ['--i' as any]: Math.min(i, 12) }}>
@@ -150,9 +146,9 @@ export default function App() {
         <main className="flex-1 pt-5 pb-40">
           {plan.outOfRange ? (
             <div className="pt-8">
-              <h2 className="serif text-[34px]">You're outside the pandal map.</h2>
-              <p className="muted mt-3">The closest guide pandal is {Math.round(plan.nearestKm)} km away. Pick a station to plan a walk for when you get there.</p>
-              <button className="btn btn-primary w-full mt-8" onClick={() => setPicking(true)}>Pick a metro station <Arrow /></button>
+              <h2 className="serif text-[34px]">Too far from Kolkata.</h2>
+              <p className="muted mt-2">Nearest pandal: {Math.round(plan.nearestKm)} km.</p>
+              <button className="btn btn-primary w-full mt-8" onClick={() => setPicking(true)}>Pick a station <Arrow /></button>
             </div>
           ) : (<>
             <div className="flex items-end justify-between">
@@ -161,7 +157,7 @@ export default function App() {
                 <h2 className="serif text-[40px] mt-1 flex items-baseline gap-2">
                   <AnimatedCounter value={stops.length} /> <span>stops</span>
                 </h2>
-                <p className="muted text-[15px] mono-num">{walkMinutes(pathOf(origin, stops))} min on foot · {fmtDist(pathOf(origin, stops))} · plus queues</p>
+                <p className="muted text-[15px] mono-num">{walkMinutes(pathOf(origin, stops))} min on foot · {fmtDist(pathOf(origin, stops))} </p>
               </div>
               <button onClick={() => setPicking(true)} className="text-[15px] underline underline-offset-4 muted min-h-[44px] px-2 -mr-2">Change</button>
             </div>
@@ -183,7 +179,7 @@ export default function App() {
                         <div className="min-w-0 flex-1">
                           <a href={mapsPlaceUrl(s, s.name + ' Durga Puja')} target="_blank" rel="noopener" className="block text-[18px] font-semibold leading-snug">{s.name}</a>
                           <p className="text-[14px] muted mt-0.5 mono-num">
-                            {s.precision === 'station' ? 'Exact spot unverified' : i === 0 ? `${fmtDist(s.dist)} from you` : `${fmtDist(hop(stops, i))} from the last stop`}{s.station && <span className="block">{s.station} metro</span>}
+                            {s.precision === 'station' ? 'Approximate' : i === 0 ? `${fmtDist(s.dist)} from you` : `${fmtDist(hop(stops, i))} from last`}{s.station && <span className="block">{s.station} metro</span>}
                           </p>
                           <div className="flex flex-wrap gap-1.5 mt-2">
                             {i === 0 && <span className="tag tag-gold">Next</span>}
@@ -201,21 +197,21 @@ export default function App() {
                 {skip.size > 0 && <button className="text-[14px] muted underline underline-offset-4 mt-2" onClick={() => setSkip(new Set())}>Restore {skip.size} skipped</button>}
               </ol>
             )}
-            {tab === 1 && help && <AmenityList items={help.food} empty="No eateries mapped within 1.5 km of your first stop." meta={f => [f.notable ? 'Kolkata classic' : null, f.cuisine && f.cuisine[0].toUpperCase() + f.cuisine.slice(1)].filter(Boolean).join(' · ')} />}
-            {tab === 2 && help && help.toilets.length > 0 && help.toilets.length < 3 && <p className="mt-4 text-[14px] muted">Only {help.toilets.length} public toilet{help.toilets.length > 1 ? 's are' : ' is'} mapped near here. Big pandals often set up toilets by the gate; ask a volunteer.</p>}
-            {tab === 2 && help && <AmenityList items={help.toilets} empty="No public toilets are mapped near here. Metro stations and pandal-side Pujo committee toilets are your best bet; ask a volunteer." meta={t => [t.fee === 'yes' ? 'Paid' : t.fee === 'no' ? 'Free' : null].filter(Boolean).join('')} />}
+            {tab === 1 && help && <AmenityList items={help.food} empty="Nothing mapped nearby." meta={f => [f.notable ? 'Kolkata classic' : null, f.cuisine && f.cuisine[0].toUpperCase() + f.cuisine.slice(1)].filter(Boolean).join(' · ')} />}
+            {tab === 2 && help && help.toilets.length > 0 && help.toilets.length < 3 && <p className="mt-4 text-[14px] muted">Few mapped here. Ask a pandal volunteer.</p>}
+            {tab === 2 && help && <AmenityList items={help.toilets} empty="None mapped nearby. Ask a pandal volunteer." meta={t => [t.fee === 'yes' ? 'Paid' : t.fee === 'no' ? 'Free' : null].filter(Boolean).join('')} />}
             {tab === 3 && help && (
               <div className="mt-4 space-y-3">
-                <div className="card p-4"><p className="font-semibold">Emergency</p><p className="muted text-[15px]">Call <a className="underline" href="tel:112">112</a> (police, fire, ambulance). Kolkata Police helpline <a className="underline" href="tel:100">100</a>. Lost someone in the crowd? Go to the nearest police kiosk at the pandal gate.</p></div>
-                {help.station && <AmenityList items={[{ ...help.station, id: 'st', name: `${help.station.name} metro`, dist: help.station.dist }] as any} empty="" meta={() => 'Nearest metro to your first stop'} />}
-                <AmenityList items={help.medical} empty="No hospitals or police stations mapped within 2.5 km." meta={m => (m.kind === 'police' ? 'Police' : 'Hospital or clinic')} />
+                <div className="card p-4"><div className="flex gap-2"><a className="btn btn-primary flex-1" href="tel:112">Call 112</a><a className="btn btn-ghost flex-1" href="tel:100">Police 100</a></div></div>
+                {help.station && <AmenityList items={[{ ...help.station, id: 'st', name: `${help.station.name} metro`, dist: help.station.dist }] as any} empty="" meta={() => 'Metro'} />}
+                <AmenityList items={help.medical} empty="Nothing mapped nearby." meta={m => (m.kind === 'police' ? 'Police' : 'Medical')} />
               </div>
             )}
 
             {feed && feed.items.length > 0 && tab === 0 && (
               <section className="mt-10">
                 <h3 className="serif text-[26px]">Award news</h3>
-                <p className="text-[13px] muted">Headlines from {feed.via}, checked {ago(now - Date.parse(feed.updated))} ({ist(feed.updated)}). We link the story; we don't call winners.</p>
+                <p className="text-[12.5px] muted">Updated {ago(now - Date.parse(feed.updated))}</p>
                 <ul className="mt-3 border-t hair">
                   {feed.items.slice(0, 4).map(i => (
                     <li key={i.link} className="border-b hair py-3"><a href={i.link} target="_blank" rel="noopener" className="block text-[15px] leading-snug">{i.title.replace(/ - [^-]+$/, '')}</a><span className="text-[12.5px] muted">{i.source} · {ist(i.published)}</span></li>
@@ -230,30 +226,40 @@ export default function App() {
       {origin && plan && !plan.outOfRange && !picking && routeUrl && (
         <div className="fixed inset-x-0 bottom-0 z-20 safe-b px-5 pt-3" style={{ background: 'linear-gradient(transparent, var(--bg) 28%)' }}>
           <div className="mx-auto max-w-[560px] flex gap-2">
-            <a href={routeUrl} target="_blank" rel="noopener" className="btn btn-primary flex-1">Start walk in Google Maps <Arrow /></a>
+            <a href={routeUrl} target="_blank" rel="noopener" className="btn btn-primary flex-1">Start walk in Maps <Arrow /></a>
             <button onClick={share} className="btn btn-ghost px-4" aria-label="Share route">Share</button>
           </div>
         </div>
       )}
 
-      {!origin && !picking ? null : (
-        <footer className="text-[12.5px] muted pb-36 pt-4 border-t hair">
-          Pandal list: {data.source.guide}. Places: {data.source.places}, fetched {data.source.fetched}. “Exact spot unverified” means we could not confirm the pandal's map pin, so the route uses its metro station and Google Maps searches the name. Timings and queues are not in the guide; Pujo pandals usually run late into the night. Data v{data.version} · {data.hash}
-        </footer>
-      )}
+      <details className={`text-[12px] muted ${origin && !picking ? 'pb-32' : 'pb-4'}`}>
+        <summary className="cursor-pointer list-none inline-flex items-center gap-1 min-h-[44px]" aria-label="Sources"><Info /> Sources</summary>
+        <p className="pb-4">{data.source.guide}. Places © OpenStreetMap contributors, {data.source.fetched}. “Approximate” stops use the metro station. Data v{data.version} · {data.hash}</p>
+      </details>
 
       {toast && <div role="status" className="fixed left-1/2 -translate-x-1/2 top-4 z-30 card px-4 py-2 text-[14px] rise">{toast}</div>}
     </div>
   )
 }
 
+function Alpana() {
+  const petals = Array.from({ length: 12 }, (_, i) => i * 30)
+  return (
+    <svg width="200" height="200" viewBox="-100 -100 200 200" aria-hidden="true" className="rise alpana-spin" style={{ color: 'var(--sindoor)' }}>
+      <circle r="92" fill="none" stroke="currentColor" strokeWidth="1" opacity=".35" strokeDasharray="1 6" strokeLinecap="round" />
+      <circle r="70" fill="none" stroke="currentColor" strokeWidth="1.2" opacity=".5" />
+      {petals.map(d => <path key={d} transform={`rotate(${d})`} d="M0 -68 C 12 -52, 12 -36, 0 -26 C -12 -36, -12 -52, 0 -68 Z" fill="none" stroke="currentColor" strokeWidth="1.2" opacity=".7" />)}
+      {petals.map(d => <circle key={'d' + d} transform={`rotate(${d + 15})`} cy="-80" r="2.2" fill="var(--gold)" />)}
+      <circle r="18" fill="none" stroke="var(--gold)" strokeWidth="1.5" />
+      <circle r="6" fill="currentColor" />
+    </svg>
+  )
+}
+const Info = () => <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"/><path d="M12 11v6M12 7.5v.01" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"/></svg>
 function ago(ms: number) { const m = Math.round(ms / 60000); return m < 1 ? 'just now' : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} d ago` }
 function pathOf(o: LatLng, s: LatLng[]) { let m = 0, c = o; for (const x of s) { m += hav(c, x); c = x } return m }
 function hop(s: LatLng[], i: number) { return hav(s[i - 1], s[i]) }
 
-function Stat({ n, label }: { n: number; label: string }) {
-  return <div className="card px-3 py-3"><div className="serif text-[30px] mono-num"><AnimatedCounter value={n} /></div><div className="muted">{label}</div></div>
-}
 function Notice({ children, tone }: { children: React.ReactNode; tone: 'gold' }) {
   return <p className={`mt-4 text-[14.5px] rounded-[12px] px-4 py-3 tag-${tone}`} style={{ textTransform: 'none', letterSpacing: 0, fontWeight: 500 }}>{children}</p>
 }
