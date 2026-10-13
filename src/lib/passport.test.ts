@@ -20,9 +20,19 @@ describe('Pujor Passport', () => {
 import { readFileSync } from 'node:fs'
 describe('Pujor Passport placement', () => {
   const app = readFileSync(new URL('../App.tsx', import.meta.url), 'utf8')
-  it('appears only in the listing rows, never in sheet or route stops', () => {
-    expect(app.match(/<PassMark \/>/g)?.length).toBe(1)
+  it('appears on every listing surface (route cards + list rows), never in the sheet', () => {
+    expect(app.match(/<PassMark \/>/g)?.length).toBe(2)
+    expect(app).toMatch(/hasPass\(s\.id\) && <PassMark \/>/)
     expect(app).not.toMatch(/skip the queue|pass-line/)
     expect(app).toMatch(/inline \/>\{hasPass\(p\.id\) && <PassMark \/>\}/)
+  })
+})
+describe('service worker freshness', () => {
+  const sw = readFileSync(new URL('../../public/sw.js', import.meta.url), 'utf8')
+  const main = readFileSync(new URL('../main.tsx', import.meta.url), 'utf8')
+  it('activates immediately and bypasses HTTP cache for the shell', () => {
+    expect(sw).toMatch(/skipWaiting/); expect(sw).toMatch(/clients\.claim/)
+    expect(sw).toMatch(/fetch\(e\.request, \{ cache: 'no-cache' \}\)/)
+    expect(main).toMatch(/updateViaCache: 'none'/); expect(main).toMatch(/controllerchange/)
   })
 })
