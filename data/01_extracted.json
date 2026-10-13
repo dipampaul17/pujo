@@ -1,0 +1,834 @@
+[
+ {
+  "name": "22 Pally / Northern Park",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "23 Pally",
+  "stations": [
+   "Jatin Das Park"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "66 Pally",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "68 Pally",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "76 Pally",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "AE Block",
+  "stations": [
+   "Karunamoyee"
+  ],
+  "circuits": [
+   "Salt Lake Block Puja Circuit"
+  ],
+  "line": "green"
+ },
+ {
+  "name": "Agradut Udaya Sangha",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Ahiritola Sarbojanin",
+  "stations": [
+   "Shobhabazar Sutanuti"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Ajeya Sanghati",
+  "stations": [
+   "Mahanayak Uttam Kumar"
+  ],
+  "circuits": [
+   "Haridevpur → Tollygunge"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Arjunpur Amra Sabai Club",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "BJ Block",
+  "stations": [
+   "Karunamoyee"
+  ],
+  "circuits": [
+   "Salt Lake Block Puja Circuit"
+  ],
+  "line": "green"
+ },
+ {
+  "name": "Badamtala Ashar Sangha",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Baghbazar Sarbojanin",
+  "stations": [
+   "Shyambazar"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Baishnabghata Balak Samity",
+  "stations": [
+   "Gitanjali"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Bakul Bagan",
+  "stations": [
+   "Jatin Das Park"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Ballygunge Cultural",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Barisha Club",
+  "stations": [
+   "Mahanayak Uttam Kumar"
+  ],
+  "circuits": [
+   "Haridevpur → Tollygunge"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Beniatola Sarbojanin",
+  "stations": [
+   "Shobhabazar Sutanuti"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Bhowanipur 75 Pally",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Bosepukur Sitala Mandir",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Chakraberia Sarbojanin",
+  "stations": [
+   "Rabindra Sadan"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Chaltabagan Lohapatty",
+  "stations": [
+   "Girish Park"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Chetla Agrani",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Chorebagan Sarbojanin",
+  "stations": [
+   "Girish Park"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "College Square",
+  "stations": [
+   "MG Road"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Dakshindari Youth",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Dakshinpara",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Deshapriya Park",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Dum Dum Park Bharat Chakra",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Dum Dum Park Sarbajanin",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Dum Dum Park Tarun Dal",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Ekdalia Evergreen",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "FD Block",
+  "stations": [
+   "Karunamoyee"
+  ],
+  "circuits": [
+   "Salt Lake Block Puja Circuit"
+  ],
+  "line": "green"
+ },
+ {
+  "name": "Forward Club",
+  "stations": [
+   "Jatin Das Park"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Garia Mitali",
+  "stations": [
+   "Kavi Nazrul"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Golaghata Sammilani",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Haridevpur 41 Pally",
+  "stations": [
+   "Mahanayak Uttam Kumar"
+  ],
+  "circuits": [
+   "Haridevpur → Tollygunge"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Harish Park",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Hatibagan Nabinpally",
+  "stations": [
+   "Shyambazar"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Hatibagan Sarbojanin",
+  "stations": [
+   "Shyambazar"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Hindusthan Club",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Hindusthan Park",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Jagat Mukherjee Park",
+  "stations": [
+   "Shobhabazar Sutanuti"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Janbazar Rajbari",
+  "stations": [
+   "Chandni Chowk"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Jorasanko Sadharan",
+  "stations": [
+   "Girish Park"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Kamdahari Purbapara",
+  "stations": [
+   "Kavi Nazrul"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Kapalitola Sarbajanin",
+  "stations": [
+   "Central"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Kashi Bose Lane",
+  "stations": [
+   "Shyambazar"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Kumartuli Park",
+  "stations": [
+   "Shobhabazar Sutanuti"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Kumartuli Sarbojanin",
+  "stations": [
+   "Shobhabazar Sutanuti"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Lalabagan Nabankur",
+  "stations": [
+   "Shyambazar"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Maddox Square",
+  "stations": [
+   "Jatin Das Park"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Matri Mandir",
+  "stations": [
+   "Jatin Das Park"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Mudiali",
+  "stations": [
+   "Rabindra Sarobar"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Muhammad Ali Park",
+  "stations": [
+   "MG Road"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Naba Durga",
+  "stations": [
+   "Kavi Nazrul"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Naktala Pally Unnayan Samity",
+  "stations": [
+   "Netaji / Kudghat"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Naktala Udayan Sangha",
+  "stations": [
+   "Gitanjali"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Nalin Sarkar Street",
+  "stations": [
+   "Shyambazar"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Nearby Salt Lake block Pujas",
+  "stations": [],
+  "circuits": [
+   "Salt Lake Block Puja Circuit"
+  ],
+  "line": null
+ },
+ {
+  "name": "New Sporting Club",
+  "stations": [
+   "Mahanayak Uttam Kumar"
+  ],
+  "circuits": [
+   "Haridevpur → Tollygunge"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Nwapara Udayan Sangha",
+  "stations": [],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": null
+ },
+ {
+  "name": "Paddapukur Youth",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Pally Mangal",
+  "stations": [
+   "Kavi Subhash"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Patuli Sarbojanin",
+  "stations": [
+   "Shahid Khudiram"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Rajdanga Naba Uday Sangha",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Regent Park",
+  "stations": [
+   "Masterda Surya Sen"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Roynagar Unyan Samity",
+  "stations": [
+   "Masterda Surya Sen"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Santosh Mitra Square",
+  "stations": [
+   "MG Road"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Santoshpur Lake Pally",
+  "stations": [
+   "Kavi Subhash"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Santoshpur Trikon Park",
+  "stations": [
+   "Kavi Subhash"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Sealdah Athletic Club",
+  "stations": [
+   "MG Road"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Shib Mandir",
+  "stations": [
+   "Rabindra Sarobar"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Shyama Pally",
+  "stations": [
+   "Kavi Nazrul"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Sikdar Bagan",
+  "stations": [
+   "Shyambazar"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Simla Byayam Samity",
+  "stations": [
+   "Girish Park"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Singhi Park",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Sinthee Sarbojanin",
+  "stations": [
+   "Dum Dum"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Sovabazar Rajbari",
+  "stations": [
+   "Shobhabazar Sutanuti"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Sree Bhumi Sporting Club",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Subodh Mallick Square",
+  "stations": [
+   "Central"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Suruchi Sangha",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Swadhin Sangha",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Tala Park",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Tala Prattoy",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Taltala Sarbojanin",
+  "stations": [
+   "Chandni Chowk"
+  ],
+  "circuits": [],
+  "line": "blue"
+ },
+ {
+  "name": "Tarun Sathi",
+  "stations": [
+   "Kavi Nazrul"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Telengabagan",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Tridhara Sammilani",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue"
+ },
+ {
+  "name": "Vivekananda Park",
+  "stations": [
+   "Mahanayak Uttam Kumar"
+  ],
+  "circuits": [
+   "Haridevpur → Tollygunge"
+  ],
+  "line": "blue"
+ }
+]

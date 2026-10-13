@@ -1,0 +1,348 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-13T08:06:36Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 651795823,
+  "lat": 22.5027682,
+  "lon": 88.3677291,
+  "tags": {
+    "amenity": "police",
+    "name": "Jadavpur Police Station"
+  }
+},
+{
+  "type": "node",
+  "id": 663943188,
+  "lat": 22.5393378,
+  "lon": 88.3444090,
+  "tags": {
+    "amenity": "police",
+    "check_date": "2026-03-22",
+    "name": "Gokhale Road Police Quarters"
+  }
+},
+{
+  "type": "node",
+  "id": 1186025286,
+  "lat": 22.5725398,
+  "lon": 88.3524126,
+  "tags": {
+    "amenity": "police",
+    "name": "Kolkata Police Headquarters",
+    "name:en": "Kolkata Police Headquarters"
+  }
+},
+{
+  "type": "node",
+  "id": 1579176040,
+  "lat": 22.4424481,
+  "lon": 88.4305142,
+  "tags": {
+    "amenity": "police",
+    "designation": "Police Station",
+    "name": "Sonarpur Police Station"
+  }
+},
+{
+  "type": "node",
+  "id": 2168547540,
+  "lat": 22.5841465,
+  "lon": 88.3788957,
+  "tags": {
+    "amenity": "police",
+    "name": "Manicktala P.S"
+  }
+},
+{
+  "type": "node",
+  "id": 2266850257,
+  "lat": 22.5666640,
+  "lon": 88.3653411,
+  "tags": {
+    "amenity": "police",
+    "check_date": "2026-03-22",
+    "name": "Muchipara Police Station"
+  }
+},
+{
+  "type": "node",
+  "id": 2454270956,
+  "lat": 22.6203718,
+  "lon": 88.4254168,
+  "tags": {
+    "amenity": "police",
+    "name": "Baguiati Police Station"
+  }
+},
+{
+  "type": "node",
+  "id": 2461251766,
+  "lat": 22.5425798,
+  "lon": 88.3989293,
+  "tags": {
+    "amenity": "police",
+    "name": "Tiljala Traffic Guard"
+  }
+},
+{
+  "type": "node",
+  "id": 2461251777,
+  "lat": 22.5418694,
+  "lon": 88.3988261,
+  "tags": {
+    "amenity": "police",
+    "name": "Parama - Police Station"
+  }
+},
+{
+  "type": "node",
+  "id": 2461308616,
+  "lat": 22.5767793,
+  "lon": 88.4298724,
+  "tags": {
+    "amenity": "police",
+    "check_date": "2025-01-19",
+    "name": "Sector - V Police Station"
+  }
+},
+{
+  "type": "node",
+  "id": 2471894120,
+  "lat": 22.5266453,
+  "lon": 88.3459941,
+  "tags": {
+    "amenity": "police",
+    "check_date": "2023-09-30",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Bhowanipore Police Station"
+  }
+},
+{
+  "type": "node",
+  "id": 2813667209,
+  "lat": 22.5627183,
+  "lon": 88.3541137,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "133/2",
+    "addr:postcode": "700013",
+    "addr:street": "Surendra Nath Banerjee Road",
+    "amenity": "police",
+    "check_date": "2026-03-22",
+    "name": "New Market Police Station",
+    "phone": "+913322177397",
+    "source": "http://www.kolkatapolice.gov.in/",
+    "website": "http://www.kolkatapolice.gov.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 3324142934,
+  "lat": 22.5931156,
+  "lon": 88.3560430,
+  "tags": {
+    "amenity": "police",
+    "name": "Jorabagan Police Station"
+  }
+},
+{
+  "type": "node",
+  "id": 3363195847,
+  "lat": 22.5035284,
+  "lon": 88.3190032,
+  "tags": {
+    "amenity": "police",
+    "name": "Behala Thana",
+    "operator": "Kolkata Police"
+  }
+},
+{
+  "type": "node",
+  "id": 3961003585,
+  "lat": 22.5088819,
+  "lon": 88.3068201,
+  "tags": {
+    "amenity": "police",
+    "check_date": "2025-12-28",
+    "name": "Parnasree Police Station"
+  }
+},
+{
+  "type": "node",
+  "id": 4356781089,
+  "lat": 22.5470210,
+  "lon": 88.3680459,
+  "tags": {
+    "addr:housenumber": "47",
+    "addr:postcode": "700014",
+    "addr:street": "Gora Chand Rd",
+    "amenity": "police",
+    "name": "beniapukur police station",
+    "phone": "03322844770"
+  }
+},
+{
+  "type": "node",
+  "id": 5253366364,
+  "lat": 22.5753874,
+  "lon": 88.3920651,
+  "tags": {
+    "amenity": "police",
+    "check_date": "2023-10-04",
+    "name": "Phoolbagan Police Sation",
+    "name:bn": "ফুলবাগান থানা"
+  }
+},
+{
+  "type": "node",
+  "id": 6147021003,
+  "lat": 22.5516265,
+  "lon": 88.3564067,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:street": "Park Street",
+    "amenity": "police",
+    "name": "Park Street Police Station"
+  }
+},
+{
+  "type": "node",
+  "id": 6207419685,
+  "lat": 22.6252145,
+  "lon": 88.3827397,
+  "tags": {
+    "amenity": "police",
+    "name": "Sinthee Police Station"
+  }
+},
+{
+  "type": "node",
+  "id": 8185335386,
+  "lat": 22.5925126,
+  "lon": 88.3711427,
+  "tags": {
+    "addr:housenumber": "1",
+    "amenity": "police",
+    "check_date": "2023-09-30",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Burtolla Police Station"
+  }
+},
+{
+  "type": "node",
+  "id": 9570240617,
+  "lat": 22.5888343,
+  "lon": 88.3910050,
+  "tags": {
+    "amenity": "police",
+    "name": "Kolkata Armed Police, 5th Battalion",
+    "website": "https://www.kolkatapolice.gov.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 9609217317,
+  "lat": 22.5691390,
+  "lon": 88.3566114,
+  "tags": {
+    "addr:housenumber": "13",
+    "addr:postcode": "700012",
+    "addr:street": "Kapilatola Ln",
+    "amenity": "police",
+    "name": "Bowbazar police station",
+    "opening_hours": "24/7",
+    "phone": "8100796446"
+  }
+},
+{
+  "type": "node",
+  "id": 9609217417,
+  "lat": 22.5688343,
+  "lon": 88.3569610,
+  "tags": {
+    "addr:housenumber": "42",
+    "addr:postcode": "700054",
+    "addr:street": "Chittaranjan Avenue",
+    "amenity": "police",
+    "check_date": "2026-03-22",
+    "name": "Hare Police Station",
+    "name:en": "Hare Police Station",
+    "phone": "03322118760,03322150100"
+  }
+},
+{
+  "type": "node",
+  "id": 9641103817,
+  "lat": 22.5893923,
+  "lon": 88.3951013,
+  "tags": {
+    "amenity": "police",
+    "name": "Ultadanga traffic guard"
+  }
+},
+{
+  "type": "node",
+  "id": 9911020517,
+  "lat": 22.5420398,
+  "lon": 88.3469829,
+  "tags": {
+    "amenity": "police",
+    "name": "Exide South Traffic Guard Police Station"
+  }
+},
+{
+  "type": "node",
+  "id": 9911020617,
+  "lat": 22.5420279,
+  "lon": 88.3471124,
+  "tags": {
+    "amenity": "police",
+    "check_date": "2026-03-22",
+    "name": "Maidan police station"
+  }
+},
+{
+  "type": "node",
+  "id": 11436646870,
+  "lat": 22.6074097,
+  "lon": 88.3817952,
+  "tags": {
+    "addr:postcode": "700037",
+    "addr:street": "Tala Park Path",
+    "amenity": "police",
+    "name": "Tala Police Station"
+  }
+},
+{
+  "type": "node",
+  "id": 11867113269,
+  "lat": 22.5210534,
+  "lon": 88.3646919,
+  "tags": {
+    "amenity": "police",
+    "name": "गरियाहाट पुलिस थाना",
+    "name:en": "Gariahat Police Station"
+  }
+},
+{
+  "type": "node",
+  "id": 12606460874,
+  "lat": 22.6210025,
+  "lon": 88.4001483,
+  "tags": {
+    "amenity": "police",
+    "name": "Ghugudanga O.P."
+  }
+}
+
+  ]
+}

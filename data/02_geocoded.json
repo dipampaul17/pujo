@@ -1,0 +1,1525 @@
+[
+ {
+  "name": "22 Pally / Northern Park",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5331821,
+   88.3459269
+  ],
+  "lat": 22.5331821,
+  "lng": 88.3459269,
+  "precision": "station"
+ },
+ {
+  "name": "23 Pally",
+  "stations": [
+   "Jatin Das Park"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5241535,
+   88.3464729
+  ],
+  "lat": 22.5206027,
+  "lng": 88.3474513,
+  "precision": "osm",
+  "osmMatch": "64 Pally Durga Pujo"
+ },
+ {
+  "name": "66 Pally",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5168752,
+   88.3458448
+  ],
+  "lat": 22.5182439,
+  "lng": 88.3428643,
+  "precision": "osm",
+  "osmMatch": "66 Pally Durga Pujo"
+ },
+ {
+  "name": "68 Pally",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5331821,
+   88.3459269
+  ],
+  "lat": 22.5206027,
+  "lng": 88.3474513,
+  "precision": "osm",
+  "osmMatch": "64 Pally Durga Pujo"
+ },
+ {
+  "name": "76 Pally",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5331821,
+   88.3459269
+  ],
+  "lat": 22.5206027,
+  "lng": 88.3474513,
+  "precision": "osm",
+  "osmMatch": "64 Pally Durga Pujo"
+ },
+ {
+  "name": "AE Block",
+  "stations": [
+   "Karunamoyee"
+  ],
+  "circuits": [
+   "Salt Lake Block Puja Circuit"
+  ],
+  "line": "green",
+  "stationLatLng": [
+   22.58638,
+   88.4215312
+  ],
+  "lat": 22.5776884,
+  "lng": 88.3941805,
+  "precision": "osm",
+  "osmMatch": "BLOCK A & B"
+ },
+ {
+  "name": "Agradut Udaya Sangha",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5331821,
+   88.3459269
+  ],
+  "lat": 22.5331821,
+  "lng": 88.3459269,
+  "precision": "station"
+ },
+ {
+  "name": "Ahiritola Sarbojanin",
+  "stations": [
+   "Shobhabazar Sutanuti"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.595881,
+   88.3651996
+  ],
+  "lat": 22.5948384,
+  "lng": 88.357193,
+  "precision": "osm",
+  "osmMatch": "Ahiritola Sarbojanin Durgotsav"
+ },
+ {
+  "name": "Ajeya Sanghati",
+  "stations": [
+   "Mahanayak Uttam Kumar"
+  ],
+  "circuits": [
+   "Haridevpur → Tollygunge"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.4947692,
+   88.3450879
+  ],
+  "lat": 22.4809619,
+  "lng": 88.3375291,
+  "precision": "osm",
+  "osmMatch": "Ajeya Sanghati"
+ },
+ {
+  "name": "Arjunpur Amra Sabai Club",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.6059241,
+   88.3863913
+  ],
+  "lat": 22.6059241,
+  "lng": 88.3863913,
+  "precision": "station"
+ },
+ {
+  "name": "BJ Block",
+  "stations": [
+   "Karunamoyee"
+  ],
+  "circuits": [
+   "Salt Lake Block Puja Circuit"
+  ],
+  "line": "green",
+  "stationLatLng": [
+   22.58638,
+   88.4215312
+  ],
+  "lat": 22.5720152,
+  "lng": 88.4134611,
+  "precision": "osm",
+  "osmMatch": "IB Block, Salt Lake City Kolkata, WB"
+ },
+ {
+  "name": "Badamtala Ashar Sangha",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5168752,
+   88.3458448
+  ],
+  "lat": 22.5179272,
+  "lng": 88.3441647,
+  "precision": "osm",
+  "osmMatch": "Badamtala Ashar Sangha Durgotsav"
+ },
+ {
+  "name": "Baghbazar Sarbojanin",
+  "stations": [
+   "Shyambazar"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.601335,
+   88.3724974
+  ],
+  "lat": 22.6046989,
+  "lng": 88.3661347,
+  "precision": "osm",
+  "osmMatch": "Bagbazar Sarbojanin Durgotsav"
+ },
+ {
+  "name": "Baishnabghata Balak Samity",
+  "stations": [
+   "Gitanjali"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5442522,
+   88.3992638
+  ],
+  "lat": 22.5442522,
+  "lng": 88.3992638,
+  "precision": "station"
+ },
+ {
+  "name": "Bakul Bagan",
+  "stations": [
+   "Jatin Das Park"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5241535,
+   88.3464729
+  ],
+  "lat": 22.5270564,
+  "lng": 88.3518046,
+  "precision": "osm",
+  "osmMatch": "Bakul Bagan Row"
+ },
+ {
+  "name": "Ballygunge Cultural",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5168752,
+   88.3458448
+  ],
+  "lat": 22.5158837,
+  "lng": 88.3558166,
+  "precision": "osm",
+  "osmMatch": "Ballygunge Cultural Association"
+ },
+ {
+  "name": "Barisha Club",
+  "stations": [
+   "Mahanayak Uttam Kumar"
+  ],
+  "circuits": [
+   "Haridevpur → Tollygunge"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.4947692,
+   88.3450879
+  ],
+  "lat": 22.4947692,
+  "lng": 88.3450879,
+  "precision": "station"
+ },
+ {
+  "name": "Beniatola Sarbojanin",
+  "stations": [
+   "Shobhabazar Sutanuti"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.595881,
+   88.3651996
+  ],
+  "lat": 22.5984575,
+  "lng": 88.3555843,
+  "precision": "osm",
+  "osmMatch": "Beniatola Ghat"
+ },
+ {
+  "name": "Bhowanipur 75 Pally",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5331821,
+   88.3459269
+  ],
+  "lat": 22.532596,
+  "lng": 88.3454421,
+  "precision": "osm",
+  "osmMatch": "Bhowanipore 75 Pally"
+ },
+ {
+  "name": "Bosepukur Sitala Mandir",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5168752,
+   88.3458448
+  ],
+  "lat": 22.5168752,
+  "lng": 88.3458448,
+  "precision": "station"
+ },
+ {
+  "name": "Chakraberia Sarbojanin",
+  "stations": [
+   "Rabindra Sadan"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5414899,
+   88.3473493
+  ],
+  "lat": 22.5335735,
+  "lng": 88.3521978,
+  "precision": "osm",
+  "osmMatch": "Chakraberia Sarbojanin"
+ },
+ {
+  "name": "Chaltabagan Lohapatty",
+  "stations": [
+   "Girish Park"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5871445,
+   88.3629415
+  ],
+  "lat": 22.5851842,
+  "lng": 88.3720808,
+  "precision": "osm",
+  "osmMatch": "Chaltabagan"
+ },
+ {
+  "name": "Chetla Agrani",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5168752,
+   88.3458448
+  ],
+  "lat": 22.5164347,
+  "lng": 88.3371893,
+  "precision": "osm",
+  "osmMatch": "Chetla Agrani"
+ },
+ {
+  "name": "Chorebagan Sarbojanin",
+  "stations": [
+   "Girish Park"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5871445,
+   88.3629415
+  ],
+  "lat": 22.5835113,
+  "lng": 88.3631633,
+  "precision": "osm",
+  "osmMatch": "Chorbagan Sarbojanin"
+ },
+ {
+  "name": "College Square",
+  "stations": [
+   "MG Road"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5809206,
+   88.3613271
+  ],
+  "lat": 22.5881108,
+  "lng": 88.3700045,
+  "precision": "osm",
+  "osmMatch": "Scottish Church College"
+ },
+ {
+  "name": "Dakshindari Youth",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.6059241,
+   88.3863913
+  ],
+  "lat": 22.6009655,
+  "lng": 88.4047076,
+  "precision": "osm",
+  "osmMatch": "Dakshindari Road"
+ },
+ {
+  "name": "Dakshinpara",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.6059241,
+   88.3863913
+  ],
+  "lat": 22.6089226,
+  "lng": 88.3822661,
+  "precision": "osm",
+  "osmMatch": "Tala Prattoy - Durga Puja Art"
+ },
+ {
+  "name": "Deshapriya Park",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5168752,
+   88.3458448
+  ],
+  "lat": 22.5184354,
+  "lng": 88.3535152,
+  "precision": "osm",
+  "osmMatch": "Deshapriya Park"
+ },
+ {
+  "name": "Dum Dum Park Bharat Chakra",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.6059241,
+   88.3863913
+  ],
+  "lat": 22.6145828,
+  "lng": 88.4032096,
+  "precision": "osm",
+  "osmMatch": null
+ },
+ {
+  "name": "Dum Dum Park Sarbajanin",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.6059241,
+   88.3863913
+  ],
+  "lat": 22.6228019,
+  "lng": 88.4026416,
+  "precision": "osm",
+  "osmMatch": "Durga Mandir"
+ },
+ {
+  "name": "Dum Dum Park Tarun Dal",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.6059241,
+   88.3863913
+  ],
+  "lat": 22.6059241,
+  "lng": 88.3863913,
+  "precision": "station"
+ },
+ {
+  "name": "Ekdalia Evergreen",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5168752,
+   88.3458448
+  ],
+  "lat": 22.5212825,
+  "lng": 88.3662336,
+  "precision": "osm",
+  "osmMatch": "Ekdalia Evergreen"
+ },
+ {
+  "name": "FD Block",
+  "stations": [
+   "Karunamoyee"
+  ],
+  "circuits": [
+   "Salt Lake Block Puja Circuit"
+  ],
+  "line": "green",
+  "stationLatLng": [
+   22.58638,
+   88.4215312
+  ],
+  "lat": 22.5720152,
+  "lng": 88.4134611,
+  "precision": "osm",
+  "osmMatch": "IB Block, Salt Lake City Kolkata, WB"
+ },
+ {
+  "name": "Forward Club",
+  "stations": [
+   "Jatin Das Park"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5241535,
+   88.3464729
+  ],
+  "lat": 22.5231254,
+  "lng": 88.3436327,
+  "precision": "osm",
+  "osmMatch": "Forward Club"
+ },
+ {
+  "name": "Garia Mitali",
+  "stations": [
+   "Kavi Nazrul"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.4642505,
+   88.3804604
+  ],
+  "lat": 22.4616268,
+  "lng": 88.3781677,
+  "precision": "osm",
+  "osmMatch": "Garia Mitali Sangha"
+ },
+ {
+  "name": "Golaghata Sammilani",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.6059241,
+   88.3863913
+  ],
+  "lat": 22.6059241,
+  "lng": 88.3863913,
+  "precision": "station"
+ },
+ {
+  "name": "Haridevpur 41 Pally",
+  "stations": [
+   "Mahanayak Uttam Kumar"
+  ],
+  "circuits": [
+   "Haridevpur → Tollygunge"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.4947692,
+   88.3450879
+  ],
+  "lat": 22.4830205,
+  "lng": 88.3384178,
+  "precision": "osm",
+  "osmMatch": "41 Pally"
+ },
+ {
+  "name": "Harish Park",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5331821,
+   88.3459269
+  ],
+  "lat": 22.5305332,
+  "lng": 88.3437279,
+  "precision": "osm",
+  "osmMatch": "Harish Park"
+ },
+ {
+  "name": "Hatibagan Nabinpally",
+  "stations": [
+   "Shyambazar"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.601335,
+   88.3724974
+  ],
+  "lat": 22.5949572,
+  "lng": 88.3709282,
+  "precision": "osm",
+  "osmMatch": "Hatibagan"
+ },
+ {
+  "name": "Hatibagan Sarbojanin",
+  "stations": [
+   "Shyambazar"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.601335,
+   88.3724974
+  ],
+  "lat": 22.5949572,
+  "lng": 88.3709282,
+  "precision": "osm",
+  "osmMatch": "Hatibagan"
+ },
+ {
+  "name": "Hindusthan Club",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5168752,
+   88.3458448
+  ],
+  "lat": 22.492846,
+  "lng": 88.3553178,
+  "precision": "osm",
+  "osmMatch": "Royal Calcutta Golf Club"
+ },
+ {
+  "name": "Hindusthan Park",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5168752,
+   88.3458448
+  ],
+  "lat": 22.5159698,
+  "lng": 88.3612403,
+  "precision": "osm",
+  "osmMatch": "Hindustan Park Road"
+ },
+ {
+  "name": "Jagat Mukherjee Park",
+  "stations": [
+   "Shobhabazar Sutanuti"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.595881,
+   88.3651996
+  ],
+  "lat": 22.5997035,
+  "lng": 88.3661861,
+  "precision": "osm",
+  "osmMatch": "Jagat Mukherjee Park Sadharan Durgotsab"
+ },
+ {
+  "name": "Janbazar Rajbari",
+  "stations": [
+   "Chandni Chowk"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5670118,
+   88.3541581
+  ],
+  "lat": 22.5471909,
+  "lng": 88.3654721,
+  "precision": "osm",
+  "osmMatch": "Jannagar Crematorium Street"
+ },
+ {
+  "name": "Jorasanko Sadharan",
+  "stations": [
+   "Girish Park"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5871445,
+   88.3629415
+  ],
+  "lat": 22.5834141,
+  "lng": 88.3562514,
+  "precision": "osm",
+  "osmMatch": "Jorasanko"
+ },
+ {
+  "name": "Kamdahari Purbapara",
+  "stations": [
+   "Kavi Nazrul"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.4642505,
+   88.3804604
+  ],
+  "lat": 22.4622423,
+  "lng": 88.3778562,
+  "precision": "osm",
+  "osmMatch": "Kamdhari Road"
+ },
+ {
+  "name": "Kapalitola Sarbajanin",
+  "stations": [
+   "Central"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5724857,
+   88.3587427
+  ],
+  "lat": 22.5835113,
+  "lng": 88.3631633,
+  "precision": "osm",
+  "osmMatch": "Chorbagan Sarbojanin"
+ },
+ {
+  "name": "Kashi Bose Lane",
+  "stations": [
+   "Shyambazar"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.601335,
+   88.3724974
+  ],
+  "lat": 22.5910057,
+  "lng": 88.3689645,
+  "precision": "osm",
+  "osmMatch": "Kashi Bose Lane"
+ },
+ {
+  "name": "Kumartuli Park",
+  "stations": [
+   "Shobhabazar Sutanuti"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.595881,
+   88.3651996
+  ],
+  "lat": 22.6089226,
+  "lng": 88.3822661,
+  "precision": "osm",
+  "osmMatch": "Tala Prattoy - Durga Puja Art"
+ },
+ {
+  "name": "Kumartuli Sarbojanin",
+  "stations": [
+   "Shobhabazar Sutanuti"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.595881,
+   88.3651996
+  ],
+  "lat": 22.5835113,
+  "lng": 88.3631633,
+  "precision": "osm",
+  "osmMatch": "Chorbagan Sarbojanin"
+ },
+ {
+  "name": "Lalabagan Nabankur",
+  "stations": [
+   "Shyambazar"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.601335,
+   88.3724974
+  ],
+  "lat": 22.5974881,
+  "lng": 88.3639853,
+  "precision": "osm",
+  "osmMatch": "Raja Nabakrishna Street"
+ },
+ {
+  "name": "Maddox Square",
+  "stations": [
+   "Jatin Das Park"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5241535,
+   88.3464729
+  ],
+  "lat": 22.5262957,
+  "lng": 88.3546561,
+  "precision": "osm",
+  "osmMatch": "Maddox Square"
+ },
+ {
+  "name": "Matri Mandir",
+  "stations": [
+   "Jatin Das Park"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5241535,
+   88.3464729
+  ],
+  "lat": 22.5195107,
+  "lng": 88.3507497,
+  "precision": "osm",
+  "osmMatch": "Matri mandir"
+ },
+ {
+  "name": "Mudiali",
+  "stations": [
+   "Rabindra Sarobar"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5072216,
+   88.3454936
+  ],
+  "lat": 22.5269309,
+  "lng": 88.3495445,
+  "precision": "osm",
+  "osmMatch": "Golmath Durga Puja Samiti"
+ },
+ {
+  "name": "Muhammad Ali Park",
+  "stations": [
+   "MG Road"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5809206,
+   88.3613271
+  ],
+  "lat": 22.5772396,
+  "lng": 88.3607374,
+  "precision": "osm",
+  "osmMatch": "Mohammad Ali Park"
+ },
+ {
+  "name": "Naba Durga",
+  "stations": [
+   "Kavi Nazrul"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.4642505,
+   88.3804604
+  ],
+  "lat": 22.4743607,
+  "lng": 88.3665164,
+  "precision": "osm",
+  "osmMatch": "Naktala Udayan Sangha Durga Puja"
+ },
+ {
+  "name": "Naktala Pally Unnayan Samity",
+  "stations": [
+   "Netaji / Kudghat"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.4809928,
+   88.3460002
+  ],
+  "lat": 22.4781334,
+  "lng": 88.3422101,
+  "precision": "osm",
+  "osmMatch": "Pally Unnayan Samiti Club"
+ },
+ {
+  "name": "Naktala Udayan Sangha",
+  "stations": [
+   "Gitanjali"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5442522,
+   88.3992638
+  ],
+  "lat": 22.5442522,
+  "lng": 88.3992638,
+  "precision": "station"
+ },
+ {
+  "name": "Nalin Sarkar Street",
+  "stations": [
+   "Shyambazar"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.601335,
+   88.3724974
+  ],
+  "lat": 22.5953461,
+  "lng": 88.3733961,
+  "precision": "osm",
+  "osmMatch": "Nalin Sarkar Street Durgotsav"
+ },
+ {
+  "name": "Nearby Salt Lake block Pujas",
+  "stations": [],
+  "circuits": [
+   "Salt Lake Block Puja Circuit"
+  ],
+  "line": null,
+  "lat": null,
+  "lng": null,
+  "precision": "none"
+ },
+ {
+  "name": "New Sporting Club",
+  "stations": [
+   "Mahanayak Uttam Kumar"
+  ],
+  "circuits": [
+   "Haridevpur → Tollygunge"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.4947692,
+   88.3450879
+  ],
+  "lat": 22.4763156,
+  "lng": 88.3385928,
+  "precision": "osm",
+  "osmMatch": "Vivekananda Sporting Club"
+ },
+ {
+  "name": "Nwapara Udayan Sangha",
+  "stations": [],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": null,
+  "lat": 22.4743607,
+  "lng": 88.3665164,
+  "precision": "osm",
+  "osmMatch": "Naktala Udayan Sangha Durga Puja"
+ },
+ {
+  "name": "Paddapukur Youth",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5331821,
+   88.3459269
+  ],
+  "lat": 22.5293622,
+  "lng": 88.3497098,
+  "precision": "osm",
+  "osmMatch": "Paddapukur Youth Association"
+ },
+ {
+  "name": "Pally Mangal",
+  "stations": [
+   "Kavi Subhash"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.4711093,
+   88.3980989
+  ],
+  "lat": 22.4931205,
+  "lng": 88.3860194,
+  "precision": "osm",
+  "osmMatch": "Pally Mangal"
+ },
+ {
+  "name": "Patuli Sarbojanin",
+  "stations": [
+   "Shahid Khudiram"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.4659847,
+   88.3915408
+  ],
+  "lat": 22.4723088,
+  "lng": 88.3811754,
+  "precision": "osm",
+  "osmMatch": "Patyuli Sarbojanin"
+ },
+ {
+  "name": "Rajdanga Naba Uday Sangha",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5168752,
+   88.3458448
+  ],
+  "lat": 22.5168752,
+  "lng": 88.3458448,
+  "precision": "station"
+ },
+ {
+  "name": "Regent Park",
+  "stations": [
+   "Masterda Surya Sen"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": null,
+  "lat": 22.6089226,
+  "lng": 88.3822661,
+  "precision": "osm",
+  "osmMatch": "Tala Prattoy - Durga Puja Art"
+ },
+ {
+  "name": "Roynagar Unyan Samity",
+  "stations": [
+   "Masterda Surya Sen"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": null,
+  "lat": null,
+  "lng": null,
+  "precision": "none"
+ },
+ {
+  "name": "Santosh Mitra Square",
+  "stations": [
+   "MG Road"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5809206,
+   88.3613271
+  ],
+  "lat": 22.5658629,
+  "lng": 88.3655387,
+  "precision": "osm",
+  "osmMatch": "Santosh Mitra Square"
+ },
+ {
+  "name": "Santoshpur Lake Pally",
+  "stations": [
+   "Kavi Subhash"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.4711093,
+   88.3980989
+  ],
+  "lat": 22.4913829,
+  "lng": 88.3827657,
+  "precision": "osm",
+  "osmMatch": "Santoshpur Lake Pally Udyan"
+ },
+ {
+  "name": "Santoshpur Trikon Park",
+  "stations": [
+   "Kavi Subhash"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.4711093,
+   88.3980989
+  ],
+  "lat": 22.4711093,
+  "lng": 88.3980989,
+  "precision": "station"
+ },
+ {
+  "name": "Sealdah Athletic Club",
+  "stations": [
+   "MG Road"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5809206,
+   88.3613271
+  ],
+  "lat": 22.5710272,
+  "lng": 88.3718742,
+  "precision": "osm",
+  "osmMatch": "Sealdah Athletic Club"
+ },
+ {
+  "name": "Shib Mandir",
+  "stations": [
+   "Rabindra Sarobar"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5072216,
+   88.3454936
+  ],
+  "lat": 22.5110599,
+  "lng": 88.3500239,
+  "precision": "osm",
+  "osmMatch": "Shib Mandir"
+ },
+ {
+  "name": "Shyama Pally",
+  "stations": [
+   "Kavi Nazrul"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.4642505,
+   88.3804604
+  ],
+  "lat": 22.4642505,
+  "lng": 88.3804604,
+  "precision": "station"
+ },
+ {
+  "name": "Sikdar Bagan",
+  "stations": [
+   "Shyambazar"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.601335,
+   88.3724974
+  ],
+  "lat": 22.5966107,
+  "lng": 88.3726163,
+  "precision": "osm",
+  "osmMatch": "Sikdar Bagan St"
+ },
+ {
+  "name": "Simla Byayam Samity",
+  "stations": [
+   "Girish Park"
+  ],
+  "circuits": [
+   "Old Kolkata Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5871445,
+   88.3629415
+  ],
+  "lat": 22.5853898,
+  "lng": 88.365127,
+  "precision": "osm",
+  "osmMatch": "Simla Byayam Samiti"
+ },
+ {
+  "name": "Singhi Park",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5168752,
+   88.3458448
+  ],
+  "lat": 22.5212239,
+  "lng": 88.3630115,
+  "precision": "osm",
+  "osmMatch": "Singhi Park Durgotsav"
+ },
+ {
+  "name": "Sinthee Sarbojanin",
+  "stations": [
+   "Dum Dum"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.6211141,
+   88.3928973
+  ],
+  "lat": 22.6211141,
+  "lng": 88.3928973,
+  "precision": "station"
+ },
+ {
+  "name": "Sovabazar Rajbari",
+  "stations": [
+   "Shobhabazar Sutanuti"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.595881,
+   88.3651996
+  ],
+  "lat": 22.5975289,
+  "lng": 88.3549336,
+  "precision": "osm",
+  "osmMatch": "Sovabazar Ahiritola"
+ },
+ {
+  "name": "Sree Bhumi Sporting Club",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.6059241,
+   88.3863913
+  ],
+  "lat": 22.6003179,
+  "lng": 88.4025899,
+  "precision": "osm",
+  "osmMatch": "Sreebhumi Sporting club"
+ },
+ {
+  "name": "Subodh Mallick Square",
+  "stations": [
+   "Central"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5724857,
+   88.3587427
+  ],
+  "lat": 22.5638631,
+  "lng": 88.359691,
+  "precision": "osm",
+  "osmMatch": "Subodh Mullick Square"
+ },
+ {
+  "name": "Suruchi Sangha",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5168752,
+   88.3458448
+  ],
+  "lat": 22.5090969,
+  "lng": 88.3341832,
+  "precision": "osm",
+  "osmMatch": "Suruchi Sangha"
+ },
+ {
+  "name": "Swadhin Sangha",
+  "stations": [
+   "Netaji Bhavan"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5331821,
+   88.3459269
+  ],
+  "lat": 22.5185653,
+  "lng": 88.352614,
+  "precision": "osm",
+  "osmMatch": "Dakshin Kolkata Sangha"
+ },
+ {
+  "name": "Tala Park",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.6059241,
+   88.3863913
+  ],
+  "lat": 22.6089226,
+  "lng": 88.3822661,
+  "precision": "osm",
+  "osmMatch": "Tala Prattoy - Durga Puja Art"
+ },
+ {
+  "name": "Tala Prattoy",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.6059241,
+   88.3863913
+  ],
+  "lat": 22.6089226,
+  "lng": 88.3822661,
+  "precision": "osm",
+  "osmMatch": "Tala Prattoy - Durga Puja Art"
+ },
+ {
+  "name": "Taltala Sarbojanin",
+  "stations": [
+   "Chandni Chowk"
+  ],
+  "circuits": [],
+  "line": "blue",
+  "stationLatLng": [
+   22.5670118,
+   88.3541581
+  ],
+  "lat": 22.5545447,
+  "lng": 88.3621749,
+  "precision": "osm",
+  "osmMatch": "Taltala Sarbojanin"
+ },
+ {
+  "name": "Tarun Sathi",
+  "stations": [
+   "Kavi Nazrul"
+  ],
+  "circuits": [
+   "Naktala → Garia → Patuli"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.4642505,
+   88.3804604
+  ],
+  "lat": 22.4845253,
+  "lng": 88.3804356,
+  "precision": "osm",
+  "osmMatch": "Tarun Sangha Field"
+ },
+ {
+  "name": "Telengabagan",
+  "stations": [
+   "Belgachia"
+  ],
+  "circuits": [
+   "Sreebhumi + Dum Dum Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.6059241,
+   88.3863913
+  ],
+  "lat": 22.6089226,
+  "lng": 88.3822661,
+  "precision": "osm",
+  "osmMatch": "Tala Prattoy - Durga Puja Art"
+ },
+ {
+  "name": "Tridhara Sammilani",
+  "stations": [
+   "Kalighat"
+  ],
+  "circuits": [
+   "South Kolkata Big Pandal Circuit"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.5168752,
+   88.3458448
+  ],
+  "lat": 22.5195762,
+  "lng": 88.3553485,
+  "precision": "osm",
+  "osmMatch": "Tridhara Sammilani"
+ },
+ {
+  "name": "Vivekananda Park",
+  "stations": [
+   "Mahanayak Uttam Kumar"
+  ],
+  "circuits": [
+   "Haridevpur → Tollygunge"
+  ],
+  "line": "blue",
+  "stationLatLng": [
+   22.4947692,
+   88.3450879
+  ],
+  "lat": 22.481364,
+  "lng": 88.3373116,
+  "precision": "osm",
+  "osmMatch": "Vivekananda Park"
+ }
+]

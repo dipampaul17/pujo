@@ -1,0 +1,8833 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-13T07:59:35Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 1579174171,
+  "lat": 22.4424060,
+  "lon": 88.4300344,
+  "tags": {
+    "addr:housename": "Sonarpur Coffee House",
+    "addr:postcode": "700150",
+    "addr:street": "Sonarpur Station Road",
+    "amenity": "cafe",
+    "cuisine": "indian",
+    "name": "Sonarpur Coffee House",
+    "wifi": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1783122342,
+  "lat": 22.5282160,
+  "lon": 88.3657893,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2023-12-16",
+    "cuisine": "indian;burger;pizza",
+    "name": "Dhaba",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1784288704,
+  "lat": 22.5747278,
+  "lon": 88.4140635,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Shiv Sai Hotel, South Indian Restaurant"
+  }
+},
+{
+  "type": "node",
+  "id": 1833168504,
+  "lat": 22.5170043,
+  "lon": 88.3493188,
+  "tags": {
+    "addr:postcode": "7000 026",
+    "addr:street": "73 & 75 Rash Behari Avenue",
+    "alt_name": "Komala Vilas",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Banana Leaf",
+    "website": "http://www.bananaleaf.in/restaurant.html"
+  }
+},
+{
+  "type": "node",
+  "id": 1833181230,
+  "lat": 22.5530816,
+  "lon": 88.3526293,
+  "tags": {
+    "addr:street": "Park Street",
+    "amenity": "restaurant",
+    "cuisine": "chinese;indian",
+    "name": "Bar-B-Que"
+  }
+},
+{
+  "type": "node",
+  "id": 1864390010,
+  "lat": 22.5244798,
+  "lon": 88.3327671,
+  "tags": {
+    "addr:housenumber": "16L",
+    "addr:postcode": "700027",
+    "addr:street": "Judges Court Road",
+    "air_conditioning": "yes",
+    "amenity": "fast_food",
+    "brand": "Domino's",
+    "brand:ks": "ڈومینوز",
+    "brand:pa": "ਡੋਮੀਨੋਜ਼",
+    "brand:ur": "ڈومینوز",
+    "brand:wikidata": "Q839466",
+    "brand:wikipedia": "en:Domino's Pizza",
+    "check_date": "2026-08-27",
+    "cuisine": "pizza",
+    "level": "-1;0",
+    "name": "Domino's",
+    "name:ks": "ڈومینوز",
+    "name:pa": "ਡੋਮੀਨੋਜ਼",
+    "name:ur": "ڈومینوز",
+    "opening_hours": "Mo-Su 11:00-23:00",
+    "takeaway": "yes",
+    "website": "https://www.dominos.co.in/store-locations/kolkata/alipore",
+    "website:menu": "https://www.dominos.co.in/store-locations/kolkata/alipore/menu"
+  }
+},
+{
+  "type": "node",
+  "id": 1983412036,
+  "lat": 22.5200042,
+  "lon": 88.3647712,
+  "tags": {
+    "amenity": "fast_food",
+    "check_date": "2023-12-16",
+    "cuisine": "regional",
+    "diet:non-vegetarian": "yes",
+    "internet_access": "no",
+    "name": "Roll Shop",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 2017557725,
+  "lat": 22.5222006,
+  "lon": 88.3312799,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Kookie jar"
+  }
+},
+{
+  "type": "node",
+  "id": 2017557726,
+  "lat": 22.5222049,
+  "lon": 88.3310616,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Cream & Fudge"
+  }
+},
+{
+  "type": "node",
+  "id": 2057721042,
+  "lat": 22.6156685,
+  "lon": 88.4122277,
+  "tags": {
+    "alt_name": "Kentucky Fried Chicken",
+    "alt_name:en": "Kentucky Fried Chicken",
+    "alt_name:hi": "केंटुकी फ्राइड चिकन",
+    "alt_name:pa": "ਕੈਂਟੁਕੀ ਫ੍ਰਾਈਡ ਚਿਕਨ",
+    "alt_name:pnb": "کینٹکی فرائیڈ چکن",
+    "alt_name:ur": "کینٹکی فرائیڈ چکن",
+    "amenity": "fast_food",
+    "brand": "KFC",
+    "brand:en": "KFC",
+    "brand:hi": "केएफसी",
+    "brand:pa": "ਕੇਐਫਸੀ",
+    "brand:pnb": "کے ایف سی",
+    "brand:ur": "کے ایف سی",
+    "brand:wikidata": "Q524757",
+    "brand:wikipedia": "en:KFC",
+    "brand:wikipedia:pa": "ਕੇਐਫਸੀ",
+    "brand:wikipedia:ur": "کینٹکی فرائیڈ چکن",
+    "cuisine": "chicken",
+    "name": "KFC",
+    "name:en": "KFC",
+    "name:hi": "केएफसी",
+    "name:pa": "ਕੇਐਫਸੀ",
+    "name:pnb": "کے ایف سی",
+    "name:ur": "کے ایف سی",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2173318416,
+  "lat": 22.5807228,
+  "lon": 88.4379726,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Azad Hind Dhaba"
+  }
+},
+{
+  "type": "node",
+  "id": 2234881738,
+  "lat": 22.5380621,
+  "lon": 88.3512175,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:country": "IN",
+    "addr:housenumber": "10/3",
+    "addr:postcode": "700020",
+    "addr:state": "WB",
+    "addr:street": "Elgin Road",
+    "amenity": "restaurant",
+    "level": "4",
+    "name": "Oh! Calcutta",
+    "operator": "Speciality Restaurants Limited",
+    "phone": "+91-033-22837161",
+    "website": "https://www.speciality.co.in/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2283710597,
+  "lat": 22.5537703,
+  "lon": 88.3511110,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "1A",
+    "addr:postcode": "700071",
+    "addr:street": "Russel Street",
+    "amenity": "restaurant",
+    "name": "Big Max"
+  }
+},
+{
+  "type": "node",
+  "id": 2453083685,
+  "lat": 22.6221564,
+  "lon": 88.4503425,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "McDonald's",
+    "brand:pa": "ਮੈਕਡੋਨਲਡ’ਜ਼",
+    "brand:ur": "مکڈونلڈز",
+    "brand:wikidata": "Q38076",
+    "brand:wikipedia": "en:McDonald's",
+    "brand:wikipedia:pa": "ਮੈਕਡੋਨਲਡ’ਜ਼",
+    "brand:wikipedia:ur": "مکڈونلڈز",
+    "cuisine": "burger",
+    "name": "McDonald's",
+    "name:pa": "ਮੈਕਡੋਨਲਡ’ਜ਼",
+    "name:ur": "مکڈونلڈز",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2453260672,
+  "lat": 22.6226711,
+  "lon": 88.4505588,
+  "tags": {
+    "alt_name": "Kentucky Fried Chicken",
+    "alt_name:en": "Kentucky Fried Chicken",
+    "alt_name:hi": "केंटुकी फ्राइड चिकन",
+    "alt_name:pa": "ਕੈਂਟੁਕੀ ਫ੍ਰਾਈਡ ਚਿਕਨ",
+    "alt_name:pnb": "کینٹکی فرائیڈ چکن",
+    "alt_name:ur": "کینٹکی فرائیڈ چکن",
+    "amenity": "fast_food",
+    "brand": "KFC",
+    "brand:en": "KFC",
+    "brand:hi": "केएफसी",
+    "brand:pa": "ਕੇਐਫਸੀ",
+    "brand:pnb": "کے ایف سی",
+    "brand:ur": "کے ایف سی",
+    "brand:wikidata": "Q524757",
+    "brand:wikipedia": "en:KFC",
+    "brand:wikipedia:pa": "ਕੇਐਫਸੀ",
+    "brand:wikipedia:ur": "کینٹکی فرائیڈ چکن",
+    "cuisine": "chicken",
+    "level": "0",
+    "name": "KFC",
+    "name:en": "KFC",
+    "name:hi": "केएफसी",
+    "name:pa": "ਕੇਐਫਸੀ",
+    "name:pnb": "کے ایف سی",
+    "name:ur": "کے ایف سی",
+    "takeaway": "yes",
+    "website": "https://online.kfc.co.in/",
+    "website:menu": "https://online.kfc.co.in/menu"
+  }
+},
+{
+  "type": "node",
+  "id": 2453836282,
+  "lat": 22.6177634,
+  "lon": 88.4324558,
+  "tags": {
+    "alt_name": "Kentucky Fried Chicken",
+    "alt_name:en": "Kentucky Fried Chicken",
+    "alt_name:hi": "केंटुकी फ्राइड चिकन",
+    "alt_name:pa": "ਕੈਂਟੁਕੀ ਫ੍ਰਾਈਡ ਚਿਕਨ",
+    "alt_name:pnb": "کینٹکی فرائیڈ چکن",
+    "alt_name:ur": "کینٹکی فرائیڈ چکن",
+    "amenity": "fast_food",
+    "brand": "KFC",
+    "brand:en": "KFC",
+    "brand:hi": "केएफसी",
+    "brand:pa": "ਕੇਐਫਸੀ",
+    "brand:pnb": "کے ایف سی",
+    "brand:ur": "کے ایف سی",
+    "brand:wikidata": "Q524757",
+    "brand:wikipedia": "en:KFC",
+    "brand:wikipedia:pa": "ਕੇਐਫਸੀ",
+    "brand:wikipedia:ur": "کینٹکی فرائیڈ چکن",
+    "cuisine": "chicken",
+    "name": "KFC",
+    "name:en": "KFC",
+    "name:hi": "केएफसी",
+    "name:pa": "ਕੇਐਫਸੀ",
+    "name:pnb": "کے ایف سی",
+    "name:ur": "کے ایف سی",
+    "takeaway": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 2454098351,
+  "lat": 22.5721537,
+  "lon": 88.4325447,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Alibaba"
+  }
+},
+{
+  "type": "node",
+  "id": 2454098354,
+  "lat": 22.5771253,
+  "lon": 88.4256814,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "BB's"
+  }
+},
+{
+  "type": "node",
+  "id": 2454098356,
+  "lat": 22.5765090,
+  "lon": 88.4311447,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Domino's",
+    "brand:ks": "ڈومینوز",
+    "brand:pa": "ਡੋਮੀਨੋਜ਼",
+    "brand:ur": "ڈومینوز",
+    "brand:wikidata": "Q839466",
+    "brand:wikipedia": "en:Domino's Pizza",
+    "check_date": "2026-07-23",
+    "check_date:opening_hours": "2026-07-23",
+    "cuisine": "pizza",
+    "name": "Domino's",
+    "name:ks": "ڈومینوز",
+    "name:pa": "ਡੋਮੀਨੋਜ਼",
+    "name:ur": "ڈومینوز",
+    "opening_hours": "Mo-Su 11:00-23:00",
+    "phone": "+91 33 2367 0080",
+    "takeaway": "yes",
+    "website": "https://www.dominos.co.in/store-location/kolkata/millennium-city-it-park-sec-5-kolkata",
+    "website:menu": "https://www.dominos.co.in/menu"
+  }
+},
+{
+  "type": "node",
+  "id": 2461185548,
+  "lat": 22.5725403,
+  "lon": 88.4213668,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Bowler's Den"
+  }
+},
+{
+  "type": "node",
+  "id": 2461251700,
+  "lat": 22.5491395,
+  "lon": 88.4006556,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Oh Calcutta!"
+  }
+},
+{
+  "type": "node",
+  "id": 2461251704,
+  "lat": 22.5491137,
+  "lon": 88.4006192,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Mainland China"
+  }
+},
+{
+  "type": "node",
+  "id": 2461251707,
+  "lat": 22.5490835,
+  "lon": 88.4005692,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Sigree"
+  }
+},
+{
+  "type": "node",
+  "id": 2461349478,
+  "lat": 22.5711968,
+  "lon": 88.4342873,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "China One"
+  }
+},
+{
+  "type": "node",
+  "id": 2461363357,
+  "lat": 22.5706247,
+  "lon": 88.4318170,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Red Hot Chilli Peppers",
+    "phone": "+913323570326"
+  }
+},
+{
+  "type": "node",
+  "id": 2464357902,
+  "lat": 22.5819597,
+  "lon": 88.4500053,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Domino's",
+    "brand:ks": "ڈومینوز",
+    "brand:pa": "ਡੋਮੀਨੋਜ਼",
+    "brand:ur": "ڈومینوز",
+    "brand:wikidata": "Q839466",
+    "brand:wikipedia": "en:Domino's Pizza",
+    "cuisine": "pizza",
+    "name": "Domino's",
+    "name:ks": "ڈومینوز",
+    "name:pa": "ਡੋਮੀਨੋਜ਼",
+    "name:ur": "ڈومینوز",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2464357907,
+  "lat": 22.5820149,
+  "lon": 88.4495190,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Lazeez"
+  }
+},
+{
+  "type": "node",
+  "id": 2464357917,
+  "lat": 22.5823742,
+  "lon": 88.4500652,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Penguin"
+  }
+},
+{
+  "type": "node",
+  "id": 2464357923,
+  "lat": 22.5827956,
+  "lon": 88.4492497,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "cuisine": "coffee_shop",
+    "name": "Cafe Coffee Day",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2464548270,
+  "lat": 22.5826323,
+  "lon": 88.4537664,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "cuisine": "coffee_shop",
+    "name": "Cafe Coffee Day",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2464548275,
+  "lat": 22.5821009,
+  "lon": 88.4537024,
+  "tags": {
+    "amenity": "restaurant",
+    "brand": "Monginis",
+    "brand:wikidata": "Q6899504",
+    "name": "Monginis",
+    "shop": "bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 2464548340,
+  "lat": 22.5797980,
+  "lon": 88.4598119,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Aaheli"
+  }
+},
+{
+  "type": "node",
+  "id": 2464908635,
+  "lat": 22.5855338,
+  "lon": 88.4902925,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Eco Hub"
+  }
+},
+{
+  "type": "node",
+  "id": 2464908637,
+  "lat": 22.5856071,
+  "lon": 88.4901735,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Hangout"
+  }
+},
+{
+  "type": "node",
+  "id": 2464986060,
+  "lat": 22.5798414,
+  "lon": 88.4730872,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2025-02-05",
+    "name": "IRCTC Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 2560435257,
+  "lat": 22.5164608,
+  "lon": 88.3669256,
+  "tags": {
+    "addr:housenumber": "102",
+    "addr:street": "Ballygunge Gardens",
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "check_date": "2023-12-16",
+    "cuisine": "coffee_shop",
+    "internet_access": "no",
+    "name": "Cafe Coffee Day",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2560440346,
+  "lat": 22.5168146,
+  "lon": 88.3668699,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2023-12-16",
+    "cuisine": "indian",
+    "internet_access": "no",
+    "name": "Aminia",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "smoking": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 2560450679,
+  "lat": 22.5164344,
+  "lon": 88.3656505,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2023-12-16",
+    "cuisine": "baked",
+    "internet_access": "no",
+    "name": "Just Baked",
+    "outdoor_seating": "no",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "smoking": "no",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 2560452047,
+  "lat": 22.5165683,
+  "lon": 88.3660103,
+  "tags": {
+    "amenity": "fast_food",
+    "check_date": "2023-12-16",
+    "cuisine": "indian;regional",
+    "diet:non-vegetarian": "yes",
+    "internet_access": "wlan",
+    "name": "Alibaba",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2561110172,
+  "lat": 22.5529926,
+  "lon": 88.3527098,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "cuisine": "coffee_shop",
+    "delivery": "yes",
+    "name": "Cafe Coffee Day",
+    "opening_hours": "Mo-Su 08:00-00:00",
+    "outdoor_seating": "no",
+    "smoking": "no",
+    "source": "survey",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2561264392,
+  "lat": 22.5413282,
+  "lon": 88.3658970,
+  "tags": {
+    "addr:city": "Kolkata",
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "cuisine": "indian",
+    "name": "Zeeshan"
+  }
+},
+{
+  "type": "node",
+  "id": 2561266540,
+  "lat": 22.5412056,
+  "lon": 88.3649509,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "name": "Krazy Kebab"
+  }
+},
+{
+  "type": "node",
+  "id": 2599246808,
+  "lat": 22.5539364,
+  "lon": 88.3542380,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Arsalan"
+  }
+},
+{
+  "type": "node",
+  "id": 2746986381,
+  "lat": 22.5439950,
+  "lon": 88.3583326,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2026-03-22",
+    "name": "The Chocolate Room"
+  }
+},
+{
+  "type": "node",
+  "id": 2746986382,
+  "lat": 22.5437624,
+  "lon": 88.3582462,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "check_date": "2026-03-22",
+    "cuisine": "coffee_shop",
+    "name": "Cafe Coffee Day",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2802912903,
+  "lat": 22.5693637,
+  "lon": 88.4290620,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Nalban Food Court"
+  }
+},
+{
+  "type": "node",
+  "id": 2848998682,
+  "lat": 22.6170413,
+  "lon": 88.4312838,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "O-Zone Restaurant cum Bar"
+  }
+},
+{
+  "type": "node",
+  "id": 2934412979,
+  "lat": 22.5579185,
+  "lon": 88.3542707,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Super Fried Chicken"
+  }
+},
+{
+  "type": "node",
+  "id": 3048206319,
+  "lat": 22.4124207,
+  "lon": 88.3318410,
+  "tags": {
+    "addr:city": "Murshidabad",
+    "addr:housenumber": "60",
+    "addr:street": "Bhattacharyya Street",
+    "amenity": "restaurant",
+    "capacity": "40",
+    "cuisine": "indian",
+    "name": "Sumalia's Restaurant",
+    "opening_hours": "06:",
+    "smoking": "outside"
+  }
+},
+{
+  "type": "node",
+  "id": 3051834901,
+  "lat": 22.5272299,
+  "lon": 88.3673113,
+  "tags": {
+    "addr:housenumber": "53/1/3",
+    "addr:street": "Hazra Road",
+    "amenity": "restaurant",
+    "check_date": "2023-12-16",
+    "cuisine": "indian",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Kasturi",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3406728168,
+  "lat": 22.5940626,
+  "lon": 88.3708345,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2023-10-30",
+    "cuisine": "indian",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Bhojohori Manna",
+    "opening_hours": "12:00-22:00",
+    "phone": "03325338519",
+    "website": "https://g.co/kgs/DtMWJg"
+  }
+},
+{
+  "type": "node",
+  "id": 3410845680,
+  "lat": 22.5157564,
+  "lon": 88.3890097,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Thali"
+  }
+},
+{
+  "type": "node",
+  "id": 3410883893,
+  "lat": 22.5145174,
+  "lon": 88.3903212,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "international",
+    "name": "Harvey's"
+  }
+},
+{
+  "type": "node",
+  "id": 3410900529,
+  "lat": 22.5150486,
+  "lon": 88.3901210,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Boudir Hotel"
+  }
+},
+{
+  "type": "node",
+  "id": 3410912769,
+  "lat": 22.5152352,
+  "lon": 88.3898970,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Naushijaan"
+  }
+},
+{
+  "type": "node",
+  "id": 3412216017,
+  "lat": 22.5167773,
+  "lon": 88.3627680,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Tero Parbon"
+  }
+},
+{
+  "type": "node",
+  "id": 3418913493,
+  "lat": 22.5171093,
+  "lon": 88.3609818,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Wise Owl"
+  }
+},
+{
+  "type": "node",
+  "id": 3512180085,
+  "lat": 22.5528998,
+  "lon": 88.3528378,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "25B",
+    "addr:street": "Park Street",
+    "amenity": "cafe",
+    "brand": "Barista",
+    "brand:wikidata": "Q644735",
+    "cuisine": "coffee_shop",
+    "name": "Barista",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3565444993,
+  "lat": 22.5514184,
+  "lon": 88.3523648,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "international",
+    "name": "Bistro By The Park"
+  }
+},
+{
+  "type": "node",
+  "id": 3565448998,
+  "lat": 22.5524479,
+  "lon": 88.3526151,
+  "tags": {
+    "amenity": "restaurant",
+    "contact:facebook": "https://www.facebook.com/PeterCatKolkata",
+    "cuisine": "international",
+    "name": "Peter Cat"
+  }
+},
+{
+  "type": "node",
+  "id": 3677394125,
+  "lat": 22.5803577,
+  "lon": 88.4117447,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "chinese",
+    "name": "Golden City"
+  }
+},
+{
+  "type": "node",
+  "id": 3677394126,
+  "lat": 22.5880118,
+  "lon": 88.4082873,
+  "tags": {
+    "alt_name": "Kentucky Fried Chicken",
+    "alt_name:en": "Kentucky Fried Chicken",
+    "alt_name:hi": "केंटुकी फ्राइड चिकन",
+    "alt_name:pa": "ਕੈਂਟੁਕੀ ਫ੍ਰਾਈਡ ਚਿਕਨ",
+    "alt_name:pnb": "کینٹکی فرائیڈ چکن",
+    "alt_name:ur": "کینٹکی فرائیڈ چکن",
+    "amenity": "fast_food",
+    "brand": "KFC",
+    "brand:en": "KFC",
+    "brand:hi": "केएफसी",
+    "brand:pa": "ਕੇਐਫਸੀ",
+    "brand:pnb": "کے ایف سی",
+    "brand:ur": "کے ایف سی",
+    "brand:wikidata": "Q524757",
+    "brand:wikipedia": "en:KFC",
+    "brand:wikipedia:pa": "ਕੇਐਫਸੀ",
+    "brand:wikipedia:ur": "کینٹکی فرائیڈ چکن",
+    "cuisine": "chicken",
+    "name": "KFC",
+    "name:en": "KFC",
+    "name:hi": "केएफसी",
+    "name:pa": "ਕੇਐਫਸੀ",
+    "name:pnb": "کے ایف سی",
+    "name:ur": "کے ایف سی",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3677394127,
+  "lat": 22.5879437,
+  "lon": 88.4081651,
+  "tags": {
+    "amenity": "restaurant",
+    "brand": "Pizza Hut",
+    "brand:wikidata": "Q191615",
+    "cuisine": "pizza",
+    "name": "Pizza Hut"
+  }
+},
+{
+  "type": "node",
+  "id": 3724122991,
+  "lat": 22.6201531,
+  "lon": 88.4135008,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:postcode": "700028",
+    "addr:street": "Nagendra Nath Road",
+    "amenity": "fast_food",
+    "cuisine": "indian",
+    "name": "New Rajkumar Sweets"
+  }
+},
+{
+  "type": "node",
+  "id": 3807066487,
+  "lat": 22.6012625,
+  "lon": 88.4075467,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "188, Block - B",
+    "addr:postcode": "700089",
+    "addr:street": "Lake Town Road",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Aqua Java Air"
+  }
+},
+{
+  "type": "node",
+  "id": 3810110642,
+  "lat": 22.5831782,
+  "lon": 88.4093957,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "14",
+    "addr:place": "FD Block",
+    "amenity": "restaurant",
+    "cuisine": "north_indian;indian",
+    "name": "Baati Chokha"
+  }
+},
+{
+  "type": "node",
+  "id": 4147768799,
+  "lat": 22.4997456,
+  "lon": 88.3173187,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "regional",
+    "name": "Haji Saheb",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4147782996,
+  "lat": 22.4992110,
+  "lon": 88.3170665,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:street": "Brahma Samaj Road",
+    "amenity": "fast_food",
+    "cuisine": "indian",
+    "designation": "Sweet shop",
+    "name": "Panna Sweets"
+  }
+},
+{
+  "type": "node",
+  "id": 4175474991,
+  "lat": 22.5567426,
+  "lon": 88.3538825,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "name": "Khalique"
+  }
+},
+{
+  "type": "node",
+  "id": 4176886189,
+  "lat": 22.5412729,
+  "lon": 88.3473650,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "name": "Saima Restaurant"
+  }
+},
+{
+  "type": "node",
+  "id": 4178731070,
+  "lat": 22.5605894,
+  "lon": 88.3514148,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "The Food Bowl"
+  }
+},
+{
+  "type": "node",
+  "id": 4178815699,
+  "lat": 22.5605413,
+  "lon": 88.3513215,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Brother's snacks"
+  }
+},
+{
+  "type": "node",
+  "id": 4189531589,
+  "lat": 22.5816561,
+  "lon": 88.3423385,
+  "tags": {
+    "alt_name": "Kentucky Fried Chicken",
+    "alt_name:en": "Kentucky Fried Chicken",
+    "alt_name:hi": "केंटुकी फ्राइड चिकन",
+    "alt_name:pa": "ਕੈਂਟੁਕੀ ਫ੍ਰਾਈਡ ਚਿਕਨ",
+    "alt_name:pnb": "کینٹکی فرائیڈ چکن",
+    "alt_name:ur": "کینٹکی فرائیڈ چکن",
+    "amenity": "fast_food",
+    "brand": "KFC",
+    "brand:en": "KFC",
+    "brand:hi": "केएफसी",
+    "brand:pa": "ਕੇਐਫਸੀ",
+    "brand:pnb": "کے ایف سی",
+    "brand:ur": "کے ایف سی",
+    "brand:wikidata": "Q524757",
+    "brand:wikipedia": "en:KFC",
+    "brand:wikipedia:pa": "ਕੇਐਫਸੀ",
+    "brand:wikipedia:ur": "کینٹکی فرائیڈ چکن",
+    "cuisine": "chicken",
+    "name": "KFC",
+    "name:en": "KFC",
+    "name:hi": "केएफसी",
+    "name:pa": "ਕੇਐਫਸੀ",
+    "name:pnb": "کے ایف سی",
+    "name:ur": "کے ایف سی",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4243771893,
+  "lat": 22.5245108,
+  "lon": 88.3524953,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "cuisine": "coffee_shop",
+    "name": "Cafe Coffee Day",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4247989992,
+  "lat": 22.5580790,
+  "lon": 88.3530340,
+  "tags": {
+    "amenity": "restaurant",
+    "delivery": "yes",
+    "internet_access": "wlan",
+    "name": "Blue Sky Cafe",
+    "outdoor_seating": "no",
+    "smoking": "no",
+    "source": "survey",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4253065490,
+  "lat": 22.5807190,
+  "lon": 88.3418438,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "IRCTC Janaahar",
+    "name:en": "IRCTC Janaahar",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4340907850,
+  "lat": 22.5130096,
+  "lon": 88.4051299,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Mio Amore",
+    "brand:wikidata": "Q130534919",
+    "diet:vegetarian": "yes",
+    "name": "Mio Amore",
+    "name:bn": "মিও আমোরে",
+    "name:en": "Mio Amore",
+    "shop": "pastry",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4349782391,
+  "lat": 22.6273140,
+  "lon": 88.3784230,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Domino's",
+    "brand:ks": "ڈومینوز",
+    "brand:pa": "ਡੋਮੀਨੋਜ਼",
+    "brand:ur": "ڈومینوز",
+    "brand:wikidata": "Q839466",
+    "brand:wikipedia": "en:Domino's Pizza",
+    "cuisine": "pizza",
+    "name": "Domino's",
+    "name:ks": "ڈومینوز",
+    "name:pa": "ਡੋਮੀਨੋਜ਼",
+    "name:ur": "ڈومینوز",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4362703977,
+  "lat": 22.4755316,
+  "lon": 88.4010838,
+  "tags": {
+    "amenity": "fast_food",
+    "cuisine": "indian",
+    "name": "Neils Kitchen",
+    "website": "Neils kitchen"
+  }
+},
+{
+  "type": "node",
+  "id": 4364237746,
+  "lat": 22.4752627,
+  "lon": 88.4009281,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "cuisine": "coffee_shop",
+    "name": "Cafe Coffee Day",
+    "takeaway": "yes",
+    "website": "https://www.cafecoffeeday.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 4368070793,
+  "lat": 22.5584070,
+  "lon": 88.3522780,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Gaylord's",
+    "smoking": "no",
+    "source": "survey",
+    "takeaway": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4368075292,
+  "lat": 22.5586320,
+  "lon": 88.3507170,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Zaranj",
+    "name:ko": "서더스트리트",
+    "phone": "+91-33-2249-0369;+91-33-2249-0370;+91-90070-66664;+91-90070-66665",
+    "source": "Survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4368161895,
+  "lat": 22.5587790,
+  "lon": 88.3524860,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "delivery": "no",
+    "internet_access": "no",
+    "name": "Khalsa",
+    "source": "Survey"
+  }
+},
+{
+  "type": "node",
+  "id": 4370643951,
+  "lat": 22.5014712,
+  "lon": 88.3517381,
+  "tags": {
+    "amenity": "cafe",
+    "internet_access": "wlan",
+    "name": "Crossroad Cafe",
+    "name:en": "Crossroad Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 4377409089,
+  "lat": 22.5391830,
+  "lon": 88.3471010,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "2A",
+    "addr:postcode": "700020",
+    "addr:street": "Suburban Hospital Road",
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "internet_access": "no",
+    "name": "MOMO PLAZA",
+    "opening_hours": "12:00-22:00",
+    "phone": "03322878260",
+    "source": "Survey",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377474296,
+  "lat": 22.5527130,
+  "lon": 88.3672820,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "cuisine": "indian",
+    "delivery": "no",
+    "internet_access": "no",
+    "name": "ZAM ZAM",
+    "outdoor_seating": "no",
+    "smoking": "no",
+    "source": "Survey",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4377549603,
+  "lat": 22.5521803,
+  "lon": 88.3527404,
+  "tags": {
+    "alt_name": "Kentucky Fried Chicken",
+    "alt_name:en": "Kentucky Fried Chicken",
+    "alt_name:hi": "केंटुकी फ्राइड चिकन",
+    "alt_name:pa": "ਕੈਂਟੁਕੀ ਫ੍ਰਾਈਡ ਚਿਕਨ",
+    "alt_name:pnb": "کینٹکی فرائیڈ چکن",
+    "alt_name:ur": "کینٹکی فرائیڈ چکن",
+    "amenity": "fast_food",
+    "brand": "KFC",
+    "brand:en": "KFC",
+    "brand:hi": "केएफसी",
+    "brand:pa": "ਕੇਐਫਸੀ",
+    "brand:pnb": "کے ایف سی",
+    "brand:ur": "کے ایف سی",
+    "brand:wikidata": "Q524757",
+    "brand:wikipedia": "en:KFC",
+    "brand:wikipedia:pa": "ਕੇਐਫਸੀ",
+    "brand:wikipedia:ur": "کینٹکی فرائیڈ چکن",
+    "cuisine": "chicken",
+    "delivery": "yes",
+    "drive_through": "no",
+    "internet_access": "no",
+    "name": "KFC",
+    "name:en": "KFC",
+    "name:hi": "केएफसी",
+    "name:pa": "ਕੇਐਫਸੀ",
+    "name:pnb": "کے ایف سی",
+    "name:ur": "کے ایف سی",
+    "outdoor_seating": "no",
+    "smoking": "no",
+    "source": "Survey",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4393259889,
+  "lat": 22.5413075,
+  "lon": 88.3500109,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "name": "Shila"
+  }
+},
+{
+  "type": "node",
+  "id": 4393259890,
+  "lat": 22.5365892,
+  "lon": 88.3509509,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:postcode": "700020",
+    "addr:street": "Elgin Lane",
+    "amenity": "restaurant",
+    "check_date": "2023-10-28",
+    "cuisine": "bengali;indian",
+    "name": "Kewpie's",
+    "name:en": "Kewpie's",
+    "phone": "03324861600",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4556752669,
+  "lat": 22.5529427,
+  "lon": 88.3533280,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "chinese",
+    "name": "Golden Dragon"
+  }
+},
+{
+  "type": "node",
+  "id": 4563514490,
+  "lat": 22.5894675,
+  "lon": 88.4089049,
+  "tags": {
+    "addr:street": "2nd Cross Road",
+    "amenity": "fast_food",
+    "cuisine": "sandwich;sausage;local;chinese;noodles;pancake;chicken;thai",
+    "name": "The Fat Monk",
+    "name:en": "The Fat Monk",
+    "name:hi": "दि फेट मंक",
+    "opening_hours": "Mo-Su 14:00-22:30",
+    "operator": "Gautam Sherpa & Sachiko Seth",
+    "phone": "+91 82857 19879"
+  }
+},
+{
+  "type": "node",
+  "id": 4571180589,
+  "lat": 22.5760970,
+  "lon": 88.3638913,
+  "tags": {
+    "addr:housenumber": "15",
+    "addr:postcode": "700 073",
+    "addr:street": "Bankim Chatterjee Street",
+    "amenity": "restaurant",
+    "brand": "Indian Coffee House",
+    "brand:wikidata": "Q3595301",
+    "check_date": "2023-10-24",
+    "cuisine": "coffee_shop;indian",
+    "internet_access": "no",
+    "name": "Indian Coffee House",
+    "payment:cards": "no",
+    "payment:cash": "yes",
+    "payment:credit_cards": "no",
+    "payment:debit_cards": "no",
+    "wikidata": "Q4711938",
+    "wikimedia_commons": "Category:College Street Coffee House",
+    "wikipedia": "en:College Street Coffee House"
+  }
+},
+{
+  "type": "node",
+  "id": 4613442991,
+  "lat": 22.5657260,
+  "lon": 88.3506294,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Amazing Lassi Stall",
+    "name:en": "Amazing Lassi Stall"
+  }
+},
+{
+  "type": "node",
+  "id": 4638153190,
+  "lat": 22.5624082,
+  "lon": 88.3524888,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "diet:vegetarian": "only",
+    "name": "Tiwari Pure Vegetarian Restaurant",
+    "name:hi": "Tiwari Pure Vegetarian Restaurant"
+  }
+},
+{
+  "type": "node",
+  "id": 4638153290,
+  "lat": 22.5627857,
+  "lon": 88.3527928,
+  "tags": {
+    "addr:housenumber": "140",
+    "addr:street": "Surendra Nath Banerjee Road",
+    "amenity": "fast_food",
+    "check_date": "2026-03-22",
+    "cuisine": "indian",
+    "name": "Shree Krishna Mistanna Bhandar140",
+    "name:hi": "Shree Krishna Mistanna Bhandar140"
+  }
+},
+{
+  "type": "node",
+  "id": 4646598289,
+  "lat": 22.5525958,
+  "lon": 88.3559628,
+  "tags": {
+    "amenity": "fast_food",
+    "cuisine": "indian",
+    "name": "Bably's Fast Food",
+    "name:en": "Bably's Fast Food"
+  }
+},
+{
+  "type": "node",
+  "id": 4679601931,
+  "lat": 22.5902422,
+  "lon": 88.4092378,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2025-02-05",
+    "cuisine": "regional",
+    "name": "6 Ballygunge Place",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4679622353,
+  "lat": 22.5872971,
+  "lon": 88.4078096,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Afraa"
+  }
+},
+{
+  "type": "node",
+  "id": 4679622354,
+  "lat": 22.5881233,
+  "lon": 88.4087142,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Wow! Momo",
+    "brand:wikidata": "Q8037446",
+    "cuisine": "momo",
+    "name": "Wow! Momo",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4680388490,
+  "lat": 22.5496197,
+  "lon": 88.3493166,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2023-09-30",
+    "cuisine": "italian",
+    "name": "Fire and Ice",
+    "website": "https://www.fireandicepizzeria.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 4715467290,
+  "lat": 22.5721119,
+  "lon": 88.3524008,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Bharat Biryani",
+    "name:en": "Bharat Biryani"
+  }
+},
+{
+  "type": "node",
+  "id": 4716438832,
+  "lat": 22.5230927,
+  "lon": 88.3652596,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Mandeville Gardens",
+    "amenity": "fast_food",
+    "check_date": "2023-12-16",
+    "cuisine": "regional",
+    "internet_access": "no",
+    "name": "Phuchka Stand",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4716442224,
+  "lat": 22.5232061,
+  "lon": 88.3647100,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2023-12-16",
+    "cuisine": "north_indian;regional;burger;pizza",
+    "drink": "beer",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Mirch Masala",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4718204589,
+  "lat": 22.5273404,
+  "lon": 88.3655921,
+  "tags": {
+    "addr:street": "Hazra Road",
+    "amenity": "fast_food",
+    "check_date": "2023-12-16",
+    "description": "Momo seller",
+    "name": "Momo on The Move",
+    "name:en": "Wow Momo (on The Move)",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4732262821,
+  "lat": 22.4367291,
+  "lon": 88.4519396,
+  "tags": {
+    "addr:street": "Sonarpur Station Road",
+    "amenity": "fast_food",
+    "name": "Sree Gangoor Hotel & Resturant",
+    "name:en": "Sree Gangoor Hotel & Resturant",
+    "opening_hours": "Mo-Su 16:00-21:00"
+  }
+},
+{
+  "type": "node",
+  "id": 4766298584,
+  "lat": 22.5580743,
+  "lon": 88.3541457,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Raj's Spanish Cafe",
+    "name:en": "Raj's Spanish Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 4825578821,
+  "lat": 22.5535422,
+  "lon": 88.3522664,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Kusum Rolls",
+    "phone": "+91 98310 66077;+91 33 6503 0009"
+  }
+},
+{
+  "type": "node",
+  "id": 4841144421,
+  "lat": 22.5536951,
+  "lon": 88.3582981,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Lin's Noodle King",
+    "name:en": "Lin's Noodle King"
+  }
+},
+{
+  "type": "node",
+  "id": 4841301732,
+  "lat": 22.5684922,
+  "lon": 88.3911795,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:vegetarian": "yes",
+    "name": "Pawan Putra",
+    "outdoor_seating": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4845192822,
+  "lat": 22.5605395,
+  "lon": 88.3516371,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Domino's",
+    "brand:ks": "ڈومینوز",
+    "brand:pa": "ਡੋਮੀਨੋਜ਼",
+    "brand:ur": "ڈومینوز",
+    "brand:wikidata": "Q839466",
+    "brand:wikipedia": "en:Domino's Pizza",
+    "cuisine": "pizza",
+    "name": "Domino's",
+    "name:ks": "ڈومینوز",
+    "name:pa": "ਡੋਮੀਨੋਜ਼",
+    "name:ur": "ڈومینوز",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4845252121,
+  "lat": 22.5605007,
+  "lon": 88.3515266,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Wow! Momo",
+    "brand:wikidata": "Q8037446",
+    "cuisine": "momo",
+    "name": "Wow! Momo",
+    "name:en": "Wow! Momo",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4859072221,
+  "lat": 22.5548233,
+  "lon": 88.3509058,
+  "tags": {
+    "amenity": "restaurant",
+    "level": "0",
+    "name": "Hot Kati Roll",
+    "name:en": "Hot Kati Roll",
+    "outdoor_seating": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4865708823,
+  "lat": 22.5583658,
+  "lon": 88.3541137,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Raj's Spanish Restaurant",
+    "name:en": "Raj's Spanish Restaurant"
+  }
+},
+{
+  "type": "node",
+  "id": 4881322221,
+  "lat": 22.5580809,
+  "lon": 88.3539162,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Taj Continental Restaurant",
+    "name:en": "Taj Continental Restaurant"
+  }
+},
+{
+  "type": "node",
+  "id": 4937969021,
+  "lat": 22.5438718,
+  "lon": 88.3659522,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "bar": "no",
+    "capacity": "120",
+    "check_date": "2023-12-16",
+    "cuisine": "regional",
+    "delivery": "yes",
+    "diet:halal": "yes",
+    "diet:meat": "yes",
+    "diet:non-vegetarian": "yes",
+    "diet:vegetarian": "yes",
+    "internet_access": "no",
+    "name": "Arsalan Restaurant",
+    "name:en": "Arsalan",
+    "opening_hours": "Mo-Su 10:30-24:00",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "+913322848556",
+    "smoking": "outside",
+    "website": "https://arsalanrestaurants.com/",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 4974790724,
+  "lat": 22.5612840,
+  "lon": 88.3509238,
+  "tags": {
+    "addr:housenumber": "26",
+    "addr:street": "Chowringhee Road",
+    "amenity": "restaurant",
+    "name": "1658",
+    "name:en": "1658"
+  }
+},
+{
+  "type": "node",
+  "id": 4974790923,
+  "lat": 22.5202079,
+  "lon": 88.3608602,
+  "tags": {
+    "addr:housenumber": "18/1",
+    "addr:street": "Hindustan Road",
+    "amenity": "restaurant",
+    "name": "Bhojohori Manna 6",
+    "name:en": "Bhojohori Manna 6"
+  }
+},
+{
+  "type": "node",
+  "id": 4974974022,
+  "lat": 22.5556205,
+  "lon": 88.3524059,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Russell",
+    "amenity": "restaurant",
+    "name": "Teej",
+    "name:en": "Teej"
+  }
+},
+{
+  "type": "node",
+  "id": 5041514560,
+  "lat": 22.5690331,
+  "lon": 88.4339223,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "10 Downing Street"
+  }
+},
+{
+  "type": "node",
+  "id": 5041514561,
+  "lat": 22.5690916,
+  "lon": 88.4340607,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Kareem's"
+  }
+},
+{
+  "type": "node",
+  "id": 5041514562,
+  "lat": 22.5687155,
+  "lon": 88.4348793,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Genuine Broaster Chicken"
+  }
+},
+{
+  "type": "node",
+  "id": 5041514563,
+  "lat": 22.5689582,
+  "lon": 88.4332261,
+  "tags": {
+    "amenity": "restaurant",
+    "brand": "Barbeque Nation",
+    "brand:wikidata": "Q4859568",
+    "cuisine": "barbecue",
+    "name": "Barbeque Nation"
+  }
+},
+{
+  "type": "node",
+  "id": 5041514564,
+  "lat": 22.5688496,
+  "lon": 88.4334902,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Tea Junction"
+  }
+},
+{
+  "type": "node",
+  "id": 5041514572,
+  "lat": 22.5691178,
+  "lon": 88.4335094,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "One Sports Lounge"
+  }
+},
+{
+  "type": "node",
+  "id": 5041514573,
+  "lat": 22.5692375,
+  "lon": 88.4333509,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Ocean Grill"
+  }
+},
+{
+  "type": "node",
+  "id": 5073437018,
+  "lat": 22.5148914,
+  "lon": 88.3575934,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "chinese",
+    "name": "Tak Heng"
+  }
+},
+{
+  "type": "node",
+  "id": 5150935621,
+  "lat": 22.5621436,
+  "lon": 88.3535384,
+  "tags": {
+    "addr:housenumber": "22-23",
+    "addr:street": "Hogg St",
+    "amenity": "cafe",
+    "check_date": "2026-03-22",
+    "name": "Nizam's"
+  }
+},
+{
+  "type": "node",
+  "id": 5151679224,
+  "lat": 22.5673829,
+  "lon": 88.3517641,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Amber"
+  }
+},
+{
+  "type": "node",
+  "id": 5151716323,
+  "lat": 22.5516985,
+  "lon": 88.3525878,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Amber Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 5151716324,
+  "lat": 22.5471824,
+  "lon": 88.3505072,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "name": "Jyoti Vihar"
+  }
+},
+{
+  "type": "node",
+  "id": 5151718328,
+  "lat": 22.5277993,
+  "lon": 88.3686373,
+  "tags": {
+    "addr:housenumber": "53/1/3",
+    "addr:street": "Hazra Road",
+    "amenity": "restaurant",
+    "check_date": "2023-12-16",
+    "cuisine": "regional",
+    "name": "6 Ballygunge Place"
+  }
+},
+{
+  "type": "node",
+  "id": 5151718336,
+  "lat": 22.5208883,
+  "lon": 88.3528505,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Ammini"
+  }
+},
+{
+  "type": "node",
+  "id": 5151718435,
+  "lat": 22.5294939,
+  "lon": 88.3687965,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2023-12-16",
+    "cuisine": "regional;burger;pizza",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Bohemian",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5153778328,
+  "lat": 22.5245348,
+  "lon": 88.3669534,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Mandeville Gardens",
+    "amenity": "restaurant",
+    "check_date": "2023-12-16",
+    "cuisine": "pizza;regional",
+    "diet:vegetarian": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Tasty Corner",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 5169243925,
+  "lat": 22.5528511,
+  "lon": 88.3627796,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Moghal Biryani",
+    "name:en": "Moghal Biryani"
+  }
+},
+{
+  "type": "node",
+  "id": 5246633421,
+  "lat": 22.5683020,
+  "lon": 88.3557366,
+  "tags": {
+    "addr:street": "Ganesh Chandra Road",
+    "amenity": "restaurant",
+    "name": "Broadway Hotel",
+    "name:hi": "Broadway Hotel",
+    "phone": "22363930"
+  }
+},
+{
+  "type": "node",
+  "id": 5247703122,
+  "lat": 22.5536207,
+  "lon": 88.3520567,
+  "tags": {
+    "addr:street": "Park Street",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Rajdhani",
+    "name:hi": "राजधानी"
+  }
+},
+{
+  "type": "node",
+  "id": 5259891223,
+  "lat": 22.4832900,
+  "lon": 88.3910361,
+  "tags": {
+    "addr:postcode": "700094",
+    "addr:street": "Eastern Metropolitan Bypass",
+    "amenity": "fast_food",
+    "name": "Sandwiches"
+  }
+},
+{
+  "type": "node",
+  "id": 5273034922,
+  "lat": 22.5606952,
+  "lon": 88.3518020,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "name": "Ruchika"
+  }
+},
+{
+  "type": "node",
+  "id": 5295758422,
+  "lat": 22.5736239,
+  "lon": 88.3563641,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Sea Voi Eating House",
+    "name:en": "Sea Voi Eating House"
+  }
+},
+{
+  "type": "node",
+  "id": 5303024722,
+  "lat": 22.5377827,
+  "lon": 88.3441290,
+  "tags": {
+    "addr:housenumber": "10/B",
+    "addr:postcode": "700025",
+    "addr:street": "Harish Mukherjee Road",
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "cuisine": "indian",
+    "diet:vegetarian": "yes",
+    "name": "Balwant Singh's Eating House",
+    "phone": "09903975361",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5303024823,
+  "lat": 22.5448688,
+  "lon": 88.3545938,
+  "tags": {
+    "amenity": "fast_food",
+    "cuisine": "indian",
+    "diet:vegetarian": "only",
+    "name": "Veg restaurant"
+  }
+},
+{
+  "type": "node",
+  "id": 5324969923,
+  "lat": 22.5569289,
+  "lon": 88.3547528,
+  "tags": {
+    "addr:housenumber": "17G",
+    "addr:postcode": "700 016",
+    "addr:street": "Mirza Ghalib Street",
+    "amenity": "restaurant",
+    "cuisine": "bengali;indian;breakfast;local",
+    "name": "Radhuni Restaurant",
+    "phone": "2217 6465"
+  }
+},
+{
+  "type": "node",
+  "id": 5339103821,
+  "lat": 22.5349694,
+  "lon": 88.3537862,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "cuisine": "burger;sandwich;italian;italian_pizza",
+    "name": "My Big Fat Belly",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 5349341783,
+  "lat": 22.5465213,
+  "lon": 88.3870960,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "105",
+    "addr:postcode": "700046",
+    "addr:street": "Topsia North Road",
+    "amenity": "restaurant",
+    "cuisine": "chinese",
+    "name": "বেইজিং রেঁস্তোরা",
+    "name:bn": "বেইজিং রেঁস্তোরা",
+    "name:en": "Beijing Restaurant"
+  }
+},
+{
+  "type": "node",
+  "id": 5392863822,
+  "lat": 22.5408307,
+  "lon": 88.3441615,
+  "tags": {
+    "amenity": "fast_food",
+    "check_date": "2026-03-22",
+    "name": "Street food area"
+  }
+},
+{
+  "type": "node",
+  "id": 5414029822,
+  "lat": 22.5402890,
+  "lon": 88.3650923,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "name": "The South Indian"
+  }
+},
+{
+  "type": "node",
+  "id": 5450195823,
+  "lat": 22.5154121,
+  "lon": 88.3680977,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:street": "Raja Subosh Chandra Mallik Road",
+    "amenity": "restaurant",
+    "check_date": "2023-12-16",
+    "diet:vegetarian": "only",
+    "internet_access": "no",
+    "name": "Mission Vegetarian Cafe",
+    "name:es": "Café Misión Vegetariana",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "+91 33 6500 1122",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5574212963,
+  "lat": 22.5729323,
+  "lon": 88.3665439,
+  "tags": {
+    "addr:housenumber": "29",
+    "addr:street": "Surya Sen Street",
+    "amenity": "fast_food",
+    "cuisine": "fried_food",
+    "description": "Serves fried Bengali snacks like chop, cutlet, beguni, accepts only cash.",
+    "diet:non-vegetarian": "yes",
+    "drive_through": "no",
+    "name": "Kalika",
+    "opening_hours": "Mo-Sa 15:00-20:00"
+  }
+},
+{
+  "type": "node",
+  "id": 5576449365,
+  "lat": 22.5771509,
+  "lon": 88.4108575,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Shiraz"
+  }
+},
+{
+  "type": "node",
+  "id": 5598648922,
+  "lat": 22.5523460,
+  "lon": 88.3533112,
+  "tags": {
+    "amenity": "restaurant",
+    "brand": "Hard Rock Cafe",
+    "brand:wikidata": "Q918151",
+    "cuisine": "american",
+    "name": "Hard Rock Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 5598656722,
+  "lat": 22.5524307,
+  "lon": 88.3532304,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:pa": "ਸਟਾਰਬਕਸ",
+    "brand:ur": "اسٹاربکس",
+    "brand:wikidata": "Q37158",
+    "brand:wikipedia": "en:Starbucks",
+    "cuisine": "coffee_shop",
+    "indoor_seating": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "level": "0",
+    "name": "Starbucks",
+    "name:pa": "ਸਟਾਰਬਕਸ",
+    "name:ur": "اسٹاربکس",
+    "official_name": "Starbucks Coffee",
+    "official_name:pa": "ਸਟਾਰਬਕਸ ਕੌਫੀ",
+    "official_name:ur": "اسٹاربکس کافی",
+    "opening_hours": "Mo-Su 08:00-00:30",
+    "smoking": "no",
+    "takeaway": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 5600097022,
+  "lat": 22.5528507,
+  "lon": 88.3528567,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "57",
+    "addr:postcode": "700016",
+    "addr:street": "Park Street",
+    "amenity": "fast_food",
+    "brand": "Wow! Momo",
+    "brand:wikidata": "Q8037446",
+    "cuisine": "momo",
+    "indoor_seating": "yes",
+    "level": "0;1",
+    "name": "Wow! Momo",
+    "phone": "+91-33-4602-4764",
+    "takeaway": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5651742622,
+  "lat": 22.5542336,
+  "lon": 88.3509882,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "fast_food",
+    "brand": "Domino's",
+    "brand:ks": "ڈومینوز",
+    "brand:pa": "ਡੋਮੀਨੋਜ਼",
+    "brand:ur": "ڈومینوز",
+    "brand:wikidata": "Q839466",
+    "brand:wikipedia": "en:Domino's Pizza",
+    "cuisine": "pizza",
+    "indoor_seating": "yes",
+    "level": "0",
+    "name": "Domino's",
+    "name:ks": "ڈومینوز",
+    "name:pa": "ਡੋਮੀਨੋਜ਼",
+    "name:ur": "ڈومینوز",
+    "operator": "Jubilant Foodworks Limited",
+    "outdoor_seating": "no",
+    "takeaway": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 5744988924,
+  "lat": 22.4714228,
+  "lon": 88.3891649,
+  "tags": {
+    "addr:street": "EM Bypass",
+    "amenity": "restaurant",
+    "cuisine": "indian;chinese;asian",
+    "name": "Machhranga Airconditioned Multi Cuisine",
+    "opening_hours": "Mo-Su 12:00-23:30",
+    "phone": "9674684157"
+  }
+},
+{
+  "type": "node",
+  "id": 5745581821,
+  "lat": 22.5456920,
+  "lon": 88.3528932,
+  "tags": {
+    "addr:street": "Camac Street",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Dawat",
+    "phone": "22523271"
+  }
+},
+{
+  "type": "node",
+  "id": 5832603187,
+  "lat": 22.6214919,
+  "lon": 88.4015878,
+  "tags": {
+    "addr:street": "Dum Dum Road",
+    "amenity": "restaurant",
+    "name": "My Little Kitchen"
+  }
+},
+{
+  "type": "node",
+  "id": 5832603188,
+  "lat": 22.6214773,
+  "lon": 88.4014190,
+  "tags": {
+    "addr:street": "Dum Dum Road",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "cuisine": "coffee_shop",
+    "indoor_seating": "yes",
+    "name": "Cafe Coffee Day",
+    "outdoor_seating": "no",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5879139485,
+  "lat": 22.5542483,
+  "lon": 88.3513390,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Kati Rolls"
+  }
+},
+{
+  "type": "node",
+  "id": 5923972005,
+  "lat": 22.5538473,
+  "lon": 88.3518492,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "tea;coffee_shop;international",
+    "diet:vegetarian": "yes",
+    "name": "Cha Bar"
+  }
+},
+{
+  "type": "node",
+  "id": 5929480264,
+  "lat": 22.6998552,
+  "lon": 88.3884600,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Prabha Fastfood Center"
+  }
+},
+{
+  "type": "node",
+  "id": 5996504475,
+  "lat": 22.6776506,
+  "lon": 88.4466409,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Sher-e-Punjab"
+  }
+},
+{
+  "type": "node",
+  "id": 6027559692,
+  "lat": 22.6214227,
+  "lon": 88.4015225,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Momozing"
+  }
+},
+{
+  "type": "node",
+  "id": 6126110985,
+  "lat": 22.5152547,
+  "lon": 88.3654717,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2023-12-16",
+    "cuisine": "chinese;indian;regional;pizza;burger",
+    "diet:non-vegetarian": "yes",
+    "diet:vegan": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Zaika",
+    "name:en": "Crossroad Crystal",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6126300686,
+  "lat": 22.5563102,
+  "lon": 88.3572939,
+  "tags": {
+    "addr:housenumber": "75B",
+    "addr:postcode": "700016",
+    "addr:street": "Rafi Ahmad Kidwai Road",
+    "amenity": "restaurant",
+    "cuisine": "fish;breakfast;asian;beef_bowl;diner;kebab;indian;curry",
+    "diet:vegetarian": "yes",
+    "name": "New Arafat Restaurant & Cat",
+    "name:en": "New Arafat Restaurant & Caterer",
+    "name:hi": "নিউ আরাফাত রেস্টুরেন্ট এন্ড ক্যাটরার",
+    "opening_hours": "Mo-Su 06:00-12:00",
+    "phone": "+91 033 2217 6398"
+  }
+},
+{
+  "type": "node",
+  "id": 6135362105,
+  "lat": 22.5529418,
+  "lon": 88.3527648,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "chinese",
+    "name": "Bar-B-Q"
+  }
+},
+{
+  "type": "node",
+  "id": 6135362107,
+  "lat": 22.5327945,
+  "lon": 88.3649879,
+  "tags": {
+    "alt_name": "Haldiram",
+    "amenity": "fast_food",
+    "brand": "Haldiram's",
+    "brand:wikidata": "Q17054442",
+    "check_date": "2023-12-16",
+    "cuisine": "indian",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "level": "1",
+    "name": "Haldiram's",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "takeaway": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 6135362917,
+  "lat": 22.5328706,
+  "lon": 88.3650175,
+  "tags": {
+    "amenity": "restaurant",
+    "level": "2",
+    "name": "Teekha"
+  }
+},
+{
+  "type": "node",
+  "id": 6135363550,
+  "lat": 22.5529317,
+  "lon": 88.3542465,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:postcode": "700016",
+    "addr:street": "Royd Street",
+    "amenity": "restaurant",
+    "check_date": "2023-10-28",
+    "delivery": "yes",
+    "name": "The Accord",
+    "opening_hours": "07:30-22:30",
+    "phone": "0903802493",
+    "takeaway": "yes",
+    "website": "https://accord-family-restaurant.business.site/"
+  }
+},
+{
+  "type": "node",
+  "id": 6135363744,
+  "lat": 22.5528980,
+  "lon": 88.3543572,
+  "tags": {
+    "addr:postcode": "700016",
+    "amenity": "cafe",
+    "check_date": "2023-10-28",
+    "delivery": "yes",
+    "name": "Café Harmony",
+    "opening_hours": "16:00-23:30",
+    "phone": "09038024943",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6135364200,
+  "lat": 22.5519786,
+  "lon": 88.3524857,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "The Golden Spoon"
+  }
+},
+{
+  "type": "node",
+  "id": 6135364481,
+  "lat": 22.5446790,
+  "lon": 88.3553121,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "brand:wikipedia": "en:Café Coffee Day",
+    "cuisine": "coffee_shop",
+    "name": "Cafe Coffee Day",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6135364595,
+  "lat": 22.5525948,
+  "lon": 88.3526504,
+  "tags": {
+    "addr:housenumber": "18G",
+    "addr:street": "Park Street",
+    "amenity": "fast_food",
+    "cuisine": "waffle",
+    "indoor_seating": "yes",
+    "name": "Waffle Wallah"
+  }
+},
+{
+  "type": "node",
+  "id": 6135364596,
+  "lat": 22.5532246,
+  "lon": 88.3524637,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "bar": "yes",
+    "cuisine": "indian;chinese",
+    "level": "0",
+    "name": "Oasis",
+    "start_date": "1966"
+  }
+},
+{
+  "type": "node",
+  "id": 6135364805,
+  "lat": 22.5528604,
+  "lon": 88.3524108,
+  "tags": {
+    "alcohol": "yes",
+    "amenity": "restaurant",
+    "name": "Silver Grill"
+  }
+},
+{
+  "type": "node",
+  "id": 6135364809,
+  "lat": 22.5585521,
+  "lon": 88.3521331,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Sunset"
+  }
+},
+{
+  "type": "node",
+  "id": 6138457981,
+  "lat": 22.5531688,
+  "lon": 88.3534510,
+  "tags": {
+    "amenity": "fast_food",
+    "check_date": "2026-03-22",
+    "level": "1",
+    "name": "Udta Punjab Dhaba"
+  }
+},
+{
+  "type": "node",
+  "id": 6138458223,
+  "lat": 22.5473767,
+  "lon": 88.3517657,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Spices and Sauces",
+    "phone": "+91-33-2440-1314;+91-33-2440-8787;+91-98307-58920;+91-98304-04196"
+  }
+},
+{
+  "type": "node",
+  "id": 6138458224,
+  "lat": 22.5528863,
+  "lon": 88.3532982,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Subway",
+    "brand:pa": "ਸਬਵੇਅ",
+    "brand:ur": "سب وے",
+    "brand:wikidata": "Q244457",
+    "brand:wikipedia": "en:Subway (restaurant)",
+    "cuisine": "sandwich",
+    "name": "Subway",
+    "name:pa": "ਸਬਵੇਅ",
+    "name:ur": "سب وے",
+    "opening_hours": "Mo-Su 10:00-24:00",
+    "phone": "+91-33-4005-3774;+91-98300-31636",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6138458225,
+  "lat": 22.5456757,
+  "lon": 88.3525236,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "cuisine": "coffee_shop",
+    "name": "Cafe Coffee Day",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6138458286,
+  "lat": 22.5533895,
+  "lon": 88.3532362,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "name": "Tung Fong"
+  }
+},
+{
+  "type": "node",
+  "id": 6138458287,
+  "lat": 22.5510748,
+  "lon": 88.3543936,
+  "tags": {
+    "air_conditioning": "no",
+    "amenity": "cafe",
+    "indoor_seating": "no",
+    "level": "0",
+    "name": "Tea Junction",
+    "outdoor_seating": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6138458337,
+  "lat": 22.5385047,
+  "lon": 88.3648830,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Domino's",
+    "brand:ks": "ڈومینوز",
+    "brand:pa": "ਡੋਮੀਨੋਜ਼",
+    "brand:ur": "ڈومینوز",
+    "brand:wikidata": "Q839466",
+    "brand:wikipedia": "en:Domino's Pizza",
+    "cuisine": "pizza",
+    "level": "1",
+    "name": "Domino's",
+    "name:ks": "ڈومینوز",
+    "name:pa": "ਡੋਮੀਨੋਜ਼",
+    "name:ur": "ڈومینوز",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6141500108,
+  "lat": 22.5519801,
+  "lon": 88.3559754,
+  "tags": {
+    "amenity": "fast_food",
+    "delivery": "yes",
+    "indoor_seating": "yes",
+    "name": "Grill and Chill"
+  }
+},
+{
+  "type": "node",
+  "id": 6143228719,
+  "lat": 22.5586286,
+  "lon": 88.3507550,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Sol",
+    "phone": "+91-33-2249-0369;+91-33-2249-0370;+91-90070-66664;+91-90070-66665"
+  }
+},
+{
+  "type": "node",
+  "id": 6143230210,
+  "lat": 22.5525609,
+  "lon": 88.3526400,
+  "tags": {
+    "amenity": "fast_food",
+    "indoor_seating": "no",
+    "name": "Bombay Toastee"
+  }
+},
+{
+  "type": "node",
+  "id": 6143232247,
+  "lat": 22.5498352,
+  "lon": 88.3499431,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "41",
+    "addr:postcode": "700071",
+    "addr:street": "Chowringhee Road",
+    "amenity": "fast_food",
+    "check_date": "2026-03-22",
+    "indoor_seating": "yes",
+    "name": "Russell Punjabi Dhaba"
+  }
+},
+{
+  "type": "node",
+  "id": 6143232471,
+  "lat": 22.5580361,
+  "lon": 88.3542614,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "6/2",
+    "addr:postcode": "700016",
+    "addr:street": "Sudder Street",
+    "amenity": "restaurant",
+    "name": "Kasturi",
+    "phone": "+91-80176-27592;+91-97489-06025"
+  }
+},
+{
+  "type": "node",
+  "id": 6143233351,
+  "lat": 22.5530706,
+  "lon": 88.3512822,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Floriana",
+    "operator": "Sutton and Sons"
+  }
+},
+{
+  "type": "node",
+  "id": 6143233353,
+  "lat": 22.5526466,
+  "lon": 88.3506926,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "name": "Gangaur",
+    "name:hi": "गणगौर"
+  }
+},
+{
+  "type": "node",
+  "id": 6143233736,
+  "lat": 22.5531757,
+  "lon": 88.3534139,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "cuisine": "italian",
+    "level": "0",
+    "name": "Don Giovanni's Pizza"
+  }
+},
+{
+  "type": "node",
+  "id": 6143233752,
+  "lat": 22.5527020,
+  "lon": 88.3511371,
+  "tags": {
+    "amenity": "fast_food",
+    "check_date": "2026-03-22",
+    "indoor_seating": "yes",
+    "name": "I ❤️ Haldiram"
+  }
+},
+{
+  "type": "node",
+  "id": 6143233780,
+  "lat": 22.5531699,
+  "lon": 88.3513146,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "chinese",
+    "name": "Waldorf",
+    "operator": "Sutton and Sons"
+  }
+},
+{
+  "type": "node",
+  "id": 6144989919,
+  "lat": 22.5533015,
+  "lon": 88.3524021,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "level": "0",
+    "name": "Moulin Rouge",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6297081786,
+  "lat": 22.5721607,
+  "lon": 88.3533190,
+  "tags": {
+    "amenity": "restaurant",
+    "diet:vegetarian": "only",
+    "name": "Gangotri 100% pure veg & pure awesome"
+  }
+},
+{
+  "type": "node",
+  "id": 6299151685,
+  "lat": 22.5175261,
+  "lon": 88.3595099,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Mystic Yoga Cafe & Studio",
+    "website": "https://mysticyoga.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 6299181585,
+  "lat": 22.5175878,
+  "lon": 88.3594413,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "international",
+    "name": "Mystic Yoga Cafe",
+    "website": "https://mysticyoga.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 6357619086,
+  "lat": 22.5437593,
+  "lon": 88.3536486,
+  "tags": {
+    "addr:housenumber": "3C",
+    "addr:street": "Albert Road",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Govinda's",
+    "opening_hours": "Mo-Su 09:00-22:00",
+    "website": "https://www.iskconkolkata.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 6357619185,
+  "lat": 22.5673248,
+  "lon": 88.3708864,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Wow! Momo",
+    "brand:wikidata": "Q8037446",
+    "cuisine": "momo",
+    "name": "Wow! Momo",
+    "name:en": "Wow momo",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6384815185,
+  "lat": 22.5420415,
+  "lon": 88.3474925,
+  "tags": {
+    "addr:housenumber": "46",
+    "addr:postcode": "700071",
+    "addr:street": "Acharya Jagadish Chandra Bose Road",
+    "alt_name": "Haldiram",
+    "amenity": "fast_food",
+    "branch": "Veg Restaurant",
+    "brand": "Haldiram's",
+    "brand:wikidata": "Q17054442",
+    "check_date": "2026-03-22",
+    "cuisine": "indian",
+    "name": "Haldiram's",
+    "opening_hours": "Mo-Su 09:00-23:00",
+    "takeaway": "yes",
+    "website": "https://www.haldirams.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 6395400106,
+  "lat": 22.5475583,
+  "lon": 88.3541763,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Hot Chips, Wood Street"
+  }
+},
+{
+  "type": "node",
+  "id": 6474490785,
+  "lat": 22.4992110,
+  "lon": 88.3170796,
+  "tags": {
+    "addr:postcode": "700034",
+    "addr:street": "Brahmo Samaj Road",
+    "amenity": "restaurant",
+    "name": "PANNA SWEETS",
+    "opening_hours": "Mo-Su 09:00-22:00",
+    "phone": "913323979255"
+  }
+},
+{
+  "type": "node",
+  "id": 6533478594,
+  "lat": 22.5581343,
+  "lon": 88.3530887,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Curd Corner"
+  }
+},
+{
+  "type": "node",
+  "id": 6544682386,
+  "lat": 22.4884846,
+  "lon": 88.4161186,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Trishna fast food"
+  }
+},
+{
+  "type": "node",
+  "id": 6544682487,
+  "lat": 22.5253984,
+  "lon": 88.3957737,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Red chilli"
+  }
+},
+{
+  "type": "node",
+  "id": 6551217385,
+  "lat": 22.5473301,
+  "lon": 88.3509795,
+  "tags": {
+    "addr:postcode": "700071",
+    "addr:street": "Ho Chi Minh Sarani",
+    "amenity": "fast_food",
+    "check_date": "2026-03-22",
+    "indoor_seating": "yes",
+    "name": "Mr. Veggie",
+    "opening_hours": "24/7"
+  }
+},
+{
+  "type": "node",
+  "id": 6698400585,
+  "lat": 22.5605313,
+  "lon": 88.3515299,
+  "tags": {
+    "alt_name": "Kentucky Fried Chicken",
+    "alt_name:en": "Kentucky Fried Chicken",
+    "alt_name:hi": "केंटुकी फ्राइड चिकन",
+    "alt_name:pa": "ਕੈਂਟੁਕੀ ਫ੍ਰਾਈਡ ਚਿਕਨ",
+    "alt_name:pnb": "کینٹکی فرائیڈ چکن",
+    "alt_name:ur": "کینٹکی فرائیڈ چکن",
+    "amenity": "fast_food",
+    "brand": "KFC",
+    "brand:en": "KFC",
+    "brand:hi": "केएफसी",
+    "brand:pa": "ਕੇਐਫਸੀ",
+    "brand:pnb": "کے ایف سی",
+    "brand:ur": "کے ایف سی",
+    "brand:wikidata": "Q524757",
+    "brand:wikipedia": "en:KFC",
+    "brand:wikipedia:pa": "ਕੇਐਫਸੀ",
+    "brand:wikipedia:ur": "کینٹکی فرائیڈ چکن",
+    "cuisine": "chicken",
+    "name": "KFC",
+    "name:en": "KFC",
+    "name:hi": "केएफसी",
+    "name:pa": "ਕੇਐਫਸੀ",
+    "name:pnb": "کے ایف سی",
+    "name:ur": "کے ایف سی",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6698406886,
+  "lat": 22.5605463,
+  "lon": 88.3514908,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Barista",
+    "brand:wikidata": "Q644735",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "name": "Barista",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6698678609,
+  "lat": 22.5388404,
+  "lon": 88.3655051,
+  "tags": {
+    "amenity": "restaurant",
+    "brand": "Pizza Hut",
+    "brand:wikidata": "Q191615",
+    "cuisine": "pizza",
+    "name": "Pizza Hut"
+  }
+},
+{
+  "type": "node",
+  "id": 6698978095,
+  "lat": 22.5387257,
+  "lon": 88.3654984,
+  "tags": {
+    "alt_name": "Kentucky Fried Chicken",
+    "alt_name:en": "Kentucky Fried Chicken",
+    "alt_name:hi": "केंटुकी फ्राइड चिकन",
+    "alt_name:pa": "ਕੈਂਟੁਕੀ ਫ੍ਰਾਈਡ ਚਿਕਨ",
+    "alt_name:pnb": "کینٹکی فرائیڈ چکن",
+    "alt_name:ur": "کینٹکی فرائیڈ چکن",
+    "amenity": "fast_food",
+    "brand": "KFC",
+    "brand:en": "KFC",
+    "brand:hi": "केएफसी",
+    "brand:pa": "ਕੇਐਫਸੀ",
+    "brand:pnb": "کے ایف سی",
+    "brand:ur": "کے ایف سی",
+    "brand:wikidata": "Q524757",
+    "brand:wikipedia": "en:KFC",
+    "brand:wikipedia:pa": "ਕੇਐਫਸੀ",
+    "brand:wikipedia:ur": "کینٹکی فرائیڈ چکن",
+    "cuisine": "chicken",
+    "name": "KFC",
+    "name:en": "KFC",
+    "name:hi": "केएफसी",
+    "name:pa": "ਕੇਐਫਸੀ",
+    "name:pnb": "کے ایف سی",
+    "name:ur": "کے ایف سی",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6698978096,
+  "lat": 22.5387204,
+  "lon": 88.3656254,
+  "tags": {
+    "amenity": "restaurant",
+    "brand": "Chili's",
+    "brand:wikidata": "Q1072948",
+    "cuisine": "tex-mex",
+    "name": "Chili's",
+    "official_name": "Chili's Grill & Bar"
+  }
+},
+{
+  "type": "node",
+  "id": 6700782253,
+  "lat": 22.5904744,
+  "lon": 88.4082609,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "CD18",
+    "addr:postcode": "700064",
+    "addr:street": "2nd Cross Road",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "cuisine": "asian;chinese",
+    "name": "Momo I Am",
+    "name:en": "Momo i am",
+    "opening_hours": "Mo-Su 12:00-23:00",
+    "phone": "+91 7044519815",
+    "website": "https://momoiam.in"
+  }
+},
+{
+  "type": "node",
+  "id": 6700794347,
+  "lat": 22.5949904,
+  "lon": 88.4207912,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "BF189",
+    "addr:postcode": "700064",
+    "addr:street": "5th Cross Road",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "cuisine": "seafood;chinese",
+    "name": "Santa's Fantasea",
+    "opening_hours": "Mo-Su 12:00-22:30",
+    "phone": "033 30990174",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6700824101,
+  "lat": 22.5921214,
+  "lon": 88.4118194,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "86",
+    "addr:postcode": "700064",
+    "addr:street": "2nd Avenue",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "check_date": "2025-02-05",
+    "cuisine": "awadhi;mughlai",
+    "name": "Oudh 1590",
+    "opening_hours": "Mo-Su 12:00-15:30,18:30-22:30",
+    "phone": "033 30859078"
+  }
+},
+{
+  "type": "node",
+  "id": 6700835187,
+  "lat": 22.5388442,
+  "lon": 88.3222081,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "34",
+    "addr:postcode": "700023",
+    "addr:street": "Karl Marx Sarani",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "bar": "no",
+    "cuisine": "mughlai;indian;chinese",
+    "delivery": "yes",
+    "name": "India Restaurant",
+    "opening_hours": "Mo-Su 09:00-22:00",
+    "phone": "+91 8481848484",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6700906072,
+  "lat": 22.5388656,
+  "lon": 88.3224118,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "28",
+    "addr:postcode": "700023",
+    "addr:street": "Karl Marx Sarani",
+    "amenity": "restaurant",
+    "cuisine": "indian;mughlai",
+    "name": "Sheesh Mahal Restaurant"
+  }
+},
+{
+  "type": "node",
+  "id": 6774997689,
+  "lat": 22.6810186,
+  "lon": 88.2953127,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Mio Amore"
+  }
+},
+{
+  "type": "node",
+  "id": 6907625185,
+  "lat": 22.5092086,
+  "lon": 88.3453238,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Cafe HQ"
+  }
+},
+{
+  "type": "node",
+  "id": 6914595709,
+  "lat": 22.5788545,
+  "lon": 88.4716628,
+  "tags": {
+    "addr:city": "Newtown, Kolkata",
+    "addr:housenumber": "New Town",
+    "addr:postcode": "700156",
+    "addr:street": "Action Area I",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "capacity": "50",
+    "cuisine": "regional;chinese;sandwich;kebab;indian;asian;chicken;seafood;fish_and_chips",
+    "email": "helpdesk@wbhidco.in",
+    "name": "Biswa Bangla Gate",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "phone": "91-8334065345",
+    "reservation": "required",
+    "wikidata": "Q39087520",
+    "wikimedia_commons": "Category:Biswa Bangla Gate",
+    "wikipedia": "en:Kolkata Gate"
+  }
+},
+{
+  "type": "node",
+  "id": 7029177785,
+  "lat": 22.5740334,
+  "lon": 88.3645532,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2025-02-05",
+    "name": "Paramount Juices & Shakes",
+    "name:en": "Paramount Juices & Shakes"
+  }
+},
+{
+  "type": "node",
+  "id": 7029295993,
+  "lat": 22.5679992,
+  "lon": 88.3555990,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Mission Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 7030445285,
+  "lat": 22.5345762,
+  "lon": 88.3669984,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Zee’s Coffeeshop"
+  }
+},
+{
+  "type": "node",
+  "id": 7030447585,
+  "lat": 22.5406686,
+  "lon": 88.3539831,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2026-03-22",
+    "name": "Artsy Coffee & Culture"
+  }
+},
+{
+  "type": "node",
+  "id": 7030462685,
+  "lat": 22.5175409,
+  "lon": 88.3578028,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Potboiler Coffee House"
+  }
+},
+{
+  "type": "node",
+  "id": 7030467285,
+  "lat": 22.5175563,
+  "lon": 88.3629545,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Sienna Store & Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 7030467286,
+  "lat": 22.5059517,
+  "lon": 88.3590760,
+  "tags": {
+    "amenity": "cafe",
+    "name": "The Lighthouse Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 7030485285,
+  "lat": 22.5161655,
+  "lon": 88.3605500,
+  "tags": {
+    "amenity": "cafe",
+    "name": "8th Day Cafe & Bakery"
+  }
+},
+{
+  "type": "node",
+  "id": 7030508385,
+  "lat": 22.5384486,
+  "lon": 88.3542805,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2026-03-22",
+    "name": "Piccadilly Square"
+  }
+},
+{
+  "type": "node",
+  "id": 7030533385,
+  "lat": 22.5021606,
+  "lon": 88.3540416,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Hondo’s Burgers"
+  }
+},
+{
+  "type": "node",
+  "id": 7030539485,
+  "lat": 22.5497952,
+  "lon": 88.3503077,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "name": "Biggies Burgers ‘n’ More"
+  }
+},
+{
+  "type": "node",
+  "id": 7030561885,
+  "lat": 22.5030730,
+  "lon": 88.3582982,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "FORKSTRUCK"
+  }
+},
+{
+  "type": "node",
+  "id": 7030576887,
+  "lat": 22.5367944,
+  "lon": 88.3511606,
+  "tags": {
+    "addr:housenumber": "8A",
+    "addr:postcode": "700020",
+    "addr:street": "Allenby Lane",
+    "amenity": "restaurant",
+    "check_date": "2023-10-28",
+    "name": "Fabbrica",
+    "phone": "03340620777",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7030754397,
+  "lat": 22.5793315,
+  "lon": 88.3589352,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Shree Ram Dhaba"
+  }
+},
+{
+  "type": "node",
+  "id": 7030789485,
+  "lat": 22.5810063,
+  "lon": 88.3562311,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Thakur Mahal"
+  }
+},
+{
+  "type": "node",
+  "id": 7030815685,
+  "lat": 22.5689182,
+  "lon": 88.3491647,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "The Chutney Co."
+  }
+},
+{
+  "type": "node",
+  "id": 7035409285,
+  "lat": 22.5331803,
+  "lon": 88.3531588,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "name": "Jai Hind Dhaba"
+  }
+},
+{
+  "type": "node",
+  "id": 7035507885,
+  "lat": 22.5422241,
+  "lon": 88.3516001,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Street food stalls"
+  }
+},
+{
+  "type": "node",
+  "id": 7037787285,
+  "lat": 22.5128986,
+  "lon": 88.3485451,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "North & South"
+  }
+},
+{
+  "type": "node",
+  "id": 7037787385,
+  "lat": 22.5128099,
+  "lon": 88.3488742,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Bombay Kulfi"
+  }
+},
+{
+  "type": "node",
+  "id": 7040037785,
+  "lat": 22.5153616,
+  "lon": 88.3934151,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Ozora"
+  }
+},
+{
+  "type": "node",
+  "id": 7051268560,
+  "lat": 22.5522894,
+  "lon": 88.3527676,
+  "tags": {
+    "amenity": "restaurant",
+    "brand": "Pizza Hut",
+    "brand:wikidata": "Q191615",
+    "cuisine": "pizza",
+    "name": "Pizza Hut"
+  }
+},
+{
+  "type": "node",
+  "id": 7052222455,
+  "lat": 22.5510505,
+  "lon": 88.3539733,
+  "tags": {
+    "addr:postcode": "700071",
+    "amenity": "restaurant",
+    "brand": "Barbeque Nation",
+    "brand:wikidata": "Q4859568",
+    "check_date": "2023-10-28",
+    "contact:phone": "+91 1800 108 6060",
+    "cuisine": "barbecue",
+    "level": "1",
+    "name": "Barbeque Nation",
+    "website": "https://www.barbequenation.com/restaurants/kolkata/park-street"
+  }
+},
+{
+  "type": "node",
+  "id": 7053793922,
+  "lat": 22.5540188,
+  "lon": 88.3540120,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "mughlai",
+    "level": "0",
+    "name": "Kareem's",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 7053793930,
+  "lat": 22.5537095,
+  "lon": 88.3544382,
+  "tags": {
+    "addr:housenumber": "1/1C",
+    "addr:postcode": "700016",
+    "addr:street": "Ripon Street",
+    "amenity": "restaurant",
+    "check_date": "2023-10-28",
+    "cuisine": "bengali",
+    "delivery": "yes",
+    "level": "0",
+    "name": "Koshe Kosha",
+    "opening_hours": "11:00-23:00",
+    "phone": "09830949494"
+  }
+},
+{
+  "type": "node",
+  "id": 7054075560,
+  "lat": 22.5505406,
+  "lon": 88.3553144,
+  "tags": {
+    "amenity": "fast_food",
+    "cuisine": "south_indian;north_indian;sandwich",
+    "diet:lacto_vegetarian": "only",
+    "name": "Hunger Street"
+  }
+},
+{
+  "type": "node",
+  "id": 7055109482,
+  "lat": 22.5516510,
+  "lon": 88.3524080,
+  "tags": {
+    "amenity": "fast_food",
+    "cuisine": "chinese;roll",
+    "diet:lacto_vegetarian": "yes",
+    "level": "0;1",
+    "name": "Roll It Out",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "payment:cash": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 7055148104,
+  "lat": 22.5474409,
+  "lon": 88.3506739,
+  "tags": {
+    "alcohol": "yes",
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "name": "Gabber's Bar and Kitchen"
+  }
+},
+{
+  "type": "node",
+  "id": 7055909438,
+  "lat": 22.5537671,
+  "lon": 88.3546443,
+  "tags": {
+    "amenity": "fast_food",
+    "drink:lassi": "served",
+    "level": "0",
+    "name": "Thandai Dhaba",
+    "shop": "beverages"
+  }
+},
+{
+  "type": "node",
+  "id": 7056105395,
+  "lat": 22.5522713,
+  "lon": 88.3522881,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Carpe Diem"
+  }
+},
+{
+  "type": "node",
+  "id": 7059347949,
+  "lat": 22.5546358,
+  "lon": 88.3539654,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "SN Shaw and BP Shaw"
+  }
+},
+{
+  "type": "node",
+  "id": 7059574504,
+  "lat": 22.5532467,
+  "lon": 88.3531768,
+  "tags": {
+    "amenity": "restaurant",
+    "image:menu": "c679664d-9ed8-4a1a-b4fd-62b107cdffb0",
+    "image:menu:0": "6b348cf0-67fb-4907-9b3c-b6c5ad87f997",
+    "image:menu:1": "85e0bfe3-255c-4352-890d-2f8947ce5a6b",
+    "image:menu:10": "825e52ae-9849-44ce-9321-113148a455f9",
+    "image:menu:11": "4c0fb353-5b54-4ac1-9bb7-61513388094d",
+    "image:menu:12": "2fe8fe51-7dfd-4489-a415-261c15cb4028",
+    "image:menu:13": "4428db68-6335-4f9e-a489-8301c1811f64",
+    "image:menu:2": "78f72c3b-cfb6-4b9b-befb-29486d9c9e33",
+    "image:menu:3": "5099bcb2-6f36-4124-8b7e-1799735fea4d",
+    "image:menu:4": "738ae79a-d5bd-45e4-bd45-3756ad89c289",
+    "image:menu:5": "d2d1e9f4-8fca-4e87-a0c9-c4888bb99e8d",
+    "image:menu:6": "15ab9f2d-1f22-4f28-9105-854f7c3fa198",
+    "image:menu:7": "87b59992-1044-4791-a723-0b46c7718af5",
+    "image:menu:8": "82a046ad-8b2c-410b-b701-4cd494ef2f93",
+    "image:menu:9": "2a30379f-bde1-4315-a57d-83164f27e35b",
+    "name": "Mocambo",
+    "toilets": "yes",
+    "toilets:access": "customers",
+    "toilets:disposal": "flush",
+    "toilets:fee": "no",
+    "toilets:gender_segregated": "yes",
+    "toilets:position": "seated;urinal",
+    "toilets:wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 7059693020,
+  "lat": 22.5517162,
+  "lon": 88.3535019,
+  "tags": {
+    "amenity": "restaurant",
+    "contact:phone": "+91 33 3399 9610",
+    "contact:website": "http://mamagoto.in",
+    "level": "0",
+    "name": "MamaGoto",
+    "opening_hours": "Mo-Su 12:00-23:30",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 7059693031,
+  "lat": 22.5513080,
+  "lon": 88.3556197,
+  "tags": {
+    "amenity": "fast_food",
+    "cuisine": "continental;chinese;thai",
+    "name": "Starters"
+  }
+},
+{
+  "type": "node",
+  "id": 7233967786,
+  "lat": 22.5255315,
+  "lon": 88.3575909,
+  "tags": {
+    "amenity": "restaurant",
+    "internet_access": "wlan",
+    "name": "Bojangles",
+    "opening_hours": "Mo-Su 11:00-23:00",
+    "phone": "+919930903399"
+  }
+},
+{
+  "type": "node",
+  "id": 7265806834,
+  "lat": 22.5037538,
+  "lon": 88.3761283,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Spice Of Joy",
+    "website": "https://spiceofjoy.com"
+  }
+},
+{
+  "type": "node",
+  "id": 7515235052,
+  "lat": 22.5800363,
+  "lon": 88.3046276,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Fiesta"
+  }
+},
+{
+  "type": "node",
+  "id": 8008509574,
+  "lat": 22.5145844,
+  "lon": 88.3446875,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop;burger",
+    "name": "Bru Mugs"
+  }
+},
+{
+  "type": "node",
+  "id": 8008509579,
+  "lat": 22.5164882,
+  "lon": 88.3487401,
+  "tags": {
+    "amenity": "restaurant",
+    "brand": "Barbeque Nation",
+    "brand:wikidata": "Q4859568",
+    "cuisine": "barbecue",
+    "name": "Barbeque Nation"
+  }
+},
+{
+  "type": "node",
+  "id": 8008509580,
+  "lat": 22.5164647,
+  "lon": 88.3487146,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "brand:wikipedia": "en:Café Coffee Day",
+    "cuisine": "coffee_shop",
+    "name": "Cafe Coffee Day",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8008527285,
+  "lat": 22.5163409,
+  "lon": 88.3483026,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "regional;snackbar",
+    "name": "Radu Babu's"
+  }
+},
+{
+  "type": "node",
+  "id": 8011950434,
+  "lat": 22.5109639,
+  "lon": 88.3482253,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Steak Factory"
+  }
+},
+{
+  "type": "node",
+  "id": 8011950435,
+  "lat": 22.5115361,
+  "lon": 88.3489685,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cafe Kathmandu"
+  }
+},
+{
+  "type": "node",
+  "id": 8011950437,
+  "lat": 22.5112214,
+  "lon": 88.3503869,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cakes"
+  }
+},
+{
+  "type": "node",
+  "id": 8011950440,
+  "lat": 22.5146731,
+  "lon": 88.3606486,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Fillers"
+  }
+},
+{
+  "type": "node",
+  "id": 8011950442,
+  "lat": 22.5164263,
+  "lon": 88.3604145,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Zucca Lounge"
+  }
+},
+{
+  "type": "node",
+  "id": 8011950450,
+  "lat": 22.5141493,
+  "lon": 88.3624283,
+  "tags": {
+    "amenity": "cafe",
+    "name": "What's Up! Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 8011950451,
+  "lat": 22.5142545,
+  "lon": 88.3633308,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Captain's Deck Bar and Grill"
+  }
+},
+{
+  "type": "node",
+  "id": 8011950454,
+  "lat": 22.5173303,
+  "lon": 88.3671971,
+  "tags": {
+    "addr:housenumber": "102",
+    "addr:street": "Ballygunge Gardens",
+    "amenity": "fast_food",
+    "brand": "Wow! Momo",
+    "brand:wikidata": "Q8037446",
+    "check_date": "2023-12-16",
+    "cuisine": "momo",
+    "name": "Wow! Momo",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8011950455,
+  "lat": 22.5172101,
+  "lon": 88.3671686,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2023-12-16",
+    "cuisine": "regional;pizza;burger",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Tribe",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 8011950456,
+  "lat": 22.5172815,
+  "lon": 88.3670507,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2023-12-16",
+    "cuisine": "regional",
+    "diet:non-vegetarian": "yes",
+    "name": "Tandoor"
+  }
+},
+{
+  "type": "node",
+  "id": 8011950460,
+  "lat": 22.5146191,
+  "lon": 88.3930966,
+  "tags": {
+    "amenity": "restaurant",
+    "brand": "Chili's",
+    "brand:wikidata": "Q1072948",
+    "brand:wikipedia": "en:Chili's",
+    "cuisine": "tex-mex",
+    "name": "Chili's",
+    "official_name": "Chili's Grill & Bar"
+  }
+},
+{
+  "type": "node",
+  "id": 8014162874,
+  "lat": 22.5331620,
+  "lon": 88.3533683,
+  "tags": {
+    "addr:city": "kolkata",
+    "addr:housenumber": "42",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "bar": "yes",
+    "check_date": "2026-03-22",
+    "cuisine": "pizza;burger;coffee_shop;chinese;sandwich;chicken;french;international;ice_cream;hookah",
+    "delivery": "yes",
+    "internet_access:fee": "no",
+    "name": "Dawntown Cafe",
+    "opening_hours": "Mo-Su 12:00-4:00",
+    "outdoor_seating": "no",
+    "smoking": "yes",
+    "start_date": "2020-10-11",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8484372103,
+  "lat": 22.5171633,
+  "lon": 88.3347548,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "33/33 CIT Market",
+    "addr:postcode": "700027",
+    "addr:street": "Chetla Central Rd",
+    "amenity": "restaurant",
+    "cuisine": "chinese;japanese",
+    "name": "Ikura - Flavours of Pan Asia"
+  }
+},
+{
+  "type": "node",
+  "id": 8543466091,
+  "lat": 22.5370729,
+  "lon": 88.3436743,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "11A",
+    "addr:postcode": "700025",
+    "addr:street": "Beninandan Street",
+    "amenity": "restaurant",
+    "cuisine": "fish_and_chips;pizza;burger;sandwich",
+    "diet:healthy": "yes",
+    "diet:non-vegetarian": "yes",
+    "name": "Loading Tummy",
+    "phone": "+916206404151",
+    "website": "https://loadingtummy.com"
+  }
+},
+{
+  "type": "node",
+  "id": 8837017017,
+  "lat": 22.5478268,
+  "lon": 88.2872604,
+  "tags": {
+    "addr:street": "Paharpur Road",
+    "amenity": "restaurant",
+    "cuisine": "indian;kebab",
+    "name": "الحبیب بریانی سینٹر",
+    "name:en": "Al-Habib Biryani Center (Beef Biryani)"
+  }
+},
+{
+  "type": "node",
+  "id": 8974662254,
+  "lat": 22.6438940,
+  "lon": 88.4595662,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "rolls",
+    "name": "KATHI JUNCTION"
+  }
+},
+{
+  "type": "node",
+  "id": 9052559015,
+  "lat": 22.5967472,
+  "lon": 88.3709013,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "New Madras Tiffin"
+  }
+},
+{
+  "type": "node",
+  "id": 9323361386,
+  "lat": 22.4833815,
+  "lon": 88.2926461,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Swapan Tea Stall"
+  }
+},
+{
+  "type": "node",
+  "id": 9323373884,
+  "lat": 22.4810359,
+  "lon": 88.2834848,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Upen Tea Shop"
+  }
+},
+{
+  "type": "node",
+  "id": 9323388122,
+  "lat": 22.4810536,
+  "lon": 88.2834958,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Sanjay Tea Stall"
+  }
+},
+{
+  "type": "node",
+  "id": 9375183344,
+  "lat": 22.6202131,
+  "lon": 88.4681187,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "Action Area 2",
+    "addr:postcode": "700135",
+    "addr:street": "626",
+    "amenity": "cafe",
+    "name": "Stash Cafe",
+    "outdoor_seating": "yes",
+    "phone": "82404 61178",
+    "website": "https://www.stashcafe.online"
+  }
+},
+{
+  "type": "node",
+  "id": 9379888439,
+  "lat": 22.4892945,
+  "lon": 88.3168949,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Chowman"
+  }
+},
+{
+  "type": "node",
+  "id": 9462386917,
+  "lat": 22.5816210,
+  "lon": 88.3904347,
+  "tags": {
+    "addr:postcode": "700054",
+    "addr:street": "CIT Road",
+    "amenity": "fast_food",
+    "cuisine": "indian",
+    "name": "Nasta",
+    "opening_hours": "Mo-Sa 07:00-21:00; Su 07:00-12:30; Su 07:00-12:30;"
+  }
+},
+{
+  "type": "node",
+  "id": 9462819519,
+  "lat": 22.5844866,
+  "lon": 88.3909972,
+  "tags": {
+    "addr:housenumber": "p8",
+    "addr:postcode": "700054",
+    "addr:street": "CIT Road",
+    "amenity": "restaurant",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "name": "Bhatura Singh - Kankurgachi",
+    "name:en": "Krazee Kulcha",
+    "opening_hours": "Mo-Su 12:00-23:00",
+    "phone": "7439493383",
+    "website": "https://krazee-kulcha.business.site/"
+  }
+},
+{
+  "type": "node",
+  "id": 9462819520,
+  "lat": 22.5841746,
+  "lon": 88.3914224,
+  "tags": {
+    "addr:housenumber": "p-5",
+    "addr:postcode": "700054",
+    "addr:street": "Kankurgacchi 2nd Lane",
+    "amenity": "fast_food",
+    "cuisine": "chicken;chinese",
+    "name": "Kankurgachi dhaba"
+  }
+},
+{
+  "type": "node",
+  "id": 9497006698,
+  "lat": 22.5872789,
+  "lon": 88.4078443,
+  "tags": {
+    "addr:postcode": "700064",
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9527985217,
+  "lat": 22.5849596,
+  "lon": 88.3916315,
+  "tags": {
+    "addr:housenumber": "p-54",
+    "addr:postcode": "700054",
+    "addr:street": "CIT Road",
+    "amenity": "restaurant",
+    "name": "Honey da dhaba",
+    "opening_hours": "Mo-Su 12:00-22:00",
+    "phone": "03323556804"
+  }
+},
+{
+  "type": "node",
+  "id": 9537536817,
+  "lat": 22.5895600,
+  "lon": 88.4084577,
+  "tags": {
+    "addr:housenumber": "DC 27/26",
+    "addr:postcode": "700064",
+    "addr:street": "2nd Cross Road",
+    "amenity": "restaurant",
+    "name": "033 4044 2294",
+    "name:en": "Balle Balle Dhaba",
+    "opening_hours": "Mo-Su 12:00-02:00",
+    "phone": "033 4044 2294"
+  }
+},
+{
+  "type": "node",
+  "id": 9566143517,
+  "lat": 22.5803863,
+  "lon": 88.3901624,
+  "tags": {
+    "addr:housenumber": "p40",
+    "addr:postcode": "700054",
+    "addr:street": "Bagmari Road",
+    "amenity": "fast_food",
+    "cuisine": "curry;indian;local",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "name": "Bikharam Chandmal",
+    "opening_hours": "Mo-Su 08:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 9566166917,
+  "lat": 22.5829429,
+  "lon": 88.3910929,
+  "tags": {
+    "addr:housenumber": "P20",
+    "addr:postcode": "700054",
+    "addr:street": "CIT Road",
+    "alt_name": "Haldiram",
+    "amenity": "fast_food",
+    "brand": "Haldiram's",
+    "brand:wikidata": "Q17054442",
+    "cuisine": "indian",
+    "diet:vegetarian": "yes",
+    "name": "Haldiram's",
+    "opening_hours": "Mo-Su 07:30-21:00",
+    "phone": "070440 70001",
+    "takeaway": "yes",
+    "website": "https://www.haldiramsonline.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 9586006754,
+  "lat": 22.5607022,
+  "lon": 88.4937043,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Jolly Jecker"
+  }
+},
+{
+  "type": "node",
+  "id": 9591589417,
+  "lat": 22.5823248,
+  "lon": 88.3909345,
+  "tags": {
+    "addr:postcode": "700054",
+    "addr:street": "CIT Road",
+    "amenity": "restaurant",
+    "cuisine": "chinese",
+    "name": "HONG KONG"
+  }
+},
+{
+  "type": "node",
+  "id": 9597557217,
+  "lat": 22.5849948,
+  "lon": 88.3916447,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Quick bite cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 9609438817,
+  "lat": 22.5668511,
+  "lon": 88.3560252,
+  "tags": {
+    "addr:housenumber": "3,5",
+    "addr:postcode": "700072",
+    "addr:street": "Chandi Chowk Street",
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "name": "Sabir hotel",
+    "name:en": "Sabir's hotel",
+    "opening_hours": "Mo-Su 09:00-23:00"
+  }
+},
+{
+  "type": "node",
+  "id": 9609443317,
+  "lat": 22.5682681,
+  "lon": 88.3565434,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "cuisine": "coffee_shop",
+    "name": "Cafe Coffee Day",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9638686517,
+  "lat": 22.6014489,
+  "lon": 88.4071206,
+  "tags": {
+    "amenity": "restaurant",
+    "diet:vegetarian": "yes",
+    "name": "Banyan tree pure veg green kitchen"
+  }
+},
+{
+  "type": "node",
+  "id": 9638690117,
+  "lat": 22.6012520,
+  "lon": 88.4063544,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Rose"
+  }
+},
+{
+  "type": "node",
+  "id": 9638691617,
+  "lat": 22.6012387,
+  "lon": 88.4063093,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Rose"
+  }
+},
+{
+  "type": "node",
+  "id": 9640611217,
+  "lat": 22.5996432,
+  "lon": 88.4053793,
+  "tags": {
+    "amenity": "restaurant",
+    "brand": "Pizza Hut",
+    "brand:wikidata": "Q191615",
+    "cuisine": "pizza",
+    "name": "Pizza Hut"
+  }
+},
+{
+  "type": "node",
+  "id": 9640618217,
+  "lat": 22.5988685,
+  "lon": 88.4039787,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Domino's",
+    "brand:wikidata": "Q839466",
+    "cuisine": "pizza",
+    "name": "Domino's",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9640621117,
+  "lat": 22.5942645,
+  "lon": 88.3967592,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Bengal dhaba"
+  }
+},
+{
+  "type": "node",
+  "id": 9651880303,
+  "lat": 22.6163875,
+  "lon": 88.4282440,
+  "tags": {
+    "addr:street": "Deshbandhu Nagar",
+    "amenity": "fast_food",
+    "description": "Indian & Chinese Cuisine",
+    "name": "Red Box",
+    "opening_hours": "Mo-Su 17:00-22:00",
+    "phone": "7980316951"
+  }
+},
+{
+  "type": "node",
+  "id": 9651893257,
+  "lat": 22.6163960,
+  "lon": 88.4278599,
+  "tags": {
+    "addr:street": "Deshbandhu Nagar",
+    "amenity": "fast_food",
+    "name": "Combo Kolkata",
+    "opening_hours": "Mo-Sa 17:00-22:00",
+    "phone": "8010692378"
+  }
+},
+{
+  "type": "node",
+  "id": 9651922244,
+  "lat": 22.6128681,
+  "lon": 88.4291615,
+  "tags": {
+    "addr:street": "Baguiati",
+    "amenity": "fast_food",
+    "name": "VIP sweets",
+    "opening_hours": "Mo-Sa 10:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 9651930152,
+  "lat": 22.6170310,
+  "lon": 88.4258725,
+  "tags": {
+    "addr:street": "Deshbandhu nagar",
+    "amenity": "fast_food",
+    "name": "Tasty Bites",
+    "opening_hours": "Mo-Sa 16:00-21:30",
+    "phone": "9051767468"
+  }
+},
+{
+  "type": "node",
+  "id": 9652000427,
+  "lat": 22.6268539,
+  "lon": 88.4265255,
+  "tags": {
+    "addr:housenumber": "NB - 116",
+    "addr:street": "Arjunpur North",
+    "amenity": "fast_food",
+    "name": "Radha Krishna Sweets",
+    "opening_hours": "Mo-Sa 09:00-22:00",
+    "phone": "9163205353"
+  }
+},
+{
+  "type": "node",
+  "id": 9761536278,
+  "lat": 22.5163439,
+  "lon": 88.3613253,
+  "tags": {
+    "amenity": "cafe",
+    "name": "The teapot boiler"
+  }
+},
+{
+  "type": "node",
+  "id": 9911180717,
+  "lat": 22.5622659,
+  "lon": 88.3537378,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "name": "Aminia"
+  }
+},
+{
+  "type": "node",
+  "id": 9992983419,
+  "lat": 22.6150903,
+  "lon": 88.4119743,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "166",
+    "addr:postcode": "700055",
+    "addr:street": "Jessore Road",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "brand": "Aminia",
+    "cuisine": "mughlai_cuisine",
+    "diet:non-vegetarian": "yes",
+    "name": "Aminia",
+    "name:bn": "আমিনিয়া",
+    "opening_hours": "Mo-Su 11:30-23:30",
+    "phone": "+9181006 66444",
+    "website": "https://www.aminia.co.in/aminia-jessore-road",
+    "wikidata": "Q19460599",
+    "wikipedia": "en:Aminia"
+  }
+},
+{
+  "type": "node",
+  "id": 9993017417,
+  "lat": 22.5988571,
+  "lon": 88.3726721,
+  "tags": {
+    "addr:housenumber": "94",
+    "addr:postcode": "700004",
+    "addr:street": "Bidhan Sarani",
+    "amenity": "restaurant",
+    "check_date": "2023-09-30",
+    "cuisine": "indian;kebab",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Aminia Restaurant",
+    "opening_hours": "Mo-Su 11:30-23:30",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "081006 66444",
+    "website": "https://www.aminia.co.in/aminia-shyambazar"
+  }
+},
+{
+  "type": "node",
+  "id": 9993033317,
+  "lat": 22.6229192,
+  "lon": 88.4417540,
+  "tags": {
+    "addr:postcode": "700136",
+    "addr:street": "Rajarhat Road",
+    "amenity": "restaurant",
+    "check_date": "2026-07-31",
+    "cuisine": "indian",
+    "name": "Aminia Restaurant - Rajarhat",
+    "opening_hours": "Mo-Su 11:30-23:30",
+    "phone": "+91 8100 666 444",
+    "website": "https://www.aminia.co.in/aminia-rajarhat",
+    "website:menu": "https://www.aminia.co.in/aminia-menu"
+  }
+},
+{
+  "type": "node",
+  "id": 10057179401,
+  "lat": 22.6156583,
+  "lon": 88.4123436,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "68",
+    "addr:postcode": "700055",
+    "addr:street": "Diamond City Mall (5th Floor), Jessore Road",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "branch": "Diamond Plaza",
+    "brand": "Barbeque Nation",
+    "brand:wikidata": "Q4859568",
+    "cuisine": "barbecue",
+    "diet:chicken": "yes",
+    "diet:fish": "yes",
+    "diet:non-vegetarian": "yes",
+    "name": "Barbeque Nation",
+    "opening_hours": "Mo-Su 12:00-15:30, Mo-Su 18:00-22:00",
+    "phone": "+918584830039",
+    "website": "https://www.barbequenation.com/restaurants/kolkata/diamond-plaza"
+  }
+},
+{
+  "type": "node",
+  "id": 10057179710,
+  "lat": 22.6148933,
+  "lon": 88.4115870,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:postcode": "700055",
+    "addr:street": "Jessore Road",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "branch": "Nager bazar",
+    "brand": "WTF! Where's The Food",
+    "diet:non-vegetarian": "yes",
+    "name": "WTF! Where's The Food",
+    "opening_hours": "Mo-Su 12:30-22:30",
+    "phone": "+918013865077"
+  }
+},
+{
+  "type": "node",
+  "id": 10079224417,
+  "lat": 22.5887873,
+  "lon": 88.3696639,
+  "tags": {
+    "amenity": "fast_food",
+    "diet:non-vegetarian": "yes",
+    "name": "Fatso's roll"
+  }
+},
+{
+  "type": "node",
+  "id": 10091478917,
+  "lat": 22.5920591,
+  "lon": 88.3925500,
+  "tags": {
+    "addr:street": "Bidhan Nagar Road",
+    "amenity": "fast_food",
+    "brand": "Wow! Momo",
+    "brand:wikidata": "Q8037446",
+    "cuisine": "momo",
+    "name": "Wow! Momo",
+    "name:en": "WOW MOMO",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10091478919,
+  "lat": 22.5672520,
+  "lon": 88.3711357,
+  "tags": {
+    "alt_name": "Kentucky Fried Chicken",
+    "alt_name:en": "Kentucky Fried Chicken",
+    "alt_name:hi": "केंटुकी फ्राइड चिकन",
+    "alt_name:pa": "ਕੈਂਟੁਕੀ ਫ੍ਰਾਈਡ ਚਿਕਨ",
+    "alt_name:pnb": "کینٹکی فرائیڈ چکن",
+    "alt_name:ur": "کینٹکی فرائیڈ چکن",
+    "amenity": "fast_food",
+    "brand": "KFC",
+    "brand:en": "KFC",
+    "brand:hi": "केएफसी",
+    "brand:pa": "ਕੇਐਫਸੀ",
+    "brand:pnb": "کے ایف سی",
+    "brand:ur": "کے ایف سی",
+    "brand:wikidata": "Q524757",
+    "cuisine": "chicken",
+    "name": "KFC",
+    "name:en": "KFC",
+    "name:hi": "केएफसी",
+    "name:pa": "ਕੇਐਫਸੀ",
+    "name:pnb": "کے ایف سی",
+    "name:ur": "کے ایف سی",
+    "opening_hours": "Mo-Su,PH 11:00-23:00",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10091478920,
+  "lat": 22.5672276,
+  "lon": 88.3709187,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2025-02-05",
+    "name": "IRCTC RESTAURANT CUM FOOD PLAZA (SEALDAH)"
+  }
+},
+{
+  "type": "node",
+  "id": 10091478921,
+  "lat": 22.5669550,
+  "lon": 88.3709447,
+  "tags": {
+    "amenity": "fast_food",
+    "check_date": "2025-02-05",
+    "name": "Jan Aahar sealdah station"
+  }
+},
+{
+  "type": "node",
+  "id": 10091490317,
+  "lat": 22.5675390,
+  "lon": 88.3710994,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Evershine Caterers"
+  }
+},
+{
+  "type": "node",
+  "id": 10091492317,
+  "lat": 22.5671227,
+  "lon": 88.3714662,
+  "tags": {
+    "alt_name": "Haldiram",
+    "amenity": "fast_food",
+    "brand": "Haldiram's",
+    "brand:wikidata": "Q17054442",
+    "cuisine": "indian",
+    "name": "Haldiram's Prabhuji Factory Outlet",
+    "opening_hours": "Mo-Su 10:00-10:00",
+    "shop": "confectionery",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10091501917,
+  "lat": 22.5689072,
+  "lon": 88.4309479,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Wow! Momo",
+    "brand:wikidata": "Q8037446",
+    "cuisine": "momo",
+    "name": "Wow! Momo",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10091506118,
+  "lat": 22.5727953,
+  "lon": 88.4214503,
+  "tags": {
+    "addr:postcode": "700106",
+    "alt_name": "Kentucky Fried Chicken",
+    "alt_name:en": "Kentucky Fried Chicken",
+    "alt_name:hi": "केंटुकी फ्राइड चिकन",
+    "alt_name:pa": "ਕੈਂਟੁਕੀ ਫ੍ਰਾਈਡ ਚਿਕਨ",
+    "alt_name:pnb": "کینٹکی فرائیڈ چکن",
+    "alt_name:ur": "کینٹکی فرائیڈ چکن",
+    "amenity": "fast_food",
+    "brand": "KFC",
+    "brand:en": "KFC",
+    "brand:hi": "केएफसी",
+    "brand:pa": "ਕੇਐਫਸੀ",
+    "brand:pnb": "کے ایف سی",
+    "brand:ur": "کے ایف سی",
+    "brand:wikidata": "Q524757",
+    "cuisine": "chicken",
+    "internet_access": "wlan",
+    "name": "KFC",
+    "name:en": "KFC",
+    "name:hi": "केएफसी",
+    "name:pa": "ਕੇਐਫਸੀ",
+    "name:pnb": "کے ایف سی",
+    "name:ur": "کے ایف سی",
+    "phone": "080 4275 4444",
+    "takeaway": "yes",
+    "website": "https://kfc.co.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 10091511619,
+  "lat": 22.6020032,
+  "lon": 88.4055599,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Subway",
+    "brand:wikidata": "Q244457",
+    "cuisine": "sandwich",
+    "name": "Subway",
+    "name:en": "Subway",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10091511717,
+  "lat": 22.5777416,
+  "lon": 88.4000312,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Wow! Momo",
+    "brand:wikidata": "Q8037446",
+    "cuisine": "momo",
+    "name": "Wow! Momo",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10091514217,
+  "lat": 22.6013375,
+  "lon": 88.4057768,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Wow! Momo",
+    "brand:wikidata": "Q8037446",
+    "cuisine": "momo",
+    "name": "Wow! Momo",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10091522317,
+  "lat": 22.5824191,
+  "lon": 88.4240343,
+  "tags": {
+    "addr:postcode": "700064",
+    "amenity": "fast_food",
+    "brand": "Wow! Momo",
+    "brand:wikidata": "Q8037446",
+    "check_date": "2023-10-27",
+    "cuisine": "momo",
+    "name": "Wow! Momo",
+    "opening_hours": "10:00-21:30",
+    "takeaway": "yes",
+    "website": "https://www.wowmomo.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 10091524217,
+  "lat": 22.5990056,
+  "lon": 88.4133560,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Wow! Momo",
+    "brand:wikidata": "Q8037446",
+    "cuisine": "momo",
+    "name": "Wow! Momo",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10091527117,
+  "lat": 22.6417862,
+  "lon": 88.4388328,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Wow! Momo",
+    "brand:wikidata": "Q8037446",
+    "cuisine": "momo",
+    "name": "Wow! Momo",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10091533517,
+  "lat": 22.6434051,
+  "lon": 88.4393528,
+  "tags": {
+    "addr:postcode": "700052",
+    "amenity": "restaurant",
+    "internet_access": "wlan",
+    "name": "The Irish House",
+    "opening_hours": "Mo-Su 06:00-23:00",
+    "phone": "033 4033 3222",
+    "website": "https://www.theirishhouse.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 10091536917,
+  "lat": 22.6431965,
+  "lon": 88.4389065,
+  "tags": {
+    "amenity": "restaurant",
+    "internet_access": "wlan",
+    "name": "7 Pack Restaurant & Bar",
+    "opening_hours": "24/7",
+    "phone": "099036 52412"
+  }
+},
+{
+  "type": "node",
+  "id": 10091540318,
+  "lat": 22.6435430,
+  "lon": 88.4397405,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "name": "Cafe Coffee Day",
+    "phone": "1800 102 5093",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10091550717,
+  "lat": 22.5095539,
+  "lon": 88.3547893,
+  "tags": {
+    "addr:housenumber": "13/2",
+    "addr:postcode": "700029",
+    "addr:street": "Baroj Road",
+    "amenity": "restaurant",
+    "internet_access": "wlan",
+    "name": "The Bengal Rowing Club (BRC)",
+    "opening_hours": "Tu-Su 06:00-22:30",
+    "phone": "033 2466 1751",
+    "website": "https://www.bengalrowingclub.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 10092501727,
+  "lat": 22.5819407,
+  "lon": 88.4492010,
+  "tags": {
+    "addr:postcode": "700156",
+    "alt_name": "Kentucky Fried Chicken",
+    "alt_name:en": "Kentucky Fried Chicken",
+    "alt_name:hi": "केंटुकी फ्राइड चिकन",
+    "alt_name:pa": "ਕੈਂਟੁਕੀ ਫ੍ਰਾਈਡ ਚਿਕਨ",
+    "alt_name:pnb": "کینٹکی فرائیڈ چکن",
+    "alt_name:ur": "کینٹکی فرائیڈ چکن",
+    "amenity": "fast_food",
+    "brand": "KFC",
+    "brand:en": "KFC",
+    "brand:hi": "केएफसी",
+    "brand:pa": "ਕੇਐਫਸੀ",
+    "brand:pnb": "کے ایف سی",
+    "brand:ur": "کے ایف سی",
+    "brand:wikidata": "Q524757",
+    "cuisine": "chicken",
+    "internet_access": "wlan",
+    "name": "KFC",
+    "name:en": "KFC",
+    "name:hi": "केएफसी",
+    "name:pa": "ਕੇਐਫਸੀ",
+    "name:pnb": "کے ایف سی",
+    "name:ur": "کے ایف سی",
+    "phone": "080 4275 4444",
+    "takeaway": "yes",
+    "website": "https://kfc.co.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 10092532717,
+  "lat": 22.5837959,
+  "lon": 88.4351768,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Kolkata@99"
+  }
+},
+{
+  "type": "node",
+  "id": 10092532718,
+  "lat": 22.5836175,
+  "lon": 88.4347856,
+  "tags": {
+    "addr:postcode": "700102",
+    "addr:street": "AN Block",
+    "amenity": "restaurant",
+    "name": "The Punjab Mirchi",
+    "opening_hours": "Mo-Su 11:00-00:00"
+  }
+},
+{
+  "type": "node",
+  "id": 10093193617,
+  "lat": 22.5835442,
+  "lon": 88.4346230,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Yummy Puds"
+  }
+},
+{
+  "type": "node",
+  "id": 10093193618,
+  "lat": 22.5172125,
+  "lon": 88.3488896,
+  "tags": {
+    "addr:housenumber": "63/1",
+    "addr:postcode": "700026",
+    "addr:street": "Rash Behari Avenue",
+    "amenity": "restaurant",
+    "name": "Prema Vilas",
+    "opening_hours": "Mo-Su 08:00-21:30",
+    "phone": "098300 77572"
+  }
+},
+{
+  "type": "node",
+  "id": 10115934219,
+  "lat": 22.6210386,
+  "lon": 88.3923894,
+  "tags": {
+    "addr:housenumber": "13/1B",
+    "addr:postcode": "700030",
+    "addr:street": "Dum Dum Road",
+    "amenity": "fast_food",
+    "brand": "Wow! Momo",
+    "brand:wikidata": "Q8037446",
+    "cuisine": "momo",
+    "name": "Wow! Momo",
+    "opening_hours": "Mo-Su 10:00-23:00",
+    "phone": "076040 62741",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10137952617,
+  "lat": 22.6225693,
+  "lon": 88.4129059,
+  "tags": {
+    "addr:postcode": "700074",
+    "addr:street": "Dum Dum Road",
+    "amenity": "fast_food",
+    "cuisine": "chicken;indian;kebab",
+    "name": "Akram's Biriyani",
+    "opening_hours": "Mo-Su 12:00-00:00",
+    "phone": "9123607351;9748953847",
+    "website": "https://www.swiggy.com/restaurants/akrams-biryani-dum-dum-road-dumdum-kolkata-579256?"
+  }
+},
+{
+  "type": "node",
+  "id": 10172813242,
+  "lat": 22.5786115,
+  "lon": 88.4717974,
+  "tags": {
+    "addr:city": "Newtown, Kolkata",
+    "addr:postcode": "700156",
+    "amenity": "cafe",
+    "name": "Biswa Bangla Gate",
+    "name:en": "Biswa Bangla Gate",
+    "website": "https://www.biswabanglagatekolkata.in",
+    "wikidata": "Q39087520",
+    "wikimedia_commons": "Category:Biswa Bangla Gate",
+    "wikipedia": "en:Biswa Bangla Gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10186264176,
+  "lat": 22.5013429,
+  "lon": 88.3200206,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Eatelicious"
+  }
+},
+{
+  "type": "node",
+  "id": 10224516054,
+  "lat": 22.6441532,
+  "lon": 88.4396570,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Biryani Bhai"
+  }
+},
+{
+  "type": "node",
+  "id": 10224519245,
+  "lat": 22.6433850,
+  "lon": 88.4399110,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Wow! Momo",
+    "brand:wikidata": "Q8037446",
+    "cuisine": "momo",
+    "name": "Wow! Momo",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10224530603,
+  "lat": 22.6440407,
+  "lon": 88.4396505,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Subway",
+    "brand:wikidata": "Q244457",
+    "cuisine": "sandwich",
+    "name": "Subway",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10224534180,
+  "lat": 22.6442046,
+  "lon": 88.4396630,
+  "tags": {
+    "alt_name": "Kentucky Fried Chicken",
+    "alt_name:en": "Kentucky Fried Chicken",
+    "alt_name:hi": "केंटुकी फ्राइड चिकन",
+    "alt_name:pa": "ਕੈਂਟੁਕੀ ਫ੍ਰਾਈਡ ਚਿਕਨ",
+    "alt_name:pnb": "کینٹکی فرائیڈ چکن",
+    "alt_name:ur": "کینٹکی فرائیڈ چکن",
+    "amenity": "fast_food",
+    "brand": "KFC",
+    "brand:en": "KFC",
+    "brand:hi": "केएफसी",
+    "brand:pa": "ਕੇਐਫਸੀ",
+    "brand:pnb": "کے ایف سی",
+    "brand:ur": "کے ایف سی",
+    "brand:wikidata": "Q524757",
+    "cuisine": "chicken",
+    "name": "KFC",
+    "name:en": "KFC",
+    "name:hi": "केएफसी",
+    "name:pa": "ਕੇਐਫਸੀ",
+    "name:pnb": "کے ایف سی",
+    "name:ur": "کے ایف سی",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10224537564,
+  "lat": 22.6424753,
+  "lon": 88.4396810,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Wrapafella"
+  }
+},
+{
+  "type": "node",
+  "id": 10224538668,
+  "lat": 22.6440916,
+  "lon": 88.4396545,
+  "tags": {
+    "amenity": "restaurant",
+    "brand": "Pizza Hut",
+    "brand:wikidata": "Q191615",
+    "cuisine": "pizza",
+    "name": "Pizza Hut"
+  }
+},
+{
+  "type": "node",
+  "id": 10247548409,
+  "lat": 22.5154140,
+  "lon": 88.3655724,
+  "tags": {
+    "addr:housenumber": "102",
+    "addr:street": "Ballygunge Gardens",
+    "amenity": "restaurant",
+    "check_date": "2023-12-16",
+    "cuisine": "pizza;burger;regional",
+    "internet_access": "no",
+    "name": "The Grub Club",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 10248563609,
+  "lat": 22.5076826,
+  "lon": 88.3652783,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Diner 49B"
+  }
+},
+{
+  "type": "node",
+  "id": 10287098375,
+  "lat": 22.4910930,
+  "lon": 88.3177947,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "cuisine": "coffee_shop",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Cafe Coffee Day",
+    "opening_hours": "Mo-Su 08:30-23:00",
+    "outdoor_seating": "no",
+    "takeaway": "yes",
+    "website": "https://www.cafecoffeeday.com/cafe-menu/"
+  }
+},
+{
+  "type": "node",
+  "id": 10287769485,
+  "lat": 22.5145779,
+  "lon": 88.3476569,
+  "tags": {
+    "amenity": "cafe",
+    "name": "The Irish Brewery"
+  }
+},
+{
+  "type": "node",
+  "id": 10287804508,
+  "lat": 22.5139924,
+  "lon": 88.3491977,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Cafe the Eggspresso"
+  }
+},
+{
+  "type": "node",
+  "id": 10294779009,
+  "lat": 22.5929162,
+  "lon": 88.3417561,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "SIP 'N' BITE'S Chinese fast food"
+  }
+},
+{
+  "type": "node",
+  "id": 10557281120,
+  "lat": 22.5180208,
+  "lon": 88.3767903,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "262",
+    "addr:postcode": "700042",
+    "addr:street": "Banku Bihari Chatterjee Road",
+    "amenity": "fast_food",
+    "locality": "Kasba",
+    "name": "Sampa Snacks"
+  }
+},
+{
+  "type": "node",
+  "id": 10651584806,
+  "lat": 22.5934596,
+  "lon": 88.4059146,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Calcutta 64"
+  }
+},
+{
+  "type": "node",
+  "id": 10682505618,
+  "lat": 22.5144240,
+  "lon": 88.3525501,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "32B",
+    "addr:postcode": "700029",
+    "addr:street": "Dr Sarat Banerjee Road",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "cuisine": "pizza;coffee_shop;burger;chicken;sandwich;sushi;american",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "name": "Cheese Cherry Pineapple",
+    "opening_hours": "Mo-Su 11:00-23:00",
+    "outdoor_seating": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 10864043305,
+  "lat": 22.6052525,
+  "lon": 88.3844317,
+  "tags": {
+    "addr:postcode": "700037",
+    "addr:street": "Belgachia Road",
+    "amenity": "fast_food",
+    "cuisine": "indian",
+    "name": "Royal Biryani",
+    "opening_hours": "Mo-Su 13:00-23:59"
+  }
+},
+{
+  "type": "node",
+  "id": 10876008006,
+  "lat": 22.6053727,
+  "lon": 88.3841625,
+  "tags": {
+    "addr:postcode": "700037",
+    "addr:street": "Belgachia Road",
+    "amenity": "fast_food",
+    "cuisine": "indian",
+    "name": "Bharat Biryani",
+    "opening_hours": "Mo-Su 14:00-23:59"
+  }
+},
+{
+  "type": "node",
+  "id": 10876010006,
+  "lat": 22.6057280,
+  "lon": 88.3861393,
+  "tags": {
+    "addr:postcode": "700037",
+    "addr:street": "Belgachia Metro",
+    "amenity": "fast_food",
+    "cuisine": "american;chinese",
+    "name": "CFC",
+    "opening_hours": "Mo-Su 18:00-22:30",
+    "operator": "Nasim"
+  }
+},
+{
+  "type": "node",
+  "id": 10880147305,
+  "lat": 22.5171756,
+  "lon": 88.3613853,
+  "tags": {
+    "addr:street": "Purna Das Road",
+    "amenity": "restaurant",
+    "name": "Azad Hind Dhaba"
+  }
+},
+{
+  "type": "node",
+  "id": 10880624605,
+  "lat": 22.5192763,
+  "lon": 88.3804237,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "The Tasty Bytes"
+  }
+},
+{
+  "type": "node",
+  "id": 10882736007,
+  "lat": 22.5171182,
+  "lon": 88.3601391,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Blue Tokai"
+  }
+},
+{
+  "type": "node",
+  "id": 10932156207,
+  "lat": 22.6626258,
+  "lon": 88.4311835,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "Madhusudhan Banerjee Road",
+    "addr:postcode": "70051",
+    "addr:street": "Birati Flyover",
+    "amenity": "fast_food",
+    "cuisine": "sandwich",
+    "diet:non-vegetarian": "yes",
+    "name": "Shera kaku",
+    "opening_hours": "Mo-Su 10:00-21:00",
+    "operator": "SC"
+  }
+},
+{
+  "type": "node",
+  "id": 10960407342,
+  "lat": 22.5786343,
+  "lon": 88.4716980,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "biswa bangla gate"
+  }
+},
+{
+  "type": "node",
+  "id": 10960407376,
+  "lat": 22.6233320,
+  "lon": 88.4421608,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "aminia restaurant"
+  }
+},
+{
+  "type": "node",
+  "id": 11038783005,
+  "lat": 22.5612587,
+  "lon": 88.3552978,
+  "tags": {
+    "addr:street": "19, Rani Rashmoni Road, Esplanade, Dakshineswar, Kolkata, West Bengal 700087",
+    "amenity": "restaurant",
+    "name": "Hotel Sidheshwari Ashram"
+  }
+},
+{
+  "type": "node",
+  "id": 11098801623,
+  "lat": 22.5164432,
+  "lon": 88.3606841,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "P 459/B",
+    "addr:postcode": "700029",
+    "addr:street": "Golpark, Hemanta Mukherjee Sarani, lake Terrace, Ballygunge,",
+    "amenity": "cafe",
+    "internet_access": "yes",
+    "name": "Armaan's Cafe",
+    "opening_hours": "Mo-Su 12:00-21:00",
+    "outdoor_seating": "no",
+    "phone": "+919748742245",
+    "website": "https://www.facebook.com/profile.php?id=100094880922930"
+  }
+},
+{
+  "type": "node",
+  "id": 11172393692,
+  "lat": 22.6195485,
+  "lon": 88.3937234,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "E/P 55B kunja mallik bug",
+    "addr:postcode": "700030",
+    "addr:street": "Dum Dum Road",
+    "amenity": "restaurant",
+    "name": "Foodjet,dumdum"
+  }
+},
+{
+  "type": "node",
+  "id": 11261206722,
+  "lat": 22.4655285,
+  "lon": 88.3767125,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2023-10-14",
+    "cuisine": "indian;fish;ice_cream;dessert;regional",
+    "diet:non-vegetarian": "yes",
+    "diet:vegetarian": "yes",
+    "name": "Aminia",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11263213112,
+  "lat": 22.4589696,
+  "lon": 88.3839778,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2023-10-15",
+    "cuisine": "chinese",
+    "diet:non-vegetarian": "yes",
+    "diet:vegetarian": "yes",
+    "name": "Chowman",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11264617761,
+  "lat": 22.5858469,
+  "lon": 88.4053261,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2023-10-14",
+    "cuisine": "coffee_shop",
+    "name": "Melbourne Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11272650090,
+  "lat": 22.4436792,
+  "lon": 88.3942574,
+  "tags": {
+    "amenity": "fast_food",
+    "check_date": "2023-10-19",
+    "cuisine": "cake;dessert;local;bakery",
+    "internet_access": "no",
+    "name": "Suravi Sweets",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11272663351,
+  "lat": 22.4413515,
+  "lon": 88.3957340,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2023-10-19",
+    "cuisine": "chinese;sandwich;chicken;asian",
+    "diet:healthy": "yes",
+    "diet:non-vegetarian": "yes",
+    "diet:vegetarian": "yes",
+    "internet_access": "no",
+    "name": "Bamboo Shoot",
+    "name:hi": "Bamboo Shoot",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11272668129,
+  "lat": 22.4420239,
+  "lon": 88.3952154,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Domino's",
+    "brand:wikidata": "Q839466",
+    "check_date": "2023-10-19",
+    "cuisine": "pizza",
+    "diet:non-vegetarian": "yes",
+    "diet:vegetarian": "yes",
+    "drive_through": "yes",
+    "internet_access": "no",
+    "name": "Domino's",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "takeaway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11272675102,
+  "lat": 22.4499346,
+  "lon": 88.3905533,
+  "tags": {
+    "amenity": "fast_food",
+    "check_date": "2023-10-19",
+    "cuisine": "regional",
+    "diet:non-vegetarian": "yes",
+    "diet:vegetarian": "yes",
+    "drive_through": "yes",
+    "internet_access": "no",
+    "name": "Haji's Muglai",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11300066506,
+  "lat": 22.4775636,
+  "lon": 88.3767695,
+  "tags": {
+    "amenity": "fast_food",
+    "check_date": "2023-10-30",
+    "cuisine": "pizza;burger;sandwich;chicken;indian",
+    "drive_through": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "I Snax",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "source": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 11300070189,
+  "lat": 22.4775125,
+  "lon": 88.3772453,
+  "tags": {
+    "amenity": "fast_food",
+    "check_date": "2023-10-30",
+    "cuisine": "indian;chicken;fish;pasta",
+    "diet:meat": "yes",
+    "diet:non-vegetarian": "yes",
+    "diet:vegetarian": "yes",
+    "drive_through": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Amiyo Snacks",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "source": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 11300082467,
+  "lat": 22.4772428,
+  "lon": 88.3817617,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2023-10-30",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Brothers Kitchen",
+    "source": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 11300086106,
+  "lat": 22.4964088,
+  "lon": 88.3679384,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "check_date": "2023-10-30",
+    "delivery": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Kasturi Ac Resturant",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "source": "local knowledge",
+    "toilets": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11300155809,
+  "lat": 22.4766369,
+  "lon": 88.3818877,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2023-10-30",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Katheleen",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "source": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 11300159288,
+  "lat": 22.4745421,
+  "lon": 88.3763285,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Wow! Momo",
+    "brand:wikidata": "Q8037446",
+    "check_date": "2023-10-30",
+    "cuisine": "momo",
+    "name": "Wow! Momo",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "source": "local knowledge",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11300161815,
+  "lat": 22.4770654,
+  "lon": 88.3761117,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2023-10-30",
+    "name": "Chumuke Chomok Cafe",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "source": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 11300199334,
+  "lat": 22.4772364,
+  "lon": 88.3777401,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2023-10-30",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Rashika South Indian Snacks",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "source": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 11300205367,
+  "lat": 22.4764077,
+  "lon": 88.3761474,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2023-10-30",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "Chez",
+    "source": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 11300205474,
+  "lat": 22.4764077,
+  "lon": 88.3755584,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2023-11-11",
+    "name": "Solace Cafe",
+    "outdoor_seating": "no",
+    "source": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 11300208380,
+  "lat": 22.4700088,
+  "lon": 88.3777667,
+  "tags": {
+    "amenity": "fast_food",
+    "check_date": "2023-10-30",
+    "name": "A1 Fast Food Centre",
+    "source": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 11300249734,
+  "lat": 22.4643847,
+  "lon": 88.3774683,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2023-10-30",
+    "name": "Sushma Tea Stall",
+    "source": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 11305049652,
+  "lat": 22.4780367,
+  "lon": 88.3813299,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2023-11-01",
+    "name": "Sitala Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 11381115942,
+  "lat": 22.5083351,
+  "lon": 88.3368964,
+  "tags": {
+    "addr:city": "New Alipore",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "603/1B",
+    "addr:postcode": "700053",
+    "addr:street": "Block O",
+    "air_conditioning": "no",
+    "amenity": "cafe",
+    "bar": "no",
+    "check_date": "2026-09-14",
+    "contact:instagram": "ubuntueat",
+    "cuisine": "indian;pizza;burger;chinese;italian;sandwich;regional;thai",
+    "delivery": "yes",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "email": "ubuntucommunity3@gmail.com",
+    "level": "0",
+    "name": "Ubuntu Eat",
+    "name:en": "Ubuntu Eat",
+    "opening_hours": "Mo-Su 12:00-22:00",
+    "outdoor_seating": "no",
+    "payment:cash": "yes",
+    "payment:contactless": "yes",
+    "phone": "+91-9330823020",
+    "toilets": "yes",
+    "website": "https://ubuntueat.com/",
+    "website:menu": "https://ubuntueat.com/wp-content/uploads/2022/03/Ubuntu-Eat-Dine-In_Kolkata_2032022_compressed.pdf"
+  }
+},
+{
+  "type": "node",
+  "id": 11408832769,
+  "lat": 22.5151488,
+  "lon": 88.3533639,
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "shop": "coffee",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11422209467,
+  "lat": 22.5249092,
+  "lon": 88.3662765,
+  "tags": {
+    "addr:housenumber": "8",
+    "addr:street": "Mandeville Gardens",
+    "amenity": "restaurant",
+    "check_date": "2023-12-16",
+    "cuisine": "regional;burger;pizza",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "name": "7th Mandeville Multi Cuisine Restro",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "+91 98301 07921",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11422427265,
+  "lat": 22.5253002,
+  "lon": 88.3654384,
+  "tags": {
+    "amenity": "cafe",
+    "check_date": "2023-12-16",
+    "cuisine": "pizza;burger;regional",
+    "internet_access": "wlan",
+    "internet_access:fee": "no",
+    "name": "Kolkata Tram World",
+    "outdoor_seating": "yes",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11428279469,
+  "lat": 22.6072347,
+  "lon": 88.3828559,
+  "tags": {
+    "addr:postcode": "700037",
+    "addr:street": "Tala Park Path",
+    "amenity": "restaurant",
+    "cuisine": "chinese;indian",
+    "name": "Benfish",
+    "opening_hours": "Mo-Su 03:00-10:30"
+  }
+},
+{
+  "type": "node",
+  "id": 11428279470,
+  "lat": 22.6076765,
+  "lon": 88.3839103,
+  "tags": {
+    "addr:postcode": "700037",
+    "addr:street": "Tara Sankar Sarani",
+    "amenity": "restaurant",
+    "cuisine": "chinese",
+    "name": "MOMO HUY",
+    "name:en": "MOMO HUT",
+    "opening_hours": "Mo-Su 05:30-10:00"
+  }
+},
+{
+  "type": "node",
+  "id": 11452227035,
+  "lat": 22.6186997,
+  "lon": 88.4060685,
+  "tags": {
+    "air_conditioning": "no",
+    "amenity": "fast_food",
+    "cuisine": "indian;fish",
+    "fast_food": "cafeteria",
+    "indoor": "yes",
+    "indoor_seating": "yes",
+    "level": "0",
+    "name": "Canteen",
+    "operator": "Dr. Sudhir Chandra Sur Institute of Technology and Sports Complex"
+  }
+},
+{
+  "type": "node",
+  "id": 11511919022,
+  "lat": 22.5958575,
+  "lon": 88.4067038,
+  "tags": {
+    "addr:city": "SaltLake City",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "AD-67",
+    "addr:postcode": "700064",
+    "addr:street": "Block AD, 1st Avenue Road, Sector 1",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "bar": "no",
+    "contact:facebook": "https://www.facebook.com/profile.php?id=61555278081491&mibextid=ZbWKwL",
+    "cuisine": "coffee_shop;chinese;italian;pizza;sandwich;indian;dessert;salad;pasta",
+    "description": "Que Pasa, An All Day Cafe, is a vibrant new addition to the culinary landscape of Salt Lake City, invites you to embark on a gastronomic journey through the flavours of the world. Nestled amidst the bustling streets of Block AD, Sector 1, Saltlake.",
+    "drive_through": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "level": "1",
+    "name": "Que Pasa",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "outdoor_seating": "yes",
+    "payment:app": "yes",
+    "payment:cards": "yes",
+    "payment:cash": "yes",
+    "payment:coins": "yes",
+    "payment:contactless": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:diners_club": "yes",
+    "payment:google_pay": "yes",
+    "payment:maestro": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "payment:visa_debit": "yes",
+    "phone": "+91-8100-606767",
+    "reservation": "yes",
+    "start_date": "2023-12-24",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "toilets:wheelchair": "no",
+    "website:menu": "https://airmenus.in/quepasa/order/Dine-In",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 11634134090,
+  "lat": 22.6022704,
+  "lon": 88.3755325,
+  "tags": {
+    "addr:city": "Kolkata",
+    "amenity": "cafe",
+    "cuisine": "chai",
+    "name": "Tea Shop"
+  }
+},
+{
+  "type": "node",
+  "id": 11652266369,
+  "lat": 22.5602933,
+  "lon": 88.3515700,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Burger King",
+    "brand:wikidata": "Q177054",
+    "cuisine": "burger",
+    "name": "Burger King",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11655595569,
+  "lat": 22.5446896,
+  "lon": 88.3552612,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Idlygo"
+  }
+},
+{
+  "type": "node",
+  "id": 11730000184,
+  "lat": 22.5151895,
+  "lon": 88.3487820,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Abar Boithok"
+  }
+},
+{
+  "type": "node",
+  "id": 11836940144,
+  "lat": 22.6305717,
+  "lon": 88.4241487,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "pizza",
+    "level": "0",
+    "name": "Mojo Pizza",
+    "self_service": "yes",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "toilets:access": "customers",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 12011718875,
+  "lat": 22.5948737,
+  "lon": 88.3414617,
+  "tags": {
+    "addr:city": "Howrah",
+    "addr:district": "Howrah",
+    "addr:housenumber": "51",
+    "addr:postcode": "711106",
+    "addr:street": "Bijoy Kumar Mukherjee Road",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "email": "info@thedelhidurbar.com",
+    "name": "THE DELHI DURBAR RESTAURANT",
+    "opening_hours": "Mo-Su 11:30-23:30",
+    "phone": "+918100563939",
+    "takeaway": "yes",
+    "website": "www.theindiandurbar.com"
+  }
+},
+{
+  "type": "node",
+  "id": 12196681537,
+  "lat": 22.5777742,
+  "lon": 88.4320244,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "fast_food",
+    "brand": "Mio Amore",
+    "brand:wikidata": "Q130534919",
+    "diet:vegetarian": "yes",
+    "indoor_seating": "no",
+    "name": "Mio Amore",
+    "name:bn": "মিও আমোরে",
+    "name:en": "Mio Amore",
+    "shop": "pastry",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12206764159,
+  "lat": 22.5809684,
+  "lon": 88.4248515,
+  "tags": {
+    "addr:block": "EE",
+    "addr:housename": "Dakshin Dinajpur Zilla Parishad Bhawan",
+    "addr:housenumber": "6/1",
+    "addr:place": "Sector 2, Saltlake",
+    "addr:postcode": "700091",
+    "amenity": "restaurant",
+    "contact:mobile": "+91 98302 02560;+91 94330 71361",
+    "cuisine": "chicken;chinese;indian;noodle;regional",
+    "level": "0",
+    "name": "Swastineer Canteen",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "takeaway": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 12206764160,
+  "lat": 22.5812978,
+  "lon": 88.4246132,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "chicken;chinese;indian;noodle;regional;coffee_shop;ice_cream",
+    "name": "Blue Plum",
+    "takeaway": "yes",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 12206764169,
+  "lat": 22.5813868,
+  "lon": 88.4245954,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "cuisine": "coffee_shop",
+    "indoor_seating": "yes",
+    "level": "0",
+    "name": "Cafe Coffee Day",
+    "smoking": "no",
+    "takeaway": "yes",
+    "toilets:access": "customers",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 12209860058,
+  "lat": 22.5763944,
+  "lon": 88.4307436,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "fast_food",
+    "brand": "Burger King",
+    "brand:wikidata": "Q177054",
+    "brand:wikipedia": "en:Burger King",
+    "check_date": "2026-07-23",
+    "check_date:opening_hours": "2026-07-23",
+    "cuisine": "burger",
+    "indoor_seating": "yes",
+    "level": "0",
+    "name": "Burger King",
+    "opening_hours": "Mo-Su 10:00-23:00",
+    "phone": "+91 86556 26323",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "toilets:access": "customers",
+    "website": "https://stores.burgerking.in/burger-king-fast-food-restaurant-sector-5-bidhannagar-kolkata-249572/Home",
+    "website:menu": "https://www.burgerking.in/product-listing"
+  }
+},
+{
+  "type": "node",
+  "id": 12209860059,
+  "lat": 22.5763607,
+  "lon": 88.4308164,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "fast_food",
+    "cuisine": "indian;regional",
+    "indoor_seating": "yes",
+    "name": "Nizams Express",
+    "takeaway": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12241456150,
+  "lat": 22.5415255,
+  "lon": 88.3856896,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "83/1",
+    "addr:postcode": "700046",
+    "addr:street": "Topsia Road (south)",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "capacity": "80",
+    "contact:facebook": "https://www.facebook.com/ShamshijiKolkata",
+    "cuisine": "indian;mughlai;regional;curry;sandwich;kebab;biryani",
+    "delivery": "yes",
+    "diet:halal": "yes",
+    "diet:local": "yes",
+    "email": "shamshijikolkata@gmail.com",
+    "mobile": "+91-9477851851",
+    "name": "Shamshiji Restaurant & Caterer",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "outdoor_seating": "yes",
+    "payment:cash": "yes",
+    "payment:cashless": "yes",
+    "payment:upi": "yes",
+    "phone": "+91-9883344898",
+    "start_date": "2024-09-02",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "website": "https://www.shamshiji.com/home",
+    "website:menu": "https://www.shamshiji.com/menu",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 12288417001,
+  "lat": 22.5917067,
+  "lon": 88.3922961,
+  "tags": {
+    "addr:housenumber": "164",
+    "addr:postcode": "700054",
+    "addr:street": "CIT Road",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "diet:vegan": "yes",
+    "diet:vegetarian": "yes",
+    "internet_access": "wlan",
+    "name": "idlyGo Xpress",
+    "opening_hours": "Mo-Su 09:00-22:00",
+    "self_service": "partially",
+    "website": "https://idlygo.com/",
+    "website:menu": "https://maps.app.goo.gl/iyPfcJkXWwWMMS2P7?g_st=ac\nhttps://maps.app.goo.gl/mi6TZSDpv37JY3idA?g_st=ac\nhttps://maps.app.goo.gl/8bNUw3eupdHwnb3LA?g_st=ac\nhttps://maps.app.goo.gl/sdzLCRxesTmWFsvX6?g_st=ac"
+  }
+},
+{
+  "type": "node",
+  "id": 12289848051,
+  "lat": 22.5723916,
+  "lon": 88.4325857,
+  "tags": {
+    "addr:city": "Salt Lake Sector 5",
+    "addr:district": "Kolkata",
+    "addr:postcode": "700091",
+    "addr:street": "Imagine Techpark, Grounds, Salt Lake Bypass, DP Block, Sector V, Bidhannagar, Kolkata, West Bengal 700091",
+    "amenity": "restaurant",
+    "name": "Sizzle Club n Dine Restaurant",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "phone": "+91 79804 28232",
+    "website": "https://www.sizzleclubndine.co.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 12343766872,
+  "lat": 22.5638704,
+  "lon": 88.3269969,
+  "tags": {
+    "addr:district": "Howrah",
+    "addr:housenumber": "99",
+    "addr:postcode": "711102",
+    "addr:street": "Foreshore Road, 1A",
+    "amenity": "restaurant",
+    "cuisine": "pizza;coffee_shop;burger;italian;sandwich;mexican;indian;thai;american;dessert",
+    "diet:vegetarian": "yes",
+    "name": "Chai Break - Foreshoreroad",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "phone": "+91 99033 40365",
+    "website": "https://www.chaibreak.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 12350827305,
+  "lat": 22.5443742,
+  "lon": 88.3810137,
+  "tags": {
+    "addr:housenumber": "27A/1",
+    "addr:postcode": "700046",
+    "addr:street": "Mahendra Roy Lane",
+    "amenity": "restaurant",
+    "cuisine": "asian",
+    "name": "Bamboo (Modern Asian Cuisine)",
+    "opening_hours": "Mo-Su 12:00-23:00",
+    "phone": "062910 08618",
+    "website:menu": "https://maps.app.goo.gl/1pDWuhaQquQww4HF8?g_st=ac"
+  }
+},
+{
+  "type": "node",
+  "id": 12378974169,
+  "lat": 22.6280087,
+  "lon": 88.4227812,
+  "tags": {
+    "amenity": "cafe",
+    "indoor_seating": "no",
+    "level": "0",
+    "name": "Ram Kumar Tea Stall",
+    "outdoor_seating": "yes",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12378974172,
+  "lat": 22.6279822,
+  "lon": 88.4227640,
+  "tags": {
+    "amenity": "cafe",
+    "indoor_seating": "no",
+    "level": "0",
+    "name": "Arjun Tea Stall",
+    "outdoor_seating": "yes",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12378974173,
+  "lat": 22.6296529,
+  "lon": 88.4239291,
+  "tags": {
+    "amenity": "cafe",
+    "level": "0",
+    "name": "Kartick Tea Stall",
+    "outdoor_seating": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12464184628,
+  "lat": 22.5685947,
+  "lon": 88.3543928,
+  "tags": {
+    "address": "12, Ganesh Chandra Ave, Esplanade, Chowringhee North, Bowbazar, Kolkata, West Bengal 700013",
+    "amenity": "restaurant",
+    "cuisine": "chinese",
+    "name": "Eau Chew Restaurant",
+    "name:zh-Hant": "歐洲飯店",
+    "phone": "03322378260"
+  }
+},
+{
+  "type": "node",
+  "id": 12552021738,
+  "lat": 22.5558309,
+  "lon": 88.3507366,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "Premises No. A/2C (W/P), Chowringhee Mansions",
+    "addr:postcode": "700016",
+    "addr:street": "Doctor Mohammad Ishaque Road",
+    "amenity": "restaurant",
+    "branch": "KYD Street",
+    "cuisine": "awadhi",
+    "name": "Oudh 1590",
+    "phone": "+918697704415",
+    "website": "https://oudh1590.com"
+  }
+},
+{
+  "type": "node",
+  "id": 12567355137,
+  "lat": 22.5541391,
+  "lon": 88.3515875,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "17",
+    "addr:postcode": "700016",
+    "addr:state": "WB",
+    "addr:street": "Park Street",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "bar": "yes",
+    "contact:email": "trincasrestaurant@gmail.com",
+    "contact:phone": "+91 82402 59201",
+    "contact:whatsapp": "+91-82402-59201",
+    "level": "0",
+    "name": "Trincas",
+    "opening_hours": "Mo-Su,PH 11:30-23:30",
+    "reservation": "no",
+    "start_date": "1927",
+    "toilets": "yes",
+    "website": "https://www.trincas.in"
+  }
+},
+{
+  "type": "node",
+  "id": 12581356766,
+  "lat": 22.5136588,
+  "lon": 88.3927524,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "MISTI MUKH"
+  }
+},
+{
+  "type": "node",
+  "id": 12584791044,
+  "lat": 22.6211510,
+  "lon": 88.3998979,
+  "tags": {
+    "amenity": "fast_food",
+    "level": "0",
+    "name": "Mughal Biryani"
+  }
+},
+{
+  "type": "node",
+  "id": 12597594943,
+  "lat": 22.6211163,
+  "lon": 88.4009191,
+  "tags": {
+    "amenity": "cafe",
+    "description": "Common indian tea stall",
+    "level": "0",
+    "name": "Robi Tea",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12598797426,
+  "lat": 22.6215947,
+  "lon": 88.4046399,
+  "tags": {
+    "air_conditioning": "no",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Hotel Indrani Restaurant"
+  }
+},
+{
+  "type": "node",
+  "id": 12606460865,
+  "lat": 22.6201602,
+  "lon": 88.3956197,
+  "tags": {
+    "amenity": "restaurant",
+    "delivery": "yes",
+    "name": "Darao, Pothik-Bor",
+    "name:bn": "দাঁড়াও, পথিক-বর",
+    "opening_hours": "Mo-Su 11:30-23:30",
+    "phone": "+91 81004 45555",
+    "website": "https://www.zomato.com/kolkata/darao-pothik-bor-dum-dum"
+  }
+},
+{
+  "type": "node",
+  "id": 12606460867,
+  "lat": 22.6210968,
+  "lon": 88.4007802,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Dui Bhai Hotel"
+  }
+},
+{
+  "type": "node",
+  "id": 12643614784,
+  "lat": 22.5829710,
+  "lon": 88.3426165,
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Domino's",
+    "brand:wikidata": "Q839466",
+    "check_date": "2025-03-07",
+    "cuisine": "pizza",
+    "name": "Domino's",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12643614785,
+  "lat": 22.5830702,
+  "lon": 88.3426387,
+  "tags": {
+    "amenity": "fast_food",
+    "check_date": "2025-03-07",
+    "contact:phone": "+91 33 26400151",
+    "diet:non-vegetarian": "yes",
+    "diet:vegetarian": "yes",
+    "fast_food": "cafeteria",
+    "name": "Food Plaza",
+    "name:en": "Food Plaza",
+    "operator": "Araha Hospitality Pvt. Ltd.",
+    "self_service": "only"
+  }
+},
+{
+  "type": "node",
+  "id": 12690977754,
+  "lat": 22.6035019,
+  "lon": 88.4041216,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Sharma Snacks"
+  }
+},
+{
+  "type": "node",
+  "id": 12743651401,
+  "lat": 22.6595033,
+  "lon": 88.3913580,
+  "tags": {
+    "amenity": "fast_food",
+    "cuisine": "indian",
+    "name": "Roozbeh Biriyani",
+    "opening_hours": "Mo-Su 12:00-23:15",
+    "phone": "070036 51728"
+  }
+},
+{
+  "type": "node",
+  "id": 12745591101,
+  "lat": 22.6538008,
+  "lon": 88.3965642,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Baccha Phuchka Stall",
+    "opening_hours": "Mo-Su 18:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 12745599702,
+  "lat": 22.6535967,
+  "lon": 88.3973058,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Fast Food Stall"
+  }
+},
+{
+  "type": "node",
+  "id": 12745630001,
+  "lat": 22.6605147,
+  "lon": 88.3900163,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Royal Biriyani"
+  }
+},
+{
+  "type": "node",
+  "id": 12748290701,
+  "lat": 22.6536751,
+  "lon": 88.3973215,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Ruti Shop"
+  }
+},
+{
+  "type": "node",
+  "id": 12748666101,
+  "lat": 22.6511878,
+  "lon": 88.3981353,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Food Stalls"
+  }
+},
+{
+  "type": "node",
+  "id": 12811074985,
+  "lat": 22.6205776,
+  "lon": 88.4056874,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Pepper Steppers"
+  }
+},
+{
+  "type": "node",
+  "id": 12811074986,
+  "lat": 22.6218667,
+  "lon": 88.4051786,
+  "tags": {
+    "amenity": "fast_food",
+    "level": "0",
+    "name": "Roast Raja",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 12920296960,
+  "lat": 22.5015013,
+  "lon": 88.3610417,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "375",
+    "addr:postcode": "700068",
+    "addr:street": "Prince Anwar Shah Road",
+    "amenity": "fast_food",
+    "brand": "Taco Bell",
+    "brand:wikidata": "Q752941",
+    "cuisine": "tex-mex",
+    "name": "Taco Bell",
+    "opening_hours": "Mo-Su 11:00-23:00",
+    "phone": "+919319595638",
+    "takeaway": "yes",
+    "website": "https://www.tacobell.co.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 12920296961,
+  "lat": 22.5014304,
+  "lon": 88.3610539,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "375",
+    "addr:postcode": "700068",
+    "addr:street": "Prince Anwar Shah Road",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Flame And Grill",
+    "opening_hours": "Mo-Su 12:30-23:00",
+    "phone": "+913324228502"
+  }
+},
+{
+  "type": "node",
+  "id": 12920296962,
+  "lat": 22.5016310,
+  "lon": 88.3615696,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "375",
+    "addr:postcode": "700068",
+    "addr:street": "Prince Anwar Shah Road",
+    "amenity": "cafe",
+    "brand": "Starbucks",
+    "brand:wikidata": "Q37158",
+    "cuisine": "coffee_shop",
+    "name": "Starbucks",
+    "official_name": "Starbucks Coffee",
+    "opening_hours": "Mo-Su 10:00-23:00",
+    "phone": "+913324228502",
+    "takeaway": "yes",
+    "website": "https://tsb-stores.starbucksindia.net/starbucks-south-city-coffee-shop-prince-anwar-shah-road-kolkata-283330/Home"
+  }
+},
+{
+  "type": "node",
+  "id": 12920296963,
+  "lat": 22.5013052,
+  "lon": 88.3620351,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "375",
+    "addr:postcode": "700068",
+    "addr:street": "Prince Anwar Shah Road",
+    "amenity": "fast_food",
+    "brand": "McDonald's",
+    "brand:wikidata": "Q38076",
+    "cuisine": "burger",
+    "name": "McDonald's",
+    "opening_hours": "Mo-Su 11:00-23:00",
+    "phone": "+919599921895",
+    "takeaway": "yes",
+    "website": "https://mcdindia.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 12925518525,
+  "lat": 22.4846811,
+  "lon": 88.3144072,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop;pizza;burger;chinese;chicken",
+    "name": "Celestial Cafe",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12983025517,
+  "lat": 22.5013968,
+  "lon": 88.3611232,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "375",
+    "addr:postcode": "700068",
+    "addr:street": "Prince Anwar Shah Road",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "name": "Riyasat",
+    "opening_hours": "Mo-Fri 13:00-15:30",
+    "phone": "06292190242",
+    "website": "https://speciality.co.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 12983025518,
+  "lat": 22.5014524,
+  "lon": 88.3611346,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "375",
+    "addr:postcode": "700068",
+    "addr:street": "Prince Anwar Shah Road",
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "Coffee World",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "phone": "03340643181"
+  }
+},
+{
+  "type": "node",
+  "id": 12994215783,
+  "lat": 22.5392366,
+  "lon": 88.3928999,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "11A",
+    "addr:postcode": "700046",
+    "addr:street": "E Topsia Road",
+    "amenity": "restaurant",
+    "check_date": "2026-08-27",
+    "contact:instagram": "ogbythelake",
+    "cuisine": "chinese;indian;italian;sushi;thai",
+    "email": "ogbythelake@gmail.com",
+    "name": "OG By The Lake",
+    "opening_hours": "Mo-Fri 12:00-23:30",
+    "phone": "+91 9831006395"
+  }
+},
+{
+  "type": "node",
+  "id": 13001162161,
+  "lat": 22.5557640,
+  "lon": 88.3503920,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "30",
+    "addr:postcode": "700016",
+    "addr:street": "Chowringhee Road",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "bar": "yes",
+    "capacity": "65",
+    "cuisine": "coffee_shop;breakfast;pizza;steak_house;pasta;specialty_coffee;italian;mocktail;zero_proof_cocktail;pancake;smoothie_bowl",
+    "diet:gluten_free": "yes",
+    "diet:lactose_free": "yes",
+    "diet:meat": "yes",
+    "diet:non-vegetarian": "yes",
+    "diet:seafood": "yes",
+    "diet:vegetarian": "yes",
+    "email": "oldquarter.js52@gmail.com",
+    "highchair": "yes",
+    "internet_access": "wlan",
+    "internet_access:fee": "customers",
+    "level": "3",
+    "name": "Kulture - Specialty Coffee & Bistro",
+    "opening_hours": "Mo-Su 09:00-22:00",
+    "outdoor_seating": "yes",
+    "payment:cash": "yes",
+    "payment:contactless": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:mastercard": "yes",
+    "payment:upi": "yes",
+    "payment:visa": "yes",
+    "phone": "+91-9448040531",
+    "reservation": "yes",
+    "smoking": "isolated",
+    "toilets": "yes",
+    "website:menu": "https://drive.google.com/drive/folders/1op_iCyl6CrO--FkadkxpAGM1BA9fhkrf"
+  }
+},
+{
+  "type": "node",
+  "id": 13020929279,
+  "lat": 22.5847897,
+  "lon": 88.4325866,
+  "tags": {
+    "amenity": "restaurant",
+    "fixme": "location",
+    "name": "Agarwal's Kitchen"
+  }
+},
+{
+  "type": "node",
+  "id": 13020934262,
+  "lat": 22.5846714,
+  "lon": 88.4327191,
+  "tags": {
+    "amenity": "fast_food",
+    "fixme": "location and name",
+    "name": "Snack Point"
+  }
+},
+{
+  "type": "node",
+  "id": 13023099259,
+  "lat": 22.6194826,
+  "lon": 88.3918249,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Mitra Cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 13074152837,
+  "lat": 22.4931654,
+  "lon": 88.3718842,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "KOLKATA",
+    "addr:housenumber": "105",
+    "addr:postcode": "700032",
+    "addr:street": "Raja Subodh Chandra Mullick Road",
+    "amenity": "cafe",
+    "contact:facebook": "https://www.facebook.com/share/1aMuvuCoo8/?mibextid=wwXIfr",
+    "cuisine": "burger;chinese;fast_food",
+    "internet_access": "no",
+    "name": "Burger & Beyond",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "outdoor_seating": "yes",
+    "phone": "+917727030988"
+  }
+},
+{
+  "type": "node",
+  "id": 13108668301,
+  "lat": 22.6411075,
+  "lon": 88.4302581,
+  "tags": {
+    "amenity": "cafe",
+    "name": "বন্ধুর বাড়ি ক্যাফে",
+    "name:en": "Bandhur bari cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 13186572101,
+  "lat": 22.6199456,
+  "lon": 88.3944735,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Mezban biryani"
+  }
+},
+{
+  "type": "node",
+  "id": 13188446901,
+  "lat": 22.5537973,
+  "lon": 88.3534580,
+  "tags": {
+    "addr:postcode": "700016",
+    "addr:street": "Park Street",
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "contact:instagram": "peterhucalcutta",
+    "cuisine": "asian",
+    "name": "Peter Hu?",
+    "website": "https://www.instagram.com/peterhucalcutta/"
+  }
+},
+{
+  "type": "node",
+  "id": 13188450701,
+  "lat": 22.5646480,
+  "lon": 88.4107476,
+  "tags": {
+    "addr:postcode": "700098",
+    "addr:street": "Broadway Road",
+    "amenity": "restaurant",
+    "contact:instagram": "bizarre_asia",
+    "cuisine": "asian",
+    "name": "Bizarre Asia"
+  }
+},
+{
+  "type": "node",
+  "id": 13188583501,
+  "lat": 22.5647042,
+  "lon": 88.4106818,
+  "tags": {
+    "addr:postcode": "700098",
+    "addr:street": "Broadway Road",
+    "amenity": "fast_food",
+    "brand": "Domino's",
+    "brand:wikidata": "Q839466",
+    "contact:instagram": "dominos",
+    "cuisine": "pizza",
+    "name": "Domino's",
+    "takeaway": "yes",
+    "website": "https://m.dominos.co.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 13204503595,
+  "lat": 22.6023653,
+  "lon": 88.3755298,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "tea shop"
+  }
+},
+{
+  "type": "node",
+  "id": 13205504760,
+  "lat": 22.6353957,
+  "lon": 88.4176370,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "fast_food",
+    "brand": "Domino's",
+    "brand:wikidata": "Q839466",
+    "cuisine": "pizza",
+    "name": "Domino's",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13205504767,
+  "lat": 22.6359799,
+  "lon": 88.4142429,
+  "tags": {
+    "addr:city": "Dumdum Cantonment",
+    "addr:housenumber": "53/1",
+    "addr:postcode": "700028",
+    "addr:street": "J. N. Tewari Road",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "bar": "yes",
+    "brewery": "various",
+    "cuisine": "chinese;indian;kebab;fish_and_chips;fish;chicken",
+    "diet:non-vegetarian": "yes",
+    "diet:vegetarian": "yes",
+    "name": "Debonair Restaurant & Bar",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:upi": "yes",
+    "phone": "+919007845900"
+  }
+},
+{
+  "type": "node",
+  "id": 13205588695,
+  "lat": 22.6366980,
+  "lon": 88.4107108,
+  "tags": {
+    "amenity": "fast_food",
+    "cuisine": "chicken",
+    "diet:non-vegetarian": "yes",
+    "name": "Wow Fried Chicken"
+  }
+},
+{
+  "type": "node",
+  "id": 13206842938,
+  "lat": 22.5193112,
+  "lon": 88.3452379,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Apanjan"
+  }
+},
+{
+  "type": "node",
+  "id": 13208111173,
+  "lat": 22.5261133,
+  "lon": 88.3478009,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "The Bhawanipur House",
+    "name:bn": "দ্যা ভবানীপুর হাউস",
+    "name:en": "The Bhawanipur House"
+  }
+},
+{
+  "type": "node",
+  "id": 13227099179,
+  "lat": 22.5159509,
+  "lon": 88.3519525,
+  "tags": {
+    "amenity": "cafe",
+    "name": "The Daily"
+  }
+},
+{
+  "type": "node",
+  "id": 13228093474,
+  "lat": 22.6151292,
+  "lon": 88.4033708,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "pizza;coffee_shop;burger;chinese;italian;sandwich;american",
+    "name": "Teacher's Cafe",
+    "outdoor_seating": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13240161770,
+  "lat": 22.5945145,
+  "lon": 88.3773853,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "118",
+    "addr:postcode": "700004",
+    "addr:street": "Raja Dinendra Street",
+    "amenity": "restaurant",
+    "cuisine": "chinese;thai;continental;seafood",
+    "name": "Chowman Gouribari",
+    "phone": "+917439513770",
+    "website": "https://chowman.net/restaurants/chowman-gouribari-maniktala/"
+  }
+},
+{
+  "type": "node",
+  "id": 13264338551,
+  "lat": 22.5438760,
+  "lon": 88.3649966,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Baba Tea"
+  }
+},
+{
+  "type": "node",
+  "id": 13264381270,
+  "lat": 22.6457527,
+  "lon": 88.3813361,
+  "tags": {
+    "amenity": "restaurant",
+    "level": "3",
+    "name": "Foodplex"
+  }
+},
+{
+  "type": "node",
+  "id": 13264384220,
+  "lat": 22.6017038,
+  "lon": 88.3738693,
+  "tags": {
+    "amenity": "cafe",
+    "name": "National Economic Restaurant"
+  }
+},
+{
+  "type": "node",
+  "id": 13290063396,
+  "lat": 22.5533178,
+  "lon": 88.3519612,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "bar": "yes",
+    "cuisine": "indian;bengali;chinese",
+    "level": "0;1",
+    "name": "Magnolia Gondhoraj",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13290063397,
+  "lat": 22.5529245,
+  "lon": 88.3528110,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "fast_food",
+    "bar": "yes",
+    "cuisine": "chinese",
+    "indoor_seating": "yes",
+    "level": "0;1",
+    "name": "Wow! China Diner",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13290125007,
+  "lat": 22.5544201,
+  "lon": 88.3508854,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "fast_food",
+    "contact:mobile": "+91-720-799-7097",
+    "indoor_seating": "yes",
+    "level": "1",
+    "name": "AB's Absolute Barbeques",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13290125013,
+  "lat": 22.5529535,
+  "lon": 88.3523126,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "cuisine": "asian;italian",
+    "level": "1",
+    "name": "One Step Up",
+    "short_name": "OSU",
+    "start_date": "2003",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13290125025,
+  "lat": 22.5529768,
+  "lon": 88.3523341,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "indoor_seating": "yes",
+    "level": "0",
+    "name": "Lille",
+    "shop": "pastry",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13290125090,
+  "lat": 22.5501731,
+  "lon": 88.3552148,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "83B",
+    "addr:postcode": "700016",
+    "addr:state": "WB",
+    "addr:street": "Park Street",
+    "amenity": "restaurant",
+    "cuisine": "indian;bengali",
+    "level": "1",
+    "name": "Ilish",
+    "name:hi": "इलिश",
+    "opening_hours": "12:00-23:00",
+    "strapline": "Truly Bong",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13290284932,
+  "lat": 22.5640799,
+  "lon": 88.3956536,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "8",
+    "addr:postcode": "700010",
+    "addr:state": "WB",
+    "addr:street": "Hem Chandra Naskar Road",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "contact:mobile": "+91-98304-86186;+91-98302-98826",
+    "image:menu": "b8b1c563-54e4-4bd3-b6e8-a75b0b35e7ae",
+    "image:menu:0": "fa1280a9-0671-4ca9-8796-f43baee87549",
+    "image:menu:1": "acd45d82-d4dd-4e78-b4cc-009b36355887",
+    "image:menu:2": "2f306810-22e4-4926-9d75-f81e37fedd93",
+    "image:menu:3": "2c51bbf7-1b4d-490e-b608-9b42b3231846",
+    "image:menu:4": "ee24b7e2-00fa-443e-b1ac-ef90725fa18e",
+    "image:menu:5": "f4ad467e-78b7-410b-a6ee-694494406e9c",
+    "level": "0",
+    "name": "Drumstick",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13290284951,
+  "lat": 22.5642740,
+  "lon": 88.3886188,
+  "tags": {
+    "air_conditioning": "no",
+    "amenity": "fast_food",
+    "image:menu": "cdf2207a-a3bd-45bd-ad32-b374883f1f4c",
+    "indoor_seating": "yes",
+    "level": "0",
+    "name": "Mukharuchi",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13290285047,
+  "lat": 22.5646317,
+  "lon": 88.3868345,
+  "tags": {
+    "amenity": "fast_food",
+    "contact:mobile": "+91-63069-36713",
+    "indoor_seating": "yes",
+    "level": "0",
+    "name": "Qalb-e-Momin",
+    "strapline": "Taste the spirit of biryani",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13290435171,
+  "lat": 22.5546698,
+  "lon": 88.3506052,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "31",
+    "addr:postcode": "700016",
+    "addr:street": "Chowringhee Road",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "brand": "Blue Tokai Coffee Roasters",
+    "brand:wikidata": "Q137711807",
+    "cuisine": "coffee_shop",
+    "delivery": "yes",
+    "internet_access": "yes",
+    "internet_access:fee": "customers",
+    "level": "0",
+    "name": "Blue Tokai Coffee Roasters",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "phone": "+91 9289044332",
+    "takeaway": "yes",
+    "website": "https://stores.bluetokaicoffee.com/blue-tokai-coffee-roasters-park-street-cafe-park-street-area-kolkata-447108/Home"
+  }
+},
+{
+  "type": "node",
+  "id": 13290435172,
+  "lat": 22.5540245,
+  "lon": 88.3511692,
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "fast_food",
+    "brand": "Taco Bell",
+    "brand:wikidata": "Q752941",
+    "cuisine": "tex-mex",
+    "level": "1",
+    "name": "Taco Bell",
+    "takeaway": "yes",
+    "toilets:access": "customers",
+    "toilets:wheelchair": "no",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13290499326,
+  "lat": 22.5508430,
+  "lon": 88.3540382,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Corona"
+  }
+},
+{
+  "type": "node",
+  "id": 13290845363,
+  "lat": 22.5510916,
+  "lon": 88.3532285,
+  "tags": {
+    "amenity": "restaurant",
+    "level": "10",
+    "name": "Cozy Box"
+  }
+},
+{
+  "type": "node",
+  "id": 13290845371,
+  "lat": 22.5511267,
+  "lon": 88.3532356,
+  "tags": {
+    "amenity": "restaurant",
+    "level": "6",
+    "name": "Bombastic Supper Club"
+  }
+},
+{
+  "type": "node",
+  "id": 13290845372,
+  "lat": 22.5510609,
+  "lon": 88.3532220,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "asian",
+    "level": "11",
+    "name": "Papaya"
+  }
+},
+{
+  "type": "node",
+  "id": 13299331901,
+  "lat": 22.5158957,
+  "lon": 88.3924030,
+  "tags": {
+    "addr:housenumber": "196",
+    "amenity": "restaurant",
+    "check_date": "2026-08-26",
+    "check_date:opening_hours": "2026-08-26",
+    "cuisine": "indian",
+    "name": "Punjabee Rasoi",
+    "opening_hours": "Tu-Su 11:00-22:30"
+  }
+},
+{
+  "type": "node",
+  "id": 13338070364,
+  "lat": 22.5895840,
+  "lon": 88.4527986,
+  "tags": {
+    "addr:city": "New Town",
+    "addr:country": "IN",
+    "addr:district": "North 24 Parganas",
+    "addr:postcode": "700163",
+    "addr:province": "Ghuni",
+    "addr:state": "West Bengal",
+    "addr:street": "Street Number 75",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "delivery": "yes",
+    "internet_access": "no",
+    "name": "Sinha's Kitchen",
+    "nohousenumber": "yes",
+    "reservation": "no",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13338070366,
+  "lat": 22.5894877,
+  "lon": 88.4527986,
+  "tags": {
+    "addr:city": "New Town",
+    "addr:country": "IN",
+    "addr:district": "North 24 Parganas",
+    "addr:postcode": "700163",
+    "addr:province": "Ghuni",
+    "addr:state": "West Bengal",
+    "addr:street": "Street Number 75",
+    "amenity": "restaurant",
+    "cuisine": "indian",
+    "delivery": "yes",
+    "internet_access": "no",
+    "name": "La Bongo",
+    "nohousenumber": "yes",
+    "reservation": "no",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13340616503,
+  "lat": 22.5683231,
+  "lon": 88.3566461,
+  "tags": {
+    "addr:housenumber": "35",
+    "addr:postcode": "700012",
+    "addr:street": "Chittaranjan Avenue",
+    "amenity": "restaurant",
+    "check_date": "2026-03-22",
+    "cuisine": "chinese",
+    "name": "Pow Hing express",
+    "opening_hours": "Mo-Su 12:30-23:00",
+    "phone": "062911 57029"
+  }
+},
+{
+  "type": "node",
+  "id": 13378417661,
+  "lat": 22.6338099,
+  "lon": 88.4606822,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Arbeu cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 13389433701,
+  "lat": 22.5730445,
+  "lon": 88.3545662,
+  "tags": {
+    "addr:street": "Sun Yat Sen Street",
+    "amenity": "restaurant",
+    "cuisine": "chinese",
+    "name": "Pow Hing",
+    "self_service": "no",
+    "website": "https://www.pouchong.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 13437639560,
+  "lat": 22.4757510,
+  "lon": 88.3913921,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "South 24 Paraganas",
+    "addr:housenumber": "R 29",
+    "addr:postcode": "700094",
+    "addr:street": "Bapai Rd, near Patuli, Baishnabghata Patuli Township",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "brand": "Bean Stop",
+    "capacity": "50",
+    "contact:facebook": "https://www.facebook.com/profile.php?id=61584096811423#",
+    "cuisine": "coffee_shop;cafe;pizza;pasta",
+    "delivery": "yes",
+    "email": "beanstop183@gmail.com",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "mobile": "+918910750760",
+    "name": "Bean Stop",
+    "opening_hours": "Mo-Su 11:00-23:00",
+    "outdoor_seating": "yes",
+    "payment:american_express": "yes",
+    "payment:app": "yes",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:maestro": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "+918910750760",
+    "smoking": "outside",
+    "start_date": "2024-10-09",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "website": "https://www.beanstop.in/patuli",
+    "website:menu": "https://www.beanstop.in/our-menu",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13437657267,
+  "lat": 22.6015697,
+  "lon": 88.4073341,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "North 24 Paraganas",
+    "addr:housenumber": "183 Block - B",
+    "addr:postcode": "700089",
+    "addr:street": "Lake Town Road",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "brand": "Bean Stop",
+    "capacity": "60",
+    "contact:facebook": "https://www.facebook.com/profile.php?id=61583867202600#",
+    "cuisine": "cafe;coffee_shop",
+    "delivery": "yes",
+    "drive_through": "yes",
+    "email": "beanstop183@gmail.com",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "mobile": "+916289492311",
+    "name": "Bean Stop",
+    "opening_hours": "Mo-Su 10:00-22:00",
+    "outdoor_seating": "yes",
+    "payment:american_express": "yes",
+    "payment:app": "yes",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:maestro": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "+916289492311",
+    "smoking": "outside",
+    "start_date": "2022-03-20",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "website": "https://www.beanstop.in/laketown",
+    "website:menu": "https://www.beanstop.in/our-menu",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13437719135,
+  "lat": 22.5796781,
+  "lon": 88.4126052,
+  "tags": {
+    "addr:city": "Bidhannagar",
+    "addr:district": "North 24 Paraganas",
+    "addr:housenumber": "GC 27",
+    "addr:postcode": "700106",
+    "addr:street": "GC Block, Sector 3, Bidhannagar",
+    "air_conditioning": "yes",
+    "amenity": "cafe",
+    "brand": "Bean Stop",
+    "contact:facebook": "https://www.facebook.com/profile.php?id=61583979487188#",
+    "cuisine": "coffee_shop;cafe;fish_and_chips;sandwich;burger;pasta;coffee",
+    "delivery": "yes",
+    "email": "beanstop183@gmail.com",
+    "highchair": "yes",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "mobile": "+918910444165",
+    "name": "Bean Stop",
+    "opening_hours": "Mo-Su 11:00-23:00",
+    "outdoor_seating": "yes",
+    "payment:american_express": "yes",
+    "payment:app": "yes",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:maestro": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "+918910444165",
+    "smoking": "outside",
+    "takeaway": "yes",
+    "toilets": "yes",
+    "website": "https://www.beanstop.in/saltlake",
+    "website:menu": "https://www.beanstop.in/our-menu"
+  }
+},
+{
+  "type": "node",
+  "id": 13644574101,
+  "lat": 22.5538726,
+  "lon": 88.3520046,
+  "tags": {
+    "amenity": "restaurant",
+    "name": "Kwality"
+  }
+},
+{
+  "type": "node",
+  "id": 13645461873,
+  "lat": 22.6674837,
+  "lon": 88.3936492,
+  "tags": {
+    "amenity": "fast_food",
+    "check_date": "2026-03-09",
+    "name": "Alia Biryani",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13645461892,
+  "lat": 22.6646974,
+  "lon": 88.3884893,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-03-10",
+    "name": "Spicy"
+  }
+},
+{
+  "type": "node",
+  "id": 13823780901,
+  "lat": 22.6309624,
+  "lon": 88.4436119,
+  "tags": {
+    "addr:postcode": "700136",
+    "addr:street": "Majhipara",
+    "amenity": "restaurant",
+    "cuisine": "asian;bubble_tea;indian;italian;italian_pizza;pizza",
+    "name": "Pizzophile",
+    "website": "https://zomato.onelink.me/xqzv/n9v8t3m5"
+  }
+},
+{
+  "type": "node",
+  "id": 13875606172,
+  "lat": 22.6876833,
+  "lon": 88.4636953,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-05-25",
+    "description": "Biriyani place",
+    "internet_access": "no",
+    "name": "D.Bapi Biriyani",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 13890798016,
+  "lat": 22.6308193,
+  "lon": 88.3788632,
+  "tags": {
+    "amenity": "fast_food",
+    "drive_through": "yes",
+    "level": "0",
+    "name": "Cabin Cutlet"
+  }
+},
+{
+  "type": "node",
+  "id": 13895391550,
+  "lat": 22.6307921,
+  "lon": 88.3792397,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "Biryani",
+    "name": "Haji Biriyani"
+  }
+},
+{
+  "type": "node",
+  "id": 13895391565,
+  "lat": 22.6308373,
+  "lon": 88.3790264,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Mili's Momo"
+  }
+},
+{
+  "type": "node",
+  "id": 13895391567,
+  "lat": 22.6308064,
+  "lon": 88.3789450,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Foodie Folks"
+  }
+},
+{
+  "type": "node",
+  "id": 13895391568,
+  "lat": 22.6308053,
+  "lon": 88.3789766,
+  "tags": {
+    "amenity": "fast_food",
+    "name": "Tandoor Box"
+  }
+},
+{
+  "type": "node",
+  "id": 13902394248,
+  "lat": 22.5796379,
+  "lon": 88.4756236,
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:postcode": "700156",
+    "addr:street": "DG 12, Plot Number - 06/327 ACTION AREA 1A, NEWTOWN",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "cuisine": "pizza;chinese;indian;fast_food",
+    "delivery": "yes",
+    "description": "Kiraanz Oasis of Taste Restaurant is Newtown's premier 24x7 dining destination, serving an irresistible blend of South Indian cuisine, pizza, Chinese food, and international classics alongside authentic home-style delicacies.",
+    "diet:vegetarian": "yes",
+    "indoor_seating": "yes",
+    "mobile": "919831019679",
+    "name": "Kiraanz Oasis of Taste",
+    "opening_hours": "Mo-Su 08:00-23:00",
+    "outdoor_seating": "yes",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:google_pay": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "919831019679",
+    "takeaway": "yes",
+    "website": "https://kiraanz.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 13914738998,
+  "lat": 22.6308525,
+  "lon": 88.3795652,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "Biriyani",
+    "name": "Arshalan Biriyani"
+  }
+},
+{
+  "type": "node",
+  "id": 13919680190,
+  "lat": 22.6304622,
+  "lon": 88.3802334,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "chinese;indian",
+    "name": "Millionaire Chaiwala"
+  }
+},
+{
+  "type": "node",
+  "id": 13919680199,
+  "lat": 22.6291161,
+  "lon": 88.3802428,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Oomkara"
+  }
+},
+{
+  "type": "node",
+  "id": 13919712953,
+  "lat": 22.6295648,
+  "lon": 88.3807491,
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "chinese;indian",
+    "delivery": "yes",
+    "name": "Zestora",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13982146025,
+  "lat": 22.6208625,
+  "lon": 88.4183659,
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "coffee_shop",
+    "name": "cafedeshbandhu"
+  }
+},
+{
+  "type": "node",
+  "id": 13982146353,
+  "lat": 22.6019332,
+  "lon": 88.3422407,
+  "tags": {
+    "addr:city": "Salkia",
+    "addr:postcode": "711106",
+    "addr:street": "Sri Arabind Road",
+    "alt_name": "Haldiram",
+    "amenity": "fast_food",
+    "brand": "Haldiram's",
+    "cuisine": "sweet_shop",
+    "diet:vegetarian": "yes",
+    "name": "Haldiram's",
+    "not:brand:wikidata": "Q17054442",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13982189170,
+  "lat": 22.5036560,
+  "lon": 88.3751702,
+  "tags": {
+    "addr:city": "kolkata",
+    "addr:district": "Koltaka",
+    "addr:postcode": "700031",
+    "amenity": "restaurant",
+    "cuisine": "chinese;kebab;noodle;barbecue",
+    "diet:non-vegetarian": "yes",
+    "name": "la komida",
+    "opening_hours": "Mo-Su 10:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 13982394295,
+  "lat": 22.6206012,
+  "lon": 88.4215378,
+  "tags": {
+    "amenity": "fast_food",
+    "cuisine": "regional",
+    "diet:non-vegetarian": "yes",
+    "drive_through": "no",
+    "name": "Healthy and Tasty Kitchen"
+  }
+},
+{
+  "type": "node",
+  "id": 13989310601,
+  "lat": 22.5750702,
+  "lon": 88.3892570,
+  "tags": {
+    "addr:postcode": "700054",
+    "addr:street": "CIT Road",
+    "amenity": "restaurant",
+    "diet:vegetarian": "yes",
+    "name": "On the roof cafe"
+  }
+},
+{
+  "type": "node",
+  "id": 14041129402,
+  "lat": 22.5944993,
+  "lon": 88.3645739,
+  "tags": {
+    "addr:housenumber": "37/1",
+    "addr:postcode": "700006",
+    "addr:street": "Jatinda Mohan Avenue",
+    "amenity": "cafe",
+    "cuisine": "american;italian",
+    "email": "hello@lamprinifoods.com",
+    "internet_access": "wlan",
+    "level": "1",
+    "name": "Lamprini Cafe",
+    "opening_hours": "Mo-Sa 10:00-21:00",
+    "phone": "+918249868468",
+    "website": "https://lamprinifoods.com"
+  }
+},
+{
+  "type": "node",
+  "id": 14114120801,
+  "lat": 22.4913923,
+  "lon": 88.3652049,
+  "tags": {
+    "addr:housenumber": "74/1/36",
+    "addr:postcode": "700032",
+    "addr:street": "Raipur Road",
+    "amenity": "restaurant",
+    "check_date": "2026-08-23",
+    "check_date:opening_hours": "2026-08-23",
+    "name": "Little Beijing",
+    "opening_hours": "Mo-Su 13:00-23:00",
+    "phone": "8100352033"
+  }
+},
+{
+  "type": "node",
+  "id": 14132871267,
+  "lat": 22.6563230,
+  "lon": 88.4401556,
+  "tags": {
+    "addr:city": "Birati",
+    "addr:district": "North 24 PGS",
+    "addr:housenumber": "176",
+    "addr:postcode": "700081",
+    "addr:street": "Jessore Road",
+    "amenity": "cafe",
+    "cuisine": "pizza;burger;coffee_shop;sandwich;chinese;fish_and_chips;noodle;oriental;italian",
+    "internet_access": "yes",
+    "internet_access:fee": "no",
+    "name": "NiJo Cafe",
+    "outdoor_seating": "yes",
+    "phone": "+918240441785"
+  }
+},
+{
+  "type": "node",
+  "id": 14177389401,
+  "lat": 22.6241265,
+  "lon": 88.4406396,
+  "tags": {
+    "amenity": "restaurant",
+    "check_date": "2026-09-13",
+    "name": "Kareem's"
+  }
+},
+{
+  "type": "node",
+  "id": 14213339601,
+  "lat": 22.5271206,
+  "lon": 88.3535925,
+  "tags": {
+    "addr:housenumber": "13A",
+    "addr:street": "Palit Street",
+    "amenity": "cafe",
+    "internet_access:fee": "no",
+    "name": "Blue Tokai;Bahrisons Bookstore",
+    "opening_hours": "Mo-Su 08:00-21:00",
+    "outdoor_seating": "no",
+    "shop": "books"
+  }
+},
+{
+  "type": "node",
+  "id": 14213339701,
+  "lat": 22.5132781,
+  "lon": 88.3489810,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Share Chai",
+    "opening_hours": "Mo-Su 06:00-21:00",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 14230076301,
+  "lat": 22.5264895,
+  "lon": 88.3553888,
+  "tags": {
+    "amenity": "cafe",
+    "name": "Blue Tokai",
+    "opening_hours": "Mo-Su 08:00-21:00"
+  }
+},
+{
+  "type": "way",
+  "id": 235256262,
+  "center": {
+    "lat": 22.5906170,
+    "lon": 88.3985976
+  },
+  "nodes": [
+    2433412699,
+    2433412745,
+    2433412678,
+    2433412741,
+    2433412699
+  ],
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "name": "44",
+    "name:en": "The New Normal Cafe and Kitchen"
+  }
+},
+{
+  "type": "way",
+  "id": 237452800,
+  "center": {
+    "lat": 22.6281101,
+    "lon": 88.4328376
+  },
+  "nodes": [
+    2453444449,
+    2453444450,
+    2453444451,
+    2453444452,
+    2453444449
+  ],
+  "tags": {
+    "alt_name": "Haldiram",
+    "amenity": "fast_food",
+    "brand": "Haldiram's",
+    "brand:wikidata": "Q17054442",
+    "building": "yes",
+    "building:levels": "2",
+    "cuisine": "indian",
+    "name": "Haldiram's",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 249209036,
+  "center": {
+    "lat": 22.5424984,
+    "lon": 88.3648681
+  },
+  "nodes": [
+    2558545862,
+    2558545863,
+    2558545864,
+    2558545865,
+    2558545862
+  ],
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "check_date": "2026-03-22",
+    "cuisine": "regional",
+    "diet:non-vegetarian": "yes",
+    "diet:vegetarian": "yes",
+    "internet_access": "no",
+    "name": "Jhaal Farezi",
+    "payment:cash": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 357778145,
+  "center": {
+    "lat": 22.6639567,
+    "lon": 88.3764064
+  },
+  "nodes": [
+    3629082388,
+    3629082382,
+    3629082340,
+    3629082343,
+    3629082388
+  ],
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "name": "Rath"
+  }
+},
+{
+  "type": "way",
+  "id": 357978434,
+  "center": {
+    "lat": 22.5949313,
+    "lon": 88.3413859
+  },
+  "nodes": [
+    3630436465,
+    3630436427,
+    3630436374,
+    3630436403,
+    3630436465
+  ],
+  "tags": {
+    "addr:city": "Howrah",
+    "addr:district": "Howrah",
+    "addr:housenumber": "51",
+    "addr:postcode": "711106",
+    "addr:street": "Bijoy Kumar Mukherjee Road",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "indian;chinese;italian",
+    "delivery": "yes",
+    "email": "info@thedelhidurbar.com",
+    "name": "THE DELHI DURBAR RESTAURANT",
+    "opening_hours": "Mo-Su 11:30-23:30",
+    "phone": "+918100563939",
+    "website": "https://thedelhidurbar.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 358114409,
+  "center": {
+    "lat": 22.6091409,
+    "lon": 88.4648281
+  },
+  "nodes": [
+    3631129065,
+    3631129066,
+    3631129068,
+    3631129067,
+    3631129065
+  ],
+  "tags": {
+    "amenity": "cafe",
+    "building": "retail",
+    "name": "Special Fruit Salad and Juice Corner"
+  }
+},
+{
+  "type": "way",
+  "id": 358734784,
+  "center": {
+    "lat": 22.6123320,
+    "lon": 88.4111401
+  },
+  "nodes": [
+    3636166398,
+    3636166277,
+    3636166222,
+    3636166245,
+    3636166398
+  ],
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "123",
+    "addr:postcode": "700055",
+    "addr:street": "Jessore Road",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "mughlai_cuisine",
+    "diet:halal": "yes",
+    "diet:non-vegetarian": "yes",
+    "name": "Arsalan Restaurant & Caterar",
+    "opening_hours": "Mo-Su 11:00-23:00",
+    "phone": "+919163363648",
+    "website": "https://arsalanrestaurants.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 358763246,
+  "center": {
+    "lat": 22.5090926,
+    "lon": 88.3337494
+  },
+  "nodes": [
+    3636324128,
+    3636324124,
+    3636324093,
+    3636324094,
+    3636324128
+  ],
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "chinese",
+    "delivery": "yes",
+    "name": "Kowloon",
+    "smoking": "no",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 358819089,
+  "center": {
+    "lat": 22.5065538,
+    "lon": 88.3673187
+  },
+  "nodes": [
+    3636644882,
+    3636644883,
+    3636644819,
+    3636644817,
+    3636644882
+  ],
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "4",
+    "addr:postcode": "700031",
+    "addr:street": "Gariahat Road",
+    "amenity": "restaurant",
+    "bar": "yes",
+    "building": "yes",
+    "name": "Tandoor Park",
+    "phone": "+919836370051",
+    "website": "http://www.tandoorpark.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 358874477,
+  "center": {
+    "lat": 22.6458815,
+    "lon": 88.3807836
+  },
+  "nodes": [
+    3637001322,
+    3637001354,
+    3637001349,
+    3637001317,
+    3637001322
+  ],
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "62",
+    "addr:postcode": "700108",
+    "addr:street": "Rai Mohan Banerjee Road",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "building": "yes",
+    "building:levels": "0",
+    "name": "Tym Pass",
+    "phone": "+91-7003840722",
+    "website": "www.tympasscafe.com"
+  }
+},
+{
+  "type": "way",
+  "id": 358879070,
+  "center": {
+    "lat": 22.5778988,
+    "lon": 88.4820497
+  },
+  "nodes": [
+    3637037420,
+    3637037418,
+    3637037414,
+    3637037416,
+    3637037420
+  ],
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:street": "New Town",
+    "amenity": "restaurant",
+    "building": "yes",
+    "name": "Azad Hind Dhaba"
+  }
+},
+{
+  "type": "way",
+  "id": 358881460,
+  "center": {
+    "lat": 22.4451144,
+    "lon": 88.2976024
+  },
+  "nodes": [
+    3637047308,
+    3637047306,
+    3637047302,
+    3637047303,
+    3637047308
+  ],
+  "tags": {
+    "amenity": "cafe",
+    "building": "yes",
+    "name": "IIMC Coffee Shop"
+  }
+},
+{
+  "type": "way",
+  "id": 359140132,
+  "center": {
+    "lat": 22.5527076,
+    "lon": 88.4059676
+  },
+  "nodes": [
+    3639097585,
+    3639097580,
+    3639097566,
+    3639097567,
+    3639097585
+  ],
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "1A",
+    "addr:place": "Tangra",
+    "addr:postcode": "700105",
+    "addr:street": "Bangaon - Kulpi Rd",
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "indian",
+    "diet:non-vegetarian": "yes",
+    "diet:vegetarian": "yes",
+    "name": "Byepass Dhaba",
+    "name:en": "Byepass Dhaba",
+    "opening_hours": "Mo-Su 12:00-1:00",
+    "phone": "09830820222",
+    "website": "https://www.byepassdhaba.com/"
+  }
+},
+{
+  "type": "way",
+  "id": 359152081,
+  "center": {
+    "lat": 22.6149998,
+    "lon": 88.4115991
+  },
+  "nodes": [
+    3639170241,
+    3639170233,
+    3639170200,
+    3639170208,
+    3639170241
+  ],
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:postcode": "700055",
+    "addr:street": "Jessore Road, Near Diamond Plaza Mall, Amarpalli, South Dumdum",
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "Bengali",
+    "name": "Kasturi Restaurant",
+    "opening_hours": "Mo-Su 11:00-23:00",
+    "phone": "+918334922224"
+  }
+},
+{
+  "type": "way",
+  "id": 359302479,
+  "center": {
+    "lat": 22.5171504,
+    "lon": 88.3347424
+  },
+  "nodes": [
+    3640497033,
+    3640497030,
+    3640496987,
+    3640496988,
+    3640497033
+  ],
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "japanese;chinese",
+    "name": "Ikura - Flavours of Pan Asia"
+  }
+},
+{
+  "type": "way",
+  "id": 359470337,
+  "center": {
+    "lat": 22.4733052,
+    "lon": 88.3101728
+  },
+  "nodes": [
+    3641863408,
+    3641863407,
+    3641863385,
+    3641863387,
+    3641863408
+  ],
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "chicken;indian",
+    "diet:non-vegetarian": "yes",
+    "name": "Azad Hind Dhaba"
+  }
+},
+{
+  "type": "way",
+  "id": 359744763,
+  "center": {
+    "lat": 22.5158041,
+    "lon": 88.3487965
+  },
+  "nodes": [
+    3644015632,
+    3644015619,
+    3644015605,
+    3644015621,
+    3644015632
+  ],
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "regional",
+    "name": "tandor house",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 359782669,
+  "center": {
+    "lat": 22.5152077,
+    "lon": 88.3583503
+  },
+  "nodes": [
+    3644141946,
+    3644141930,
+    3644141925,
+    3644141924,
+    3644141900,
+    3644141906,
+    3644141940,
+    3644141938,
+    3644141946
+  ],
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "indian;biriyani;kebab",
+    "name": "Oudh 1590"
+  }
+},
+{
+  "type": "way",
+  "id": 363115101,
+  "center": {
+    "lat": 22.5455259,
+    "lon": 88.3776270
+  },
+  "nodes": [
+    3673164325,
+    3673164322,
+    3673164314,
+    3673164315,
+    3673164325
+  ],
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "1/1A",
+    "addr:postcode": "700046",
+    "addr:street": "Hingon Zamadar Lane",
+    "amenity": "cafe",
+    "building": "residential",
+    "cuisine": "coffee_shop;sandwich;breakfast;tea",
+    "name": "Burger Bite",
+    "opening_hours": "Mo-Su 07:00-22:00",
+    "outdoor_seating": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 450200119,
+  "center": {
+    "lat": 22.4949352,
+    "lon": 88.3698271
+  },
+  "nodes": [
+    4471208108,
+    4471208109,
+    4471208110,
+    4471208111,
+    4471208108
+  ],
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "86",
+    "addr:postcode": "700 032",
+    "addr:street": "Ibrahimpur Road",
+    "amenity": "restaurant",
+    "building": "yes",
+    "capacity": "70",
+    "cuisine": "chinese;indian",
+    "name": "Banzara A. C. Restaurant",
+    "phone": "+31 33 2483 0941",
+    "smoking": "no",
+    "takeaway": "yes",
+    "website": "https://banzara.co.in/"
+  }
+},
+{
+  "type": "way",
+  "id": 513994244,
+  "center": {
+    "lat": 22.5732249,
+    "lon": 88.4797015
+  },
+  "nodes": [
+    5022693504,
+    5022693505,
+    5022693506,
+    5022693507,
+    5022693508,
+    5022693504
+  ],
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "regional;chinese",
+    "name": "NKDA Market Complex"
+  }
+},
+{
+  "type": "way",
+  "id": 513994271,
+  "center": {
+    "lat": 22.5769738,
+    "lon": 88.4778933
+  },
+  "nodes": [
+    5022694071,
+    5022694072,
+    5022694073,
+    5022694074,
+    5022694071
+  ],
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "name": "Dawat Restaurant"
+  }
+},
+{
+  "type": "way",
+  "id": 673964152,
+  "center": {
+    "lat": 22.5990547,
+    "lon": 88.4661159
+  },
+  "nodes": [
+    6311588852,
+    6311588851,
+    6311588850,
+    9121866508,
+    6311588849,
+    6311588852
+  ],
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "name": "Ekante Cottage"
+  }
+},
+{
+  "type": "way",
+  "id": 906869323,
+  "center": {
+    "lat": 22.5994107,
+    "lon": 88.4721209
+  },
+  "nodes": [
+    8420972862,
+    8420972863,
+    8420972864,
+    8420972865,
+    8420972862
+  ],
+  "tags": {
+    "amenity": "cafe",
+    "name": "Legendz Cafe Terrace"
+  }
+},
+{
+  "type": "way",
+  "id": 922947208,
+  "center": {
+    "lat": 22.6205553,
+    "lon": 88.4606184
+  },
+  "nodes": [
+    8567710187,
+    8567710184,
+    14128765179,
+    8567710185,
+    8567710186,
+    8567710187
+  ],
+  "tags": {
+    "addr:city": "New Town",
+    "addr:district": "Kolkata",
+    "addr:housenumber": "J J Tower",
+    "addr:postcode": "700161",
+    "addr:street": "Action Area - IID, Biswa Bangla Sarani, New Town,",
+    "amenity": "restaurant",
+    "building": "retail",
+    "building:levels": "4",
+    "name": "CafeGP"
+  }
+},
+{
+  "type": "way",
+  "id": 1009064029,
+  "center": {
+    "lat": 22.5615855,
+    "lon": 88.4906088
+  },
+  "nodes": [
+    9310274417,
+    9310274418,
+    9310274419,
+    9310274617,
+    9310274417
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "fast_food",
+    "brand": "Subway",
+    "brand:pa": "ਸਬਵੇਅ",
+    "brand:ur": "سب وے",
+    "brand:wikidata": "Q244457",
+    "brand:wikipedia": "en:Subway (restaurant)",
+    "cuisine": "sandwich",
+    "delivery": "yes",
+    "indoor": "room",
+    "level": "0",
+    "name": "Subway",
+    "name:pa": "ਸਬਵੇਅ",
+    "name:ur": "سب وے",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1009064030,
+  "center": {
+    "lat": 22.5614615,
+    "lon": 88.4905101
+  },
+  "nodes": [
+    9310274418,
+    5024748255,
+    9310274318,
+    9310274417,
+    9310274418
+  ],
+  "tags": {
+    "access": "yes",
+    "alt_name": "Kentucky Fried Chicken",
+    "alt_name:en": "Kentucky Fried Chicken",
+    "alt_name:hi": "केंटुकी फ्राइड चिकन",
+    "alt_name:pa": "ਕੈਂਟੁਕੀ ਫ੍ਰਾਈਡ ਚਿਕਨ",
+    "alt_name:pnb": "کینٹکی فرائیڈ چکن",
+    "alt_name:ur": "کینٹکی فرائیڈ چکن",
+    "amenity": "fast_food",
+    "brand": "KFC",
+    "brand:en": "KFC",
+    "brand:hi": "केएफसी",
+    "brand:pa": "ਕੇਐਫਸੀ",
+    "brand:pnb": "کے ایف سی",
+    "brand:ur": "کے ایف سی",
+    "brand:wikidata": "Q524757",
+    "brand:wikipedia": "en:KFC",
+    "brand:wikipedia:pa": "ਕੇਐਫਸੀ",
+    "brand:wikipedia:ur": "کینٹکی فرائیڈ چکن",
+    "cuisine": "chicken",
+    "indoor": "room",
+    "level": "0",
+    "name": "KFC",
+    "name:en": "KFC",
+    "name:hi": "केएफसी",
+    "name:pa": "ਕੇਐਫਸੀ",
+    "name:pnb": "کے ایف سی",
+    "name:ur": "کے ایف سی",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1009076342,
+  "center": {
+    "lat": 22.5617307,
+    "lon": 88.4906979
+  },
+  "nodes": [
+    9310393827,
+    9310393918,
+    9310394018,
+    9310393919,
+    9310393827
+  ],
+  "tags": {
+    "amenity": "fast_food",
+    "brand": "Domino's",
+    "brand:ks": "ڈومینوز",
+    "brand:pa": "ਡੋਮੀਨੋਜ਼",
+    "brand:ur": "ڈومینوز",
+    "brand:wikidata": "Q839466",
+    "brand:wikipedia": "en:Domino's Pizza",
+    "cuisine": "pizza",
+    "indoor": "area",
+    "level": "0",
+    "name": "Domino's",
+    "name:ks": "ڈومینوز",
+    "name:pa": "ਡੋਮੀਨੋਜ਼",
+    "name:ur": "ڈومینوز",
+    "opening_hours": "Mo-Su 11:00-01:00",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1009076343,
+  "center": {
+    "lat": 22.5617657,
+    "lon": 88.4907294
+  },
+  "nodes": [
+    9310394019,
+    9310393827,
+    9310393918,
+    9310393920,
+    9310394019
+  ],
+  "tags": {
+    "access": "yes",
+    "amenity": "restaurant",
+    "indoor": "area",
+    "level": "0",
+    "name": "Waffle Wallah"
+  }
+},
+{
+  "type": "way",
+  "id": 1009076346,
+  "center": {
+    "lat": 22.5618553,
+    "lon": 88.4906362
+  },
+  "nodes": [
+    5024748250,
+    9310393827,
+    9310394019,
+    9310393828,
+    9310393829,
+    5024748250
+  ],
+  "tags": {
+    "amenity": "cafe",
+    "cuisine": "korean",
+    "indoor": "area",
+    "level": "0",
+    "name": "King's Bakery",
+    "opening_hours": "Mo-Su 09:00-22:00"
+  }
+},
+{
+  "type": "way",
+  "id": 1009079975,
+  "center": {
+    "lat": 22.5619769,
+    "lon": 88.4906997
+  },
+  "nodes": [
+    9310430917,
+    9310423019,
+    9310430717,
+    9310430718,
+    5024748251,
+    9310430917
+  ],
+  "tags": {
+    "amenity": "cafe",
+    "brand": "Cafe Coffee Day",
+    "brand:wikidata": "Q5017235",
+    "cuisine": "coffee_shop",
+    "indoor": "room",
+    "level": "0.5",
+    "name": "Cafe Coffee Day",
+    "takeaway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1009083554,
+  "center": {
+    "lat": 22.5613396,
+    "lon": 88.4906515
+  },
+  "nodes": [
+    9310442198,
+    9310442199,
+    9310442200,
+    9310442201,
+    9310442202,
+    9310442203,
+    9310442204,
+    9310442198
+  ],
+  "tags": {
+    "amenity": "restaurant",
+    "brand": "Pizza Hut",
+    "brand:wikidata": "Q191615",
+    "brand:wikipedia": "en:Pizza Hut",
+    "building": "yes",
+    "cuisine": "pizza",
+    "name": "Pizza Hut",
+    "opening_hours": "Mo-Su 11:00"
+  }
+},
+{
+  "type": "way",
+  "id": 1028108220,
+  "center": {
+    "lat": 22.5687984,
+    "lon": 88.4110233
+  },
+  "nodes": [
+    9476386022,
+    9476386023,
+    9476386024,
+    9476386025,
+    9476386022
+  ],
+  "tags": {
+    "air_conditioning": "yes",
+    "amenity": "restaurant",
+    "bar": "yes",
+    "building": "yes",
+    "name": "Stadel Poolside Restaurant"
+  }
+},
+{
+  "type": "way",
+  "id": 1030249958,
+  "center": {
+    "lat": 22.4637196,
+    "lon": 88.4085109
+  },
+  "nodes": [
+    9497034185,
+    9497034186,
+    9497034187,
+    9497034188,
+    9497034185
+  ],
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:postcode": "700152",
+    "addr:street": "East Tentulberia, Nabagram Jheel Road",
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "sweets",
+    "diet:vegetarian": "yes",
+    "name": "Aashirbaad Mistanna Bhandar",
+    "opening_hours": "Mo-Su 09:00-13:00, 17:00-21:00"
+  }
+},
+{
+  "type": "way",
+  "id": 1041349480,
+  "center": {
+    "lat": 22.5592910,
+    "lon": 88.4951581
+  },
+  "nodes": [
+    9587166734,
+    9587166735,
+    9587167018,
+    9587166844,
+    9587167127,
+    9587167126,
+    9705744418,
+    9587166734
+  ],
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:country": "IN",
+    "addr:housenumber": "G043",
+    "addr:place": "Downtown Mall Block B",
+    "addr:postcode": "700156",
+    "amenity": "fast_food",
+    "indoor": "room",
+    "level": "0",
+    "name": "The Red Pepper",
+    "takeaway": "only"
+  }
+},
+{
+  "type": "way",
+  "id": 1115750781,
+  "center": {
+    "lat": 22.5615825,
+    "lon": 88.4907767
+  },
+  "nodes": [
+    10204306657,
+    10204306658,
+    10204306659,
+    10204306660,
+    10204306657
+  ],
+  "tags": {
+    "amenity": "fast_food",
+    "building": "yes",
+    "name": "Dosa Corner"
+  }
+},
+{
+  "type": "way",
+  "id": 1148562660,
+  "center": {
+    "lat": 22.6285619,
+    "lon": 88.3781992
+  },
+  "nodes": [
+    10686185737,
+    10686185738,
+    10686185739,
+    10686185740,
+    10686185741,
+    10686185737
+  ],
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:postcode": "700 050",
+    "addr:street": "Barrackpore Trunk Road",
+    "amenity": "fast_food",
+    "brand": "Domino's",
+    "brand:wikidata": "Q839466",
+    "building": "yes",
+    "cuisine": "pizza",
+    "name": "Domino's",
+    "takeaway": "yes",
+    "website": "https://www.dominos.co.in/"
+  }
+},
+{
+  "type": "way",
+  "id": 1158240738,
+  "center": {
+    "lat": 22.6030666,
+    "lon": 88.4659326
+  },
+  "nodes": [
+    10771486882,
+    10771486881,
+    10771486880,
+    10771486879,
+    10771486878,
+    10771486877,
+    10771486882
+  ],
+  "tags": {
+    "amenity": "restaurant",
+    "cuisine": "bengali;indian",
+    "name": "Dhamsa Tribal Kitchen",
+    "website": "https://ecoparknewtown.com/dhamsatribalkitchen"
+  }
+},
+{
+  "type": "way",
+  "id": 1158461744,
+  "center": {
+    "lat": 22.5940281,
+    "lon": 88.4669888
+  },
+  "nodes": [
+    10773485961,
+    10773485945,
+    10773485946,
+    10773485947,
+    10773485948,
+    10773485949,
+    10773485950,
+    10773485951,
+    10773485952,
+    10773485962,
+    10773485953,
+    10773485954,
+    10773485955,
+    10773485956,
+    10773485957,
+    10773485958,
+    10773485959,
+    10773485960,
+    10773485961
+  ],
+  "tags": {
+    "amenity": "restaurant",
+    "building": "yes",
+    "cuisine": "indian;punjabi",
+    "name": "Dhaba Ajante",
+    "website": "https://ecoparknewtown.com/dhabaajante"
+  }
+},
+{
+  "type": "way",
+  "id": 1372632494,
+  "center": {
+    "lat": 22.5775617,
+    "lon": 88.4654995
+  },
+  "nodes": [
+    12709610544,
+    12709610545,
+    12709610546,
+    12709610547,
+    10904392234,
+    12709610544
+  ],
+  "tags": {
+    "addr:city": "New Town",
+    "addr:district": "North 24 Parganas",
+    "addr:housenumber": "Shop No. S/252, Plot No. CB/31,",
+    "addr:postcode": "700156",
+    "addr:street": "Community Market, CB Block, CB, Action Area I",
+    "amenity": "restaurant",
+    "building": "commercial",
+    "contact:facebook": "https://www.facebook.com/profile.php?id=61593042411115",
+    "contact:instagram": "https://www.instagram.com/junctionswadisht/?hl=en",
+    "cuisine": "indian;dessert",
+    "diet:vegetarian": "yes",
+    "name": "Swadisht Junction",
+    "name:bn": "স্বাদিষ্ট জংশন",
+    "opening_hours": "Everyday, 7:00 AM to 11:00 PM",
+    "outdoor_seating": "yes",
+    "phone": "9147223039"
+  }
+},
+{
+  "type": "way",
+  "id": 1448557092,
+  "center": {
+    "lat": 22.5642485,
+    "lon": 88.3887661
+  },
+  "nodes": [
+    13290284907,
+    13290285057,
+    13290284918,
+    13290265834,
+    13290284907
+  ],
+  "tags": {
+    "amenity": "restaurant",
+    "level": "0",
+    "name": "KitchenQ"
+  }
+},
+{
+  "type": "way",
+  "id": 1448557104,
+  "center": {
+    "lat": 22.5647890,
+    "lon": 88.3871400
+  },
+  "nodes": [
+    13290265849,
+    13290265883,
+    13290284975,
+    13290284947,
+    13290265849
+  ],
+  "tags": {
+    "addr:city": "Kolkata",
+    "addr:housenumber": "11/1",
+    "addr:postcode": "700010",
+    "addr:state": "WB",
+    "addr:street": "Beleghata Main Road",
+    "air_conditioning": "no",
+    "amenity": "fast_food",
+    "contact:mobile": "+91-81000-43291;+91-96740-38157",
+    "indoor_seating": "no",
+    "level": "0",
+    "name": "Dipu Fast Food Centre",
+    "outdoor_seating": "yes"
+  }
+}
+
+  ]
+}
