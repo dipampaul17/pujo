@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { reduce, initial, onLoadAction, needsChip, shouldUpdate, platform, APPROX_M, CACHE_MAX_AGE, type Fix } from './lib/loc'
 import raw from './data/dhaak.v1.json'
-import { makePlanner, areas as getAreas, statusOf, suggest, tier, type StatusFile, relevantNow, type NowItem, tagsFor, tagContext, zoneOf, ZONES, ZONE_ANCHOR, zoneCounts, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
+import { makePlanner, areas as getAreas, statusOf, tier, type StatusFile, relevantNow, type NowItem, tagsFor, tagContext, zoneOf, ZONES, ZONE_ANCHOR, zoneCounts, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
+import { recommend } from './lib/rank'
+import { roadEstimate, liveTravel, attachPins, type Roads, type Travel } from './lib/roads'
+import { orderRoute } from './lib/geo'
 import { HERO_LQIP } from './hero-lqip'
 import { TextReveal } from './components/text-reveal'
 
@@ -128,7 +131,7 @@ export default function App() {
         if (e.code !== 1 && cached && Date.now() - cached.at < CACHE_MAX_AGE) apply(cached, 'cache')
         else if (gesture) { if (e.code === 1 || !geoOk) setSheet(true); else setToast('Couldn’t find you. Pick a zone.') }
       },
-      { enableHighAccuracy: true, timeout: 7000, maximumAge: 60000 })
+      { enableHighAccuracy: true, timeout: 8000, maximumAge: 0 })
   }, [])
   // Ask on load. If the browser silently ignores a non-gesture request (some iOS builds), the first tap anywhere asks again, once.
   useEffect(() => {
@@ -170,7 +173,7 @@ export default function App() {
     const id = navigator.geolocation.watchPosition(p => {
       const f = { lat: p.coords.latitude, lng: p.coords.longitude, acc: p.coords.accuracy, at: Date.now() }
       dispatch({ type: 'fix', fix: f }); saveFix(f); apply(f, 'gps')
-    }, () => {}, { enableHighAccuracy: !!origin?.approx, maximumAge: 30000 })
+    }, () => {}, { enableHighAccuracy: true, maximumAge: 15000 })
     return () => navigator.geolocation.clearWatch(id)
   }, [origin?.precise])
   useEffect(() => { if (toast) { const t = setTimeout(() => setToast(null), 5000); return () => clearTimeout(t) } }, [toast])
@@ -186,9 +189,29 @@ export default function App() {
   // Distances shown are always from the live fix (never a zone centre or metro); without a fix none are shown.
   const me: LatLng | null = origin?.precise && !origin.approx ? origin : null
   const zonePandals = useMemo(() => (zone && view ? P.located.filter(p => nearYou ? hav(view, p) < 5000 || zoneOf(p) === zone : zoneOf(p) === zone).map(p => ({ ...p, dist: hav(view, p), my: me ? hav(me, p) : null })).sort((x, y) => x.dist - y.dist) : []), [zone, nearYou, view?.lat, view?.lng, me?.lat, me?.lng])
-  const suggested = useMemo(() => suggest(zonePandals, id => statusOf(id, istDate, statusFile, now), view?.precise ? view : null), [zonePandals, statusFile, istDate, view?.precise, Math.floor(now / 600e3)])
+  // Travel: precomputed road matrix (lazy), upgraded to a live OSRM table from the fix. Same numbers in list, route and sheet.
+  const [roads, setRoads] = useState<Roads | null>(null)
+  useEffect(() => { if (!entered || roads) return; fetch(import.meta.env.BASE_URL + 'data/roads.json').then(r => r.ok ? r.json() : null).then(j => j && setRoads(attachPins(j))).catch(() => {}) }, [entered])
+  const [liveRaw, setLiveT] = useState<{ key: string; t: Record<string, Travel> }>({ key: '', t: {} })
+  const meKey = me ? `${me.lat.toFixed(3)},${me.lng.toFixed(3)}` : ''
+  useEffect(() => { if (!me) return; let alive = true; const k = meKey; liveTravel(me, P.located).then(t => { if (alive && t) setLiveT({ key: k, t }) }); return () => { alive = false } }, [meKey])
+  // Live times only count for the fix they were measured from; after a move the matrix estimate stands in until the new table lands.
+  const liveT = liveRaw.key === meKey ? liveRaw.t : NO_LIVE
+  const from: LatLng | null = me ?? view
+  const travel = useCallback((p: LatLng & { id: string }): Travel => (me && liveT[p.id]) || roadEstimate(roads, from!, p), [me?.lat, me?.lng, liveT, roads, from?.lat, from?.lng])
+  // Seen: opened in the sheet or marked "I'm here" this session.
+  const [seen, setSeen] = useState<Set<string>>(() => { try { return new Set(JSON.parse(sessionStorage.getItem('pujo.seen') || '[]')) } catch { return new Set() } })
+  const markSeen = (id: string) => setSeen(s => { if (s.has(id)) return s; const n = new Set(s).add(id); try { sessionStorage.setItem('pujo.seen', JSON.stringify([...n])) } catch {}; return n })
+  const freshPosts = useMemo(() => Object.fromEntries(Object.entries(xLive.posts).map(([id, v]) => [id, Math.max(...(Array.isArray(v) ? v : [v]).map(q => Date.parse(q.at) || 0))])), [xLive])
+  const raining = nowFeed.some(n => /\brain/i.test(n.title) && now - Date.parse(n.published) < 3 * 3600e3)
+  const recCtx = (here: LatLng) => ({ here, now, status: (id: string) => statusOf(id, istDate, statusFile, now), travel, live: { crowd: xLive.crowd, closed: new Set<string>(), freshPosts }, seen, rain: raining })
+  const tick = Math.floor(now / 600e3)
+  const suggested = useMemo(() => (from ? recommend(zonePandals as any, recCtx(from)).map(x => ({ ...(x.p as (typeof zonePandals)[number]), t: x.t })) : []), [zonePandals, statusFile, istDate, travel, seen, xLive, raining, tick])
   const stable = useStableOrder()
-  const stops = useMemo(() => (plan ? plan.stops.filter(s => !skip.has(s.id)).slice(0, 8) : []), [plan, skip])
+  const stops = useMemo(() => { if (!plan || plan.outOfRange || !view) return []
+    const near = P.located.filter(p => hav(view, p) < 6000 && !skip.has(p.id))
+    const top = recommend(near as any, recCtx(from ?? view)).slice(0, 8).map(x => ({ ...(x.p as any), dist: hav(view, x.p) })) as typeof plan.stops
+    return orderRoute(view, top) }, [plan, skip, view?.lat, view?.lng, statusFile, travel, seen, xLive, raining, tick])
 
   const pick = (a: (typeof AREAS)[number]) => { setEntered(true); localStorage.setItem('dhaak.station', a.name); setOrigin({ lat: a.lat, lng: a.lng, label: `${a.name} metro`, precise: false }); setZoneRaw(zoneOf(a)); scrollMem.current = 0; setPicking(false); setSkip(new Set()); setTab(0) }
 
@@ -297,7 +320,7 @@ export default function App() {
                           <button onClick={() => setDetail(s.id)} className="t-headline block text-left min-h-[44px] -my-2" aria-haspopup="dialog">{s.name}</button>
                           <div className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(s.id, istDate, statusFile, now)} />{!(i === 0 && postsOf(xLive, s.id).some(q => q.photo)) && <PostsMark posts={postsOf(xLive, s.id)} fresh={fresh.has(s.id)} onClick={() => setDetail(s.id)} />}{xLive.crowd[s.id] && <a href={xLive.crowd[s.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[s.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[s.id].at))}</a>}</div>
                           <p className="t-foot muted mt-0.5 mono-num">
-                            {s.precision === 'station' ? 'Approximate' : i === 0 ? (me ? fmtDist(hav(me, s)) : '') : `+${fmtDist(hop(stops, i))}`}{i === 0 && s.precision !== 'station' && me && hav(me, s) > 1200 ? ` · ~${carMin(hav(me, s))} min by car` : ''}{s.station ? ` · ${s.station}` : ''}
+                            {s.precision === 'station' ? `Approximate${s.station ? ` · near ${s.station}` : ''}` : i === 0 ? (me ? <TravelLine t={travel(s)} /> : null) : `+${fmtDist(hop(stops, i))}`}
                           </p>
                           {(() => { const t = tagsFor(s, tagContext(P, s)); const one = s.reason ?? t[0]; return i === 0 && one && <div className="flex flex-wrap gap-1.5 mt-2">
                                                         {one && <span className={`tag ${/nearby/.test(one) ? 'tag-leaf' : 'tag-red'}`}>{one}</span>}
@@ -307,7 +330,7 @@ export default function App() {
                           {i === 0 && <div className="grid grid-cols-2 gap-2 mt-4 -ml-10 -mr-10">
                             <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="btn btn-uber">Uber here</a>
                             <a href={mapsDirUrl(view?.precise ? view : null, [s])} target="_blank" rel="noopener" className="btn btn-ghost">Maps</a>
-                            <button onClick={() => { setSkip(new Set(skip).add(s.id)); window.scrollTo({ top: 0 }) }} className="btn btn-quiet col-span-2">I'm here</button>
+                            <button onClick={() => { setSkip(new Set(skip).add(s.id)); markSeen(s.id); window.scrollTo({ top: 0 }) }} className="btn btn-quiet col-span-2">I'm here</button>
                           </div>}
                           {i > 0 && <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="link-action -mb-2">Uber here<Chev /></a>}
                         </div>
@@ -326,7 +349,7 @@ export default function App() {
                 </summary>
                 <ul className="group-list mt-3">{stable(suggested).map((p, r) => (
                   <li key={p.id}><a href={mapsPlaceUrl(p, p.name + ' Durga Puja')} onClick={e => { e.preventDefault(); setDetail(p.id) }} className="row">
-                    <span className="flex min-w-0"><span className="row-n mono-num" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span><span className="min-w-0"><span className="block truncate">{p.name}</span><StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline /></span></span><span className="flex items-center gap-2 shrink-0"><PostsMark posts={postsOf(xLive, p.id)} fresh={fresh.has(p.id)} />{p.precision !== 'station' && p.my != null && <span className="muted text-[14px] mono-num">{fmtDist(p.my)}</span>}</span></a></li>))}</ul>
+                    <span className="flex min-w-0"><span className="row-n mono-num" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span><span className="min-w-0"><span className="block truncate">{p.name}</span><StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline /></span></span><span className="flex items-center gap-2 shrink-0"><PostsMark posts={postsOf(xLive, p.id)} fresh={fresh.has(p.id)} />{p.precision !== 'station' && me && <TravelLine t={p.t} compact />}</span></a></li>))}</ul>
               </details>
             )}
             {tab === 1 && help && <AmenityList items={help.food} empty="Nothing mapped nearby." meta={f => [f.notable ? 'Kolkata classic' : null, f.cuisine && f.cuisine[0].toUpperCase() + f.cuisine.slice(1)].filter(Boolean).join(' · ')} />}
@@ -341,7 +364,7 @@ export default function App() {
 
           </>)}
           {detail && (() => { const p = P.located.find(x => x.id === detail); if (!p) return null
-            const d = me ? hav(me, p) : null, st = statusOf(p.id, istDate, statusFile, now), posts = postsOf(xLive, p.id)
+            const st = statusOf(p.id, istDate, statusFile, now), posts = postsOf(xLive, p.id)
             const eats = eatsNear(P.around('food', p, 400, 3500))
             const loo = P.around('toilets', p, 1, 600)[0]
             const pick = view?.precise && !view.approx ? view : null
@@ -358,7 +381,7 @@ export default function App() {
                   <button onClick={() => setDetail(null)} className="close-x mt-0.5" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 1.5l9 9M10.5 1.5l-9 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></button>
                 </div>
                 {p.reason && <p className="t-sub mt-3">{p.reason}</p>}
-                <p className="t-foot muted mono-num mt-2">{p.precision === 'station' ? `Approximate, near ${p.station}` : d != null ? `${fmtDist(d)}${d > 1200 && pick ? ` · ~${carMin(d)} min by car` : ` · ${walkMinutes(d)} min walk`}` : ''}{loo ? ` · Toilet ${fmtDist(loo.dist)}` : ''}</p>
+                <p className="t-foot muted mono-num mt-2">{p.precision === 'station' ? `Approximate, near ${p.station}` : me ? <TravelLine t={travel(p)} /> : null}{loo ? ` · Toilet ${fmtDist(loo.dist)}` : ''}</p>
                 {posts.length > 0 && <div className="mt-5 space-y-3">{posts.map(q => <PostCard key={q.url} p={q} now={now} />)}</div>}
                 <div className="grid grid-cols-2 gap-2 mt-5">
                   <a href={dest(p)} className="btn btn-uber">Uber here</a>
@@ -492,6 +515,17 @@ function LocationSheet({ perm, onClose, onRetry }: { perm: string; onClose: () =
 }
 type XPost = { media?: { src: string; w?: number; h?: number; video?: boolean }[]; id?: string; at: string; handle: string; avatar: string; text: string; photo?: string; score?: number; w?: number; h?: number; url: string }
 type XLive = { posts: Record<string, XPost[] | XPost>; crowd: Record<string, { at: string; url: string; label?: string; kind?: string; n?: number }>; area?: { area: string; zone: string; kind: string; label: string; at: string; url: string; n?: number }[] }
+/** Car and walk minutes, one quiet line. Walk only when it is sane on foot. "~" when it is the straight-line fallback. */
+function TravelLine({ t, compact }: { t: Travel; compact?: boolean }) {
+  const a = t.basis === 'estimate' ? '~' : '', walk = t.walkMin <= 45
+  const Car = <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 11l1.6-4.2A2 2 0 0 1 8.5 5.5h7a2 2 0 0 1 1.9 1.3L19 11a2 2 0 0 1 2 2v4a1 1 0 0 1-1 1h-1a2 2 0 0 1-4 0H9a2 2 0 0 1-4 0H4a1 1 0 0 1-1-1v-4a2 2 0 0 1 2-2zm2.2 0h9.6l-1.1-3a.7.7 0 0 0-.7-.5H9a.7.7 0 0 0-.7.5L7.2 11z"/></svg>
+  const Walk = <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 5.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM9.8 8.9 7 22h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3A7.3 7.3 0 0 0 19 12v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6a2 2 0 0 0-2.5-.8L6 7.3V12h2V8.6l1.8-.7z"/></svg>
+  return <span className={`inline-flex items-center gap-2.5 mono-num ${compact ? 'text-[14px]' : 'text-[15px]'} muted`} aria-label={`${a}${t.carMin} minutes by car${walk ? `, ${t.walkMin} minutes on foot` : ''}`}>
+    <span className="inline-flex items-center gap-1">{Car}{a}{t.carMin} min</span>
+    {walk && <span className="inline-flex items-center gap-1">{Walk}{a}{t.walkMin} min</span>}
+  </span>
+}
+const NO_LIVE: Record<string, Travel> = {}
 const carMin = (m: number) => Math.max(5, Math.round((m * 1.35) / 1000 / 14 * 60 / 5) * 5)
 const sized = (u: string, n: string) => { const x = new URL(u); x.searchParams.set('name', n); if (!x.searchParams.has('format')) x.searchParams.set('format', 'jpg'); return x.toString() }
 function postsOf(x: XLive, id: string): XPost[] { const v = x.posts[id]; const l = !v ? [] : Array.isArray(v) ? v : [v]; return l.map(q => { const m = q.media?.find(m => !m.video); return q.photo || !m ? q : { ...q, photo: m.src, w: m.w, h: m.h } }) }
