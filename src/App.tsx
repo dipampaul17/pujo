@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { reduce, initial, onLoadAction, needsChip, shouldUpdate, platform, APPROX_M, CACHE_MAX_AGE, type Fix } from './lib/loc'
 import raw from './data/dhaak.v1.json'
-import { makePlanner, areas as getAreas, nudges, statusOf, suggest, tier, type StatusFile, pujoDay, dayTip, relevantNow, type NowItem, tagsFor, tagContext, zoneOf, ZONES, ZONE_ANCHOR, zoneCounts, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
+import { makePlanner, areas as getAreas, nudges, statusOf, suggest, tier, type StatusFile, relevantNow, type NowItem, tagsFor, tagContext, zoneOf, ZONES, ZONE_ANCHOR, zoneCounts, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
 import { HERO_LQIP } from './hero-lqip'
 import { TextReveal } from './components/text-reveal'
@@ -290,12 +290,9 @@ export default function App() {
               <button className="btn btn-primary w-full mt-8" onClick={() => setZone('central')}>Show Central Kolkata</button>
             </div>
           ) : (<>
-            <header className="pt-4">
-              <h2 className="t-title2">Your walk</h2>
-              <p className="muted t-sub mono-num mt-1">{view.precise ? 'From you' : `From ${view.label}`}{view.approx ? ' (approximate)' : ''} · {walkMinutes(pathOf(view, stops))} min · {fmtDist(pathOf(view, stops))}{done > 0 ? ` · ${done} done` : ''}</p>
-            </header>
+            <h2 className="t-title2 pt-4">{view.precise ? 'Near you' : ZLABEL[zone ?? 'central']}</h2>
 
-            {(() => { const line = rain ? `Rain likely ${rain.at - now < 50 * 60e3 ? 'within the hour' : 'around ' + new Date(rain.at).toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: 'numeric' })}` : dayTip(pujoDay(istDate), istHour(now)) ?? tips[0]; return line && <p className="mt-3 t-sub font-medium">{line}</p> })()}
+            
             {live && <a href={live.link} target="_blank" rel="noopener" className="now-strip mt-3"><span className="now-dot" /><span className="flex-1 line-clamp-2">{live.title}</span></a>}
 
             <div className="mt-6">
@@ -347,8 +344,7 @@ export default function App() {
               </details>
             )}
             {tab === 1 && help && <AmenityList items={help.food} empty="Nothing mapped nearby." meta={f => [f.notable ? 'Kolkata classic' : null, f.cuisine && f.cuisine[0].toUpperCase() + f.cuisine.slice(1)].filter(Boolean).join(' · ')} />}
-            {tab === 2 && help && help.toilets.length > 0 && help.toilets.length < 3 && <p className="mt-4 text-[14px] muted">Few mapped here. Ask a pandal volunteer.</p>}
-            {tab === 2 && help && <AmenityList items={help.toilets} empty="None mapped nearby. Ask a pandal volunteer." meta={t => [t.fee === 'yes' ? 'Paid' : t.fee === 'no' ? 'Free' : null].filter(Boolean).join('')} />}
+                        {tab === 2 && help && <AmenityList items={help.toilets} empty="None mapped nearby." meta={t => [t.fee === 'yes' ? 'Paid' : t.fee === 'no' ? 'Free' : null].filter(Boolean).join('')} />}
             {tab === 3 && help && (
               <div className="mt-4 space-y-3">
                 <div className="card p-4"><div className="flex gap-2"><a className="btn btn-primary flex-1" href="tel:112">Call 112</a><a className="btn btn-ghost flex-1" href="tel:100">Police 100</a></div></div>
