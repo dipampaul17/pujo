@@ -41,3 +41,23 @@ def test_wide_ingest():
     assert not any('jodhpur' in k for k in X.live['open'])
     print('ok wide ingest')
 if __name__=='__main__': test_rotation(); test_wide_ingest()
+
+def test_cm_inauguration_list_opens_named_pandals():
+    fresh()
+    full=("দেবীপক্ষের সূচনা ও শুভ নবরাত্রি'র দ্বিতীয় দিনে কলকাতার ঐতিহ্যবাহী ক্লাব \n📍 টালা প্রত্যয়, কলকাতা \n📍চোরবাগান সার্বজনীন, কলকাতা \n"
+          "📍শ্রীশ্রী সরস্বতী ও কালীমাতা মন্দির পরিষদ, বেলেঘাটা\n📍লেকপল্লী সার্বজনীন, সন্তোষপুর\n📍চেতলা অগ্রণী, ভবানীপুর \n📍অরুণোদয় সমিতি, বেহালা\n"
+          "📍২৫ পল্লী সার্বজনীন, খিদিরপুর\n📍ক্লাব মুক্তদল সার্বজনীন, ভবানীপুর\n📍অ্যালেন পার্ক সার্বজনীন, পার্ক স্ট্রীট\nআয়োজিত শ্রীশ্রী দুর্গাপুজোর শুভ উদ্বোধনী অনুষ্ঠানে উপস্থিত ছিলাম।")
+    f=X.ST+'/cm.json'
+    json.dump({'data':[{'id':'2109717078550978709','author_id':'cm','created_at':'2026-10-12T18:45:22Z','text':full[:140]+' https://t.co/x','note_tweet':{'text':full}}],
+               'includes':{'users':[{'id':'cm','username':'SuvenduWB'}]}},open(f,'w'),ensure_ascii=False)
+    X.now=dt.datetime(2026,10,13,16,0,tzinfo=dt.UTC)
+    with contextlib.redirect_stdout(io.StringIO()): X.ingest([f])
+    got=set(X.live['open'])
+    assert {'tala-prattoy','chorebagan-sarbojanin','santoshpur-lake-pally','chetla-agrani','25-pally-khidirpur'}<=got, got
+    assert not got-{'tala-prattoy','chorebagan-sarbojanin','santoshpur-lake-pally','chetla-agrani','25-pally-khidirpur'}, got
+    print('ok cm list')
+def test_inaugurators_polled_in_existing_call():
+    per,_,_=simulate(4)
+    assert all(len(q)<=3 for q in per)
+    assert any('from:suvenduwb' in q['args']['query'] and 'from:cmowbgov' in q['args']['query'] for qs in per for q in qs)
+    assert all('note_tweet' in q['args']['post.fields'] for qs in per for q in qs)

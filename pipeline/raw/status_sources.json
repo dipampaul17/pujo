@@ -1,5 +1,5 @@
 {
- "_source": "Hand-checked X evidence only (url, date, what it says). Re-verified on X 2026-10-13 19:30 IST. Web/news links are not evidence.",
+ "_source": "Hand-checked X evidence only (url, date, what it says). Re-verified on X 2026-10-13 20:49 IST. Web/news links are not evidence.",
  "santosh-mitra-square": [
   {
    "url": "https://x.com/Ei_Samay/status/2109495140574441756",
@@ -62,6 +62,38 @@
    "url": "https://x.com/AbhiDasGup74/status/2109902705678594144",
    "at": "2026-10-13",
    "text": "📍 Tridhara Sammilani, Kolkata: visitor post with photos",
+   "primary": true
+  }
+ ],
+ "ballygunge-cultural": [
+  {
+   "url": "https://x.com/IndiContractor/status/2109357968911376776",
+   "at": "2026-10-11",
+   "text": "📍Ballygunge Cultural Association, Kolkata🇮🇳",
+   "primary": true
+  }
+ ],
+ "sb-park-sarbojanin": [
+  {
+   "url": "https://x.com/Biswaru94784015/status/2109538049675936237",
+   "at": "2026-10-12",
+   "text": "SB PARK SARBOJANIN 📍 Theme : colliery ( on coal miners)",
+   "primary": true
+  }
+ ],
+ "santoshpur-lake-pally": [
+  {
+   "url": "https://x.com/SuvenduWB/status/2109717078550978709",
+   "at": "2026-10-12",
+   "text": "CM Suvendu Adhikari (12 Oct): attended the inauguration ceremonies of 📍 লেকপল্লী সার্বজনীন, সন্তোষপুর and 📍 ২৫ পল্লী সার্বজনীন, খিদিরপুর ",
+   "primary": true
+  }
+ ],
+ "25-pally-khidirpur": [
+  {
+   "url": "https://x.com/SuvenduWB/status/2109717078550978709",
+   "at": "2026-10-12",
+   "text": "CM Suvendu Adhikari (12 Oct): attended the inauguration ceremonies of 📍 লেকপল্লী সার্বজনীন, সন্তোষপুর and 📍 ২৫ পল্লী সার্বজনীন, খিদিরপুর ",
    "primary": true
   }
  ]

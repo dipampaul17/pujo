@@ -21,7 +21,7 @@ def names(p): return aliases(p)
 SEASON='2026-10-05T00:00:00Z'  # pre-Mahalaya: anything older is not a 2026 opening
 OPEN_FLOOR='2026-10-10T00:00:00Z'  # Mahalaya 2026: no inauguration evidence counts before this
 QMAX=1000  # X query length cap
-FIELDS={'expansions':'attachments.media_keys,author_id','media.fields':'url,preview_image_url,type,width,height','user.fields':'username,name,profile_image_url','post.fields':'created_at,text,attachments,public_metrics'}
+FIELDS={'expansions':'attachments.media_keys,author_id','media.fields':'url,preview_image_url,type,width,height','user.fields':'username,name,profile_image_url','post.fields':'created_at,text,note_tweet,attachments,public_metrics'}
 def q_of(ps,tail=' -is:retweet'):
     return '('+' OR '.join(f'"{n}"' for p in ps for n in names(p))+')'+tail
 def pack(ps,tail=' -is:retweet'):
@@ -52,7 +52,7 @@ def plan(n=3):
     since=(now-dt.timedelta(hours=24)).strftime('%Y-%m-%dT%H:%M:%SZ')
     k=int(now.timestamp()//300)%2  # alternate discovery flavour per run: opening/visit words, or any photo post
     tail=INTENT if k==0 else ' (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো) has:images -is:retweet'
-    tq=' OR '.join(f'from:{h}' for h in sorted(TRUSTED))
+    tq=' OR '.join(f'from:{h}' for h in sorted(TRUSTED|INAUGURATORS))
     # slot 1: top + trusted visitors; slot 2: stalest pass pandals (every run); slot 3: stalest of the rest,
     # except every other run, when slot 3 is the live street-signal query.
     # Two-run cycle, 3 calls each. Even run: top+trusted visitors, pass pandals, WIDE openings search.
@@ -66,7 +66,7 @@ def plan(n=3):
     qs=qs[:n]
     json.dump({'at':now.isoformat(),'queries':qs},open(f'{ST}/xplan.json','w'),indent=1,ensure_ascii=False); print(json.dumps(qs,ensure_ascii=False)); return qs
 PROMO=re.compile(r'\b(offer|discount|sale|book now|giveaway|sponsor|promo|ad\b|link in bio|watch live|subscribe|tickets?|to arrive|will inaugurate|to inaugurate|scheduled|throwback|last year|2025|2024|#tbt|AI generated|AI art|how to reach|walking route|route guide|kivabe)\b',re.I)
-OPEN=re.compile(r'(\b(inaugurat(ed|es|ing|ion)|opened|open (for|to) (the )?(public|visitors)|crowds?|queues?|visited|visiting|darshan|pandal[- ]hopping|thronged|footfall|(the )?pandal (was|is|looks)|we went|i went)\b|\budbodhon (holo|hoye gelo|korlen|korlo)\b|উদ্বোধন (করলেন|করেন|হল|হলো)|উদ্বোধনে|ভিড়)',re.I)
+OPEN=re.compile(r'(\b(inaugurat(ed|es|ing|ion)|opened|open (for|to) (the )?(public|visitors)|crowds?|queues?|visited|visiting|darshan|pandal[- ]hopping|thronged|footfall|(the )?pandal (was|is|looks)|we went|i went)\b|\budbodhon (holo|hoye gelo|korlen|korlo)\b|উদ্বোধন (করলেন|করেন|হল|হলো)|উদ্বোধনে|উদ্বোধনী|ভিড়)',re.I)
 FUTURE=re.compile(r'\b(to (be )?inaugurat\w*|will (be )?(inaugurat\w*|open)|set to|scheduled|upcoming|countdown|days? to go|coming soon|last year|throwback|#tbt|(puja|pujo|durgapuja)\s?202[0-5]|will be open|opens? on|open for public \d|khuti|getting ready|still wip|wip|work in progress|walking route|route guide|how to reach|durga temple|mandir darshan|কীভাবে|khuti puja|kathamo|under construction|being built|preparation|preparing|work in progress)\b|উদ্বোধন করবেন|খুঁটি পুজো',re.I)
 CTX=re.compile(r'puja|pujo|pandal|durga|kolkata|calcutta|দুর্গা|পুজো|পূজা|মণ্ডপ',re.I)
 def open_hits(txt,c):
@@ -78,9 +78,13 @@ def open_hits(txt,c):
 VISIT=re.compile(r'\b(today|tonight|this evening|right now|just (went|visited)|went to|visited|we are at|at the pandal|first day|i am at)\b',re.I)
 BOTS={'grok','threadreaderapp','pikaso_me'}
 # Hand-vetted visitors who post first-hand pandal visits ("📍 <pandal>" + own photos). One pinned pandal + photo + no future framing = a visit.
-TRUSTED={'abasu4ever','sudhanidhib'}  # '📍 <pandal>' threads; '#N Visited <pandal>' series
+TRUSTED={'abasu4ever','sudhanidhib',
+  'an1sh123'}  # an1sh123 (vetted 13 Oct): personal account, numbered '#N <pandal>' first-hand reviews with own photos, critical not promo
+# Inauguration sources: the CM and his office post dated '📍 <pandal>' lists of pujas he inaugurated. Searched every
+# even run inside the trusted-visitor slot (no extra X call).
+INAUGURATORS={'suvenduwb','cmowbgov'}  # '📍 <pandal>' threads; '#N Visited <pandal>' series
 def trusted_visit(u,txt,has_photo,c):
-    return u.lower() in TRUSTED and has_photo and (txt.lstrip().startswith('📍') or re.match(r'\s*#\d+\s+visited\b',txt,re.I)) and c>=dt.datetime.fromisoformat(OPEN_FLOOR.replace('Z','+00:00')) and not FUTURE.search(re.sub(r'\b(19|20)\d\d\b','',txt))
+    return u.lower() in TRUSTED and has_photo and (txt.lstrip().startswith('📍') or re.match(r'\s*#\d+\s+(visited\b)?',txt,re.I)) and c>=dt.datetime.fromisoformat(OPEN_FLOOR.replace('Z','+00:00')) and not FUTURE.search(re.sub(r'\b(19|20)\d\d\b','',txt))
 QUEUE=re.compile(r'\b(queue|long line|waiting line)\b(?:.{0,30}?(\d{1,3})\s*(min|mins|minutes|hours?|hrs?))?',re.I)
 CLOSED=re.compile(r'\b(entry (closed|stopped|suspended)|closed for (the )?public|pandal (closed|shut)|gates? closed)\b',re.I)
 TRAFFIC=re.compile(r'\b(traffic jam|road (closed|blocked)|diversion|gridlock|no[- ]entry)\b',re.I)
@@ -107,7 +111,7 @@ def ingest(files):
         media={m['media_key']:m for m in d.get('includes',{}).get('media',[])}; users={u['id']:u for u in d.get('includes',{}).get('users',[])}
         for p in P: live['polled'][p['id']]=live['polled'].get(p['id'],'')
         for x in sorted(d.get('data',[]),key=lambda x:x['created_at']):
-            txt=x['text']; c=dt.datetime.fromisoformat(x['created_at'].replace('Z','+00:00'))
+            txt=(x.get('note_tweet') or {}).get('text') or x['text']; c=dt.datetime.fromisoformat(x['created_at'].replace('Z','+00:00'))
             if c.year!=2026 or txt.startswith('RT @'): continue
             u0=users.get(x.get('author_id'),{}).get('username','i')
             if not txt.startswith('@') and u0.lower() not in BOTS:

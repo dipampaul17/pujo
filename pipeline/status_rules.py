@@ -17,7 +17,7 @@ FIRST_DAY = '2026-10-10'
 OUTLETS = {  # X handles and web domains of news organisations
  'ani','pti_news','ians_tweets','ei_samay','eisamay','thewalltweets','timesofindia','toikolkata','telegraph_kol','ttindia',
  'abpanandatv','abpananda','anandabazar','republic_bangla','news18bengali','zee24ghanta','thedailyjagran','indiatoday','ndtv',
- 'htkolkata','hindustantimes','cmowbgov','newsarenaindia','sangbadpratidin','bengalbuzz',
+ 'htkolkata','suvenduwb','hindustantimes','cmowbgov','newsarenaindia','sangbadpratidin','bengalbuzz',
  'timesofindia.indiatimes.com','telegraphindia.com','anandabazar.com','eisamay.com','thewall.in','abplive.com','ndtv.com',
  'indianexpress.com','hindustantimes.com','thehindu.com','news18.com','millenniumpost.in','sangbadpratidin.in','newsarenaindia.com'}
 RANK = {'outlet': 0, 'trusted': 1, 'hand': 1, 'visitor': 2}
