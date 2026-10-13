@@ -8,7 +8,7 @@ import { haversine } from './geo'
 
 const ps = (raw as any).pandals.filter((p: any) => p.lat != null && p.precision !== 'none') as Pandal[]
 const roads = attachPins(JSON.parse(fs.readFileSync('public/data/roads.json', 'utf8')) as Roads, Object.fromEntries(ps.map(p => [p.id, p])))
-const status: StatusFile = JSON.parse(fs.readFileSync('public/live/status.json', 'utf8'))
+const status: StatusFile = JSON.parse(fs.readFileSync('src/lib/fixtures/status-2026-10-13.json', 'utf8'))
 const NOW = Date.parse('2026-10-13T19:00:00+05:30')
 const ctx = (at: [number, number], over: Partial<RecContext> = {}): RecContext => ({
   here: { lat: at[0], lng: at[1] }, now: NOW, status: id => statusOf(id, '2026-10-13', status, NOW),

@@ -42,3 +42,10 @@ describe('liveTravel', () => {
     expect(await liveTravel({ lat: 22.6, lng: 88.4 }, pins, 50, f)).toBeNull()
   })
 })
+describe('stale matrix guard', () => {
+  it('a pin that moved since the matrix was built falls back instead of using the old column', () => {
+    const [lat, lng] = roads!.pts[0]
+    expect(roadEstimate(roads, { lat: 22.5164, lng: 88.3372 }, { lat: lat + 0.01, lng }).basis).toBe('estimate')
+    expect(roadEstimate(roads, { lat: 22.5164, lng: 88.3372 }, { lat, lng }).basis).not.toBe('estimate')
+  })
+})

@@ -10,7 +10,7 @@ export const TRAVEL = {
   fallbackCarKmh: 18,     // city speed for the no-matrix fallback
 }
 /** Grid of OSRM tables: cells → pandals, both profiles. Units: durations in 10 s, distances in 10 m; -1 = no route. */
-export type Roads = { v: number; fetched: string; grid: { lat0: number; lng0: number; step: number; rows: number; cols: number }; ids: string[]
+export type Roads = { v: number; pts: [number, number][]; fetched: string; grid: { lat0: number; lng0: number; step: number; rows: number; cols: number }; ids: string[]
   car: { cellT: number[][]; cellD: number[][]; pairT: number[][]; pairD: number[][] }; foot: { cellT: number[][]; cellD: number[][]; pairT: number[][]; pairD: number[][] } }
 export type Travel = { carMin: number; walkMin: number; carM: number; walkM: number; crowKm: number; basis: 'road' | 'estimate' | 'live' }
 
@@ -29,7 +29,8 @@ function ratiosAt(roads: Roads, r: number, c: number, to: LatLng, j: number) {
   if (ct == null || ct < 0 || cd < 0 || fd < 0) return null
   return { t: (ct * 10) / h, d: (cd * 10) / h, f: (fd * 10) / h, h }
 }
-export function attachPins(roads: Roads, pins: Record<string, LatLng>) { (roads as any).pts = roads.ids.map(id => pins[id]) ; return roads }
+/** Matrix columns are only valid while a pin sits where it was when the matrix was built (≤ 60 m). Moved pins fall back. */
+export function attachPins(roads: Roads, _pins?: Record<string, LatLng>) { (roads as any).pts = (roads.pts ?? []).map(([lat, lng]) => ({ lat, lng })); return roads }
 
 /** Road estimate from → to. Uses the destination's column (to must be a pandal pin) with bilinear-weighted per-metre ratios
  *  from the 4 surrounding grid cells; pandal→pandal uses the exact pair table. Falls back to circuity × straight line. */

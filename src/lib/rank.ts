@@ -17,7 +17,7 @@ export const REC = {
   surge: 2.5, surgeMin: 90,    // live crowd surge on X in the last 90 min
   fresh: 0.8, freshMin: 120,   // a new visitor post in the last 2 h
   seen: 10,               // opened / "I'm here": demote, they've been
-  approxPin: 1,          // pin is only the metro station: lean away a little…
+  approxPin: 3,          // pin is only the metro station: lean away a little…
   approxFloorMin: 10,    // …and never treat it as closer than this, its real spot is unknown
   laneM: 150,  lanePenalty: 1.2,            // stage 3: two picks closer than this are the same lane
 }

@@ -26,7 +26,7 @@ def matrix(prof, srcs):
     q = lambda v: -1 if v is None else int(round(v / 10))
     return [[q(x) for x in row] for row in car_d], [[q(x) for x in row] for row in dist]
 out = {'v': 1, 'fetched': time.strftime('%Y-%m-%d'), 'source': 'OSRM (OpenStreetMap) car: router.project-osrm.org, foot: routing.openstreetmap.de',
-       'unit': 'durations in 10 s, distances in 10 m', 'grid': {'lat0': LAT0, 'lng0': LNG0, 'step': STEP, 'rows': ROWS, 'cols': COLS}, 'ids': [p['id'] for p in P]}
+       'unit': 'durations in 10 s, distances in 10 m', 'grid': {'lat0': LAT0, 'lng0': LNG0, 'step': STEP, 'rows': ROWS, 'cols': COLS}, 'ids': [p['id'] for p in P], 'pts': [[round(p['lat'], 6), round(p['lng'], 6)] for p in P]}
 for prof in ('car', 'foot'):
     out[prof] = dict(zip(('cellT', 'cellD'), matrix(prof, cells)))
     out[prof].update(dict(zip(('pairT', 'pairD'), matrix(prof, pd))))
