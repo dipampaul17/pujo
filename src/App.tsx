@@ -218,7 +218,7 @@ export default function App() {
   return (
     <div className="mx-auto max-w-[560px] min-h-[100dvh] flex flex-col px-5">
       {(view || picking) && <><header className="navbar flex items-center justify-between">
-        {picking ? <button onClick={() => setPicking(false)} className="flex items-center gap-1 min-h-[44px] -ml-2 px-2 text-[16px] font-medium" aria-label="Back"><Back /> Back</button> : <button onClick={() => { setEntered(false); setOrigin(null); setZoneRaw(null); try { localStorage.removeItem('dhaak.zone') } catch {} }} className="flex items-baseline gap-2" aria-label="Dhaak home">
+        {picking ? <button onClick={() => setPicking(false)} className="flex items-center gap-1 min-h-[44px] -ml-2 px-2 text-[16px] font-medium" aria-label="Back"><Back /> Back</button> : <button onClick={() => { setEntered(false); setOrigin(null); setZoneRaw(null); try { localStorage.removeItem('dhaak.zone') } catch {} }} className="flex items-center gap-2 min-h-[44px]" aria-label="Home">
           <span className="wordmark text-[17px] whitespace-nowrap">Raya and DP&rsquo;s Pujo</span>
         </button>}
         <span className="flex items-center gap-1">{needsChip(loc) && <button className="min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Turn on location" onClick={() => setSheet(true)} style={{ color: 'var(--sindoor)' }}><Pin small /></button>}<ThemeToggle /></span>
@@ -292,7 +292,7 @@ export default function App() {
                       <div className="flex gap-3">
                         <span className="stop-n mono-num" style={{ color: i === 0 ? 'var(--sindoor)' : 'var(--muted)' }} aria-label={`Stop ${i + 1}`}>{i + 1}</span>
                         <div className="min-w-0 flex-1">
-                          <button onClick={() => setDetail(s.id)} className="t-headline block text-left min-h-[28px]" aria-haspopup="dialog">{s.name}</button>
+                          <button onClick={() => setDetail(s.id)} className="t-headline block text-left min-h-[44px] -my-2" aria-haspopup="dialog">{s.name}</button>
                           <div className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(s.id, istDate, statusFile, now)} />{!(i === 0 && postsOf(xLive, s.id).some(q => q.photo)) && <PostsMark posts={postsOf(xLive, s.id)} fresh={fresh.has(s.id)} onClick={() => setDetail(s.id)} />}{xLive.crowd[s.id] && <a href={xLive.crowd[s.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[s.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[s.id].at))}</a>}</div>
                           <p className="t-foot muted mt-0.5 mono-num">
                             {s.precision === 'station' ? 'Approximate' : i === 0 ? fmtDist(s.dist) : `+${fmtDist(hop(stops, i))}`}{i === 0 && s.precision !== 'station' && view?.precise && s.dist > 1200 ? ` · ~${carMin(s.dist)} min by car` : ''}{s.station ? ` · ${s.station}` : ''}
@@ -424,7 +424,7 @@ function PostsMark({ posts, fresh, onClick }: { posts: XPost[]; fresh?: boolean;
   </>
   const cls = 'inline-flex items-center gap-1.5 align-middle'
   const label = `${posts.length} post${posts.length > 1 ? 's' : ''} from visitors on X${fresh ? ', new' : ''}`
-  return onClick ? <button onClick={onClick} className={`${cls} min-h-[28px]`} aria-label={label}>{body}</button> : <span className={cls} aria-label={label}>{body}</span>
+  return onClick ? <button onClick={onClick} className={`${cls} min-h-[44px] -my-2`} aria-label={label}>{body}</button> : <span className={cls} aria-label={label}>{body}</span>
 }
 const PUBS: Record<string, string> = { 'timesofindia.indiatimes.com': 'Times of India', 'telegraphindia.com': 'The Telegraph', 'anandabazar.com': 'Anandabazar', 'thehindu.com': 'The Hindu', 'indianexpress.com': 'Indian Express', 'hindustantimes.com': 'Hindustan Times', 'ndtv.com': 'NDTV', 'aninews.in': 'ANI', 'millenniumpost.in': 'Millennium Post', 'thestatesman.com': 'The Statesman' }
 /** Who said so: '@handle' for an X post, the publication for an article. */
@@ -442,7 +442,7 @@ function StatusDot({ s, inline }: { s: ReturnType<typeof statusOf>; inline?: boo
   const src = sourceOf(s.evidence)
   const via = src && <span className="status-src">{src.x ? <XGlyph /> : <span className="status-src-dot" />}{src.name}</span>
   const body = <><span className="w-2 h-2 rounded-full" style={{ background: c }} /><span style={{ color: c }}>{s.label}</span>{via}</>
-  const cls = `status inline-flex items-center gap-1.5 ${inline ? '' : 'mt-0.5 min-h-[28px]'}`
+  const cls = `status inline-flex items-center gap-1.5 ${inline ? '' : 'min-h-[44px] -my-2'}`
   // Rows are already links to the sheet: show the source quietly there, make it tappable in the stop card and sheet.
   return s.evidence && !inline ? <a href={s.evidence} target="_blank" rel="noopener" className={cls} aria-label={`${s.label}, source ${src?.name ?? ''}`}>{body}</a> : <span className={cls}>{body}</span>
 }

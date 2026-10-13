@@ -14,5 +14,13 @@ step build; rm -rf /tmp/gate && BASE=/pujo/ npx vite build --outDir /tmp/gate/pu
 step e2e; PORT=${GATE_PORT:-4391}; (cd /tmp/gate && python3 -m http.server $PORT >/dev/null 2>&1 & echo $! > /tmp/gate.pid); sleep 1
 trap 'kill $(cat /tmp/gate.pid) 2>/dev/null || true' EXIT
 PW_CORE=/tmp/pw/node_modules/playwright-core node e2e/gate.cjs http://localhost:$PORT/pujo/
+step quality; PW_CORE=/tmp/pw/node_modules/playwright-core node e2e/quality.cjs http://localhost:$PORT/pujo/
+lh() { CHROME_PATH=/usr/bin/google-chrome lighthouse "$1" --only-categories=performance,accessibility --form-factor=mobile --chrome-flags="--headless=new --no-sandbox" --output=json --output-path=/tmp/lh-gate.json --quiet
+  python3 -c "import json,sys;c=json.load(open('/tmp/lh-gate.json'))['categories'];s={k:round(v['score']*100) for k,v in c.items()};print('lighthouse',s);sys.exit(0 if all(s[k]>=95 for k in sys.argv[1:]) else 1)" ${@:2}; }
+# Local static server has no gzip/HTTP2, so performance is gated on the live CDN after deploy; accessibility gates here.
+step lighthouse-a11y; lh http://localhost:$PORT/pujo/ accessibility
 [ -n "${NO_DEPLOY:-}" ] && { echo "GATE GREEN (deploy skipped)"; exit 0; }
-step deploy; SKIP_LIVE=${SKIP_LIVE:-1} ./deploy.sh && echo "GATE GREEN, deployed"
+step deploy; SKIP_LIVE=${SKIP_LIVE:-1} ./deploy.sh
+step live-verify; sleep 60; lh https://dipampaul17.github.io/pujo/ performance accessibility
+PW_CORE=/tmp/pw/node_modules/playwright-core node e2e/gate.cjs https://dipampaul17.github.io/pujo/ /workspace/shots/gate-live
+echo "GATE GREEN, deployed and verified live"

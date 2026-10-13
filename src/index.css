@@ -117,7 +117,7 @@ button:active:not(:disabled):not([role=tab]), a.btn:active { transform: scale(0.
   --r-s: 10px; --r-m: 14px; --r-l: 22px;     /* controls · cards/buttons · sheets */
   --hair: 0.5px solid var(--line);
   --shadow-1: 0 0 0 0.5px var(--line), 0 1px 2px rgba(40,30,20,.04);
-  --bg: #F5F3EE; --ink: #1A1916; --muted: #77726A; --line: rgba(26,25,22,0.12); --chip: rgba(120,116,108,0.11);
+  --bg: #F5F3EE; --ink: #1A1916; --muted: #69655E; --line: rgba(26,25,22,0.12); --chip: rgba(120,116,108,0.11);
 }
 .title   { font-size: 34px; line-height: 1.06; letter-spacing: -0.032em; font-weight: 650; }
 .t-title { font-size: 28px; line-height: 1.1;  letter-spacing: -0.026em; font-weight: 650; }
@@ -142,7 +142,7 @@ button:active:not(:disabled):not([role=tab]), a.btn:active { transform: scale(0.
 /* Segmented control */
 .seg { position: relative; display: grid; padding: 2px; border-radius: 9px; background: var(--chip); }
 .seg-thumb { position: absolute; top: 2px; bottom: 2px; left: 2px; border-radius: 7px; background: var(--surface); box-shadow: 0 3px 8px rgba(0,0,0,.08), 0 0 0 0.5px rgba(0,0,0,.04); transition: transform .32s var(--spring); }
-.seg-item { position: relative; z-index: 1; min-height: 32px; display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 13.5px; font-weight: 500; color: var(--muted); transition: color .2s; }
+.seg-item { position: relative; z-index: 1; min-height: 44px; display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 13.5px; font-weight: 500; color: var(--muted); transition: color .2s; }
 .seg-item[aria-selected=true] { color: var(--ink); font-weight: 600; }
 .seg-item:active { transform: none !important; opacity: .6; }
 .seg-count { font-size: 12px; font-weight: 500; color: var(--muted); }
