@@ -22,6 +22,13 @@ const istHour = (t = Date.now()) => +new Date(t).toLocaleString('en-US', { timeZ
 
 const Pin = ({ small }: { small?: boolean }) => <svg width={small ? 14 : 20} height={small ? 14 : 20} viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="currentColor"/><circle cx="12" cy="10" r="2.6" fill="var(--bg)"/></svg>
 
+type Curated = Amenity & { dist: number; curated?: boolean; known?: string }
+/** Three best-known places within a short hop: curated, sourced list only; nearest branch per name. */
+function eatsNear(all: Array<Amenity & { dist: number }>): Curated[] {
+  const seen = new Set<string>()
+  return (all as Curated[]).filter(f => f.curated && !seen.has(f.name) && (seen.add(f.name), true)).slice(0, 3)
+}
+
 export default function App() {
   const [origin, setOrigin] = useState<Origin | null>(null)
   const permRef = useRef<string>('')
@@ -345,7 +352,7 @@ export default function App() {
           {detail && (() => { const p = P.located.find(x => x.id === detail); if (!p) return null
             const d = view ? hav(view, p) : null, st = statusOf(p.id, istDate, statusFile, now), posts = postsOf(xLive, p.id)
             const zr = [...P.located.filter(x => zoneOf(x) === zoneOf(p))].sort((x, y) => (y.worth ?? 0) - (x.worth ?? 0)).findIndex(x => x.id === p.id) + 1
-            const eats = P.around('food', p, 16, 700).filter(f => !/cater|outlet|factory|wholesale|godown/i.test(f.name)).sort((x, y) => Number(!!y.notable) - Number(!!x.notable) || x.dist - y.dist).slice(0, 5)
+            const eats = eatsNear(P.around('food', p, 400, 3500))
             const loo = P.around('toilets', p, 1, 600)[0]
             const pick = view?.precise && !view.approx ? view : null
             const dest = (q: LatLng & { name: string }) => uberUrl({ lat: q.lat, lng: q.lng, name: q.name, address: `${q.name}, Kolkata` }, pick)
@@ -369,7 +376,7 @@ export default function App() {
                 </div>
                 {eats.length > 0 && <><h3 className="serif text-[22px] mt-6">Eat nearby</h3>
                   <ul>{eats.map(f => <li key={f.id} className="flex items-center gap-3 py-2.5 border-b hair">
-                    <div className="min-w-0 flex-1"><p className="text-[16px] font-semibold truncate">{f.name}</p><p className="text-[13px] muted mono-num">{fmtDist(f.dist)} from pandal{f.notable ? ' · Kolkata classic' : ''}</p></div>
+                    <div className="min-w-0 flex-1"><p className="text-[16px] font-semibold truncate">{f.name}</p><p className="text-[13px] muted mono-num">{[(f as Curated).known, f.dist > 1200 ? `${carMin(f.dist)} min by car` : `${walkMinutes(f.dist)} min walk`].filter(Boolean).join(' · ')}</p></div>
                     <a href={dest(f)} className="btn btn-ghost px-3 text-[14px]" style={{ minHeight: 44 }}>Uber</a>
                     <a href={mapsPlaceUrl(f, f.name)} target="_blank" rel="noopener" className="btn btn-ghost px-3 text-[14px]" style={{ minHeight: 44 }}>Maps</a>
                   </li>)}</ul></>}

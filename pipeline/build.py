@@ -59,6 +59,9 @@ for e in load('food'):
     if re.fullmatch(r'(tea|chai|coffee|food|snacks?)\s*(shop|stall|corner|point)?|restaurant|hotel|cafe|dhaba|canteen',n.strip(),re.I): continue  # unnamed in practice
     food.append({'id':f"f{e['id']}",'name':n,'lat':round(la,6),'lng':round(lo,6),'kind':e['tags'].get('amenity'),
       'cuisine':(e['tags'].get('cuisine') or '').replace('_',' ').replace(';',', ') or None,'notable':any(k in n.lower() for k in NOTABLE)})
+# Curated S-tier places (pipeline/curated/make.py): each sourced to a published list, coordinates from OSM.
+cur=json.load(open(f'{R}/curated_food.json'))
+food=[f for f in food if not any(hav(f['lat'],f['lng'],c['lat'],c['lng'])<60 for c in cur)]+cur
 def amen(n,kind,r=1500):
     out=[]
     for e in load(n):
