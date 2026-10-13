@@ -14,6 +14,7 @@ def load(f,d):
 live=load(f'{ST}/xlive.json',{'polled':{},'posts':{},'crowd':{},'open':{}})
 sys.path.insert(0,H)
 from aliases import aliases, hits as alias_hits, matches as alias_match
+import signals as SIG
 ALIAS={}  # legacy name kept for scoring below
 def names(p): return aliases(p)
 SEASON='2026-10-05T00:00:00Z'  # pre-Mahalaya: anything older is not a 2026 opening
@@ -30,6 +31,9 @@ def pack(ps,tail=' -is:retweet'):
         out[-1].append(p)
     return [g for g in out if g]
 INTENT=' (inaugurated OR inaugurates OR inauguration OR opened OR visited OR crowd OR queue OR darshan OR "pandal hopping" OR উদ্বোধন) -is:retweet'
+SIGNAL_Q=('((Kolkata OR pandal OR pujo OR puja OR কলকাতা OR পুজো OR Behala OR Gariahat OR Ballygunge OR Kalighat OR Chetla OR Jadavpur OR Tollygunge OR Bhowanipore OR "Park Street" OR Sealdah OR Shyambazar OR "Lake Town" OR "Salt Lake") '
+  '(crowd OR queue OR "long line" OR rush OR packed OR stampede OR barricade OR bheer OR bhir OR bhid OR ভিড় OR "লম্বা লাইন" OR "road closed" OR diversion OR "one way" OR jaam OR যানজট OR waterlogging OR brishti OR বৃষ্টি OR "jol jomeche" OR "no cabs" OR "uber surge" OR "power cut" OR "entry closed" OR "gate closed")'
+  ' OR from:KPTrafficDept OR from:KolkataPolice) -is:retweet')
 def plan(n=3):
     """Run plan: q1 = top-ranked (last 24h, for fresh photos/crowd); q2..n = stalest pandals packed densely,
     searched back to SEASON so an opening is caught even if nobody posted in the last day. Open pandals that
@@ -42,7 +46,9 @@ def plan(n=3):
     tail=INTENT if k==0 else ' (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো) has:images -is:retweet'
     tq=' OR '.join(f'from:{h}' for h in sorted(TRUSTED))
     groups=[(top,since,' -is:retweet')]+[(g,OPEN_FLOOR,tail) for g in pack(rest,tail)[:n-1]]
+    if k==1: groups=groups[:n-1]  # every other run the last slot goes to live street signals
     qs=[{'ids':[p['id'] for p in g],'args':{'query':(q_of(g,t)[:-len(t)]+' OR '+tq+')'+t).replace('(','((',1) if i==0 else q_of(g,t),'max_results':25,'sort_order':'recency','start_time':st,**FIELDS}} for i,(g,st,t) in enumerate(groups)]
+    if k==1: qs.append({'ids':[],'args':{'query':SIGNAL_Q,'max_results':25,'sort_order':'recency','start_time':(now-dt.timedelta(hours=SIG.WINDOW_H)).strftime('%Y-%m-%dT%H:%M:%SZ'),**FIELDS}})
     json.dump({'at':now.isoformat(),'queries':qs},open(f'{ST}/xplan.json','w'),indent=1,ensure_ascii=False); print(json.dumps(qs,ensure_ascii=False)); return qs
 PROMO=re.compile(r'\b(offer|discount|sale|book now|giveaway|sponsor|promo|ad\b|link in bio|watch live|subscribe|tickets?|to arrive|will inaugurate|to inaugurate|scheduled|throwback|last year|2025|2024|#tbt|AI generated|AI art|how to reach|walking route|route guide|kivabe)\b',re.I)
 OPEN=re.compile(r'(\b(inaugurat(ed|es|ing|ion)|opened|open (for|to) (the )?(public|visitors)|crowds?|queues?|visited|visiting|darshan|pandal[- ]hopping|thronged|footfall|(the )?pandal (was|is|looks)|we went|i went)\b|উদ্বোধন (করলেন|করেন|হল|হলো)|উদ্বোধনে|ভিড়)',re.I)
@@ -57,9 +63,9 @@ def open_hits(txt,c):
 VISIT=re.compile(r'\b(today|tonight|this evening|right now|just (went|visited)|went to|visited|we are at|at the pandal|first day|i am at)\b',re.I)
 BOTS={'grok','threadreaderapp','pikaso_me'}
 # Hand-vetted visitors who post first-hand pandal visits ("📍 <pandal>" + own photos). One pinned pandal + photo + no future framing = a visit.
-TRUSTED={'abasu4ever'}
+TRUSTED={'abasu4ever','sudhanidhib'}  # '📍 <pandal>' threads; '#N Visited <pandal>' series
 def trusted_visit(u,txt,has_photo,c):
-    return u.lower() in TRUSTED and has_photo and txt.lstrip().startswith('📍') and c>=dt.datetime.fromisoformat(OPEN_FLOOR.replace('Z','+00:00')) and not FUTURE.search(re.sub(r'\b(19|20)\d\d\b','',txt))
+    return u.lower() in TRUSTED and has_photo and (txt.lstrip().startswith('📍') or re.match(r'\s*#\d+\s+visited\b',txt,re.I)) and c>=dt.datetime.fromisoformat(OPEN_FLOOR.replace('Z','+00:00')) and not FUTURE.search(re.sub(r'\b(19|20)\d\d\b','',txt))
 QUEUE=re.compile(r'\b(queue|long line|waiting line)\b(?:.{0,30}?(\d{1,3})\s*(min|mins|minutes|hours?|hrs?))?',re.I)
 CLOSED=re.compile(r'\b(entry (closed|stopped|suspended)|closed for (the )?public|pandal (closed|shut)|gates? closed)\b',re.I)
 TRAFFIC=re.compile(r'\b(traffic jam|road (closed|blocked)|diversion|gridlock|no[- ]entry)\b',re.I)
@@ -83,17 +89,14 @@ def ingest(files):
             tv=len(hit0)==1 and trusted_visit(u0,txt,ph0,c)
             if tv and hit0[0]['id'] not in live['open']:
                 live['open'][hit0[0]['id']]={'since':c.date().isoformat(),'evidence':f"https://x.com/{u0}/status/{x['id']}",'note':'Visited (@'+u0+', with photos): '+re.sub(r'\s+',' ',re.sub(r'https://t\.co/\S+','',txt)).strip()[:110]}
+            if not txt.startswith('@') and u0.lower() not in BOTS:
+                cd=SIG.candidate(txt,u0,x['created_at'],f"https://x.com/{u0}/status/{x['id']}",[p['id'] for p in hit0])
+                if cd and cd['url'] not in {q['url'] for q in live.setdefault('sigc',[])}: live['sigc'].append(cd)
             if not tv and (txt.startswith('@') or PROMO.search(txt)) or re.search(r'\btemple\b|mandir darshan',txt,re.I): continue  # replies are chatter, not reports
             hit=alias_hits(P,txt)
             if len(hit)!=1: continue  # ambiguous multi-pandal posts never get a photo
             p=hit[0]; u=users.get(x.get('author_id'),{}); pid=p['id']
             if u.get('username','').lower() in BOTS: continue
-            if (now-c).total_seconds()<3*3600:
-                url=f"https://x.com/{u.get('username','i')}/status/{x['id']}"
-                q=QUEUE.search(txt)
-                for kind,rx,label in (('closed',CLOSED,'Entry closed'),('queue',QUEUE,'Long queue'),('crowd',CROWD,'Crowded'),('traffic',TRAFFIC,'Traffic nearby')):
-                    if rx.search(txt):
-                        live['crowd'][pid]={'kind':kind,'label':label+(f' · {q.group(2)} {q.group(3)} wait' if kind=='queue' and q and q.group(2) else ''),'at':x['created_at'],'url':url}; break
             ph=[media[k] for k in x.get('attachments',{}).get('media_keys',[]) if k in media and media[k].get('type')=='photo' and media[k].get('url','').startswith('https://pbs.twimg.com/')]
             if not u.get('username'): continue
             m=x.get('public_metrics',{}); eng=m.get('like_count',0)+2*m.get('retweet_count',0)
@@ -121,8 +124,11 @@ def ingest(files):
     plan_ids=load(f'{ST}/xplan.json',{'queries':[]})['queries']
     for q in plan_ids:
         for i in q['ids']: live['polled'][i]=stamp
-    # expire: crowd >3h, posts >48h
-    live['crowd']={k:v for k,v in live['crowd'].items() if (now-dt.datetime.fromisoformat(v['at'].replace('Z','+00:00'))).total_seconds()<3*3600}
+    # live signals: keep raw reports for the window, publish only corroborated ones
+    live['sigc']=[q for q in live.get('sigc',[]) if (now-dt.datetime.fromisoformat(q['at'].replace('Z','+00:00'))).total_seconds()<SIG.WINDOW_H*3600]
+    acc=SIG.accept(live['sigc'],now)
+    live['crowd']={i:{k:v[k] for k in ('kind','label','at','url','n')} for (pl,i),v in acc.items() if pl=='pandal'}
+    live['area']=[{k:v[k] for k in ('kind','label','at','url','n','zone')}|{'area':i} for (pl,i),v in acc.items() if pl=='area']
     fresh=lambda q:(now-dt.datetime.fromisoformat(q['at'].replace('Z','+00:00'))).total_seconds()<48*3600
     live['posts']={k:[q for q in v if fresh(q)] for k,v in live['posts'].items() if isinstance(v,list)}
     live['posts']={k:v for k,v in live['posts'].items() if v}
