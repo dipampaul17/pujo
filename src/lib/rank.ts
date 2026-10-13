@@ -1,0 +1,63 @@
+import type { Pandal, Status } from './plan'
+import type { Travel } from './roads'
+import { haversine, type LatLng } from './geo'
+
+/** Recommender weights: the only tuning surface. See README "Recommender". */
+export const REC = {
+  retrieveMaxCarMin: 30,  // stage 1: road-time radius…
+  retrieveMinK: 15,       // …but never fewer than this many candidates
+  pOpen: { open: 1, inaugurated: 0.9, likely: 0.8, closed: 0, unknown: 0.7 } as Record<string, number>,
+  openBonus: 1.5,         // sticky: confirmed open by visitors beats a slightly grander maybe
+  appeal: 1,              // × worth (2026 grandeur + buzz, 0–7, from the guide + X/news signals)
+  minuteCost: 0.45,       // value lost per minute of travel
+  walkDiscount: 0.7,      // a short walk (< walkMaxM) costs less than a cab minute
+  walkMaxM: 1000,
+  eveningCrowd: 1.25,     // 18:00–23:00 IST: travel minutes cost more
+  rainCost: 1.5,          // rain: travel minutes cost more
+  surge: 2.5, surgeMin: 90,    // live crowd surge on X in the last 90 min
+  fresh: 0.8, freshMin: 120,   // a new visitor post in the last 2 h
+  seen: 10,               // opened / "I'm here": demote, they've been
+  approxPin: 1,          // pin is only the metro station: lean away a little…
+  approxFloorMin: 10,    // …and never treat it as closer than this, its real spot is unknown
+  laneM: 150,  lanePenalty: 1.2,            // stage 3: two picks closer than this are the same lane
+}
+export type RecContext = {
+  here: LatLng; now: number; status: (id: string) => Status; travel: (p: Pandal) => Travel
+  live: { crowd: Record<string, { at: string }>; closed: Set<string>; freshPosts: Record<string, number> }
+  seen: Set<string>; rain: boolean
+}
+export type Rec = { p: Pandal; t: Travel; score: number; why: string[] }
+
+const istHour = (t: number) => (new Date(t).getUTCHours() + 5 + (new Date(t).getUTCMinutes() + 30 >= 60 ? 1 : 0)) % 24
+
+export function recommend(ps: Pandal[], c: RecContext): Rec[] {
+  // Stage 1: retrieval. Drop closed, keep everything within the road-time radius (or the nearest K).
+  const all = ps.filter(p => !c.live.closed.has(p.id) && c.status(p.id)?.key !== 'closed').map(p => ({ p, t: c.travel(p) }))
+  all.sort((a, b) => a.t.carMin - b.t.carMin || a.p.id.localeCompare(b.p.id))
+  const cand = all.filter((x, i) => i < REC.retrieveMinK || x.t.carMin <= REC.retrieveMaxCarMin)
+  // Stage 2: multi-objective value.
+  const h = istHour(c.now), mult = (h >= 18 && h < 23 ? REC.eveningCrowd : 1) * (c.rain ? REC.rainCost : 1)
+  const scored = cand.map(({ p, t }) => {
+    const s = c.status(p.id), key = s?.key ?? 'unknown', why: string[] = []
+    const approx = p.precision === 'station', walk = !approx && t.walkM < REC.walkMaxM
+    const minutes = approx ? Math.max(REC.approxFloorMin, t.carMin) : walk ? t.walkMin * REC.walkDiscount : t.carMin
+    let score = (REC.pOpen[key] ?? REC.pOpen.unknown) * REC.appeal * (p.worth ?? 0) - REC.minuteCost * mult * minutes
+    if (key === 'open') { score += REC.openBonus; why.push('open') }
+    if (p.precision === 'station') score -= REC.approxPin
+    if ((p.worth ?? 0) >= 3) why.push('2026 favourite')
+    why.push(walk ? `${t.walkMin} min walk` : `${t.carMin} min by car`)
+    const cr = c.live.crowd[p.id]; if (cr && c.now - Date.parse(cr.at) < REC.surgeMin * 60e3) { score -= REC.surge; why.push('crowded now') }
+    const fr = c.live.freshPosts[p.id]; if (fr && c.now - fr < REC.freshMin * 60e3) { score += REC.fresh; why.push('new posts') }
+    if (c.seen.has(p.id)) { score -= REC.seen; why.push('seen') }
+    return { p, t, score, why }
+  }).sort((a, b) => b.score - a.score || a.p.id.localeCompare(b.p.id))
+  // Stage 3: re-rank for diversity. Greedy: a pick in the same lane as an earlier pick waits until the rest are placed.
+  // Soft MMR: each earlier pick in the same lane costs lanePenalty, so a cluster can't fill the list but a real neighbour still can.
+  const out: Rec[] = [], pool = [...scored]
+  while (pool.length) {
+    let bi = 0, bv = -Infinity
+    pool.forEach((r, i) => { const v = r.score - REC.lanePenalty * out.filter(o => haversine(o.p, r.p) <= REC.laneM).length; if (v > bv) { bv = v; bi = i } })
+    out.push(pool.splice(bi, 1)[0])
+  }
+  return out
+}

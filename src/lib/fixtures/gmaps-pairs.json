@@ -1,0 +1,192 @@
+[
+ {
+  "name": "Chetla Agrani\u2192Suruchi Sangha",
+  "a": [
+   22.5164,
+   88.3372
+  ],
+  "b": [
+   22.5091,
+   88.3342
+  ],
+  "car": {
+   "min": 6,
+   "km": 1.5
+  },
+  "foot": {
+   "min": 20,
+   "km": 1.4
+  }
+ },
+ {
+  "name": "Tollygunge (Mahanayak Uttam Kumar side)\u2192Badamtala Ashar Sangha",
+  "a": [
+   22.5003,
+   88.3462
+  ],
+  "b": [
+   22.5179,
+   88.3442
+  ],
+  "car": {
+   "min": 15,
+   "km": 2.5
+  },
+  "foot": {
+   "min": 37,
+   "km": 2.7
+  }
+ },
+ {
+  "name": "Deshapriya Park\u2192Mudiali",
+  "a": [
+   22.5184,
+   88.3535
+  ],
+  "b": [
+   22.5101,
+   88.3464
+  ],
+  "car": {
+   "min": 11,
+   "km": 2.4
+  },
+  "foot": {
+   "min": 20,
+   "km": 1.4
+  }
+ },
+ {
+  "name": "Ballygunge Cultural\u2192Santoshpur Lake Pally",
+  "a": [
+   22.5159,
+   88.3558
+  ],
+  "b": [
+   22.4914,
+   88.3828
+  ],
+  "car": {
+   "min": 22,
+   "km": 5.4
+  },
+  "foot": {
+   "min": 68,
+   "km": 4.9
+  }
+ },
+ {
+  "name": "Behala Chowrasta\u2192Ajeya Sanghati",
+  "a": [
+   22.487,
+   88.3105
+  ],
+  "b": [
+   22.481,
+   88.3375
+  ],
+  "car": {
+   "min": 16,
+   "km": 4.3
+  },
+  "foot": {
+   "min": 54,
+   "km": 3.8
+  }
+ },
+ {
+  "name": "Chetla Agrani\u2192Ekdalia Evergreen",
+  "a": [
+   22.5164,
+   88.3372
+  ],
+  "b": [
+   22.5213,
+   88.3662
+  ],
+  "car": {
+   "min": 25,
+   "km": 5.1
+  },
+  "foot": {
+   "min": 45,
+   "km": 3.3
+  }
+ },
+ {
+  "name": "Jatin Das Park metro\u2192Tridhara Sammilani",
+  "a": [
+   22.5221,
+   88.346
+  ],
+  "b": [
+   22.5196,
+   88.3553
+  ],
+  "car": {
+   "min": 6,
+   "km": 1.0
+  },
+  "foot": {
+   "min": 15,
+   "km": 1.0
+  }
+ },
+ {
+  "name": "Vivekananda Park\u2192Suruchi Sangha",
+  "a": [
+   22.4814,
+   88.3373
+  ],
+  "b": [
+   22.5091,
+   88.3342
+  ],
+  "car": {
+   "min": 19,
+   "km": 4.4
+  },
+  "foot": {
+   "min": 51,
+   "km": 3.7
+  }
+ },
+ {
+  "name": "Maddox Square\u2192Ajeya Sanghati",
+  "a": [
+   22.5263,
+   88.3547
+  ],
+  "b": [
+   22.481,
+   88.3375
+  ],
+  "car": {
+   "min": 25,
+   "km": 6.5
+  },
+  "foot": {
+   "min": 85,
+   "km": 6.1
+  }
+ },
+ {
+  "name": "Gariahat crossing\u2192Patuli Sarbojanin",
+  "a": [
+   22.5186,
+   88.3678
+  ],
+  "b": [
+   22.4723,
+   88.3812
+  ],
+  "car": {
+   "min": 30,
+   "km": 6.5
+  },
+  "foot": {
+   "min": 82,
+   "km": 5.9
+  }
+ }
+]

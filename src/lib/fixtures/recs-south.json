@@ -1,0 +1,77 @@
+[
+ {
+  "name": "Chetla",
+  "at": [
+   22.5164,
+   88.3372
+  ],
+  "expect": [
+   "chetla-agrani",
+   "suruchi-sangha",
+   "66-pally",
+   "badamtala-ashar-sangha",
+   "mudiali"
+  ],
+  "why": "Chetla Agrani is on the doorstep and confirmed open with visitor posts; Suruchi Sangha (New Alipore, ~6 min) is the most-discussed South pandal of 2026; 66 Pally, Badamtala and Mudiali are the big-theme Kalighat/Tollygunge cluster a local walks next."
+ },
+ {
+  "name": "Gariahat",
+  "at": [
+   22.5186,
+   88.3678
+  ],
+  "expect": [
+   "ekdalia-evergreen",
+   "singhi-park",
+   "ballygunge-cultural",
+   "tridhara-sammilani",
+   "deshapriya-park"
+  ],
+  "why": "Ekdalia Evergreen and Singhi Park are the two marquee pandals within a few minutes' walk of Gariahat crossing; Ballygunge Cultural, Tridhara and Deshapriya Park are the Rashbehari-Gariahat Road circuit next door."
+ },
+ {
+  "name": "Deshapriya Park / Rashbehari",
+  "at": [
+   22.5184,
+   88.3535
+  ],
+  "expect": [
+   "deshapriya-park",
+   "tridhara-sammilani",
+   "ballygunge-cultural",
+   "maddox-square",
+   "mudiali"
+  ],
+  "why": "Deshapriya Park and Tridhara are steps away and both 2026 headliners; Ballygunge Cultural and Maddox Square are the classic adjacent stops; Mudiali is the closest big theme across Rashbehari."
+ },
+ {
+  "name": "Behala Chowrasta",
+  "at": [
+   22.4874,
+   88.3134
+  ],
+  "expect": [
+   "suruchi-sangha",
+   "ajeya-sanghati",
+   "barisha-club",
+   "vivekananda-park",
+   "chetla-agrani"
+  ],
+  "why": "Our data has few exact Behala pins, so from Behala Chowrasta every pick is a 15\u201320 min cab. Suruchi Sangha is South's most-discussed 2026 pandal; Ajeya Sanghati and Vivekananda Park are the Haridevpur big names; Barisha Club and Chetla Agrani are confirmed open with visitor posts. Barisha's pin is the metro station, so it is approximate."
+ },
+ {
+  "name": "Kalighat metro",
+  "at": [
+   22.5169,
+   88.3458
+  ],
+  "expect": [
+   "badamtala-ashar-sangha",
+   "mudiali",
+   "66-pally",
+   "deshapriya-park",
+   "chetla-agrani"
+  ],
+  "why": "Badamtala, Mudiali and 66 Pally are the walkable Kalighat big three; Deshapriya Park is 5 minutes east; Chetla Agrani is open and a short hop west."
+ }
+]

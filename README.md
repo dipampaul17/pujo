@@ -1,4 +1,4 @@
-# Dhaak
+# Raya and DP's Pujo
 
 Durga Puja 2026 in Kolkata: the best pandals near you, in walking order, with food, toilets and help on the way. One tap opens the whole walk in Google Maps.
 
@@ -58,3 +58,30 @@ Sources: Travel With Preet, Kolkata Durga Puja Pandal Hopping Guide 2026. Place 
 - **Likely open**: puja dates (16–21 Oct 2026) with no fresh evidence.
 - **Closed**: after Dashami (21 Oct).
 - Otherwise nothing is shown. Evidence: `pipeline/raw/x_status.json` (hand-checked X) + Google News "inaugurated" headlines (`pipeline/status.py`, run on every deploy). Pandals whose position could not be verified are hidden.
+
+## Live refresh (every 5 min)
+`/workspace/app/refresh-live.sh plan` prints this run's queries (at most 3: the top 6 pandals every run, then 16 more by staleness, batched as OR queries with 25 results each). A scheduled agent runs them through the X connector and saves the raw results, then runs `/workspace/app/refresh-live.sh <result files>`. That run ingests the results, rebuilds `live/status.json`, `live/x.json` and `live/now.json`, and redeploys only if something changed. The client re-reads them every 2 minutes and on focus, with no reload.
+Budget: 3 calls × 288 runs = 864 of the 1,000 daily reads. Skip a run when the connector reports fewer than 3 reads left this minute or today.
+Strict matching: the post names exactly one pandal; it's from 2026; it isn't a reply, retweet or quote, a promo or an old repost, and it isn't from a bot. Photos also need first-person visit wording. Crowd, queue, closure and traffic alerts expire after 3 hours; photos expire after 48 hours.
+
+## Travel times and recommender (src/lib/roads.ts, src/lib/rank.ts)
+
+**Travel.** `pipeline/roads.py` precomputes OSRM road tables (car: router.project-osrm.org, foot: routing.openstreetmap.de)
+from a 0.01° grid over Kolkata (23×15 cells) to every pandal, plus pandal→pandal, into `public/data/roads.json` (~170 KB gz, lazy).
+`roadEstimate` bilinearly blends per-metre road ratios from the 4 surrounding cells (exact pair table pandal→pandal) and falls
+back to 1.35× straight line when outside the grid. `liveTravel` upgrades with one live OSRM call (2.5 s timeout, cached per ~100 m);
+on failure the matrix stays. Car = OSRM free-flow × 2.2 traffic + 1 min; walk = OSRM foot distance at 1.2 m/s.
+Calibrated against Google Maps on 10 South pairs (13 Oct 2026, 16:40 IST, `src/lib/fixtures/gmaps-pairs.json`):
+median error car minutes ~17%, walk minutes ~6%, road km ~7%. One parameter (traffic) is fitted in-sample; Pujo evenings will be slower.
+
+**Recommender** (no ML: 90 items, 2 users, no training data; borrows structure, not models):
+1. *Retrieval* (Meta-style multi-stage): drop closed; keep pandals within 30 car-min, at least the nearest 15.
+2. *Ranking*, one multi-objective value: `P(open) × worth − minuteCost × travel × context + bonuses`.
+   P(open): open 1, inaugurated 0.9, likely 0.8, unknown 0.7; open visitor evidence adds a sticky bonus.
+   `worth` = 2026 grandeur + buzz (guide + X/news signals). Travel = walk minutes (discounted) under 1 km, else car minutes;
+   metro-station pins are floored at 10 min and lightly penalised. Context: evening (18–23 IST) and rain raise travel cost.
+   Live (Monolith-style freshness): X crowd surge in the last 90 min penalises; a visitor post in the last 2 h boosts.
+   Implicit feedback: opened / "I'm here" pandals are demoted.
+3. *Re-ranking* (Netflix-style diversity): soft MMR, each earlier pick within 150 m costs 1.2.
+Every pick carries `why` reasons. All weights live in `REC`. Evals: `src/lib/rank.test.ts` checks 5 South locations
+(`fixtures/recs-south.json`, each with a written justification): the top 5 must contain ≥4 of the local pick. All 5 pass.
