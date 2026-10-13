@@ -7,7 +7,16 @@ ev={k:v for k,v in json.load(open(f'{H}/raw/x_status.json')).items() if not k.st
 try: xl=json.load(open(f'{H}/state/xlive.json'))
 except Exception: xl={'open':{},'posts':{},'crowd':{}}
 for k,v in xl.get('open',{}).items(): ev.setdefault(k,v)
-json.dump({'posts':xl.get('posts',{}),'crowd':xl.get('crowd',{})},open(os.path.join(os.path.dirname(out),'x.json'),'w'),ensure_ascii=False,sort_keys=True)
+try: pin=json.load(open(f'{H}/state/pinned.json'))
+except Exception: pin={}
+def _merge(a,b,cap=4):
+    out,seen=[],set()
+    for q in a+b:
+        if q['id'] in seen: continue
+        seen.add(q['id']); out.append(q)
+    return out[:cap]
+_posts={k:_merge([q for q in pin.get(k,[]) if q.get('evidence')]+xl.get('posts',{}).get(k,[]),pin.get(k,[])) for k in set(pin)|set(xl.get('posts',{}))}
+json.dump({'posts':_posts,'crowd':xl.get('crowd',{})},open(os.path.join(os.path.dirname(out),'x.json'),'w'),ensure_ascii=False,sort_keys=True)
 def norm(s): return re.sub(r'[^a-z0-9 ]',' ',s.lower())
 def one(p):
     url='https://news.google.com/rss/search?'+urllib.parse.urlencode({'q':f'"{p["name"]}" inaugurated','hl':'en-IN','gl':'IN','ceid':'IN:en'})

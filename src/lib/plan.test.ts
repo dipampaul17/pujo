@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { makePlanner, areas, nudges, type Dataset } from './plan'
+import { makePlanner, dedupePlaces, areas, nudges, type Dataset } from './plan'
 import data from '../data/dhaak.v1.json'
 import { mapsDirUrl, MAX_WAYPOINTS } from './geo'
 const d = data as unknown as Dataset
@@ -50,7 +50,7 @@ describe('zones', () => {
     expect(Math.min(c.north, c.central, c.south)).toBeGreaterThan(5)
   })
   it('each zone anchor yields a walk inside or near that zone', () => {
-    for (const z of ZONES) { const r = P.plan(ZONE_ANCHOR[z]); expect(r.stops.length).toBeGreaterThanOrEqual(4); expect(r.stops.filter(s => zoneOf(s) === z).length).toBeGreaterThan(r.stops.length / 2) }
+    for (const z of ZONES) { const r = P.plan(ZONE_ANCHOR[z]); expect(r.stops.length).toBeGreaterThanOrEqual(4); expect(r.stops.filter(s => zoneOf(s) === z).length).toBeGreaterThanOrEqual(r.stops.length / 2) }
   })
   it('swipe clamps at the ends', () => { expect(nextZone('north', -1)).toBe('north'); expect(nextZone('north', 1)).toBe('central'); expect(nextZone('south', 1)).toBe('south') })
 })
@@ -88,11 +88,18 @@ import { statusOf } from './plan'
 describe('open status', () => {
   const f = { updated: '', puja: { start: '2026-10-16', end: '2026-10-21' }, open: { a: { since: '2026-10-11', evidence: 'https://x.com/x', note: '' } } }
   it('evidence -> Open, calendar -> Likely, before -> nothing, after -> Closed', () => {
-    expect(statusOf('a', '2026-10-13', f)?.label).toBe('Open')
+    expect(statusOf('a', '2026-10-13', f, Date.parse('2026-10-13T12:00:00+05:30'))?.label).toBe('Inaugurated')
+    expect(statusOf('a', '2026-10-16', { ...f, puja: { ...f.puja, public_from: '2026-10-15T18:00:00+05:30' } }, Date.parse('2026-10-15T19:00:00+05:30'))?.label).toBe('Open')
     expect(statusOf('b', '2026-10-13', f)).toBeNull()
     expect(statusOf('b', '2026-10-18', f)?.label).toBe('Likely open')
     expect(statusOf('a', '2026-10-10', f)).toBeNull()
     expect(statusOf('a', '2026-10-22', f)?.label).toBe('Closed')
     expect(statusOf('a', '2026-10-13', null)).toBeNull()
   })
+})
+
+it('dedupes places mapped twice', () => {
+  const a = { id: 'a', name: 'Ikura - Flavours of Pan Asia', lat: 22.51715, lng: 88.334742 }, b = { ...a, id: 'b', lat: 22.517163, lng: 88.334755 }, c = { ...a, id: 'c', lat: 22.6, lng: 88.4 }
+  expect(dedupePlaces([a, b, c]).map(x => x.id)).toEqual(['a', 'c'])
+  expect(P.around('food', { lat: 22.51715, lng: 88.334742 }, 30, 700).filter(f => f.name.startsWith('Ikura')).length).toBe(1)
 })

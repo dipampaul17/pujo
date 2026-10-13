@@ -3,6 +3,7 @@ import { reduce, initial, onLoadAction, needsChip, shouldUpdate, platform, APPRO
 import raw from './data/dhaak.v1.json'
 import { makePlanner, areas as getAreas, nudges, statusOf, statusRank, type StatusFile, pujoDay, dayTip, relevantNow, type NowItem, tagsFor, tagContext, zoneOf, ZONES, ZONE_ANCHOR, zoneCounts, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
+import { HERO_LQIP } from './hero-lqip'
 import { TextReveal } from './components/text-reveal'
 import { AnimatedCounter } from './components/ui/animated-counter'
 import { GooeyNav } from './components/ui/gooey-nav'
@@ -19,7 +20,6 @@ const loadFix = (): Fix | null => { try { return JSON.parse(localStorage.getItem
 
 const istHour = (t = Date.now()) => +new Date(t).toLocaleString('en-US', { timeZone: 'Asia/Kolkata', hour: 'numeric', hour12: false }) % 24
 
-const Arrow = () => <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
 const Pin = ({ small }: { small?: boolean }) => <svg width={small ? 14 : 20} height={small ? 14 : 20} viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="currentColor"/><circle cx="12" cy="10" r="2.6" fill="var(--bg)"/></svg>
 
 export default function App() {
@@ -27,13 +27,27 @@ export default function App() {
   const permRef = useRef<string>('')
   const originRef = useRef<Origin | null>(null)
   const swipe = useRef<{ x: number; y: number } | null>(null)
-  const [activeStop, setActiveStop] = useState(0)
   const [done, setDoneRaw] = useState(() => +(sessionStorage.getItem('dhaak.done') || 0))
   const setDone = (f: number | ((d: number) => number)) => setDoneRaw(d => { const n = typeof f === 'function' ? f(d) : f; try { sessionStorage.setItem('dhaak.done', String(n)) } catch {}; return n })
   const [nowFeed, setNowFeed] = useState<NowItem[]>([])
   const [statusFile, setStatusFile] = useState<StatusFile | null>(null)
   const [xLive, setXLive] = useState<XLive>({ posts: {}, crowd: {} })
-  const [detail, setDetail] = useState<string | null>(null)
+  const variant = new URLSearchParams(location.search).get('v') ?? 'a'
+  const [detail, setDetailRaw] = useState<string | null>(null)
+  // Detail sheet is a history entry too: system back closes it.
+  const setDetail = (id: string | null) => { if (id) { if (!detail) history.pushState({ v: 'detail' }, ''); setDetailRaw(id) } else if (history.state?.v === 'detail') history.back(); else closeNow() }
+  const [closing, setClosing] = useState(false)
+  const closeNow = () => { setClosing(true); setTimeout(() => { setDetailRaw(null); setClosing(false) }, 180) }
+  useEffect(() => { const f = () => closeNow(); window.addEventListener('popstate', f); return () => window.removeEventListener('popstate', f) }, [])
+  // While the sheet is open: lock page scroll, move focus in, and give it back on close.
+  useEffect(() => {
+    if (!detail) return
+    const back = document.activeElement as HTMLElement | null, de = document.documentElement
+    de.style.overflow = 'hidden'
+    requestAnimationFrame(() => (document.querySelector('[role=dialog] button') as HTMLElement | null)?.focus({ preventScroll: true }))
+    const esc = (e: KeyboardEvent) => e.key === 'Escape' && setDetail(null); window.addEventListener('keydown', esc)
+    return () => { de.style.overflow = ''; window.removeEventListener('keydown', esc); back?.focus?.({ preventScroll: true }) }
+  }, [detail])
   useEffect(() => {
     const get = (f: string) => fetch(import.meta.env.BASE_URL + 'live/' + f, { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null)
     const load = () => { if (document.visibilityState !== 'visible') return; get('status.json').then(f => f && setStatusFile(f)); get('x.json').then(f => f && setXLive(f)) }
@@ -44,7 +58,6 @@ export default function App() {
     const load = () => document.visibilityState === 'visible' && fetch(import.meta.env.BASE_URL + 'live/now.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(f => f && setNowFeed(f.items)).catch(() => {})
     load(); const t = setInterval(load, 5 * 60e3); return () => clearInterval(t)
   }, [])
-  const jumpLock = useRef(0)
   const [picking, setPickingRaw] = useState(false)
   const [zone, setZoneRaw] = useState<Zone | null>(() => (localStorage.getItem('dhaak.zone') as Zone) || null)
   const setZone = (z: Zone) => { setZoneRaw(z); try { localStorage.setItem('dhaak.zone', z) } catch {} }
@@ -55,13 +68,12 @@ export default function App() {
     else if (!v && picking) { if (history.state?.v === 'pick') history.back(); else closePick() }
   }
   const closePick = () => { setPickingRaw(false); const y = scrollMem.current; const go = () => window.scrollTo({ top: y, behavior: 'instant' as ScrollBehavior }); requestAnimationFrame(() => { go(); [60, 200, 450].forEach(t => setTimeout(go, t)) }) }
-  useEffect(() => { history.scrollRestoration = 'manual'; const f = () => closePick(); window.addEventListener('popstate', f); return () => window.removeEventListener('popstate', f) }, [])
+  useEffect(() => { history.scrollRestoration = 'manual';  }, [])
   const [tab, setTabRaw] = useState(() => +(sessionStorage.getItem('dhaak.tab') || 0))
   const setTab = (t: number) => { setTabRaw(t); try { sessionStorage.setItem('dhaak.tab', String(t)) } catch {} }
   const [skip, setSkip] = useState<Set<string>>(() => { try { return new Set(JSON.parse(sessionStorage.getItem('dhaak.skip') || '[]')) } catch { return new Set() } })
   useEffect(() => { try { sessionStorage.setItem('dhaak.skip', JSON.stringify([...skip])) } catch {} }, [skip])
   const [toast, setToast] = useState<string | null>(null)
-  const [beat, setBeat] = useState(0)
 
   const [now, setNow] = useState(Date.now())
   const [fixAt, setFixAt] = useState<number | null>(null)
@@ -72,12 +84,12 @@ export default function App() {
   const apply = (f: Fix, source: 'gps' | 'cache') => {
     setOrigin(o => {
       if (o?.precise && source === 'gps' && !shouldUpdate(o.fix ?? null, f, hav(o, f))) return o
-      return { lat: f.lat, lng: f.lng, label: 'You', precise: true, approx: source === 'cache' || f.acc > APPROX_M, fix: f }
+      return { lat: f.lat, lng: f.lng, label: 'you', precise: true, approx: source === 'cache' || f.acc > APPROX_M, fix: f }
     })
     setFixAt(f.at); setPicking(false)
   }
   const locate = useCallback((gesture = false) => {
-    if (gesture) setBeat(b => b + 1)
+
     if (!geoOk) { setSheet(true); return }
     dispatch({ type: 'request' })
     navigator.geolocation.getCurrentPosition(
@@ -85,7 +97,7 @@ export default function App() {
       e => {
         const cached = loadFix(); dispatch({ type: 'error', code: e.code, cached, now: Date.now() })
         if (e.code !== 1 && cached && Date.now() - cached.at < CACHE_MAX_AGE) apply(cached, 'cache')
-        else if (gesture) setPicking(true)
+        else if (gesture) setSheet(true)
       },
       { enableHighAccuracy: true, timeout: 7000, maximumAge: 60000 })
   }, [])
@@ -138,7 +150,7 @@ export default function App() {
   // Located people auto-select their zone; picking another zone plans from that zone's anchor station.
   useEffect(() => { if (ownZone) { setZoneRaw(ownZone); try { localStorage.setItem('dhaak.zone', ownZone) } catch {} } }, [ownZone])
   const view: Origin | null = zone && zone !== ownZone ? { ...ZONE_ANCHOR[zone], label: ZONE_ANCHOR[zone].name, precise: false } : origin
-  const plan: Plan | null = useMemo(() => (view ? P.plan(view, 8 + skip.size) : null), [view?.lat, view?.lng, skip.size])
+  const plan: Plan | null = useMemo(() => (view ? P.plan(view, 8 + skip.size, new Set(Object.keys(statusFile?.open ?? {}))) : null), [view?.lat, view?.lng, skip.size, statusFile])
   const zonePandals = useMemo(() => (zone && view ? P.located.filter(p => zoneOf(p) === zone).map(p => ({ ...p, dist: hav(view, p) })).sort((x, y) => x.dist - y.dist) : []), [zone, view?.lat, view?.lng])
   const stops = useMemo(() => (plan ? plan.stops.filter(s => !skip.has(s.id)).slice(0, 8) : []), [plan, skip])
 
@@ -162,49 +174,43 @@ export default function App() {
     go(); const t = setInterval(go, 30 * 60e3); return () => clearInterval(t)
   }, [rk])
   const istDate = new Date(now).toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' })
-  const live = relevantNow(nowFeed, zone ?? ownZone, stops.map(s => s.id), now)[0]
+  const xNow = Object.entries(xLive.crowd).map(([id, c]) => ({ c, p: P.located.find(p => p.id === id) })).filter(({ c, p }) => p && zoneOf(p) === (zone ?? ownZone) && now - Date.parse(c.at) < 3 * 3600e3)
+    .map(({ c, p }) => ({ title: `${c.label ?? 'Crowded'} at ${p!.name}`, link: c.url, source: 'X', published: c.at }))
+  const live = [...relevantNow(nowFeed, zone ?? ownZone, stops.map(s => s.id), now).slice(0, 1), ...xNow].sort((x, y) => Date.parse(y.published) - Date.parse(x.published))[0] as any
   const tips = plan && help ? nudges(istHour(now), { walkMin: plan.walkMin, station: help.station?.name, stationM: help.station?.dist }) : []
 
   async function share() {
     if (!routeUrl) return
     const text = `Pujo walk: ${stops.map(s => s.name).join(' → ')}`
-    try { if (navigator.share) await navigator.share({ title: 'Dhaak route', text, url: routeUrl }); else { await navigator.clipboard.writeText(`${text}\n${routeUrl}`); setToast('Route link copied') } } catch { /* user cancelled */ }
+    try { if (navigator.share) await navigator.share({ title: "Raya and DP's Pujo", text, url: routeUrl }); else { await navigator.clipboard.writeText(`${text}\n${routeUrl}`); setToast('Route link copied') } } catch { /* user cancelled */ }
   }
 
   originRef.current = origin
-  useEffect(() => {
-    const els = document.querySelectorAll('[data-stop]'); if (!els.length) return
-    const io = new IntersectionObserver(es => { const v = es.filter(e => e.isIntersecting).sort((x, y) => x.boundingClientRect.top - y.boundingClientRect.top)[0]; if (v && Date.now() - jumpLock.current > 900) setActiveStop(+(v.target as HTMLElement).dataset.stop!) }, { rootMargin: '-35% 0px -55% 0px' })
-    els.forEach(e => io.observe(e)); return () => io.disconnect()
-  })
   const chip = needsChip(loc) ? <button className="chip" onClick={() => setSheet(true)}><Pin small />Turn on location</button> : null
 
   return (
     <div className="mx-auto max-w-[560px] min-h-[100dvh] flex flex-col px-5">
-      {(view || picking) && <><header className="flex items-center justify-between pt-5 pb-3">
+      {(view || picking) && <><header className="navbar flex items-center justify-between">
         {picking ? <button onClick={() => setPicking(false)} className="flex items-center gap-1 min-h-[44px] -ml-2 px-2 text-[16px] font-medium" aria-label="Back"><Back /> Back</button> : <button onClick={() => { setOrigin(null); setZoneRaw(null); try { localStorage.removeItem('dhaak.zone') } catch {} }} className="flex items-baseline gap-2" aria-label="Dhaak home">
-          <span className="serif text-[28px]" style={{ color: 'var(--sindoor)' }}>Dhaak</span>
+          <span className="wordmark text-[17px] whitespace-nowrap">Raya and DP&rsquo;s Pujo</span>
         </button>}
-        <span className="flex items-center gap-1">{chip}<ThemeToggle /></span>
+        <span className="flex items-center gap-1">{needsChip(loc) && <button className="min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Turn on location" onClick={() => setSheet(true)} style={{ color: 'var(--sindoor)' }}><Pin small /></button>}<ThemeToggle /></span>
       </header>
-      <div className="alpana" aria-hidden="true" /></>}
+      </>}
 
       {!view && !picking && (
-        <main className="flex-1 flex flex-col">
-          <div className="sticky top-0 z-10 pt-3 pb-2 -mx-5 px-5" style={{ background: 'var(--bg)' }}>
-            <div className="flex items-center gap-2"><div className="flex-1"><ZoneSwitch zone={zone ?? 'none' as any} onChange={setZone} /></div><ThemeToggle /></div>
-            {chip && <div className="pt-2">{chip}</div>}
+        <main className="landing">
+          <div className={`art ${variant === 'b' ? 'art-frame' : 'art-bleed'}`}><HeroImg /></div>
+          <div className="pt-7">
+            <TextReveal as="h1" text="Raya and DP’s Pujo" split="word" className="title" blur={4} stagger={0.05} />
+            <p className="text-[17px] mt-1.5" style={{ color: 'var(--muted)' }}>For Raya, from DP.</p>
           </div>
-          <div className="flex-1 flex flex-col items-center justify-center text-center">
-            <Alpana />
-            <TextReveal as="h1" text="Dhaak" split="char" className="serif text-[88px] -mt-4" blur={6} stagger={0.06} />
-            <p className="serif italic text-[24px] muted rise" style={{ ['--i' as any]: 5 }}>Pujo, nearby.</p>
-          </div>
-          <div className="safe-b pb-2">
-            <button className={`btn btn-primary w-full ${beat ? 'beat' : ''}`} key={beat} onClick={() => locate(true)} disabled={loc.status === 'locating'}>
-              <Pin />{loc.status === 'locating' ? 'Finding you…' : 'Near me'}
+          <div className="pt-6">
+            {chip && <div className="pb-3">{chip}</div>}
+            <ZoneSwitch zone={zone ?? 'none' as any} onChange={setZone} />
+            <button className="btn btn-primary w-full mt-3" onClick={() => locate(true)} disabled={loc.status === 'locating'}>
+              {loc.status === 'locating' ? 'Finding you…' : 'Near me'}
             </button>
-            <button className="btn w-full mt-1 muted" style={{ minHeight: 48, fontWeight: 500 }} onClick={() => setPicking(true)}>Pick a station</button>
           </div>
         </main>
       )}
@@ -232,30 +238,28 @@ export default function App() {
           const s = swipe.current; if (!s || !zone) return; const dx = e.changedTouches[0].clientX - s.x, dy = e.changedTouches[0].clientY - s.y
           if (Math.abs(dx) > 70 && Math.abs(dy) < 40) setZone(nextZone(zone, dx < 0 ? 1 : -1))
         }}>
-          <div className="sticky top-0 z-10 -mx-5 px-5 pt-3 pb-2" style={{ background: 'var(--bg)' }}>
+          <div className="sticky z-10 -mx-5 px-5 pt-1 pb-2 frost" style={{ top: 52 }}>
             <ZoneSwitch zone={zone ?? ownZone ?? 'north'} onChange={setZone} mine={ownZone} />
-            {!plan.outOfRange && tab === 0 && <Pips n={stops.length} active={activeStop} onJump={i => { setActiveStop(i); jumpLock.current = Date.now() } } onJumpScroll={i => document.getElementById(`stop-${i}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })} />}
           </div>
           {plan.outOfRange ? (
             <div className="pt-8">
               <h2 className="serif text-[34px]">Too far from Kolkata.</h2>
               <p className="muted mt-2">Nearest pandal: {Math.round(plan.nearestKm)} km.</p>
-              <button className="btn btn-primary w-full mt-8" onClick={() => setPicking(true)}>Pick a station <Arrow /></button>
+              <button className="btn btn-primary w-full mt-8" onClick={() => setZone('central')}>Show Central Kolkata</button>
             </div>
           ) : (<>
             <div className="flex items-end justify-between">
               <div>
-                <p className="text-[13px] muted uppercase tracking-[.06em] font-semibold">From {view.label}{view.approx ? ' · approximate' : ''}{view.precise && fixAt ? <span className="normal-case tracking-normal font-normal"> · located {ago(now - fixAt)}</span> : null}</p>
+                <p className="text-[14px] muted">From {view.label}{view.approx ? ' · approximate' : ''}{view.precise && fixAt ? <span className="normal-case tracking-normal font-normal"> · located {ago(now - fixAt)}</span> : null}</p>
                 <h2 className="serif text-[28px] mt-0.5 flex items-baseline gap-1.5">
                   <AnimatedCounter value={stops.length} /> <span>stops</span>{done > 0 && <span className="text-[15px] muted font-sans"> · {done} done</span>}
                 </h2>
                 <p className="muted text-[15px] mono-num">{walkMinutes(pathOf(view, stops))} min on foot · {fmtDist(pathOf(view, stops))} </p>
               </div>
-              <button onClick={() => setPicking(true)} className="text-[15px] underline underline-offset-4 muted min-h-[44px] px-2 -mr-2">Change</button>
             </div>
 
-            {(() => { const line = rain ? `Rain likely ${rain.at - now < 50 * 60e3 ? 'within the hour' : 'around ' + new Date(rain.at).toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: 'numeric' })}` : dayTip(pujoDay(istDate), istHour(now)) ?? tips[0]; return line && <p className="mt-2 text-[14px] font-semibold" style={{ color: 'var(--gold)' }}>{line}</p> })()}
-            {live && <a href={live.link} target="_blank" rel="noopener" className="mt-2 flex items-baseline gap-2 text-[14px] min-h-[36px]"><span className="w-1.5 h-1.5 rounded-full shrink-0 translate-y-[-2px]" style={{ background: 'var(--sindoor)' }} /><span className="truncate flex-1">{live.title}</span><span className="muted text-[12px] shrink-0">{live.source} · {ago(now - Date.parse(live.published))}</span></a>}
+            {(() => { const line = rain ? `Rain likely ${rain.at - now < 50 * 60e3 ? 'within the hour' : 'around ' + new Date(rain.at).toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour: 'numeric' })}` : dayTip(pujoDay(istDate), istHour(now)) ?? tips[0]; return line && <p className="mt-2 text-[14px] font-semibold" style={{ color: 'var(--ink)' }}>{line}</p> })()}
+            {live && <a href={live.link} target="_blank" rel="noopener" className="mt-2 flex items-baseline gap-2 text-[14px] min-h-[36px]"><span className="w-1.5 h-1.5 rounded-full shrink-0 translate-y-[-2px]" style={{ background: 'var(--sindoor)' }} /><span className="flex-1 line-clamp-2">{live.title}</span><span className="muted text-[12px] shrink-0">{ago(now - Date.parse(live.published))}</span></a>}
 
             <div className="mt-5">
               <GooeyNav items={['Route', 'Food', 'Toilets', 'Help']} value={tab} onChange={setTab} size="md" activeColor="var(--ink)" activeLabelColor="var(--bg)" aria-label="Sections" className="block w-full" />
@@ -267,43 +271,42 @@ export default function App() {
                   return (
                     <li key={s.id} id={`stop-${i}`} data-stop={i} className={`card p-4 rise scroll-mt-28 ${i === 0 ? 'diya' : ''}`} style={{ ['--i' as any]: i }}>
                       <div className="flex gap-3">
-                        <span className="serif text-[24px] w-7 shrink-0 leading-[1.1] mono-num" style={{ color: i === 0 ? 'var(--gold)' : 'var(--muted)' }} aria-label={`Stop ${i + 1}`}>{i + 1}</span>
+                        <span className="serif text-[24px] w-7 shrink-0 leading-[1.1] mono-num" style={{ color: i === 0 ? 'var(--ink)' : 'var(--muted)' }} aria-label={`Stop ${i + 1}`}>{i + 1}</span>
                         <div className="min-w-0 flex-1">
                           <button onClick={() => setDetail(s.id)} className="block text-left text-[18px] font-semibold leading-snug min-h-[28px]" aria-haspopup="dialog">{s.name}</button>
-                          <div className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(s.id, istDate, statusFile)} />{xLive.crowd[s.id] && <a href={xLive.crowd[s.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>Crowded · {ago(now - Date.parse(xLive.crowd[s.id].at))}</a>}</div>
+                          <div className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(s.id, istDate, statusFile, now)} />{xLive.crowd[s.id] && <a href={xLive.crowd[s.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[s.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[s.id].at))}</a>}</div>
                           <p className="text-[14px] muted mt-0.5 mono-num">
                             {s.precision === 'station' ? 'Approximate' : i === 0 ? fmtDist(s.dist) : `+${fmtDist(hop(stops, i))}`}{i === 0 && s.precision !== 'station' && view?.precise && s.dist > 1200 ? ` · ~${carMin(s.dist)} min by car` : ''}{s.station ? ` · ${s.station}` : ''}
                           </p>
-                          {(() => { const t = tagsFor(s, tagContext(P, s)); const one = s.reason ?? t[0]; return (i === 0 || one) && <div className="flex flex-wrap gap-1.5 mt-2">
-                            {i === 0 && <span className="tag tag-gold">Next</span>}
-                            {one && <span className={`tag ${/nearby/.test(one) ? 'tag-leaf' : 'tag-red'}`}>{one}</span>}
+                          {(() => { const t = tagsFor(s, tagContext(P, s)); const one = s.reason ?? t[0]; return i === 0 && one && <div className="flex flex-wrap gap-1.5 mt-2">
+                                                        {one && <span className={`tag ${/nearby/.test(one) ? 'tag-leaf' : 'tag-red'}`}>{one}</span>}
                           </div> })()}
-                          {i === 0 && xLive.posts[s.id] && <PostCard p={xLive.posts[s.id]} now={now} compact />}
+                          {i === 0 && postsOf(xLive, s.id).find(q => q.photo) && <PostCard p={postsOf(xLive, s.id).find(q => q.photo)!} now={now} compact />}
                           {i === 0 && s.note && <p className="text-[14px] mt-2" style={{ color: 'var(--sindoor)' }}>{s.note}.</p>}
-                          {i === 0 && <div className="grid grid-cols-2 gap-2 mt-3 -ml-10">
+                          {i === 0 && <div className="grid grid-cols-2 gap-2 mt-3 -ml-10 -mr-11">
                             <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="btn btn-uber" style={{ minHeight: 56 }}>Uber here</a>
                             <a href={mapsDirUrl(view?.precise ? view : null, [s])} target="_blank" rel="noopener" className="btn btn-ghost" style={{ minHeight: 56 }}>Maps</a>
                             <button onClick={() => setDetail(s.id)} className="btn btn-ghost muted" style={{ minHeight: 48, fontWeight: 500 }}>Eat nearby</button>
-                            <button onClick={() => { setSkip(new Set(skip).add(s.id)); setDone(d => d + 1); window.scrollTo({ top: 0 }) }} className="btn btn-ghost muted" style={{ minHeight: 48, fontWeight: 500 }}>I'm here · next</button>
+                            <button onClick={() => { setSkip(new Set(skip).add(s.id)); setDone(d => d + 1); window.scrollTo({ top: 0 }) }} className="btn btn-ghost muted" style={{ minHeight: 48, fontWeight: 500 }}>I'm here</button>
                           </div>}
-                          {i > 0 && <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="inline-flex items-center min-h-[44px] mt-1 text-[15px] font-semibold underline underline-offset-4">Uber here</a>}
+                          {i > 0 && <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="inline-flex items-center min-h-[44px] mt-1 text-[15px] font-semibold " style={{ color: 'var(--ink)' }}>Uber here</a>}
                         </div>
                         <button onClick={() => setSkip(new Set(skip).add(s.id))} className="self-start text-[14px] muted min-h-[44px] min-w-[44px] px-2 -mr-3 -mt-2" aria-label={`Skip ${s.name}`}>Skip</button>
                       </div>
                     </li>
                   )
                 })}
-                {skip.size > 0 && <button className="text-[14px] muted underline underline-offset-4 mt-2 min-h-[44px]" onClick={() => { setSkip(new Set()); setDone(0) }}>Reset {skip.size} done or skipped</button>}
+                {skip.size > 0 && <button className="text-[14px] muted font-semibold mt-2 min-h-[44px]" onClick={() => { setSkip(new Set()); setDone(0) }}>Reset {skip.size} done or skipped</button>}
               </ol>
             )}
             {tab === 0 && zone && (
-              <details className="mt-8 group">
+              <details className="mt-8 group" open>
                 <summary className="list-none cursor-pointer flex items-center justify-between min-h-[48px] border-b hair">
                   <span className="serif text-[24px]">All {ZLABEL[zone]}</span><span className="muted text-[14px] mono-num">{zonePandals.length}</span>
                 </summary>
-                <ul>{[...zonePandals].sort((x, y) => statusRank(statusOf(x.id, istDate, statusFile)) - statusRank(statusOf(y.id, istDate, statusFile)) || (y.worth ?? 0) - (x.worth ?? 0) || x.dist - y.dist).map((p, r) => (
+                <ul>{[...zonePandals].sort((x, y) => statusRank(statusOf(x.id, istDate, statusFile, now)) - statusRank(statusOf(y.id, istDate, statusFile, now)) || (y.worth ?? 0) - (x.worth ?? 0) || x.dist - y.dist).map((p, r) => (
                   <li key={p.id}><a href={mapsPlaceUrl(p, p.name + ' Durga Puja')} onClick={e => { e.preventDefault(); setDetail(p.id) }} className="flex justify-between gap-3 py-3 border-b hair">
-                    <span className="truncate"><span className="serif text-[18px] mono-num inline-block w-7" style={{ color: r < 3 ? 'var(--gold)' : 'var(--muted)' }}>{r + 1}</span>{p.name}<StatusDot s={statusOf(p.id, istDate, statusFile)} inline /></span><span className="muted text-[14px] mono-num shrink-0">{p.precision === 'station' ? '≈ ' : ''}{fmtDist(p.dist)}</span></a></li>))}</ul>
+                    <span className="truncate"><span className="serif text-[18px] mono-num inline-block w-7" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span>{p.name}<StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline /></span><span className="muted text-[14px] mono-num shrink-0">{p.precision === 'station' ? '≈ ' : ''}{fmtDist(p.dist)}</span></a></li>))}</ul>
               </details>
             )}
             {tab === 1 && help && <AmenityList items={help.food} empty="Nothing mapped nearby." meta={f => [f.notable ? 'Kolkata classic' : null, f.cuisine && f.cuisine[0].toUpperCase() + f.cuisine.slice(1)].filter(Boolean).join(' · ')} />}
@@ -319,26 +322,26 @@ export default function App() {
 
           </>)}
           {detail && (() => { const p = P.located.find(x => x.id === detail); if (!p) return null
-            const d = view ? hav(view, p) : null, st = statusOf(p.id, istDate, statusFile), post = xLive.posts[p.id]
+            const d = view ? hav(view, p) : null, st = statusOf(p.id, istDate, statusFile, now), posts = postsOf(xLive, p.id)
             const zr = [...P.located.filter(x => zoneOf(x) === zoneOf(p))].sort((x, y) => (y.worth ?? 0) - (x.worth ?? 0)).findIndex(x => x.id === p.id) + 1
             const eats = P.around('food', p, 16, 700).filter(f => !/cater|outlet|factory|wholesale|godown/i.test(f.name)).sort((x, y) => Number(!!y.notable) - Number(!!x.notable) || x.dist - y.dist).slice(0, 5)
             const loo = P.around('toilets', p, 1, 600)[0]
             const pick = view?.precise && !view.approx ? view : null
             const dest = (q: LatLng & { name: string }) => uberUrl({ lat: q.lat, lng: q.lng, name: q.name, address: `${q.name}, Kolkata` }, pick)
             return <>
-              <div className="sheet-backdrop" onClick={() => setDetail(null)} />
-              <div className="sheet max-h-[86vh] overflow-y-auto" role="dialog" aria-modal="true" aria-label={p.name}>
+              <div className={`sheet-backdrop ${closing ? 'out' : ''}`} onClick={() => setDetail(null)} />
+              <div className={`sheet max-h-[88vh] overflow-y-auto overscroll-contain ${closing ? 'out' : ''}`} role="dialog" aria-modal="true" aria-label={p.name} {...dragToClose(() => setDetail(null))}>
                 <div className="mx-auto mb-3 h-1 w-10 rounded-full" style={{ background: 'var(--line)' }} />
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <h2 className="serif text-[28px] leading-tight">{p.name}</h2>
-                    <div className="flex flex-wrap items-center gap-x-3 mt-1"><StatusDot s={st} />{xLive.crowd[p.id] && <span className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>Crowded</span>}</div>
+                    <div className="flex flex-wrap items-center gap-x-3 mt-1"><StatusDot s={st} />{xLive.crowd[p.id] && <a href={xLive.crowd[p.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[p.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[p.id].at))}</a>}</div>
                   </div>
                   <button onClick={() => setDetail(null)} className="muted text-[15px] min-h-[44px] min-w-[44px]" aria-label="Close">Close</button>
                 </div>
-                <p className="text-[15px] mt-2 mono-num"><span style={{ color: zr <= 3 ? 'var(--gold)' : undefined }} className="font-semibold">#{zr} in {ZLABEL[zoneOf(p)]}</span>{p.reason ? ` · ${p.reason}` : ''}</p>
+                <p className="text-[15px] mt-2 mono-num"><span style={{ color: 'var(--ink)' }} className="font-semibold">#{zr} in {ZLABEL[zoneOf(p)]}</span>{p.reason ? ` · ${p.reason}` : ''}</p>
                 <p className="text-[14px] muted mono-num">{p.precision === 'station' ? `Approximate, near ${p.station}` : d != null ? `${fmtDist(d)}${d > 1200 && pick ? ` · ~${carMin(d)} min by car` : ` · ${walkMinutes(d)} min walk`}` : ''}{loo ? ` · Toilet ${fmtDist(loo.dist)}` : ''}</p>
-                {post && <PostCard p={post} now={now} />}
+                {posts.length > 0 && <div className="mt-4 space-y-2">{posts.map(q => <PostCard key={q.url} p={q} now={now} />)}</div>}
                 <div className="grid grid-cols-2 gap-2 mt-4">
                   <a href={dest(p)} className="btn btn-uber" style={{ minHeight: 56 }}>Uber here</a>
                   <a href={mapsDirUrl(pick, [p])} target="_blank" rel="noopener" className="btn btn-ghost" style={{ minHeight: 56 }}>Maps</a>
@@ -357,7 +360,7 @@ export default function App() {
       {view && plan && !plan.outOfRange && !picking && routeUrl && (
         <div className="fixed inset-x-0 bottom-0 z-20 safe-b px-5 pt-3" style={{ background: 'linear-gradient(transparent, var(--bg) 28%)' }}>
           <div className="mx-auto max-w-[560px] flex gap-2">
-            <a href={routeUrl} target="_blank" rel="noopener" className="btn btn-primary flex-1">Start walk in Maps <Arrow /></a>
+            <a href={routeUrl} target="_blank" rel="noopener" className="btn btn-walk flex-1">Walk all in Maps</a>
             <button onClick={share} className="btn btn-ghost px-4" aria-label="Share route">Share</button>
           </div>
         </div>
@@ -374,23 +377,10 @@ export default function App() {
   )
 }
 
-function Alpana() {
-  const petals = Array.from({ length: 12 }, (_, i) => i * 30)
-  return (
-    <svg width="200" height="200" viewBox="-100 -100 200 200" aria-hidden="true" className="rise alpana-spin" style={{ color: 'var(--sindoor)' }}>
-      <circle r="92" fill="none" stroke="currentColor" strokeWidth="1" opacity=".35" strokeDasharray="1 6" strokeLinecap="round" />
-      <circle r="70" fill="none" stroke="currentColor" strokeWidth="1.2" opacity=".5" />
-      {petals.map(d => <path key={d} transform={`rotate(${d})`} d="M0 -68 C 12 -52, 12 -36, 0 -26 C -12 -36, -12 -52, 0 -68 Z" fill="none" stroke="currentColor" strokeWidth="1.2" opacity=".7" />)}
-      {petals.map(d => <circle key={'d' + d} transform={`rotate(${d + 15})`} cy="-80" r="2.2" fill="var(--gold)" />)}
-      <circle r="18" fill="none" stroke="var(--gold)" strokeWidth="1.5" />
-      <circle r="6" fill="currentColor" />
-    </svg>
-  )
-}
 const Info = () => <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"/><path d="M12 11v6M12 7.5v.01" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"/></svg>
 function StatusDot({ s, inline }: { s: ReturnType<typeof statusOf>; inline?: boolean }) {
   if (!s) return null
-  const c = s.key === 'open' ? 'var(--leaf)' : s.key === 'likely' ? 'var(--gold)' : 'var(--muted)'
+  const c = s.key === 'open' ? 'var(--sindoor)' : s.key === 'inaugurated' ? 'var(--ink)' : 'var(--muted)'
   const body = <><span className="w-2 h-2 rounded-full" style={{ background: c }} /><span style={{ color: c }}>{s.label}</span></>
   const cls = `inline-flex items-center gap-1.5 text-[13px] font-semibold ${inline ? 'ml-2' : 'mt-0.5'}`
   return s.evidence && !inline ? <a href={s.evidence} target="_blank" rel="noopener" className={cls}>{body}</a> : <span className={cls}>{body}</span>
@@ -399,25 +389,14 @@ function ZoneSwitch({ zone, onChange, mine }: { zone: Zone; onChange: (z: Zone) 
   const i = ZONES.indexOf(zone)
   const shown = i >= 0
   return (
-    <div role="tablist" aria-label="Zone" className="relative grid grid-cols-3 p-1 rounded-[12px]" style={{ background: 'var(--chip)' }}>
-      <span aria-hidden="true" className="absolute top-1 bottom-1 left-1 rounded-[9px] zone-thumb" style={{ opacity: shown ? 1 : 0, width: 'calc((100% - 8px) / 3)', transform: `translateX(${i * 100}%)`, background: 'var(--surface)', boxShadow: '0 1px 2px rgba(28,23,20,.08)' }} />
+    <div role="tablist" aria-label="Zone" className="relative grid grid-cols-3 p-[2px] rounded-[9px]" style={{ background: 'var(--chip)' }}>
+      <span aria-hidden="true" className="absolute top-[2px] bottom-[2px] left-[2px] rounded-[7px] zone-thumb" style={{ opacity: shown ? 1 : 0, width: 'calc((100% - 4px) / 3)', transform: `translateX(${i * 100}%)`, background: 'var(--surface)', boxShadow: '0 1px 2px rgba(28,23,20,.08)' }} />
       {ZONES.map(z => (
-        <button key={z} role="tab" aria-selected={z === zone} onClick={() => onChange(z)} className="relative z-[1] min-h-[40px] text-[15px] font-semibold flex items-center justify-center gap-1.5" style={{ color: z === zone ? 'var(--ink)' : 'var(--muted)' }}>
+        <button key={z} role="tab" aria-selected={z === zone} onClick={() => onChange(z)} className="relative z-[1] min-h-[34px] text-[14px] font-medium flex items-center justify-center gap-1.5" style={{ color: z === zone ? 'var(--ink)' : 'var(--muted)' }}>
           {ZLABEL[z]}<span className="text-[12px] font-medium muted mono-num">{ZCOUNT[z]}</span>{mine === z && <span aria-label="you are here" className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--sindoor)' }} />}
         </button>
       ))}
     </div>
-  )
-}
-function Pips({ n, active, onJump, onJumpScroll }: { n: number; active: number; onJump: (i: number) => void; onJumpScroll: (i: number) => void }) {
-  return (
-    <nav aria-label="Stops" className="flex items-center justify-center gap-0.5 pt-2">
-      {Array.from({ length: n }, (_, i) => (
-        <button key={i} onClick={() => { onJump(i); onJumpScroll(i) }} aria-label={`Stop ${i + 1}`} aria-current={i === active} className="w-8 h-8 grid place-items-center">
-          <span className="pip block rounded-full" style={{ width: i === active ? 18 : 6, height: 6, background: i === active ? 'var(--gold)' : 'var(--line)', opacity: i === active ? 1 : 1 }} />
-        </button>
-      ))}
-    </nav>
   )
 }
 const Back = () => <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -441,27 +420,49 @@ function LocationSheet({ perm, onClose, onRetry }: { perm: string; onClose: () =
     <div className="sheet" role="dialog" aria-modal="true" aria-label="Turn on location">
       <div className="mx-auto w-10 h-1 rounded-full mb-5" style={{ background: 'var(--line)' }} />
       <h2 className="serif text-[30px]">Turn on location</h2>
-      <ol className="mt-4 space-y-3">{steps.map((s, i) => <li key={s} className="flex gap-3 text-[16px]"><span className="serif text-[20px] w-6 shrink-0" style={{ color: 'var(--gold)' }}>{i + 1}</span><span>{s}</span></li>)}</ol>
+      <ol className="mt-4 space-y-3">{steps.map((s, i) => <li key={s} className="flex gap-3 text-[16px]"><span className="serif text-[20px] w-6 shrink-0" style={{ color: 'var(--ink)' }}>{i + 1}</span><span>{s}</span></li>)}</ol>
       <button className="btn btn-primary w-full mt-6" onClick={onRetry}>{perm === 'denied' ? 'Try again' : 'Allow location'}</button>
       <button className="btn w-full muted" style={{ minHeight: 48, fontWeight: 500 }} onClick={onClose}>Not now</button>
     </div>
   </>)
 }
-type XPost = { at: string; handle: string; avatar: string; text: string; photo: string; w?: number; h?: number; url: string }
-type XLive = { posts: Record<string, XPost>; crowd: Record<string, { at: string; url: string }> }
+type XPost = { media?: { src: string; w?: number; h?: number; video?: boolean }[]; id?: string; at: string; handle: string; avatar: string; text: string; photo?: string; score?: number; w?: number; h?: number; url: string }
+type XLive = { posts: Record<string, XPost[] | XPost>; crowd: Record<string, { at: string; url: string; label?: string; kind?: string }> }
 const carMin = (m: number) => Math.max(5, Math.round((m * 1.35) / 1000 / 14 * 60 / 5) * 5)
+const sized = (u: string, n: string) => { const x = new URL(u); x.searchParams.set('name', n); if (!x.searchParams.has('format')) x.searchParams.set('format', 'jpg'); return x.toString() }
+function postsOf(x: XLive, id: string): XPost[] { const v = x.posts[id]; const l = !v ? [] : Array.isArray(v) ? v : [v]; return l.map(q => { const m = q.media?.find(m => !m.video); return q.photo || !m ? q : { ...q, photo: m.src, w: m.w, h: m.h } }) }
 function PostCard({ p, now, compact }: { p: XPost; now: number; compact?: boolean }) {
-  const [ok, setOk] = useState(false), [bad, setBad] = useState(false)
-  if (bad) return null
-  return <a href={p.url} target="_blank" rel="noopener" className={`flex gap-3 mt-3 rounded-xl border hair p-2 ${compact ? '-ml-10' : ''}`} style={{ background: 'var(--chip)' }}>
-    <span className="shrink-0 overflow-hidden rounded-lg" style={{ width: compact ? 64 : 96, height: compact ? 64 : 96, background: 'var(--line)' }}>
-      <img src={p.photo + '?name=small'} alt="" loading="lazy" decoding="async" onLoad={() => setOk(true)} onError={() => setBad(true)} className="w-full h-full object-cover" style={{ opacity: ok ? 1 : 0, filter: ok ? 'none' : 'blur(8px)', transition: 'opacity .18s var(--ease), filter .18s var(--ease)' }} />
-    </span>
-    <span className="min-w-0 flex-1">
-      <span className="flex items-center gap-1.5 text-[13px]">{p.avatar && <img src={p.avatar} alt="" loading="lazy" className="w-4 h-4 rounded-full" />}<span className="font-semibold">@{p.handle}</span><span className="muted">· {ago(now - Date.parse(p.at))} · X</span></span>
-      <span className={`block text-[14px] leading-snug mt-0.5 ${compact ? 'line-clamp-2' : 'line-clamp-4'}`}>{p.text}</span>
-    </span>
-  </a>
+  const [ok, setOk] = useState(false), [bad, setBad] = useState(false), [open, setOpen] = useState(false)
+  const big = !compact
+  return <div className={`post ${compact ? '-ml-10 -mr-11 mt-3' : ''}`}>
+    <button onClick={() => setOpen(o => !o)} aria-expanded={open} className={`w-full text-left ${big ? 'block' : 'flex gap-3'} p-2.5`}>
+      {p.photo && !bad && <span className="post-img shrink-0" style={big ? { width: '100%', aspectRatio: `${Math.max(+(p.w ?? 4) / +(p.h ?? 3), 4 / 5)}` } : { width: 64, height: 64 }}>
+        <img src={sized(p.photo!, 'large')} alt="" width={p.w} height={p.h} loading={big ? 'eager' : 'lazy'} decoding="async" ref={el => { if (el?.complete && el.naturalWidth) setOk(true) }} onLoad={() => setOk(true)} onError={() => setBad(true)} style={{ opacity: ok ? 1 : 0 }} />
+      </span>}
+      <span className={`min-w-0 flex-1 block ${big ? 'mt-2.5' : ''}`}>
+        <span className="flex items-center gap-1.5 text-[13px]">{p.avatar && <img src={p.avatar} alt="" loading="lazy" className="w-4 h-4 rounded-full" />}<span className="font-semibold">@{p.handle}</span><span className="muted">{ago(now - Date.parse(p.at))}</span></span>
+        <span className={`block text-[15px] leading-[1.4] mt-0.5 ${open ? '' : compact ? 'line-clamp-2' : 'line-clamp-3'}`}>{p.text}</span>
+      </span>
+    </button>
+    {open && <a href={p.url} target="_blank" rel="noopener" className="block px-2.5 pb-2.5 text-[14px] font-semibold" style={{ color: 'var(--sindoor)' }}>Open on X</a>}
+  </div>
+}
+function HeroImg({ className = '' }: { className?: string }) {
+  const [ok, setOk] = useState(false), b = import.meta.env.BASE_URL + 'img/hero-'
+  return <picture className={className} style={{ backgroundImage: `url(${HERO_LQIP})`, backgroundSize: 'cover', backgroundPosition: '50% 30%', display: 'block', width: '100%', height: '100%' }} aria-hidden="true">
+    <source type="image/avif" srcSet={`${b}600.avif 600w, ${b}900.avif 900w, ${b}1200.avif 1200w`} sizes="100vw" />
+    <source type="image/webp" srcSet={`${b}600.webp 600w, ${b}900.webp 900w, ${b}1200.webp 1200w`} sizes="100vw" />
+    <img src={`${b}900.webp`} alt="" decoding="async" fetchPriority="high" onLoad={() => setOk(true)} style={{ opacity: ok ? 1 : 0 }} />
+  </picture>
+}
+function dragToClose(close: () => void) {
+  let y0 = 0, dy = 0, el: HTMLElement | null = null
+  return {
+    onPointerDown: (e: React.PointerEvent<HTMLElement>) => { el = e.currentTarget; if (el.scrollTop > 0) { el = null; return } y0 = e.clientY; dy = 0; el.style.transition = 'none' },
+    onPointerMove: (e: React.PointerEvent<HTMLElement>) => { if (!el) return; dy = Math.max(0, e.clientY - y0); if (dy > 4) el.style.transform = `translateY(${dy}px)` },
+    onPointerUp: () => { if (!el) return; el.style.transition = 'transform .24s var(--spring)'; if (dy > 110) { el.style.transform = 'translateY(100%)'; const e = el; setTimeout(() => { close(); e.style.transform = ''; e.style.transition = '' }, 180) } else el.style.transform = ''; el = null },
+    onPointerCancel: () => { if (el) { el.style.transform = ''; el = null } },
+  }
 }
 function ago(ms: number) { const m = Math.round(ms / 60000); return m < 1 ? 'just now' : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} d ago` }
 function pathOf(o: LatLng, s: LatLng[]) { let m = 0, c = o; for (const x of s) { m += hav(c, x); c = x } return m }
