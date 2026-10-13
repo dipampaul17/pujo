@@ -68,8 +68,10 @@ export default function App() {
     load(); const t = setInterval(load, 5 * 60e3); return () => clearInterval(t)
   }, [])
   const [picking, setPickingRaw] = useState(false)
-  const [zone, setZoneRaw] = useState<Zone | null>(() => (localStorage.getItem('dhaak.zone') as Zone) || null)
-  const setZone = (z: Zone) => { setZoneRaw(z); try { localStorage.setItem('dhaak.zone', z) } catch {} }
+  const [zone, setZoneRaw] = useState<Zone | null>(null)
+  // Every fresh entry (load, reload, bfcache, shared link) lands on the hero; the list opens on a tap.
+  const [entered, setEntered] = useState(false)
+  const setZone = (z: Zone) => { setEntered(true); setZoneRaw(z); try { localStorage.setItem('dhaak.zone', z) } catch {} }
   const scrollMem = useRef(0)
   // Picker is a real history entry: system back closes it and restores the walk's scroll.
   const setPicking = (v: boolean) => {
@@ -77,7 +79,14 @@ export default function App() {
     else if (!v && picking) { if (history.state?.v === 'pick') history.back(); else closePick() }
   }
   const closePick = () => { setPickingRaw(false); const y = scrollMem.current; const go = () => window.scrollTo({ top: y, behavior: 'instant' as ScrollBehavior }); requestAnimationFrame(() => { go(); [60, 200, 450].forEach(t => setTimeout(go, t)) }) }
-  useEffect(() => { history.scrollRestoration = 'manual';  }, [])
+  useEffect(() => {
+    history.scrollRestoration = 'manual'
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search)
+    const top = () => window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+    top(); requestAnimationFrame(top)
+    const show = (e: PageTransitionEvent) => { if (e.persisted) { setEntered(false); setDetailRaw(null); setPickingRaw(false) } top() }
+    window.addEventListener('pageshow', show); return () => window.removeEventListener('pageshow', show)
+  }, [])
   const [tab, setTabRaw] = useState(() => +(sessionStorage.getItem('dhaak.tab') || 0))
   const setTab = (t: number) => { setTabRaw(t); try { sessionStorage.setItem('dhaak.tab', String(t)) } catch {} }
   const [skip, setSkip] = useState<Set<string>>(() => { try { return new Set(JSON.parse(sessionStorage.getItem('dhaak.skip') || '[]')) } catch { return new Set() } })
@@ -98,6 +107,7 @@ export default function App() {
     setFixAt(f.at); setPicking(false)
   }
   const locate = useCallback((gesture = false) => {
+    if (gesture) setEntered(true)
 
     if (!geoOk) { setSheet(true); return }
     dispatch({ type: 'request' })
@@ -158,12 +168,12 @@ export default function App() {
   const ownZone = origin && hav(origin, ZONE_ANCHOR.central) < 20000 ? zoneOf(origin) : null
   // Located people auto-select their zone; picking another zone plans from that zone's anchor station.
   useEffect(() => { if (ownZone) { setZoneRaw(ownZone); try { localStorage.setItem('dhaak.zone', ownZone) } catch {} } }, [ownZone])
-  const view: Origin | null = zone && zone !== ownZone ? { ...ZONE_ANCHOR[zone], label: ZONE_ANCHOR[zone].name, precise: false } : origin
+  const view: Origin | null = !entered ? null : zone && zone !== ownZone ? { ...ZONE_ANCHOR[zone], label: ZONE_ANCHOR[zone].name, precise: false } : origin
   const plan: Plan | null = useMemo(() => (view ? P.plan(view, 8 + skip.size, new Set(Object.keys(statusFile?.open ?? {}))) : null), [view?.lat, view?.lng, skip.size, statusFile])
   const zonePandals = useMemo(() => (zone && view ? P.located.filter(p => zoneOf(p) === zone).map(p => ({ ...p, dist: hav(view, p) })).sort((x, y) => x.dist - y.dist) : []), [zone, view?.lat, view?.lng])
   const stops = useMemo(() => (plan ? plan.stops.filter(s => !skip.has(s.id)).slice(0, 8) : []), [plan, skip])
 
-  const pick = (a: (typeof AREAS)[number]) => { localStorage.setItem('dhaak.station', a.name); setOrigin({ lat: a.lat, lng: a.lng, label: `${a.name} metro`, precise: false }); setZoneRaw(zoneOf(a)); scrollMem.current = 0; setPicking(false); setSkip(new Set()); setTab(0) }
+  const pick = (a: (typeof AREAS)[number]) => { setEntered(true); localStorage.setItem('dhaak.station', a.name); setOrigin({ lat: a.lat, lng: a.lng, label: `${a.name} metro`, precise: false }); setZoneRaw(zoneOf(a)); scrollMem.current = 0; setPicking(false); setSkip(new Set()); setTab(0) }
 
   const routeUrl = view && stops.length ? mapsDirUrl(view.precise ? view : { lat: view.lat, lng: view.lng }, stops) : null
   const hereish: LatLng | null = stops[0] ?? view
@@ -200,7 +210,7 @@ export default function App() {
   return (
     <div className="mx-auto max-w-[560px] min-h-[100dvh] flex flex-col px-5">
       {(view || picking) && <><header className="navbar flex items-center justify-between">
-        {picking ? <button onClick={() => setPicking(false)} className="flex items-center gap-1 min-h-[44px] -ml-2 px-2 text-[16px] font-medium" aria-label="Back"><Back /> Back</button> : <button onClick={() => { setOrigin(null); setZoneRaw(null); try { localStorage.removeItem('dhaak.zone') } catch {} }} className="flex items-baseline gap-2" aria-label="Dhaak home">
+        {picking ? <button onClick={() => setPicking(false)} className="flex items-center gap-1 min-h-[44px] -ml-2 px-2 text-[16px] font-medium" aria-label="Back"><Back /> Back</button> : <button onClick={() => { setEntered(false); setOrigin(null); setZoneRaw(null); try { localStorage.removeItem('dhaak.zone') } catch {} }} className="flex items-baseline gap-2" aria-label="Dhaak home">
           <span className="wordmark text-[17px] whitespace-nowrap">Raya and DP&rsquo;s Pujo</span>
         </button>}
         <span className="flex items-center gap-1">{needsChip(loc) && <button className="min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Turn on location" onClick={() => setSheet(true)} style={{ color: 'var(--sindoor)' }}><Pin small /></button>}<ThemeToggle /></span>
