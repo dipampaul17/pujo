@@ -30,14 +30,15 @@ def test_open_rules():
     assert not oh('Ekdalia crowd visited already', '2026-10-08T05:00:00+00:00')
     assert not oh('Maddox Square Durga getting ready now, crowd unites')
 def test_plan_covers_all_quickly():
-    import importlib; X.live['polled']={}
+    import importlib, tempfile, datetime as dt; X.live['polled']={}; X.ST=tempfile.mkdtemp(); t0=X.now
     seen=set(); runs=0
     while len(seen)<len(X.P) and runs<20:
-        qs=X.plan(); runs+=1
+        X.now=t0+dt.timedelta(minutes=5*runs); qs=X.plan(); runs+=1
         for q in qs:
             assert len(q['args']['query'])<=1024
             seen|=set(q['ids'])
             for i in q['ids']: X.live['polled'][i]=f'2026-10-13T{runs:02d}'
+    X.now=t0
     assert len(seen)==len(X.P) and runs<=12, runs
 if __name__=='__main__':
     for k,v in list(globals().items()):
