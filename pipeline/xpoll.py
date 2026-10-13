@@ -45,7 +45,8 @@ def plan(n=3):
     are already confirmed are deprioritised for discovery (their evidence is sticky)."""
     top=sorted(P,key=lambda p:-(p.get('worth') or 0))[:6]
     opened=set(live.get('open',{}))|set(k for k in load(f'{H}/raw/x_status.json',{}) if not k.startswith('_'))
-    stale=lambda p:(live['polled'].get(p['id'],''),p['id'] in opened)
+    leads={k for k in load(f'{H}/raw/news_leads.json',{}) if not k.startswith('_')}  # news says inaugurated: confirm on X first
+    stale=lambda p:(p['id'] not in leads,live['polled'].get(p['id'],''),p['id'] in opened)
     pas=sorted([p for p in P if p not in top and p['id'] in PASS],key=stale)
     rest=sorted([p for p in P if p not in top and p['id'] not in PASS],key=stale)
     since=(now-dt.timedelta(hours=24)).strftime('%Y-%m-%dT%H:%M:%SZ')

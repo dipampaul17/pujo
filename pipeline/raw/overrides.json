@@ -1,0 +1,13 @@
+{
+ "_": "DP's ground truth. Outranks every source and sticky open. Cleared only by a first-hand X visitor post dated after 'after'.",
+ "ekdalia-evergreen": {
+  "kind": "closed",
+  "after": "2026-10-13T13:50:00Z",
+  "note": "Not open yet"
+ },
+ "mudiali": {
+  "kind": "closed",
+  "after": "2026-10-13T13:50:00Z",
+  "note": "Not open yet"
+ }
+}

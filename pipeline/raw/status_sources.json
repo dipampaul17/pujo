@@ -1,11 +1,68 @@
 {
- "_source": "Hand-checked open/visit evidence (url, date, what it says). Checked 2026-10-13. primary=true marks the source to show.",
+ "_source": "Hand-checked X evidence only (url, date, what it says). Re-verified on X 2026-10-13 19:30 IST. Web/news links are not evidence.",
  "santosh-mitra-square": [
-  {"url": "https://x.com/Ei_Samay/status/2109495140574441756", "at": "2026-10-12", "text": "Crowds of visitors at Santosh Mitra Square on Pratipada (Ei Samay)", "outlet": true, "primary": true},
-  {"url": "https://x.com/abasu4ever/status/2109566442769461704", "at": "2026-10-12", "text": "Visited Santosh Mitra Square"},
-  {"url": "https://x.com/TheWallTweets/status/2109315970166841616", "at": "2026-10-11", "text": "Crowd at the Santosh Mitra Square mandap (The Wall)", "outlet": true}
+  {
+   "url": "https://x.com/Ei_Samay/status/2109495140574441756",
+   "at": "2026-10-12",
+   "text": "Crowds of visitors at Santosh Mitra Square on Pratipada (Ei Samay)",
+   "outlet": true,
+   "primary": true
+  },
+  {
+   "url": "https://x.com/abasu4ever/status/2109566442769461704",
+   "at": "2026-10-12",
+   "text": "Visited Santosh Mitra Square"
+  },
+  {
+   "url": "https://x.com/TheWallTweets/status/2109315970166841616",
+   "at": "2026-10-11",
+   "text": "Crowd at the Santosh Mitra Square mandap (The Wall)",
+   "outlet": true
+  }
  ],
  "barisha-club": [
-  {"url": "https://x.com/SudhanidhiB/status/2109688083897827734", "at": "2026-10-12", "text": "Visited Barisha Club. One outstanding creation."}
+  {
+   "url": "https://x.com/SudhanidhiB/status/2109688083897827734",
+   "at": "2026-10-12",
+   "text": "Visited Barisha Club. One outstanding creation."
+  }
+ ],
+ "new-town-sarbojanin": [
+  {
+   "url": "https://x.com/abasu4ever/status/2109676575524598226",
+   "at": "2026-10-12",
+   "text": "Visited New Town Sarbojanin (@abasu4ever); theme celebrates lotus; traditional Durga Puja",
+   "primary": true
+  },
+  {
+   "url": "https://x.com/DrSukantaBJP/status/2109328252062113979",
+   "at": "2026-10-11",
+   "text": "Attended the auspicious inauguration ceremony of New Town Sarbojanin Durgotsav Samiti",
+   "outlet": false
+  }
+ ],
+ "keshtopur-prafulla-kanan": [
+  {
+   "url": "https://x.com/DrSukantaBJP/status/2109717228019171449",
+   "at": "2026-10-12",
+   "text": "Glimpses from the auspicious inauguration ceremony of Kestopur Prafulla Kanan (Paschim) Adhibasibrinda",
+   "primary": true
+  }
+ ],
+ "alipore-sarbojanin": [
+  {
+   "url": "https://x.com/abasu4ever/status/2109611106532724789",
+   "at": "2026-10-12",
+   "text": "📍 Alipore Sarbojanin. Visited, with photos (trusted visitor)",
+   "primary": true
+  }
+ ],
+ "tridhara-sammilani": [
+  {
+   "url": "https://x.com/AbhiDasGup74/status/2109902705678594144",
+   "at": "2026-10-13",
+   "text": "📍 Tridhara Sammilani, Kolkata: visitor post with photos",
+   "primary": true
+  }
  ]
 }

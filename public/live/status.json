@@ -1,59 +1,55 @@
 {
- "updated": "2026-10-13T11:04:58Z",
+ "updated": "2026-10-13T13:53:39Z",
  "puja": {
   "start": "2026-10-16",
   "end": "2026-10-21",
   "public_from": "2026-10-15T18:00:00+05:30"
  },
  "open": {
-  "barisha-club": {
+  "chorebagan-sarbojanin": {
    "since": "2026-10-12",
-   "evidence": "https://x.com/SudhanidhiB/status/2109688083897827734",
-   "note": "#4 Visited Barisha Club One outstanding creation.",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/SudhanidhiB/status/2109688083897827734",
-     "at": "2026-10-12",
-     "text": "#4 Visited Barisha Club One outstanding creation.",
-     "tier": "hand",
-     "kind": "visitors",
-     "by": "sudhanidhib"
-    }
-   ]
-  },
-  "rajdanga-naba-uday-sangha": {
-   "since": "2026-10-11",
-   "evidence": "https://x.com/SudhanidhiB/status/2109349903600374159",
-   "note": "#2 Visited Didi @keyakahe's Durga Puja at Rajdanga Naba Uday Sangha. Unreal colour combination as theme.",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/SudhanidhiB/status/2109349903600374159",
-     "at": "2026-10-11",
-     "text": "#2 Visited Didi @keyakahe's Durga Puja at Rajdanga Naba Uday Sangha. Unreal colour combination as theme.",
-     "tier": "hand",
-     "kind": "visitors",
-     "by": "sudhanidhib"
-    }
-   ]
-  },
-  "college-square": {
-   "since": "2026-10-12",
-   "evidence": "https://x.com/PathakSounak/status/2109464905372008914",
-   "note": "Invited guest at the College Square inauguration (12 Oct); VIDA lighting tribute live same night",
+   "evidence": "https://x.com/ANI/status/2109761171071152276",
+   "note": "CM inaugurated 12 Oct (ANI); organisers: public entry from Chaturthi 6 pm",
    "kind": "inaugurated",
    "corroborated": false,
    "sources": [
     {
-     "url": "https://x.com/PathakSounak/status/2109464905372008914",
+     "url": "https://x.com/ANI/status/2109761171071152276",
      "at": "2026-10-12",
-     "text": "Invited guest at the College Square inauguration (12 Oct); VIDA lighting tribute live same night",
+     "text": "CM inaugurated 12 Oct (ANI); organisers: public entry from Chaturthi 6 pm",
      "tier": "hand",
      "kind": "inaugurated",
-     "by": "pathaksounak"
+     "by": "ani"
+    }
+   ]
+  },
+  "alipore-sarbojanin": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/abasu4ever/status/2109611106532724789",
+   "note": "📍 Alipore Sarbojanin. Visited, with photos (trusted visitor)",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://timesofindia.indiatimes.com/city/kolkata/office-goersschoolkidspuja-shoppers-revellers-post-afternoon-traffic-gridlock/articleshow/134900607.cms",
+     "at": "2026-10-12",
+     "text": "Considerable rush of revellers (crowds) at Alipore Sarbojanin in the evening (TOI)",
+     "outlet": true,
+     "primary": true,
+     "hand": true,
+     "by": "timesofindia.indiatimes.com",
+     "tier": "outlet",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2109611106532724789",
+     "at": "2026-10-12",
+     "text": "📍 Alipore Sarbojanin. Visited, with photos (trusted visitor)",
+     "primary": true,
+     "hand": true,
+     "by": "abasu4ever",
+     "tier": "hand",
+     "kind": "visitors"
     }
    ]
   },
@@ -79,56 +75,127 @@
      "by": "heyyyyshubham",
      "tier": "visitor",
      "kind": "visitors"
-    }
-   ]
-  },
-  "santoshpur-lake-pally": {
-   "since": "2026-10-12",
-   "evidence": "https://timesofindia.indiatimes.com/city/kolkata/tukde-tukde-gang-on-cm-lips-at-allen-park/articleshow/134900605.cms",
-   "note": "CM Suvendu Adhikari inaugurated Santoshpur Lake Pally on 12 Oct (TOI; Biswa Bangla Sangbad)",
-   "kind": "inaugurated",
-   "corroborated": false,
-   "sources": [
+    },
     {
-     "url": "https://timesofindia.indiatimes.com/city/kolkata/tukde-tukde-gang-on-cm-lips-at-allen-park/articleshow/134900605.cms",
-     "at": "2026-10-12",
-     "text": "CM Suvendu Adhikari inaugurated Santoshpur Lake Pally on 12 Oct (TOI; Biswa Bangla Sangbad)",
-     "tier": "hand",
-     "kind": "inaugurated",
-     "by": "timesofindia.indiatimes.com"
+     "url": "https://x.com/an1sh123/status/2109971486106886421",
+     "at": "2026-10-13T11:36:18.000Z",
+     "text": "#1 Visited Sreebhumi for the first and last time. Pandal is closed lmao. They haven't even finished the pandal but still inaugurated it last night. Nothing spectacular. No point in travelling that much to see it.",
+     "by": "an1sh123",
+     "tier": "visitor",
+     "kind": "visitors"
     }
    ]
   },
-  "chetla-agrani": {
-   "since": "2026-10-12",
-   "evidence": "https://x.com/TheWallTweets/status/2109685707363238252",
-   "note": "CM Suvendu Adhikari inaugurated Chetla Agrani (The Wall, 12 Oct); visitor theme posts 12-13 Oct",
+  "new-town-sarbojanin": {
+   "since": "2026-10-11",
+   "evidence": "https://x.com/abasu4ever/status/2109676575524598226",
+   "note": "📍 New Town Sarbojanin. 🎨 Rintu Das, RSS &amp; BJP. 🌟 The theme celebrates the significance of 'lotus' in Hinduism. 👉 With the regime change, New Town Sarbojanin are doing traditional Durga Puja for th",
    "kind": "visitors",
    "corroborated": true,
    "sources": [
     {
-     "url": "https://x.com/TheWallTweets/status/2109685707363238252",
-     "at": "2026-10-12",
-     "text": "CM Suvendu Adhikari inaugurated Chetla Agrani (The Wall, 12 Oct); visitor theme posts 12-13 Oct",
-     "tier": "hand",
-     "kind": "visitors",
-     "by": "thewalltweets"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2109591649815007260",
-     "at": "2026-10-12",
-     "text": "📍 Chetla Agrani. 🎨 N/A. 🌟 N/A. 👉 The pandal looks pretty good, but nothing extraordinary for their usual standards. 📌 #DurgaPuja2026 🧵 1/3",
+     "url": "https://x.com/abasu4ever/status/2109676575524598226",
+     "at": "2026-10-12T16:04:26.000Z",
+     "text": "📍 New Town Sarbojanin. 🎨 Rintu Das, RSS &amp; BJP. 🌟 The theme celebrates the significance of 'lotus' in Hinduism. 👉 With the regime change, New Town Sarbojanin are doing traditional Durga Puja for the first time. I really loved the pandal, but not the idol. 📌 #DurgaPuja2026",
      "by": "abasu4ever",
      "tier": "trusted",
      "kind": "visitors"
     },
     {
-     "url": "https://x.com/abasu4ever/status/2109591715275575775",
-     "at": "2026-10-12T10:27:13.000Z",
-     "text": "📍 Chetla Agrani. 📌 #DurgaPuja2026 🧵 2/3",
+     "url": "https://x.com/DrSukantaBJP/status/2109328252062113979",
+     "at": "2026-10-11",
+     "text": "Attended the auspicious inauguration ceremony of the Durga Puja organised by New Town Sarbojanin Durgotsav Samiti. Jai Maa Durga! 🙏",
+     "by": "drsukantabjp",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "tridhara-sammilani": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/AbhiDasGup74/status/2109902705678594144",
+   "note": "📍 Tridhara Sammilani, Kolkata: visitor post with photos",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://timesofindia.indiatimes.com/city/kolkata/office-goersschoolkidspuja-shoppers-revellers-post-afternoon-traffic-gridlock/articleshow/134900607.cms",
+     "at": "2026-10-12",
+     "text": "Considerable rush of revellers (crowds) at Tridhara Sammilani in the evening (TOI)",
+     "outlet": true,
+     "primary": true,
      "hand": true,
-     "by": "abasu4ever",
+     "by": "timesofindia.indiatimes.com",
+     "tier": "outlet",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/AbhiDasGup74/status/2109902705678594144",
+     "at": "2026-10-13",
+     "text": "📍 Tridhara Sammilani, Kolkata: visitor post with photos",
+     "primary": true,
+     "hand": true,
+     "by": "abhidasgup74",
      "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "college-square": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/PathakSounak/status/2109464905372008914",
+   "note": "Invited guest at the College Square inauguration (12 Oct); VIDA lighting tribute live same night",
+   "kind": "inaugurated",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/PathakSounak/status/2109464905372008914",
+     "at": "2026-10-12",
+     "text": "Invited guest at the College Square inauguration (12 Oct); VIDA lighting tribute live same night",
+     "tier": "hand",
+     "kind": "inaugurated",
+     "by": "pathaksounak"
+    }
+   ]
+  },
+  "barisha-club": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/SudhanidhiB/status/2109688083897827734",
+   "note": "#4 Visited Barisha Club One outstanding creation.",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/SudhanidhiB/status/2109688083897827734",
+     "at": "2026-10-12",
+     "text": "#4 Visited Barisha Club One outstanding creation.",
+     "tier": "hand",
+     "kind": "visitors",
+     "by": "sudhanidhib"
+    }
+   ]
+  },
+  "nalin-sarkar-street": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/abasu4ever/status/2109541667170848837",
+   "note": "📍 Nalin Sarkar Street Sarbojanin. 🎨 Sanatan Dinda. 👉 The pandal was fantastic too. But, oh boy, I bet that it's gonna be as iconic as 2011 &",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2109541667170848837",
+     "at": "2026-10-12",
+     "text": "📍 Nalin Sarkar Street Sarbojanin. 🎨 Sanatan Dinda. 👉 The pandal was fantastic too. But, oh boy, I bet that it's gonna be as iconic as 2011 &",
+     "tier": "hand",
+     "kind": "visitors",
+     "by": "abasu4ever"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2109541619070599222",
+     "at": "2026-10-12T07:08:10.000Z",
+     "text": "📍 Nalin Sarkar Street Sarbojanin. 🎨 Sanatan Dinda. 🌟 The theme depicts the significance of water bodies in our life, and our deliberate attempt to not recognise its significance — leading to more water pollution. 👉 THE MAA DURGA IDOL IS STUNNING! 📌 #DurgaPuja2026 🧵 1/2",
+     "by": "abasu4ever",
+     "tier": "trusted",
      "kind": "visitors"
     }
    ]
@@ -201,50 +268,100 @@
      "by": "a_random_2020_",
      "tier": "visitor",
      "kind": "visitors"
-    }
-   ]
-  },
-  "nalin-sarkar-street": {
-   "since": "2026-10-12",
-   "evidence": "https://x.com/abasu4ever/status/2109541667170848837",
-   "note": "📍 Nalin Sarkar Street Sarbojanin. 🎨 Sanatan Dinda. 👉 The pandal was fantastic too. But, oh boy, I bet that it's gonna be as iconic as 2011 &",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/abasu4ever/status/2109541667170848837",
-     "at": "2026-10-12",
-     "text": "📍 Nalin Sarkar Street Sarbojanin. 🎨 Sanatan Dinda. 👉 The pandal was fantastic too. But, oh boy, I bet that it's gonna be as iconic as 2011 &",
-     "tier": "hand",
-     "kind": "visitors",
-     "by": "abasu4ever"
     },
     {
-     "url": "https://x.com/abasu4ever/status/2109541619070599222",
-     "at": "2026-10-12T07:08:10.000Z",
-     "text": "📍 Nalin Sarkar Street Sarbojanin. 🎨 Sanatan Dinda. 🌟 The theme depicts the significance of water bodies in our life, and our deliberate attempt to not recognise its significance — leading to more water pollution. 👉 THE MAA DURGA IDOL IS STUNNING! 📌 #DurgaPuja2026 🧵 1/2",
-     "by": "abasu4ever",
-     "tier": "trusted",
+     "url": "https://x.com/UmaimaSaeed/status/2109995021416165598",
+     "at": "2026-10-13T13:09:49.000Z",
+     "text": "Visited Santosh Mitra square today. Would have looked 10x prettier after dusk, but I skipped the light and sound show to avoid the insane crowd. Theme is around the 1947 partition, freedom fighters, Vande Mataram etc. Original photos from the partition era have been displayed.",
+     "by": "umaimasaeed",
+     "tier": "visitor",
      "kind": "visitors"
     }
    ]
   },
-  "chorebagan-sarbojanin": {
+  "ekdalia-evergreen": {
+   "since": "2026-10-13",
+   "evidence": "",
+   "note": "Not open yet",
+   "kind": "closed",
+   "by": "override",
+   "sources": []
+  },
+  "keshtopur-prafulla-kanan": {
    "since": "2026-10-12",
-   "evidence": "https://x.com/ANI/status/2109761171071152276",
-   "note": "CM inaugurated 12 Oct (ANI); organisers: public entry from Chaturthi 6 pm",
-   "kind": "inaugurated",
+   "evidence": "https://x.com/DrSukantaBJP/status/2109717228019171449",
+   "note": "Glimpses from the auspicious inauguration ceremony of the Durga Puja organised by the Kestopur Prafulla Kanan (Paschim) Adhibasibrinda.",
+   "kind": "visitors",
    "corroborated": false,
    "sources": [
     {
-     "url": "https://x.com/ANI/status/2109761171071152276",
+     "url": "https://x.com/DrSukantaBJP/status/2109717228019171449",
      "at": "2026-10-12",
-     "text": "CM inaugurated 12 Oct (ANI); organisers: public entry from Chaturthi 6 pm",
-     "tier": "hand",
-     "kind": "inaugurated",
-     "by": "ani"
+     "text": "Glimpses from the auspicious inauguration ceremony of the Durga Puja organised by the Kestopur Prafulla Kanan (Paschim) Adhibasibrinda.",
+     "by": "drsukantabjp",
+     "tier": "visitor",
+     "kind": "visitors"
     }
    ]
+  },
+  "chetla-agrani": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/TheWallTweets/status/2109685707363238252",
+   "note": "CM Suvendu Adhikari inaugurated Chetla Agrani (The Wall, 12 Oct); visitor theme posts 12-13 Oct",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/TheWallTweets/status/2109685707363238252",
+     "at": "2026-10-12",
+     "text": "CM Suvendu Adhikari inaugurated Chetla Agrani (The Wall, 12 Oct); visitor theme posts 12-13 Oct",
+     "tier": "hand",
+     "kind": "visitors",
+     "by": "thewalltweets"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2109591649815007260",
+     "at": "2026-10-12",
+     "text": "📍 Chetla Agrani. 🎨 N/A. 🌟 N/A. 👉 The pandal looks pretty good, but nothing extraordinary for their usual standards. 📌 #DurgaPuja2026 🧵 1/3",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2109591715275575775",
+     "at": "2026-10-12T10:27:13.000Z",
+     "text": "📍 Chetla Agrani. 📌 #DurgaPuja2026 🧵 2/3",
+     "hand": true,
+     "by": "abasu4ever",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "rajdanga-naba-uday-sangha": {
+   "since": "2026-10-11",
+   "evidence": "https://x.com/SudhanidhiB/status/2109349903600374159",
+   "note": "#2 Visited Didi @keyakahe's Durga Puja at Rajdanga Naba Uday Sangha. Unreal colour combination as theme.",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/SudhanidhiB/status/2109349903600374159",
+     "at": "2026-10-11",
+     "text": "#2 Visited Didi @keyakahe's Durga Puja at Rajdanga Naba Uday Sangha. Unreal colour combination as theme.",
+     "tier": "hand",
+     "kind": "visitors",
+     "by": "sudhanidhib"
+    }
+   ]
+  },
+  "mudiali": {
+   "since": "2026-10-13",
+   "evidence": "",
+   "note": "Not open yet",
+   "kind": "closed",
+   "by": "override",
+   "sources": []
   },
   "tala-prattoy": {
    "since": "2026-10-10",

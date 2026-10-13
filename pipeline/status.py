@@ -1,5 +1,7 @@
-"""Open-status evidence. Merges hand-checked X evidence (raw/x_status.json) with Google News RSS headlines
-that say a guide pandal was inaugurated in 2026. Writes public/live/status.json. Evidence only; no guessing."""
+"""Open-status evidence, X only. Merges hand-checked X evidence (raw/x_status.json, raw/status_sources.json) and the
+X poller's findings (state/xlive.json). Google News "inaugurated" headlines are LEADS, written to raw/news_leads.json
+for the X poller to search first; they never open a pandal. raw/overrides.json (DP's ground truth) wins over all.
+Writes public/live/status.json. Evidence only; no guessing. See pipeline/SWEEP.md."""
 import json, re, sys, os, urllib.request, urllib.parse, xml.etree.ElementTree as ET, datetime as dt
 from concurrent.futures import ThreadPoolExecutor
 H=os.path.dirname(__file__); data=json.load(open(sys.argv[1])); out=sys.argv[2]
@@ -31,7 +33,9 @@ def one(p):
             return p['id'],{'since':d.date().isoformat(),'evidence':it.findtext('link'),'note':re.sub(r' - [^-]+$','',t)}
     return None
 # Global rule (status_rules.py): gather every source per pandal, classify, merge sticky with what was published.
-from status_rules import classify, decide
+from status_rules import classify, decide, override
+try: OVR={k:v for k,v in json.load(open(f'{H}/raw/overrides.json')).items() if not k.startswith('_')}
+except Exception: OVR={}
 trusted={h.lower() for h in ['abasu4ever']}
 try: man={k:v for k,v in json.load(open(f'{H}/raw/status_sources.json')).items() if not k.startswith('_')}
 except Exception: man={}
@@ -46,16 +50,19 @@ for k,l in man.items():
 for k,v in xl.get('open',{}).items(): add(k,{'url':v['evidence'],'at':v['since'],'text':v.get('note','')})
 for k,l in list(xl.get('posts',{}).items())+list(pin.items()):
     for q in (l if isinstance(l,list) else [l]): add(k,{'url':q['url'],'at':q.get('at',''),'text':q.get('text',''),**({'hand':True} if q.get('evidence') else {})})
+try: leads={k:v for k,v in json.load(open(f'{H}/raw/news_leads.json')).items() if not k.startswith('_')}
+except Exception: leads={}
 with ThreadPoolExecutor(6) as ex:
     for r in ex.map(one,sorted([p for p in data['pandals'] if p['id'] not in prev and p['id'] not in src],key=lambda p:p['id'] not in PASS)):
-        if r: add(r[0],{'url':r[1]['evidence'],'at':r[1]['since'],'text':r[1]['note'],'outlet':True})
+        if r: leads[r[0]]={'since':r[1]['since'],'url':r[1]['evidence'],'title':r[1]['note']}
+json.dump({'_':'News headlines saying a pandal was inaugurated. Leads for X search only; not evidence.',**leads},open(f'{H}/raw/news_leads.json','w'),ensure_ascii=False,indent=1)
 ids={p['id'] for p in data['pandals']}
 ev={}
 for k in ids:
     got=[c for c in (classify(s,trusted) for s in src.get(k,[])) if c]
     for c,s in zip(got,[s for s in src.get(k,[]) if classify(s,trusted)]):
         if s.get('kind_hint')=='visitors' and c['kind']!='closed': c['kind']='visitors'
-    d=decide(prev.get(k),got)
+    d=override(OVR.get(k),decide(prev.get(k),got),got)
     if d and d['kind']!='closed': ev[k]=d
     elif d: ev[k]=d  # closure is published too; the app shows it as closed
 os.makedirs(os.path.dirname(out),exist_ok=True)

@@ -54,10 +54,10 @@ Sources: Travel With Preet, Kolkata Durga Puja Pandal Hopping Guide 2026. Place 
 7. **Next / back.** Skip drops a stop; browser back closes the picker with scroll restored; no screen is a dead end.
 
 ## Open status (accuracy rules)
-- **Open**: only with dated evidence (inauguration report or visitor posts). Tap the word to see the source.
+- **Open**: only with dated X evidence (first-hand visitor post/photo, or an X post of that pandal's inauguration). News alone never opens a pandal. Tap the word to see the source. Rules: `pipeline/SWEEP.md`.
 - **Likely open**: puja dates (16–21 Oct 2026) with no fresh evidence.
 - **Closed**: after Dashami (21 Oct).
-- Otherwise nothing is shown. Evidence: `pipeline/raw/x_status.json` (hand-checked X) + Google News "inaugurated" headlines (`pipeline/status.py`, run on every deploy). Pandals whose position could not be verified are hidden.
+- Otherwise nothing is shown. Evidence: hand-checked X (`pipeline/raw/x_status.json`, `raw/status_sources.json`) + the X poller; Google News headlines are only leads for X search (`raw/news_leads.json`). DP overrides: `raw/overrides.json`. Pandals whose position could not be verified are hidden.
 
 ## Live refresh (every 5 min)
 `/workspace/app/refresh-live.sh plan` prints this run's queries (at most 3: the top 6 pandals every run, then 16 more by staleness, batched as OR queries with 25 results each). A scheduled agent runs them through the X connector and saves the raw results, then runs `/workspace/app/refresh-live.sh <result files>`. That run ingests the results, rebuilds `live/status.json`, `live/x.json` and `live/now.json`, and redeploys only if something changed. The client re-reads them every 2 minutes and on focus, with no reload.

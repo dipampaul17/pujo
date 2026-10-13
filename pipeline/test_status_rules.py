@@ -27,3 +27,37 @@ def test_only_explicit_closure_downgrades():
 def test_uncertain_is_not_declared():
     assert classify(S('https://x.com/a/status/4', '2026-10-12', 'Barisha Club theme looks interesting'), T) is None
     assert decide(None, []) is None
+
+# --- X only (DP, 13 Oct) ---
+TOI_GRID='https://timesofindia.indiatimes.com/city/kolkata/office-goersschoolkidspuja-shoppers-revellers-post-afternoon-traffic-gridlock/articleshow/134900607.cms'
+TOI_ALLEN='https://timesofindia.indiatimes.com/city/kolkata/tukde-tukde-gang-on-cm-lips-at-allen-park/articleshow/134900605.cms'
+def _d(srcs, prev=None):
+    from status_rules import classify, decide
+    return decide(prev,[c for c in (classify(s,set()) for s in srcs) if c])
+def test_toi_gridlock_roundup_never_opens():
+    for t in ['Crowd of pandal-hoppers at Mudiali from 6 pm; organisers stepped up security (TOI)',
+              'Such was the rush that organisers switched on lighting; visitors at Ekdalia Evergreen',
+              'Considerable rush of revellers (crowds) at Tridhara Sammilani in the evening (TOI)',
+              'Office-goers, schoolkids, puja shoppers, revellers post afternoon traffic gridlock']:
+        assert _d([{'url':TOI_GRID,'at':'2026-10-12','text':t,'outlet':True,'hand':True}]) is None, t
+def test_toi_allen_park_itinerary_never_opens():
+    for t in ['CM inaugurated a series of pujas prior to Allen Park; itinerary included Kidderpore 25 Pally (TOI)',
+              'CM Suvendu Adhikari inaugurated Santoshpur Lake Pally on 12 Oct (TOI; Biswa Bangla Sangbad)']:
+        assert _d([{'url':TOI_ALLEN,'at':'2026-10-12','text':t,'outlet':True,'hand':True}]) is None, t
+def test_roundup_on_x_rejected_and_scheduled_rejected():
+    from status_rules import classify
+    assert classify({'url':'https://x.com/ToIKolkata/status/1','at':'2026-10-12','text':'Traffic gridlock as crowds throng Ekdalia, Singhi Park'},set()) is None
+    assert classify({'url':'https://x.com/ANI/status/2','at':'2026-10-12','text':'CM scheduled to inaugurate Mudiali today'},set()) is None
+def test_x_inauguration_opens_and_news_rides_along():
+    d=_d([{'url':TOI_ALLEN,'at':'2026-10-12','text':'Behala Club inaugurated','outlet':True},{'url':'https://x.com/ANI/status/3','at':'2026-10-12','text':'CM inaugurated the Durga Puja of Behala Club'}])
+    assert d and d['evidence'].startswith('https://x.com/')
+def test_sticky_news_only_prev_drops():
+    prev={'since':'2026-10-12','evidence':TOI_GRID,'note':'crowds','kind':'visitors','sources':[{'url':TOI_GRID,'at':'2026-10-12','text':'crowds','tier':'outlet','kind':'visitors','by':'timesofindia.indiatimes.com'}]}
+    assert _d([],prev) is None
+def test_override_closed_beats_sticky_until_fresh_visit():
+    from status_rules import classify, override, decide
+    o={'kind':'closed','after':'2026-10-13T13:50:00Z','note':'Not open yet'}
+    old=[classify({'url':'https://x.com/someone/status/4','at':'2026-10-12','text':'Visited Mudiali today, pandal looks great'},set())]
+    assert override(o,decide(None,old),old)['kind']=='closed'
+    new=[classify({'url':'https://x.com/someone/status/5','at':'2026-10-14T10:00:00Z','text':'Visited Mudiali today, pandal looks great'},set())]
+    assert override(o,decide(None,new),new)['kind']!='closed'
