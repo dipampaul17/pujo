@@ -4,6 +4,7 @@ import raw from './data/dhaak.v1.json'
 import { makePlanner, areas as getAreas, statusOf, tier, type StatusFile, relevantNow, type NowItem, tagsFor, tagContext, zoneOf, ZONES, ZONE_ANCHOR, zoneCounts, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
 import { recommend } from './lib/rank'
+import { hasPass } from './lib/passport'
 import { roadEstimate, liveTravel, attachPins, type Roads, type Travel } from './lib/roads'
 import { orderRoute } from './lib/geo'
 import { HERO_LQIP } from './hero-lqip'
@@ -318,7 +319,7 @@ export default function App() {
                         <span className="stop-n mono-num" style={{ color: i === 0 ? 'var(--sindoor)' : 'var(--muted)' }} aria-label={`Stop ${i + 1}`}>{i + 1}</span>
                         <div className="min-w-0 flex-1">
                           <button onClick={() => setDetail(s.id)} className="t-headline block text-left min-h-[44px] -my-2" aria-haspopup="dialog">{s.name}</button>
-                          <div className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(s.id, istDate, statusFile, now)} />{!(i === 0 && postsOf(xLive, s.id).some(q => q.photo)) && <PostsMark posts={postsOf(xLive, s.id)} fresh={fresh.has(s.id)} onClick={() => setDetail(s.id)} />}{xLive.crowd[s.id] && <a href={xLive.crowd[s.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[s.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[s.id].at))}</a>}</div>
+                          <div className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(s.id, istDate, statusFile, now)} />{hasPass(s.id) && <PassMark />}{!(i === 0 && postsOf(xLive, s.id).some(q => q.photo)) && <PostsMark posts={postsOf(xLive, s.id)} fresh={fresh.has(s.id)} onClick={() => setDetail(s.id)} />}{xLive.crowd[s.id] && <a href={xLive.crowd[s.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[s.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[s.id].at))}</a>}</div>
                           <p className="t-foot muted mt-0.5 mono-num">
                             {s.precision === 'station' ? `Approximate${s.station ? ` · near ${s.station}` : ''}` : i === 0 ? (me ? <TravelLine t={travel(s)} /> : null) : `+${fmtDist(hop(stops, i))}`}
                           </p>
@@ -349,7 +350,7 @@ export default function App() {
                 </summary>
                 <ul className="group-list mt-3">{stable(suggested).map((p, r) => (
                   <li key={p.id}><a href={mapsPlaceUrl(p, p.name + ' Durga Puja')} onClick={e => { e.preventDefault(); setDetail(p.id) }} className="row">
-                    <span className="flex min-w-0"><span className="row-n mono-num" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span><span className="min-w-0"><span className="block truncate">{p.name}</span><span className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline />{p.precision !== 'station' && me && <TravelLine t={p.t} compact />}</span></span></span><span className="flex items-center gap-2 shrink-0"><PostsMark posts={postsOf(xLive, p.id)} fresh={fresh.has(p.id)} /></span></a></li>))}</ul>
+                    <span className="flex min-w-0"><span className="row-n mono-num" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span><span className="min-w-0"><span className="block truncate">{p.name}</span><span className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline />{hasPass(p.id) && <PassMark />}{p.precision !== 'station' && me && <TravelLine t={p.t} compact />}</span></span></span><span className="flex items-center gap-2 shrink-0"><PostsMark posts={postsOf(xLive, p.id)} fresh={fresh.has(p.id)} /></span></a></li>))}</ul>
               </details>
             )}
             {tab === 1 && help && <AmenityList items={help.food} empty="Nothing mapped nearby." meta={f => [f.notable ? 'Kolkata classic' : null, f.cuisine && f.cuisine[0].toUpperCase() + f.cuisine.slice(1)].filter(Boolean).join(' · ')} />}
@@ -380,6 +381,7 @@ export default function App() {
                   </div>
                   <button onClick={() => setDetail(null)} className="close-x mt-0.5" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 1.5l9 9M10.5 1.5l-9 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></button>
                 </div>
+                {hasPass(p.id) && <p className="pass-line mt-3"><PassGlyph />Pujor Passport · skip the queue</p>}
                 {p.reason && <p className="t-sub mt-3">{p.reason}</p>}
                 <p className="t-foot muted mono-num mt-2">{p.precision === 'station' ? `Approximate, near ${p.station}` : me ? <TravelLine t={travel(p)} /> : null}{loo ? ` · Toilet ${fmtDist(loo.dist)}` : ''}</p>
                 {posts.length > 0 && <div className="mt-5 space-y-3">{posts.map(q => <PostCard key={q.url} p={q} now={now} />)}</div>}
@@ -461,6 +463,12 @@ function sourceOf(url?: string): { name: string; x: boolean } | null {
   } catch { return null }
 }
 const XGlyph = () => <svg viewBox="0 0 24 24" width="10" height="10" aria-hidden="true"><path fill="currentColor" d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77L17.75 3Zm-1.08 16.2h1.7L7.4 4.73H5.58L16.67 19.2Z"/></svg>
+function PassGlyph() {
+  return <svg width="13" height="13" viewBox="0 0 14 14" aria-hidden="true" className="shrink-0"><path d="M1.75 4.25a1 1 0 0 1 1-1h8.5a1 1 0 0 1 1 1v1.1a1.65 1.65 0 0 0 0 3.3v1.1a1 1 0 0 1-1 1h-8.5a1 1 0 0 1-1-1v-1.1a1.65 1.65 0 0 0 0-3.3z" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round"/><path d="M8.75 3.5v1.1M8.75 6.45v1.1M8.75 9.4v1.1" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round"/></svg>
+}
+function PassMark() {
+  return <span className="pass-mark" title="Pujor Passport · skip the queue"><PassGlyph /><span>Pass</span><span className="sr-only">: Pujor Passport, skip the queue</span></span>
+}
 function StatusDot({ s, inline }: { s: ReturnType<typeof statusOf>; inline?: boolean }) {
   if (!s) return null
   const c = s.key === 'open' ? 'var(--sindoor)' : s.key === 'inaugurated' ? 'var(--ink)' : 'var(--muted)'
