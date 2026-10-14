@@ -21,11 +21,10 @@ describe('Pujor Passport', () => {
 import { readFileSync } from 'node:fs'
 describe('Pujor Passport placement', () => {
   const app = readFileSync(new URL('../App.tsx', import.meta.url), 'utf8')
-  it('appears on every listing surface (route cards + list rows), never in the sheet', () => {
-    expect(app.match(/<PassMark \/>/g)?.length).toBe(2)
-    expect(app).toMatch(/hasPass\(s\.id\) && <PassMark \/>/)
+  it('appears on both listing surfaces (go-next card + rail), never in the sheet', () => {
+    expect(app).toMatch(/hasPass\(next\.id\) && <PassMark \/>/)
+    expect(app).toMatch(/hasPass\(p\.id\) && <span className="rail-pass"><PassGlyph \/><\/span>/)
     expect(app).not.toMatch(/skip the queue|pass-line/)
-    expect(app).toMatch(/inline \/>\{hasPass\(p\.id\) && <PassMark \/>\}/)
   })
 })
 describe('service worker freshness', () => {

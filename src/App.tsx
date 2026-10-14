@@ -4,9 +4,11 @@ import raw from './data/dhaak.v1.json'
 import { makePlanner, isOpen, helpOrigin, areas as getAreas, statusOf, tier, type StatusFile, type NowItem, zoneOf, zoneOrder, ZONE_ANCHOR, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
 import { recommend, routeStops, routePool, zoneTab } from './lib/rank'
+import { pagePicks } from './lib/page'
+import { planWalk, walkLegs } from './lib/walk'
 import { applyFilters, chips, NO_FILTERS, type Filters } from './lib/filters'
 import { hasPass } from './lib/passport'
-import { roadEstimate, liveTravel, attachPins, type Roads, type Travel } from './lib/roads'
+import { TRAVEL, roadEstimate, liveTravel, attachPins, type Roads, type Travel } from './lib/roads'
 import { HERO_LQIP } from './hero-lqip'
 import { TextReveal } from './components/text-reveal'
 
@@ -47,6 +49,12 @@ export default function App() {
   }
   const variant = new URLSearchParams(location.search).get('v') ?? 'a'
   const [detail, setDetailRaw] = useState<string | null>(null)
+  // Picked pandals for a walk: persists, spans zones.
+  const [picked, setPickedRaw] = useState<string[]>(() => { try { return JSON.parse(localStorage.getItem('pujo.picked') || '[]') } catch { return [] } })
+  const togglePick = (id: string) => setPickedRaw(l => { const n = l.includes(id) ? l.filter(x => x !== id) : [...l, id]; try { localStorage.setItem('pujo.picked', JSON.stringify(n)) } catch {}; return n })
+  const clearPicked = () => { setPickedRaw([]); try { localStorage.removeItem('pujo.picked') } catch {} }
+  const [walkOpen, setWalkOpen] = useState(false)
+  useEffect(() => { if (!walkOpen) return; const k = (e: KeyboardEvent) => e.key === 'Escape' && setWalkOpen(false); window.addEventListener('keydown', k); return () => window.removeEventListener('keydown', k) }, [walkOpen])
   // Detail sheet is a history entry too: system back closes it.
   // openedAt guards against the second half of a double tap landing on the fresh backdrop; dragged skips the exit animation (the finger already moved it off-screen).
   const sheetRef = useRef({ open: false, openedAt: 0, dragged: false })
@@ -295,9 +303,7 @@ export default function App() {
           const s = swipe.current; if (!s || !zone) return; const dx = e.changedTouches[0].clientX - s.x, dy = e.changedTouches[0].clientY - s.y
           if (Math.abs(dx) > 70 && Math.abs(dy) < 40) setZone(nextZone(zone, dx < 0 ? 1 : -1))
         }}>
-          <div className="sticky z-10 -mx-5 px-5 pt-1 pb-2 frost" style={{ top: 52 }}>
-            <ZoneSwitch zone={plan?.outOfRange ? null : zone ?? ownZone ?? 'north'} onChange={setZone} mine={ownZone} />
-          </div>
+
           {plan.outOfRange ? (
             <div className="pt-8">
               <h2 className="title">Too far from Kolkata.</h2>
@@ -311,51 +317,46 @@ export default function App() {
             {live && <a href={live.link} target="_blank" rel="noopener" className="now-strip mt-3"><span className="now-dot" /><span className="flex-1 line-clamp-2">{live.title}</span></a>}
 
             <div className="mt-6">
-              <Segmented label="Sections" items={['Route', 'Food', 'Toilets', 'Help']} value={tab} onChange={setTab} />
+              <Segmented label="Sections" items={['Pandals', 'Food', 'Toilets', 'Help']} value={tab} onChange={setTab} />
             </div>
 
-            {tab === 0 && (
-              <ol className="group-list mt-4">
-                {stops.map((s, i) => {
-                  return (
-                    <li key={s.id} id={`stop-${i}`} data-stop={i} className={`stop rise scroll-mt-28 ${i === 0 ? 'stop-next' : ''}`} style={{ ['--i' as any]: i }}>
-                      <div className="flex gap-3">
-                        <span className="stop-n mono-num" style={{ color: i === 0 ? 'var(--sindoor)' : 'var(--muted)' }} aria-label={`Stop ${i + 1}`}>{i + 1}</span>
-                        <div className="min-w-0 flex-1">
-                          <button onClick={() => setDetail(s.id)} className="t-headline block text-left min-h-[44px] -my-2" aria-haspopup="dialog">{s.name}</button>
-                          <div className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(s.id, istDate, statusFile, now)} />{hasPass(s.id) && <PassMark />}{!(i === 0 && postsOf(xLive, s.id).some(q => q.photo)) && <PostsMark posts={postsOf(xLive, s.id)} fresh={fresh.has(s.id)} onClick={() => setDetail(s.id)} />}{xLive.crowd[s.id] && <a href={xLive.crowd[s.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[s.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[s.id].at))}</a>}</div>
-                          <p className="t-foot muted mt-0.5 mono-num">
-                            {s.precision === 'station' ? `Approximate${s.station ? ` · near ${s.station}` : ''}` : i === 0 ? (me ? <TravelLine t={travel(s)} /> : null) : `+${fmtDist(hop(stops, i))}`}
-                          </p>
-                          {i === 0 && postsOf(xLive, s.id).find(q => q.photo) && <PostCard p={postsOf(xLive, s.id).find(q => q.photo)!} now={now} compact />}
-                          {i === 0 && s.note && <p className="text-[14px] mt-2" style={{ color: 'var(--sindoor)' }}>{s.note}.</p>}
-                          {i === 0 && <div className="mt-4 -ml-10 -mr-10">
-                            <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="btn btn-uber w-full">Uber here</a>
-                          </div>}
-                          {i > 0 && <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="link-action -mb-2">Uber here<Chev /></a>}
-                        </div>
-                        <button onClick={() => setSkip(new Set(skip).add(s.id))} className="self-start t-foot muted min-h-[44px] min-w-[44px] px-2 -mr-2 -mt-2.5" aria-label={`Skip ${s.name}`}>Skip</button>
-                      </div>
-                    </li>
-                  )
-                })}
-                {skip.size > 0 && <button className="text-[14px] muted font-semibold mt-2 min-h-[44px]" onClick={() => { setSkip(new Set()) }}>Reset {skip.size} done or skipped</button>}
-              </ol>
-            )}
-            {tab === 0 && zone && (
-              <details className="mt-10 group" open>
-                <summary className="list-none cursor-pointer flex items-center justify-between min-h-[48px] border-b hair">
-                  <span className="t-title2">{`All ${ZLABEL[zone]}`}</span>
-                </summary>
-                {(() => { const cs = chips(ordered, filters, keep); return cs.length > 0 && <div className="flex gap-2 mt-3" role="group" aria-label="Filter">{cs.map(c =>
+            {tab === 0 && zone && (() => { const { next, rail } = pagePicks(stops, listed); const cs = chips(ordered, filters, keep)
+              const uber = (s: typeof listed[number]) => uberUrl({ lat: s.lat, lng: s.lng, name: s.name, approx: s.precision === 'station', address: s.precision === 'station' ? `${s.name} Durga Puja, Kolkata` : `${s.name}, Kolkata` } as any, view?.precise && !view.approx ? view : null)
+              return <>
+                {cs.length > 0 && <div className="flex gap-2 mt-4" role="group" aria-label="Filter">{cs.map(c =>
                   <button key={c.key} aria-pressed={c.on} onClick={() => setFilters({ ...filters, [c.key]: !c.on })} className={`chip ${c.on ? 'chip-on' : ''}`}>
-                    {c.key === 'open' ? <span className="w-2 h-2 rounded-full" style={{ background: c.on ? 'currentColor' : 'var(--sindoor)' }} /> : <PassGlyph />}{c.key === 'open' ? 'Open' : 'Pass'}<span className="mono-num chip-n">{c.n}</span></button>)}</div> })()}
-                {listed.length === 0 && <button className="btn btn-quiet w-full mt-4" onClick={() => setFilters(NO_FILTERS)}>Clear filters</button>}
-                <ul className="group-list mt-3">{listed.map((p, r) => (
-                  <li key={p.id}><a href={mapsPlaceUrl(p, p.name + ' Durga Puja')} onClick={e => { e.preventDefault(); setDetail(p.id) }} className="row">
-                    <span className="flex min-w-0"><span className="row-n mono-num" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span><span className="min-w-0"><span className="block truncate">{p.name}</span><span className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline />{hasPass(p.id) && <PassMark />}{p.precision !== 'station' && me && <TravelLine t={p.t} compact />}</span></span></span><span className="flex items-center gap-2 shrink-0"><PostsMark posts={postsOf(xLive, p.id)} fresh={fresh.has(p.id)} /></span></a></li>))}</ul>
-              </details>
-            )}
+                    {c.key === 'open' ? <span className="w-2 h-2 rounded-full" style={{ background: c.on ? 'currentColor' : 'var(--sindoor)' }} /> : <PassGlyph />}{c.key === 'open' ? 'Open' : 'Pass'}<span className="mono-num chip-n">{c.n}</span></button>)}</div>}
+                {!next && <button className="btn btn-quiet w-full mt-4" onClick={() => setFilters(NO_FILTERS)}>Clear filters</button>}
+                {next && <article data-card className="go mt-4 rise relative" key={zone + next.id}>
+                  <button onClick={() => setDetail(next.id)} aria-haspopup="dialog" className="block w-full text-left">
+                    <Photo p={next} x={xLive} big />
+                    <h2 className="t-title px-4 pt-4 pr-14">{next.name}</h2>
+                  </button>
+                  <PickBtn on={picked.includes(next.id)} name={next.name} onClick={() => togglePick(next.id)} />
+                  <div className="px-4 flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(next.id, istDate, statusFile, now)} />{hasPass(next.id) && <PassMark />}{xLive.crowd[next.id] && <a href={xLive.crowd[next.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[next.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[next.id].at))}</a>}</div>
+                  <p className="px-4 t-foot muted mono-num mt-1">{next.precision === 'station' ? `Approximate${next.station ? ` · near ${next.station}` : ''}` : me ? <TravelLine t={travel(next)} /> : null}</p>
+                  <div className="p-4 pt-3 flex gap-2 items-center">
+                    <a href={uber(next)} className="btn btn-uber flex-1">Uber here</a>
+                    <button onClick={() => setSkip(new Set(skip).add(next.id))} className="t-foot muted min-h-[44px] min-w-[44px] px-3" aria-label={`Skip ${next.name}`}>Skip</button>
+                  </div>
+                </article>}
+                {rail.length > 0 && <ul className="rail mt-5 -mx-5 px-5" aria-label={`More in ${ZLABEL[zone]}`} onTouchStart={e => e.stopPropagation()} onTouchEnd={e => e.stopPropagation()}>
+                  {rail.map(p => { const s = statusOf(p.id, istDate, statusFile, now)
+                    return <li key={p.id} data-card className="rail-item relative">
+                      <PickBtn on={picked.includes(p.id)} name={p.name} onClick={() => togglePick(p.id)} />
+                      <button onClick={() => setDetail(p.id)} aria-haspopup="dialog" className="block w-full text-left">
+                        <span className="relative block"><Photo p={p} x={xLive} />
+                          <span className="rail-marks">{isOpen(s) && <span className="rail-dot" title={s!.label} />}{hasPass(p.id) && <span className="rail-pass"><PassGlyph /></span>}</span></span>
+                        <span className="block t-body font-medium mt-2 line-clamp-2 leading-snug">{p.name}</span>
+                        <span className="sr-only">{[s?.label, hasPass(p.id) ? 'Pujor Passport' : null].filter(Boolean).join(', ')}</span>
+                        {p.precision !== 'station' && me && <span className="block mt-0.5"><TravelLine t={p.t} compact /></span>}
+                      </button>
+                    </li> })}
+                  {routeUrl && <li className="rail-item rail-end"><a href={routeUrl} target="_blank" rel="noopener" className="btn btn-walk w-full">Walk all in Maps</a><button onClick={share} className="btn btn-quiet w-full mt-2" aria-label="Share route">Share</button></li>}
+                </ul>}
+                {skip.size > 0 && <button className="text-[14px] muted font-semibold mt-3 min-h-[44px]" onClick={() => setSkip(new Set())}>Reset {skip.size} skipped</button>}
+              </>
+            })()}
             {tab === 1 && help && <AmenityList items={help.food} empty="Nothing mapped nearby." meta={f => [f.notable ? 'Kolkata classic' : null, f.cuisine && f.cuisine[0].toUpperCase() + f.cuisine.slice(1)].filter(Boolean).join(' · ')} />}
                         {tab === 2 && help && <AmenityList items={help.toilets} empty="None mapped nearby." meta={t => [t.fee === 'yes' ? 'Paid' : t.fee === 'no' ? 'Free' : null].filter(Boolean).join('')} />}
             {tab === 3 && help && (
@@ -402,14 +403,35 @@ export default function App() {
         </main>
       )}
 
-      {view && plan && !plan.outOfRange && !picking && routeUrl && (
-        <div className="dock fixed inset-x-0 bottom-0 z-20 safe-b px-5 pt-3">
-          <div className="mx-auto max-w-[560px] flex gap-2">
-            <a href={routeUrl} target="_blank" rel="noopener" className="btn btn-walk flex-1">Walk all in Maps</a>
-            <button onClick={share} className="btn btn-ghost px-5" aria-label="Share route">Share</button>
+      {view && plan && !picking && picked.length >= 2 && <button className="walk-pill" onClick={() => setWalkOpen(true)}>Walk {picked.length}</button>}
+      {walkOpen && (() => { const ps = picked.map(id => P.located.find(p => p.id === id)).filter(Boolean) as typeof P.located
+        const start: LatLng = me ?? view ?? ZONE_ANCHOR.central
+        const w = planWalk(start, ps, { cost: (a, b) => roadEstimate(roads, a, b).walkM / (TRAVEL.walkMps * 60), closed: id => statusOf(id, istDate, statusFile, now)?.key === 'closed' })
+        const legs = w.stops.length ? walkLegs(start, w.stops) : [], hopMin = (i: number) => Math.max(1, Math.round(roadEstimate(roads, i ? w.stops[i - 1] : start, w.stops[i]).walkM / (TRAVEL.walkMps * 60)))
+        const name = (id: string) => P.located.find(p => p.id === id)?.name ?? id
+        return <>
+          <div className="sheet-backdrop" onClick={() => setWalkOpen(false)} />
+          <div className="sheet max-h-[88dvh] overflow-y-auto overscroll-contain" role="dialog" aria-modal="true" aria-label="Walk" {...dragToClose(() => setWalkOpen(false))}>
+            <div className="grabber" />
+            <div className="flex items-start justify-between gap-3">
+              <h2 className="t-title">Walk · <span className="mono-num">{w.totalMin} min</span></h2>
+              <button onClick={() => setWalkOpen(false)} className="close-x mt-0.5" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 1.5l9 9M10.5 1.5l-9 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></button>
+            </div>
+            <ol className="mt-4">{w.stops.map((p, i) => <li key={p.id} className="flex items-center gap-3 py-3 border-b hair last:border-b-0">
+              <span className="stop-n mono-num" style={{ color: i === 0 ? 'var(--sindoor)' : 'var(--muted)' }}>{i + 1}</span>
+              <span className="flex-1 min-w-0 t-body font-medium truncate">{p.name}</span>
+              <span className="t-foot muted mono-num">{hopMin(i)} min</span></li>)}</ol>
+            {(w.closed.length > 0 || w.approx.length > 0) && <p className="t-foot muted mt-3">Left out: {[...w.closed.map(id => `${name(id)} (closed)`), ...w.approx.map(id => `${name(id)} (no exact location)`)].join(', ')}</p>}
+            <div className="mt-5 space-y-2">{legs.map((u, i) => <a key={u} href={u} target="_blank" rel="noopener" className="btn btn-walk w-full">{legs.length > 1 ? `Google Maps · part ${i + 1} of ${legs.length}` : 'Open in Google Maps'}</a>)}
+              <button className="btn btn-quiet w-full" onClick={() => { clearPicked(); setWalkOpen(false) }}>Clear</button></div>
           </div>
+        </> })()}
+      {view && plan && !picking && (
+        <div className="dock dock-solid fixed inset-x-0 bottom-0 z-20 safe-b px-5 pt-3">
+          <div className="mx-auto max-w-[560px]"><ZoneSwitch zone={plan?.outOfRange ? null : zone ?? ownZone ?? 'north'} onChange={setZone} mine={ownZone} /></div>
         </div>
       )}
+
 
       <details className={`text-[12px] muted ${view && !picking ? 'pb-32' : 'pb-4'}`}>
         <summary className="cursor-pointer list-none inline-flex items-center gap-1 min-h-[44px]" aria-label="Sources"><Info /> Sources</summary>
@@ -441,20 +463,12 @@ function useStableOrder() {
     const by = new Map(next.map(x => [x.id, x])); return shown.current.map(id => by.get(id)!)
   }
 }
-function PostsMark({ posts, fresh, onClick }: { posts: XPost[]; fresh?: boolean; onClick?: () => void }) {
-  if (!posts.length) return null
-  const pics = posts.filter(q => q.photo).slice(0, 3)
-  const body = <>
-    <span className="relative inline-flex">
-      {pics.length ? pics.map((q, k) => <img key={q.url} src={sized(q.photo!, 'small')} alt="" loading="lazy" decoding="async" className="xthumb" style={{ marginLeft: k ? -7 : 0, zIndex: 3 - k }} />)
-        : <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" style={{ color: 'var(--muted)' }}><path fill="currentColor" d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77L17.75 3Zm-1.08 16.2h1.7L7.4 4.73H5.58L16.67 19.2Z"/></svg>}
-      {fresh && <span className="xfresh" aria-label="New" />}
-    </span>
-    <span className="muted text-[13px] mono-num font-medium">{posts.length}</span>
-  </>
-  const cls = 'inline-flex items-center gap-1.5 align-middle'
-  const label = `${posts.length} post${posts.length > 1 ? 's' : ''} from visitors on X${fresh ? ', new' : ''}`
-  return onClick ? <button onClick={onClick} className={`${cls} min-h-[44px] min-w-[44px] justify-center -my-2`} aria-label={label}>{body}</button> : <span className={cls} aria-label={label}>{body}</span>
+/** Card photo: newest visitor photo from X, else a quiet tinted tile with the initial. */
+function Photo({ p, x, big }: { p: { id: string; name: string }; x: XLive; big?: boolean }) {
+  const src = postsOf(x, p.id).find(q => q.photo)?.photo, [bad, setBad] = useState(false)
+  return <span className={`photo block ${big ? 'photo-big' : ''}`}>{src && !bad
+    ? <img src={sized(src, big ? 'medium' : 'small')} alt="" loading="lazy" decoding="async" onError={() => setBad(true)} />
+    : <span className="photo-ph" aria-hidden="true" />}</span>
 }
 const PUBS: Record<string, string> = { 'timesofindia.indiatimes.com': 'Times of India', 'telegraphindia.com': 'The Telegraph', 'anandabazar.com': 'Anandabazar', 'thehindu.com': 'The Hindu', 'indianexpress.com': 'Indian Express', 'hindustantimes.com': 'Hindustan Times', 'ndtv.com': 'NDTV', 'aninews.in': 'ANI', 'millenniumpost.in': 'Millennium Post', 'thestatesman.com': 'The Statesman' }
 /** Who said so: '@handle' for an X post, the publication for an article. */
@@ -575,11 +589,6 @@ function dragToClose(close: () => void) {
   }
 }
 function ago(ms: number) { const m = Math.round(ms / 60000); return m < 1 ? 'just now' : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} d ago` }
-function hop(s: LatLng[], i: number) { return hav(s[i - 1], s[i]) }
-
-function Notice({ children, tone }: { children: React.ReactNode; tone: 'gold' }) {
-  return <p className={`mt-4 text-[14.5px] rounded-[12px] px-4 py-3 tag-${tone}`} style={{ textTransform: 'none', letterSpacing: 0, fontWeight: 500 }}>{children}</p>
-}
 function AmenityList({ items, empty, meta }: { items: Array<Amenity & { dist: number }>; empty: string; meta: (a: Amenity) => string }) {
   if (!items.length) return <p className="mt-6 muted text-[15px]">{empty}</p>
   return (
@@ -594,4 +603,12 @@ function AmenityList({ items, empty, meta }: { items: Array<Amenity & { dist: nu
       ))}
     </ul>
   )
+}
+function Notice({ children, tone }: { children: React.ReactNode; tone: 'gold' }) {
+  return <p className={`mt-4 text-[14.5px] rounded-[12px] px-4 py-3 tag-${tone}`} style={{ textTransform: 'none', letterSpacing: 0, fontWeight: 500 }}>{children}</p>
+}
+function PickBtn({ on, name, onClick }: { on: boolean; name: string; onClick: () => void }) {
+  return <button onClick={onClick} aria-pressed={on} aria-label={on ? `Remove ${name} from walk` : `Add ${name} to walk`} className={`pick ${on ? 'pick-on' : ''}`}>
+    <span className="pick-dot">{on && <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.3 4.7-5" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round"/></svg>}</span>
+  </button>
 }

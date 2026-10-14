@@ -17,7 +17,7 @@ const fails = []; const ok = (c, m) => { if (!c) fails.push(m) }
   ok(!unnamed.length, `unnamed controls: ${unnamed.slice(0, 5).join(' | ')}`)
   // Gestures: no long tasks > 50ms while opening, dragging and closing the sheet, and while scrolling.
   const t0 = await p.evaluate(() => performance.now())
-  await p.locator('details ul li a, ul li button[aria-haspopup=dialog]').nth(1).tap(); await p.waitForTimeout(500)
+  await p.locator('[data-card] [aria-haspopup=dialog]').nth(1).tap(); await p.waitForTimeout(500)
   const bx = await p.locator('[role=dialog]').boundingBox(); await p.mouse.move(bx.x + 150, bx.y + 20); await p.mouse.down(); for (let i = 1; i <= 12; i++) { await p.mouse.move(bx.x + 150, bx.y + 20 + i * 15); await p.waitForTimeout(16) } await p.mouse.up(); await p.waitForTimeout(600)
   for (let i = 0; i < 10; i++) { await p.mouse.wheel(0, 300); await p.waitForTimeout(30) }
   const lt = await p.evaluate(t0 => window.__lt.filter(([at, d]) => at > t0 && d > 50), t0); ok(!lt.length, `long tasks during gestures: ${lt.map(x => Math.round(x[1]) + 'ms').join(',')}`)
@@ -32,7 +32,7 @@ const fails = []; const ok = (c, m) => { if (!c) fails.push(m) }
   // Reduced motion: sheet and list entrance animations off.
   const c2 = await b.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true, reducedMotion: 'reduce', geolocation: { latitude: 22.5164, longitude: 88.3372, accuracy: 15 }, permissions: ['geolocation'] })
   const q = await c2.newPage(); await q.goto(url, { waitUntil: 'networkidle' }); await q.getByRole('button', { name: 'Near me' }).tap(); await q.waitForTimeout(1200)
-  await q.locator('details ul li a, ul li button[aria-haspopup=dialog]').nth(1).tap(); await q.waitForTimeout(100)
+  await q.locator('[data-card] [aria-haspopup=dialog]').nth(1).tap(); await q.waitForTimeout(100)
   const anim = await q.evaluate(() => [...document.querySelectorAll('*')].filter(e => { const s = getComputedStyle(e); return s.animationName !== 'none' && parseFloat(s.animationDuration) > 0.01 && !/spin/.test(s.animationName) }).map(e => e.className.toString().slice(0, 30) + ':' + getComputedStyle(e).animationName).slice(0, 5))
   ok(!anim.length, `animations under reduced motion: ${anim.join(', ')}`)
   await b.close()

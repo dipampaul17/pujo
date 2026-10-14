@@ -159,3 +159,26 @@ a.status .status-src { text-decoration: underline; text-decoration-color: var(--
 .chip-on { background: var(--ink); color: var(--bg); }
 .chip-on svg { color: currentColor; }
 @media (prefers-reduced-motion: reduce) { .chip { transition: none; } }
+/* Zone page: one go-next card + a swipeable rail. Each pandal once. */
+.go { background: var(--surface); border-radius: 20px; overflow: hidden; border: 1px solid color-mix(in oklab, var(--ink) 8%, transparent); }
+.photo { position: relative; overflow: hidden; border-radius: 14px; aspect-ratio: 4 / 3; background: color-mix(in oklab, var(--ink) 6%, var(--bg)); }
+.photo-big { border-radius: 0; aspect-ratio: 16 / 10; }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-ph { position: absolute; inset: 0; }
+.rail { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 20px; padding-bottom: 6px; scrollbar-width: none; overscroll-behavior-x: contain; }
+.rail::-webkit-scrollbar { display: none; }
+.rail-item { flex: 0 0 152px; scroll-snap-align: start; }
+.rail-item > button { min-height: 44px; }
+.rail-end { display: flex; flex-direction: column; justify-content: center; flex-basis: 168px; }
+.rail-marks { position: absolute; top: 8px; left: 8px; display: flex; gap: 6px; align-items: center; }
+.rail-dot { width: 10px; height: 10px; border-radius: 999px; background: var(--sindoor); outline: 2px solid var(--surface); }
+.rail-pass { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 999px; background: var(--surface); color: var(--sindoor); }
+.dock.dock-solid { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--bg); border-top: 1px solid color-mix(in oklab, var(--ink) 8%, transparent); }
+@media (prefers-reduced-motion: no-preference) { .rail-item { transition: transform .2s; } .rail-item:active { transform: scale(.97); } }
+.pick { position: absolute; top: 2px; right: 2px; width: 44px; height: 44px; display: grid; place-items: center; z-index: 2; }
+.pick-dot { width: 26px; height: 26px; border-radius: 999px; display: grid; place-items: center; background: var(--surface); border: 1.5px solid color-mix(in oklab, var(--ink) 22%, transparent); color: var(--bg); transition: background .15s, border-color .15s; }
+.pick-on .pick-dot { background: var(--sindoor); border-color: var(--sindoor); }
+.go .pick { top: 8px; right: 8px; }
+.walk-pill { position: fixed; right: 20px; bottom: calc(env(safe-area-inset-bottom) + 84px); z-index: 25; min-height: 48px; padding: 0 22px; border-radius: 999px; background: var(--ink); color: var(--bg); font-weight: 600; font-size: 16px; }
+@media (prefers-reduced-motion: no-preference) { .walk-pill { animation: pill-in .25s ease-out; } @keyframes pill-in { from { transform: translateY(12px); opacity: 0 } } }
+@media (prefers-reduced-motion: reduce) { .pick-dot { transition: none; } }
