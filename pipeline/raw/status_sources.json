@@ -1,5 +1,5 @@
 {
- "_source": "Hand-checked X evidence only (url, date, what it says). Re-verified on X 2026-10-13 20:49 IST. Web/news links are not evidence.",
+ "_source": "Hand-checked X evidence only (url, date, what it says). Re-verified on X 2026-10-13 23:11 IST. Web/news links are not evidence.",
  "santosh-mitra-square": [
   {
    "url": "https://x.com/Ei_Samay/status/2109495140574441756",
@@ -94,6 +94,73 @@
    "url": "https://x.com/SuvenduWB/status/2109717078550978709",
    "at": "2026-10-12",
    "text": "CM Suvendu Adhikari (12 Oct): attended the inauguration ceremonies of 📍 লেকপল্লী সার্বজনীন, সন্তোষপুর and 📍 ২৫ পল্লী সার্বজনীন, খিদিরপুর ",
+   "primary": true
+  }
+ ],
+ "bosepukur-sitala-mandir": [
+  {
+   "url": "https://x.com/rathindraOFC/status/2110020899969630508",
+   "at": "2026-10-13",
+   "text": "আজ কসবায় বোসপুকুর শীতলা মন্দির দুর্গোৎসব কমিটির দুর্গাপুজোর শুভ উদ্বোধন করলাম। (Rathindra Bose, with photos)",
+   "primary": true
+  },
+  {
+   "url": "https://x.com/TheWallTweets/status/2110006276986130827",
+   "at": "2026-10-13",
+   "text": "বোসপুকুর শীতলা মন্দিরের পুজো উদ্বোধনে স্পিকার রথীন্দ্র বোস (The Wall)",
+   "outlet": true
+  }
+ ],
+ "tala-barowari": [
+  {
+   "url": "https://x.com/IndiContractor/status/2108959990174323066",
+   "at": "2026-10-10",
+   "text": "📍 Tala Barowari, Kolkata — first-hand visitor video",
+   "primary": true
+  }
+ ],
+ "bakul-bagan": [
+  {
+   "url": "https://x.com/SudhanidhiB/status/2110062708020461966",
+   "at": "2026-10-13",
+   "text": "#9 Visited Bakul Bagan — first-hand visitor photo (trusted)",
+   "primary": true
+  }
+ ],
+ "allen-park-sarbojanin": [
+  {
+   "url": "https://x.com/drabhinabapal7/status/2110049611515863519",
+   "at": "2026-10-13",
+   "text": "Maa Durga at Allen Park, Park Street (visitor photos)",
+   "primary": true
+  },
+  {
+   "url": "https://x.com/SuvenduWB/status/2109717078550978709",
+   "at": "2026-10-12",
+   "text": "CM attended the inauguration: অ্যালেন পার্ক সার্বজনীন, পার্ক স্ট্রীট"
+  }
+ ],
+ "kalighat-milan-sangha": [
+  {
+   "url": "https://x.com/ians_india/status/2110039896585052233",
+   "at": "2026-10-13",
+   "text": "Mamata Banerjee attended the inauguration ceremony of Kalighat Milan Sangha (IANS)",
+   "primary": true
+  }
+ ],
+ "behala-arunoday-samiti": [
+  {
+   "url": "https://x.com/SuvenduWB/status/2109717078550978709",
+   "at": "2026-10-12",
+   "text": "CM attended the inauguration: অরুণোদয় সমিতি, বেহালা",
+   "primary": true
+  }
+ ],
+ "club-muktadal-bhowanipur": [
+  {
+   "url": "https://x.com/SuvenduWB/status/2109717078550978709",
+   "at": "2026-10-12",
+   "text": "CM attended the inauguration: ক্লাব মুক্তদল সার্বজনীন, ভবানীপুর",
    "primary": true
   }
  ]

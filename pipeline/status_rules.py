@@ -15,7 +15,7 @@ Uncertain posts are rejected, never guessed."""
 import re
 FIRST_DAY = '2026-10-10'
 OUTLETS = {  # X handles and web domains of news organisations
- 'ani','pti_news','ians_tweets','ei_samay','eisamay','thewalltweets','timesofindia','toikolkata','telegraph_kol','ttindia',
+ 'ani','pti_news','ians_tweets','ians_india','ei_samay','eisamay','thewalltweets','timesofindia','toikolkata','telegraph_kol','ttindia',
  'abpanandatv','abpananda','anandabazar','republic_bangla','news18bengali','zee24ghanta','thedailyjagran','indiatoday','ndtv',
  'htkolkata','suvenduwb','hindustantimes','cmowbgov','newsarenaindia','sangbadpratidin','bengalbuzz',
  'timesofindia.indiatimes.com','telegraphindia.com','anandabazar.com','eisamay.com','thewall.in','abplive.com','ndtv.com',

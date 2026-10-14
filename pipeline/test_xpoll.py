@@ -32,13 +32,13 @@ def _ingest(posts):
 def test_wide_ingest():
     fresh()
     _ingest([('2026-10-12T14:00:00Z','Behala Club Durga Puja inaugurated tonight in Kolkata'),
-             ('2026-10-12T15:00:00Z','Minister inaugurated Jodhpur Park Sarbojanin Durga Puja in Kolkata today'),
+             ('2026-10-12T15:00:00Z','Minister inaugurated Garfa Sammilani Sarbojanin Durga Puja in Kolkata today'),
              ('2026-10-12T16:00:00Z','Kolkata: Lake Town Adhibasi Brinda will inaugurate on Friday'),
              ('2026-10-08T16:00:00Z','Inaugurated Golf Green Sarbojanin pandal Kolkata')])
     assert 'behala-club' in X.live['open']
     c=json.load(open(X.CANDS))['items']
-    assert len(c)==1 and any('Jodhpur Park Sarbojanin' in n for n in c[0]['names']), c
-    assert not any('jodhpur' in k for k in X.live['open'])
+    assert len(c)==1 and any('Garfa Sammilani Sarbojanin' in n for n in c[0]['names']), c
+    assert not any('garfa' in k for k in X.live['open'])
     print('ok wide ingest')
 if __name__=='__main__': test_rotation(); test_wide_ingest()
 
@@ -53,11 +53,29 @@ def test_cm_inauguration_list_opens_named_pandals():
     X.now=dt.datetime(2026,10,13,16,0,tzinfo=dt.UTC)
     with contextlib.redirect_stdout(io.StringIO()): X.ingest([f])
     got=set(X.live['open'])
-    assert {'tala-prattoy','chorebagan-sarbojanin','santoshpur-lake-pally','chetla-agrani','25-pally-khidirpur'}<=got, got
-    assert not got-{'tala-prattoy','chorebagan-sarbojanin','santoshpur-lake-pally','chetla-agrani','25-pally-khidirpur'}, got
+    assert {'tala-prattoy','chorebagan-sarbojanin','santoshpur-lake-pally','chetla-agrani','25-pally-khidirpur','behala-arunoday-samiti','club-muktadal-bhowanipur','allen-park-sarbojanin'}<=got, got
+    assert not got-{'tala-prattoy','chorebagan-sarbojanin','santoshpur-lake-pally','chetla-agrani','25-pally-khidirpur','behala-arunoday-samiti','club-muktadal-bhowanipur','allen-park-sarbojanin'}, got
     print('ok cm list')
 def test_inaugurators_polled_in_existing_call():
     per,_,_=simulate(4)
     assert all(len(q)<=3 for q in per)
     assert any('from:suvenduwb' in q['args']['query'] and 'from:cmowbgov' in q['args']['query'] for qs in per for q in qs)
     assert all('note_tweet' in q['args']['post.fields'] for qs in per for q in qs)
+def test_trusted_handles_match_real_accounts():
+    # @IndiContractor was vetted 13 Oct; the set is compared against lower-cased X usernames.
+    assert 'indicontractor' in X.TRUSTED, X.TRUSTED
+def test_daily_budget_with_evening_priority():
+    t0=dt.datetime(2026,10,14,0,0,tzinfo=dt.UTC)  # 05:30 IST reset
+    tot=sum(X.calls_for(t0+dt.timedelta(minutes=5*i)) for i in range(288))
+    assert tot<=600, tot                            # leaves >=400 of 1000 for sweeps
+    assert X.calls_for(dt.datetime(2026,10,14,14,30,tzinfo=dt.UTC))==3   # 20:00 IST
+    assert X.calls_for(dt.datetime(2026,10,14,4,30,tzinfo=dt.UTC))==1    # 10:00 IST
+def test_quiet_hours_rotation_covers_everything():
+    fresh(); kinds=[]
+    for i in range(8):
+        X.now=dt.datetime(2026,10,14,4,0,tzinfo=dt.UTC)+dt.timedelta(minutes=5*i)
+        with contextlib.redirect_stdout(io.StringIO()): qs=X.plan()
+        assert len(qs)==1
+        q=qs[0]; kinds.append('wide' if q.get('kind')=='wide' else 'trusted' if 'from:suvenduwb' in q['args']['query'] else 'pass' if set(q['ids'])&X.PASS else 'rest')
+        for i2 in q['ids']: X.live['polled'][i2]=X.now.isoformat()
+    assert {'wide','trusted','pass','rest'}<=set(kinds), kinds

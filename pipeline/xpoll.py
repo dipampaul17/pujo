@@ -40,7 +40,12 @@ SIGNAL_Q=('((Kolkata OR pandal OR pujo OR puja OR কলকাতা OR পু�
 WIDE_MIN=30
 WIDE_Q=('((inaugurated OR inaugurates OR inauguration OR udbodhon OR "udbodhon holo" OR উদ্বোধন OR উদ্বোধনে OR "pandal open" OR "pandal opened" OR "opened to public" OR "open for visitors" OR "khule geche")'
   ' (Kolkata OR Calcutta OR কলকাতা OR "durga puja" OR "durga pujo" OR দুর্গাপুজো OR দুর্গাপূজা OR pandal OR pujo OR পুজো)) -is:retweet')
-def plan(n=3):
+def calls_for(t):
+    """X calls for a run at UTC time t. Evening priority: 15:00-02:00 IST = 3 calls; otherwise 1.
+    288 runs/day -> 132*3 + 156*1 = 552 calls, leaving ~450 of the 1000/day (resets 05:30 IST) for sweeps."""
+    h=(t+dt.timedelta(hours=5,minutes=30)).hour
+    return 3 if (h>=15 or h<2) else 1
+def plan(n=None):
     """Run plan: q1 = top-ranked (last 24h, for fresh photos/crowd); q2..n = stalest pandals packed densely,
     searched back to SEASON so an opening is caught even if nobody posted in the last day. Open pandals that
     are already confirmed are deprioritised for discovery (their evidence is sticky)."""
@@ -64,6 +69,13 @@ def plan(n=3):
         qs=[q(top,since,' -is:retweet',True)]+pq+[{'ids':[],'kind':'wide','args':{'query':WIDE_Q,'max_results':50,'sort_order':'recency','start_time':(now-dt.timedelta(minutes=WIDE_MIN)).strftime('%Y-%m-%dT%H:%M:%SZ'),**FIELDS}}]
     else:
         qs=[q(g,OPEN_FLOOR,tail) for g in pack(rest,tail)[:1]]+pq+[{'ids':[],'kind':'signal','args':{'query':SIGNAL_Q,'max_results':25,'sort_order':'recency','start_time':(now-dt.timedelta(hours=SIG.WINDOW_H)).strftime('%Y-%m-%dT%H:%M:%SZ'),**FIELDS}}]
+    n=calls_for(now) if n is None else n
+    if n==1:  # quiet hours: one call, rotating pass pandals, other pandals, wide openings, top+trusted/CM
+        r=int(now.timestamp()//300)%4
+        one=[pq, [q(g,OPEN_FLOOR,tail) for g in pack(rest,tail)[:1]],
+             [{'ids':[],'kind':'wide','args':{'query':WIDE_Q,'max_results':50,'sort_order':'recency','start_time':(now-dt.timedelta(minutes=WIDE_MIN*4)).strftime('%Y-%m-%dT%H:%M:%SZ'),**FIELDS}}],
+             [q(top,since,' -is:retweet',True)]][r]
+        qs=one
     qs=qs[:n]
     write_json(f'{ST}/xplan.json',{'at':now.isoformat(),'queries':qs},indent=1,ensure_ascii=False); print(json.dumps(qs,ensure_ascii=False)); return qs
 PROMO=re.compile(r'\b(offer|discount|sale|book now|giveaway|sponsor|promo|ad\b|link in bio|watch live|subscribe|tickets?|to arrive|will inaugurate|to inaugurate|scheduled|throwback|last year|2025|2024|#tbt|AI generated|AI art|how to reach|walking route|route guide|kivabe)\b',re.I)

@@ -16,5 +16,12 @@ every source and sticky open. It clears only on a first-hand X visitor post date
 
 **Sticky.** Once open on X evidence, a pandal stays open; only explicit closure evidence or an override downgrades it.
 
-**Loop (every 5 min, 3 X calls, 864/day < 1000):** even runs: top 6 + trusted visitors, pass pandals, wide openings
-search; odd runs: stalest/lead pandals, pass pandals, street signals. Then `xpoll.py ingest`, then `status.py`.
+**Open count.** The one Open set is `public/live/status.json` (X evidence + overrides), which is what the app shows.
+Report it with `python3 pipeline/open_count.py`. `state/xlive.json` `open` is only the poller's raw input to `status.py`.
+
+**X budget: 1000/day, resets 05:30 IST.** The 5-minute refresh (`xpoll.py plan`) spends:
+- 15:00-02:00 IST (evening priority): 3 calls/run: even runs top 6 + trusted visitors + CM/CMO, pass pandals, wide
+  openings; odd runs other pandals, pass pandals, street signals.
+- 02:00-15:00 IST: 1 call/run, rotating pass pandals, other pandals, wide openings (2 h window), top + trusted/CM.
+- Total 552/day. Sweeps get the remaining ~450: at most 1 X call per sweep, and no wide openings search in a sweep
+  (the refresh already runs it). Before any extra call, check "X reads left"; below 100 left, sweeps make no X calls.

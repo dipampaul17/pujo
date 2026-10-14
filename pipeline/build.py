@@ -87,6 +87,7 @@ data={'version':1,'source':{'guide':'Travel With Preet, Kolkata Durga Puja Panda
  'pandals':sorted(pandals,key=key),'food':sorted(food,key=key),'toilets':sorted(toilets,key=key),'medical':sorted(medical,key=key),'police':sorted(police,key=key),'stations':stations}
 sys.path.insert(0,os.path.dirname(os.path.abspath(__file__))); import apply_pins; print('pin audit applied',apply_pins.apply(data))
 sys.path.insert(0,os.path.join(os.path.dirname(os.path.abspath(__file__)),'passport')); import make as passport; print('passport pandals added',passport.apply(data))
+import south_add; print('south pandals added',south_add.apply(data))
 s=json.dumps(data,separators=(',',':'),ensure_ascii=False); data['hash']=hashlib.sha1(s.encode()).hexdigest()[:8]
 os.makedirs('src/data',exist_ok=True); json.dump(data,open(sys.argv[2],'w'),separators=(',',':'),ensure_ascii=False)
 from collections import Counter
