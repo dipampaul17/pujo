@@ -109,8 +109,8 @@ export default function App() {
     const show = (e: PageTransitionEvent) => { if (e.persisted) { setEntered(false); sheetRef.current.open = false; setDetailRaw(null); setPickingRaw(false); if (history.state?.v) history.back() } top() }
     window.addEventListener('pageshow', show); return () => window.removeEventListener('pageshow', show)
   }, [])
-  const [tab, setTabRaw] = useState(() => +(sessionStorage.getItem('dhaak.tab') || 0))
-  const setTab = (t: number) => { setTabRaw(t); try { sessionStorage.setItem('dhaak.tab', String(t)) } catch {} }
+  const [tab, setTab] = useState(0) // 0 = zone page; 1-3 = Food / Toilets / Help sheet
+  useEffect(() => { if (!tab) return; const k = (e: KeyboardEvent) => e.key === 'Escape' && setTab(0); window.addEventListener('keydown', k); return () => window.removeEventListener('keydown', k) }, [tab])
   const [skip, setSkip] = useState<Set<string>>(() => { try { return new Set(JSON.parse(sessionStorage.getItem('dhaak.skip') || '[]')) } catch { return new Set() } })
   useEffect(() => { try { sessionStorage.setItem('dhaak.skip', JSON.stringify([...skip])) } catch {} }, [skip])
   const [toast, setToast] = useState<string | null>(null)
@@ -314,19 +314,12 @@ export default function App() {
 
 
             
-            {live && <a href={live.link} target="_blank" rel="noopener" className="now-strip mt-3"><span className="now-dot" /><span className="flex-1 line-clamp-2">{live.title}</span></a>}
 
-            <div className="mt-6">
-              <Segmented label="Sections" items={['Pandals', 'Food', 'Toilets', 'Help']} value={tab} onChange={setTab} />
-            </div>
 
-            {tab === 0 && zone && (() => { const { next, rail } = pagePicks(stops, listed); const cs = chips(ordered, filters, keep)
+            {zone && (() => { const { next, rail } = pagePicks(stops, listed); const cs = chips(ordered, filters, keep)
               const uber = (s: typeof listed[number]) => uberUrl({ lat: s.lat, lng: s.lng, name: s.name, approx: s.precision === 'station', address: s.precision === 'station' ? `${s.name} Durga Puja, Kolkata` : `${s.name}, Kolkata` } as any, view?.precise && !view.approx ? view : null)
               return <>
-                {cs.length > 0 && <div className="flex gap-2 mt-4" role="group" aria-label="Filter">{cs.map(c =>
-                  <button key={c.key} aria-pressed={c.on} onClick={() => setFilters({ ...filters, [c.key]: !c.on })} className={`chip ${c.on ? 'chip-on' : ''}`}>
-                    {c.key === 'open' ? <span className="w-2 h-2 rounded-full" style={{ background: c.on ? 'currentColor' : 'var(--sindoor)' }} /> : <PassGlyph />}{c.key === 'open' ? 'Open' : 'Pass'}<span className="mono-num chip-n">{c.n}</span></button>)}</div>}
-                {!next && <button className="btn btn-quiet w-full mt-4" onClick={() => setFilters(NO_FILTERS)}>Clear filters</button>}
+{!next && <button className="btn btn-quiet w-full mt-4" onClick={() => setFilters(NO_FILTERS)}>Clear filters</button>}
                 {next && <article data-card className="go mt-4 rise relative" key={zone + next.id}>
                   <button onClick={() => setDetail(next.id)} aria-haspopup="dialog" className="block w-full text-left">
                     <Photo p={next} x={xLive} big />
@@ -354,9 +347,22 @@ export default function App() {
                     </li> })}
                   {routeUrl && <li className="rail-item rail-end"><a href={routeUrl} target="_blank" rel="noopener" className="btn btn-walk w-full">Walk all in Maps</a><button onClick={share} className="btn btn-quiet w-full mt-2" aria-label="Share route">Share</button></li>}
                 </ul>}
-                {skip.size > 0 && <button className="text-[14px] muted font-semibold mt-3 min-h-[44px]" onClick={() => setSkip(new Set())}>Reset {skip.size} skipped</button>}
+                <div className="mt-8 border-t hair pt-4">
+                {cs.length > 0 && <div className="flex gap-2 " role="group" aria-label="Filter">{cs.map(c =>
+                  <button key={c.key} aria-pressed={c.on} onClick={() => setFilters({ ...filters, [c.key]: !c.on })} className={`chip ${c.on ? 'chip-on' : ''}`}>
+                    {c.key === 'open' ? <span className="w-2 h-2 rounded-full" style={{ background: c.on ? 'currentColor' : 'var(--sindoor)' }} /> : <PassGlyph />}{c.key === 'open' ? 'Open' : 'Pass'}<span className="mono-num chip-n">{c.n}</span></button>)}</div>}
+                                  <div className="flex gap-2 mt-3">{['Food', 'Toilets', 'Help'].map((t, i) => <button key={t} className="btn btn-quiet flex-1" aria-haspopup="dialog" onClick={() => setTab(i + 1)}>{t}</button>)}</div>
+                  {live && <a href={live.link} target="_blank" rel="noopener" className="now-strip mt-3"><span className="now-dot" /><span className="flex-1 line-clamp-2">{live.title}</span></a>}
+                  {skip.size > 0 && <button className="text-[14px] muted font-semibold mt-3 min-h-[44px]" onClick={() => setSkip(new Set())}>Reset {skip.size} skipped</button>}
+                </div>
               </>
             })()}
+            {tab > 0 && help && <>
+              <div className="sheet-backdrop" onClick={() => setTab(0)} />
+              <div className="sheet max-h-[88dvh] overflow-y-auto overscroll-contain" role="dialog" aria-modal="true" aria-label={['', 'Food', 'Toilets', 'Help'][tab]} {...dragToClose(() => setTab(0))}>
+                <div className="grabber" />
+                <div className="flex items-start justify-between gap-3"><h2 className="t-title">{['', 'Food', 'Toilets', 'Help'][tab]}</h2>
+                  <button onClick={() => setTab(0)} className="close-x mt-0.5" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 1.5l9 9M10.5 1.5l-9 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></button></div>
             {tab === 1 && help && <AmenityList items={help.food} empty="Nothing mapped nearby." meta={f => [f.notable ? 'Kolkata classic' : null, f.cuisine && f.cuisine[0].toUpperCase() + f.cuisine.slice(1)].filter(Boolean).join(' · ')} />}
                         {tab === 2 && help && <AmenityList items={help.toilets} empty="None mapped nearby." meta={t => [t.fee === 'yes' ? 'Paid' : t.fee === 'no' ? 'Free' : null].filter(Boolean).join('')} />}
             {tab === 3 && help && (
@@ -366,6 +372,8 @@ export default function App() {
                 <AmenityList items={help.medical} empty="Nothing mapped nearby." meta={m => (m.kind === 'police' ? 'Police' : 'Medical')} />
               </div>
             )}
+              </div>
+            </>}
 
           </>)}
           {detail && (() => { const p = P.located.find(x => x.id === detail); if (!p) return null

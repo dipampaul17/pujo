@@ -62,6 +62,13 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
       await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2000); ok(!(await ovf(p)), T('430x932: horizontal overflow'))
       const dock = await p.locator('.dock [role=tablist]').boundingBox(); ok(dock && dock.y + dock.height <= 932 && dock.y > 760, T('430x932: zone dock not at the bottom'))
       await p.screenshot({ path: `${out}/${name}-430.png` }); await c.close() }
+    // Clean zone view: above the fold only the dock switcher, go-next card and the rail. Food/Toilets/Help one tap deeper.
+    { const [c, p] = await mk(SPOTS.gariahat); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2000)
+      for (const z of ['North', 'Central', 'South', 'Salt Lake']) { await p.locator('.dock [role=tab]', { hasText: z }).first().tap(); await p.waitForTimeout(800); await p.evaluate(() => scrollTo(0, 0)); await p.waitForTimeout(200)
+        const extra = await p.evaluate(() => [...document.querySelectorAll('[aria-label=Filter], .now-strip, [role=tablist][aria-label=Sections]')].filter(e => e.getBoundingClientRect().top < innerHeight - 90).length)
+        ok(extra === 0, T(`${z}: extra chrome above the fold`)); ok(await p.locator('article.go').count() === 1, T(`${z}: no go-next card`)); await p.screenshot({ path: `${out}/${name}-zone-${z.replace(' ', '')}.png` }) }
+      await p.getByRole('button', { name: 'Food' }).scrollIntoViewIfNeeded(); await p.getByRole('button', { name: 'Food' }).tap(); await p.waitForTimeout(400); ok(await p.locator('[role=dialog][aria-label=Food]').count() === 1, T('Food sheet does not open'))
+      await p.keyboard.press('Escape'); await p.waitForTimeout(400); ok(await p.locator('[role=dialog]').count() === 0, T('Food sheet does not close')); await c.close() }
     { const [c, p] = await mk([28.61, 77.21]); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(1500)
       ok(await p.locator('[role=tablist][aria-label=Zone] [aria-selected=true]').count() === 0, T('far away: a zone looks selected over "Too far"'))
       await c.close() }
