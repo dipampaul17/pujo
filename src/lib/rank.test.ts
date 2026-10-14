@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import fs from 'node:fs'
 import raw from '../data/dhaak.v1.json'
-import { recommend, REC, type RecContext } from './rank'
+import { recommend, listAll, REC, type RecContext } from './rank'
 import { roadEstimate, attachPins, type Roads } from './roads'
 import { statusOf, type Pandal, type StatusFile } from './plan'
 import { haversine } from './geo'
@@ -50,4 +50,16 @@ describe('recommender rules', () => {
   })
   it('every pick explains itself', () => expect(recommend(ps, ctx(at))[0].why.length).toBeGreaterThan(0))
   it('deterministic for the same input', () => expect(recommend(ps, ctx(at)).map(r => r.p.id)).toEqual(recommend(ps, ctx(at)).map(r => r.p.id)))
+})
+describe('full list (Near you / zone browse)', () => {
+  const at: [number, number] = [22.518, 88.368]
+  const near = ps.filter(p => haversine({ lat: at[0], lng: at[1] }, p) < 8000)
+  it('lists every pandal exactly once, so the count matches the rows', () => {
+    const ids = listAll(near, ctx(at, { live: { crowd: {}, closed: new Set(['ekdalia-evergreen']), freshPosts: {} } })).map(r => r.p.id)
+    expect(ids.length).toBe(near.length); expect(new Set(ids).size).toBe(near.length)
+  })
+  it('closed pandals stay visible, last', () => {
+    const l = listAll(near, ctx(at, { live: { crowd: {}, closed: new Set(['ekdalia-evergreen']), freshPosts: {} } }))
+    expect(l[l.length - 1].p.id).toBe('ekdalia-evergreen')
+  })
 })

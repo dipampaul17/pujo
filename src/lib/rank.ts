@@ -61,3 +61,12 @@ export function recommend(ps: Pandal[], c: RecContext): Rec[] {
   }
   return out
 }
+
+/** Browse list: the ranked picks, then everything retrieval left out (by car time), closed last. Every pandal appears once. */
+export function listAll(ps: Pandal[], c: RecContext): Rec[] {
+  const top = recommend(ps, c), got = new Set(top.map(r => r.p.id))
+  const isClosed = (p: Pandal) => c.live.closed.has(p.id) || c.status(p.id)?.key === 'closed'
+  const rest = ps.filter(p => !got.has(p.id)).map(p => ({ p, t: c.travel(p), score: -Infinity, why: [] as string[] }))
+    .sort((a, b) => Number(isClosed(a.p)) - Number(isClosed(b.p)) || a.t.carMin - b.t.carMin || a.p.id.localeCompare(b.p.id))
+  return [...top, ...rest]
+}

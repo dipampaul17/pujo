@@ -21,6 +21,20 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
       const maps = hrefs.find(h => h.includes('google.com/maps/dir/')); ok(maps && maps.includes(`origin=${ll[0].toFixed(6)}`), T(`${spot}: Maps route does not start at me`))
       await p.screenshot({ path: `${out}/${name}-${spot}.png` }); await c.close()
     }
+    // QA: list count matches rows, closed pandals visible as Closed, one 'Near you' heading; far away selects no zone.
+    { const [c, p] = await mk(SPOTS.gariahat); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2500)
+      const n = parseInt(await p.locator('details.group summary .mono-num').innerText()); const rows = await p.locator('details.group ul li').count(); ok(n === rows, T(`list header says ${n}, shows ${rows}`))
+      ok(await p.getByRole('heading', { name: 'Near you' }).count() + await p.locator('summary', { hasText: /^Near you/ }).count() === 1, T('"Near you" heading twice'))
+      const ek = p.locator('details.group ul li', { hasText: 'Ekdalia' }); if (await ek.count()) ok(/Closed/.test(await ek.innerText()), T('Ekdalia row not marked Closed'))
+      const chip = p.getByRole('button', { name: /^Open/ }).filter({ has: p.locator('.chip-n') })
+      if (await chip.count()) { await chip.tap(); await p.waitForTimeout(400); const t = await p.locator('details.group ul li').allInnerTexts(); ok(t.length > 0 && t.every(x => /Open|Inaugurated/.test(x)), T('Open filter lets non-open rows through'))
+        ok(parseInt(await p.locator('details.group summary .mono-num').innerText()) === t.length, T('filtered count wrong')); await p.screenshot({ path: `${out}/${name}-filters.png` })
+        await p.reload({ waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap().catch(() => {}); await p.waitForTimeout(2000); ok(await p.locator('[aria-pressed=true]').count() === 1, T('filter not persisted'))
+        await p.locator('[aria-pressed=true]').tap(); await p.waitForTimeout(300) } else ok(false, T('no Open filter chip at Gariahat'))
+      await c.close() }
+    { const [c, p] = await mk([28.61, 77.21]); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(1500)
+      ok(await p.locator('[role=tablist][aria-label=Zone] [aria-selected=true]').count() === 0, T('far away: a zone looks selected over "Too far"'))
+      await c.close() }
     // Sheet: open, close, backdrop, Esc, back, double tap, drag
     { const [c, p] = await mk(SPOTS.chetla); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(1200)
       const row = i => p.locator('details ul li a, ul li button[aria-haspopup=dialog]').nth(i)
@@ -69,4 +83,4 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
     await b.close()
   }
   console.log(fails.length ? 'E2E FAIL\n' + fails.join('\n') : 'E2E PASS'); process.exit(fails.length ? 1 : 0)
-})().catch(e => { console.error('E2E ERROR', e.message); process.exit(1) })
+})().catch(e => { console.error('E2E ERROR', e.stack); process.exit(1) })

@@ -3,7 +3,8 @@ import { reduce, initial, onLoadAction, needsChip, shouldUpdate, platform, APPRO
 import raw from './data/dhaak.v1.json'
 import { makePlanner, areas as getAreas, statusOf, tier, type StatusFile, relevantNow, type NowItem, tagsFor, tagContext, zoneOf, ZONES, ZONE_ANCHOR, zoneCounts, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
-import { recommend } from './lib/rank'
+import { recommend, listAll } from './lib/rank'
+import { applyFilters, chips, NO_FILTERS, type Filters } from './lib/filters'
 import { hasPass } from './lib/passport'
 import { roadEstimate, liveTravel, attachPins, type Roads, type Travel } from './lib/roads'
 import { orderRoute } from './lib/geo'
@@ -207,8 +208,12 @@ export default function App() {
   const raining = nowFeed.some(n => /\brain/i.test(n.title) && now - Date.parse(n.published) < 3 * 3600e3)
   const recCtx = (here: LatLng) => ({ here, now, status: (id: string) => statusOf(id, istDate, statusFile, now), travel, live: { crowd: xLive.crowd, closed: new Set<string>(), freshPosts }, seen, rain: raining })
   const tick = Math.floor(now / 600e3)
-  const suggested = useMemo(() => (from ? recommend(zonePandals as any, recCtx(from)).map(x => ({ ...(x.p as (typeof zonePandals)[number]), t: x.t })) : []), [zonePandals, statusFile, istDate, travel, seen, xLive, raining, tick])
+  const suggested = useMemo(() => (from ? listAll(zonePandals as any, recCtx(from)).map(x => ({ ...(x.p as (typeof zonePandals)[number]), t: x.t })) : []), [zonePandals, statusFile, istDate, travel, seen, xLive, raining, tick])
   const stable = useStableOrder()
+  const [filters, setFiltersRaw] = useState<Filters>(() => { try { return { ...NO_FILTERS, ...JSON.parse(localStorage.getItem('pujo.filters') || '{}') } } catch { return NO_FILTERS } })
+  const setFilters = (f: Filters) => { setFiltersRaw(f); try { localStorage.setItem('pujo.filters', JSON.stringify(f)) } catch {} }
+  const keep = { open: (id: string) => /^(open|inaugurated)$/.test(statusOf(id, istDate, statusFile, now)?.key ?? ''), pass: hasPass }
+  const ordered = stable(suggested), listed = applyFilters(ordered, filters, keep)
   const stops = useMemo(() => { if (!plan || plan.outOfRange || !view) return []
     const near = P.located.filter(p => hav(view, p) < 6000 && !skip.has(p.id))
     const top = recommend(near as any, recCtx(from ?? view)).slice(0, 8).map(x => ({ ...(x.p as any), dist: hav(view, x.p) })) as typeof plan.stops
@@ -260,7 +265,7 @@ export default function App() {
           </div>
           <div className="pt-6">
             {chip && <div className="pb-3">{chip}</div>}
-            <ZoneSwitch zone={zone ?? 'none' as any} onChange={setZone} />
+            <ZoneSwitch zone={zone ?? null} onChange={setZone} />
             <button className="btn btn-primary w-full mt-3" onClick={() => locate(true)} disabled={loc.status === 'locating'}>
               {loc.status === 'locating' ? 'Finding you…' : 'Near me'}
             </button>
@@ -292,7 +297,7 @@ export default function App() {
           if (Math.abs(dx) > 70 && Math.abs(dy) < 40) setZone(nextZone(zone, dx < 0 ? 1 : -1))
         }}>
           <div className="sticky z-10 -mx-5 px-5 pt-1 pb-2 frost" style={{ top: 52 }}>
-            <ZoneSwitch zone={zone ?? ownZone ?? 'north'} onChange={setZone} mine={ownZone} />
+            <ZoneSwitch zone={plan?.outOfRange ? null : zone ?? ownZone ?? 'north'} onChange={setZone} mine={ownZone} />
           </div>
           {plan.outOfRange ? (
             <div className="pt-8">
@@ -346,9 +351,13 @@ export default function App() {
             {tab === 0 && zone && (
               <details className="mt-10 group" open>
                 <summary className="list-none cursor-pointer flex items-center justify-between min-h-[48px] border-b hair">
-                  <span className="t-title2">{nearYou ? 'Near you' : `All ${ZLABEL[zone]}`}</span><span className="muted text-[14px] mono-num">{zonePandals.length}</span>
+                  <span className="t-title2">{nearYou ? 'All nearby' : `All ${ZLABEL[zone]}`}</span><span className="muted text-[14px] mono-num">{listed.length}</span>
                 </summary>
-                <ul className="group-list mt-3">{stable(suggested).map((p, r) => (
+                {(() => { const cs = chips(ordered, filters, keep); return cs.length > 0 && <div className="flex gap-2 mt-3" role="group" aria-label="Filter">{cs.map(c =>
+                  <button key={c.key} aria-pressed={c.on} onClick={() => setFilters({ ...filters, [c.key]: !c.on })} className={`chip ${c.on ? 'chip-on' : ''}`}>
+                    {c.key === 'open' ? <span className="w-2 h-2 rounded-full" style={{ background: c.on ? 'currentColor' : 'var(--sindoor)' }} /> : <PassGlyph />}{c.key === 'open' ? 'Open' : 'Pass'}<span className="mono-num chip-n">{c.n}</span></button>)}</div> })()}
+                {listed.length === 0 && <button className="btn btn-quiet w-full mt-4" onClick={() => setFilters(NO_FILTERS)}>Clear filters</button>}
+                <ul className="group-list mt-3">{listed.map((p, r) => (
                   <li key={p.id}><a href={mapsPlaceUrl(p, p.name + ' Durga Puja')} onClick={e => { e.preventDefault(); setDetail(p.id) }} className="row">
                     <span className="flex min-w-0"><span className="row-n mono-num" style={{ color: r < 3 ? 'var(--ink)' : 'var(--muted)' }}>{r + 1}</span><span className="min-w-0"><span className="block truncate">{p.name}</span><span className="flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(p.id, istDate, statusFile, now)} inline />{hasPass(p.id) && <PassMark />}{p.precision !== 'station' && me && <TravelLine t={p.t} compact />}</span></span></span><span className="flex items-center gap-2 shrink-0"><PostsMark posts={postsOf(xLive, p.id)} fresh={fresh.has(p.id)} /></span></a></li>))}</ul>
               </details>
@@ -478,8 +487,8 @@ function StatusDot({ s, inline }: { s: ReturnType<typeof statusOf>; inline?: boo
   // Rows are already links to the sheet: show the source quietly there, make it tappable in the stop card and sheet.
   return s.evidence && !inline ? <a href={s.evidence} target="_blank" rel="noopener" className={cls} aria-label={`${s.label}, source ${src?.name ?? ''}`}>{body}</a> : <span className={cls}>{body}</span>
 }
-function ZoneSwitch({ zone, onChange, mine }: { zone: Zone; onChange: (z: Zone) => void; mine?: Zone | null }) {
-  return <Segmented label="Zone" value={ZONES.indexOf(zone)} onChange={i => onChange(ZONES[i])}
+function ZoneSwitch({ zone, onChange, mine }: { zone: Zone | null; onChange: (z: Zone) => void; mine?: Zone | null }) {
+  return <Segmented label="Zone" value={zone ? ZONES.indexOf(zone) : -1} onChange={i => onChange(ZONES[i])}
     items={ZONES.map(z => <>{ZLABEL[z]}<span className="seg-count mono-num">{ZCOUNT[z]}</span>{mine === z && <span aria-label="you are here" className="seg-here" />}</>)} />
 }
 /** iOS segmented control: one sliding thumb, used for zones and sections alike. */

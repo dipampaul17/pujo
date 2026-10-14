@@ -56,7 +56,7 @@ button, a, [role=tab], .chip, .navbar { touch-action: manipulation; -webkit-user
 .btn-quiet { min-height: 44px; background: var(--chip); color: var(--ink); font-weight: 500; font-size: 15px; }
 .pill { display: inline-flex; align-items: center; min-height: 32px; padding: 0 12px; border-radius: 999px; background: var(--chip); font-size: 14px; font-weight: 600; color: var(--ink); position: relative; }
 .pill::after { content: ''; position: absolute; inset: -6px -2px; }
-.chip { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 0 12px; border-radius: 999px; font-size: 13px; font-weight: 600; background: var(--chip); color: var(--ink); }
+.chip { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 12px; border-radius: 999px; font-size: 13px; font-weight: 600; background: var(--chip); color: var(--ink); }
 .link-action { display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; font-weight: 600; color: var(--ink); }
 .tag { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 6px; }
 .tag-red { background: var(--chip); color: var(--ink); }
@@ -153,3 +153,9 @@ a.status .status-src { text-decoration: underline; text-decoration-color: var(--
 /* Pujor Passport: list rows only */
 .pass-mark { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 600; letter-spacing: -0.005em; color: var(--ink); white-space: nowrap; }
 .pass-mark svg { color: var(--sindoor); }
+.chip { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 12px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--ink); background: color-mix(in oklab, var(--ink) 6%, transparent); transition: background .2s, color .2s; position: relative; }
+.chip svg { color: var(--sindoor); }
+.chip-n { font-weight: 500; opacity: .55; }
+.chip-on { background: var(--ink); color: var(--bg); }
+.chip-on svg { color: currentColor; }
+@media (prefers-reduced-motion: reduce) { .chip { transition: none; } }

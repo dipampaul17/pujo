@@ -10,8 +10,8 @@ for m in ['test_status_rules','test_aliases','test_signals','test_xpoll','test_b
     t=importlib.import_module(m)
     for n in [n for n in dir(t) if n.startswith('test_')]: getattr(t,n)()
     print('ok',m)")
-step build; rm -rf /tmp/gate && BASE=/pujo/ npx vite build --outDir /tmp/gate/pujo >/dev/null
-step e2e; PORT=${GATE_PORT:-4391}; (cd /tmp/gate && python3 -m http.server $PORT >/dev/null 2>&1 & echo $! > /tmp/gate.pid); sleep 1
+step build; G=${GATE_DIR:-/tmp/gate}; rm -rf $G && BASE=/pujo/ npx vite build --outDir $G/pujo >/dev/null
+step e2e; PORT=${GATE_PORT:-4391}; (cd $G && python3 -m http.server $PORT >/dev/null 2>&1 & echo $! > /tmp/gate.pid); sleep 1
 trap 'kill $(cat /tmp/gate.pid) 2>/dev/null || true' EXIT
 PW_CORE=/tmp/pw/node_modules/playwright-core node e2e/gate.cjs http://localhost:$PORT/pujo/
 step quality; PW_CORE=/tmp/pw/node_modules/playwright-core node e2e/quality.cjs http://localhost:$PORT/pujo/
