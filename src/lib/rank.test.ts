@@ -71,3 +71,11 @@ describe('route lead', () => {
     expect(routeStops(recommend(near, c).slice(0, 8).map(r => r.p))[0].id).toBe('santoshpur-lake-pally')
   })
 })
+describe('pass preference', () => {
+  it('between two similar pandals, the pass one ranks higher', () => {
+    const a = { id: 'x1', name: 'X1', lat: 22.5, lng: 88.35, worth: 2 } as any, b = { id: 'x2', name: 'X2', lat: 22.5, lng: 88.35, worth: 2 } as any
+    const t = () => ({ carMin: 8, walkMin: 20, walkM: 1500, carM: 3000, crowKm: 1.2, basis: 'estimate' }) as any
+    const c = ctx([22.51, 88.35], { travel: t, status: () => null, pass: (id: string) => id === 'x2' } as any)
+    expect(recommend([a, b], c)[0].p.id).toBe('x2')
+  })
+})

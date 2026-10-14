@@ -21,11 +21,13 @@ describe('zone tab', () => {
     const list = zoneTab(ps, z, { me, anchor: ZONE_ANCHOR[z], travel: car(me), pass: () => false, open: () => false, closed: () => false })
     expect(list.map(p => p.id).sort()).toEqual(ps.filter(p => zoneOf(p) === z).map(p => p.id).sort())
   })
-  it('with a fix: ordered by drive time from me, pass then open break ties', () => {
-    const t = car(me), list = zoneTab(ps, 'south', { me, anchor: ZONE_ANCHOR.south, travel: t, pass: id => id === 'b', open: id => id === 'c', closed: () => false })
-    for (let i = 1; i < list.length; i++) expect(t(list[i]).carMin).toBeGreaterThanOrEqual(t(list[i - 1]).carMin)
-    const fake = [{ id: 'a', name: 'A', lat: 22.5, lng: 88.35 }, { id: 'b', name: 'B', lat: 22.5, lng: 88.35 }, { id: 'c', name: 'C', lat: 22.5, lng: 88.35 }] as any
-    expect(zoneTab(fake, 'south', { me, anchor: ZONE_ANCHOR.south, travel: car(me), pass: id => id === 'c', open: id => id === 'b', closed: () => false }).map(p => p.id)).toEqual(['c', 'b', 'a'])
+  it('with a fix: open first, then pass, then shortest drive; approximate pins (no real time) after pinned ones', () => {
+    const fake = [{ id: 'near', name: 'N', lat: 22.516, lng: 88.338 }, { id: 'pass', name: 'P', lat: 22.505, lng: 88.35 }, { id: 'open', name: 'O', lat: 22.49, lng: 88.36 },
+      { id: 'approx', name: 'A', lat: 22.5165, lng: 88.3373, precision: 'station' }, { id: 'far', name: 'F', lat: 22.48, lng: 88.37 }] as any
+    expect(zoneTab(fake, 'south', { me, anchor: ZONE_ANCHOR.south, travel: car(me), pass: id => id === 'pass', open: id => id === 'open', closed: () => false }).map(p => p.id))
+      .toEqual(['open', 'pass', 'near', 'far', 'approx'])
+    const both = [{ id: 'farOpenPass', name: 'A', lat: 22.48, lng: 88.37 }, { id: 'nearOpen', name: 'B', lat: 22.516, lng: 88.338 }] as any
+    expect(zoneTab(both, 'south', { me, anchor: ZONE_ANCHOR.south, travel: car(me), pass: id => id === 'farOpenPass', open: () => true, closed: () => false }).map(p => p.id)).toEqual(['nearOpen', 'farOpenPass'])
   })
   it('without a fix: nearest to the zone anchor first; closed sink to the end', () => {
     const a = ZONE_ANCHOR.south, list = zoneTab(ps, 'south', { me: null, anchor: a, travel: car(a), pass: () => false, open: () => false, closed: () => false })

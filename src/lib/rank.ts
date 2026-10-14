@@ -8,6 +8,7 @@ export const REC = {
   retrieveMinK: 15,       // …but never fewer than this many candidates
   pOpen: { open: 1, inaugurated: 0.9, likely: 0.8, closed: 0, unknown: 0.7 } as Record<string, number>,
   openBonus: 1.5,         // sticky: confirmed open by visitors beats a slightly grander maybe
+  passBonus: 0.6,         // Pujor Passport: skip the queue, second to open
   appeal: 1,              // × worth (2026 grandeur + buzz, 0–7, from the guide + X/news signals)
   minuteCost: 0.45,       // value lost per minute of travel
   walkDiscount: 0.7,      // a short walk (< walkMaxM) costs less than a cab minute
@@ -24,7 +25,7 @@ export const REC = {
 export type RecContext = {
   here: LatLng; now: number; status: (id: string) => Status; travel: (p: Pandal) => Travel
   live: { crowd: Record<string, { at: string }>; closed: Set<string>; freshPosts: Record<string, number> }
-  seen: Set<string>; rain: boolean
+  seen: Set<string>; rain: boolean; pass?: (id: string) => boolean
 }
 export type Rec = { p: Pandal; t: Travel; score: number; why: string[] }
 
@@ -43,6 +44,7 @@ export function recommend(ps: Pandal[], c: RecContext): Rec[] {
     const minutes = approx ? Math.max(REC.approxFloorMin, t.carMin) : walk ? t.walkMin * REC.walkDiscount : t.carMin
     let score = (REC.pOpen[key] ?? REC.pOpen.unknown) * REC.appeal * (p.worth ?? 0) - REC.minuteCost * mult * minutes
     if (key === 'open') { score += REC.openBonus; why.push('open') }
+    if (c.pass?.(p.id)) { score += REC.passBonus; why.push('pass') }
     if (p.precision === 'station') score -= REC.approxPin
     if ((p.worth ?? 0) >= 3) why.push('2026 favourite')
     why.push(walk ? `${t.walkMin} min walk` : `${t.carMin} min by car`)
@@ -79,9 +81,11 @@ export function routeStops<T extends LatLng>(ranked: T[]): T[] {
 }
 
 /** A zone tab: exactly the pandals whose coordinates fall in that zone. With a live fix, ordered by drive time from me
- *  (pass, then open, break ties); without one, nearest to the zone's anchor station first. Closed pandals go last. */
+ *  open first, then pass, then shortest drive (approximate pins after pinned); without one, nearest to the zone's anchor station first. Closed pandals go last. */
 export function zoneTab<T extends Pandal>(ps: T[], zone: Zone, c: { me: LatLng | null; anchor: LatLng; travel: (p: T) => Travel; pass: (id: string) => boolean; open: (id: string) => boolean; closed: (id: string) => boolean }): T[] {
-  const key = (p: T) => [c.closed(p.id) ? 1 : 0, c.me ? c.travel(p).carMin : haversine(c.anchor, p), c.pass(p.id) ? 0 : 1, c.open(p.id) ? 0 : 1] as number[]
+  const key = (p: T) => c.me
+    ? [c.closed(p.id) ? 1 : 0, p.precision === 'station' ? 1 : 0, c.open(p.id) ? 0 : c.pass(p.id) ? 1 : 2, 0, c.travel(p).carMin]
+    : [c.closed(p.id) ? 1 : 0, 0, 0, 0, haversine(c.anchor, p)]
   return ps.filter(p => zoneOf(p) === zone).map(p => ({ p, k: key(p) }))
-    .sort((a, b) => { for (let i = 0; i < 4; i++) if (a.k[i] !== b.k[i]) return a.k[i] - b.k[i]; return a.p.name.localeCompare(b.p.name) }).map(x => x.p)
+    .sort((a, b) => { for (let i = 0; i < 5; i++) if (a.k[i] !== b.k[i]) return a.k[i] - b.k[i]; return a.p.name.localeCompare(b.p.name) }).map(x => x.p)
 }

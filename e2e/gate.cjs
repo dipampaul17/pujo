@@ -15,7 +15,7 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
       const [c, p] = await mk(ll); await p.goto(url, { waitUntil: 'networkidle' }); await p.waitForTimeout(700)
       ok(await p.locator('main.landing').count() === 1, T(`${spot}: hero not first`)); ok(await p.evaluate(() => scrollY) === 0, T(`${spot}: not at top`))
       await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(1200)
-      ok(await p.getByText('Near you').count() > 0, T(`${spot}: no Near you list`)); ok(!(await ovf(p)), T(`${spot}: horizontal overflow`))
+      ok(await p.locator('details.group ul li').count() > 0, T(`${spot}: no list`)); ok(!(await ovf(p)), T(`${spot}: horizontal overflow`))
       const hrefs = await p.$$eval('a[href]', a => a.map(x => x.href)); ok(!hrefs.some(h => /undefined|NaN|null/.test(h)), T(`${spot}: bad href`))
       const uber = hrefs.find(h => h.startsWith('https://m.uber.com/ul/')); ok(uber && uber.includes(`pickup%5Blatitude%5D=${ll[0].toFixed(6)}`), T(`${spot}: Uber pickup is not my position`))
       const maps = hrefs.find(h => h.includes('google.com/maps/dir/')); ok(maps && maps.includes(`origin=${ll[0].toFixed(6)}`), T(`${spot}: Maps route does not start at me`))
@@ -23,15 +23,15 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
     }
     // QA: list count matches rows, closed pandals visible as Closed, one 'Near you' heading; far away selects no zone.
     { const [c, p] = await mk(SPOTS.gariahat); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2500)
-      const n = parseInt(await p.locator('details.group summary .mono-num').innerText()); const rows = await p.locator('details.group ul li').count(); ok(n === rows, T(`list header says ${n}, shows ${rows}`))
-      ok(await p.getByRole('heading', { name: 'Near you' }).count() + await p.locator('summary', { hasText: /^Near you/ }).count() === 1, T('"Near you" heading twice'))
+      ok(await p.locator('.seg-count').count() === 0 && await p.locator('details.group summary .mono-num').count() === 0, T('redundant counts on zone tabs / list header'))
+      ok(await p.getByRole('heading', { name: 'Near you' }).count() + await p.locator('summary', { hasText: /^Near you/ }).count() <= 1, T('"Near you" heading twice'))
       { const r = p.locator('details.group ul li a').filter({ has: p.locator('[aria-label*="by car"]') }).first(); const rl = await r.locator('[aria-label*="by car"]').getAttribute('aria-label'); await r.tap(); await p.waitForTimeout(700)
         ok(await p.locator('[role=dialog] [aria-label*="by car"]').first().getAttribute('aria-label').catch(() => null) === rl, T('sheet travel time differs from the list'))
         ok((await p.locator('[role=dialog] a.btn-uber').getAttribute('href')).includes(`pickup%5Blatitude%5D=${SPOTS.gariahat[0].toFixed(6)}`), T('sheet Uber pickup is not my position')); await p.keyboard.press('Escape'); await p.waitForTimeout(500) }
       const ek = p.locator('details.group ul li', { hasText: 'Ekdalia' }); if (await ek.count()) ok(/Closed/.test(await ek.innerText()), T('Ekdalia row not marked Closed'))
       const chip = p.getByRole('button', { name: /^Open/ }).filter({ has: p.locator('.chip-n') })
-      if (await chip.count()) { await chip.tap(); await p.waitForTimeout(400); const t = await p.locator('details.group ul li').allInnerTexts(); ok(t.length > 0 && t.every(x => /Open|Inaugurated/.test(x)), T('Open filter lets non-open rows through'))
-        ok(parseInt(await p.locator('details.group summary .mono-num').innerText()) === t.length, T('filtered count wrong')); await p.screenshot({ path: `${out}/${name}-filters.png` })
+      if (await chip.count()) { const want = parseInt(await chip.locator('.chip-n').innerText()); await chip.tap(); await p.waitForTimeout(400); const t = await p.locator('details.group ul li').allInnerTexts(); ok(t.length > 0 && t.every(x => /Open|Inaugurated/.test(x)), T('Open filter lets non-open rows through'))
+        ok(want === t.length, T('filtered count wrong')); await p.screenshot({ path: `${out}/${name}-filters.png` })
         await p.reload({ waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap().catch(() => {}); await p.waitForTimeout(2000); ok(await p.locator('[aria-pressed=true]').count() === 1, T('filter not persisted'))
         await p.locator('[aria-pressed=true]').tap(); await p.waitForTimeout(300) } else ok(false, T('no Open filter chip at Gariahat'))
       await c.close() }
@@ -72,8 +72,8 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
         await p.route('**/live/now.json', r => r.fulfill({ body: '{"items":[]}', contentType: 'application/json' }))
         await p.route('**/live/x.json', r => r.fulfill({ body: '{"posts":{},"crowd":{}}', contentType: 'application/json' }))
         await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2500)
-        const mins = (await p.locator('details ul li [aria-label*="by car"]').evaluateAll(es => es.map(e => parseInt(e.getAttribute('aria-label').replace('~', ''))))).filter(n => !isNaN(n))
-        ok(mins.length > 5 && mins.every((m, i) => i === 0 || m >= mins[i - 1]), T(`${f.name}: zone list not in drive-time order: ${mins.slice(0, 12).join(',')}`))
+        const rows = await p.locator('details.group ul li').evaluateAll(ls => ls.map(l => { const c = l.querySelector('[aria-label*="by car"]'); return { g: /\bOpen\b/.test(l.innerText) ? 0 : l.querySelector('.pass-mark') ? 1 : 2, m: c ? parseInt(c.getAttribute('aria-label').replace('~', '')) : NaN } })).then(r => r.filter(x => !isNaN(x.m)))
+        ok(rows.length > 5 && rows.every((r, i) => i === 0 || r.g > rows[i - 1].g || (r.g === rows[i - 1].g && r.m >= rows[i - 1].m)), T(`${f.name}: zone list not open → pass → drive time: ${rows.slice(0, 12).map(r => r.g + ':' + r.m).join(',')}`))
         await p.screenshot({ path: `${out}/${name}-open-${f.name.toLowerCase()}.png` }); await c.close() } }
     // Denied: help sheet, zones still work. Far away: finite distance.
     { const [c, p] = await mk(null); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(1200)

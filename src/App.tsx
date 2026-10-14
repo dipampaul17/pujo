@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { reduce, initial, onLoadAction, needsChip, shouldUpdate, platform, APPROX_M, CACHE_MAX_AGE, type Fix } from './lib/loc'
 import raw from './data/dhaak.v1.json'
-import { makePlanner, areas as getAreas, statusOf, tier, type StatusFile, relevantNow, type NowItem, tagsFor, tagContext, zoneOf, ZONES, ZONE_ANCHOR, zoneCounts, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
+import { makePlanner, areas as getAreas, statusOf, tier, type StatusFile, type NowItem, zoneOf, ZONES, ZONE_ANCHOR, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
 import { recommend, routeStops, zoneTab } from './lib/rank'
 import { applyFilters, chips, NO_FILTERS, type Filters } from './lib/filters'
@@ -13,7 +13,6 @@ import { TextReveal } from './components/text-reveal'
 const data = raw as unknown as Dataset
 const P = makePlanner(data)
 const AREAS = getAreas(data)
-const ZCOUNT = zoneCounts(data)
 const ZLABEL: Record<Zone, string> = { north: 'North', central: 'Central', south: 'South' }
 type Origin = LatLng & { label: string; precise: boolean; approx?: boolean; fix?: Fix }
 const geoOk = typeof navigator !== 'undefined' && 'geolocation' in navigator
@@ -202,9 +201,10 @@ export default function App() {
   // Seen: opened in the sheet or marked "I'm here" this session.
   const [seen, setSeen] = useState<Set<string>>(() => { try { return new Set(JSON.parse(sessionStorage.getItem('pujo.seen') || '[]')) } catch { return new Set() } })
   const markSeen = (id: string) => setSeen(s => { if (s.has(id)) return s; const n = new Set(s).add(id); try { sessionStorage.setItem('pujo.seen', JSON.stringify([...n])) } catch {}; return n })
+  useEffect(() => { if (detail) markSeen(detail) }, [detail])
   const freshPosts = useMemo(() => Object.fromEntries(Object.entries(xLive.posts).map(([id, v]) => [id, Math.max(...(Array.isArray(v) ? v : [v]).map(q => Date.parse(q.at) || 0))])), [xLive])
   const raining = nowFeed.some(n => /\brain/i.test(n.title) && now - Date.parse(n.published) < 3 * 3600e3)
-  const recCtx = (here: LatLng) => ({ here, now, status: (id: string) => statusOf(id, istDate, statusFile, now), travel, live: { crowd: xLive.crowd, closed: new Set<string>(), freshPosts }, seen, rain: raining })
+  const recCtx = (here: LatLng) => ({ here, now, status: (id: string) => statusOf(id, istDate, statusFile, now), travel, live: { crowd: xLive.crowd, closed: new Set<string>(), freshPosts }, seen, rain: raining, pass: hasPass })
   const tick = Math.floor(now / 600e3)
   // Order: live drive time from me (pass, then open, break ties); without a fix, nearest to the zone's anchor station.
   const suggested = useMemo(() => (zone && zonePandals.length ? zoneTab(zonePandals, zone, { me, anchor: ZONE_ANCHOR[zone], travel, pass: hasPass, open: id => statusOf(id, istDate, statusFile, now)?.key === 'open', closed: id => statusOf(id, istDate, statusFile, now)?.key === 'closed' }).map(p => ({ ...p, t: travel(p) })) : []), [zone, zonePandals, statusFile, istDate, travel, tick])
@@ -234,7 +234,7 @@ export default function App() {
       .map(({ c, p }) => ({ title: `${p!.name}: ${c.label ?? 'Crowded'}`, link: c.url, published: c.at })),
     ...(xLive.area ?? []).filter(a => a.zone === here && now - Date.parse(a.at) < 2 * 3600e3).map(a => ({ title: `${a.area}: ${a.label}`, link: a.url, published: a.at })),
   ]
-  const live = [...relevantNow(nowFeed, zone ?? ownZone, stops.map(s => s.id), now).slice(0, 1), ...xNow].sort((x, y) => Date.parse(y.published) - Date.parse(x.published))[0] as any
+  const live = [...xNow].sort((x, y) => Date.parse(y.published) - Date.parse(x.published))[0] as any
 
   async function share() {
     if (!routeUrl) return
@@ -305,7 +305,7 @@ export default function App() {
               <button className="btn btn-primary w-full mt-8" onClick={() => setZone('central')}>Show Central Kolkata</button>
             </div>
           ) : (<>
-            <h2 className="t-title2 pt-4">{view.precise ? 'Near you' : ZLABEL[zone ?? 'central']}</h2>
+
 
             
             {live && <a href={live.link} target="_blank" rel="noopener" className="now-strip mt-3"><span className="now-dot" /><span className="flex-1 line-clamp-2">{live.title}</span></a>}
@@ -327,15 +327,10 @@ export default function App() {
                           <p className="t-foot muted mt-0.5 mono-num">
                             {s.precision === 'station' ? `Approximate${s.station ? ` · near ${s.station}` : ''}` : i === 0 ? (me ? <TravelLine t={travel(s)} /> : null) : `+${fmtDist(hop(stops, i))}`}
                           </p>
-                          {(() => { const t = tagsFor(s, tagContext(P, s)); const one = s.reason ?? t[0]; return i === 0 && one && <div className="flex flex-wrap gap-1.5 mt-2">
-                                                        {one && <span className={`tag ${/nearby/.test(one) ? 'tag-leaf' : 'tag-red'}`}>{one}</span>}
-                          </div> })()}
                           {i === 0 && postsOf(xLive, s.id).find(q => q.photo) && <PostCard p={postsOf(xLive, s.id).find(q => q.photo)!} now={now} compact />}
                           {i === 0 && s.note && <p className="text-[14px] mt-2" style={{ color: 'var(--sindoor)' }}>{s.note}.</p>}
-                          {i === 0 && <div className="grid grid-cols-2 gap-2 mt-4 -ml-10 -mr-10">
-                            <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="btn btn-uber">Uber here</a>
-                            <a href={mapsDirUrl(view?.precise ? view : null, [s])} target="_blank" rel="noopener" className="btn btn-ghost">Maps</a>
-                            <button onClick={() => { setSkip(new Set(skip).add(s.id)); markSeen(s.id); window.scrollTo({ top: 0 }) }} className="btn btn-quiet col-span-2">I'm here</button>
+                          {i === 0 && <div className="mt-4 -ml-10 -mr-10">
+                            <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="btn btn-uber w-full">Uber here</a>
                           </div>}
                           {i > 0 && <a href={uberUrl({ lat: s.lat, lng: s.lng, name: s.name, address: `${s.name}${s.station ? `, near ${s.station} metro` : ''}, Kolkata` }, view?.precise && !view.approx ? view : null)} className="link-action -mb-2">Uber here<Chev /></a>}
                         </div>
@@ -350,7 +345,7 @@ export default function App() {
             {tab === 0 && zone && (
               <details className="mt-10 group" open>
                 <summary className="list-none cursor-pointer flex items-center justify-between min-h-[48px] border-b hair">
-                  <span className="t-title2">{`All ${ZLABEL[zone]}`}</span><span className="muted text-[14px] mono-num">{listed.length}</span>
+                  <span className="t-title2">{`All ${ZLABEL[zone]}`}</span>
                 </summary>
                 {(() => { const cs = chips(ordered, filters, keep); return cs.length > 0 && <div className="flex gap-2 mt-3" role="group" aria-label="Filter">{cs.map(c =>
                   <button key={c.key} aria-pressed={c.on} onClick={() => setFilters({ ...filters, [c.key]: !c.on })} className={`chip ${c.on ? 'chip-on' : ''}`}>
@@ -489,7 +484,7 @@ function StatusDot({ s, inline }: { s: ReturnType<typeof statusOf>; inline?: boo
 }
 function ZoneSwitch({ zone, onChange, mine }: { zone: Zone | null; onChange: (z: Zone) => void; mine?: Zone | null }) {
   return <Segmented label="Zone" value={zone ? ZONES.indexOf(zone) : -1} onChange={i => onChange(ZONES[i])}
-    items={ZONES.map(z => <>{ZLABEL[z]}<span className="seg-count mono-num">{ZCOUNT[z]}</span>{mine === z && <span aria-label="you are here" className="seg-here" />}</>)} />
+    items={ZONES.map(z => <>{ZLABEL[z]}{mine === z && <span aria-label="you are here" className="seg-here" />}</>)} />
 }
 /** iOS segmented control: one sliding thumb, used for zones and sections alike. */
 function Segmented({ label, items, value, onChange }: { label: string; items: React.ReactNode[]; value: number; onChange: (i: number) => void }) {
