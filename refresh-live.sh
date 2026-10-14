@@ -8,10 +8,11 @@ cd "$(dirname "$(readlink -f "$0")")"
 exec 9>/tmp/dhaak-refresh.lock; flock -w 120 9 || { echo "another refresh holds the lock"; exit 1; }
 if [ "${1:-}" = plan ]; then python3 pipeline/xpoll.py plan; exit 0; fi
 if [ $# -gt 0 ]; then python3 pipeline/xpoll.py ingest "$@" || { echo "ingest failed"; exit 1; }; fi
-before=$(cat public/live/status.json public/live/x.json public/live/now.json 2>/dev/null | python3 -c "import sys,json,hashlib,re;print(hashlib.sha1(re.sub(r'\"updated\": ?\"[^\"]*\"','',sys.stdin.read()).encode()).hexdigest())")
+before=$(cat public/live/status.json public/live/x.json public/live/now.json public/live/traffic.json 2>/dev/null | python3 -c "import sys,json,hashlib,re;print(hashlib.sha1(re.sub(r'\"updated\": ?\"[^\"]*\"','',sys.stdin.read()).encode()).hexdigest())")
 python3 pipeline/pinned.py >/dev/null || echo "pinned: kept last"
+python3 pipeline/tomtom.py >/dev/null 2>&1 || echo "tomtom: kept last"  # no-op unless TOMTOM_API_KEY is set
 python3 pipeline/status.py src/data/dhaak.v1.json public/live/status.json >/dev/null || echo "status: kept last"
 python3 pipeline/now.py src/data/dhaak.v1.json public/live/now.json >/dev/null 2>&1 || echo "now: kept last"
-after=$(cat public/live/status.json public/live/x.json public/live/now.json 2>/dev/null | python3 -c "import sys,json,hashlib,re;print(hashlib.sha1(re.sub(r'\"updated\": ?\"[^\"]*\"','',sys.stdin.read()).encode()).hexdigest())")
+after=$(cat public/live/status.json public/live/x.json public/live/now.json public/live/traffic.json 2>/dev/null | python3 -c "import sys,json,hashlib,re;print(hashlib.sha1(re.sub(r'\"updated\": ?\"[^\"]*\"','',sys.stdin.read()).encode()).hexdigest())")
 if [ "$before" = "$after" ]; then echo "no change"; exit 0; fi
 pipeline/publish-live.sh >/tmp/dhaak-live.log 2>&1 && echo "changed, published" || { echo "publish failed, see /tmp/dhaak-live.log"; exit 1; }

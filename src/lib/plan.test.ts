@@ -40,7 +40,7 @@ describe('collapse guard', () => {
   })
 })
 describe('helpers', () => {
-  it('nudges by hour', () => { expect(nudges(23, { walkMin: 20 }).length).toBe(1); expect(nudges(12, { walkMin: 20 })).toHaveLength(1); expect(nudges(3, { walkMin: 20 })).toEqual([]) })
+  it('nudges by hour', () => { expect(nudges(23, { walkMin: 20 }).length).toBe(1); expect(nudges(12, { walkMin: 20 })).toHaveLength(0); expect(nudges(3, { walkMin: 20 })).toEqual([]) })
 })
 import { zoneOf, ZONE_ANCHOR, zoneCounts, nextZone, ZONES, zoneOrder } from './plan'
 describe('zones', () => {

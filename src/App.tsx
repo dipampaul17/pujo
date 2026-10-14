@@ -3,7 +3,7 @@ import { reduce, initial, onLoadAction, needsChip, shouldUpdate, platform, APPRO
 import raw from './data/dhaak.v1.json'
 import { makePlanner, isOpen, helpOrigin, areas as getAreas, statusOf, tier, type StatusFile, type NowItem, zoneOf, zoneOrder, ZONE_ANCHOR, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
-import { recommend, routeStops, routePool, zoneTab } from './lib/rank'
+import { recommend, routeStops, routePool, zoneTab, goHint, trafficCar, roadNote, type RoadSig, type TrafficFile } from './lib/rank'
 import { pagePicks } from './lib/page'
 import { planWalk, walkLegs } from './lib/walk'
 import { applyFilters, chips, NO_FILTERS, type Filters } from './lib/filters'
@@ -39,6 +39,7 @@ export default function App() {
   const [nowFeed, setNowFeed] = useState<NowItem[]>([])
   const [statusFile, setStatusFile] = useState<StatusFile | null>(null)
   const [xLive, setXLive] = useState<XLive>({ posts: {}, crowd: {} })
+  const [trafficFile, setTrafficFile] = useState<TrafficLive | null>(null)
   const [fresh, setFresh] = useState<Set<string>>(new Set())
   const ingestX = (f: XLive) => {
     setXLive(f)
@@ -82,7 +83,7 @@ export default function App() {
   useEffect(() => { if (detail && fresh.has(detail)) setFresh(s => { const n = new Set(s); n.delete(detail); return n }) }, [detail, fresh])
   useEffect(() => {
     const get = (f: string) => fetch(import.meta.env.BASE_URL + 'live/' + f + '?t=' + Math.floor(Date.now() / 30e3), { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null)
-    const load = () => { if (document.visibilityState !== 'visible') return; get('status.json').then(f => f && setStatusFile(f)); get('x.json').then(f => f && ingestX(f)) }
+    const load = () => { if (document.visibilityState !== 'visible') return; get('status.json').then(f => f && setStatusFile(f)); get('x.json').then(f => f && ingestX(f)); get('traffic.json').then(f => f && setTrafficFile(f)) }
     load(); const t = setInterval(load, 45e3); document.addEventListener('visibilitychange', load); return () => { clearInterval(t); document.removeEventListener('visibilitychange', load) }
   }, [])
   useEffect(() => {
@@ -205,14 +206,18 @@ export default function App() {
   // Live times only count for the fix they were measured from; after a move the matrix estimate stands in until the new table lands.
   const liveT = liveRaw.key === meKey ? liveRaw.t : NO_LIVE
   const from: LatLng | null = me ?? view
-  const travel = useCallback((p: LatLng & { id: string }): Travel => (me && liveT[p.id]) || roadEstimate(roads, from!, p), [me?.lat, me?.lng, liveT, roads, from?.lat, from?.lng])
+  const travel = useCallback((p: LatLng & { id: string }): Travel => {
+    const t = (me && liveT[p.id]) || roadEstimate(roads, from!, p), tc = trafficCar(t.carMin, trafficFile?.pandals?.[p.id], Date.now())
+    return tc.live && tc.min !== t.carMin ? { ...t, carMin: tc.min, traffic: true } : t  // TomTom live flow, fresh only; else OSRM
+  }, [me?.lat, me?.lng, liveT, roads, from?.lat, from?.lng, trafficFile])
   // Seen: opened in the sheet or marked "I'm here" this session.
   const [seen, setSeen] = useState<Set<string>>(() => { try { return new Set(JSON.parse(sessionStorage.getItem('pujo.seen') || '[]')) } catch { return new Set() } })
   const markSeen = (id: string) => setSeen(s => { if (s.has(id)) return s; const n = new Set(s).add(id); try { sessionStorage.setItem('pujo.seen', JSON.stringify([...n])) } catch {}; return n })
   useEffect(() => { if (detail) markSeen(detail) }, [detail])
   const freshPosts = useMemo(() => Object.fromEntries(Object.entries(xLive.posts).map(([id, v]) => [id, Math.max(...(Array.isArray(v) ? v : [v]).map(q => Date.parse(q.at) || 0))])), [xLive])
   const raining = nowFeed.some(n => /\brain/i.test(n.title) && now - Date.parse(n.published) < 3 * 3600e3)
-  const recCtx = (here: LatLng) => ({ here, now, status: (id: string) => statusOf(id, istDate, statusFile, now), travel, live: { crowd: xLive.crowd, closed: new Set<string>(), freshPosts }, seen, rain: raining, pass: hasPass })
+  const roadIssue = useMemo(() => new Set(P.located.filter(p => roadNote(p.id, xLive.roads, trafficFile ?? undefined, now)).map(p => p.id)), [xLive, trafficFile, Math.floor(now / 60e3)])
+  const recCtx = (here: LatLng) => ({ here, now, status: (id: string) => statusOf(id, istDate, statusFile, now), travel, live: { crowd: xLive.crowd, closed: new Set<string>(), freshPosts }, seen, rain: raining, pass: hasPass, roadIssue })
   const tick = Math.floor(now / 600e3)
   // Order: live drive time from me (pass, then open, break ties); without a fix, nearest to the zone's anchor station.
   const suggested = useMemo(() => (zone && zonePandals.length ? zoneTab(zonePandals, zone, { me, anchor: ZONE_ANCHOR[zone], travel, pass: hasPass, open: id => isOpen(statusOf(id, istDate, statusFile, now)), closed: id => statusOf(id, istDate, statusFile, now)?.key === 'closed' }).map(p => ({ ...p, t: travel(p) })) : []), [zone, zonePandals, statusFile, istDate, travel, tick])
@@ -326,7 +331,7 @@ export default function App() {
                     <h2 className="t-title px-4 pt-4 pr-14">{next.name}</h2>
                   </button>
                   <PickBtn on={picked.includes(next.id)} name={next.name} onClick={() => togglePick(next.id)} />
-                  <div className="px-4 flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(next.id, istDate, statusFile, now)} />{hasPass(next.id) && <PassMark />}{xLive.crowd[next.id] && <a href={xLive.crowd[next.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[next.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[next.id].at))}</a>}</div>
+                  <div className="px-4 flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(next.id, istDate, statusFile, now)} />{hasPass(next.id) && <PassMark />}<Surge c={xLive.crowd[next.id]} now={now} /><GoHint c={xLive.crowd[next.id]} now={now} /></div>
                   <p className="px-4 t-foot muted mono-num mt-1">{next.precision === 'station' ? `Approximate${next.station ? ` · near ${next.station}` : ''}` : me ? <TravelLine t={travel(next)} /> : null}</p>
                   <div className="p-4 pt-3 flex gap-2 items-center">
                     <a href={uber(next)} className="btn btn-uber flex-1">Uber here</a>
@@ -389,12 +394,13 @@ export default function App() {
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <h2 className="t-title">{p.name}</h2>
-                    <div className="flex flex-wrap items-center gap-x-3 mt-1"><StatusDot s={st} />{xLive.crowd[p.id] && <a href={xLive.crowd[p.id].url} target="_blank" rel="noopener" className="text-[13px] font-semibold" style={{ color: 'var(--sindoor)' }}>{xLive.crowd[p.id].label ?? 'Crowded'} · {ago(now - Date.parse(xLive.crowd[p.id].at))}</a>}</div>
+                    <div className="flex flex-wrap items-center gap-x-3 mt-1"><StatusDot s={st} /><Surge c={xLive.crowd[p.id]} now={now} /></div>
                   </div>
                   <button onClick={() => setDetail(null)} className="close-x mt-0.5" aria-label="Close"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M1.5 1.5l9 9M10.5 1.5l-9 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg></button>
                 </div>
                 {p.reason && <p className="t-sub mt-3">{p.reason}</p>}
                 <p className="t-foot muted mono-num mt-2">{p.precision === 'station' ? `Approximate, near ${p.station}` : me ? <TravelLine t={travel(p)} /> : null}{loo ? ` · Toilet ${fmtDist(loo.dist)}` : ''}</p>
+                {(() => { const r = roadNote(p.id, xLive.roads, trafficFile ?? undefined, now); return r && <p className="road-note t-foot mt-2">{r.url ? <a href={r.url} target="_blank" rel="noopener">{r.text}</a> : r.text}<span className="muted"> · {ago(now - Date.parse(r.at))}{r.url ? '' : ' · TomTom'}</span></p> })()}
                 {posts.length > 0 && <div className="mt-5 space-y-3">{posts.map(q => <PostCard key={q.url} p={q} now={now} />)}</div>}
                 <div className="grid grid-cols-2 gap-2 mt-5">
                   <a href={dest(p)} className="btn btn-uber">Uber here</a>
@@ -414,7 +420,7 @@ export default function App() {
       {view && plan && !picking && picked.length >= 2 && <button className="walk-pill" onClick={() => setWalkOpen(true)}>Walk {picked.length}</button>}
       {walkOpen && (() => { const ps = picked.map(id => P.located.find(p => p.id === id)).filter(Boolean) as typeof P.located
         const start: LatLng = me ?? view ?? ZONE_ANCHOR.central
-        const w = planWalk(start, ps, { cost: (a, b) => roadEstimate(roads, a, b).walkM / (TRAVEL.walkMps * 60), closed: id => statusOf(id, istDate, statusFile, now)?.key === 'closed' })
+        const w = planWalk(start, ps, { cost: (a, b) => roadEstimate(roads, a, b).walkM / (TRAVEL.walkMps * 60), closed: id => statusOf(id, istDate, statusFile, now)?.key === 'closed', later: id => goHint(xLive.crowd[id], now)?.word === 'Later' })
         const legs = w.stops.length ? walkLegs(start, w.stops) : [], hopMin = (i: number) => Math.max(1, Math.round(roadEstimate(roads, i ? w.stops[i - 1] : start, w.stops[i]).walkM / (TRAVEL.walkMps * 60)))
         const name = (id: string) => P.located.find(p => p.id === id)?.name ?? id
         return <>
@@ -548,14 +554,25 @@ function LocationSheet({ perm, onClose, onRetry }: { perm: string; onClose: () =
   </>)
 }
 type XPost = { media?: { src: string; w?: number; h?: number; video?: boolean }[]; id?: string; at: string; handle: string; avatar: string; text: string; photo?: string; score?: number; w?: number; h?: number; url: string }
-type XLive = { posts: Record<string, XPost[] | XPost>; crowd: Record<string, { at: string; url: string; label?: string; kind?: string; n?: number }>; area?: { area: string; zone: string; kind: string; label: string; at: string; url: string; n?: number }[] }
+type TrafficLive = TrafficFile & { pandals?: Record<string, { ratio: number; at: string }>; updated?: string }
+type XLive = { posts: Record<string, XPost[] | XPost>; crowd: Record<string, { at: string; url: string; label?: string; kind?: string; n?: number; w?: number }>; roads?: RoadSig[]; area?: { area: string; zone: string; kind: string; label: string; at: string; url: string; n?: number }[] }
+/** A live crowd word, only for a real surge (corroborated on X, < 90 min, still weighty). Links to the post, says how old. */
+function Surge({ c, now }: { c?: XLive['crowd'][string]; now: number }) {
+  if (!c || c.kind === 'clear' || now - Date.parse(c.at) > 90 * 60e3 || (c.w ?? 1) < 0.3) return null
+  return <a href={c.url} target="_blank" rel="noopener" className="surge t-foot"><i aria-hidden="true" />{c.label ?? 'Crowded'} · {ago(now - Date.parse(c.at))}</a>
+}
+/** 'Later' / 'Go now' only when live X evidence supports it. */
+function GoHint({ c, now }: { c?: XLive['crowd'][string]; now: number }) {
+  const h = goHint(c, now); if (!h) return null
+  return <a href={h.url} target="_blank" rel="noopener" className={`go-hint t-foot ${h.word === 'Later' ? 'later' : 'now'}`}>{h.word}</a>
+}
 /** Car and walk minutes, one quiet line. Walk only when it is sane on foot. "~" when it is the straight-line fallback. */
-function TravelLine({ t, compact }: { t: Travel; compact?: boolean }) {
+function TravelLine({ t, compact }: { t: Travel & { traffic?: boolean }; compact?: boolean }) {
   const a = t.basis === 'estimate' ? '~' : '', walk = t.walkMin <= 45
   const Car = <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 11l1.6-4.2A2 2 0 0 1 8.5 5.5h7a2 2 0 0 1 1.9 1.3L19 11a2 2 0 0 1 2 2v4a1 1 0 0 1-1 1h-1a2 2 0 0 1-4 0H9a2 2 0 0 1-4 0H4a1 1 0 0 1-1-1v-4a2 2 0 0 1 2-2zm2.2 0h9.6l-1.1-3a.7.7 0 0 0-.7-.5H9a.7.7 0 0 0-.7.5L7.2 11z"/></svg>
   const Walk = <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 5.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM9.8 8.9 7 22h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3A7.3 7.3 0 0 0 19 12v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6a2 2 0 0 0-2.5-.8L6 7.3V12h2V8.6l1.8-.7z"/></svg>
   return <span className={`inline-flex items-center gap-2.5 mono-num ${compact ? 'text-[14px]' : 'text-[15px]'} muted`} aria-label={`${a}${t.carMin} minutes by car${walk ? `, ${t.walkMin} minutes on foot` : ''}`}>
-    <span className="inline-flex items-center gap-1">{Car}{a}{t.carMin} min</span>
+    <span className={`inline-flex items-center gap-1 ${t.traffic ? 'traffic' : ''}`} title={t.traffic ? 'Live traffic (TomTom)' : undefined}>{Car}{a}{t.carMin} min</span>
     {walk && <span className="inline-flex items-center gap-1">{Walk}{a}{t.walkMin} min</span>}
   </span>
 }

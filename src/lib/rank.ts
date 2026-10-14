@@ -13,9 +13,11 @@ export const REC = {
   minuteCost: 0.45,       // value lost per minute of travel
   walkDiscount: 0.7,      // a short walk (< walkMaxM) costs less than a cab minute
   walkMaxM: 1000,
-  eveningCrowd: 1.25,     // 18:00–23:00 IST: travel minutes cost more
   rainCost: 1.5,          // rain: travel minutes cost more
-  surge: 2.5, surgeMin: 90,    // live crowd surge on X in the last 90 min
+  surge: 2.5, surgeMin: 90,    // live crowd surge on X in the last 90 min, × decayed weight (≤1.5)
+  clear: 0.8,                  // fresh first-hand "no queue / not crowded" posts
+  roadClosed: 0.8,             // police (X) or TomTom closure/jam within 400 m
+  trafficFreshMin: 60, trafficMaxX: 3,  // TomTom flow: use when fresher than this; never more than 3× OSRM
   fresh: 0.8, freshMin: 120,   // a new visitor post in the last 2 h
   seen: 10,               // opened / "I'm here": demote, they've been
   approxPin: 3,          // pin is only the metro station: lean away a little…
@@ -24,8 +26,34 @@ export const REC = {
 }
 export type RecContext = {
   here: LatLng; now: number; status: (id: string) => Status; travel: (p: Pandal) => Travel
-  live: { crowd: Record<string, { at: string }>; closed: Set<string>; freshPosts: Record<string, number> }
+  live: { crowd: Record<string, Crowd>; closed: Set<string>; freshPosts: Record<string, number> }
   seen: Set<string>; rain: boolean; pass?: (id: string) => boolean
+  traffic?: Record<string, { ratio: number; at: string }>; roadIssue?: Set<string>
+}
+export type Crowd = { at: string; kind?: string; w?: number; url?: string; label?: string }
+type Flow = { ratio: number; at: string }
+/** Traffic-aware car minutes: OSRM time ÷ (current/free-flow speed), only while the TomTom reading is fresh. */
+export function trafficCar(osrmMin: number, f: Flow | undefined, now: number): { min: number; live: boolean } {
+  if (!f || !(f.ratio > 0) || now - Date.parse(f.at) > REC.trafficFreshMin * 60e3) return { min: osrmMin, live: false }
+  return { min: Math.round(Math.min(osrmMin * REC.trafficMaxX, osrmMin / Math.min(1, f.ratio))), live: true }
+}
+/** 'Later' on a fresh, corroborated surge; 'Go now' only on fresh first-hand "little crowd" posts. Otherwise nothing. */
+export function goHint(c: Crowd | undefined, now: number): { word: 'Later' | 'Go now'; at: string; url?: string } | null {
+  if (!c) return null
+  const age = (now - Date.parse(c.at)) / 60e3, w = c.w ?? 1
+  if ((c.kind === 'crowd' || c.kind === 'queue' || c.kind === 'closed') && age < 60 && w >= 0.5) return { word: 'Later', at: c.at, url: c.url }
+  if (c.kind === 'clear' && age < 45 && w >= 0.5) return { word: 'Go now', at: c.at, url: c.url }
+  return null
+}
+export type RoadSig = { road: string; label: string; kind: string; at: string; url: string; near: string[] }
+export type TrafficFile = { incidents?: { closed: boolean; from?: string; to?: string; at: string; near: string[]; what?: string }[] }
+/** One road note for the sheet: newest police/X road report (≤2 h) or TomTom closure (≤20 min) near this pandal. */
+export function roadNote(id: string, roads: RoadSig[] | undefined, tt: TrafficFile | undefined, now: number): { text: string; at: string; url?: string } | null {
+  const x = (roads ?? []).filter(r => r.near.includes(id) && now - Date.parse(r.at) < 2 * 3600e3).sort((a, b) => b.at.localeCompare(a.at))[0]
+  const t = (tt?.incidents ?? []).filter(i => i.near.includes(id) && now - Date.parse(i.at) < 20 * 60e3).sort((a, b) => Number(b.closed) - Number(a.closed))[0]
+  if (t && (!x || t.at > x.at)) return { text: `${t.closed ? 'Closed' : 'Slow'}: ${t.from ?? 'nearby road'}${t.to ? ` to ${t.to}` : ''}`, at: t.at }
+  if (x) return { text: `${x.label} on ${x.road}`, at: x.at, url: x.url }
+  return null
 }
 export type Rec = { p: Pandal; t: Travel; score: number; why: string[] }
 
@@ -37,18 +65,24 @@ export function recommend(ps: Pandal[], c: RecContext): Rec[] {
   all.sort((a, b) => a.t.carMin - b.t.carMin || a.p.id.localeCompare(b.p.id))
   const cand = all.filter((x, i) => i < REC.retrieveMinK || x.t.carMin <= REC.retrieveMaxCarMin)
   // Stage 2: multi-objective value.
-  const h = istHour(c.now), mult = (h >= 18 && h < 23 ? REC.eveningCrowd : 1) * (c.rain ? REC.rainCost : 1)
+  const mult = c.rain ? REC.rainCost : 1
   const scored = cand.map(({ p, t }) => {
     const s = c.status(p.id), key = s?.key ?? 'unknown', why: string[] = []
     const approx = p.precision === 'station', walk = !approx && t.walkM < REC.walkMaxM
-    const minutes = approx ? Math.max(REC.approxFloorMin, t.carMin) : walk ? t.walkMin * REC.walkDiscount : t.carMin
+    const car = trafficCar(t.carMin, c.traffic?.[p.id], c.now).min
+    const minutes = approx ? Math.max(REC.approxFloorMin, car) : walk ? t.walkMin * REC.walkDiscount : car
     let score = (REC.pOpen[key] ?? REC.pOpen.unknown) * REC.appeal * (p.worth ?? 0) - REC.minuteCost * mult * minutes
     if (isOpen(s)) { score += REC.openBonus; why.push('open') }
     if (c.pass?.(p.id)) { score += REC.passBonus; why.push('pass') }
     if (p.precision === 'station') score -= REC.approxPin
     if ((p.worth ?? 0) >= 3) why.push('2026 favourite')
     why.push(walk ? `${t.walkMin} min walk` : `${t.carMin} min by car`)
-    const cr = c.live.crowd[p.id]; if (cr && c.now - Date.parse(cr.at) < REC.surgeMin * 60e3) { score -= REC.surge; why.push('crowded now') }
+    const cr = c.live.crowd[p.id]
+    if (cr && c.now - Date.parse(cr.at) < REC.surgeMin * 60e3) {
+      if (cr.kind === 'clear') { score += REC.clear * Math.min(1, cr.w ?? 1); why.push('little crowd') }
+      else { score -= REC.surge * Math.min(1.5, cr.w ?? 1); why.push('crowded now') }
+    }
+    if (c.roadIssue?.has(p.id)) { score -= REC.roadClosed; why.push('road closure nearby') }
     const fr = c.live.freshPosts[p.id]; if (fr && c.now - fr < REC.freshMin * 60e3) { score += REC.fresh; why.push('new posts') }
     if (c.seen.has(p.id)) { score -= REC.seen; why.push('seen') }
     return { p, t, score, why }

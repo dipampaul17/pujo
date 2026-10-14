@@ -6,12 +6,13 @@ A signal is shown only when it is
   first-hand  : present-tense report, not advice/forecast/politics/throwback,
   corroborated: from a credible handle (police, established news, trusted visitor) OR >=2 different people
                 reporting the same kind of thing at the same place within the window."""
-import re, datetime as dt
+import re, os, datetime as dt
 WINDOW_H = 2
 CREDIBLE = {'kolkatapolice', 'kptrafficdept', 'abpanandatv', 'ei_samay', 'ttindia', 'thewalltweets', 'ani', 'abasu4ever', 'sudhanidhib'}
 B = lambda en, bn='': re.compile(r'(\b(' + en + r')\b' + (r'|' + bn if bn else '') + ')', re.I)
 KINDS = [  # most actionable first
     ('closed', 'Entry closed', B(r'entry (closed|stopped|suspended|band)|gates? (closed|shut)|closed for (the )?(public|visitors)|pandal (closed|shut)|temporarily closed|entry bondho|gate bondho', r'প্রবেশ বন্ধ|গেট বন্ধ|মণ্ডপ বন্ধ')),
+    ('clear', 'Little crowd', B(r'no (queue|crowd|rush|line)|not (crowded|much crowd|much of a crowd)|hardly any (crowd|queue)|less crowd(ed)?|almost empty|(pandal|it) (is|was) empty|empty right now|walked (straight )?in|bhe?e?r nei|bhir nei|bhid nahi', r'ভিড় নেই|ভিড় নেই|ফাঁকা|লাইন নেই')),
     ('queue', 'Long queue', B(r'queue|long line|lambaa? line|lomba line|line e (dara|dar)\w*|waiting (time|line)|\d+\s*(min|mins|minutes|hours?|hrs?) (wait|in line|line)', r'লম্বা লাইন|লাইনে দাঁড়িয়ে|লাইন পড়েছে')),
     ('crowd', 'Crowd surge', B(r'crowd(ed| surge)?|huge rush|rush|jam[- ]?packed|packed|stampede|barricades?|over-?crowd\w*|bheer|bhe?ir|bhid|bhir', r'উপচে পড়া ভিড়|ভিড়|ভিড়|ঠাসা')),
     ('rain', 'Rain', B(r'raining|heavy rain|downpour|waterlog\w*|water-?logg\w*|brishti( porche| hocche)?|jol jomeche|jol jome', r'বৃষ্টি হচ্ছে|বৃষ্টি পড়ছে|জল জমেছে|জলমগ্ন')),
@@ -54,16 +55,35 @@ def areas_in(txt):
             if c not in [x for x, _ in out]: out.append((c, z))
     return out
 
+import json as _json, math as _math
+try: GAZ = _json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'raw', 'road_gaz.json')))['roads']
+except Exception: GAZ = {}
+def roads_in(txt):
+    out = []
+    for name, r in GAZ.items():
+        for a in [name] + r.get('aliases', []):
+            if re.search(r'(?<![A-Za-z])' + re.escape(a) + r'(?![A-Za-z])', txt, re.I):
+                if name not in out: out.append(name)
+                break
+    return out
+def near_road(name, pandals, m=400):
+    """Pandals within m metres of the road's OSM geometry."""
+    pts = GAZ.get(name, {}).get('pts', [])
+    d = lambda p, q: _math.hypot((p['lat'] - q[0]) * 111e3, (p['lng'] - q[1]) * 103e3)
+    return [p['id'] for p in pandals if p.get('lat') and pts and min(d(p, q) for q in pts) <= m]
+DECAY_MIN = 45  # a report's weight halves roughly every 31 min
 def candidate(txt, author, at, url, pandal_ids):
     """One raw report, or None. pandal_ids = guide pandals named in the post."""
     if txt.startswith('RT @'): return None
     s = classify(txt)
     if not s: return None
     ar = areas_in(txt)
+    rd = roads_in(txt) if s[0] in ('traffic', 'closed', 'crowd', 'rain') else []
     if len(pandal_ids) == 1: place = ('pandal', pandal_ids[0])
+    elif not pandal_ids and len(rd) == 1: place = ('road', rd[0])
     elif not pandal_ids and len(ar) == 1: place = ('area', ar[0][0])
     else: return None  # unplaced or ambiguous
-    return {'kind': s[0], 'label': s[1], 'place': place[0], 'id': place[1], 'zone': ar[0][1] if place[0] == 'area' else None,
+    return {'kind': s[0], 'label': s[1], 'place': place[0], 'id': place[1], 'zone': ar[0][1] if place[0] in ('area', 'road') and ar else None,
             'author': author.lower(), 'at': at, 'url': url}
 
 def accept(cands, now):
@@ -77,7 +97,13 @@ def accept(cands, now):
         if not (authors & CREDIBLE or len(authors) >= 2): continue
         best = max(cs, key=lambda c: c['at'])
         rank = [k for k, _, _ in KINDS].index(kind)
+        newest = {}
+        for c in cs: newest[c['author']] = max(newest.get(c['author'], ''), c['at'])
+        w = round(sum(_math.exp(-(now - dt.datetime.fromisoformat(a.replace('Z', '+00:00'))).total_seconds() / 60 / DECAY_MIN) for a in newest.values()), 2)
         cur = out.get((place, pid))
-        if cur is None or rank < cur['_r']:
-            out[(place, pid)] = {**best, 'n': len(authors), '_r': rank}
+        crowdish = ('crowd', 'queue', 'clear')
+        if cur is not None and kind in crowdish and cur['kind'] in crowdish:  # crowd vs clear: newest evidence wins
+            if best['at'] > cur['at']: out[(place, pid)] = {**best, 'n': len(authors), 'w': w, '_r': rank}
+        elif cur is None or rank < cur['_r']:
+            out[(place, pid)] = {**best, 'n': len(authors), 'w': w, '_r': rank}
     return {k: {kk: vv for kk, vv in v.items() if kk != '_r'} for k, v in out.items()}

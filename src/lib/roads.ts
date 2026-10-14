@@ -12,7 +12,7 @@ export const TRAVEL = {
 /** Grid of OSRM tables: cells → pandals, both profiles. Units: durations in 10 s, distances in 10 m; -1 = no route. */
 export type Roads = { v: number; pts: [number, number][]; fetched: string; grid: { lat0: number; lng0: number; step: number; rows: number; cols: number }; ids: string[]
   car: { cellT: number[][]; cellD: number[][]; pairT: number[][]; pairD: number[][] }; foot: { cellT: number[][]; cellD: number[][]; pairT: number[][]; pairD: number[][] } }
-export type Travel = { carMin: number; walkMin: number; carM: number; walkM: number; crowKm: number; basis: 'road' | 'estimate' | 'live' }
+export type Travel = { carMin: number; walkMin: number; carM: number; walkM: number; crowKm: number; basis: 'road' | 'estimate' | 'live'; traffic?: boolean }
 
 const near = (roads: Roads, p: LatLng): number => { // index of the pandal pin this point sits on (≤ 60 m), else -1
   const pins = (roads as any)._pins ??= roads.ids.map((_, i) => i)

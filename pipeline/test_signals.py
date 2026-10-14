@@ -26,7 +26,7 @@ t('single unverified not shown', accept([c1], now) == {})
 t('two people corroborate', accept([c1, c2], now)[('pandal', 'chetla-agrani')]['n'] == 2)
 t('same person twice not corroboration', accept([c1, dict(c1, url='u3')], now) == {})
 p = candidate('Diversion at Park Street, road closed', 'KPTrafficDept', ago(20), 'u4', [])
-t('police alone enough', accept([p], now)[('area', 'Park Street')]['kind'] == 'traffic')
+t('police alone enough', accept([p], now)[('road', 'Park Street')]['kind'] == 'traffic')  # road geometry beats area name
 old = candidate('Diversion at Park Street, road closed', 'KPTrafficDept', ago(200), 'u5', [])
 t('old ignored', accept([old], now) == {})
 t('rasta block', classify('Behala te rasta block kore rekheche')[0] == 'traffic')

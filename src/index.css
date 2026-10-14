@@ -182,3 +182,13 @@ a.status .status-src { text-decoration: underline; text-decoration-color: var(--
 .walk-pill { position: fixed; right: 20px; bottom: calc(env(safe-area-inset-bottom) + 84px); z-index: 25; min-height: 48px; padding: 0 22px; border-radius: 999px; background: var(--ink); color: var(--bg); font-weight: 600; font-size: 16px; }
 @media (prefers-reduced-motion: no-preference) { .walk-pill { animation: pill-in .25s ease-out; } @keyframes pill-in { from { transform: translateY(12px); opacity: 0 } } }
 @media (prefers-reduced-motion: reduce) { .pick-dot { transition: none; } }
+
+/* Live signals: quiet, only when real. */
+.surge { display: inline-flex; align-items: center; gap: 6px; color: var(--sindoor); font-weight: 600; }
+.surge i { width: 6px; height: 6px; border-radius: 6px; background: var(--sindoor); }
+.go-hint { font-weight: 600; letter-spacing: .01em; }
+.go-hint.later { color: var(--sindoor); }
+.go-hint.now { color: var(--leaf); }
+.road-note { color: var(--ink, inherit); }
+.road-note a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.traffic { color: #B8641E; }

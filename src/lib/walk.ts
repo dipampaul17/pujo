@@ -3,7 +3,13 @@ type Stop = LatLng & { id: string; precision?: string }
 export type Walk<T> = { stops: T[]; totalMin: number; closed: string[]; approx: string[] }
 
 /** Visiting order from my position: nearest-neighbour, then 2-opt (open path). Closed skipped; approximate pins aren't walkable. */
-export function planWalk<T extends Stop>(origin: LatLng, picked: T[], o: { cost: (a: LatLng, b: T) => number; closed: (id: string) => boolean }): Walk<T> {
+export function planWalk<T extends Stop>(origin: LatLng, picked: T[], o: { cost: (a: LatLng, b: T) => number; closed: (id: string) => boolean; later?: (id: string) => boolean }): Walk<T> {
+  const later = o.later
+  if (later && picked.some(p => later(p.id)) && picked.some(p => !later(p.id) && !o.closed(p.id))) {  // live crowd surge: those stops go last
+    const a = planWalk(origin, picked.filter(p => !later(p.id)), { ...o, later: undefined }), last = a.stops[a.stops.length - 1] ?? origin
+    const b = planWalk(last, picked.filter(p => later(p.id)), { ...o, later: undefined })
+    return { stops: [...a.stops, ...b.stops], totalMin: a.totalMin + b.totalMin, closed: [...a.closed, ...b.closed], approx: [...a.approx, ...b.approx] }
+  }
   const closed = picked.filter(p => o.closed(p.id)).map(p => p.id)
   const approx = picked.filter(p => !o.closed(p.id) && p.precision === 'station').map(p => p.id)
   const left = picked.filter(p => !o.closed(p.id) && p.precision !== 'station'), path: T[] = []

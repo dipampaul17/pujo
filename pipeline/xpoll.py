@@ -34,7 +34,7 @@ def pack(ps,tail=' -is:retweet'):
     return [g for g in out if g]
 INTENT=' (inaugurated OR inaugurates OR inauguration OR opened OR visited OR crowd OR queue OR darshan OR "pandal hopping" OR উদ্বোধন) -is:retweet'
 SIGNAL_Q=('((Kolkata OR pandal OR pujo OR puja OR কলকাতা OR পুজো OR Behala OR Gariahat OR Ballygunge OR Kalighat OR Chetla OR Jadavpur OR Tollygunge OR Bhowanipore OR "Park Street" OR Sealdah OR Shyambazar OR "Lake Town" OR "Salt Lake") '
-  '(crowd OR queue OR "long line" OR rush OR packed OR stampede OR barricade OR bheer OR bhir OR bhid OR ভিড় OR "লম্বা লাইন" OR "road closed" OR diversion OR "one way" OR jaam OR যানজট OR waterlogging OR brishti OR বৃষ্টি OR "jol jomeche" OR "no cabs" OR "uber surge" OR "power cut" OR "entry closed" OR "gate closed")'
+  '(crowd OR queue OR "long line" OR rush OR packed OR stampede OR barricade OR bheer OR bhir OR bhid OR ভিড় OR "লম্বা লাইন" OR "road closed" OR diversion OR "one way" OR jaam OR যানজট OR waterlogging OR brishti OR বৃষ্টি OR "jol jomeche" OR "no cabs" OR "uber surge" OR "power cut" OR "entry closed" OR "gate closed" OR "no queue" OR "no crowd" OR "not crowded" OR "ভিড় নেই" OR "bheer nei")'
   ' OR from:KPTrafficDept OR from:KolkataPolice) -is:retweet')
 # Wide openings search, not tied to known names: English, Bengali, Banglish. Window overlaps the 10-min cadence.
 WIDE_MIN=30
@@ -243,7 +243,8 @@ def ingest(files):
     # live signals: keep raw reports for the window, publish only corroborated ones
     live['sigc']=[q for q in live.get('sigc',[]) if (now-dt.datetime.fromisoformat(q['at'].replace('Z','+00:00'))).total_seconds()<SIG.WINDOW_H*3600]
     acc=SIG.accept(live['sigc'],now)
-    live['crowd']={i:{k:v[k] for k in ('kind','label','at','url','n')} for (pl,i),v in acc.items() if pl=='pandal'}
+    live['crowd']={i:{k:v[k] for k in ('kind','label','at','url','n','w')} for (pl,i),v in acc.items() if pl=='pandal'}
+    live['roads']=[{k:v[k] for k in ('kind','label','at','url','n','w','zone')}|{'road':i,'near':SIG.near_road(i,P)} for (pl,i),v in acc.items() if pl=='road']
     live['area']=[{k:v[k] for k in ('kind','label','at','url','n','zone')}|{'area':i} for (pl,i),v in acc.items() if pl=='area']
     fresh=lambda q:(now-dt.datetime.fromisoformat(q['at'].replace('Z','+00:00'))).total_seconds()<48*3600
     live['posts']={k:[q for q in v if fresh(q)] for k,v in live['posts'].items() if isinstance(v,list)}

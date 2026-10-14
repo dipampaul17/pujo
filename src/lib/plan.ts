@@ -58,12 +58,9 @@ export function areas(d: Dataset) {
 }
 
 
-/** Deterministic "right now" nudges. No network, no model. */
+/** Deterministic "right now" nudges. No network, no model. No time-of-day crowd claims: crowds come only from live X reports. */
 export function nudges(hour: number, ctx: { toiletM?: number; foodName?: string; foodM?: number; station?: string; stationM?: number; walkMin: number }) {
   const out: string[] = []
-  if (hour >= 6 && hour < 15) out.push('Quiet hours. Good time to go.')
-  if (hour >= 18 && hour < 22) out.push('Peak crowds. Allow extra time.')
-  if (hour >= 15 && hour < 18) out.push('Queues grow after sunset. Do the first two now.')
   if (hour >= 22 || hour < 2) out.push(ctx.station ? `Last metro? ${ctx.station} is ${Math.round((ctx.stationM ?? 0) / 100) / 10} km away.` : 'Check the last metro.')
   if (ctx.walkMin > 90) out.push(`Long walk. Skip a stop if you're tired.`)
   return out
@@ -111,8 +108,7 @@ export function pujoDay(istDate: string): string | null {
   return m[istDate] ?? null
 }
 export function dayTip(day: string | null, hour: number): string | null {
-  if (day === 'Ashtami' && hour >= 7 && hour < 12) return 'Ashtami anjali this morning. Pandals fill early.'
-  if (day === 'Ashtami' || day === 'Navami' || day === 'Saptami') return hour >= 17 ? `${day} night. Biggest crowds of the year.` : null
+  if (day === 'Ashtami' && hour >= 7 && hour < 12) return 'Ashtami anjali this morning.'
   if (day === 'Dashami') return 'Dashami. Sindoor khela, then immersions; some pandals close early.'
   return null
 }

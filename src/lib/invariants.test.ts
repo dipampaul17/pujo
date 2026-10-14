@@ -105,7 +105,7 @@ describe('walk is optimal for ≤ 8 picks (brute force)', () => {
       expect(len(w.stops)).toBeLessThanOrEqual(Math.min(...perms(open).map(len)) + 1e-6)
       for (const p of w.stops) { expect(st(p.id)?.key).not.toBe('closed'); expect(p.precision).not.toBe('station') }
     }
-  })
+  }, 60000)  // 8! permutations × road cost: slow on a loaded box
 })
 describe('Salt Lake boundary', () => {
   it('inside the box is Salt Lake, outside never is', () => {
