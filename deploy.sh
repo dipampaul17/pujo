@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Build + publish to GitHub Pages (gh-pages branch). Refreshes the award feed first.
-set -euo pipefail; cd "$(dirname "$0")"
+set -euo pipefail; cd "$(dirname "$(readlink -f "$0")")"
+exec 9>/tmp/dhaak-refresh.lock; flock -w 300 9  # never force-push gh-pages mid live-publish
 npx vitest run
 [ -z "${SKIP_LIVE:-}" ] && { python3 pipeline/status.py src/data/dhaak.v1.json public/live/status.json || echo "status failed, keeping last"
 python3 pipeline/now.py src/data/dhaak.v1.json public/live/now.json || echo "now feed failed, keeping last" ; }

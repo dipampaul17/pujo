@@ -73,8 +73,8 @@ def decide(prev: dict | None, srcs: list[dict]) -> dict | None:
             'corroborated': len({s['by'] for s in opens}) >= 2, 'sources': sorted(opens, key=lambda s: (RANK[s['tier']], s['at']))[:8]}
 
 def override(o: dict | None, d: dict | None, srcs: list[dict]) -> dict | None:
-    """DP's ground truth. A 'closed' override stands until a first-hand X visitor post dated after o['after']."""
+    """DP's ground truth. A 'closed' override stands until a hand-vetted (trusted or hand-pinned) first-hand X post dated after o['after']."""
     if not o or o.get('kind') != 'closed': return d
-    fresh = [s for s in srcs if is_x(s['url']) and s['kind'] == 'visitors' and s.get('tier') in ('visitor', 'trusted', 'hand') and (s.get('at') or '') > o['after'][:19]]
+    fresh = [s for s in srcs if is_x(s['url']) and s['kind'] == 'visitors' and s.get('tier') in ('trusted', 'hand') and (s.get('at') or '') > o['after'][:19]]
     if fresh: return decide(None, fresh)
     return {'since': o['after'][:10], 'evidence': '', 'note': o.get('note', 'Not open yet'), 'kind': 'closed', 'by': 'override', 'sources': []}

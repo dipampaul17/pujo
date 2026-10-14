@@ -3,6 +3,7 @@ X poller's findings (state/xlive.json). Google News "inaugurated" headlines are 
 for the X poller to search first; they never open a pandal. raw/overrides.json (DP's ground truth) wins over all.
 Writes public/live/status.json. Evidence only; no guessing. See pipeline/SWEEP.md."""
 import json, re, sys, os, urllib.request, urllib.parse, xml.etree.ElementTree as ET, datetime as dt
+import os as _o, sys as _s; _s.path.insert(0,_o.path.dirname(_o.path.abspath(__file__))); from jsonio import write_json
 from concurrent.futures import ThreadPoolExecutor
 H=os.path.dirname(__file__); data=json.load(open(sys.argv[1])); out=sys.argv[2]
 ev={k:v for k,v in json.load(open(f'{H}/raw/x_status.json')).items() if not k.startswith('_')}
@@ -19,7 +20,7 @@ def _merge(a,b,cap=4):
         seen.add(q['id']); out.append(q)
     return out[:cap]
 _posts={k:_merge([q for q in pin.get(k,[]) if q.get('evidence')]+xl.get('posts',{}).get(k,[]),pin.get(k,[])) for k in set(pin)|set(xl.get('posts',{}))}
-json.dump({'posts':_posts,'crowd':xl.get('crowd',{}),'area':xl.get('area',[])},open(os.path.join(os.path.dirname(out),'x.json'),'w'),ensure_ascii=False,sort_keys=True)
+write_json(os.path.join(os.path.dirname(out),'x.json'),{'posts':_posts,'crowd':xl.get('crowd',{}),'area':xl.get('area',[])},ensure_ascii=False,sort_keys=True)
 def norm(s): return re.sub(r'[^a-z0-9 ]',' ',s.lower())
 def one(p):
     url='https://news.google.com/rss/search?'+urllib.parse.urlencode({'q':f'"{p["name"]}" inaugurated','hl':'en-IN','gl':'IN','ceid':'IN:en'})
@@ -36,7 +37,8 @@ def one(p):
 from status_rules import classify, decide, override
 try: OVR={k:v for k,v in json.load(open(f'{H}/raw/overrides.json')).items() if not k.startswith('_')}
 except Exception: OVR={}
-trusted={h.lower() for h in ['abasu4ever']}
+import ast  # one hand-vetted list: xpoll.TRUSTED (read without importing xpoll's side effects)
+trusted=next(ast.literal_eval(n.value) for n in ast.parse(open(f'{H}/xpoll.py').read()).body if isinstance(n,ast.Assign) and getattr(n.targets[0],'id','')=='TRUSTED')
 try: man={k:v for k,v in json.load(open(f'{H}/raw/status_sources.json')).items() if not k.startswith('_')}
 except Exception: man={}
 try: prev=json.load(open(out)).get('open',{})
@@ -44,7 +46,7 @@ except Exception: prev={}
 src={}
 add=lambda k,s: src.setdefault(k,[]).append(s)
 for k,v in json.load(open(f'{H}/raw/x_status.json')).items():
-    if not k.startswith('_'): add(k,{'url':v['evidence'],'at':v['since'],'text':v.get('note',''),'hand':True,**({'kind_hint':v['kind']} if v.get('kind') else {})})
+    if not k.startswith('_'): add(k,{'url':v['evidence'],'at':v['since'],'text':v.get('note',''),'hand':True,'primary':True,**({'kind_hint':v['kind']} if v.get('kind') else {})})
 for k,l in man.items():
     for v in l: add(k,{**v,'hand':True})
 for k,v in xl.get('open',{}).items(): add(k,{'url':v['evidence'],'at':v['since'],'text':v.get('note','')})
@@ -55,7 +57,7 @@ except Exception: leads={}
 with ThreadPoolExecutor(6) as ex:
     for r in ex.map(one,sorted([p for p in data['pandals'] if p['id'] not in prev and p['id'] not in src],key=lambda p:p['id'] not in PASS)):
         if r: leads[r[0]]={'since':r[1]['since'],'url':r[1]['evidence'],'title':r[1]['note']}
-json.dump({'_':'News headlines saying a pandal was inaugurated. Leads for X search only; not evidence.',**leads},open(f'{H}/raw/news_leads.json','w'),ensure_ascii=False,indent=1)
+write_json(f'{H}/raw/news_leads.json',{'_':'News headlines saying a pandal was inaugurated. Leads for X search only; not evidence.',**leads},ensure_ascii=False,indent=1)
 ids={p['id'] for p in data['pandals']}
 ev={}
 for k in ids:
@@ -67,5 +69,5 @@ for k in ids:
     elif d: ev[k]=d  # closure is published too; the app shows it as closed
 os.makedirs(os.path.dirname(out),exist_ok=True)
 new={'puja':{'start':'2026-10-16','end':'2026-10-21'},'open':ev}
-json.dump({'updated':dt.datetime.now(dt.UTC).replace(microsecond=0,tzinfo=None).isoformat()+'Z','puja':{'start':'2026-10-16','end':'2026-10-21','public_from':'2026-10-15T18:00:00+05:30'},'open':ev},open(out,'w'),ensure_ascii=False,indent=1)
+write_json(out,{'updated':dt.datetime.now(dt.UTC).replace(microsecond=0,tzinfo=None).isoformat()+'Z','puja':{'start':'2026-10-16','end':'2026-10-21','public_from':'2026-10-15T18:00:00+05:30'},'open':ev},ensure_ascii=False,indent=1)
 print(len(ev),'with open evidence:',list(ev))

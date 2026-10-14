@@ -4,6 +4,7 @@
 X calls themselves are made by the scheduled agent via the X connector (no X credential on the box).
 Budget: 3 calls/run * 288 runs/day = 864 < 1000/day; 3/run << 30/min."""
 import json, re, sys, os, math, datetime as dt
+import os as _o, sys as _s; _s.path.insert(0,_o.path.dirname(_o.path.abspath(__file__))); from jsonio import write_json
 H=os.path.dirname(os.path.abspath(__file__)); ST=f'{H}/state'; os.makedirs(ST,exist_ok=True)
 D=json.load(open(f'{H}/../src/data/dhaak.v1.json'))['pandals']
 P=[p for p in D if p.get('lat')]
@@ -64,7 +65,7 @@ def plan(n=3):
     else:
         qs=[q(g,OPEN_FLOOR,tail) for g in pack(rest,tail)[:1]]+pq+[{'ids':[],'kind':'signal','args':{'query':SIGNAL_Q,'max_results':25,'sort_order':'recency','start_time':(now-dt.timedelta(hours=SIG.WINDOW_H)).strftime('%Y-%m-%dT%H:%M:%SZ'),**FIELDS}}]
     qs=qs[:n]
-    json.dump({'at':now.isoformat(),'queries':qs},open(f'{ST}/xplan.json','w'),indent=1,ensure_ascii=False); print(json.dumps(qs,ensure_ascii=False)); return qs
+    write_json(f'{ST}/xplan.json',{'at':now.isoformat(),'queries':qs},indent=1,ensure_ascii=False); print(json.dumps(qs,ensure_ascii=False)); return qs
 PROMO=re.compile(r'\b(offer|discount|sale|book now|giveaway|sponsor|promo|ad\b|link in bio|watch live|subscribe|tickets?|to arrive|will inaugurate|to inaugurate|scheduled|throwback|last year|2025|2024|#tbt|AI generated|AI art|how to reach|walking route|route guide|kivabe)\b',re.I)
 OPEN=re.compile(r'(\b(inaugurat(ed|es|ing|ion)|opened|open (for|to) (the )?(public|visitors)|crowds?|queues?|visited|visiting|darshan|pandal[- ]hopping|thronged|footfall|(the )?pandal (was|is|looks)|we went|i went)\b|\budbodhon (holo|hoye gelo|korlen|korlo)\b|উদ্বোধন (করলেন|করেন|হল|হলো)|উদ্বোধনে|উদ্বোধনী|ভিড়)',re.I)
 FUTURE=re.compile(r'\b(to (be )?inaugurat\w*|will (be )?(inaugurat\w*|open)|set to|scheduled|upcoming|countdown|days? to go|coming soon|last year|throwback|#tbt|(puja|pujo|durgapuja)\s?202[0-5]|will be open|opens? on|open for public \d|khuti|getting ready|still wip|wip|work in progress|walking route|route guide|how to reach|durga temple|mandir darshan|কীভাবে|khuti puja|kathamo|under construction|being built|preparation|preparing|work in progress)\b|উদ্বোধন করবেন|খুঁটি পুজো',re.I)
@@ -102,7 +103,7 @@ def cand(txt,c,u,xid):
     if any(i['url']==url for i in d['items']): return
     names=sorted({m.strip() for m in CNAME.findall(txt) if m.strip().lower() not in {'park','club','square'}})
     d['items'].append({'at':c.isoformat(),'url':url,'names':names,'text':re.sub(r'\s+',' ',txt)[:240]})
-    d['items']=d['items'][-500:]; json.dump(d,open(CANDS,'w'),ensure_ascii=False,indent=1)
+    d['items']=d['items'][-500:]; write_json(CANDS,d,ensure_ascii=False,indent=1)
 def ingest(files):
     for f in files:
         try: t=open(f).read(); d=json.loads(t[t.find('{'):t.rfind('}')+1])
@@ -166,7 +167,7 @@ def ingest(files):
     fresh=lambda q:(now-dt.datetime.fromisoformat(q['at'].replace('Z','+00:00'))).total_seconds()<48*3600
     live['posts']={k:[q for q in v if fresh(q)] for k,v in live['posts'].items() if isinstance(v,list)}
     live['posts']={k:v for k,v in live['posts'].items() if v}
-    json.dump(live,open(f'{ST}/xlive.json','w'),ensure_ascii=False,indent=1)
+    write_json(f'{ST}/xlive.json',live,ensure_ascii=False,indent=1)
     print('posts',list(live['posts']),'crowd',list(live['crowd']),'open',list(live['open']))
 if __name__=='__main__':
     plan() if sys.argv[1]=='plan' else ingest(sys.argv[2:])

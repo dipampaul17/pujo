@@ -3,9 +3,11 @@
 #   ./refresh-live.sh plan              -> prints this run's <=3 X queries (JSON) for the agent to run via the X connector
 #   ./refresh-live.sh [x_result.json..] -> ingests X results, rebuilds status/x/now JSON, redeploys only if they changed
 set -uo pipefail
-cd "$(dirname "$0")"
+cd "$(dirname "$(readlink -f "$0")")"
+# One run at a time: a 5-min cron overlapping a slow run (or a sweep) must not interleave state writes or pushes.
+exec 9>/tmp/dhaak-refresh.lock; flock -w 120 9 || { echo "another refresh holds the lock"; exit 1; }
 if [ "${1:-}" = plan ]; then python3 pipeline/xpoll.py plan; exit 0; fi
-[ $# -gt 0 ] && python3 pipeline/xpoll.py ingest "$@"
+if [ $# -gt 0 ]; then python3 pipeline/xpoll.py ingest "$@" || { echo "ingest failed"; exit 1; }; fi
 before=$(cat public/live/status.json public/live/x.json public/live/now.json 2>/dev/null | python3 -c "import sys,json,hashlib,re;print(hashlib.sha1(re.sub(r'\"updated\": ?\"[^\"]*\"','',sys.stdin.read()).encode()).hexdigest())")
 python3 pipeline/pinned.py >/dev/null || echo "pinned: kept last"
 python3 pipeline/status.py src/data/dhaak.v1.json public/live/status.json >/dev/null || echo "status: kept last"

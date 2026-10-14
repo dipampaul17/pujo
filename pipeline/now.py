@@ -2,6 +2,7 @@
 Keeps practical items (traffic, diversions, metro timings, crowds, rain, closures) from the last 6 h,
 tags each with zones it mentions. Never writes an item without a real source link."""
 import json, re, sys, os, urllib.request, urllib.parse, xml.etree.ElementTree as ET, datetime as dt
+import os as _o, sys as _s; _s.path.insert(0,_o.path.dirname(_o.path.abspath(__file__))); from jsonio import write_json
 data=json.load(open(sys.argv[1])); out_path=sys.argv[2]
 Q=['Kolkata traffic diversion Durga Puja','Kolkata Police Puja traffic advisory','Kolkata Metro Puja timings extended','Kolkata rain Durga Puja forecast','Kolkata pandal crowd entry closed','Kolkata road closed pandal']
 PRACTICAL=r'traffic|diversion|divert|road clos|roads clos|closed for|no.entry|one.way|metro (service|timing|run|hours|till|until|extended)|extended hours|rain|storm|thunder|downpour|weather alert|crowd|queue|rush|advisory|parking'
@@ -25,5 +26,5 @@ for q in Q:
         if not zones and not pids: continue
         items[link]={'title':re.sub(r' - [^-]+$','',t),'source':src.text if src is not None else 'Google News','link':link,'published':pub.isoformat()+'Z','zones':zones,'pandals':pids}
 os.makedirs(os.path.dirname(out_path),exist_ok=True)
-json.dump({'updated':now.replace(microsecond=0).isoformat()+'Z','items':sorted(items.values(),key=lambda x:x['published'],reverse=True)[:12]},open(out_path,'w'),ensure_ascii=False,indent=1)
+write_json(out_path,{'updated':now.replace(microsecond=0).isoformat()+'Z','items':sorted(items.values(),key=lambda x:x['published'],reverse=True)[:12]},ensure_ascii=False,indent=1)
 print(len(items),'now items')

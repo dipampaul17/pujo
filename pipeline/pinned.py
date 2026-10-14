@@ -2,6 +2,7 @@
 Built only from saved X results (live-runs/*.json), no API calls. Never expires; merged, never overwritten.
   pinned.py [STATUS_JSON]  -> updates pipeline/state/pinned.json"""
 import json, os, re, glob, sys
+import os as _o, sys as _s; _s.path.insert(0,_o.path.dirname(_o.path.abspath(__file__))); from jsonio import write_json
 H=os.path.dirname(os.path.abspath(__file__)); ST=f'{H}/state'; RUNS=f'{H}/../live-runs'
 CAP=4
 def load(f,d):
@@ -49,5 +50,5 @@ if __name__=='__main__':
         if its: pin[pid]=merge([q for q in pin.get(pid,[]) if q.get('evidence')][:1]+its,pin.get(pid,[]))
     for pid,v in xl.items():  # anything once shown stays (live list fills remaining slots)
         pin[pid]=merge(pin.get(pid,[]),[dict(q,score=q.get('score',0)) for q in v])
-    json.dump(pin,open(f'{ST}/pinned.json','w'),ensure_ascii=False,indent=1)
+    write_json(f'{ST}/pinned.json',pin,ensure_ascii=False,indent=1)
     print({k:len(v) for k,v in pin.items()})
