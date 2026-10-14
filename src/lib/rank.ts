@@ -1,6 +1,6 @@
 import type { Pandal, Status } from './plan'
 import type { Travel } from './roads'
-import { haversine, type LatLng } from './geo'
+import { haversine, orderRoute, type LatLng } from './geo'
 
 /** Recommender weights: the only tuning surface. See README "Recommender". */
 export const REC = {
@@ -69,4 +69,11 @@ export function listAll(ps: Pandal[], c: RecContext): Rec[] {
   const rest = ps.filter(p => !got.has(p.id)).map(p => ({ p, t: c.travel(p), score: -Infinity, why: [] as string[] }))
     .sort((a, b) => Number(isClosed(a.p)) - Number(isClosed(b.p)) || a.t.carMin - b.t.carMin || a.p.id.localeCompare(b.p.id))
   return [...top, ...rest]
+}
+
+/** Route: start at the best-ranked pick (so an Open pandal leads over a closer unknown), then walk the rest nearest-first from there. */
+export function routeStops<T extends LatLng>(ranked: T[]): T[] {
+  if (ranked.length <= 1) return [...ranked]
+  const [lead, ...rest] = ranked
+  return [lead, ...orderRoute(lead, rest)]
 }

@@ -25,6 +25,9 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
     { const [c, p] = await mk(SPOTS.gariahat); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2500)
       const n = parseInt(await p.locator('details.group summary .mono-num').innerText()); const rows = await p.locator('details.group ul li').count(); ok(n === rows, T(`list header says ${n}, shows ${rows}`))
       ok(await p.getByRole('heading', { name: 'Near you' }).count() + await p.locator('summary', { hasText: /^Near you/ }).count() === 1, T('"Near you" heading twice'))
+      { const r = p.locator('details.group ul li a').filter({ has: p.locator('[aria-label*="by car"]') }).first(); const rl = await r.locator('[aria-label*="by car"]').getAttribute('aria-label'); await r.tap(); await p.waitForTimeout(700)
+        ok(await p.locator('[role=dialog] [aria-label*="by car"]').first().getAttribute('aria-label').catch(() => null) === rl, T('sheet travel time differs from the list'))
+        ok((await p.locator('[role=dialog] a.btn-uber').getAttribute('href')).includes(`pickup%5Blatitude%5D=${SPOTS.gariahat[0].toFixed(6)}`), T('sheet Uber pickup is not my position')); await p.keyboard.press('Escape'); await p.waitForTimeout(500) }
       const ek = p.locator('details.group ul li', { hasText: 'Ekdalia' }); if (await ek.count()) ok(/Closed/.test(await ek.innerText()), T('Ekdalia row not marked Closed'))
       const chip = p.getByRole('button', { name: /^Open/ }).filter({ has: p.locator('.chip-n') })
       if (await chip.count()) { await chip.tap(); await p.waitForTimeout(400); const t = await p.locator('details.group ul li').allInnerTexts(); ok(t.length > 0 && t.every(x => /Open|Inaugurated/.test(x)), T('Open filter lets non-open rows through'))

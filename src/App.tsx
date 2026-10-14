@@ -3,11 +3,10 @@ import { reduce, initial, onLoadAction, needsChip, shouldUpdate, platform, APPRO
 import raw from './data/dhaak.v1.json'
 import { makePlanner, areas as getAreas, statusOf, tier, type StatusFile, relevantNow, type NowItem, tagsFor, tagContext, zoneOf, ZONES, ZONE_ANCHOR, zoneCounts, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
-import { recommend, listAll } from './lib/rank'
+import { recommend, listAll, routeStops } from './lib/rank'
 import { applyFilters, chips, NO_FILTERS, type Filters } from './lib/filters'
 import { hasPass } from './lib/passport'
 import { roadEstimate, liveTravel, attachPins, type Roads, type Travel } from './lib/roads'
-import { orderRoute } from './lib/geo'
 import { HERO_LQIP } from './hero-lqip'
 import { TextReveal } from './components/text-reveal'
 
@@ -217,7 +216,7 @@ export default function App() {
   const stops = useMemo(() => { if (!plan || plan.outOfRange || !view) return []
     const near = P.located.filter(p => hav(view, p) < 6000 && !skip.has(p.id))
     const top = recommend(near as any, recCtx(from ?? view)).slice(0, 8).map(x => ({ ...(x.p as any), dist: hav(view, x.p) })) as typeof plan.stops
-    return orderRoute(view, top) }, [plan, skip, view?.lat, view?.lng, statusFile, travel, seen, xLive, raining, tick])
+    return routeStops(top) }, [plan, skip, view?.lat, view?.lng, statusFile, travel, seen, xLive, raining, tick])
 
   const pick = (a: (typeof AREAS)[number]) => { setEntered(true); localStorage.setItem('dhaak.station', a.name); setOrigin({ lat: a.lat, lng: a.lng, label: `${a.name} metro`, precise: false }); setZoneRaw(zoneOf(a)); scrollMem.current = 0; setPicking(false); setSkip(new Set()); setTab(0) }
 

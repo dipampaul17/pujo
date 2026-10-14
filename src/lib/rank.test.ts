@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import fs from 'node:fs'
 import raw from '../data/dhaak.v1.json'
-import { recommend, listAll, REC, type RecContext } from './rank'
+import { recommend, listAll, routeStops, REC, type RecContext } from './rank'
 import { roadEstimate, attachPins, type Roads } from './roads'
 import { statusOf, type Pandal, type StatusFile } from './plan'
 import { haversine } from './geo'
@@ -61,5 +61,13 @@ describe('full list (Near you / zone browse)', () => {
   it('closed pandals stay visible, last', () => {
     const l = listAll(near, ctx(at, { live: { crowd: {}, closed: new Set(['ekdalia-evergreen']), freshPosts: {} } }))
     expect(l[l.length - 1].p.id).toBe('ekdalia-evergreen')
+  })
+})
+describe('route lead', () => {
+  const at: [number, number] = [22.4925, 88.3866]
+  const c = ctx(at, { status: id => id === 'santoshpur-lake-pally' ? { key: 'open', label: 'Open' } : null })
+  const near = ps.filter(p => haversine({ lat: at[0], lng: at[1] }, p) < 6000)
+  it('an Open pandal a few hundred metres away leads over a no-status one on the doorstep', () => {
+    expect(routeStops(recommend(near, c).slice(0, 8).map(r => r.p))[0].id).toBe('santoshpur-lake-pally')
   })
 })
