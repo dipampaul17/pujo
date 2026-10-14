@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { goHint, trafficCar, roadNote, REC, recommend } from './rank'
+import { goHint, roadNote, REC, recommend } from './rank'
 import { planWalk } from './walk'
 import { nudges, dayTip } from './plan'
 const NOW = Date.parse('2026-10-14T13:00:00Z')
@@ -13,18 +13,10 @@ describe('crowd + traffic: real signals only, labelled by age', () => {
     expect(goHint({ kind: 'clear', at: ago(70), url: 'u', w: 0.3 }, NOW)).toBeNull()
     expect(goHint(undefined, NOW)).toBeNull()
   })
-  it('traffic-aware car minutes only when the TomTom reading is fresh', () => {
-    expect(trafficCar(10, { ratio: 0.5, at: ago(20) }, NOW)).toEqual({ min: 20, live: true })
-    expect(trafficCar(10, { ratio: 0.1, at: ago(20) }, NOW)).toEqual({ min: 30, live: true })   // capped at 3x
-    expect(trafficCar(10, { ratio: 0.5, at: ago(90) }, NOW)).toEqual({ min: 10, live: false })  // stale -> OSRM
-    expect(trafficCar(10, undefined, NOW)).toEqual({ min: 10, live: false })
-  })
-  it('road note: police X post or TomTom closure near the pandal, newest first, only while fresh', () => {
+  it('road note: police/X road post near the pandal, newest first, only while fresh', () => {
     const roads = [{ road: 'Hazra Road', label: 'Traffic', kind: 'traffic', at: ago(30), url: 'x', near: ['a'] }, { road: 'Old', label: 'Traffic', kind: 'traffic', at: ago(200), url: 'y', near: ['a'] }]
-    expect(roadNote('a', roads, undefined, NOW)?.text).toMatch(/Hazra Road/)
-    expect(roadNote('b', roads, undefined, NOW)).toBeNull()
-    const tt = { incidents: [{ closed: true, from: 'Hazra Rd', to: 'SP Mukherjee Rd', at: ago(3), near: ['b'], what: 'Closed' }] }
-    expect(roadNote('b', [], tt, NOW)?.text).toMatch(/Closed: Hazra Rd/)
+    expect(roadNote('a', roads, NOW)?.text).toMatch(/Hazra Road/)
+    expect(roadNote('b', roads, NOW)).toBeNull()
   })
   it('surge penalty decays with weight; clear evidence lifts', () => {
     const P = [{ id: 'a', name: 'A', lat: 22.5, lng: 88.35, worth: 3 }, { id: 'b', name: 'B', lat: 22.5005, lng: 88.3505, worth: 3 }] as any

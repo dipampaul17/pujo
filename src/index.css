@@ -191,4 +191,3 @@ a.status .status-src { text-decoration: underline; text-decoration-color: var(--
 .go-hint.now { color: var(--leaf); }
 .road-note { color: var(--ink, inherit); }
 .road-note a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-.traffic { color: #B8641E; }
