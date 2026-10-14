@@ -65,8 +65,7 @@ describe('IST clock', () => {
       expect(istHour(t)).toBe(+new Intl.DateTimeFormat('en-GB', { hour: '2-digit', hourCycle: 'h23', timeZone: 'Asia/Kolkata' }).format(t)) }
   })
 })
-// Reported to the data owner: same pin, likely one puja under two names. Remove once the data is merged.
-const KNOWN = new Set(['tala-park~tala-prattoy'])
+const KNOWN = new Set<string>()  // pairs allowed to share a pin: none (Tala Park merged into Tala Prattoy)
 describe('aliases', () => {
   it('no two pandals share a normalised name, or a pin within 25 m', () => {
     const norm = (s: string) => s.toLowerCase().replace(/sarbojanin/g, 'sarbajanin').replace(/[^a-z0-9]/g, '')

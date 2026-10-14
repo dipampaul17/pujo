@@ -7,8 +7,7 @@ EXTRA={
  'santosh-mitra-square':['Santosh Mitra Square','Santosh Mitra','Lebutala Park','সন্তোষ মিত্র স্কোয়ার'],
  'chetla-agrani':['Chetla Agrani','Chetla Agrani Club','চেতলা অগ্রণী'],
  'suruchi-sangha':['Suruchi Sangha','Suruchi Sangh','সুরুচি সংঘ'],
- 'tala-prattoy':['Tala Prattoy','Tala Pratyay','Tala Prattay','টালা প্রত্যয়'],
- 'tala-park':['Tala Park'],
+ 'tala-prattoy':['Tala Prattoy','Tala Pratyay','Tala Prattay','টালা প্রত্যয়','Tala Park Prattoy','Tala Park Prattay','Tala Park'],  # Tala Park Sarbojanin's puja (8/1 Rajkumar Chatterjee Rd)
  'chaltabagan-lohapatty':['Chaltabagan','Chalta Bagan','চালতাবাগান'],
  'mudiali':['Mudiali Club','Mudiali','মুদিয়ালি'],
  'deshapriya-park':['Deshapriya Park','Deshapriya','দেশপ্রিয় পার্ক'],

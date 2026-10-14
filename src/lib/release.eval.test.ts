@@ -22,7 +22,7 @@ describe('release eval', () => {
     for (const p of d.pandals.filter(p => p.lat != null)) {
       expect(p.lat!, p.id).toBeGreaterThan(22.35); expect(p.lat!, p.id).toBeLessThan(22.75)
       expect(p.lng!, p.id).toBeGreaterThan(88.2); expect(p.lng!, p.id).toBeLessThan(88.55)
-      if (p.precision === 'osm' && p.id !== 'tala-park') { // Tala Park's puja is Tala Prattoy: same place, listed twice in the guide
+      if (p.precision === 'osm') {
          const k = `${p.lat},${p.lng}`; expect(seen.get(k), `${p.id} shares a pin with ${seen.get(k)}`).toBeUndefined(); seen.set(k, p.id) }
     }
   })
@@ -55,7 +55,7 @@ describe('pin accuracy (two sources agree within 250 m; see pipeline/raw/pin_aud
   })
   it('every audited pin is what ships; unresolved ones stay approximate (no distance shown)', () => {
     for (const [id, a] of Object.entries(audit as Record<string, any>)) {
-      const p = by[id]
+      const p = by[id]; if (!p && id === 'tala-park') continue // merged into tala-prattoy (same puja, same pin)
       if (a.verdict === 'verified' || a.verdict === 'corrected') { expect(p.lat, id).toBe(a.lat); expect(p.lng, id).toBe(a.lng); expect(p.precision, id).toBe('osm') }
       if (a.verdict === 'unresolved-approx') expect(p.precision, id).not.toBe('osm')
     }

@@ -50,20 +50,36 @@ SRC = {
  'club-muktadal-bhowanipur': ('Club Muktadal Sarbojanin', None, None, 'Jatin Das Park'),  # @SuvenduWB 12 Oct: ক্লাব মুক্তদল সার্বজনীন, ভবানীপুর
  'allen-park-sarbojanin': ('Allen Park Sarbojanin', 'allen_park', None, None),            # @SuvenduWB 12 Oct; Park Street
 }
+# Exact pins checked 14 Oct 2026 against two independent families: Google Maps place (Agamoni pins copy Google) and an
+# OpenStreetMap named feature (PPG pins copy OSM). id: (google pin, google place name, osm pin, osm feature name). Pin used: Google's.
+VERIFIED = {
+ 'ballygunge-21-pally': ((22.529175, 88.368816), 'Google: Ballygunge 21 Pally', (22.5292355, 88.368908), 'OSM: Ballygunge 21 Pally'),
+ 'dhakuria-sarbojanin': ((22.510483, 88.371986), 'Google: Dhakuria Sarbojanin Durgotsab', (22.5100279, 88.3719874), 'OSM: Dhakuria Sarbojanin'),
+ 'gariahat-sarbojanin': ((22.517457, 88.366756), 'Google: Gariahat Sarbojonin Durgotsab', (22.5173511, 88.3667515), 'OSM: Gariahat Sarbojanin Durgotsab'),
+ 'hazra-park-durgotsab': ((22.524579, 88.34607), 'Google: Hazra Park Sarbojanin', (22.524838, 88.3461413), 'OSM: Hazra Park Durgotsab'),
+ 'golmath-durga-puja': ((22.526871, 88.349549), 'Google: Gol Math Durga Puja Samiti', (22.5269309, 88.3495445), 'OSM: Golmath Durga Puja Samiti'),
+ 'poddar-nagar-sarbojanin': ((22.497265, 88.367563), 'Google: Poddarnagar Sarbojanin Durgotsav', (22.4982381, 88.3692526), 'OSM: Poddar Nagar Sarbojanin'),
+ 'rk-chatterjee-sarbojanin': ((22.518135, 88.37842), 'Google: Kasba R K Chatterjee Road Adhibasibrindo', (22.5176837, 88.3782632), 'OSM: R K Chatterjee Sarbojanin'),
+ 'kendua-shanti-sangha': ((22.471984, 88.381501), 'Google: Kendua Shanti Sangha', (22.472065, 88.381706), 'OSM: ShantiSangha Playground'),
+}
 def resolve(stations):
     out = []
     for k, (name, pg, ag, st) in SRC.items():
         a, b = P.get(pg) if pg else None, A.get(ag) if ag else None
         base = {'worth': 0.5, 'reason': None, 'signals': {'news2026': 0, 'theme2026': 0, 'x7d': 0}, 'id': k, 'name': name, 'line': None, 'circuits': [], 'quality': 0.5, 'note': None}
         ok = a and b and hav(a, b) <= 250
+        v = VERIFIED.get(k)
+        if v and hav(v[0], v[2]) <= 250: a, ok = v[0], True
         ref = a or b
         s = next(x for x in stations if x['name'] == st) if st else min(stations, key=lambda x: hav(ref, (x['lat'], x['lng'])))
         out.append({**base, 'station': s['name'], **({'lat': round(a[0], 6), 'lng': round(a[1], 6), 'precision': 'osm'} if ok else {'lat': s['lat'], 'lng': s['lng'], 'precision': 'station'})})
     return out
 def apply(data):
-    have = {p['id'] for p in data['pandals']}
-    add = [p for p in resolve(data['stations']) if p['id'] not in have]
-    data['pandals'] = sorted(data['pandals'] + add, key=lambda p: p['id']); return len(add)
+    have = {p['id']: p for p in data['pandals']}; add = 0
+    for p in resolve(data['stations']):
+        if p['id'] in have: have[p['id']].update({k: p[k] for k in ('lat', 'lng', 'precision', 'station')})  # re-pin in place
+        else: have[p['id']] = p; add += 1
+    data['pandals'] = sorted(have.values(), key=lambda p: p['id']); return add
 if __name__ == '__main__':
     import hashlib
     f = sys.argv[1]; d = json.load(open(f)); d.pop('hash', None); n = apply(d)

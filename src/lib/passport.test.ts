@@ -15,7 +15,7 @@ describe('Pujor Passport', () => {
     expect(hasPass('haridevpur-41-pally')).toBe(true)
   })
   it('does not mark near-namesakes', () => {
-    for (const id of ['tala-park', 'tala-prattoy', 'naktala-pally-unnayan-samity', 'suruchi-sangha', 'sree-bhumi-sporting-club']) expect(hasPass(id), id).toBe(false)
+    for (const id of ['tala-prattoy', 'naktala-pally-unnayan-samity', 'suruchi-sangha', 'sree-bhumi-sporting-club']) expect(hasPass(id), id).toBe(false)
   })
 })
 import { readFileSync } from 'node:fs'
