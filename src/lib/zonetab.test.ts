@@ -36,3 +36,14 @@ describe('zone tab', () => {
     expect(zoneTab(fake, 'south', { me: null, anchor: { lat: 22.5, lng: 88.35 }, travel: car(a), pass: () => false, open: () => false, closed: id => id === 'a' }).map(p => p.id)).toEqual(['b', 'a'])
   })
 })
+
+import { routePool } from './rank'
+describe('route under a zone tab', () => {
+  it('never takes a pandal from another zone (Santosh Mitra Square stays out of South)', () => {
+    const at = { lat: 22.529, lng: 88.36 } // Ballygunge, 4 km from Santosh Mitra Square
+    const pool = routePool(ps, at, 'south', new Set())
+    expect(pool.length).toBeGreaterThan(5)
+    expect(pool.every(p => zoneOf(p) === 'south')).toBe(true)
+    expect(pool.some(p => p.id === 'santosh-mitra-square')).toBe(false)
+  })
+})

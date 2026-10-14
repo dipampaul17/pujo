@@ -19,6 +19,9 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
       const hrefs = await p.$$eval('a[href]', a => a.map(x => x.href)); ok(!hrefs.some(h => /undefined|NaN|null/.test(h)), T(`${spot}: bad href`))
       const uber = hrefs.find(h => h.startsWith('https://m.uber.com/ul/')); ok(uber && uber.includes(`pickup%5Blatitude%5D=${ll[0].toFixed(6)}`), T(`${spot}: Uber pickup is not my position`))
       const maps = hrefs.find(h => h.includes('google.com/maps/dir/')); ok(maps && maps.includes(`origin=${ll[0].toFixed(6)}`), T(`${spot}: Maps route does not start at me`))
+      { const D = require('../src/data/dhaak.v1.json').pandals, other = new Set(D.filter(q => q.lat != null && q.lat >= 22.53).map(q => q.name))
+        const txt = (await p.locator('main').innerText()).split('\n').map(x => x.trim()); const bad = txt.filter(x => other.has(x))
+        ok(bad.length === 0, T(`${spot}: South tab shows non-South pandals: ${bad.join(', ')}`)) }
       await p.screenshot({ path: `${out}/${name}-${spot}.png` }); await c.close()
     }
     // QA: list count matches rows, closed pandals visible as Closed, one 'Near you' heading; far away selects no zone.

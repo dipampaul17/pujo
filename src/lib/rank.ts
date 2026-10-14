@@ -89,3 +89,8 @@ export function zoneTab<T extends Pandal>(ps: T[], zone: Zone, c: { me: LatLng |
   return ps.filter(p => zoneOf(p) === zone).map(p => ({ p, k: key(p) }))
     .sort((a, b) => { for (let i = 0; i < 5; i++) if (a.k[i] !== b.k[i]) return a.k[i] - b.k[i]; return a.p.name.localeCompare(b.p.name) }).map(x => x.p)
 }
+
+/** Route candidates: within 6 km of the start, inside the tab's zone only, minus skipped. */
+export function routePool<T extends Pandal>(ps: T[], at: LatLng, zone: Zone | null, skip: Set<string>): T[] {
+  return ps.filter(p => haversine(at, p) < 6000 && !skip.has(p.id) && (!zone || zoneOf(p) === zone))
+}
