@@ -101,13 +101,13 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
       const status = require('fs').readFileSync(require('path').join(__dirname, '../src/lib/fixtures/status-2026-10-13.json'), 'utf8')
       for (const f of fx) { const [c, p] = await mk(f.at)
         await p.clock.setFixedTime(new Date('2026-10-13T19:00:00+05:30'))
-        await p.route('**/live/status.json', r => r.fulfill({ body: status, contentType: 'application/json' }))
+        await p.route('**/live/status.json*', r => r.fulfill({ body: status, contentType: 'application/json' }))
         await p.route(/project-osrm|openstreetmap\.de/, r => r.abort())
-        await p.route('**/live/now.json', r => r.fulfill({ body: '{"items":[]}', contentType: 'application/json' }))
-        await p.route('**/live/x.json', r => r.fulfill({ body: '{"posts":{},"crowd":{}}', contentType: 'application/json' }))
+        await p.route('**/live/now.json*', r => r.fulfill({ body: '{"items":[]}', contentType: 'application/json' }))
+        await p.route('**/live/x.json*', r => r.fulfill({ body: '{"posts":{},"crowd":{}}', contentType: 'application/json' }))
         await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2500)
         const rows = await p.locator('.rail [data-card]').evaluateAll(ls => ls.map(l => { const c = l.querySelector('[aria-label*="by car"]'); return { g: /\b(Open|Inaugurated)\b/.test(l.innerText) ? 0 : l.querySelector('.pass-mark, .rail-pass') ? 1 : 2, m: c ? parseInt(c.getAttribute('aria-label').replace('~', '')) : NaN } })).then(r => r.filter(x => !isNaN(x.m)))
-        ok(rows.length > 5 && rows.every((r, i) => i === 0 || r.g > rows[i - 1].g || (r.g === rows[i - 1].g && r.m >= rows[i - 1].m)), T(`${f.name}: zone list not open → pass → drive time: ${rows.slice(0, 12).map(r => r.g + ':' + r.m).join(',')}`))
+        ok(rows.length > 5 && rows.every((r, i) => i === 0 || r.g > rows[i - 1].g || (r.g === rows[i - 1].g && r.m >= rows[i - 1].m)), T(`${f.name}: zone list not open → pass → drive time: ${(i => rows.slice(Math.max(0, i - 3), i + 3).map(r => r.g + ':' + r.m).join(',') + ' @' + i)(rows.findIndex((r, i) => i > 0 && !(r.g > rows[i - 1].g || (r.g === rows[i - 1].g && r.m >= rows[i - 1].m))))}`))
         await p.screenshot({ path: `${out}/${name}-open-${f.name.toLowerCase()}.png` }); await c.close() } }
     // Denied: help sheet, zones still work. Far away: finite distance.
     { const [c, p] = await mk(null); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(1200)

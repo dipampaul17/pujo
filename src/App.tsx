@@ -320,7 +320,7 @@ export default function App() {
               const uber = (s: typeof listed[number]) => uberUrl({ lat: s.lat, lng: s.lng, name: s.name, approx: s.precision === 'station', address: s.precision === 'station' ? `${s.name} Durga Puja, Kolkata` : `${s.name}, Kolkata` } as any, view?.precise && !view.approx ? view : null)
               return <>
 {!next && <button className="btn btn-quiet w-full mt-4" onClick={() => setFilters(NO_FILTERS)}>Clear filters</button>}
-                {next && <article data-card className="go mt-4 rise relative" key={zone + next.id}>
+                {next && <article data-card data-zone={zoneOf(next)} data-approx={next.precision === 'station' || undefined} className="go mt-4 rise relative" key={zone + next.id}>
                   <button onClick={() => setDetail(next.id)} aria-haspopup="dialog" className="block w-full text-left">
                     <Photo p={next} x={xLive} big />
                     <h2 className="t-title px-4 pt-4 pr-14">{next.name}</h2>
@@ -335,12 +335,12 @@ export default function App() {
                 </article>}
                 {rail.length > 0 && <ul className="rail mt-5 -mx-5 px-5" aria-label={`More in ${ZLABEL[zone]}`} onTouchStart={e => e.stopPropagation()} onTouchEnd={e => e.stopPropagation()}>
                   {rail.map(p => { const s = statusOf(p.id, istDate, statusFile, now)
-                    return <li key={p.id} data-card className="rail-item relative">
+                    return <li key={p.id} data-card data-zone={zoneOf(p)} data-approx={p.precision === 'station' || undefined} className="rail-item relative">
                       <PickBtn on={picked.includes(p.id)} name={p.name} onClick={() => togglePick(p.id)} />
                       <button onClick={() => setDetail(p.id)} aria-haspopup="dialog" className="block w-full text-left">
                         <span className="relative block"><Photo p={p} x={xLive} />
                           <span className="rail-marks">{isOpen(s) && <span className="rail-dot" title={s!.label} />}{hasPass(p.id) && <span className="rail-pass"><PassGlyph /></span>}</span></span>
-                        <span className="block t-body font-medium mt-2 line-clamp-2 leading-snug">{p.name}</span>
+                        <span className="block t-body font-medium mt-2 line-clamp-2 leading-snug min-h-[2.75em]">{p.name}</span>
                         <span className="sr-only">{[s?.label, hasPass(p.id) ? 'Pujor Passport' : null].filter(Boolean).join(', ')}</span>
                         {p.precision !== 'station' && me && <span className="block mt-0.5"><TravelLine t={p.t} compact /></span>}
                       </button>

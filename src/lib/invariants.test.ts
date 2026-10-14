@@ -75,3 +75,46 @@ describe('aliases', () => {
     for (let i = 0; i < pinned.length; i++) for (let j = i + 1; j < pinned.length; j++) expect(haversine(pinned[i], pinned[j]) < 25 && !KNOWN.has(`${pinned[i].id}~${pinned[j].id}`) ? `${pinned[i].id}~${pinned[j].id}` : '').toBe('')
   })
 })
+import { pagePicks } from './page'
+import { applyFilters } from './filters'
+import { planWalk } from './walk'
+import { inSaltLake } from './plan'
+import { hasPass } from './passport'
+describe('zone pages (redesign)', () => {
+  for (const z of ZONES) it(`${z}: go-next + rail are exactly the zone's pandals, each once, under every filter combo`, () => {
+    const me = { lat: 22.518, lng: 88.368 }
+    const list = zoneTab(ps, z, { me, anchor: ZONE_ANCHOR[z], travel: p => roadEstimate(roads, me, p), pass: hasPass, open: id => isOpen(st(id)), closed: id => st(id)?.key === 'closed' })
+    for (const f of [{ open: false, pass: false }, { open: true, pass: false }, { open: false, pass: true }, { open: true, pass: true }]) {
+      const keep = { open: (id: string) => isOpen(st(id)), pass: hasPass }, listed = applyFilters(list, f, keep)
+      const route = recommend(routePool(ps, ZONE_ANCHOR[z], z, new Set(), id => (!f.open || keep.open(id)) && (!f.pass || keep.pass(id))) as any, ctx(ZONE_ANCHOR[z])).map(r => r.p)
+      const { next, rail } = pagePicks(route, listed), ids = [...(next ? [next.id] : []), ...rail.map(p => p.id)]
+      expect(new Set(ids).size).toBe(ids.length); expect(ids.sort()).toEqual(listed.map(p => p.id).sort())
+      for (const p of [...(next ? [next] : []), ...rail]) { expect(zoneOf(p)).toBe(z); if (f.open) expect(isOpen(st(p.id))).toBe(true); if (f.pass) expect(hasPass(p.id)).toBe(true) }
+      for (const p of route) { expect(zoneOf(p)).toBe(z); expect(st(p.id)?.key).not.toBe('closed') }
+    }
+  })
+})
+describe('walk is optimal for ≤ 8 picks (brute force)', () => {
+  const perms = <T,>(a: T[]): T[][] => a.length <= 1 ? [a] : a.flatMap((x, i) => perms([...a.slice(0, i), ...a.slice(i + 1)]).map(p => [x, ...p]))
+  it('exactly the best order on real pins, and never routes closed or approximate', () => {
+    const pinned = ps.filter(p => p.precision !== 'station' && zoneOf(p) === 'south'), cost = (a: any, b: any) => roadEstimate(roads, a, b).walkM
+    for (let k = 0; k < 12; k++) {
+      const n = 3 + Math.floor(rnd() * 6), pick = Array.from({ length: n }, () => pinned[Math.floor(rnd() * pinned.length)]).filter((p, i, a) => a.indexOf(p) === i)
+      const o = { lat: 22.518, lng: 88.368 }, len = (s: any[]) => s.reduce((t, x, i) => t + cost(i ? s[i - 1] : o, x), 0)
+      const w = planWalk(o, pick, { cost, closed: id => st(id)?.key === 'closed' }), open = pick.filter(p => st(p.id)?.key !== 'closed')
+      expect(len(w.stops)).toBeLessThanOrEqual(Math.min(...perms(open).map(len)) + 1e-6)
+      for (const p of w.stops) { expect(st(p.id)?.key).not.toBe('closed'); expect(p.precision).not.toBe('station') }
+    }
+  })
+})
+describe('Salt Lake boundary', () => {
+  it('inside the box is Salt Lake, outside never is', () => {
+    for (let i = 0; i < 2000; i++) { const p = { lat: 22.45 + rnd() * 0.25, lng: 88.28 + rnd() * 0.2 }
+      const inside = p.lng >= 88.40 && p.lat >= 22.555 && p.lat < 22.605
+      expect(zoneOf(p) === 'saltlake').toBe(inside); expect(inSaltLake(p)).toBe(inside) }
+  })
+  it('Sectors I-III, V and Lake Town are Salt Lake; Ultadanga, Dum Dum Park, Beleghata and Baguiati are not', () => {
+    for (const p of [{ lat: 22.583, lng: 88.413 }, { lat: 22.59, lng: 88.426 }, { lat: 22.575, lng: 88.432 }, { lat: 22.6, lng: 88.402 }]) expect(zoneOf(p)).toBe('saltlake')
+    for (const p of [{ lat: 22.591, lng: 88.391 }, { lat: 22.606, lng: 88.395 }, { lat: 22.569, lng: 88.391 }, { lat: 22.615, lng: 88.43 }]) expect(zoneOf(p)).not.toBe('saltlake')
+  })
+})

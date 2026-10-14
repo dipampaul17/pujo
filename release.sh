@@ -15,6 +15,7 @@ step e2e; PORT=${GATE_PORT:-4391}; (cd $G && python3 -m http.server $PORT >/dev/
 trap 'kill $(cat /tmp/gate.pid) 2>/dev/null || true' EXIT
 PW_CORE=/tmp/pw/node_modules/playwright-core node e2e/gate.cjs http://localhost:$PORT/pujo/
 step quality; PW_CORE=/tmp/pw/node_modules/playwright-core node e2e/quality.cjs http://localhost:$PORT/pujo/
+step matrix; PW_CORE=/tmp/pw/node_modules/playwright-core node e2e/matrix.cjs http://localhost:$PORT/pujo/ || exit 1
 lh() { CHROME_PATH=/usr/bin/google-chrome lighthouse "$1" --only-categories=performance,accessibility --form-factor=mobile --chrome-flags="--headless=new --no-sandbox" --output=json --output-path=/tmp/lh-gate.json --quiet
   python3 -c "import json,sys;c=json.load(open('/tmp/lh-gate.json'))['categories'];s={k:round(v['score']*100) for k,v in c.items()};print('lighthouse',s);sys.exit(0 if all(s[k]>=95 for k in sys.argv[1:]) else 1)" ${@:2}; }
 # Local static server has no gzip/HTTP2, so performance is gated on the live CDN after deploy; accessibility gates here.
