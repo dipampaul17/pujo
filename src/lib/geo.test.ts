@@ -89,3 +89,16 @@ describe('uberUrl', () => {
     expect(u.searchParams.get('dropoff[formatted_address]')).toBe('X, Kolkata')
   })
 })
+
+import { uberUrl as U2 } from './geo'
+import data from '../data/dhaak.v1.json'
+describe('Uber dropoff', () => {
+  it('exact pin: lat/lng + pandal name for every pinned pandal; approximate: name search, no station coords', () => {
+    for (const p of (data as any).pandals.filter((p: any) => p.lat != null && p.precision !== 'none')) {
+      const q = new URL(U2({ lat: p.lat, lng: p.lng, name: p.name, approx: p.precision === 'station', address: `${p.name}, Kolkata` })).searchParams
+      expect(q.get('dropoff[nickname]')).toBe(p.name)
+      if (p.precision === 'station') expect(q.get('dropoff[latitude]')).toBeNull()
+      else expect([q.get('dropoff[latitude]'), q.get('dropoff[longitude]')]).toEqual([p.lat.toFixed(6), p.lng.toFixed(6)])
+    }
+  })
+})

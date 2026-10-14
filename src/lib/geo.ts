@@ -98,10 +98,11 @@ export const mapsPlaceUrl = (p: LatLng, name?: string) =>
 export function fmtDist(m: number) { return m < 950 ? `${Math.round(m / 10) * 10} m` : `${(m / 1000).toFixed(1)} km` }
 
 /** Uber universal link: opens the app if installed, else m.uber.com. Pickup = my_location unless a fix is given. */
-export function uberUrl(dest: LatLng & { name: string; address?: string }, pickup?: LatLng | null) {
+export function uberUrl(dest: LatLng & { name: string; address?: string; approx?: boolean }, pickup?: LatLng | null) {
   const q = new URLSearchParams({ action: 'setPickup' })
   if (pickup) { q.set('pickup[latitude]', pickup.lat.toFixed(6)); q.set('pickup[longitude]', pickup.lng.toFixed(6)) } else q.set('pickup', 'my_location')
-  q.set('dropoff[latitude]', dest.lat.toFixed(6)); q.set('dropoff[longitude]', dest.lng.toFixed(6))
+  // An approximate (station) pin would drop the rider at the metro: send only the name/address so Uber searches the pandal.
+  if (!dest.approx) { q.set('dropoff[latitude]', dest.lat.toFixed(6)); q.set('dropoff[longitude]', dest.lng.toFixed(6)) }
   q.set('dropoff[nickname]', dest.name); q.set('dropoff[formatted_address]', dest.address ?? `${dest.name}, Kolkata`)
   return `https://m.uber.com/ul/?${q.toString()}`
 }
