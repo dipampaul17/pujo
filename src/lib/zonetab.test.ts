@@ -6,11 +6,12 @@ import { haversine } from './geo'
 
 const ps = (raw as any).pandals.filter((p: any) => p.lat != null && p.precision !== 'none') as Pandal[]
 // Geographic belts (latitude through Kolkata): North from Girish Park/Chorebagan (>= 22.58); South below Park Street/AJC Bose Road (< 22.54).
-const belt = (lat: number) => (lat >= 22.58 ? 'north' : lat >= 22.54 ? 'central' : 'south')
+// Salt Lake (Bidhannagar Sectors I-V + Lake Town/Sreebhumi): east of the Ultadanga/Kestopur canal line (lng >= 88.40), 22.555 <= lat < 22.605 (south of Baguiati).
+const belt = (p: { lat: number; lng: number }) => (p.lng >= 88.40 && p.lat >= 22.555 && p.lat < 22.605 ? 'saltlake' : p.lat >= 22.58 ? 'north' : p.lat >= 22.54 ? 'central' : 'south')
 const car = (from: { lat: number; lng: number }) => (p: Pandal) => ({ carMin: Math.round(haversine(from, p) / 400), walkMin: 0, walkM: haversine(from, p) } as any)
 
 describe('zones come from coordinates', () => {
-  it('every pandal sits in the belt its coordinates fall in', () => { for (const p of ps) expect([p.id, zoneOf(p)]).toEqual([p.id, belt(p.lat)]) })
+  it('every pandal sits in the belt its coordinates fall in', () => { for (const p of ps) expect([p.id, zoneOf(p)]).toEqual([p.id, belt(p)]) })
   it('Santosh Mitra Square, College Square, Allen Park are Central', () => {
     for (const id of ['santosh-mitra-square', 'college-square', 'allen-park-sarbojanin']) expect(zoneOf(ps.find(p => p.id === id)!)).toBe('central')
   })
@@ -50,10 +51,17 @@ describe('route under a zone tab', () => {
 
 describe('zones match known neighbourhoods', () => {
   // How Kolkata pujo guides group these neighbourhoods: Bhowanipore/Ballygunge/Khidirpur are South; Park Street, Sealdah, College Street, Bowbazar are Central.
-  const KNOWN: Record<string, 'north' | 'central' | 'south'> = {
+  const KNOWN: Record<string, 'north' | 'central' | 'south' | 'saltlake'> = {
+    'fd-block': 'saltlake', 'bj-block': 'saltlake', 'ae-block': 'saltlake', 'sree-bhumi-sporting-club': 'saltlake', 'dum-dum-park-tarun-sangha': 'north', 'ultadanga-bidhan-sangha': 'north', 'beleghata-33-pally': 'central',
     'santosh-mitra-square': 'central', 'college-square': 'central', 'muhammad-ali-park': 'central', 'allen-park-sarbojanin': 'central', 'sealdah-athletic-club': 'central',
     'harish-park': 'south', 'bhowanipur-75-pally': 'south', 'chakraberia-sarbojanin': 'south', '76-pally': 'south', 'adi-ballygunge-sarbojanin': 'south', '25-pally-khidirpur': 'south',
     'chorebagan-sarbojanin': 'north', 'simla-byayam-samity': 'north', 'kumartuli-park': 'north',
   }
   for (const [id, z] of Object.entries(KNOWN)) it(`${id} is ${z}`, () => { const p = ps.find(q => q.id === id); if (p) expect(zoneOf(p)).toBe(z) })
+})
+describe('Salt Lake route', () => {
+  it('a route from FD Block under the Salt Lake tab stays in Salt Lake', () => {
+    const pool = routePool(ps, { lat: 22.5832, lng: 88.4127 }, 'saltlake', new Set())
+    expect(pool.length).toBeGreaterThanOrEqual(3); expect(pool.every(p => zoneOf(p) === 'saltlake')).toBe(true)
+  })
 })

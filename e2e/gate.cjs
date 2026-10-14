@@ -40,8 +40,11 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
       await c.close() }
     { const [c, p] = await mk(SPOTS.gariahat); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2000)
       const want = await p.evaluate(async () => { const s = await (await fetch('live/status.json', { cache: 'no-store' })).json(); return Object.values(s.open).filter(v => v.kind !== 'closed').length })
-      let got = 0; for (const z of ['North', 'Central', 'South']) { await p.locator('[role=tab]', { hasText: z }).first().tap(); await p.waitForTimeout(700); got += (await p.locator('details.group ul li').allInnerTexts()).filter(t => /\n(Open|Inaugurated)\n/.test('\n' + t + '\n')).length }
+      let got = 0; for (const z of ['North', 'Central', 'South', 'Salt Lake']) { await p.locator('[role=tab]', { hasText: z }).first().tap(); await p.waitForTimeout(700); got += (await p.locator('details.group ul li').allInnerTexts()).filter(t => /\n(Open|Inaugurated)\n/.test('\n' + t + '\n')).length }
       ok(got === want, T(`Open across zone lists ${got} ≠ status.json ${want}`)); await c.close() }
+    { const [c, p] = await mk([22.5832, 88.4127]); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2000)
+      const tabs = await p.locator('[role=tablist][aria-label=Zone] [role=tab]').allInnerTexts(); ok(/Salt Lake/.test(tabs[0]) && (await p.locator('[role=tablist][aria-label=Zone] [aria-selected=true]').innerText()).includes('Salt Lake'), T(`FD Block: Salt Lake not first/selected: ${tabs}`))
+      await p.screenshot({ path: `${out}/${name}-saltlake.png` }); ok(!(await ovf(p)), T('Salt Lake: horizontal overflow')); await c.close() }
     { const [c, p] = await mk([28.61, 77.21]); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(1500)
       ok(await p.locator('[role=tablist][aria-label=Zone] [aria-selected=true]').count() === 0, T('far away: a zone looks selected over "Too far"'))
       await c.close() }

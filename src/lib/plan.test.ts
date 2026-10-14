@@ -42,17 +42,20 @@ describe('collapse guard', () => {
 describe('helpers', () => {
   it('nudges by hour', () => { expect(nudges(23, { walkMin: 20 }).length).toBe(1); expect(nudges(12, { walkMin: 20 })).toHaveLength(1); expect(nudges(3, { walkMin: 20 })).toEqual([]) })
 })
-import { zoneOf, ZONE_ANCHOR, zoneCounts, nextZone, ZONES } from './plan'
+import { zoneOf, ZONE_ANCHOR, zoneCounts, nextZone, ZONES, zoneOrder } from './plan'
 describe('zones', () => {
   it('anchors sit in their own zone', () => { for (const z of ZONES) expect(zoneOf(ZONE_ANCHOR[z])).toBe(z) })
   it('every located pandal has exactly one zone and counts add up', () => {
-    const c = zoneCounts(d); expect(c.north + c.central + c.south).toBe(d.pandals.filter(p => p.lat != null).length)
-    expect(Math.min(c.north, c.central, c.south)).toBeGreaterThan(5)
+    const c = zoneCounts(d); expect(c.north + c.central + c.south + c.saltlake).toBe(d.pandals.filter(p => p.lat != null).length)
+    expect(Math.min(c.north, c.central, c.south)).toBeGreaterThan(5); expect(c.saltlake).toBeGreaterThanOrEqual(4)
   })
   it('each zone anchor yields a walk inside or near that zone', () => {
-    for (const z of ZONES) { const r = P.plan(ZONE_ANCHOR[z]); expect(r.stops.length).toBeGreaterThanOrEqual(4); expect(r.stops.filter(s => zoneOf(s) === z).length).toBeGreaterThanOrEqual(r.stops.length / 2) }
+    for (const z of ZONES) { const r = P.plan(ZONE_ANCHOR[z]); expect(r.stops.length).toBeGreaterThanOrEqual(z === 'saltlake' ? 3 : 4); expect(r.stops.filter(s => zoneOf(s) === z).length).toBeGreaterThanOrEqual(r.stops.length / 2) }
   })
-  it('swipe clamps at the ends', () => { expect(nextZone('north', -1)).toBe('north'); expect(nextZone('north', 1)).toBe('central'); expect(nextZone('south', 1)).toBe('south') })
+  it('tab order puts my zone first, else North, Central, South, Salt Lake', () => {
+    expect(zoneOrder(null)).toEqual(['north', 'central', 'south', 'saltlake']); expect(zoneOrder('saltlake')).toEqual(['saltlake', 'north', 'central', 'south']); expect(zoneOrder('south')[0]).toBe('south')
+  })
+  it('swipe clamps at the ends', () => { expect(nextZone('north', -1)).toBe('north'); expect(nextZone('north', 1)).toBe('central'); expect(nextZone('saltlake', 1)).toBe('saltlake') })
 })
 import { tagsFor, tagContext } from './plan'
 import { mapsDirUrl as dirUrl, uberUrl } from './geo'

@@ -69,22 +69,28 @@ export function nudges(hour: number, ctx: { toiletM?: number; foodName?: string;
   return out
 }
 
-export type Zone = 'north' | 'central' | 'south'
-export const ZONES: Zone[] = ['north', 'central', 'south']
-/** Latitude bands, deterministic. Salt Lake (Karunamoyee, 22.586) falls in North. */
-export const zoneOf = (p: { lat: number }): Zone => (p.lat >= 22.58 ? 'north' : p.lat >= 22.54 ? 'central' : 'south')
+export type Zone = 'north' | 'central' | 'south' | 'saltlake'
+export const ZONES: Zone[] = ['north', 'central', 'south', 'saltlake']
+/** Salt Lake = Bidhannagar Sectors I-V plus Lake Town/Sreebhumi (hopped as one circuit): east of the Ultadanga/Kestopur canal
+ *  line (lng >= 88.40), from Beleghata's edge (22.555) up to below Baguiati (22.605). Dum Dum Park and Ultadanga stay North. */
+export const inSaltLake = (p: { lat: number; lng: number }) => p.lng >= 88.40 && p.lat >= 22.555 && p.lat < 22.605
+/** Deterministic: the Salt Lake box first, then latitude bands. */
+export const zoneOf = (p: { lat: number; lng: number }): Zone => (inSaltLake(p) ? 'saltlake' : p.lat >= 22.58 ? 'north' : p.lat >= 22.54 ? 'central' : 'south')
+/** Tab order: my zone first, then the rest in the usual North → South → Salt Lake order. */
+export const zoneOrder = (mine: Zone | null): Zone[] => (mine ? [mine, ...ZONES.filter(z => z !== mine)] : [...ZONES])
 /** Zone start points: the guide's busiest metro in each belt. */
 export const ZONE_ANCHOR: Record<Zone, { name: string; lat: number; lng: number }> = {
   north: { name: 'Shyambazar metro', lat: 22.601335, lng: 88.372497 },
   central: { name: 'Central metro', lat: 22.572486, lng: 88.358743 },
   south: { name: 'Kalighat metro', lat: 22.516875, lng: 88.345845 },
+  saltlake: { name: 'City Centre metro', lat: 22.587099, lng: 88.407891 },
 }
 export const zoneCounts = (d: Dataset) => {
-  const c: Record<Zone, number> = { north: 0, central: 0, south: 0 }
+  const c: Record<Zone, number> = { north: 0, central: 0, south: 0, saltlake: 0 }
   for (const p of d.pandals) if (p.lat != null) c[zoneOf(p)]++
   return c
 }
-export const nextZone = (z: Zone, dir: 1 | -1): Zone => ZONES[Math.max(0, Math.min(2, ZONES.indexOf(z) + dir))]
+export const nextZone = (z: Zone, dir: 1 | -1): Zone => ZONES[Math.max(0, Math.min(ZONES.length - 1, ZONES.indexOf(z) + dir))]
 
 /** Up to 2 tags per pandal, from real data only: one identity tag from the guide's circuits, one utility tag from mapped places. */
 export function tagsFor(p: Pandal, near: { toiletM?: number; notableFoodM?: number }): string[] {

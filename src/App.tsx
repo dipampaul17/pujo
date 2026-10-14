@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { reduce, initial, onLoadAction, needsChip, shouldUpdate, platform, APPROX_M, CACHE_MAX_AGE, type Fix } from './lib/loc'
 import raw from './data/dhaak.v1.json'
-import { makePlanner, isOpen, helpOrigin, areas as getAreas, statusOf, tier, type StatusFile, type NowItem, zoneOf, ZONES, ZONE_ANCHOR, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
+import { makePlanner, isOpen, helpOrigin, areas as getAreas, statusOf, tier, type StatusFile, type NowItem, zoneOf, zoneOrder, ZONE_ANCHOR, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
 import { recommend, routeStops, routePool, zoneTab } from './lib/rank'
 import { applyFilters, chips, NO_FILTERS, type Filters } from './lib/filters'
@@ -13,7 +13,7 @@ import { TextReveal } from './components/text-reveal'
 const data = raw as unknown as Dataset
 const P = makePlanner(data)
 const AREAS = getAreas(data)
-const ZLABEL: Record<Zone, string> = { north: 'North', central: 'Central', south: 'South' }
+const ZLABEL: Record<Zone, string> = { north: 'North', central: 'Central', south: 'South', saltlake: 'Salt Lake' }
 type Origin = LatLng & { label: string; precise: boolean; approx?: boolean; fix?: Fix }
 const geoOk = typeof navigator !== 'undefined' && 'geolocation' in navigator
 const saveFix = (f: Fix) => { try { localStorage.setItem('dhaak.fix', JSON.stringify(f)) } catch {} }
@@ -483,8 +483,9 @@ function StatusDot({ s, inline }: { s: ReturnType<typeof statusOf>; inline?: boo
   return s.evidence && !inline ? <a href={s.evidence} target="_blank" rel="noopener" className={cls} aria-label={`${s.label}, source ${src?.name ?? ''}`}>{body}</a> : <span className={cls}>{body}</span>
 }
 function ZoneSwitch({ zone, onChange, mine }: { zone: Zone | null; onChange: (z: Zone) => void; mine?: Zone | null }) {
-  return <Segmented label="Zone" value={zone ? ZONES.indexOf(zone) : -1} onChange={i => onChange(ZONES[i])}
-    items={ZONES.map(z => <>{ZLABEL[z]}{mine === z && <span aria-label="you are here" className="seg-here" />}</>)} />
+  const order = zoneOrder(mine ?? null)
+  return <Segmented label="Zone" value={zone ? order.indexOf(zone) : -1} onChange={i => onChange(order[i])}
+    items={order.map(z => <>{ZLABEL[z]}{mine === z && <span aria-label="you are here" className="seg-here" />}</>)} />
 }
 /** iOS segmented control: one sliding thumb, used for zones and sections alike. */
 function Segmented({ label, items, value, onChange }: { label: string; items: React.ReactNode[]; value: number; onChange: (i: number) => void }) {
