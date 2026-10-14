@@ -53,11 +53,12 @@
     "expect": [
       "suruchi-sangha",
       "barisha-club",
+      "ajeya-sanghati",
+      "behala-club",
       "barisha-sarbojanin",
-      "behala-11-pally",
-      "ajeya-sanghati"
+      "behala-11-pally"
     ],
-    "why": "Behala now has verified pins (Barisha Sarbojanin, Behala 11 Pally, both PPG and Agamoni pins agree within 250 m), so the local picks are walkable Behala names, plus Suruchi Sangha and Barisha Club. Ajeya Sanghati is the Haridevpur big name."
+    "why": "Behala local picks: Suruchi Sangha, Barisha Club, Behala Club, Ajeya Sanghati, plus the newly verified Behala pins Barisha Sarbojanin and Behala 11 Pally (PPG and Agamoni pins agree within 250 m). Six names because live status decides whether the confirmed-open ones or the walkable new pins rank higher."
   },
   {
     "name": "Kalighat metro",
