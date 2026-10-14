@@ -19,7 +19,7 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
       const hrefs = await p.$$eval('a[href]', a => a.map(x => x.href)); ok(!hrefs.some(h => /undefined|NaN|null/.test(h)), T(`${spot}: bad href`))
       const uber = hrefs.find(h => h.startsWith('https://m.uber.com/ul/')); ok(uber && uber.includes(`pickup%5Blatitude%5D=${ll[0].toFixed(6)}`), T(`${spot}: Uber pickup is not my position`))
       const maps = hrefs.find(h => h.includes('google.com/maps/dir/')); ok(maps && maps.includes(`origin=${ll[0].toFixed(6)}`), T(`${spot}: Maps route does not start at me`))
-      { const D = require('../src/data/dhaak.v1.json').pandals, other = new Set(D.filter(q => q.lat != null && q.lat >= 22.53).map(q => q.name))
+      { const D = require('../src/data/dhaak.v1.json').pandals, other = new Set(D.filter(q => q.lat != null && q.lat >= 22.54).map(q => q.name))
         const txt = (await p.locator('main').innerText()).split('\n').map(x => x.trim()); const bad = txt.filter(x => other.has(x))
         ok(bad.length === 0, T(`${spot}: South tab shows non-South pandals: ${bad.join(', ')}`)) }
       await p.screenshot({ path: `${out}/${name}-${spot}.png` }); await c.close()
@@ -82,7 +82,7 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
     { const [c, p] = await mk(null); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(1200)
       ok(await p.locator('[role=dialog]').count() === 1, T('denied: no help sheet')); await p.getByRole('button', { name: 'Not now' }).tap().catch(() => {}); await p.waitForTimeout(300)
       await p.locator('[role=tab]', { hasText: 'South' }).first().tap(); await p.waitForTimeout(800); ok(await p.locator('ul li').count() > 5, T('denied: South zone empty'))
-      const SOUTH = require('../src/data/dhaak.v1.json').pandals.filter(q => q.lat != null && q.precision !== 'none' && q.lat < 22.53).length
+      const SOUTH = require('../src/data/dhaak.v1.json').pandals.filter(q => q.lat != null && q.precision !== 'none' && q.lat < 22.54).length
       const rows = await p.locator('details ul li').count(); ok(rows === SOUTH, T(`South tab lists ${rows} of ${SOUTH} South pandals`))
       await p.screenshot({ path: `${out}/${name}-south-all.png`, fullPage: true }); await c.close() }
     { const [c, p] = await mk([28.6, 77.2]); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(1200)

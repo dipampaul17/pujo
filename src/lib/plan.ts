@@ -72,7 +72,7 @@ export function nudges(hour: number, ctx: { toiletM?: number; foodName?: string;
 export type Zone = 'north' | 'central' | 'south'
 export const ZONES: Zone[] = ['north', 'central', 'south']
 /** Latitude bands, deterministic. Salt Lake (Karunamoyee, 22.586) falls in North. */
-export const zoneOf = (p: { lat: number }): Zone => (p.lat >= 22.575 ? 'north' : p.lat >= 22.53 ? 'central' : 'south')
+export const zoneOf = (p: { lat: number }): Zone => (p.lat >= 22.58 ? 'north' : p.lat >= 22.54 ? 'central' : 'south')
 /** Zone start points: the guide's busiest metro in each belt. */
 export const ZONE_ANCHOR: Record<Zone, { name: string; lat: number; lng: number }> = {
   north: { name: 'Shyambazar metro', lat: 22.601335, lng: 88.372497 },

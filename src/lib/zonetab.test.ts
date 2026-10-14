@@ -5,8 +5,8 @@ import { zoneOf, ZONES, ZONE_ANCHOR, type Pandal } from './plan'
 import { haversine } from './geo'
 
 const ps = (raw as any).pandals.filter((p: any) => p.lat != null && p.precision !== 'none') as Pandal[]
-// Geographic belts (latitude through Kolkata): north of Shyambazar/Girish Park belt >= 22.575, south of Park Circus/Hazra belt < 22.53.
-const belt = (lat: number) => (lat >= 22.575 ? 'north' : lat >= 22.53 ? 'central' : 'south')
+// Geographic belts (latitude through Kolkata): North from Girish Park/Chorebagan (>= 22.58); South below Park Street/AJC Bose Road (< 22.54).
+const belt = (lat: number) => (lat >= 22.58 ? 'north' : lat >= 22.54 ? 'central' : 'south')
 const car = (from: { lat: number; lng: number }) => (p: Pandal) => ({ carMin: Math.round(haversine(from, p) / 400), walkMin: 0, walkM: haversine(from, p) } as any)
 
 describe('zones come from coordinates', () => {
@@ -46,4 +46,14 @@ describe('route under a zone tab', () => {
     expect(pool.every(p => zoneOf(p) === 'south')).toBe(true)
     expect(pool.some(p => p.id === 'santosh-mitra-square')).toBe(false)
   })
+})
+
+describe('zones match known neighbourhoods', () => {
+  // How Kolkata pujo guides group these neighbourhoods: Bhowanipore/Ballygunge/Khidirpur are South; Park Street, Sealdah, College Street, Bowbazar are Central.
+  const KNOWN: Record<string, 'north' | 'central' | 'south'> = {
+    'santosh-mitra-square': 'central', 'college-square': 'central', 'muhammad-ali-park': 'central', 'allen-park-sarbojanin': 'central', 'sealdah-athletic-club': 'central',
+    'harish-park': 'south', 'bhowanipur-75-pally': 'south', 'chakraberia-sarbojanin': 'south', '76-pally': 'south', 'adi-ballygunge-sarbojanin': 'south', '25-pally-khidirpur': 'south',
+    'chorebagan-sarbojanin': 'north', 'simla-byayam-samity': 'north', 'kumartuli-park': 'north',
+  }
+  for (const [id, z] of Object.entries(KNOWN)) it(`${id} is ${z}`, () => { const p = ps.find(q => q.id === id); if (p) expect(zoneOf(p)).toBe(z) })
 })
