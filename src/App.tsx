@@ -5,7 +5,7 @@ import { makePlanner, isOpen, helpOrigin, areas as getAreas, statusOf, tier, typ
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
 import { recommend, routeStops, routePool, zoneTab, goHint, roadNote, type RoadSig } from './lib/rank'
 import { pagePicks } from './lib/page'
-import { planWalk, walkLegs } from './lib/walk'
+import { planWalk, walkLegs, walkPicks } from './lib/walk'
 import { applyFilters, chips, NO_FILTERS, type Filters } from './lib/filters'
 import { hasPass } from './lib/passport'
 import { TRAVEL, roadEstimate, liveTravel, attachPins, type Roads, type Travel } from './lib/roads'
@@ -229,6 +229,7 @@ export default function App() {
 
   const pick = (a: (typeof AREAS)[number]) => { setEntered(true); localStorage.setItem('dhaak.station', a.name); setOrigin({ lat: a.lat, lng: a.lng, label: `${a.name} metro`, precise: false }); setZoneRaw(zoneOf(a)); scrollMem.current = 0; setPicking(false); setSkip(new Set()); setTab(0) }
 
+  const sel = walkPicks(picked, P.located, p => !zone || zoneOf(p) === zone)
   const routeUrl = view && stops.length ? mapsDirUrl(view.precise ? view : { lat: view.lat, lng: view.lng }, stops) : null
   const hereish: LatLng | null = view ? helpOrigin(me, view) : null
   const help = hereish ? {
@@ -320,6 +321,9 @@ export default function App() {
             {zone && (() => { const { next, rail } = pagePicks(stops, listed); const cs = chips(ordered, filters, keep)
               const uber = (s: typeof listed[number]) => uberUrl({ lat: s.lat, lng: s.lng, name: s.name, approx: s.precision === 'station', address: s.precision === 'station' ? `${s.name} Durga Puja, Kolkata` : `${s.name}, Kolkata` } as any, view?.precise && !view.approx ? view : null)
               return <>
+                {cs.length > 0 && <div className="filter-bar flex gap-2" role="group" aria-label="Filter">{cs.map(c =>
+                  <button key={c.key} aria-pressed={c.on} onClick={() => setFilters({ ...filters, [c.key]: !c.on })} className={`chip ${c.on ? 'chip-on' : ''}`}>
+                    {c.key === 'open' ? <span className="w-2 h-2 rounded-full" style={{ background: c.on ? 'currentColor' : 'var(--sindoor)' }} /> : <PassGlyph />}{c.key === 'open' ? 'Open' : 'Pass'}<span className="mono-num chip-n">{c.n}</span></button>)}</div>}
 {!next && <button className="btn btn-quiet w-full mt-4" onClick={() => setFilters(NO_FILTERS)}>Clear filters</button>}
                 {next && <article data-card data-zone={zoneOf(next)} data-approx={next.precision === 'station' || undefined} className="go mt-4 rise relative" key={zone + next.id}>
                   <button onClick={() => setDetail(next.id)} aria-haspopup="dialog" className="block w-full text-left">
@@ -346,12 +350,9 @@ export default function App() {
                         {p.precision !== 'station' && me && <span className="block mt-0.5"><TravelLine t={p.t} compact /></span>}
                       </button>
                     </li> })}
-                  {routeUrl && <li className="rail-item rail-end"><a href={routeUrl} target="_blank" rel="noopener" className="btn btn-walk w-full">Walk all in Maps</a><button onClick={share} className="btn btn-quiet w-full mt-2" aria-label="Share route">Share</button></li>}
+                  {routeUrl && sel.length === 0 && <li className="rail-item rail-end"><a href={routeUrl} target="_blank" rel="noopener" className="btn btn-walk w-full">Walk all in Maps</a><button onClick={share} className="btn btn-quiet w-full mt-2" aria-label="Share route">Share</button></li>}
                 </ul>}
                 <div className="mt-8 border-t hair pt-4">
-                {cs.length > 0 && <div className="flex gap-2 " role="group" aria-label="Filter">{cs.map(c =>
-                  <button key={c.key} aria-pressed={c.on} onClick={() => setFilters({ ...filters, [c.key]: !c.on })} className={`chip ${c.on ? 'chip-on' : ''}`}>
-                    {c.key === 'open' ? <span className="w-2 h-2 rounded-full" style={{ background: c.on ? 'currentColor' : 'var(--sindoor)' }} /> : <PassGlyph />}{c.key === 'open' ? 'Open' : 'Pass'}<span className="mono-num chip-n">{c.n}</span></button>)}</div>}
                                   <div className="flex gap-2 mt-3">{['Food', 'Toilets', 'Help'].map((t, i) => <button key={t} className="btn btn-quiet flex-1" aria-haspopup="dialog" onClick={() => setTab(i + 1)}>{t}</button>)}</div>
                   {live && <a href={live.link} target="_blank" rel="noopener" className="now-strip mt-3"><span className="now-dot" /><span className="flex-1 line-clamp-2">{live.title}</span></a>}
                   {skip.size > 0 && <button className="text-[14px] muted font-semibold mt-3 min-h-[44px]" onClick={() => setSkip(new Set())}>Reset {skip.size} skipped</button>}
@@ -413,8 +414,8 @@ export default function App() {
         </main>
       )}
 
-      {view && plan && !picking && picked.length >= 2 && <button className="walk-pill" onClick={() => setWalkOpen(true)}>Walk {picked.length}</button>}
-      {walkOpen && (() => { const ps = picked.map(id => P.located.find(p => p.id === id)).filter(Boolean) as typeof P.located
+      {view && plan && !picking && sel.length >= 1 && <button className="walk-pill" onClick={() => setWalkOpen(true)}>Walk {sel.length}</button>}
+      {walkOpen && (() => { const ps = sel
         const start: LatLng = me ?? view ?? ZONE_ANCHOR.central
         const w = planWalk(start, ps, { cost: (a, b) => roadEstimate(roads, a, b).walkM / (TRAVEL.walkMps * 60), closed: id => statusOf(id, istDate, statusFile, now)?.key === 'closed', later: id => goHint(xLive.crowd[id], now)?.word === 'Later' })
         const legs = w.stops.length ? walkLegs(start, w.stops) : [], hopMin = (i: number) => Math.max(1, Math.round(roadEstimate(roads, i ? w.stops[i - 1] : start, w.stops[i]).walkM / (TRAVEL.walkMps * 60)))

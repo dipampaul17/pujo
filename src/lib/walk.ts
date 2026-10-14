@@ -47,3 +47,8 @@ function exact<T extends LatLng>(origin: LatLng, ps: T[], cost: (a: LatLng, b: T
   while (j >= 0) { out.unshift(ps[j]); const pj = par[m * n + j]; m &= ~(1 << j); j = pj }
   return out
 }
+
+/** Picks that count for the walk on this page: only the user's selection, only in the zone on screen. */
+export function walkPicks<T extends { id: string }>(picked: string[], pool: T[], inZone: (p: T) => boolean): T[] {
+  return picked.map(id => pool.find(p => p.id === id)).filter((p): p is T => !!p && inZone(p))
+}

@@ -49,13 +49,16 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
       await p.screenshot({ path: `${out}/${name}-saltlake.png` }); ok(!(await ovf(p)), T('Salt Lake: horizontal overflow')); await c.close() }
     // Select → Walk: pick across zones, pill at ≥2, ordered route, Google Maps walking from me, persists.
     { const [c, p] = await mk(SPOTS.gariahat); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2000)
-      const add = p.locator('.rail [aria-label^="Add "]'); await add.nth(0).tap(); ok(await p.locator('.walk-pill').count() === 0, T('Walk pill shown with 1 pick'))
-      await add.nth(0).tap(); await p.waitForTimeout(200); ok(/Walk 2/.test(await p.locator('.walk-pill').innerText().catch(() => '')), T('no Walk 2 pill'))
+      await p.evaluate(() => localStorage.setItem('pujo.picked', JSON.stringify(['__gone'])))
+      const add = p.locator('.rail [aria-label^="Add "]'); await add.nth(0).tap(); await p.waitForTimeout(200); ok(/Walk 1/.test(await p.locator('.walk-pill').innerText().catch(() => '')), T('no Walk 1 pill'))
+      await add.nth(0).tap(); await add.nth(0).tap(); await p.waitForTimeout(200); ok(/Walk 3/.test(await p.locator('.walk-pill').innerText().catch(() => '')), T('3 picks do not give Walk 3'))
+      ok(await p.locator('.rail-end').count() === 0, T('suggested route shown while picks exist'))
       await p.locator('[role=tab]', { hasText: 'Central' }).first().tap(); await p.waitForTimeout(600); await p.locator('.rail [aria-label^="Add "]').first().tap(); await p.waitForTimeout(200)
-      ok(/Walk 3/.test(await p.locator('.walk-pill').innerText().catch(() => '')), T('selection does not span zones'))
+      ok(/Walk 1/.test(await p.locator('.walk-pill').innerText().catch(() => '')), T('other-zone picks leak into this walk'))
+      await p.locator('[role=tab]', { hasText: 'South' }).first().tap(); await p.waitForTimeout(600)
       await p.reload({ waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap().catch(() => {}); await p.waitForTimeout(1500); ok(/Walk 3/.test(await p.locator('.walk-pill').innerText().catch(() => '')), T('selection not persisted'))
       await p.locator('.walk-pill').tap(); await p.waitForTimeout(500); const d = p.locator('[role=dialog][aria-label=Walk]')
-      ok(await d.locator('ol li').count() >= 1, T('walk sheet has no stops')); const href = await d.locator('a[href*="google.com/maps/dir"]').first().getAttribute('href').catch(() => '')
+      ok(await d.locator('ol li').count() === 3, T('walk sheet is not exactly the 3 picks')); { const h = await d.locator('a[href*="google.com/maps/dir"]').first().getAttribute('href'); const q = new URL(h).searchParams; ok(1 + (q.get('waypoints') ? q.get('waypoints').split('|').length : 0) === 3, T(`maps url not 3 stops: ${h}`)) }; const href = await d.locator('a[href*="google.com/maps/dir"]').first().getAttribute('href').catch(() => '')
       ok(href.includes('travelmode=walking') && href.includes(`origin=${SPOTS.gariahat[0].toFixed(6)}`), T(`walk link not walking from me: ${href}`)); await p.screenshot({ path: `${out}/${name}-walk.png` })
       await p.keyboard.press('Escape'); await p.waitForTimeout(300); ok(await d.count() === 0, T('Esc does not close walk sheet')); await p.evaluate(() => localStorage.removeItem('pujo.picked')); await c.close() }
     if (name === 'webkit') { const c = await b.newContext({ viewport: { width: 430, height: 932 }, deviceScaleFactor: 3, hasTouch: true, serviceWorkers: 'block', geolocation: { latitude: SPOTS.gariahat[0], longitude: SPOTS.gariahat[1], accuracy: 15 }, permissions: ['geolocation'] }); const p = await c.newPage()
@@ -65,7 +68,8 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
     // Clean zone view: above the fold only the dock switcher, go-next card and the rail. Food/Toilets/Help one tap deeper.
     { const [c, p] = await mk(SPOTS.gariahat); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2000)
       for (const z of ['North', 'Central', 'South', 'Salt Lake']) { await p.locator('.dock [role=tab]', { hasText: z }).first().tap(); await p.waitForTimeout(800); await p.evaluate(() => scrollTo(0, 0)); await p.waitForTimeout(200)
-        const extra = await p.evaluate(() => [...document.querySelectorAll('[aria-label=Filter], .now-strip, [role=tablist][aria-label=Sections]')].filter(e => e.getBoundingClientRect().top < innerHeight - 90).length)
+        const fb = await p.evaluate(() => { const f = document.querySelector('[aria-label=Filter]'), g = document.querySelector('article.go'); return f && g ? f.getBoundingClientRect().top < g.getBoundingClientRect().top && f.getBoundingClientRect().top < 120 : true }); ok(fb, T(`${z}: filters not at the top`))
+        const extra = await p.evaluate(() => [...document.querySelectorAll('.now-strip, [role=tablist][aria-label=Sections]')].filter(e => e.getBoundingClientRect().top < innerHeight - 90).length)
         ok(extra === 0, T(`${z}: extra chrome above the fold`)); ok(await p.locator('article.go').count() === 1, T(`${z}: no go-next card`)); await p.screenshot({ path: `${out}/${name}-zone-${z.replace(' ', '')}.png` }) }
       await p.getByRole('button', { name: 'Food' }).scrollIntoViewIfNeeded(); await p.getByRole('button', { name: 'Food' }).tap(); await p.waitForTimeout(400); ok(await p.locator('[role=dialog][aria-label=Food]').count() === 1, T('Food sheet does not open'))
       await p.keyboard.press('Escape'); await p.waitForTimeout(400); ok(await p.locator('[role=dialog]').count() === 0, T('Food sheet does not close')); await c.close() }
