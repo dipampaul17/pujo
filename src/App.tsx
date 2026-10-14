@@ -430,19 +430,19 @@ export default function App() {
 const Info = () => <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2"/><path d="M12 11v6M12 7.5v.01" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"/></svg>
 /** Tiny stack of the latest visitor photos (or an X glyph) + count. A sindoor dot marks posts that arrived since last look. */
 /** Re-sorts land only when the hand is still: while touching/scrolling (or within 1.2 s after), keep the order on screen. */
-// performance.now: a monotonic clock, so a device clock change can't freeze the order.
+// Busy = a touch/scroll in the last 1.2 s, tracked with a timer (not a clock read, so a changed or frozen clock can't stall reordering).
 function useStableOrder() {
-  const shown = useRef<string[]>([]), [, kick] = useState(0), busy = useRef(0)
+  const shown = useRef<string[]>([]), [, kick] = useState(0), busy = useRef(false)
   useEffect(() => {
-    const mark = () => { busy.current = performance.now() }
+    let t: ReturnType<typeof setTimeout> | undefined
+    const mark = () => { busy.current = true; clearTimeout(t); t = setTimeout(() => { busy.current = false; kick(k => k + 1) }, 1200) }
     const evs = ['touchstart', 'touchmove', 'scroll', 'wheel', 'pointerdown'] as const
     evs.forEach(e => window.addEventListener(e, mark, { passive: true }))
-    const t = setInterval(() => { if (performance.now() - busy.current > 1200) kick(k => k + 1) }, 1500)
-    return () => { evs.forEach(e => window.removeEventListener(e, mark)); clearInterval(t) }
+    return () => { evs.forEach(e => window.removeEventListener(e, mark)); clearTimeout(t) }
   }, [])
   return <T extends { id: string }>(next: T[]): T[] => {
     const ids = next.map(x => x.id), same = ids.length === shown.current.length && ids.every(id => shown.current.includes(id))
-    if (!same || performance.now() - busy.current > 1200) { shown.current = ids; return next }
+    if (!same || !busy.current) { shown.current = ids; return next }
     const by = new Map(next.map(x => [x.id, x])); return shown.current.map(id => by.get(id)!)
   }
 }
