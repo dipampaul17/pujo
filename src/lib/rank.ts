@@ -1,4 +1,4 @@
-import type { Pandal, Status } from './plan'
+import { zoneOf, type Pandal, type Status, type Zone } from './plan'
 import type { Travel } from './roads'
 import { haversine, orderRoute, type LatLng } from './geo'
 
@@ -76,4 +76,12 @@ export function routeStops<T extends LatLng>(ranked: T[]): T[] {
   if (ranked.length <= 1) return [...ranked]
   const [lead, ...rest] = ranked
   return [lead, ...orderRoute(lead, rest)]
+}
+
+/** A zone tab: exactly the pandals whose coordinates fall in that zone. With a live fix, ordered by drive time from me
+ *  (pass, then open, break ties); without one, nearest to the zone's anchor station first. Closed pandals go last. */
+export function zoneTab<T extends Pandal>(ps: T[], zone: Zone, c: { me: LatLng | null; anchor: LatLng; travel: (p: T) => Travel; pass: (id: string) => boolean; open: (id: string) => boolean; closed: (id: string) => boolean }): T[] {
+  const key = (p: T) => [c.closed(p.id) ? 1 : 0, c.me ? c.travel(p).carMin : haversine(c.anchor, p), c.pass(p.id) ? 0 : 1, c.open(p.id) ? 0 : 1] as number[]
+  return ps.filter(p => zoneOf(p) === zone).map(p => ({ p, k: key(p) }))
+    .sort((a, b) => { for (let i = 0; i < 4; i++) if (a.k[i] !== b.k[i]) return a.k[i] - b.k[i]; return a.p.name.localeCompare(b.p.name) }).map(x => x.p)
 }

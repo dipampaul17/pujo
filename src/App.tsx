@@ -3,7 +3,7 @@ import { reduce, initial, onLoadAction, needsChip, shouldUpdate, platform, APPRO
 import raw from './data/dhaak.v1.json'
 import { makePlanner, areas as getAreas, statusOf, tier, type StatusFile, relevantNow, type NowItem, tagsFor, tagContext, zoneOf, ZONES, ZONE_ANCHOR, zoneCounts, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
-import { recommend, listAll, routeStops } from './lib/rank'
+import { recommend, routeStops, zoneTab } from './lib/rank'
 import { applyFilters, chips, NO_FILTERS, type Filters } from './lib/filters'
 import { hasPass } from './lib/passport'
 import { roadEstimate, liveTravel, attachPins, type Roads, type Travel } from './lib/roads'
@@ -185,11 +185,10 @@ export default function App() {
   const view: Origin | null = !entered ? null : zone && zone !== ownZone ? { ...ZONE_ANCHOR[zone], label: ZONE_ANCHOR[zone].name, precise: false } : origin
   const istDate = new Date(now).toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' })
   const plan: Plan | null = useMemo(() => (view ? P.plan(view, 8 + skip.size, Object.fromEntries(Object.keys(statusFile?.open ?? {}).map(id => [id, [4, 2, 0, 0][tier(statusOf(id, istDate, statusFile, now))]]))) : null), [view?.lat, view?.lng, skip.size, statusFile])
-  // At your own position the list is "Near you" across zone lines (the nearest pandal may sit just over a boundary); a picked zone lists that zone.
-  const nearYou = !!view?.precise && !!zone && zone === ownZone
   // Distances shown are always from the live fix (never a zone centre or metro); without a fix none are shown.
   const me: LatLng | null = origin?.precise && !origin.approx ? origin : null
-  const zonePandals = useMemo(() => (zone && view ? P.located.filter(p => nearYou ? hav(view, p) < 5000 || zoneOf(p) === zone : zoneOf(p) === zone).map(p => ({ ...p, dist: hav(view, p), my: me ? hav(me, p) : null })).sort((x, y) => x.dist - y.dist) : []), [zone, nearYou, view?.lat, view?.lng, me?.lat, me?.lng])
+  // A zone tab lists exactly the pandals whose coordinates fall in that zone (never a cross-zone radius).
+  const zonePandals = useMemo(() => (zone && view ? P.located.filter(p => zoneOf(p) === zone).map(p => ({ ...p, dist: hav(view, p), my: me ? hav(me, p) : null })) : []), [zone, view?.lat, view?.lng, me?.lat, me?.lng])
   // Travel: precomputed road matrix (lazy), upgraded to a live OSRM table from the fix. Same numbers in list, route and sheet.
   const [roads, setRoads] = useState<Roads | null>(null)
   useEffect(() => { if (!entered || roads) return; fetch(import.meta.env.BASE_URL + 'data/roads.json').then(r => r.ok ? r.json() : null).then(j => j && setRoads(attachPins(j))).catch(() => {}) }, [entered])
@@ -207,7 +206,8 @@ export default function App() {
   const raining = nowFeed.some(n => /\brain/i.test(n.title) && now - Date.parse(n.published) < 3 * 3600e3)
   const recCtx = (here: LatLng) => ({ here, now, status: (id: string) => statusOf(id, istDate, statusFile, now), travel, live: { crowd: xLive.crowd, closed: new Set<string>(), freshPosts }, seen, rain: raining })
   const tick = Math.floor(now / 600e3)
-  const suggested = useMemo(() => (from ? listAll(zonePandals as any, recCtx(from)).map(x => ({ ...(x.p as (typeof zonePandals)[number]), t: x.t })) : []), [zonePandals, statusFile, istDate, travel, seen, xLive, raining, tick])
+  // Order: live drive time from me (pass, then open, break ties); without a fix, nearest to the zone's anchor station.
+  const suggested = useMemo(() => (zone && zonePandals.length ? zoneTab(zonePandals, zone, { me, anchor: ZONE_ANCHOR[zone], travel, pass: hasPass, open: id => statusOf(id, istDate, statusFile, now)?.key === 'open', closed: id => statusOf(id, istDate, statusFile, now)?.key === 'closed' }).map(p => ({ ...p, t: travel(p) })) : []), [zone, zonePandals, statusFile, istDate, travel, tick])
   const stable = useStableOrder()
   const [filters, setFiltersRaw] = useState<Filters>(() => { try { return { ...NO_FILTERS, ...JSON.parse(localStorage.getItem('pujo.filters') || '{}') } } catch { return NO_FILTERS } })
   const setFilters = (f: Filters) => { setFiltersRaw(f); try { localStorage.setItem('pujo.filters', JSON.stringify(f)) } catch {} }
@@ -350,7 +350,7 @@ export default function App() {
             {tab === 0 && zone && (
               <details className="mt-10 group" open>
                 <summary className="list-none cursor-pointer flex items-center justify-between min-h-[48px] border-b hair">
-                  <span className="t-title2">{nearYou ? 'All nearby' : `All ${ZLABEL[zone]}`}</span><span className="muted text-[14px] mono-num">{listed.length}</span>
+                  <span className="t-title2">{`All ${ZLABEL[zone]}`}</span><span className="muted text-[14px] mono-num">{listed.length}</span>
                 </summary>
                 {(() => { const cs = chips(ordered, filters, keep); return cs.length > 0 && <div className="flex gap-2 mt-3" role="group" aria-label="Filter">{cs.map(c =>
                   <button key={c.key} aria-pressed={c.on} onClick={() => setFilters({ ...filters, [c.key]: !c.on })} className={`chip ${c.on ? 'chip-on' : ''}`}>

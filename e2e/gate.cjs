@@ -72,10 +72,8 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
         await p.route('**/live/now.json', r => r.fulfill({ body: '{"items":[]}', contentType: 'application/json' }))
         await p.route('**/live/x.json', r => r.fulfill({ body: '{"posts":{},"crowd":{}}', contentType: 'application/json' }))
         await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2500)
-        const names = (await p.locator('details ul li').allInnerTexts()).slice(0, 5).map(t => t.split('\n').find(x => /[A-Za-z]{3}/.test(x)) || '')
-        const NAME = Object.fromEntries(require('../src/data/dhaak.v1.json').pandals.map(q => [q.id, q.name]))
-        const hit = f.expect.filter(id => names.some(n => n.trim() === NAME[id]))
-        ok(hit.length >= 4, T(`fresh open at ${f.name}: top 5 ${names.join(' | ')}`))
+        const mins = (await p.locator('details ul li [aria-label*="by car"]').evaluateAll(es => es.map(e => parseInt(e.getAttribute('aria-label').replace('~', ''))))).filter(n => !isNaN(n))
+        ok(mins.length > 5 && mins.every((m, i) => i === 0 || m >= mins[i - 1]), T(`${f.name}: zone list not in drive-time order: ${mins.slice(0, 12).join(',')}`))
         await p.screenshot({ path: `${out}/${name}-open-${f.name.toLowerCase()}.png` }); await c.close() } }
     // Denied: help sheet, zones still work. Far away: finite distance.
     { const [c, p] = await mk(null); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(1200)
