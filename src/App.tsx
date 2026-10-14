@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { reduce, initial, onLoadAction, needsChip, shouldUpdate, platform, APPROX_M, CACHE_MAX_AGE, type Fix } from './lib/loc'
 import raw from './data/dhaak.v1.json'
-import { makePlanner, areas as getAreas, statusOf, tier, type StatusFile, type NowItem, zoneOf, ZONES, ZONE_ANCHOR, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
+import { makePlanner, isOpen, helpOrigin, areas as getAreas, statusOf, tier, type StatusFile, type NowItem, zoneOf, ZONES, ZONE_ANCHOR, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
 import { recommend, routeStops, routePool, zoneTab } from './lib/rank'
 import { applyFilters, chips, NO_FILTERS, type Filters } from './lib/filters'
@@ -207,21 +207,21 @@ export default function App() {
   const recCtx = (here: LatLng) => ({ here, now, status: (id: string) => statusOf(id, istDate, statusFile, now), travel, live: { crowd: xLive.crowd, closed: new Set<string>(), freshPosts }, seen, rain: raining, pass: hasPass })
   const tick = Math.floor(now / 600e3)
   // Order: live drive time from me (pass, then open, break ties); without a fix, nearest to the zone's anchor station.
-  const suggested = useMemo(() => (zone && zonePandals.length ? zoneTab(zonePandals, zone, { me, anchor: ZONE_ANCHOR[zone], travel, pass: hasPass, open: id => statusOf(id, istDate, statusFile, now)?.key === 'open', closed: id => statusOf(id, istDate, statusFile, now)?.key === 'closed' }).map(p => ({ ...p, t: travel(p) })) : []), [zone, zonePandals, statusFile, istDate, travel, tick])
+  const suggested = useMemo(() => (zone && zonePandals.length ? zoneTab(zonePandals, zone, { me, anchor: ZONE_ANCHOR[zone], travel, pass: hasPass, open: id => isOpen(statusOf(id, istDate, statusFile, now)), closed: id => statusOf(id, istDate, statusFile, now)?.key === 'closed' }).map(p => ({ ...p, t: travel(p) })) : []), [zone, zonePandals, statusFile, istDate, travel, tick])
   const stable = useStableOrder()
   const [filters, setFiltersRaw] = useState<Filters>(() => { try { return { ...NO_FILTERS, ...JSON.parse(localStorage.getItem('pujo.filters') || '{}') } } catch { return NO_FILTERS } })
   const setFilters = (f: Filters) => { setFiltersRaw(f); try { localStorage.setItem('pujo.filters', JSON.stringify(f)) } catch {} }
-  const keep = { open: (id: string) => /^(open|inaugurated)$/.test(statusOf(id, istDate, statusFile, now)?.key ?? ''), pass: hasPass }
+  const keep = { open: (id: string) => isOpen(statusOf(id, istDate, statusFile, now)), pass: hasPass }
   const ordered = stable(suggested), listed = applyFilters(ordered, filters, keep)
   const stops = useMemo(() => { if (!plan || plan.outOfRange || !view) return []
-    const near = routePool(P.located, view, zone, skip)
+    const near = routePool(P.located, view, zone, skip, id => (!filters.open || keep.open(id)) && (!filters.pass || keep.pass(id)))
     const top = recommend(near as any, recCtx(from ?? view)).slice(0, 8).map(x => ({ ...(x.p as any), dist: hav(view, x.p) })) as typeof plan.stops
-    return routeStops(top) }, [plan, skip, zone, view?.lat, view?.lng, statusFile, travel, seen, xLive, raining, tick])
+    return routeStops(top) }, [plan, skip, zone, filters, view?.lat, view?.lng, statusFile, travel, seen, xLive, raining, tick])
 
   const pick = (a: (typeof AREAS)[number]) => { setEntered(true); localStorage.setItem('dhaak.station', a.name); setOrigin({ lat: a.lat, lng: a.lng, label: `${a.name} metro`, precise: false }); setZoneRaw(zoneOf(a)); scrollMem.current = 0; setPicking(false); setSkip(new Set()); setTab(0) }
 
   const routeUrl = view && stops.length ? mapsDirUrl(view.precise ? view : { lat: view.lat, lng: view.lng }, stops) : null
-  const hereish: LatLng | null = stops[0] ?? view
+  const hereish: LatLng | null = view ? helpOrigin(me, view) : null
   const help = hereish ? {
     food: P.around('food', hereish, 6).sort((a, b) => Number(!!b.notable) - Number(!!a.notable) || a.dist - b.dist),
     toilets: P.around('toilets', hereish, 5, 2000),

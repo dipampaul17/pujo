@@ -180,6 +180,6 @@ def ingest(files):
     live['posts']={k:[q for q in v if fresh(q)] for k,v in live['posts'].items() if isinstance(v,list)}
     live['posts']={k:v for k,v in live['posts'].items() if v}
     write_json(f'{ST}/xlive.json',live,ensure_ascii=False,indent=1)
-    print('posts',list(live['posts']),'crowd',list(live['crowd']),'open',list(live['open']))
+    print('posts',list(live['posts']),'crowd',list(live['crowd']),'raw-open (poller findings, NOT the open count; see open_count.py)',list(live['open']))
 if __name__=='__main__':
     plan() if sys.argv[1]=='plan' else ingest(sys.argv[2:])

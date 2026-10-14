@@ -38,6 +38,10 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
         await p.reload({ waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap().catch(() => {}); await p.waitForTimeout(2000); ok(await p.locator('[aria-pressed=true]').count() === 1, T('filter not persisted'))
         await p.locator('[aria-pressed=true]').tap(); await p.waitForTimeout(300) } else ok(false, T('no Open filter chip at Gariahat'))
       await c.close() }
+    { const [c, p] = await mk(SPOTS.gariahat); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2000)
+      const want = await p.evaluate(async () => { const s = await (await fetch('live/status.json', { cache: 'no-store' })).json(); return Object.values(s.open).filter(v => v.kind !== 'closed').length })
+      let got = 0; for (const z of ['North', 'Central', 'South']) { await p.locator('[role=tab]', { hasText: z }).first().tap(); await p.waitForTimeout(700); got += (await p.locator('details.group ul li').allInnerTexts()).filter(t => /\n(Open|Inaugurated)\n/.test('\n' + t + '\n')).length }
+      ok(got === want, T(`Open across zone lists ${got} ≠ status.json ${want}`)); await c.close() }
     { const [c, p] = await mk([28.61, 77.21]); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(1500)
       ok(await p.locator('[role=tablist][aria-label=Zone] [aria-selected=true]').count() === 0, T('far away: a zone looks selected over "Too far"'))
       await c.close() }
@@ -75,7 +79,7 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
         await p.route('**/live/now.json', r => r.fulfill({ body: '{"items":[]}', contentType: 'application/json' }))
         await p.route('**/live/x.json', r => r.fulfill({ body: '{"posts":{},"crowd":{}}', contentType: 'application/json' }))
         await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2500)
-        const rows = await p.locator('details.group ul li').evaluateAll(ls => ls.map(l => { const c = l.querySelector('[aria-label*="by car"]'); return { g: /\bOpen\b/.test(l.innerText) ? 0 : l.querySelector('.pass-mark') ? 1 : 2, m: c ? parseInt(c.getAttribute('aria-label').replace('~', '')) : NaN } })).then(r => r.filter(x => !isNaN(x.m)))
+        const rows = await p.locator('details.group ul li').evaluateAll(ls => ls.map(l => { const c = l.querySelector('[aria-label*="by car"]'); return { g: /\b(Open|Inaugurated)\b/.test(l.innerText) ? 0 : l.querySelector('.pass-mark') ? 1 : 2, m: c ? parseInt(c.getAttribute('aria-label').replace('~', '')) : NaN } })).then(r => r.filter(x => !isNaN(x.m)))
         ok(rows.length > 5 && rows.every((r, i) => i === 0 || r.g > rows[i - 1].g || (r.g === rows[i - 1].g && r.m >= rows[i - 1].m)), T(`${f.name}: zone list not open → pass → drive time: ${rows.slice(0, 12).map(r => r.g + ':' + r.m).join(',')}`))
         await p.screenshot({ path: `${out}/${name}-open-${f.name.toLowerCase()}.png` }); await c.close() } }
     // Denied: help sheet, zones still work. Far away: finite distance.

@@ -128,6 +128,10 @@ export function statusOf(id: string, istDate: string, s: StatusFile | null, nowM
   if (istDate >= s.puja.start) return { key: 'likely', label: 'Likely open' }
   return null
 }
+/** The one Open predicate: visitor-confirmed or inaugurated (= status.json entries that are not closed). */
+export const isOpen = (s: Status) => s?.key === 'open' || s?.key === 'inaugurated'
+/** Food/toilets/help are searched around me when I have a fix, else around the view. */
+export const helpOrigin = <T,>(me: T | null, view: T): T => me ?? view
 export const statusRank = (s: Status) => (s?.key === 'open' || s?.key === 'inaugurated' ? 0 : s?.key === 'likely' ? 1 : s ? 3 : 2)
 
 /** Suggestion tier: Open, then Inaugurated, then Likely, then unknown. */

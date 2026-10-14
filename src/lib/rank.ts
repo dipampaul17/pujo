@@ -1,4 +1,4 @@
-import { zoneOf, type Pandal, type Status, type Zone } from './plan'
+import { zoneOf, isOpen, type Pandal, type Status, type Zone } from './plan'
 import type { Travel } from './roads'
 import { haversine, orderRoute, type LatLng } from './geo'
 
@@ -29,7 +29,7 @@ export type RecContext = {
 }
 export type Rec = { p: Pandal; t: Travel; score: number; why: string[] }
 
-const istHour = (t: number) => (new Date(t).getUTCHours() + 5 + (new Date(t).getUTCMinutes() + 30 >= 60 ? 1 : 0)) % 24
+export const istHour = (t: number) => new Date(t + 5.5 * 3600e3).getUTCHours()
 
 export function recommend(ps: Pandal[], c: RecContext): Rec[] {
   // Stage 1: retrieval. Drop closed, keep everything within the road-time radius (or the nearest K).
@@ -43,7 +43,7 @@ export function recommend(ps: Pandal[], c: RecContext): Rec[] {
     const approx = p.precision === 'station', walk = !approx && t.walkM < REC.walkMaxM
     const minutes = approx ? Math.max(REC.approxFloorMin, t.carMin) : walk ? t.walkMin * REC.walkDiscount : t.carMin
     let score = (REC.pOpen[key] ?? REC.pOpen.unknown) * REC.appeal * (p.worth ?? 0) - REC.minuteCost * mult * minutes
-    if (key === 'open') { score += REC.openBonus; why.push('open') }
+    if (isOpen(s)) { score += REC.openBonus; why.push('open') }
     if (c.pass?.(p.id)) { score += REC.passBonus; why.push('pass') }
     if (p.precision === 'station') score -= REC.approxPin
     if ((p.worth ?? 0) >= 3) why.push('2026 favourite')
@@ -91,6 +91,7 @@ export function zoneTab<T extends Pandal>(ps: T[], zone: Zone, c: { me: LatLng |
 }
 
 /** Route candidates: within 6 km of the start, inside the tab's zone only, minus skipped. */
-export function routePool<T extends Pandal>(ps: T[], at: LatLng, zone: Zone | null, skip: Set<string>): T[] {
-  return ps.filter(p => haversine(at, p) < 6000 && !skip.has(p.id) && (!zone || zoneOf(p) === zone))
+export function routePool<T extends Pandal>(ps: T[], at: LatLng, zone: Zone | null, skip: Set<string>, keep?: (id: string) => boolean): T[] {
+  // A walking route needs real pins: approximate (metro-station) pins are listed, never walked to.
+  return ps.filter(p => haversine(at, p) < 6000 && !skip.has(p.id) && p.precision !== 'station' && (!zone || zoneOf(p) === zone) && (!keep || keep(p.id)))
 }
