@@ -1,0 +1,24 @@
+{
+ "_": "Verified X accounts of people inaugurating Kolkata pujas (get_users_by_usernames, 14 Oct 2026). Their dated inauguration post naming an app pandal is X evidence, like the CM's. Auto-grown by `xpoll.py inaug-verify`.",
+ "accounts": {
+  "drsukantabjp": "Dr Sukanta Majumdar, Union MoS, MP Balurghat (verified); inaugurated New Town, Adi Ballygunge, Keshtopur",
+  "rahulsinhabjp": "Rahul Sinha, MP Rajya Sabha; inaugurated 69 Topsia Pally",
+  "tusharkantibjp": "Tushar Kanti Ghosh, BJP Bengal, Kolkata; posted Badamtala Ashar Sangha inauguration",
+  "ssikdarindia": "Sourav Sikdar, MLA Dumdum Uttar; 25 Pally inauguration with CM",
+  "swapan55": "Swapan Dasgupta, WB Finance Minister, MLA Rashbehari; inaugurated Sanghashree, Badamtala",
+  "umeshrai_bjp": "Umesh Rai, WB MoS, MLA Howrah Uttar; at Badamtala Ashar Sangha",
+  "ravaroybjp": "Malati Rava Roy, MLA Tufanganj; at Badamtala Ashar Sangha",
+  "keyakahe": "Keya Ghosh, BJP Bengal, Kolkata; visited Sanghashree",
+  "upamanyu95": "Upamanyu Bhattacharya, BJP WB social media convenor; Sanghashree inauguration posts",
+  "samikbjp": "Samik Bhattacharya, State President BJP Bengal, MP Rajya Sabha",
+  "bjp4bengal": "BJP West Bengal official account",
+  "dilipghoshbjp": "Dilip Ghosh, WB Cabinet Minister",
+  "me_locket": "Locket Chatterjee, State Gen Secy BJP WB, actor"
+ },
+ "rejected": {
+  "agnimitrabjp": "2 followers, not the real account",
+  "mithunda_off": "inactive since 2025",
+  "bikashdbbjp": "Tripura (Agartala), not Kolkata",
+  "moumitabmisra": "Bardhaman pujas, not Kolkata"
+ }
+}

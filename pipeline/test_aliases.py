@@ -31,8 +31,8 @@ def test_open_rules():
     assert not oh('Maddox Square Durga getting ready now, crowd unites')
 def test_plan_covers_all_quickly():
     import tempfile, datetime as dt; t_save=X.now
-    # evening (19:00 IST, 3 calls/run): full sweep within 12 runs; quiet hours (1 call/run): within 24
-    for t0,cap in ((dt.datetime(2026,10,14,13,30,tzinfo=dt.timezone.utc),12),(dt.datetime(2026,10,14,4,0,tzinfo=dt.timezone.utc),24)):
+    # 19:00 IST (3 calls/run, one is wide openings): full sweep within 16 runs; 10:00 IST (2 calls/run): within 24
+    for t0,cap in ((dt.datetime(2026,10,14,13,30,tzinfo=dt.timezone.utc),16),(dt.datetime(2026,10,14,4,0,tzinfo=dt.timezone.utc),24)):
         X.live['polled']={}; X.ST=tempfile.mkdtemp(); seen=set(); runs=0
         while len(seen)<len(X.P) and runs<60:
             X.now=t0+dt.timedelta(minutes=5*runs); qs=X.plan(); runs+=1

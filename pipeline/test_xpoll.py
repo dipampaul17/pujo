@@ -4,7 +4,7 @@ import os, sys, json, tempfile, io, contextlib, datetime as dt
 H=os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0,H)
 import xpoll as X
 def fresh():
-    X.ST=tempfile.mkdtemp(); X.CANDS=X.ST+'/cand.json'; X.live={'polled':{},'posts':{},'crowd':{},'open':{}}
+    X.ST=tempfile.mkdtemp(); X.CANDS=X.ST+'/cand.json'; X.INAUG_CANDS=X.ST+'/ic.json'; X.live={'polled':{},'posts':{},'crowd':{},'open':{}}
 def simulate(runs=40):
     fresh(); t0=dt.datetime(2026,10,13,12,0,tzinfo=dt.UTC); all_={}; pas={}; per=[]
     for r in range(runs):
@@ -20,9 +20,8 @@ def simulate(runs=40):
 def test_rotation():
     per, all_, pas = simulate()
     assert all(len(q)<=3 for q in per)          # 3 calls/run * 288 runs/day = 864 < 1000
-    assert all(any(set(q['ids'])&X.PASS for q in qs) for qs in per)
-    wide=[any(q.get('kind')=='wide' for q in qs) for qs in per]
-    assert all(wide[i] or wide[i+1] for i in range(len(wide)-1))   # wide at least every other run
+    assert all(any(set(q['ids'])&X.PASS for q in qs) for qs in per)   # 17:30 IST peak: pass pandals every run
+    assert all(any(q.get('kind')=='wide' for q in qs) for qs in per)  # wide openings every run
     assert X.PASS<=set(pas) and {p['id'] for p in X.P}<=set(all_)
     print('ok rotation: pass cycle runs', max(pas.values())+1, 'all cycle runs', max(all_.values())+1)
 def _ingest(posts):
@@ -64,18 +63,4 @@ def test_inaugurators_polled_in_existing_call():
 def test_trusted_handles_match_real_accounts():
     # @IndiContractor was vetted 13 Oct; the set is compared against lower-cased X usernames.
     assert 'indicontractor' in X.TRUSTED, X.TRUSTED
-def test_daily_budget_with_evening_priority():
-    t0=dt.datetime(2026,10,14,0,0,tzinfo=dt.UTC)  # 05:30 IST reset
-    tot=sum(X.calls_for(t0+dt.timedelta(minutes=5*i)) for i in range(288))
-    assert tot<=600, tot                            # leaves >=400 of 1000 for sweeps
-    assert X.calls_for(dt.datetime(2026,10,14,14,30,tzinfo=dt.UTC))==3   # 20:00 IST
-    assert X.calls_for(dt.datetime(2026,10,14,4,30,tzinfo=dt.UTC))==1    # 10:00 IST
-def test_quiet_hours_rotation_covers_everything():
-    fresh(); kinds=[]
-    for i in range(8):
-        X.now=dt.datetime(2026,10,14,4,0,tzinfo=dt.UTC)+dt.timedelta(minutes=5*i)
-        with contextlib.redirect_stdout(io.StringIO()): qs=X.plan()
-        assert len(qs)==1
-        q=qs[0]; kinds.append('wide' if q.get('kind')=='wide' else 'trusted' if 'from:suvenduwb' in q['args']['query'] else 'pass' if set(q['ids'])&X.PASS else 'rest')
-        for i2 in q['ids']: X.live['polled'][i2]=X.now.isoformat()
-    assert {'wide','trusted','pass','rest'}<=set(kinds), kinds
+# budget schedule + quiet hours: see test_budget.py

@@ -73,9 +73,9 @@ export default function App() {
   }, [detail])
   useEffect(() => { if (detail && fresh.has(detail)) setFresh(s => { const n = new Set(s); n.delete(detail); return n }) }, [detail, fresh])
   useEffect(() => {
-    const get = (f: string) => fetch(import.meta.env.BASE_URL + 'live/' + f, { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null)
+    const get = (f: string) => fetch(import.meta.env.BASE_URL + 'live/' + f + '?t=' + Math.floor(Date.now() / 30e3), { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null)
     const load = () => { if (document.visibilityState !== 'visible') return; get('status.json').then(f => f && setStatusFile(f)); get('x.json').then(f => f && ingestX(f)) }
-    load(); const t = setInterval(load, 2 * 60e3); document.addEventListener('visibilitychange', load); return () => { clearInterval(t); document.removeEventListener('visibilitychange', load) }
+    load(); const t = setInterval(load, 45e3); document.addEventListener('visibilitychange', load); return () => { clearInterval(t); document.removeEventListener('visibilitychange', load) }
   }, [])
   useEffect(() => {
     const load = () => document.visibilityState === 'visible' && fetch(import.meta.env.BASE_URL + 'live/now.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(f => f && setNowFeed(f.items)).catch(() => {})

@@ -39,6 +39,8 @@ try: OVR={k:v for k,v in json.load(open(f'{H}/raw/overrides.json')).items() if n
 except Exception: OVR={}
 import ast  # one hand-vetted list: xpoll.TRUSTED (read without importing xpoll's side effects)
 trusted=next(ast.literal_eval(n.value) for n in ast.parse(open(f'{H}/xpoll.py').read()).body if isinstance(n,ast.Assign) and getattr(n.targets[0],'id','')=='TRUSTED')
+try: trusted|=set(json.load(open(f'{H}/raw/x_inaugurators.json')).get('accounts',{}))  # verified inaugurators: their dated inauguration post counts
+except Exception: pass
 try: man={k:v for k,v in json.load(open(f'{H}/raw/status_sources.json')).items() if not k.startswith('_')}
 except Exception: man={}
 try: prev=json.load(open(out)).get('open',{})

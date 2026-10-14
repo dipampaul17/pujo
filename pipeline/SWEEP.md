@@ -19,9 +19,25 @@ every source and sticky open. It clears only on a first-hand X visitor post date
 **Open count.** The one Open set is `public/live/status.json` (X evidence + overrides), which is what the app shows.
 Report it with `python3 pipeline/open_count.py`. `state/xlive.json` `open` is only the poller's raw input to `status.py`.
 
-**X budget: 1000/day, resets 05:30 IST.** The 5-minute refresh (`xpoll.py plan`) spends:
-- 15:00-02:00 IST (evening priority): 3 calls/run: even runs top 6 + trusted visitors + CM/CMO, pass pandals, wide
-  openings; odd runs other pandals, pass pandals, street signals.
-- 02:00-15:00 IST: 1 call/run, rotating pass pandals, other pandals, wide openings (2 h window), top + trusted/CM.
-- Total 552/day. Sweeps get the remaining ~450: at most 1 X call per sweep, and no wide openings search in a sweep
-  (the refresh already runs it). Before any extra call, check "X reads left"; below 100 left, sweeps make no X calls.
+**X budget: 1000/day, resets 05:30 IST (00:00 UTC). Ledger: `state/xbudget.json`** (DP 14 Oct). `xpoll.py plan` charges
+the ledger for every query it plans. After any X call, sync it to X's own footer ("N of 1000 today"):
+`python3 pipeline/xpoll.py set-left N`. Check with `xpoll.py left`; charge extra calls with `xpoll.py spend K`.
+- Every run: call 1 = wide openings (English/Bengali/Banglish opening words + Kolkata/pujo) OR DP's override pandals
+  (Ekdalia, Mudiali: Bengali + English names) OR trusted visitors OR inaugurators (CM/CMO always + verified leaders/celebs,
+  rotated in batches, with inauguration keywords). Window = since the last wide run minus 5 min (max 6 h).
+- 05:30-17:00 and 23:00-02:00 IST: 2 calls/run (wide + pass pandals on even runs / other pandals on odd runs).
+- 17:00-23:00 IST: 3 calls/run (wide + pass pandals + other pandals / street signals alternately).
+- 02:00-05:30 IST: 1 call/run (wide only).
+- Guards: never below 60 left (0 calls); under 150 left: 1 call; if the schedule to the reset would cross the floor, one
+  call fewer; if there is surplus beyond floor + 80 for sweeps, 2-call runs become 3. A full day plans ~780 calls.
+- Sweeps: at most 1 X call each, no wide search (the refresh runs it), and none when `xpoll.py left` < 150.
+
+**Inaugurators (self-growing).** `raw/x_inaugurators.json` holds verified accounts (ministers, MPs, MLAs, BJP state
+leaders, celebrities). Their dated inauguration post naming an app pandal is X evidence, like the CM's. Ingest logs the
+author and @-mentions of every inauguration post naming an app pandal to `raw/x_inaugurator_candidates.json`. When it has
+pending handles (and >= 150 reads left): `xpoll.py inaug-pending` -> get_users_by_usernames (1 read, <=100 names, fields
+description,location,public_metrics,most_recent_tweet_id) -> save JSON -> `xpoll.py inaug-verify FILE` (auto-adds
+Bengal-relevant public figures, rejects the rest).
+
+**Overrides.** DP's closed reports (`raw/overrides.json`) are not permanent: an X first-hand visit or dated inauguration
+post dated after `after` flips the pandal Open. News never does.

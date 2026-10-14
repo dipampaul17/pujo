@@ -40,11 +40,34 @@ SIGNAL_Q=('((Kolkata OR pandal OR pujo OR puja OR কলকাতা OR পু�
 WIDE_MIN=30
 WIDE_Q=('((inaugurated OR inaugurates OR inauguration OR udbodhon OR "udbodhon holo" OR উদ্বোধন OR উদ্বোধনে OR "pandal open" OR "pandal opened" OR "opened to public" OR "open for visitors" OR "khule geche")'
   ' (Kolkata OR Calcutta OR কলকাতা OR "durga puja" OR "durga pujo" OR দুর্গাপুজো OR দুর্গাপূজা OR pandal OR pujo OR পুজো)) -is:retweet')
-def calls_for(t):
-    """X calls for a run at UTC time t. Evening priority: 15:00-02:00 IST = 3 calls; otherwise 1.
-    288 runs/day -> 132*3 + 156*1 = 552 calls, leaving ~450 of the 1000/day (resets 05:30 IST) for sweeps."""
+# X budget ledger (DP 14 Oct). The quota resets 05:30 IST = 00:00 UTC, so the ledger day is the UTC date.
+DAILY=1000; FLOOR=60; LOW=150; SWEEP_RES=80  # reads kept for sweeps/handle lookups
+BUDGET=lambda:f'{ST}/xbudget.json'
+def _day(): return now.strftime('%Y-%m-%d')
+def _led():
+    d=load(BUDGET(),{})
+    return d if d.get('day')==_day() else {'day':_day(),'used':0}
+def left(): return DAILY-_led()['used']
+def set_left(n): d=_led(); d['used']=DAILY-int(n); write_json(BUDGET(),d,indent=1)
+def spend(n): d=_led(); d['used']+=int(n); write_json(BUDGET(),d,indent=1)
+def base_calls(t):
+    """Calls for a run at UTC time t: 3 in the 17:00-23:00 IST peak, 1 from 02:00 IST to the 05:30 reset, else 2."""
     h=(t+dt.timedelta(hours=5,minutes=30)).hour
-    return 3 if (h>=15 or h<2) else 1
+    return 3 if 17<=h<23 else 1 if 2<=h<5 or (h==5 and (t+dt.timedelta(hours=5,minutes=30)).minute<30) else 2
+def calls_for(t):
+    """Ledger-aware: never below the 60-read floor; 1 call when under 150; one fewer when the schedule to the reset
+    would overrun what is left above the floor."""
+    lf=left()-FLOOR
+    if lf<=0: return 0
+    n=base_calls(t)
+    if left()<LOW: return 1
+    reset=(t+dt.timedelta(days=1)).replace(hour=0,minute=0,second=0,microsecond=0)
+    sched=[base_calls(t+dt.timedelta(minutes=5*i)) for i in range(int((reset-t).total_seconds()//300)+1)]
+    need=sum(sched)
+    if need>lf: return max(1,n-1)
+    # surplus: lift 2-call runs to 3 while what's left above floor + sweep reserve still covers every remaining run lifted
+    if n==2 and lf-SWEEP_RES-need>=sched.count(2): return 3
+    return n
 def plan(n=None):
     """Run plan: q1 = top-ranked (last 24h, for fresh photos/crowd); q2..n = stalest pandals packed densely,
     searched back to SEASON so an opening is caught even if nobody posted in the last day. Open pandals that
@@ -53,30 +76,38 @@ def plan(n=None):
     opened=set(live.get('open',{}))|set(k for k in load(f'{H}/raw/x_status.json',{}) if not k.startswith('_'))
     leads={k for k in load(f'{H}/raw/news_leads.json',{}) if not k.startswith('_')}  # news says inaugurated: confirm on X first
     stale=lambda p:(p['id'] not in leads,live['polled'].get(p['id'],''),p['id'] in opened)
-    pas=sorted([p for p in P if p not in top and p['id'] in PASS],key=stale)
-    rest=sorted([p for p in P if p not in top and p['id'] not in PASS],key=stale)
+    pas=sorted([p for p in P if p['id'] in PASS],key=stale)
+    rest=sorted([p for p in P if p['id'] not in PASS],key=stale)
     since=(now-dt.timedelta(hours=24)).strftime('%Y-%m-%dT%H:%M:%SZ')
     k=int(now.timestamp()//300)%2  # alternate discovery flavour per run: opening/visit words, or any photo post
     tail=INTENT if k==0 else ' (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো) has:images -is:retweet'
-    tq=' OR '.join(f'from:{h}' for h in sorted(TRUSTED|INAUGURATORS))
+    tq=' OR '.join(f'from:{h}' for h in sorted(TRUSTED))
     # slot 1: top + trusted visitors; slot 2: stalest pass pandals (every run); slot 3: stalest of the rest,
     # except every other run, when slot 3 is the live street-signal query.
     # Two-run cycle, 3 calls each. Even run: top+trusted visitors, pass pandals, WIDE openings search.
     # Odd run: stalest other pandals, pass pandals, live street signals. Pass pandals are searched every run.
     q=lambda g,st,t,trusted=False:{'ids':[p['id'] for p in g],'args':{'query':(q_of(g,t)[:-len(t)]+' OR '+tq+')'+t).replace('(','((',1) if trusted else q_of(g,t),'max_results':25,'sort_order':'recency','start_time':st,**FIELDS}}
     pq=[q(g,OPEN_FLOOR,tail) for g in pack(pas,tail)[:1]]
-    if k==0:
-        qs=[q(top,since,' -is:retweet',True)]+pq+[{'ids':[],'kind':'wide','args':{'query':WIDE_Q,'max_results':50,'sort_order':'recency','start_time':(now-dt.timedelta(minutes=WIDE_MIN)).strftime('%Y-%m-%dT%H:%M:%SZ'),**FIELDS}}]
-    else:
-        qs=[q(g,OPEN_FLOOR,tail) for g in pack(rest,tail)[:1]]+pq+[{'ids':[],'kind':'signal','args':{'query':SIGNAL_Q,'max_results':25,'sort_order':'recency','start_time':(now-dt.timedelta(hours=SIG.WINDOW_H)).strftime('%Y-%m-%dT%H:%M:%SZ'),**FIELDS}}]
+    # Every run: [wide openings + trusted/CM/inaugurator accounts] first, then stalest pass pandals, then (peak)
+    # alternately stalest other pandals / street signals. Wide window reaches back to the last wide run (+5 min overlap).
+    led=_led(); wa=led.get('wide_at')
+    ws=max(now-dt.timedelta(hours=6),(dt.datetime.fromisoformat(wa) if wa else now-dt.timedelta(minutes=WIDE_MIN))-dt.timedelta(minutes=5))
+    ovr=[p for p in P if p['id'] in {k for k in load(f'{H}/raw/overrides.json',{}) if not k.startswith('_')}]  # DP's closed reports: re-checked every run
+    oq=(' OR ('+q_of(ovr,'')[1:-1]+')') if ovr else ''
+    wq='('+WIDE_Q[:-len(' -is:retweet')]+oq+' OR '+tq
+    wq+=inaug_clause(QMAX-len(wq)-14,int(now.timestamp()//300))
+    wide={'ids':[p['id'] for p in ovr],'kind':'wide','args':{'query':wq+') -is:retweet','max_results':100,'sort_order':'recency','start_time':ws.strftime('%Y-%m-%dT%H:%M:%SZ'),**FIELDS}}
+    rq=[q(g,OPEN_FLOOR,tail) for g in pack(rest,tail)[:1]]
+    sq=[{'ids':[],'kind':'signal','args':{'query':SIGNAL_Q,'max_results':25,'sort_order':'recency','start_time':(now-dt.timedelta(hours=SIG.WINDOW_H)).strftime('%Y-%m-%dT%H:%M:%SZ'),**FIELDS}}]
+    if not pq: pq=rq
     n=calls_for(now) if n is None else n
-    if n==1:  # quiet hours: one call, rotating pass pandals, other pandals, wide openings, top+trusted/CM
-        r=int(now.timestamp()//300)%4
-        one=[pq, [q(g,OPEN_FLOOR,tail) for g in pack(rest,tail)[:1]],
-             [{'ids':[],'kind':'wide','args':{'query':WIDE_Q,'max_results':50,'sort_order':'recency','start_time':(now-dt.timedelta(minutes=WIDE_MIN*4)).strftime('%Y-%m-%dT%H:%M:%SZ'),**FIELDS}}],
-             [q(top,since,' -is:retweet',True)]][r]
-        qs=one
+    # 2 calls: wide + (pass on even runs, other pandals on odd). 3 calls: wide + pass + (others even / signals odd).
+    qs=[wide]+(pq+(rq if k==0 else sq) if n>=3 else (pq if k==0 else rq))
     qs=qs[:n]
+    if qs:
+        led=_led(); led['used']+=len(qs)
+        if any(q.get('kind')=='wide' for q in qs): led['wide_at']=now.isoformat()
+        write_json(BUDGET(),led,indent=1)
     write_json(f'{ST}/xplan.json',{'at':now.isoformat(),'queries':qs},indent=1,ensure_ascii=False); print(json.dumps(qs,ensure_ascii=False)); return qs
 PROMO=re.compile(r'\b(offer|discount|sale|book now|giveaway|sponsor|promo|ad\b|link in bio|watch live|subscribe|tickets?|to arrive|will inaugurate|to inaugurate|scheduled|throwback|last year|2025|2024|#tbt|AI generated|AI art|how to reach|walking route|route guide|kivabe)\b',re.I)
 OPEN=re.compile(r'(\b(inaugurat(ed|es|ing|ion)|opened|open (for|to) (the )?(public|visitors)|crowds?|queues?|visited|visiting|darshan|pandal[- ]hopping|thronged|footfall|(the )?pandal (was|is|looks)|we went|i went)\b|\budbodhon (holo|hoye gelo|korlen|korlo)\b|উদ্বোধন (করলেন|করেন|হল|হলো)|উদ্বোধনে|উদ্বোধনী|ভিড়)',re.I)
@@ -95,7 +126,44 @@ TRUSTED={'abasu4ever','sudhanidhib',
   'an1sh123','goonereol','indicontractor','_epinephrine_'}  # _Epinephrine_ (vetted 14 Oct): personal '📍 <pandal>' thread with own photos (Tridhara, Singhi Park, Ballygunge Cultural, Badamtala, Hindustan Park); goonereol (vetted 13 Oct): personal pandal-hopping thread with own photos (Telipukur, Tala, Nalin Sarkar, Barisha, Dum Dum Park Bharat Chakra); an1sh123 (vetted 13 Oct): personal account, numbered '#N <pandal>' first-hand reviews with own photos, critical not promo; IndiContractor (vetted 13 Oct): 📍 <pandal> + own video visits (Ballygunge Cultural, Tala Barowari, Nalin Sarkar Street)
 # Inauguration sources: the CM and his office post dated '📍 <pandal>' lists of pujas he inaugurated. Searched every
 # even run inside the trusted-visitor slot (no extra X call).
-INAUGURATORS={'suvenduwb','cmowbgov'}  # '📍 <pandal>' threads; '#N Visited <pandal>' series
+INAUG_FILE=f'{H}/raw/x_inaugurators.json'; INAUG_CANDS=f'{H}/raw/x_inaugurator_candidates.json'
+CORE_INAUG={'suvenduwb','cmowbgov'}  # '📍 <pandal>' threads; '#N Visited <pandal>' series
+INAUGURATORS=CORE_INAUG|set(load(INAUG_FILE,{}).get('accounts',{}))  # + verified ministers/MPs/MLAs/leaders/celebs (self-growing)
+INAUG_KW=' (inaugurated OR inaugurates OR inauguration OR উদ্বোধন OR উদ্বোধনে OR উদ্বোধনী OR pujo OR puja OR পুজো OR pandal)'
+def inaug_clause(budget,r):
+    """OR-batched from: clause for inaugurators within `budget` chars; CM/CMO always, the rest rotated by run r."""
+    others=sorted(INAUGURATORS-CORE_INAUG); chunks=[[]]
+    base=lambda hs:len(' OR ((' +' OR '.join(f'from:{h}' for h in sorted(CORE_INAUG)+hs)+')'+INAUG_KW+')')
+    for h in others:
+        if chunks[-1] and base(chunks[-1]+[h])>budget: chunks.append([])
+        chunks[-1].append(h)
+    hs=sorted(CORE_INAUG)+chunks[r%len(chunks)]
+    return ' OR (('+' OR '.join(f'from:{h}' for h in hs)+')'+INAUG_KW+')'
+BENGAL=re.compile(r'west bengal|\bbengal|kolkata|calcutta|howrah|পশ্চিমবঙ্গ|কলকাতা|বাংলা|tollywood|\bwb\b',re.I)
+ROLE=re.compile(r'minister|\bmla\b|\bmp\b|member of (parliament|legislative)|councill?or|mayor|\bbjp\b|president|secretary|actor|actress|cricketer|singer|film|director|কাউন্সিলর|বিধায়ক|সাংসদ|মন্ত্রী',re.I)
+def inaug_log(u,txt):
+    """An inauguration post naming an app pandal: its author and @-mentioned people become inaugurator candidates."""
+    known=INAUGURATORS|TRUSTED|BOTS|set(load(INAUG_FILE,{}).get('rejected',{}))
+    from status_rules import OUTLETS
+    new={h.lower() for h in [u]+re.findall(r'@(\w{1,15})',txt)}-known-OUTLETS
+    if not new: return
+    d=load(INAUG_CANDS,{'_':'People seen on Kolkata inauguration posts naming an app pandal. Look up with get_users_by_usernames(`xpoll.py inaug-pending`), then `xpoll.py inaug-verify RESULT.json`.','pending':[]})
+    d['pending']=sorted(set(d['pending'])|new)[-200:]; write_json(INAUG_CANDS,d,indent=1)
+def inaug_pending(): return load(INAUG_CANDS,{'pending':[]})['pending'][:100]
+def inaug_verify(f):
+    """Auto-add verified accounts: Bengal-relevant profile, public role (politician/official/celebrity), active."""
+    t=open(f).read(); res=json.loads(t[t.find('{'):t.rfind('}')+1]).get('data',[])
+    d=load(INAUG_FILE,{'accounts':{},'rejected':{}}); c=load(INAUG_CANDS,{'pending':[]})
+    for x in res:
+        h=x['username'].lower(); prof=f"{x.get('description','')} {x.get('location','')} {x.get('name','')}"; m=x.get('public_metrics',{})
+        ok=BENGAL.search(prof) and ROLE.search(prof) and m.get('tweet_count',0)>=50 and m.get('followers_count',0)>=500
+        if ok: d['accounts'][h]=re.sub(r'\s+',' ',f"{x.get('name','')}: {x.get('description','')}")[:140]+' (auto-verified)'
+        else: d.setdefault('rejected',{})[h]='auto: not a Bengal public figure / inactive'
+        INAUGURATORS.add(h) if ok else None
+    looked={x['username'].lower() for x in res}
+    c['pending']=[h for h in c['pending'] if h not in looked]
+    write_json(INAUG_FILE,d,ensure_ascii=False,indent=1); write_json(INAUG_CANDS,c,indent=1)
+    print('added',sorted(h for h in looked if h in d['accounts']))
 def trusted_visit(u,txt,has_photo,c):
     return u.lower() in TRUSTED and has_photo and (txt.lstrip().startswith('📍') or re.match(r'\s*#\d+\s+(visited\b)?',txt,re.I)) and c>=dt.datetime.fromisoformat(OPEN_FLOOR.replace('Z','+00:00')) and not FUTURE.search(re.sub(r'\b(19|20)\d\d\b','',txt))
 QUEUE=re.compile(r'\b(queue|long line|waiting line)\b(?:.{0,30}?(\d{1,3})\s*(min|mins|minutes|hours?|hrs?))?',re.I)
@@ -132,6 +200,7 @@ def ingest(files):
                     if p['id'] not in live['open']:
                         live['open'][p['id']]={'since':c.date().isoformat(),'evidence':f"https://x.com/{u0}/status/{x['id']}",'note':re.sub(r'\s+',' ',re.sub(r'https://t\.co/\S+','',txt)).strip()[:140]}
             if CAND_OK(txt,c,u0): cand(txt,c,u0,x['id'])
+            if c>=dt.datetime.fromisoformat(OPEN_FLOOR.replace('Z','+00:00')) and not txt.startswith('RT') and re.search(r'inaugurat|উদ্বোধন|udbodhon',txt,re.I) and alias_hits(P,txt): inaug_log(u0,txt)
             hit0=alias_hits(P,txt); ph0=any(media.get(k,{}).get('type')=='photo' for k in x.get('attachments',{}).get('media_keys',[]))
             tv=len(hit0)==1 and trusted_visit(u0,txt,ph0,c)
             if tv and hit0[0]['id'] not in live['open']:
@@ -182,4 +251,11 @@ def ingest(files):
     write_json(f'{ST}/xlive.json',live,ensure_ascii=False,indent=1)
     print('posts',list(live['posts']),'crowd',list(live['crowd']),'raw-open (poller findings, NOT the open count; see open_count.py)',list(live['open']))
 if __name__=='__main__':
-    plan() if sys.argv[1]=='plan' else ingest(sys.argv[2:])
+    c=sys.argv[1]
+    if c=='plan': plan()
+    elif c=='left': print(left())
+    elif c=='set-left': set_left(sys.argv[2]); print(left())
+    elif c=='spend': spend(sys.argv[2]); print(left())
+    elif c=='inaug-pending': print(','.join(inaug_pending()))
+    elif c=='inaug-verify': inaug_verify(sys.argv[2])
+    else: ingest(sys.argv[2:])

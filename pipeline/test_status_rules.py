@@ -60,6 +60,6 @@ def test_override_closed_beats_sticky_until_fresh_visit():
     old=[classify({'url':'https://x.com/someone/status/4','at':'2026-10-12','text':'Visited Mudiali today, pandal looks great'},set())]
     assert override(o,decide(None,old),old)['kind']=='closed'
     new=[classify({'url':'https://x.com/someone/status/5','at':'2026-10-14T10:00:00Z','text':'Visited Mudiali today, pandal looks great'},set())]
-    assert override(o,decide(None,new),new)['kind']=='closed'  # unvetted regex match never beats DP
+    assert override(o,decide(None,new),new)['kind']!='closed'  # DP 14 Oct: newer first-hand X visit flips it
     new=[classify({'url':'https://x.com/someone/status/5','at':'2026-10-14T10:00:00Z','text':'Visited Mudiali today, pandal looks great'},{'someone'})]
     assert override(o,decide(None,new),new)['kind']!='closed'  # a hand-vetted visitor does
