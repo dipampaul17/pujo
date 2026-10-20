@@ -12,7 +12,6 @@ SRC = {
  'baguiati-rail-pukur': ('Baguiati Rail Pukur United Club', 'baguiati_rail_pukur', 'Railpukur United Club', None),
  'netaji-colony-lowland': ('Netaji Colony Lowland', None, 'Netaji Colony Lowland', None),
  'ak-block': ('AK Block', None, 'Ak Block', None),
- 'ck-cl-block': ('CK-CL Block', None, None, None),  # Telegraph Salt Lake guide 2026: 50th year, 'Phire Dekha'
  '64-pally': ('64 Pally', '64_pally_durga_pujo', '64 Pally Durga Pujo', None),
  'kalighat-milan-sangha': ('Kalighat Milan Sangha', 'kalighat_milan_sangha', 'Kalighat Milan Sangha', None),
  'rupchand-mukherjee-lane': ('Rupchand Mukherjee Lane', 'rupchand_mukherjee_sarbojanin', 'Rupchand Mukherjee Lane Durga Puja', None),
@@ -57,7 +56,6 @@ SRC = {
 # Exact pins checked 14 Oct 2026 against two independent families: Google Maps place (Agamoni pins copy Google) and an
 # OpenStreetMap named feature (PPG pins copy OSM). id: (google pin, google place name, osm pin, osm feature name). Pin used: Google's.
 VERIFIED = {
- 'ck-cl-block': ((22.5846083, 88.427637), 'OSM: CKCL Park, Sector II (puja venue)', (22.58461, 88.42765), 'PujoMap: CK-CL Block Durga Puja'),  # 20 Oct, Nominatim
  'ak-block': ((22.5891537, 88.4313014), 'Google: Ak Block', (22.5884012, 88.4313494), 'OSM: AK Block, Sector II'),  # 20 Oct, Nominatim
  'ballygunge-21-pally': ((22.529175, 88.368816), 'Google: Ballygunge 21 Pally', (22.5292355, 88.368908), 'OSM: Ballygunge 21 Pally'),
  'dhakuria-sarbojanin': ((22.510483, 88.371986), 'Google: Dhakuria Sarbojanin Durgotsab', (22.5100279, 88.3719874), 'OSM: Dhakuria Sarbojanin'),
@@ -76,7 +74,7 @@ def resolve(stations):
         ok = a and b and hav(a, b) <= 250
         v = VERIFIED.get(k)
         if v and hav(v[0], v[2]) <= 250: a, ok = v[0], True
-        ref = a or b or (v[0] if ok else None)
+        ref = a or b
         s = next(x for x in stations if x['name'] == st) if st else min(stations, key=lambda x: hav(ref, (x['lat'], x['lng'])))
         out.append({**base, 'station': s['name'], **({'lat': round(a[0], 6), 'lng': round(a[1], 6), 'precision': 'osm'} if ok else {'lat': s['lat'], 'lng': s['lng'], 'precision': 'station'})})
     return out
