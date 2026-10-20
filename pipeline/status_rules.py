@@ -73,8 +73,13 @@ def decide(prev: dict | None, srcs: list[dict]) -> dict | None:
             'corroborated': len({s['by'] for s in opens}) >= 2, 'sources': sorted(opens, key=lambda s: (RANK[s['tier']], s['at']))[:8]}
 
 def override(o: dict | None, d: dict | None, srcs: list[dict]) -> dict | None:
-    """DP's ground truth. A 'closed' override stands until an X post dated after o['after'] (first-hand visit or dated inauguration naming it); DP 14 Oct."""
+    """DP's ground truth. A 'closed' override stands until an X post dated after o['after'] (first-hand visit or dated inauguration naming it); DP 14 Oct.
+    Outlet crowd/visitor clips do NOT clear it — only a first-hand visitor (visitor/trusted/hand) or a dated inauguration post (any tier)."""
     if not o or o.get('kind') != 'closed': return d
-    fresh = [s for s in srcs if is_x(s['url']) and s['kind'] in ('visitors', 'inaugurated') and s.get('tier') in ('visitor', 'trusted', 'hand', 'outlet') and (s.get('at') or '') > o['after'][:19]]
+    def clears(s):
+        if not is_x(s['url']) or (s.get('at') or '') <= o['after'][:19]: return False
+        if s['kind'] == 'inaugurated': return True  # dated inauguration, including outlet
+        return s['kind'] == 'visitors' and s.get('tier') in ('visitor', 'trusted', 'hand')  # first-hand only
+    fresh = [s for s in srcs if clears(s)]
     if fresh: return decide(None, fresh)
     return {'since': o['after'][:10], 'evidence': '', 'note': o.get('note', 'Not open yet'), 'kind': 'closed', 'by': 'override', 'sources': []}

@@ -12,7 +12,7 @@ itineraries, "series of pujas"); scheduled or future items ("to inaugurate", "sc
 be shown as a secondary source.
 
 **Overrides win.** `raw/overrides.json` is DP's ground truth (e.g. Ekdalia Evergreen, Mudiali: closed). It outranks
-every source and sticky open. It clears only on a first-hand X visitor post dated after its `after` timestamp.
+every source and sticky open. It clears only on a first-hand X visitor post or a dated inauguration post (not an outlet crowd clip) dated after its `after` timestamp.
 
 **Sticky.** Once open on X evidence, a pandal stays open; only explicit closure evidence or an override downgrades it.
 

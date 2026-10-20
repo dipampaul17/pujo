@@ -1,0 +1,203 @@
+{
+ "data": [
+  {
+   "author_id": "1754865510939029506",
+   "created_at": "2026-10-14T06:54:10.000Z",
+   "edit_history_tweet_ids": [
+    "2110262874199232637"
+   ],
+   "id": "2110262874199232637",
+   "in_reply_to_user_id": "1997693457645846528",
+   "public_metrics": {
+    "bookmark_count": 0,
+    "impression_count": 33,
+    "like_count": 1,
+    "quote_count": 0,
+    "reply_count": 1,
+    "retweet_count": 0
+   },
+   "referenced_tweets": [
+    {
+     "id": "2110256009297953058",
+     "type": "replied_to"
+    }
+   ],
+   "text": "@goyangi_jegukk Thank god catnip sahib is 25% 🍁 only",
+   "url": "https://x.com/_Epinephrine_/status/2110262874199232637"
+  },
+  {
+   "attachments": {
+    "media_keys": [
+     "16_2110261112746967040"
+    ]
+   },
+   "author_id": "1754865510939029506",
+   "created_at": "2026-10-14T06:47:17.000Z",
+   "edit_history_tweet_ids": [
+    "2110261139804389750"
+   ],
+   "id": "2110261139804389750",
+   "public_metrics": {
+    "bookmark_count": 0,
+    "impression_count": 17,
+    "like_count": 1,
+    "quote_count": 0,
+    "reply_count": 0,
+    "retweet_count": 0
+   },
+   "referenced_tweets": [
+    {
+     "id": "2110236450835063262",
+     "type": "quoted"
+    }
+   ],
+   "text": "Kolkata ko calcutta kahene wale log https://t.co/DJSOJGaZki https://t.co/IJiqUSy1qs",
+   "url": "https://x.com/_Epinephrine_/status/2110261139804389750"
+  },
+  {
+   "attachments": {
+    "media_keys": [
+     "13_2110257834814558208"
+    ]
+   },
+   "author_id": "37034483",
+   "created_at": "2026-10-14T06:42:42.000Z",
+   "edit_history_tweet_ids": [
+    "2110259988417458339"
+   ],
+   "id": "2110259988417458339",
+   "public_metrics": {
+    "bookmark_count": 0,
+    "impression_count": 4754,
+    "like_count": 5,
+    "quote_count": 0,
+    "reply_count": 0,
+    "retweet_count": 0
+   },
+   "text": "Crowds of pandal hoppers thronged South Kolkata's iconic Mudiali Club on Tritiya, the third day of Durga Puja festivities. Celebrating its 92nd year, the club has embraced the theme of 'Traditional Folklore', showcasing Bengal's rich heritage and folk traditions alongside a https://t.co/2FzEiAktCx",
+   "url": "https://x.com/ndtv/status/2110259988417458339"
+  },
+  {
+   "author_id": "1754865510939029506",
+   "created_at": "2026-10-14T06:41:10.000Z",
+   "edit_history_tweet_ids": [
+    "2110259603254718935"
+   ],
+   "id": "2110259603254718935",
+   "in_reply_to_user_id": "1312386045531615240",
+   "public_metrics": {
+    "bookmark_count": 0,
+    "impression_count": 8,
+    "like_count": 0,
+    "quote_count": 0,
+    "reply_count": 0,
+    "retweet_count": 0
+   },
+   "referenced_tweets": [
+    {
+     "id": "2110236450835063262",
+     "type": "replied_to"
+    }
+   ],
+   "text": "@chickenalakiev Deserved",
+   "url": "https://x.com/_Epinephrine_/status/2110259603254718935"
+  },
+  {
+   "author_id": "1023150691030728704",
+   "created_at": "2026-10-14T06:34:32.000Z",
+   "edit_history_tweet_ids": [
+    "2110257933896601687"
+   ],
+   "id": "2110257933896601687",
+   "in_reply_to_user_id": "1257157242543013888",
+   "public_metrics": {
+    "bookmark_count": 0,
+    "impression_count": 5,
+    "like_count": 0,
+    "quote_count": 0,
+    "reply_count": 1,
+    "retweet_count": 0
+   },
+   "referenced_tweets": [
+    {
+     "id": "2110257538340110611",
+     "type": "replied_to"
+    }
+   ],
+   "text": "@datalover_ayush @markgoldbridge He left on his own terms, not kicked. But yeah, keep deluding.",
+   "url": "https://x.com/an1sh123/status/2110257933896601687"
+  },
+  {
+   "author_id": "1023150691030728704",
+   "created_at": "2026-10-14T06:33:49.000Z",
+   "edit_history_tweet_ids": [
+    "2110257752316715105"
+   ],
+   "id": "2110257752316715105",
+   "in_reply_to_user_id": "1257157242543013888",
+   "public_metrics": {
+    "bookmark_count": 0,
+    "impression_count": 12,
+    "like_count": 0,
+    "quote_count": 0,
+    "reply_count": 2,
+    "retweet_count": 0
+   },
+   "referenced_tweets": [
+    {
+     "id": "2105697781880856977",
+     "type": "quoted"
+    },
+    {
+     "id": "2110257104347156579",
+     "type": "replied_to"
+    }
+   ],
+   "text": "@datalover_ayush @markgoldbridge Will play this videos there https://t.co/cwBguI5jNE",
+   "url": "https://x.com/an1sh123/status/2110257752316715105"
+  }
+ ],
+ "includes": {
+  "media": [
+   {
+    "media_key": "16_2110261112746967040",
+    "preview_image_url": "https://pbs.twimg.com/tweet_video_thumb/HUknTSiagAArXmF.jpg",
+    "type": "animated_gif"
+   },
+   {
+    "media_key": "13_2110257834814558208",
+    "preview_image_url": "https://pbs.twimg.com/amplify_video_thumb/2110257834814558208/img/gdguc0OTVitfHarL.jpg",
+    "type": "video"
+   }
+  ],
+  "users": [
+   {
+    "id": "1754865510939029506",
+    "name": "Soumo (Locked in arc 🌼)",
+    "username": "_Epinephrine_"
+   },
+   {
+    "id": "37034483",
+    "name": "NDTV",
+    "username": "ndtv"
+   },
+   {
+    "id": "1023150691030728704",
+    "name": "an1sh",
+    "username": "an1sh123"
+   }
+  ]
+ },
+ "meta": {
+  "newest_id": "2110262874199232637",
+  "next_token": "b26v89c19zqg8o3juzlvk634mrrkmpa1rv3d6qnu0e459",
+  "oldest_id": "2110257752316715105",
+  "result_count": 6
+ },
+ "_sweep": {
+  "at": "2026-10-14T07:03:19Z",
+  "query": "CM/CMO+trusted+inaugurators+Ekdalia/Mudiali",
+  "start_time": "2026-10-14T06:30:00Z",
+  "x_reads_left_footer": 634
+ }
+}

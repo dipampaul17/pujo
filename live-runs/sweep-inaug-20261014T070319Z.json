@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-14T07:03:19Z",
+  "at_ist": "2026-10-14 12:33 IST",
+  "source": "pujo-inauguration-web-sweep",
+  "success": true,
+  "suvenduwb": {
+    "note": "silent since ~11:55 IST; no posts in 06:30Z–07:03Z window"
+  },
+  "cmowbgov": {
+    "note": "silent; no posts in window"
+  },
+  "trusted_visitors": {
+    "note": "_Epinephrine_ off-topic (Calcutta spelling / replies); an1sh123 football replies only; abasu4ever/SudhanidhiB/goonereol/IndiContractor silent; no new inauguration or first-hand 📍 visit naming a pandal"
+  },
+  "inaugurators": {
+    "note": "no posts from verified inaugurators with inauguration keywords in window"
+  },
+  "mudiali_ekdalia": {
+    "note": "NDTV outlet crowd clip https://x.com/ndtv/status/2110259988417458339 (Mudiali thronged Tritiya) — does NOT clear override; no first-hand visitor or dated inauguration post after after=2026-10-13T18:30:00Z; both stay closed"
+  },
+  "web_leads": [
+    {
+      "name": "Baguiati Rail Pukur United Club",
+      "in_app": false,
+      "note": "inaugurated Oct 13 Collage theme; not in app"
+    },
+    {
+      "name": "Kankurgachi Milan Mela Samity",
+      "in_app": false,
+      "note": "Vande Mataram theme coverage; not in app"
+    },
+    {
+      "name": "Ahiritola Sarbojanin",
+      "in_app": true,
+      "note": "schedule/preview only; opens Oct 15 evening; already in news_leads"
+    },
+    {
+      "name": "Kalighat (Mamata Banerjee)",
+      "in_app": true,
+      "note": "Kalighat inauguration headlines; kalighat-milan-sangha already open"
+    }
+  ],
+  "news_leads_updated": false,
+  "x_call": {
+    "used": 1,
+    "query": "(from:SuvenduWB OR from:cmowbgov OR trusted OR inaugurators+keywords OR Ekdalia/Mudiali) -is:retweet",
+    "start_time": "2026-10-14T06:30:00Z",
+    "result_count": 6,
+    "x_reads_left_today": 634,
+    "raw": "pipeline/xpoll_results/sweep_20261014T070319Z.json"
+  },
+  "confirmed": [],
+  "new_opens": [],
+  "published": false,
+  "status_open": 36,
+  "overrides_closed": [
+    "ekdalia-evergreen",
+    "mudiali"
+  ],
+  "failure_streak_should_be": 0
+}

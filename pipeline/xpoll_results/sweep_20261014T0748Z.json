@@ -1,0 +1,37 @@
+{
+ "_sweep": {
+  "at": "2026-10-14T07:51:26Z",
+  "query": "stale-closed-pass+overrides+CM/CMO",
+  "ids": [
+   "ekdalia-evergreen",
+   "mudiali",
+   "ahiritola-sarbojanin",
+   "bantra-mohila-sangha",
+   "behala-nutan-dal",
+   "beleghata-33-pally",
+   "bosepukur-talbagan",
+   "hatibagan-sarbojanin",
+   "ichapur-shivaji-sangha",
+   "olabibitala-sarbojanin",
+   "purbachal-shakti-sangha",
+   "salkia-alapani",
+   "santoshpur-avenue-south",
+   "santoshpur-trikon-park"
+  ],
+  "start_time": "2026-10-10T00:00:00Z",
+  "x_reads_left_footer": 606,
+  "result_count": 15,
+  "newest_id": "2110248778200682765",
+  "no_new_opens": true,
+  "notes": [
+   "Openthemag Ahiritola mention is cultural/theme + Siliguri gold inauguration — schedule-only for Ahiritola (15 Oct), not open evidence",
+   "EducatedMoron/RitzyB94/ayash_jaihind itinerary replies naming Ekdalia/Mudiali do not clear overrides",
+   "CM @SuvenduWB/@cmowbgov only prior Oct 11-12 inauguration posts (already-open pandals); no new puja inaugurations this window"
+  ]
+ },
+ "data": [],
+ "meta": {
+  "result_count": 15,
+  "newest_id": "2110248778200682765"
+ }
+}

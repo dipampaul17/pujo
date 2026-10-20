@@ -1,0 +1,52 @@
+{
+  "at": "2026-10-13T17:40:00Z",
+  "source": "sweep-2311",
+  "suvenduwb": {
+    "note": "no new Kolkata inauguration posts Oct 13; Oct 12 list already ingested"
+  },
+  "cmowbgov": {
+    "note": "no new pandal inaugurations after Sree Bhumi/Santosh Mitra"
+  },
+  "confirmed": [
+    {
+      "id": "tala-barowari",
+      "url": "https://x.com/IndiContractor/status/2108959990174323066",
+      "at": "2026-10-10T16:36:58.000Z",
+      "text": "📍Tala Barowari, Kolkata",
+      "kind": "visitors"
+    },
+    {
+      "id": "bakul-bagan",
+      "url": "https://x.com/SudhanidhiB/status/2110062708020461966",
+      "at": "2026-10-13T17:38:47.000Z",
+      "text": "#9 Visited Bakul Bagan Minimal aesthetics but brilliant",
+      "kind": "visitors"
+    }
+  ],
+  "candidates": [
+    {
+      "names": [
+        "Park Circus Beniapukur United"
+      ],
+      "url": "https://x.com/SudhanidhiB/status/2110052467648180659",
+      "at": "2026-10-13T16:58:05.000Z",
+      "already": true
+    },
+    {
+      "names": [
+        "Allen Park"
+      ],
+      "url": "https://x.com/SudhanidhiB/status/2110041870697193660",
+      "at": "2026-10-13T16:15:59.000Z",
+      "already": true
+    }
+  ],
+  "schedule_only": [
+    {
+      "id": "ahiritola-sarbojanin",
+      "url": "https://x.com/SudhanidhiB/status/2109901943539949865",
+      "text": "Will be open for Public 15th October (Evening onwards)"
+    }
+  ],
+  "samaj_sebi": "still theme/promo only; public from Panchami 16 Oct per guides"
+}

@@ -1,0 +1,46 @@
+{
+  "at": "2026-10-13T23:26:49Z",
+  "source": "pujo-inauguration-web-sweep",
+  "suvenduwb": {
+    "note": "silent since 2026-10-13T22:00:00Z (04:30 IST window)"
+  },
+  "cmowbgov": {
+    "note": "silent since 2026-10-13T22:00:00Z"
+  },
+  "trusted_visitors": {
+    "note": "abasu4ever/SudhanidhiB/an1sh123/goonereol/IndiContractor/_Epinephrine_ silent since 22:00Z"
+  },
+  "wide": {
+    "note": "English+Bengali openings empty of app pandals; one irrelevant political reply only"
+  },
+  "pass_search": {
+    "note": "Haridevpur 41 theme promo only (MonojitSinha11); no first-hand visit/inauguration evidence"
+  },
+  "mudiali_ekdalia": {
+    "note": "no visitor posts after override after=2026-10-13T13:50:00Z; stay closed"
+  },
+  "web_leads": [
+    {
+      "name": "Allen Park",
+      "in_app": false,
+      "note": "CM Oct 12 inauguration roundup; not in app"
+    },
+    {
+      "name": "Dhakuria Sahid Nagar",
+      "in_app": false,
+      "note": "scheduled 13 Oct 6pm theme piece; not past-tense X evidence; not in app"
+    },
+    {
+      "name": "Chorebagan",
+      "in_app": true,
+      "note": "already open"
+    }
+  ],
+  "x_news": {
+    "note": "Allen Park/Eden Gardens roundups + Mamata knife story; no new app pandal opens"
+  },
+  "confirmed": [],
+  "published": false,
+  "live_open_ish": 29,
+  "x_reads_left_today": 324
+}

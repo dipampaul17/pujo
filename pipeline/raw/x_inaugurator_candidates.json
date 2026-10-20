@@ -1,0 +1,26 @@
+{
+ "_": "People seen on Kolkata inauguration posts naming an app pandal. Look up with get_users_by_usernames(`xpoll.py inaug-pending`), then `xpoll.py inaug-verify RESULT.json`.",
+ "pending": [
+  "amrritasinghoff",
+  "bimanghoshbjp",
+  "chaltabagan",
+  "deeppaikwb",
+  "dibyenduda21375",
+  "gags2519",
+  "harimohanbangur",
+  "icawbgov",
+  "kakdwip",
+  "kmc_kolkata",
+  "kolkatapolice",
+  "lokbhavan_wb",
+  "newslive_bangla",
+  "newsstar69313",
+  "rituparnaspeaks",
+  "sarkarsupriyo",
+  "seemasengupta5",
+  "shishirkb",
+  "sumonseng",
+  "sundeepbhutoria",
+  "sushantabjp"
+ ]
+}

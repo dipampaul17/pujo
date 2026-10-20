@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-14T02:52:46Z",
+  "source": "pujo-inauguration-web-sweep",
+  "suvenduwb": {
+    "note": "silent since 2026-10-14T01:45:00Z (07:15 IST window)"
+  },
+  "cmowbgov": {
+    "note": "silent since 2026-10-14T01:45:00Z"
+  },
+  "iamriteshtiwari": {
+    "note": "silent since 2026-10-14T01:45:00Z; prior Oct 13 roundup still only names Paikpara/Campbagan/Belgaachia/Garia Amra Kajon — none in app except Garia Mitali already open"
+  },
+  "trusted_visitors": {
+    "note": "abasu4ever/_Epinephrine_/SudhanidhiB/an1sh123/goonereol/IndiContractor silent since 2026-10-14T01:45:00Z"
+  },
+  "wide": {
+    "note": "English+Bengali openings: only ANI Siliguri gold pandal (Jayanta Roy) — not Kolkata, not in app"
+  },
+  "pass_search": {
+    "note": "Kumartuli/Hatibagan/Haridevpur/Naktala/Kashi Bose/Telengabagan/Chakraberia/Bosepukur Talbagan/Behala Friends/Nutan empty since 13 Oct 18:00Z"
+  },
+  "mudiali_ekdalia": {
+    "note": "Mudiali theme promo only (@MonojitSinha11); no visitor posts after override after=2026-10-13T13:50:00Z; Ekdalia empty; stay closed"
+  },
+  "web_leads": [
+    {
+      "name": "Kankurgachi Milan Mela",
+      "in_app": false,
+      "note": "ANI/ABP Vande Mataram theme coverage Oct 14; not in app"
+    },
+    {
+      "name": "Baguiati Rail Pukur United",
+      "in_app": false,
+      "note": "Oct 13 inauguration article; not in app"
+    },
+    {
+      "name": "Ahiritola Sarbojanin",
+      "in_app": true,
+      "note": "schedule-only Oct 15; already in news_leads; no X open posts"
+    },
+    {
+      "name": "Santosh Mitra Square",
+      "in_app": true,
+      "note": "already open"
+    },
+    {
+      "name": "Allen Park",
+      "in_app": false,
+      "note": "Park Street first Puja roundup; not in app"
+    }
+  ],
+  "x_news": {
+    "note": "no new app pandal opens; Siliguri only"
+  },
+  "confirmed": [],
+  "published": false,
+  "live_open_xlive": 19,
+  "status_open_ish": 29,
+  "x_reads_left_today": 809,
+  "content_hash": "b31ac96b6bc7d10e446ac41830a573f5df4e9277"
+}

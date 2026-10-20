@@ -1,0 +1,118 @@
+{
+ "data": [
+  {
+   "attachments": {
+    "media_keys": [
+     "3_2110248752569360384"
+    ]
+   },
+   "author_id": "62762183",
+   "created_at": "2026-10-14T05:58:09.000Z",
+   "edit_history_tweet_ids": [
+    "2110248778200682765"
+   ],
+   "id": "2110248778200682765",
+   "public_metrics": {
+    "bookmark_count": 0,
+    "impression_count": 662,
+    "like_count": 2,
+    "quote_count": 0,
+    "reply_count": 0,
+    "retweet_count": 0
+   },
+   "text": "More than 100 kg of genuine gold ornaments have been used to adorn Goddess Durga and other idols at a gold-themed Durga Puja pandal in Siliguri, West Bengal. Inaugurated by BJP MP from Jalpaiguri, Dr Jayanta Roy, the pandal features golden-themed decorations that complement the https://t.co/bzlRoblDJA",
+   "url": "https://x.com/Openthemag/status/2110248778200682765"
+  },
+  {
+   "attachments": {
+    "media_keys": [
+     "13_2109874368755183616"
+    ]
+   },
+   "author_id": "1153194267138908160",
+   "created_at": "2026-10-13T18:11:02.000Z",
+   "edit_history_tweet_ids": [
+    "2110070825269522481"
+   ],
+   "id": "2110070825269522481",
+   "public_metrics": {
+    "bookmark_count": 0,
+    "impression_count": 353,
+    "like_count": 16,
+    "quote_count": 0,
+    "reply_count": 0,
+    "retweet_count": 0
+   },
+   "text": "𝐇𝐚𝐫𝐢𝐝𝐞𝐯𝐩𝐮𝐫 41 Pally Club is one of South Kolkata’s most popular Durga Puja pandals. It is famous for its big, creative themes and attracts huge crowd. The 2026 theme reportedly explored “the different stages of life.\" https://t.co/FuqCWlUgFJ",
+   "url": "https://x.com/MonojitSinha11/status/2110070825269522481"
+  },
+  {
+   "author_id": "3868003454",
+   "created_at": "2026-10-13T07:43:17.000Z",
+   "edit_history_tweet_ids": [
+    "2109912846398271869"
+   ],
+   "id": "2109912846398271869",
+   "public_metrics": {
+    "bookmark_count": 63,
+    "impression_count": 4344,
+    "like_count": 108,
+    "quote_count": 1,
+    "reply_count": 5,
+    "retweet_count": 11
+   },
+   "referenced_tweets": [
+    {
+     "id": "2109684043096965608",
+     "type": "quoted"
+    }
+   ],
+   "text": "So there are some 3000 pandals in the city. Covering all of them won't be possible or practical. If you want to do just the big and famous one, even that would be some 200 pandals and on Ashtami/Navami visiting just one of them can eat up 5-6 hours. \n\nSo this needs planning. https://t.co/KYHxFmIMLJ",
+   "url": "https://x.com/EducatedMoron/status/2109912846398271869"
+  }
+ ],
+ "includes": {
+  "media": [
+   {
+    "height": 1350,
+    "media_key": "3_2110248752569360384",
+    "type": "photo",
+    "url": "https://pbs.twimg.com/media/HUkcD1SboAAx54c.jpg",
+    "width": 1080
+   },
+   {
+    "height": 1280,
+    "media_key": "13_2109874368755183616",
+    "preview_image_url": "https://pbs.twimg.com/amplify_video_thumb/2109874368755183616/img/pnSwKmbN1UkvyPLx.jpg",
+    "type": "video",
+    "width": 720
+   }
+  ],
+  "users": [
+   {
+    "id": "62762183",
+    "name": "Open Magazine",
+    "profile_image_url": "https://pbs.twimg.com/profile_images/716939884523446272/FCh9hb4U_normal.jpg",
+    "username": "Openthemag"
+   },
+   {
+    "id": "1153194267138908160",
+    "name": "Monojit Sinha",
+    "profile_image_url": "https://pbs.twimg.com/profile_images/2090458520567291904/zsGXD3q0_normal.jpg",
+    "username": "MonojitSinha11"
+   },
+   {
+    "id": "3868003454",
+    "name": "The Educated Moron",
+    "profile_image_url": "https://pbs.twimg.com/profile_images/742329550919499776/iSwGAGX5_normal.jpg",
+    "username": "EducatedMoron"
+   }
+  ]
+ },
+ "meta": {
+  "newest_id": "2110248778200682765",
+  "next_token": "b26v89c19zqg8o3juzizl3fai39445uof7yjdwtbwwn0d",
+  "oldest_id": "2109912846398271869",
+  "result_count": 3
+ }
+}

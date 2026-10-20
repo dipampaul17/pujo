@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-14T05:28:57Z",
+  "source": "pujo-inauguration-web-sweep",
+  "suvenduwb": {
+    "note": "silent since 2026-10-14T04:55:00Z (10:25 IST window)"
+  },
+  "cmowbgov": {
+    "note": "silent since 2026-10-14T04:55:00Z"
+  },
+  "iamriteshtiwari": {
+    "note": "silent since 2026-10-14T04:55:00Z"
+  },
+  "trusted_visitors": {
+    "note": "an1sh123/_Epinephrine_ only replies (football/politics/Tridhara crowd chat); abasu4ever/SudhanidhiB/goonereol/IndiContractor silent; no new inauguration or 📍 visit posts naming a pandal"
+  },
+  "pass_search": {
+    "note": "no X confirmation this sweep; Ahiritola still schedule-only Oct 15 in news_leads"
+  },
+  "mudiali_ekdalia": {
+    "note": "no visitor posts after override after=2026-10-13T13:50:00Z; stay closed"
+  },
+  "web_leads": [
+    {
+      "name": "Baguiati Rail Pukur United Club",
+      "in_app": false,
+      "note": "inaugurated Oct 13 (forpressrelease Collage theme); not in app"
+    },
+    {
+      "name": "Kankurgachi Milan Mela Samity",
+      "in_app": false,
+      "note": "Vande Mataram theme coverage Oct 14; not in app"
+    },
+    {
+      "name": "Ahiritola Sarbojanin",
+      "in_app": true,
+      "note": "schedule/preview only; opens Oct 15 evening; already in news_leads"
+    },
+    {
+      "name": "Rajdanga Naba Uday Sangha",
+      "in_app": true,
+      "note": "theme coverage; already open"
+    },
+    {
+      "name": "Santosh Mitra Square / Sree Bhumi",
+      "in_app": true,
+      "note": "old CM inauguration articles; already open"
+    }
+  ],
+  "x_call": {
+    "query": "(from:SuvenduWB OR from:cmowbgov OR from:abasu4ever OR from:SudhanidhiB OR from:an1sh123 OR from:goonereol OR from:IndiContractor OR from:_Epinephrine_ OR from:IamRiteshTiwari) -is:retweet",
+    "start_time": "2026-10-14T04:55:00Z",
+    "result_count": 8,
+    "x_reads_left_today": 670
+  },
+  "confirmed": [],
+  "published": false,
+  "status_open": 36,
+  "content_hash": "ca2d4f3ab5fd56a3e1934404ea001c12fee142ea"
+}

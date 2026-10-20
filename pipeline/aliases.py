@@ -85,13 +85,13 @@ EXTRA={
  'alipore-sarbojanin':['Alipore Sarbojanin','Alipur Sarbojanin','আলিপুর সার্বজনীন'],
  'abasar-sarbojanin':['Abasar Sarbojanin','Abasar Sarbojonin','Abosar Sarbojanin'],
  '25-pally-khidirpur':['২৫ পল্লী সার্বজনীন, খিদিরপুর','খিদিরপুর ২৫ পল্লী','Khidirpur 25 Pally','Khidirpur 25 Palli','Kidderpore 25 Pally','25 Pally Khidirpur','25 Pally Kidderpore'],
- 'pally-saradiya-khidirpur':['Pally Saradiya','Pally Sarodiya','Palli Saradiya'],
+ 'pally-saradiya-khidirpur':['Pally Saradiya','Pally Sarodiya','Palli Saradiya','Pally Sharadiya','Pally Sharodia','Palli Sharadiya','পল্লী শারদীয়া'],
  'telipukur-yuba-sangha':['Telipukur Yuba Sangha','Telipukur','Nursery Bagan Adivasi'],
  'olabibitala-sarbojanin':['Olabibitala','Olaibibitola','Olabibitola'],
  'ichapur-shivaji-sangha':['Ichapur Shivaji Sangha','Shivaji Sangha Ichapur'],
- 'salkia-alapani':['Salkia Alapani','Alapani Club'],
+ 'salkia-alapani':['Salkia Alapani','Alapani Club','সালকিয়া আলাপনী'],
  'keshtopur-prafulla-kanan':['Prafulla Kanan','Prafullakanan','Keshtopur Prafulla Kanan'],
- 'ahiritola-yubakbrinda':['Ahiritola Yubakbrinda','Ahiritola Yuvak Brinda','Ahiritola Yubak Brinda'],
+ 'ahiritola-yubakbrinda':['Ahiritola Yubakbrinda','Ahiritola Yuvak Brinda','Ahiritola Yubak Brinda','Ahiritola Jubak Brinda','আহিরীটোলা যুবকবৃন্দ'],
 }
 WEAK={'new sporting','rani rashmoni','tarun dal','bharat chakra','badamtala'}
 GENERIC=re.compile(r'\b(Sarbojanin|Sarbajanin|Sarbojonin|Sarvajanin|Durgotsab|Samity|Samiti|Club|Committee|Sangha|Sangh)\b',re.I)

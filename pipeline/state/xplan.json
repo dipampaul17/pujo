@@ -1,68 +1,74 @@
 {
- "at": "2026-10-13T09:23:53.837737+00:00",
+ "at": "2026-10-20T06:01:54.323700+00:00",
  "queries": [
   {
    "ids": [
-    "santosh-mitra-square",
-    "chaltabagan-lohapatty",
-    "suruchi-sangha",
-    "sree-bhumi-sporting-club",
-    "tala-prattoy",
-    "deshapriya-park"
-   ],
-   "args": {
-    "query": "(\"Santosh Mitra Square\" OR \"Chaltabagan Lohapatty\" OR \"Suruchi\" OR \"Sreebhumi\" OR \"Sree Bhumi\" OR \"Tala Prattoy\" OR \"Deshapriya Park\") -is:retweet -is:quote",
-    "max_results": 25,
-    "sort_order": "recency",
-    "start_time": "2026-10-12T09:23:53Z",
-    "expansions": "attachments.media_keys,author_id",
-    "media.fields": "url,preview_image_url,type,width,height",
-    "user.fields": "username,name,profile_image_url",
-    "post.fields": "created_at,text,attachments"
-   }
-  },
-  {
-   "ids": [
-    "bhowanipur-75-pally",
-    "bj-block",
-    "bosepukur-sitala-mandir",
-    "chakraberia-sarbojanin",
-    "chetla-agrani",
-    "chorebagan-sarbojanin",
-    "college-square",
-    "dakshindari-youth"
-   ],
-   "args": {
-    "query": "(\"Bhowanipur 75 Pally\" OR \"BJ Block\" OR \"Bosepukur Sitala Mandir\" OR \"Chakraberia\" OR \"Chetla Agrani\" OR \"Chorebagan\" OR \"College Square\" OR \"Dakshindari Youth\") -is:retweet -is:quote",
-    "max_results": 25,
-    "sort_order": "recency",
-    "start_time": "2026-10-12T09:23:53Z",
-    "expansions": "attachments.media_keys,author_id",
-    "media.fields": "url,preview_image_url,type,width,height",
-    "user.fields": "username,name,profile_image_url",
-    "post.fields": "created_at,text,attachments"
-   }
-  },
-  {
-   "ids": [
-    "dakshinpara",
-    "dum-dum-park-bharat-chakra",
-    "dum-dum-park-sarbajanin",
-    "dum-dum-park-tarun-dal",
     "ekdalia-evergreen",
-    "fd-block",
-    "forward-club",
-    "garia-mitali"
+    "mudiali"
    ],
+   "kind": "wide",
    "args": {
-    "query": "(\"Dakshinpara\" OR \"Dum Dum Park Bharat Chakra\" OR \"Dum Dum Park\" OR \"Dum Dum Park Tarun Dal\" OR \"Ekdalia Evergreen\" OR \"FD Block\" OR \"Forward\" OR \"Garia Mitali\") -is:retweet -is:quote",
-    "max_results": 25,
+    "query": "(((inaugurated OR inaugurates OR inauguration OR udbodhon OR \"udbodhon holo\" OR উদ্বোধন OR উদ্বোধনে OR \"pandal open\" OR \"pandal opened\" OR \"opened to public\" OR \"open for visitors\" OR \"khule geche\") (Kolkata OR Calcutta OR কলকাতা OR \"durga puja\" OR \"durga pujo\" OR দুর্গাপুজো OR দুর্গাপূজা OR pandal OR pujo OR পুজো)) OR (\"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Mudiali Club\" OR \"Mudiali\" OR \"মুদিয়ালি\") OR from:_epinephrine_ OR from:abasu4ever OR from:an1sh123 OR from:goonereol OR from:indicontractor OR from:sudhanidhib OR ((from:cmowbgov OR from:suvenduwb OR from:arjunsinghwb OR from:bjp4bengal OR from:dilipghoshbjp OR from:drsukantabjp OR from:keyakahe OR from:me_locket OR from:rahulsinhabjp OR from:ravaroybjp OR from:samikbjp OR from:ssikdarindia OR from:swapan55 OR from:tusharkantibjp OR from:umeshrai_bjp OR from:upamanyu95) (inaugurated OR inaugurates OR inauguration OR উদ্বোধন OR উদ্বোধনে OR উদ্বোধনী OR pujo OR puja OR পুজো OR pandal))) -is:retweet",
+    "max_results": 100,
     "sort_order": "recency",
-    "start_time": "2026-10-12T09:23:53Z",
+    "start_time": "2026-10-20T05:53:37Z",
     "expansions": "attachments.media_keys,author_id",
     "media.fields": "url,preview_image_url,type,width,height",
     "user.fields": "username,name,profile_image_url",
-    "post.fields": "created_at,text,attachments"
+    "post.fields": "created_at,text,note_tweet,attachments,public_metrics"
+   }
+  },
+  {
+   "ids": [
+    "pally-saradiya-khidirpur",
+    "salkia-alapani",
+    "ahiritola-sarbojanin",
+    "behala-nutan-dal",
+    "barisha-club",
+    "bosepukur-talbagan",
+    "chakraberia-sarbojanin",
+    "dum-dum-park-bharat-chakra",
+    "dum-dum-park-tarun-sangha",
+    "new-town-sarbojanin",
+    "olabibitala-sarbojanin",
+    "telipukur-yuba-sangha",
+    "25-pally-khidirpur"
+   ],
+   "args": {
+    "query": "(\"Pally Saradiya\" OR \"Pally Sarodiya\" OR \"Palli Saradiya\" OR \"Pally Sharadiya\" OR \"Pally Sharodia\" OR \"Palli Sharadiya\" OR \"পল্লী শারদীয়া\" OR \"Salkia Alapani\" OR \"Alapani Club\" OR \"সালকিয়া আলাপনী\" OR \"Ahiritola\" OR \"আহিরীটোলা\" OR \"Behala Nutan Dal\" OR \"Barisha Club\" OR \"বড়িশা ক্লাব\" OR \"Bosepukur Talbagan\" OR \"বোসপুকুর তালবাগান\" OR \"Chakraberia Sarbojanin\" OR \"Chakraberia Sarbajanin\" OR \"Chakraberia Sarbojonin\" OR \"Dum Dum Park Bharat Chakra\" OR \"Dum Dum Park Tarun Sangha\" OR \"DD Park Tarun Sangha\" OR \"New Town Sarbojanin\" OR \"Newtown Sarbojanin\" OR \"Olabibitala\" OR \"Olaibibitola\" OR \"Olabibitola\" OR \"Telipukur Yuba Sangha\" OR \"Telipukur\" OR \"Nursery Bagan Adivasi\" OR \"২৫ পল্লী সার্বজনীন, খিদিরপুর\" OR \"খিদিরপুর ২৫ পল্লী\" OR \"Khidirpur 25 Pally\" OR \"Khidirpur 25 Palli\" OR \"Kidderpore 25 Pally\" OR \"25 Pally Khidirpur\" OR \"25 Pally Kidderpore\") (inaugurated OR inaugurates OR inauguration OR opened OR visited OR crowd OR queue OR darshan OR \"pandal hopping\" OR উদ্বোধন) -is:retweet",
+    "max_results": 25,
+    "sort_order": "recency",
+    "start_time": "2026-10-10T00:00:00Z",
+    "expansions": "attachments.media_keys,author_id",
+    "media.fields": "url,preview_image_url,type,width,height",
+    "user.fields": "username,name,profile_image_url",
+    "post.fields": "created_at,text,note_tweet,attachments,public_metrics"
+   }
+  },
+  {
+   "ids": [
+    "chaltabagan-lohapatty",
+    "ekdalia-evergreen",
+    "baghbazar-sarbojanin",
+    "beniatola-sarbojanin",
+    "bj-block",
+    "rupchand-mukherjee-lane",
+    "suruchi-sangha",
+    "tala-prattoy",
+    "71-pally-baishakhi",
+    "76-pally",
+    "bansdroni-sarbojanin",
+    "lake-gardens-peoples"
+   ],
+   "args": {
+    "query": "(\"Chaltabagan\" OR \"Chalta Bagan\" OR \"চালতাবাগান\" OR \"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Baghbazar Sarbojanin\" OR \"Bagbazar Sarbojanin\" OR \"Baghbazar Durga\" OR \"Bagbazar Durga\" OR \"বাগবাজার সার্বজনীন\" OR \"Beniatola Sarbojanin\" OR \"Beniatola Sarbajanin\" OR \"Beniatola Sarbojonin\" OR \"BJ Block\" OR \"BJ Block Salt Lake\" OR \"Rupchand Mukherjee Lane\" OR \"Rupchand Mukherjee\" OR \"রূপচাঁদ মুখার্জি লেন\" OR \"Suruchi Sangha\" OR \"Suruchi Sangh\" OR \"সুরুচি সংঘ\" OR \"Tala Prattoy\" OR \"Tala Pratyay\" OR \"Tala Prattay\" OR \"টালা প্রত্যয়\" OR \"Tala Park Prattoy\" OR \"Tala Park Prattay\" OR \"Tala Park\" OR \"71 Pally Baishakhi\" OR \"71 Palli Baishakhi\" OR \"76 Pally\" OR \"76 Palli\" OR \"Bansdroni Sarbojanin\" OR \"Bansdroni Sarbajanin\" OR \"Bansdroni Sarbojonin\" OR \"Lake Gardens People's Association\" OR \"Lake Gardens People's\" OR \"Lake Gardens Peoples\") (inaugurated OR inaugurates OR inauguration OR opened OR visited OR crowd OR queue OR darshan OR \"pandal hopping\" OR উদ্বোধন) -is:retweet",
+    "max_results": 25,
+    "sort_order": "recency",
+    "start_time": "2026-10-10T00:00:00Z",
+    "expansions": "attachments.media_keys,author_id",
+    "media.fields": "url,preview_image_url,type,width,height",
+    "user.fields": "username,name,profile_image_url",
+    "post.fields": "created_at,text,note_tweet,attachments,public_metrics"
    }
   }
  ]

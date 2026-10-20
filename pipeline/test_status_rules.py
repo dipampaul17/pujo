@@ -63,3 +63,13 @@ def test_override_closed_beats_sticky_until_fresh_visit():
     assert override(o,decide(None,new),new)['kind']!='closed'  # DP 14 Oct: newer first-hand X visit flips it
     new=[classify({'url':'https://x.com/someone/status/5','at':'2026-10-14T10:00:00Z','text':'Visited Mudiali today, pandal looks great'},{'someone'})]
     assert override(o,decide(None,new),new)['kind']!='closed'  # a hand-vetted visitor does
+
+def test_override_outlet_crowd_does_not_clear_but_inauguration_does():
+    from status_rules import classify, override, decide
+    o={'kind':'closed','after':'2026-10-13T18:30:00Z','note':'Not open yet'}
+    crowd=classify({'url':'https://x.com/ndtv/status/9','at':'2026-10-14','text':'Crowds of pandal hoppers thronged South Kolkata\'s iconic Mudiali Club on Tritiya'},set())
+    assert crowd and crowd['tier']=='outlet' and crowd['kind']=='visitors'
+    assert override(o,decide(None,[crowd]),[crowd])['kind']=='closed'  # DP: outlet crowd ≠ first-hand visit
+    inaug=classify({'url':'https://x.com/ANI/status/10','at':'2026-10-14','text':'CM inaugurated Mudiali Club Durga Puja today'},set())
+    assert inaug and inaug['kind']=='inaugurated'
+    assert override(o,decide(None,[inaug]),[inaug])['kind']!='closed'

@@ -1,172 +1,785 @@
 {
  "polled": {
-  "22-pally-northern-park": "2026-10-13T10:01:46.917020+00:00",
-  "23-pally": "2026-10-13T10:01:46.917020+00:00",
-  "66-pally": "2026-10-13T10:01:46.917020+00:00",
-  "68-pally": "2026-10-13T10:01:46.917020+00:00",
-  "76-pally": "2026-10-13T10:01:46.917020+00:00",
-  "ae-block": "2026-10-13T10:01:46.917020+00:00",
-  "agradut-udaya-sangha": "2026-10-13T10:01:46.917020+00:00",
-  "ahiritola-sarbojanin": "2026-10-13T10:01:46.917020+00:00",
-  "ajeya-sanghati": "2026-10-13T10:01:46.917020+00:00",
-  "arjunpur-amra-sabai-club": "2026-10-13T10:01:46.917020+00:00",
-  "badamtala-ashar-sangha": "2026-10-13T10:01:46.917020+00:00",
-  "baghbazar-sarbojanin": "2026-10-13T10:01:46.917020+00:00",
-  "bakul-bagan": "2026-10-13T10:01:46.917020+00:00",
-  "ballygunge-cultural": "2026-10-13T10:01:46.917020+00:00",
-  "barisha-club": "2026-10-13T10:01:46.917020+00:00",
-  "beniatola-sarbojanin": "2026-10-13T10:01:46.917020+00:00",
-  "bhowanipur-75-pally": "2026-10-13T10:01:46.917020+00:00",
-  "bj-block": "2026-10-13T10:01:46.917020+00:00",
-  "bosepukur-sitala-mandir": "2026-10-13T10:01:46.917020+00:00",
-  "chakraberia-sarbojanin": "2026-10-13T10:01:46.917020+00:00",
-  "chaltabagan-lohapatty": "2026-10-13T10:01:46.917020+00:00",
-  "chetla-agrani": "2026-10-13T10:01:46.917020+00:00",
-  "chorebagan-sarbojanin": "2026-10-13T10:01:46.917020+00:00",
-  "college-square": "2026-10-13T10:01:46.917020+00:00",
-  "dakshindari-youth": "2026-10-13T10:01:46.917020+00:00",
-  "dakshinpara": "2026-10-13T10:01:46.917020+00:00",
-  "deshapriya-park": "2026-10-13T10:01:46.917020+00:00",
-  "dum-dum-park-bharat-chakra": "2026-10-13T10:01:46.917020+00:00",
-  "dum-dum-park-sarbajanin": "2026-10-13T10:01:46.917020+00:00",
-  "dum-dum-park-tarun-dal": "2026-10-13T10:01:46.917020+00:00",
-  "ekdalia-evergreen": "2026-10-13T10:01:46.917020+00:00",
-  "fd-block": "2026-10-13T10:01:46.917020+00:00",
-  "forward-club": "2026-10-13T10:01:46.917020+00:00",
-  "garia-mitali": "2026-10-13T10:01:46.917020+00:00",
-  "golaghata-sammilani": "2026-10-13T10:01:46.917020+00:00",
-  "haridevpur-41-pally": "2026-10-13T10:01:46.917020+00:00",
-  "harish-park": "2026-10-13T10:01:46.917020+00:00",
-  "hatibagan-nabinpally": "2026-10-13T10:01:46.917020+00:00",
-  "hatibagan-sarbojanin": "2026-10-13T10:01:46.917020+00:00",
-  "hindusthan-club": "2026-10-13T10:01:46.917020+00:00",
-  "hindusthan-park": "2026-10-13T10:01:46.917020+00:00",
-  "jagat-mukherjee-park": "2026-10-13T10:01:46.917020+00:00",
-  "janbazar-rajbari": "2026-10-13T10:01:46.917020+00:00",
-  "jorasanko-sadharan": "2026-10-13T10:01:46.917020+00:00",
-  "kamdahari-purbapara": "2026-10-13T10:01:46.917020+00:00",
-  "kapalitola-sarbajanin": "2026-10-13T10:01:46.917020+00:00",
-  "kashi-bose-lane": "2026-10-13T10:01:46.917020+00:00",
-  "kumartuli-park": "2026-10-13T10:01:46.917020+00:00",
-  "kumartuli-sarbojanin": "2026-10-13T10:01:46.917020+00:00",
-  "lalabagan-nabankur": "2026-10-13T10:01:46.917020+00:00",
-  "maddox-square": "2026-10-13T10:01:46.917020+00:00",
-  "matri-mandir": "2026-10-13T10:01:46.917020+00:00",
-  "mudiali": "2026-10-13T10:01:46.917020+00:00",
-  "muhammad-ali-park": "2026-10-13T10:01:46.917020+00:00",
-  "naba-durga": "2026-10-13T10:01:46.917020+00:00",
-  "naktala-pally-unnayan-samity": "2026-10-13T10:01:46.917020+00:00",
-  "nalin-sarkar-street": "2026-10-13T10:01:46.917020+00:00",
-  "new-sporting-club": "2026-10-13T10:01:46.917020+00:00",
-  "paddapukur-youth": "2026-10-13T10:01:46.917020+00:00",
-  "pally-mangal": "2026-10-13T10:01:46.917020+00:00",
-  "patuli-sarbojanin": "2026-10-13T10:01:46.917020+00:00",
-  "rajdanga-naba-uday-sangha": "2026-10-13T10:01:46.917020+00:00",
-  "santosh-mitra-square": "2026-10-13T10:01:46.917020+00:00",
-  "santoshpur-lake-pally": "2026-10-13T10:01:46.917020+00:00",
-  "santoshpur-trikon-park": "2026-10-13T10:01:46.917020+00:00",
-  "sealdah-athletic-club": "2026-10-13T10:01:46.917020+00:00",
-  "shib-mandir": "2026-10-13T10:01:46.917020+00:00",
-  "shyama-pally": "2026-10-13T10:01:46.917020+00:00",
-  "sikdar-bagan": "2026-10-13T10:01:46.917020+00:00",
-  "simla-byayam-samity": "2026-10-13T10:01:46.917020+00:00",
-  "singhi-park": "2026-10-13T10:01:46.917020+00:00",
-  "sinthee-sarbojanin": "2026-10-13T10:01:46.917020+00:00",
-  "sovabazar-rajbari": "2026-10-13T10:01:46.917020+00:00",
-  "sree-bhumi-sporting-club": "2026-10-13T10:01:46.917020+00:00",
-  "subodh-mallick-square": "2026-10-13T10:01:46.917020+00:00",
-  "suruchi-sangha": "2026-10-13T10:01:46.917020+00:00",
-  "swadhin-sangha": "2026-10-13T10:01:46.917020+00:00",
-  "tala-park": "2026-10-13T10:01:46.917020+00:00",
-  "tala-prattoy": "2026-10-13T10:01:46.917020+00:00",
-  "taltala-sarbojanin": "2026-10-13T10:01:46.917020+00:00",
-  "tarun-sathi": "2026-10-13T10:01:46.917020+00:00",
-  "telengabagan": "2026-10-13T10:01:46.917020+00:00",
-  "tridhara-sammilani": "2026-10-13T10:01:46.917020+00:00",
-  "vivekananda-park": "2026-10-13T10:01:46.917020+00:00"
+  "22-pally-northern-park": "2026-10-20T05:45:19.027447+00:00",
+  "23-pally": "2026-10-20T05:53:52.272919+00:00",
+  "66-pally": "2026-10-20T05:51:09.172867+00:00",
+  "68-pally": "2026-10-20T05:53:52.272919+00:00",
+  "76-pally": "2026-10-20T06:02:45.645255+00:00",
+  "ae-block": "2026-10-20T05:45:19.027447+00:00",
+  "agradut-udaya-sangha": "2026-10-20T05:53:52.272919+00:00",
+  "ahiritola-sarbojanin": "2026-10-20T06:02:45.645255+00:00",
+  "ajeya-sanghati": "2026-10-20T05:51:09.172867+00:00",
+  "arjunpur-amra-sabai-club": "2026-10-20T05:38:39.804709+00:00",
+  "badamtala-ashar-sangha": "2026-10-20T05:51:09.172867+00:00",
+  "baghbazar-sarbojanin": "2026-10-20T06:02:45.645255+00:00",
+  "bakul-bagan": "2026-10-20T05:26:43.689141+00:00",
+  "ballygunge-cultural": "2026-10-20T05:59:08.514812+00:00",
+  "barisha-club": "2026-10-20T06:02:45.645255+00:00",
+  "beniatola-sarbojanin": "2026-10-20T06:02:45.645255+00:00",
+  "bhowanipur-75-pally": "2026-10-20T05:53:52.272919+00:00",
+  "bj-block": "2026-10-20T06:02:45.645255+00:00",
+  "bosepukur-sitala-mandir": "2026-10-20T05:59:08.514812+00:00",
+  "chakraberia-sarbojanin": "2026-10-20T06:02:45.645255+00:00",
+  "chaltabagan-lohapatty": "2026-10-20T06:02:45.645255+00:00",
+  "chetla-agrani": "2026-10-20T05:31:49.136347+00:00",
+  "chorebagan-sarbojanin": "2026-10-20T05:31:49.136347+00:00",
+  "college-square": "2026-10-20T05:31:49.136347+00:00",
+  "dakshindari-youth": "2026-10-20T05:53:52.272919+00:00",
+  "dakshinpara": "2026-10-20T05:53:52.272919+00:00",
+  "deshapriya-park": "2026-10-20T05:31:49.136347+00:00",
+  "dum-dum-park-bharat-chakra": "2026-10-20T06:02:45.645255+00:00",
+  "dum-dum-park-sarbajanin": "2026-10-20T05:45:19.027447+00:00",
+  "dum-dum-park-tarun-dal": "2026-10-20T05:45:19.027447+00:00",
+  "ekdalia-evergreen": "2026-10-20T06:02:45.645255+00:00",
+  "fd-block": "2026-10-20T05:45:19.027447+00:00",
+  "forward-club": "2026-10-20T05:26:43.689141+00:00",
+  "garia-mitali": "2026-10-20T05:45:19.027447+00:00",
+  "golaghata-sammilani": "2026-10-20T05:53:52.272919+00:00",
+  "haridevpur-41-pally": "2026-10-20T05:51:09.172867+00:00",
+  "harish-park": "2026-10-20T05:53:52.272919+00:00",
+  "hatibagan-nabinpally": "2026-10-20T05:45:19.027447+00:00",
+  "hatibagan-sarbojanin": "2026-10-20T05:51:09.172867+00:00",
+  "hindusthan-club": "2026-10-20T05:45:19.027447+00:00",
+  "hindusthan-park": "2026-10-20T05:45:19.027447+00:00",
+  "jagat-mukherjee-park": "2026-10-20T05:51:09.172867+00:00",
+  "janbazar-rajbari": "2026-10-20T05:26:43.689141+00:00",
+  "jorasanko-sadharan": "2026-10-20T05:26:43.689141+00:00",
+  "kamdahari-purbapara": "2026-10-20T05:53:52.272919+00:00",
+  "kapalitola-sarbajanin": "2026-10-20T05:38:39.804709+00:00",
+  "kashi-bose-lane": "2026-10-20T05:52:29.938506+00:00",
+  "kumartuli-park": "2026-10-20T05:52:29.938506+00:00",
+  "kumartuli-sarbojanin": "2026-10-20T05:59:08.514812+00:00",
+  "lalabagan-nabankur": "2026-10-20T05:26:43.689141+00:00",
+  "maddox-square": "2026-10-20T05:45:19.027447+00:00",
+  "matri-mandir": "2026-10-20T05:45:24.978774+00:00",
+  "mudiali": "2026-10-20T06:02:45.645255+00:00",
+  "muhammad-ali-park": "2026-10-20T05:45:19.027447+00:00",
+  "naba-durga": "2026-10-20T05:45:19.027447+00:00",
+  "naktala-pally-unnayan-samity": "2026-10-20T05:52:29.938506+00:00",
+  "nalin-sarkar-street": "2026-10-20T05:59:08.514812+00:00",
+  "new-sporting-club": "2026-10-20T05:26:43.689141+00:00",
+  "paddapukur-youth": "2026-10-20T05:26:43.689141+00:00",
+  "pally-mangal": "2026-10-20T05:31:49.136347+00:00",
+  "patuli-sarbojanin": "2026-10-20T05:31:49.136347+00:00",
+  "rajdanga-naba-uday-sangha": "2026-10-20T05:51:09.172867+00:00",
+  "santosh-mitra-square": "2026-10-20T05:52:29.938506+00:00",
+  "santoshpur-lake-pally": "2026-10-20T05:45:19.027447+00:00",
+  "santoshpur-trikon-park": "2026-10-20T05:45:19.027447+00:00",
+  "sealdah-athletic-club": "2026-10-20T05:38:39.804709+00:00",
+  "shib-mandir": "2026-10-20T05:59:08.514812+00:00",
+  "shyama-pally": "2026-10-20T05:38:39.804709+00:00",
+  "sikdar-bagan": "2026-10-20T05:31:49.136347+00:00",
+  "simla-byayam-samity": "2026-10-20T05:45:19.027447+00:00",
+  "singhi-park": "2026-10-20T05:52:29.938506+00:00",
+  "sinthee-sarbojanin": "2026-10-20T05:45:24.978774+00:00",
+  "sovabazar-rajbari": "2026-10-20T05:52:29.938506+00:00",
+  "sree-bhumi-sporting-club": "2026-10-20T05:52:29.938506+00:00",
+  "subodh-mallick-square": "2026-10-20T05:45:24.978774+00:00",
+  "suruchi-sangha": "2026-10-20T06:02:45.645255+00:00",
+  "swadhin-sangha": "2026-10-20T05:45:24.978774+00:00",
+  "tala-park": "2026-10-14T05:46:43.434343+00:00",
+  "tala-prattoy": "2026-10-20T06:02:45.645255+00:00",
+  "taltala-sarbojanin": "2026-10-20T05:45:24.978774+00:00",
+  "tarun-sathi": "2026-10-20T05:45:24.978774+00:00",
+  "telengabagan": "2026-10-20T05:52:29.938506+00:00",
+  "tridhara-sammilani": "2026-10-20T05:52:29.938506+00:00",
+  "vivekananda-park": "2026-10-20T05:51:09.172867+00:00",
+  "naktala-udayan-sangha": "2026-10-20T05:59:08.514812+00:00",
+  "25-pally-khidirpur": "2026-10-20T06:02:45.645255+00:00",
+  "abasar-sarbojanin": "2026-10-20T05:52:29.938506+00:00",
+  "ahiritola-yubakbrinda": "2026-10-20T05:59:08.514812+00:00",
+  "alipore-sarbojanin": "2026-10-20T05:51:09.172867+00:00",
+  "bantra-mohila-sangha": "2026-10-20T05:59:08.514812+00:00",
+  "behala-club": "2026-10-20T05:51:09.172867+00:00",
+  "behala-friends": "2026-10-20T05:52:29.938506+00:00",
+  "behala-nutan-dal": "2026-10-20T06:02:45.645255+00:00",
+  "beleghata-33-pally": "2026-10-20T05:59:08.514812+00:00",
+  "bosepukur-talbagan": "2026-10-20T06:02:45.645255+00:00",
+  "dum-dum-park-tarun-sangha": "2026-10-20T06:02:45.645255+00:00",
+  "ichapur-shivaji-sangha": "2026-10-20T05:52:29.938506+00:00",
+  "keshtopur-prafulla-kanan": "2026-10-20T05:52:29.938506+00:00",
+  "new-town-sarbojanin": "2026-10-20T06:02:45.645255+00:00",
+  "olabibitala-sarbojanin": "2026-10-20T06:02:45.645255+00:00",
+  "pally-saradiya-khidirpur": "2026-10-20T06:02:45.645255+00:00",
+  "purbachal-shakti-sangha": "2026-10-20T05:51:09.172867+00:00",
+  "salkia-alapani": "2026-10-20T06:02:45.645255+00:00",
+  "samaj-sebi-sangha": "2026-10-20T05:52:29.938506+00:00",
+  "santoshpur-avenue-south": "2026-10-20T05:52:29.938506+00:00",
+  "sb-park-sarbojanin": "2026-10-20T05:51:09.172867+00:00",
+  "tala-barowari": "2026-10-20T05:59:08.514812+00:00",
+  "telipukur-yuba-sangha": "2026-10-20T06:02:45.645255+00:00",
+  "ultadanga-bidhan-sangha": "2026-10-20T05:51:09.172867+00:00",
+  "64-pally": "2026-10-20T05:45:19.027447+00:00",
+  "71-pally-baishakhi": "2026-10-20T06:02:45.645255+00:00",
+  "adi-ballygunge-sarbojanin": "2026-10-20T05:26:43.689141+00:00",
+  "allen-park-sarbojanin": "2026-10-20T05:26:43.689141+00:00",
+  "babubagan": "2026-10-20T05:26:43.689141+00:00",
+  "bakultala-sarbojanin": "2026-10-20T05:38:39.804709+00:00",
+  "ballygunge-21-pally": "2026-10-20T05:31:49.136347+00:00",
+  "bansdroni-sarbojanin": "2026-10-20T06:02:45.645255+00:00",
+  "barisha-sarbojanin": "2026-10-20T05:31:49.136347+00:00",
+  "behala-11-pally": "2026-10-20T05:53:52.272919+00:00",
+  "behala-arunoday-samiti": "2026-10-20T05:45:19.027447+00:00",
+  "behala-yma": "2026-10-20T05:53:52.272919+00:00",
+  "bhola-maheshwartala": "2026-10-20T05:53:52.272919+00:00",
+  "bhowanipore-durgotsab": "2026-10-20T05:53:52.272919+00:00",
+  "club-muktadal-bhowanipur": "2026-10-20T05:45:19.027447+00:00",
+  "dhakuria-sarbojanin": "2026-10-20T05:31:49.136347+00:00",
+  "gariahat-sarbojanin": "2026-10-20T05:53:52.272919+00:00",
+  "golmath-durga-puja": "2026-10-20T05:45:19.027447+00:00",
+  "hazra-park-durgotsab": "2026-10-20T05:45:19.027447+00:00",
+  "jodhpur-park-95-pally": "2026-10-20T05:45:19.027447+00:00",
+  "jodhpur-park-sarbojanin": "2026-10-20T05:52:29.938506+00:00",
+  "kalighat-milan-sangha": "2026-10-20T05:26:43.689141+00:00",
+  "kendua-shanti-sangha": "2026-10-20T05:52:29.938506+00:00",
+  "lake-gardens-peoples": "2026-10-20T06:02:45.645255+00:00",
+  "madhya-garfa-sarbojanin": "2026-10-20T05:45:24.978774+00:00",
+  "mukundapur-sarbojanin": "2026-10-20T05:45:24.978774+00:00",
+  "naskarpur-sarbojanin": "2026-10-20T05:52:29.938506+00:00",
+  "notunpara-sarbojanin": "2026-10-20T05:26:43.689141+00:00",
+  "pallishree-sarbojanin": "2026-10-20T05:45:24.978774+00:00",
+  "poddar-nagar-sarbojanin": "2026-10-20T05:53:52.272919+00:00",
+  "rabindra-pally-sarbojanin": "2026-10-20T05:38:39.804709+00:00",
+  "rk-chatterjee-sarbojanin": "2026-10-20T05:38:39.804709+00:00",
+  "rupchand-mukherjee-lane": "2026-10-20T06:02:45.645255+00:00",
+  "sahajatri": "2026-10-20T05:38:39.804709+00:00",
+  "sahapur-sarbojanin": "2026-10-20T05:45:24.978774+00:00",
+  "sanghasree": "2026-10-20T05:31:49.136347+00:00",
+  "sanghati-puja-samiti": "2026-10-20T05:45:24.978774+00:00",
+  "selimpur-pally": "2026-10-20T05:31:49.136347+00:00",
+  "shahid-nagar-sarbojanin": "2026-10-20T05:31:49.136347+00:00",
+  "tollygunge-santi-pally": "2026-10-20T05:31:49.136347+00:00",
+  "baishnabghata-balak-samity": "2026-10-19T19:01:57.767631+00:00",
+  "nwapara-udayan-sangha": "2026-10-19T19:01:57.767631+00:00",
+  "regent-park": "2026-10-19T19:01:57.767631+00:00",
+  "roynagar-unyan-samity": "2026-10-19T19:01:57.767631+00:00"
  },
  "posts": {
-  "santosh-mitra-square": [
+  "samaj-sebi-sangha": [
    {
-    "id": "2109518638331867646",
-    "at": "2026-10-12T05:36:50.000Z",
-    "handle": "bong_politics",
-    "avatar": "https://pbs.twimg.com/profile_images/1903191908354232320/onwsJ7rc_normal.jpg",
-    "score": 10,
-    "text": "No no this pic is not from Jantar mantar This pic is from Kolkata's Santosh Mitra Square on first day of Durga puja 🥵🥵 See the crowd",
-    "url": "https://x.com/bong_politics/status/2109518638331867646",
-    "photo": "https://pbs.twimg.com/media/HUaEA-da4AE1zdf.jpg?format=jpg&name=large",
-    "w": 1080,
-    "h": 1116
-   },
-   {
-    "id": "2109702677395624153",
-    "at": "2026-10-12T17:48:09.000Z",
-    "handle": "a_random_2020_",
-    "avatar": "https://pbs.twimg.com/profile_images/2089301437339856896/PP94Zlu7_normal.jpg",
-    "score": 9.3,
-    "text": "Went to Santosh Mitra Square today and it did give me goosebumps, an opportunity to pay tributes to our greatest freedom fighters and also reflect on the horrors of Partition",
-    "url": "https://x.com/a_random_2020_/status/2109702677395624153",
-    "photo": "https://pbs.twimg.com/media/HUcrGACbUAAo2_I.jpg?format=jpg&name=large",
+    "id": "2112010479715705228",
+    "at": "2026-10-19T02:38:32.000Z",
+    "handle": "IndianTrainFan",
+    "avatar": "https://pbs.twimg.com/profile_images/2088874481905483776/6OaxjiS5_normal.jpg",
+    "score": 10.41,
+    "text": "Shubh Ashtami 🙏🏻 1st pic: Dhak player at Samaj Sebi Sangha; 2nd pic: Ma Durga &amp; other deities from Lake Terrace area's puja pandal where @swapan55 Sir's name is mentioned on donation box Today my Wifey &amp; us are busy with Ashtami puja prep at home #Kolkata 🇮🇳 #DurgaPuja 🛕",
+    "url": "https://x.com/IndianTrainFan/status/2112010479715705228",
+    "photo": "https://pbs.twimg.com/media/HU9ciezaIAA_rq0.jpg?format=jpg&name=large",
     "w": 3060,
-    "h": 4080
-   },
-   {
-    "id": "2109470494454120733",
-    "at": "2026-10-12T02:25:32.000Z",
-    "handle": "souv_i_k",
-    "avatar": "https://pbs.twimg.com/profile_images/1707607623984705536/dZXzGK5C_normal.jpg",
-    "score": 8.48,
-    "text": "Our pujo starts from famous Santosh Mitra square .amazing theme with full of patriotism.  Today is 1st day of pujo and it's completely packed",
-    "url": "https://x.com/souv_i_k/status/2109470494454120733",
-    "photo": "https://pbs.twimg.com/media/HUZYLgVa0AA_Znc.jpg?format=jpg&name=large",
-    "w": 4000,
-    "h": 3000
-   }
-  ],
-  "barisha-club": [
-   {
-    "id": "2109688083897827734",
-    "at": "2026-10-12T16:50:09.000Z",
-    "handle": "SudhanidhiB",
-    "avatar": "https://pbs.twimg.com/profile_images/2015850929397104642/ZhuSn-qV_normal.jpg",
-    "score": 11,
-    "text": "#4 Visited Barisha Club One outstanding creation.",
-    "url": "https://x.com/SudhanidhiB/status/2109688083897827734",
-    "photo": "https://pbs.twimg.com/media/HUceIABawAAKEur.jpg?format=jpg&name=large",
-    "w": 3072,
-    "h": 3873,
+    "h": 4080,
     "media": [
      {
-      "src": "https://pbs.twimg.com/media/HUceIABawAAKEur.jpg?format=jpg&name=large",
-      "w": 3072,
-      "h": 3873,
+      "src": "https://pbs.twimg.com/media/HU9ciezaIAA_rq0.jpg?format=jpg&name=large",
+      "w": 3060,
+      "h": 4080,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU9cie1bwAAje5p.jpg?format=jpg&name=large",
+      "w": 3060,
+      "h": 4080,
+      "video": false
+     }
+    ]
+   },
+   {
+    "id": "2111876272641179854",
+    "at": "2026-10-18T17:45:14.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 10.0,
+    "text": "#83 Visited Ballygunge Samaj sebi. They have also paid tribute to Mahanayak. Many pujos have done the same but Samaj sebi is the best of the lot by far.",
+    "url": "https://x.com/an1sh123/status/2111876272641179854",
+    "photo": "https://pbs.twimg.com/media/HU7kOjHa4AA9HV8.jpg?format=jpg&name=large",
+    "w": 3264,
+    "h": 2448,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HU7kOjHa4AA9HV8.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7kPf1boAAk_6S.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7kQgfbcAAsLcl.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7kRTGbIAAOBT2.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
       "video": false
      }
     ]
    }
   ],
-  "rajdanga-naba-uday-sangha": [
+  "hindusthan-park": [
    {
-    "id": "2109349903600374159",
-    "at": "2026-10-11T18:26:21.000Z",
-    "handle": "SudhanidhiB",
-    "avatar": "https://pbs.twimg.com/profile_images/2015850929397104642/ZhuSn-qV_normal.jpg",
-    "score": 10,
-    "text": "#2 Visited Didi @keyakahe's Durga Puja at Rajdanga Naba Uday Sangha. Unreal colour combination as theme.",
-    "url": "https://x.com/SudhanidhiB/status/2109349903600374159",
-    "photo": "https://pbs.twimg.com/media/HUXqikGbQAA--tN.jpg?format=jpg&name=large",
-    "w": 2722,
-    "h": 3230,
+    "id": "2111891319358701928",
+    "at": "2026-10-18T18:45:02.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 9.78,
+    "text": "#92 Visited Hindustan Park. Decent",
+    "url": "https://x.com/an1sh123/status/2111891319358701928",
+    "photo": "https://pbs.twimg.com/media/HU7x6P6a8AAZygt.jpg?format=jpg&name=large",
+    "w": 3264,
+    "h": 2448,
     "media": [
      {
-      "src": "https://pbs.twimg.com/media/HUXqikGbQAA--tN.jpg?format=jpg&name=large",
-      "w": 2722,
-      "h": 3230,
+      "src": "https://pbs.twimg.com/media/HU7x6P6a8AAZygt.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
       "video": false
      },
      {
-      "src": "https://pbs.twimg.com/media/HUXqjUYacAAS8Dv.jpg?format=jpg&name=large",
+      "src": "https://pbs.twimg.com/media/HU7x7OKa8AALiTC.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7x8RgaEAAzqHT.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7x9LKb0AAf8EO.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "hindusthan-club": [
+   {
+    "id": "2111889804854215094",
+    "at": "2026-10-18T18:39:01.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 9.7,
+    "text": "#91 Visited Hindustan Club. They are famous for their lighting.",
+    "url": "https://x.com/an1sh123/status/2111889804854215094",
+    "photo": "https://pbs.twimg.com/media/HU7wg1SbAAAqIdE.jpg?format=jpg&name=large",
+    "w": 2448,
+    "h": 3264,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HU7wg1SbAAAqIdE.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7wi2Pa8AEJPIE.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7wj89aoAAIJ6h.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7wk3caQAAh7dj.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "santoshpur-avenue-south": [
+   {
+    "id": "2112167264409813235",
+    "at": "2026-10-19T13:01:32.000Z",
+    "handle": "SudhanidhiB",
+    "avatar": "https://pbs.twimg.com/profile_images/2015850929397104642/ZhuSn-qV_normal.jpg",
+    "score": 12,
+    "text": "#37 Visited Santoshpur Avenue South Durga Puja— another by Susanta Shibani Paul.",
+    "url": "https://x.com/SudhanidhiB/status/2112167264409813235",
+    "photo": "https://pbs.twimg.com/media/HU_s7SRbEAE6aIU.jpg?format=jpg&name=large",
+    "w": 2858,
+    "h": 3671,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HU_s7SRbEAE6aIU.jpg?format=jpg&name=large",
+      "w": 2858,
+      "h": 3671,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "bosepukur-talbagan": [
+   {
+    "id": "2111896164836774058",
+    "at": "2026-10-18T19:04:17.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 9.85,
+    "text": "#97 Visited Bosepukur Talbagan. Decent pandal and good pratima.",
+    "url": "https://x.com/an1sh123/status/2111896164836774058",
+    "photo": "https://pbs.twimg.com/media/HU72VM9a4AADs78.jpg?format=jpg&name=large",
+    "w": 2448,
+    "h": 3264,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HU72VM9a4AADs78.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU72WKWbsAAbVn8.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU72XLubQAExaaB.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "allen-park-sarbojanin": [
+   {
+    "id": "2112272708859789319",
+    "at": "2026-10-19T20:00:32.000Z",
+    "handle": "BankSanibel",
+    "avatar": "https://pbs.twimg.com/profile_images/1080837883202809856/8jcD_bP4_normal.jpg",
+    "score": 10.0,
+    "text": "Financial Literacy Educator Laura Marsh &amp; Downtown Fort Myers Customer Service Representative Erin Leatherwood recently visited Allen Park Elementary to teach kindergarteners through our Smart Cents Financial Literacy Education Program.",
+    "url": "https://x.com/BankSanibel/status/2112272708859789319",
+    "photo": "https://pbs.twimg.com/media/HVBM1doWgAATuTU.jpg?format=jpg&name=large",
+    "w": 480,
+    "h": 640,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVBM1doWgAATuTU.jpg?format=jpg&name=large",
+      "w": 480,
+      "h": 640,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVBM1dbWMAAHYv0.jpg?format=jpg&name=large",
+      "w": 640,
+      "h": 480,
+      "video": false
+     }
+    ]
+   },
+   {
+    "id": "2111792440822902825",
+    "at": "2026-10-18T12:12:07.000Z",
+    "handle": "prabirkrsarkar",
+    "avatar": "https://pbs.twimg.com/profile_images/2027055769196367872/gwTDrI3U_normal.jpg",
+    "score": 8.3,
+    "text": "This is being circulated. I visited Allen Park about 45 mins back, it's open. @SuvenduWB @KolkataPolice @shankudebbjp @SamikBJP",
+    "url": "https://x.com/prabirkrsarkar/status/2111792440822902825",
+    "photo": "https://pbs.twimg.com/media/HU6X-S0a8AEC0mK.jpg?format=jpg&name=large",
+    "w": 1088,
+    "h": 1098,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HU6X-S0a8AEC0mK.jpg?format=jpg&name=large",
+      "w": 1088,
+      "h": 1098,
+      "video": false
+     }
+    ]
+   },
+   {
+    "id": "2112260652622659886",
+    "at": "2026-10-19T19:12:38.000Z",
+    "handle": "ProfSudhir",
+    "avatar": "https://pbs.twimg.com/profile_images/828276371591794688/Dh3ogoVC_normal.jpg",
+    "score": 8.0,
+    "text": "Watched @BanglaRepublic  today night the Allen Park Durga Puja organised by BJP leader Sankudeb Ponda Ji. Delighted to see AI based crowd management control machine a bit expensive technique.Perrhaps it is first seen in Durga Puja pandal in Kolkata and districts. It can",
+    "url": "https://x.com/ProfSudhir/status/2112260652622659886"
+   }
+  ],
+  "ekdalia-evergreen": [
+   {
+    "id": "2111887088958513154",
+    "at": "2026-10-18T18:28:13.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 10.38,
+    "text": "#88 Visited Ekdalia. Beautiful pandal and pratima as always. Look at the posture of pratima. That is what sets it apart from the rest. Face, eyes aren't the only things. Look at how mother and rest are sitting. Absolutely stunning. Greatest of South Kolkata for a reason.",
+    "url": "https://x.com/an1sh123/status/2111887088958513154",
+    "photo": "https://pbs.twimg.com/media/HU7uC7laAAAUshA.jpg?format=jpg&name=large",
+    "w": 2448,
+    "h": 3264,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HU7uC7laAAAUshA.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7uD0gaIAAe-cU.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7uE-1aoAA7Zsu.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7uGd0bkAALoew.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "ballygunge-cultural": [
+   {
+    "id": "2111875032985321885",
+    "at": "2026-10-18T17:40:19.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 10.54,
+    "text": "#82 Visited Ballygunge Cultural. Good pandal, bad pratima.",
+    "url": "https://x.com/an1sh123/status/2111875032985321885",
+    "photo": "https://pbs.twimg.com/media/HU7jHCJa0AAUdtZ.jpg?format=jpg&name=large",
+    "w": 3264,
+    "h": 2448,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HU7jHCJa0AAUdtZ.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7jHvNakAAVT5o.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7jIgrbkAASIUp.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7jJTebcAEX0mr.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     }
+    ]
+   },
+   {
+    "id": "2112414334467149870",
+    "at": "2026-10-20T05:23:18.000Z",
+    "handle": "manik199",
+    "avatar": "https://pbs.twimg.com/profile_images/2108192755235295233/ONGW9SV8_normal.jpg",
+    "score": 10.0,
+    "text": "Maa Durga idol..........Today is 'Nabami'...the 3rd day of the festival.. Ballygunge Cultural Association, Kolkata",
+    "url": "https://x.com/manik199/status/2112414334467149870",
+    "photo": "https://pbs.twimg.com/media/HVDNR8qbQAAxIfy.jpg?format=jpg&name=large",
+    "w": 1086,
+    "h": 1448,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVDNR8qbQAAxIfy.jpg?format=jpg&name=large",
+      "w": 1086,
+      "h": 1448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVDNTLrawAAp2Ub.jpg?format=jpg&name=large",
+      "w": 1086,
+      "h": 1448,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "behala-club": [
+   {
+    "id": "2112210120495247544",
+    "at": "2026-10-19T15:51:50.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 10.9,
+    "text": "#107 Visited Behala Club. Very good themes. Their theme is \"They have depicted the importance of Oil in human society. Very good themes pandal for people who are into these things.",
+    "url": "https://x.com/an1sh123/status/2112210120495247544",
+    "photo": "https://pbs.twimg.com/media/HVAT3cqbsAAoW9Y.jpg?format=jpg&name=large",
+    "w": 3264,
+    "h": 2448,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVAT3cqbsAAoW9Y.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAT41ObQAETmyC.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAT5x2aQAQ2B6k.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     }
+    ]
+   },
+   {
+    "id": "2112234622331576354",
+    "at": "2026-10-19T17:29:12.000Z",
+    "handle": "abasu4ever",
+    "avatar": "https://pbs.twimg.com/profile_images/1988905391904931840/oFFI4KW3_normal.jpg",
+    "score": 7.0,
+    "text": "📍 Behala Club. 🎨 Pradip Das. 🌟 The theme showcases the significance of 'oil' in our lives, and its implications on the environment. 👉 Nice one, but definitely not Asian Paints worthy. 📌 #DurgaPuja2026",
+    "url": "https://x.com/abasu4ever/status/2112234622331576354",
+    "photo": "https://pbs.twimg.com/media/HVAqJD-bQAAK2Fu.jpg?format=jpg&name=large",
+    "w": 2026,
+    "h": 2498,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVAqJD-bQAAK2Fu.jpg?format=jpg&name=large",
+      "w": 2026,
+      "h": 2498,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAqJ8BbQAAStlM.jpg?format=jpg&name=large",
+      "w": 4096,
+      "h": 2304,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAqK5ebsAA9mmu.jpg?format=jpg&name=large",
+      "w": 2228,
+      "h": 3396,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAqL0ta8AACrST.jpg?format=jpg&name=large",
+      "w": 4011,
+      "h": 2304,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "chorebagan-sarbojanin": [
+   {
+    "id": "2111876621330436329",
+    "at": "2026-10-18T17:46:37.000Z",
+    "handle": "TrikaTriggered",
+    "avatar": "https://pbs.twimg.com/profile_images/2061894632909438976/ZfkIhGcD_normal.jpg",
+    "score": 9,
+    "text": "Chorebagan Sarbojanin was awarded the “Sherar shera” (Best of the best) award yesterday evening before the tragic incident. As per my understanding, “sherar shera” should tick every single box of credibility including disaster preparedness and evacuation contingency plan. Today…",
+    "url": "https://x.com/TrikaTriggered/status/2111876621330436329"
+   }
+  ],
+  "maddox-square": [
+   {
+    "id": "2111887169082233029",
+    "at": "2026-10-18T18:28:32.000Z",
+    "handle": "SudhanidhiB",
+    "avatar": "https://pbs.twimg.com/profile_images/2015850929397104642/ZhuSn-qV_normal.jpg",
+    "score": 11,
+    "text": "#35 Visited Maddox Square. W/o her Sandhya Aartis— Durga Puja is incomplete.",
+    "url": "https://x.com/SudhanidhiB/status/2111887169082233029",
+    "photo": "https://pbs.twimg.com/media/HU7uLLDaAAAWYcZ.jpg?format=jpg&name=large",
+    "w": 2696,
+    "h": 3370,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HU7uLLDaAAAWYcZ.jpg?format=jpg&name=large",
+      "w": 2696,
+      "h": 3370,
+      "video": false
+     }
+    ]
+   },
+   {
+    "id": "2112143446886813863",
+    "at": "2026-10-19T11:26:54.000Z",
+    "handle": "ians_india",
+    "avatar": "https://pbs.twimg.com/profile_images/1840730466808217600/Ayh6TaQQ_normal.jpg",
+    "score": 10.78,
+    "text": "Kolkata, West Bengal: CAB President Sourav Ganguly along with his wife and acclaimed Odissi dancer Dona Ganguly and Bollywood actor Rajkummar Rao visited Maddox Square on Ashtami. Rajkummar Rao photographed the Durga idol, while Ganguly played the dhak",
+    "url": "https://x.com/ians_india/status/2112143446886813863",
+    "photo": "https://pbs.twimg.com/amplify_video_thumb/2112143051661643776/img/BsG7a2nCeeAeyOwV.jpg?format=jpg&name=large",
+    "w": 1920,
+    "h": 1080,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/amplify_video_thumb/2112143051661643776/img/BsG7a2nCeeAeyOwV.jpg?format=jpg&name=large",
+      "w": 1920,
+      "h": 1080,
+      "video": true
+     }
+    ]
+   },
+   {
+    "id": "2112236494895374603",
+    "at": "2026-10-19T17:36:38.000Z",
+    "handle": "TheDailyJagran",
+    "avatar": "https://pbs.twimg.com/profile_images/1927962697657712640/t-vRe2ac_normal.jpg",
+    "score": 10.0,
+    "text": "#Watch | Kolkata’s Mahashtami celebrations turned special as Sourav Ganguly, his wife Dona Ganguly and actor Rajkummar Rao visited the iconic Maddox Square Durga Puja pandal. While Rajkummar captured the beautifully decorated Durga idol on camera, the former India captain",
+    "url": "https://x.com/TheDailyJagran/status/2112236494895374603",
+    "photo": "https://pbs.twimg.com/amplify_video_thumb/2112236256914804736/img/l6-nc5HuXRb0IRjW.jpg?format=jpg&name=large",
+    "w": 2160,
+    "h": 3840,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/amplify_video_thumb/2112236256914804736/img/l6-nc5HuXRb0IRjW.jpg?format=jpg&name=large",
+      "w": 2160,
+      "h": 3840,
+      "video": true
+     }
+    ]
+   }
+  ],
+  "suruchi-sangha": [
+   {
+    "id": "2112155058645426387",
+    "at": "2026-10-19T12:13:02.000Z",
+    "handle": "ians_india",
+    "avatar": "https://pbs.twimg.com/profile_images/1840730466808217600/Ayh6TaQQ_normal.jpg",
+    "score": 10.48,
+    "text": "Kolkata, West Bengal: On Suruchi Sangha Durga Puja Crowd, BJP leader Sourav Sikdar says, \"See, the arrangements here are very well-organised. Yesterday, there was a huge crowd, and today, even though it is just after lunchtime, look at the crowd gathering again. However, the…",
+    "url": "https://x.com/ians_india/status/2112155058645426387",
+    "photo": "https://pbs.twimg.com/amplify_video_thumb/2112152620681076736/img/PA6suBSbG0uOIV67.jpg?format=jpg&name=large",
+    "w": 1920,
+    "h": 1080,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/amplify_video_thumb/2112152620681076736/img/PA6suBSbG0uOIV67.jpg?format=jpg&name=large",
+      "w": 1920,
+      "h": 1080,
+      "video": true
+     }
+    ]
+   },
+   {
+    "id": "2112041733580316771",
+    "at": "2026-10-19T04:42:43.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 10.3,
+    "text": "#98 Visited Suruchi Sangha. Their theme this year is about Shyama Prasad Mukherjee. The ouho that used to make their theme song by pisi is now paying tribute to Shyama Prasad Mukherjee. Not criticising don't get me wrong but it's true that \"",
+    "url": "https://x.com/an1sh123/status/2112041733580316771",
+    "photo": "https://pbs.twimg.com/media/HU96t0Ib0AA--l2.jpg?format=jpg&name=large",
+    "w": 3264,
+    "h": 2448,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HU96t0Ib0AA--l2.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU96uuha8AAY1B0.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU96viwa8AA4dZ5.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU96wWbaEAA39hG.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "deshapriya-park": [
+   {
+    "id": "2111793201279639611",
+    "at": "2026-10-18T12:15:09.000Z",
+    "handle": "sayan_dey",
+    "avatar": "https://pbs.twimg.com/profile_images/1578427285392457734/hRu0YEKf_normal.jpg",
+    "score": 8.78,
+    "text": "Just because it has happened at one pandal, doesn't mean that the others are completely fine and risk-free. For folks who have visited the Deshapriya Park Puja Pandal will agree that the entry point to the main pandal is perhaps narrower than even this. [1]",
+    "url": "https://x.com/sayan_dey/status/2111793201279639611",
+    "photo": "https://pbs.twimg.com/media/HU6TcalbUAAqPRh.jpg?format=jpg&name=large",
+    "w": 4032,
+    "h": 3024,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HU6TcalbUAAqPRh.jpg?format=jpg&name=large",
+      "w": 4032,
+      "h": 3024,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "hazra-park-durgotsab": [
+   {
+    "id": "2111838956790906923",
+    "at": "2026-10-18T15:16:58.000Z",
+    "handle": "SudhanidhiB",
+    "avatar": "https://pbs.twimg.com/profile_images/2015850929397104642/ZhuSn-qV_normal.jpg",
+    "score": 10,
+    "text": "#33 Visited the  Hazra Park Durgatsav— This is @SobhandebChatt1's Puja, theme showcases Bengal's own folk arts",
+    "url": "https://x.com/SudhanidhiB/status/2111838956790906923",
+    "photo": "https://pbs.twimg.com/amplify_video_thumb/2111838668310880256/img/my-On7GcSRNuufwB.jpg?format=jpg&name=large",
+    "w": 2160,
+    "h": 3840,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/amplify_video_thumb/2111838668310880256/img/my-On7GcSRNuufwB.jpg?format=jpg&name=large",
+      "w": 2160,
+      "h": 3840,
+      "video": true
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7CTjhbEAAokkv.jpg?format=jpg&name=large",
+      "w": 3000,
+      "h": 4000,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7CUUZacAEKLRQ.jpg?format=jpg&name=large",
+      "w": 3000,
+      "h": 4000,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7CVIAboAA7-an.jpg?format=jpg&name=large",
       "w": 3000,
       "h": 4000,
       "video": false
@@ -174,19 +787,688 @@
     ]
    }
   ],
+  "tridhara-sammilani": [
+   {
+    "id": "2111859924468977817",
+    "at": "2026-10-18T16:40:17.000Z",
+    "handle": "Banglar_Tintin",
+    "avatar": "https://pbs.twimg.com/profile_images/2100883799945207808/e_GSaynF_normal.jpg",
+    "score": 10,
+    "text": "Clocked Tridhara Sammilani in record 5 minutes flat tonight! ⚡️ No reel makers blocking the queue. @KolkataPolice is strictly enforcing the no photo/video rule inside pandals—phone seizures are real, and retrieving it requires a police visit. Honestly? Pandals actually feel like…",
+    "url": "https://x.com/Banglar_Tintin/status/2111859924468977817",
+    "photo": "https://pbs.twimg.com/media/HU7VZpjaQAAKM0x.jpg?format=jpg&name=large",
+    "w": 2304,
+    "h": 2806,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HU7VZpjaQAAKM0x.jpg?format=jpg&name=large",
+      "w": 2304,
+      "h": 2806,
+      "video": false
+     }
+    ]
+   },
+   {
+    "id": "2112403624177594414",
+    "at": "2026-10-20T04:40:45.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 10.0,
+    "text": "#122 Visited North Tridhara.",
+    "url": "https://x.com/an1sh123/status/2112403624177594414",
+    "photo": "https://pbs.twimg.com/media/HVDD3hBaQAAhEJQ.jpg?format=jpg&name=large",
+    "w": 2448,
+    "h": 3264,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVDD3hBaQAAhEJQ.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVDD4WUaQAAPiyI.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVDD5KEbwAEsoAi.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     }
+    ]
+   },
+   {
+    "id": "2112400753524641996",
+    "at": "2026-10-20T04:29:20.000Z",
+    "handle": "beinghd16",
+    "avatar": "https://pbs.twimg.com/profile_images/2056325109405863936/3qtWmZTC_normal.jpg",
+    "score": 8.0,
+    "text": "Went to Tridhara Sammilani on Saptami afternoon... Massive crowd.",
+    "url": "https://x.com/beinghd16/status/2112400753524641996"
+   }
+  ],
+  "singhi-park": [
+   {
+    "id": "2111889089515684030",
+    "at": "2026-10-18T18:36:10.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 10.04,
+    "text": "#90 Visited Singhi Park. Great as always. Great pandal and their traditional pratima style. They maintain their tradition and royalty.",
+    "url": "https://x.com/an1sh123/status/2111889089515684030",
+    "photo": "https://pbs.twimg.com/media/HU7v3NCa0AEvg-i.jpg?format=jpg&name=large",
+    "w": 3264,
+    "h": 2448,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HU7v3NCa0AEvg-i.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7v4Y2bQAAgNIR.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7v5jPaoAAQmbG.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU7v6m-asAA1Y9_.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "santosh-mitra-square": [
+   {
+    "id": "2112352506609381471",
+    "at": "2026-10-20T01:17:37.000Z",
+    "handle": "ManishS50138869",
+    "avatar": "https://pbs.twimg.com/profile_images/2102256229095706625/bzg8iM9w_normal.jpg",
+    "score": 10.85,
+    "text": "This is Santosh Mitra Square right now, and it looks absolutely amazing! 🤩❤️ The pandal theme is Vande Mataram 🇮🇳🔥 #DurgaNavami #durgamaa",
+    "url": "https://x.com/ManishS50138869/status/2112352506609381471",
+    "photo": "https://pbs.twimg.com/media/HVCVUQ3agAAgXB9.jpg?format=jpg&name=large",
+    "w": 3072,
+    "h": 4096,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVCVUQ3agAAgXB9.jpg?format=jpg&name=large",
+      "w": 3072,
+      "h": 4096,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/amplify_video_thumb/2112352414254944256/img/iQ0N-KpTLUEiCPK9.jpg?format=jpg&name=large",
+      "w": 1080,
+      "h": 1920,
+      "video": true
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVCVYuFbkAAo_a2.jpg?format=jpg&name=large",
+      "w": 3072,
+      "h": 4096,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVCVZoDbIAAgS4Z.jpg?format=jpg&name=large",
+      "w": 3280,
+      "h": 2464,
+      "video": false
+     }
+    ]
+   },
+   {
+    "id": "2111835937223393662",
+    "at": "2026-10-18T15:04:58.000Z",
+    "handle": "lofITechie",
+    "avatar": "https://pbs.twimg.com/profile_images/2106652707360759808/_C9mG0XT_normal.jpg",
+    "score": 9.68,
+    "text": "Visited Santosh Mitra Square today afternoon. Theme- Vande Mataram Quite detailed and impressive",
+    "url": "https://x.com/lofITechie/status/2111835937223393662",
+    "photo": "https://pbs.twimg.com/media/HU6_isabUAEuSSI.jpg?format=jpg&name=large",
+    "w": 4096,
+    "h": 2304,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HU6_isabUAEuSSI.jpg?format=jpg&name=large",
+      "w": 4096,
+      "h": 2304,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU6_jhYaUAAAtej.jpg?format=jpg&name=large",
+      "w": 3072,
+      "h": 4096,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU6_kijaIAAOE5r.jpg?format=jpg&name=large",
+      "w": 3072,
+      "h": 4096,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HU6_lcZbAAAQZUU.jpg?format=jpg&name=large",
+      "w": 3072,
+      "h": 4096,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "behala-friends": [
+   {
+    "id": "2112235750934839737",
+    "at": "2026-10-19T17:33:41.000Z",
+    "handle": "abasu4ever",
+    "avatar": "https://pbs.twimg.com/profile_images/1988905391904931840/oFFI4KW3_normal.jpg",
+    "score": 7.0,
+    "text": "📍 Behala Friends. 🎨 N/A. 🌟 The theme is... Lotus &amp; West Bengal. 👉 Jay Hind. Vande Mataram. Joy Bangla. 📌 #DurgaPuja2026 🧵 1/2",
+    "url": "https://x.com/abasu4ever/status/2112235750934839737",
+    "photo": "https://pbs.twimg.com/media/HVArJhcawAAIMQ7.jpg?format=jpg&name=large",
+    "w": 4096,
+    "h": 2304,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVArJhcawAAIMQ7.jpg?format=jpg&name=large",
+      "w": 4096,
+      "h": 2304,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVArKnRa0AAxOXh.jpg?format=jpg&name=large",
+      "w": 4082,
+      "h": 2296,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVArLj4boAAfLxO.jpg?format=jpg&name=large",
+      "w": 4096,
+      "h": 2304,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVArNXZasAA42se.jpg?format=jpg&name=large",
+      "w": 2218,
+      "h": 3942,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "behala-nutan-dal": [
+   {
+    "id": "2112236288187511019",
+    "at": "2026-10-19T17:35:49.000Z",
+    "handle": "abasu4ever",
+    "avatar": "https://pbs.twimg.com/profile_images/1988905391904931840/oFFI4KW3_normal.jpg",
+    "score": 7.0,
+    "text": "📍 Behala Nutan Dal. 🎨 Somnath Tamli &amp; Arighna Saha. 🌟 N/A. 👉 One of them most aesthetic pandals this year! 📌 #DurgaPuja2026 🧵 1/2",
+    "url": "https://x.com/abasu4ever/status/2112236288187511019",
+    "photo": "https://pbs.twimg.com/media/HVArlkLbYAA98tI.jpg?format=jpg&name=large",
+    "w": 4096,
+    "h": 2304,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVArlkLbYAA98tI.jpg?format=jpg&name=large",
+      "w": 4096,
+      "h": 2304,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVArn00agAApgaI.jpg?format=jpg&name=large",
+      "w": 3552,
+      "h": 2008,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVArrH5bAAAKXHv.jpg?format=jpg&name=large",
+      "w": 4096,
+      "h": 2304,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVArsuRaIAA21XM.jpg?format=jpg&name=large",
+      "w": 2304,
+      "h": 4096,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "sb-park-sarbojanin": [
+   {
+    "id": "2112236706518925395",
+    "at": "2026-10-19T17:37:28.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 10.0,
+    "text": "#113 Visited Thakurpukur SB park. Their theme is \"Coaliary\". Good theme pandal.",
+    "url": "https://x.com/an1sh123/status/2112236706518925395",
+    "photo": "https://pbs.twimg.com/media/HVAsDscaAAAAziz.jpg?format=jpg&name=large",
+    "w": 2448,
+    "h": 3264,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVAsDscaAAAAziz.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAsEjcbYAAigo5.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAsFYgbYAAkOIi.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     }
+    ]
+   },
+   {
+    "id": "2112344177963118938",
+    "at": "2026-10-20T00:44:32.000Z",
+    "handle": "abasu4ever",
+    "avatar": "https://pbs.twimg.com/profile_images/1988905391904931840/oFFI4KW3_normal.jpg",
+    "score": 7.0,
+    "text": "📍 Thakurpukur SB Park Sarbojanin. 🎨 Debabrata Maity, Sujoyneel, Raju Sarkar, Pritam Pal &amp; Somnath Mondal. 🌟 The theme depicts the history &amp; implications of coal mining in Bengal. 👉 Arguably one of the best themes and artwork this year! SPLENDID! 📌 #DurgaPuja2026 🧵 1/4",
+    "url": "https://x.com/abasu4ever/status/2112344177963118938",
+    "photo": "https://pbs.twimg.com/media/HVCNyoYacAAgmRN.jpg?format=jpg&name=large",
+    "w": 2094,
+    "h": 2642,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVCNyoYacAAgmRN.jpg?format=jpg&name=large",
+      "w": 2094,
+      "h": 2642,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVCNzcCaAAAvhM0.jpg?format=jpg&name=large",
+      "w": 4096,
+      "h": 2304,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVCN0ODawAASNOD.jpg?format=jpg&name=large",
+      "w": 4096,
+      "h": 2304,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVCN0-6bUAEVbi2.jpg?format=jpg&name=large",
+      "w": 4096,
+      "h": 2304,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "barisha-sarbojanin": [
+   {
+    "id": "2112239500701450465",
+    "at": "2026-10-19T17:48:35.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 10.0,
+    "text": "#114 Visited Barisha Sarbojanin. This is neighbourhoof of Saborno Roy Choudhury. He was the the jamindar of entire modern day Kolkata and near by areas and sold 3 villages to the British.",
+    "url": "https://x.com/an1sh123/status/2112239500701450465",
+    "photo": "https://pbs.twimg.com/media/HVAumCSasAAwTsi.jpg?format=jpg&name=large",
+    "w": 3264,
+    "h": 2448,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVAumCSasAAwTsi.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAunAGaIAAcQtZ.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAun52awAAAJ4z.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "barisha-club": [
+   {
+    "id": "2112241009581260947",
+    "at": "2026-10-19T17:54:34.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 10.0,
+    "text": "#115 Visited Barisha Club. Good pandal. They have showcased Gupta era architecture, history and Gupta period Durga iconography.",
+    "url": "https://x.com/an1sh123/status/2112241009581260947",
+    "photo": "https://pbs.twimg.com/media/HVAv-K_bgAAfFDg.jpg?format=jpg&name=large",
+    "w": 3264,
+    "h": 2448,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVAv-K_bgAAfFDg.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAv-_NaIAA3b0j.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAv_wpaIAAOqeH.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     }
+    ]
+   },
+   {
+    "id": "2112239907125281231",
+    "at": "2026-10-19T17:50:12.000Z",
+    "handle": "abasu4ever",
+    "avatar": "https://pbs.twimg.com/profile_images/1988905391904931840/oFFI4KW3_normal.jpg",
+    "score": 7.0,
+    "text": "📍 Barisha Club. 🎨 Deep, Eshika &amp; Saikat. 🌟 N/A. 👉 Behala Pujas never fail to win my heart! 📌 #DurgaPuja2026 🧵 1/2",
+    "url": "https://x.com/abasu4ever/status/2112239907125281231",
+    "photo": "https://pbs.twimg.com/media/HVAu7CKboAAhNO2.jpg?format=jpg&name=large",
+    "w": 2106,
+    "h": 2942,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVAu7CKboAAhNO2.jpg?format=jpg&name=large",
+      "w": 2106,
+      "h": 2942,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAu8QBaoAAQ9xQ.jpg?format=jpg&name=large",
+      "w": 4096,
+      "h": 2304,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAu9fjacAEMa5v.jpg?format=jpg&name=large",
+      "w": 2130,
+      "h": 3576,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAu-giaIAAaOjj.jpg?format=jpg&name=large",
+      "w": 2270,
+      "h": 4034,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "ajeya-sanghati": [
+   {
+    "id": "2112244700786905348",
+    "at": "2026-10-19T18:09:14.000Z",
+    "handle": "abasu4ever",
+    "avatar": "https://pbs.twimg.com/profile_images/1988905391904931840/oFFI4KW3_normal.jpg",
+    "score": 7.48,
+    "text": "📍 Haridevpur Ajeya Sanghati. 🎨 Thinkers &amp; Arighna Saha. 🌟 N/A. 👉 The Maa Durga idol is absolutely stunning! Arighna Saha never disappoints! 📌 #DurgaPuja2026",
+    "url": "https://x.com/abasu4ever/status/2112244700786905348",
+    "photo": "https://pbs.twimg.com/media/HVAzTi8bAAAkloy.jpg?format=jpg&name=large",
+    "w": 3086,
+    "h": 2094,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVAzTi8bAAAkloy.jpg?format=jpg&name=large",
+      "w": 3086,
+      "h": 2094,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAzUhSbUAA6Upz.jpg?format=jpg&name=large",
+      "w": 2052,
+      "h": 3112,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAzVa1aIAAkvJu.jpg?format=jpg&name=large",
+      "w": 3824,
+      "h": 2236,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVAzWdCbYAAN8i-.jpg?format=jpg&name=large",
+      "w": 2192,
+      "h": 2458,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "hatibagan-sarbojanin": [
+   {
+    "id": "2112258724748493179",
+    "at": "2026-10-19T19:04:58.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 10.3,
+    "text": "#120 Visited Hatibagan Sarbojanin.",
+    "url": "https://x.com/an1sh123/status/2112258724748493179",
+    "photo": "https://pbs.twimg.com/media/HVBAEIWbMAA-zUl.jpg?format=jpg&name=large",
+    "w": 3264,
+    "h": 2448,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVBAEIWbMAA-zUl.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVBAE9sbUAElRaw.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVBAF1mboAAyS7v.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVBAG3IbIAArIvf.jpg?format=jpg&name=large",
+      "w": 3264,
+      "h": 2448,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "nalin-sarkar-street": [
+   {
+    "id": "2112259925984543076",
+    "at": "2026-10-19T19:09:44.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 10.0,
+    "text": "#121 Visited Nalin Sarkar Street. Good pandal and pratima.",
+    "url": "https://x.com/an1sh123/status/2112259925984543076",
+    "photo": "https://pbs.twimg.com/media/HVBBLzwa8AADwpD.jpg?format=jpg&name=large",
+    "w": 2448,
+    "h": 3264,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVBBLzwa8AADwpD.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVBBM6easAAggxh.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     }
+    ]
+   }
+  ],
+  "chetla-agrani": [
+   {
+    "id": "2112259840919900226",
+    "at": "2026-10-19T19:09:24.000Z",
+    "handle": "PKSpeaks07",
+    "avatar": "https://pbs.twimg.com/profile_images/2021986588021096449/CZFoYIBz_normal.jpg",
+    "score": 10.0,
+    "text": "The most mesmerizing Puja Pandal I ever visited !! Thank you Chetla Agrani Club for this 🙏🏻🙏🏻 Thank you my Bengali People for this !! 🙏🏻🙏🏻 May Maa Durga give me a chance to serve the people of West Bengal with full dedication and pride !! 🙏🏻🙏🏻 #DurgaPuja2026",
+    "url": "https://x.com/PKSpeaks07/status/2112259840919900226",
+    "photo": "https://pbs.twimg.com/amplify_video_thumb/2112259793947885568/img/AmTcSnXQZaxPdwdY.jpg?format=jpg&name=large",
+    "w": 1280,
+    "h": 720,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/amplify_video_thumb/2112259793947885568/img/AmTcSnXQZaxPdwdY.jpg?format=jpg&name=large",
+      "w": 1280,
+      "h": 720,
+      "video": true
+     }
+    ]
+   }
+  ],
+  "ae-block": [
+   {
+    "id": "2112323608261562680",
+    "at": "2026-10-19T23:22:47.000Z",
+    "handle": "BengalAntiquity",
+    "avatar": "https://pbs.twimg.com/profile_images/1568346062267756546/L4W5ZKM__normal.jpg",
+    "score": 10.85,
+    "text": "AE block, part 2, Salt Lake By far the best pandal I visited today. Time to call it a night. BTW, avoided entering EC Block pujo. Massive crowd at 0400 hours. Don't believe idiots claiming that there is no crowd on the streets.",
+    "url": "https://x.com/BengalAntiquity/status/2112323608261562680",
+    "photo": "https://pbs.twimg.com/media/HVB7EOra8AAvfJ4.jpg?format=jpg&name=large",
+    "w": 4096,
+    "h": 2304,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVB7EOra8AAvfJ4.jpg?format=jpg&name=large",
+      "w": 4096,
+      "h": 2304,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVB7FsaacAAZ5QO.jpg?format=jpg&name=large",
+      "w": 4096,
+      "h": 2304,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVB7G6ZbwAAu6KY.jpg?format=jpg&name=large",
+      "w": 4096,
+      "h": 3580,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVB7HvfbsAAMfu3.jpg?format=jpg&name=large",
+      "w": 4096,
+      "h": 2304,
+      "video": false
+     }
+    ]
+   }
+  ],
   "sree-bhumi-sporting-club": [
    {
-    "id": "2109275327331537045",
-    "at": "2026-10-11T13:30:01.000Z",
-    "handle": "HeyyyyShubham",
-    "avatar": "https://pbs.twimg.com/profile_images/1998588969983016960/Y852kCAZ_normal.jpg",
-    "score": 6.85,
-    "text": "I'm already missing the days when I was in Kolkata during Navratri and Durga Puja! When I was studying for CA Foundation, I had coaching friends, and we went to Sreebhumi Sporting Club together. Another year, I went with a female friend I met during my IT training.",
-    "url": "https://x.com/HeyyyyShubham/status/2109275327331537045"
+    "id": "2112128344032714977",
+    "at": "2026-10-19T10:26:53.000Z",
+    "handle": "RadhikaBarman5",
+    "avatar": "https://pbs.twimg.com/profile_images/2098372184985260032/Aq-NvZGB_normal.jpg",
+    "score": 9,
+    "text": "Two Muslim women I know, one wearing a hijab and the other a niqab, went to visit Sreebhumi Durga Puja, with VIP parking arranged for their car. Instead of being welcomed, club members allegedly told them: “Don't come wearing a hijab. You are Muslim Puja is not for you. Go back.\"",
+    "url": "https://x.com/RadhikaBarman5/status/2112128344032714977"
+   }
+  ],
+  "kashi-bose-lane": [
+   {
+    "id": "2112397134247149659",
+    "at": "2026-10-20T04:14:57.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 8.0,
+    "text": "Seeing a lot os posts about crowds. My personal experience, yesterday I went to Shyampukur, hatibagan, Manicktala, simla. Crowds were there in hatibagan, but very less compared to normal. Kashi Bose Lane attracts huge lines but when I went there, there was no line at all. But",
+    "url": "https://x.com/an1sh123/status/2112397134247149659"
+   }
+  ],
+  "sikdar-bagan": [
+   {
+    "id": "2112406316991811792",
+    "at": "2026-10-20T04:51:27.000Z",
+    "handle": "an1sh123",
+    "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+    "score": 7.0,
+    "text": "#124 Sikdar Bagan.",
+    "url": "https://x.com/an1sh123/status/2112406316991811792",
+    "photo": "https://pbs.twimg.com/media/HVDGRDabYAANc2e.jpg?format=jpg&name=large",
+    "w": 2448,
+    "h": 3264,
+    "media": [
+     {
+      "src": "https://pbs.twimg.com/media/HVDGRDabYAANc2e.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVDGSmHawAAVFwM.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVDGT6zbEAEx3Qr.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     },
+     {
+      "src": "https://pbs.twimg.com/media/HVDGVIibQAAbBtm.jpg?format=jpg&name=large",
+      "w": 2448,
+      "h": 3264,
+      "video": false
+     }
+    ]
    }
   ]
  },
- "crowd": {},
+ "crowd": {
+  "chorebagan-sarbojanin": {
+   "kind": "crowd",
+   "label": "Crowd surge",
+   "at": "2026-10-20T05:55:31.000Z",
+   "url": "https://x.com/ttindia/status/2112422442694254931",
+   "n": 4,
+   "w": 1.43
+  }
+ },
  "open": {
   "santosh-mitra-square": {
    "since": "2026-10-12",
@@ -227,6 +1509,395 @@
    "since": "2026-10-12",
    "evidence": "https://x.com/abasu4ever/status/2109591649815007260",
    "note": "📍 Chetla Agrani. 🎨 N/A. 🌟 N/A. 👉 The pandal looks pretty good, but nothing extraordinary for their usual standards. 📌 #DurgaPuja2026 🧵 1/3"
+  },
+  "new-town-sarbojanin": {
+   "since": "2026-10-11",
+   "evidence": "https://x.com/DrSukantaBJP/status/2109328252062113979",
+   "note": "Attended the auspicious inauguration ceremony of the Durga Puja organised by New Town Sarbojanin Durgotsav Samiti. Jai Maa Durga! 🙏"
+  },
+  "keshtopur-prafulla-kanan": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/DrSukantaBJP/status/2109717228019171449",
+   "note": "Glimpses from the auspicious inauguration ceremony of the Durga Puja organised by the Kestopur Prafulla Kanan (Paschim) Adhibasibrinda."
+  },
+  "behala-club": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/SudhanidhiB/status/2109695250826735686",
+   "note": "#5 Visited Behala Club. Theme is on Oil as an essential commodity in our daily life, from cooking to travel, we remain dependent on it."
+  },
+  "badamtala-ashar-sangha": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/TusharKantiBJP/status/2110045840765284796",
+   "note": "The auspicious inauguration of Badamtala Ashar Sangha’s Durga Puja became a moment of immense joy with the presence of Hon’ble State Ministe"
+  },
+  "fd-block": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/WestBengalDiary/status/2109529633326588148",
+   "note": "🪄THE NIGHT HOGWARTS CAME TO KOLKATA — AND A LAWSUIT THAT THREATENED THE MAGIC🪄 October 2007. Durga Puja was approaching, and Salt Lake’s FD "
+  },
+  "bakul-bagan": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/SudhanidhiB/status/2110062708020461966",
+   "note": "#9 Visited Bakul Bagan Minimal aesthetics but brilliant"
+  },
+  "tridhara-sammilani": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/SudhanidhiB/status/2110068228416548869",
+   "note": "#10 Inside the Dragon's Lair. Visited Tridhara Sammilani— Mother here is depicted as to be taming hot burning Dragons in an epic iconography"
+  },
+  "ballygunge-cultural": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/SudhanidhiB/status/2110075829330002421",
+   "note": "#11 Visited Ballygunge Cultural."
+  },
+  "samaj-sebi-sangha": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/SudhanidhiB/status/2110081026114584782",
+   "note": "#12 Visited Samaj Sebi Sangha. Theme on 100 years of Mahanayak Uttam Kumar."
+  },
+  "singhi-park": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/_Epinephrine_/status/2110072254080127323",
+   "note": "Visited (@_Epinephrine_, with photos): 📍Singhi Park She is so Divine🥹🥹🥹💕💕💕💕💕"
+  },
+  "hindusthan-park": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/_Epinephrine_/status/2110082080801739151",
+   "note": "Visited (@_Epinephrine_, with photos): 📍Hindustan Park My gawwd mere aandar agar ye pandal banane walo jaisa creativity hota toh kabka crorepati ban "
+  },
+  "adi-ballygunge-sarbojanin": {
+   "since": "2026-10-11",
+   "evidence": "https://x.com/DrSukantaBJP/status/2109339245676802270",
+   "note": "Attended the auspicious inauguration of the Durga Puja organised by Adi Ballygunge Sarbojanin Durga Puja Parishad at Golpark, Dakshin Kolkat"
+  },
+  "sanghasree": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/upamanyu95/status/2110074385768075323",
+   "note": "Our Sanghashri Durga Puja Pandal in Kalighat was inaugurated by West Bengal Finance Minister and MLA, Rashbehari Assembly, Dr Swapan Dasgupt"
+  },
+  "allen-park-sarbojanin": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/ArjunsinghWB/status/2109846440797491529",
+   "note": "For the first time this year, Durga Puja has been organised at Allen Park on the iconic Park Street in Kolkata. Last night, the Puja was for"
+  },
+  "telipukur-yuba-sangha": {
+   "since": "2026-10-14",
+   "evidence": "https://x.com/ians_india/status/2110253889069138416",
+   "note": "Dum Dum, Kolkata: Chief Minister Suvendu Adhikari inaugurated the Durga Puja organised by MLA Tarun Jyoti Tiwari at Telipukur Yuba Sangha. O"
+  },
+  "mudiali": {
+   "since": "2026-10-14",
+   "evidence": "https://x.com/ndtv/status/2110259988417458339",
+   "note": "Crowds of pandal hoppers thronged South Kolkata's iconic Mudiali Club on Tritiya, the third day of Durga Puja festivities. Celebrating its 9"
+  },
+  "ahiritola-sarbojanin": {
+   "since": "2026-10-14",
+   "evidence": "https://x.com/Openthemag/status/2110248778200682765",
+   "note": "More than 100 kg of genuine gold ornaments have been used to adorn Goddess Durga and other idols at a gold-themed Durga Puja pandal in Silig"
+  },
+  "shib-mandir": {
+   "since": "2026-10-14",
+   "evidence": "https://x.com/abasu4ever/status/2110268065644728589",
+   "note": "Visited (@abasu4ever, with photos): 📍 Shibmandir Sarbojanin @ 90. 🎨 Prasanta Pal. 🌟 The theme celebrates 'Gangaur', a form of Durga Puja that is d"
+  },
+  "naktala-udayan-sangha": {
+   "since": "2026-10-14",
+   "evidence": "https://x.com/abasu4ever/status/2110275844581278110",
+   "note": "Visited (@abasu4ever, with photos): 📍 Naktala Udayan Sangha @ 40. 🎨 Anirban Das. 🌟 The theme signifies the importance of 'panjika' in a Hindu Beng"
+  },
+  "tollygunge-santi-pally": {
+   "since": "2026-10-14",
+   "evidence": "https://x.com/abasu4ever/status/2110275877611425944",
+   "note": "Visited (@abasu4ever, with photos): 📍 Tollygunge Santipally. 🎨 N/A. 🌟 The theme encourages education, and condemns child labour. 👉 It was okayish."
+  },
+  "tala-barowari": {
+   "since": "2026-10-14",
+   "evidence": "https://x.com/abasu4ever/status/2110275928333123625",
+   "note": "📍 Tala Barowari. 🎨 Prasanta Pal. 🌟 The theme is \"Durga Bari\", meaning the \"Home of Durga.\" It depicts the various avatars of shakti. 👉 The p"
+  },
+  "alipore-sarbojanin": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/an1sh123/status/2111320756642804023",
+   "note": "#56 Visited Alipore Sarbojanin. Their theme thi year is Ramayan. They have a permanent Ram mandir in there ground. During tmc rule, making r"
+  },
+  "hatibagan-nabinpally": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/Umasankar2019/status/2111564063922913482",
+   "note": "Dear @SuvenduWB Ji, I have visited today Hatibagan Nabinpally pandel on 17th oct 2026, I had VIP pass but they are entering all public in VI"
+  },
+  "hindusthan-club": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/an1sh123/status/2111889804854215094",
+   "note": "#91 Visited Hindustan Club. They are famous for their lighting."
+  },
+  "pally-mangal": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/an1sh123/status/2110671990084493596",
+   "note": "#3 Visited Taltala Pally Mangal Samiti. Good pandal."
+  },
+  "forward-club": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/NewsStar69313/status/2111338785564979685",
+   "note": "Durga Puja 2026 : Chief Minister Dr. Manik Saha Inaugurates Durga Puja Pandal Organized By Forward Club. #Durga #Puja #Chief #Minister #Dr #"
+  },
+  "santoshpur-lake-pally": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/abasu4ever/status/2110650784643780962",
+   "note": "Visited (@abasu4ever, with photos): 📍 Santoshpur Lake Pally. 🎨 Rintu Das. 🌟 The theme is Shiva's Tandav. 👉 I've been seeing Santoshpur Lake Pally "
+  },
+  "kashi-bose-lane": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/sarkar_swati/status/2110697495278084237",
+   "note": "Beautiful Durga Puja at Kashi Bose Lane. Beautiful inauguration by CM Now think of how monstrous remote inauguration would have been"
+  },
+  "santoshpur-avenue-south": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/an1sh123/status/2110763346060529991",
+   "note": "#14 Visited Santoshpur Avenue South. Great great pandal. Highly recommend."
+  },
+  "bosepukur-talbagan": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/an1sh123/status/2111896164836774058",
+   "note": "#97 Visited Bosepukur Talbagan. Decent pandal and good pratima."
+  },
+  "babubagan": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/an1sh123/status/2110708063728767413",
+   "note": "#8 Visited Babu Bagan."
+  },
+  "chaltabagan-lohapatty": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/ians_india/status/2110736067616018849",
+   "note": "Kolkata, West Bengal: Governor R. N. Ravi, Minister Tapas Roy and BJP leader Locket Chatterjee attended the inauguration ceremony of the Cha"
+  },
+  "simla-byayam-samity": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/SudhanidhiB/status/2111411698179637733",
+   "note": "#28 Visited Netaji Subhash Chandra's Durga Puja at Simla Byayam Sammity— This Mother was used as a symbol of resistance"
+  },
+  "ekdalia-evergreen": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/ians_india/status/2111449653782925485",
+   "note": "Kolkata, West Bengal: Large numbers of devotees visited Durga Puja pandals across Kolkata on Saptami to offer prayers to Goddess Durga. At E"
+  },
+  "telengabagan": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/abasu4ever/status/2111410196602106090",
+   "note": "Visited (@abasu4ever, with photos): 📍 Telengabagan Sarbojanin. 🎨 Prasanta Pal. 🌟 An old house (Bonedi Bari) of Kolkata. 👉 Another Durga Puja that "
+  },
+  "maddox-square": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/SudhanidhiB/status/2111887169082233029",
+   "note": "#35 Visited Maddox Square. W/o her Sandhya Aartis— Durga Puja is incomplete."
+  },
+  "suruchi-sangha": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/abasu4ever/status/2112234122827776161",
+   "note": "Visited (@abasu4ever, with photos): 📍 Suruchi Sangha. 🎨 Anirban Das. 🌟 The theme pays tribute to some unknown person named Shyama Prasad Mukherjee"
+  },
+  "deshapriya-park": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/SLuharuwalla/status/2111778704221462626",
+   "note": "X2817/26 🚨 A tragic first in Kolkata’s Durga Puja history—and a warning we cannot afford to ignore. Before the October 2026 Chorbagan traged"
+  },
+  "hazra-park-durgotsab": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/SudhanidhiB/status/2111838956790906923",
+   "note": "#33 Visited the Hazra Park Durgatsav— This is @SobhandebChatt1's Puja, theme showcases Bengal's own folk arts"
+  },
+  "kendua-shanti-sangha": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/GoodNewsToday/status/2112053295539994715",
+   "note": "शारदीय नवरात्रि के पावन अवसर पर मां दुर्गा के दर्शन और पूजा-अर्चना के लिए श्रद्धालुओं की भीड़ उमड़ रही है। भक्त मां के चरणों में शीश झुकाकर "
+  },
+  "behala-friends": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/abasu4ever/status/2112235750934839737",
+   "note": "Visited (@abasu4ever, with photos): 📍 Behala Friends. 🎨 N/A. 🌟 The theme is... Lotus &amp; West Bengal. 👉 Jay Hind. Vande Mataram. Joy Bangla. 📌 #"
+  },
+  "behala-nutan-dal": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/abasu4ever/status/2112236288187511019",
+   "note": "Visited (@abasu4ever, with photos): 📍 Behala Nutan Dal. 🎨 Somnath Tamli &amp; Arighna Saha. 🌟 N/A. 👉 One of them most aesthetic pandals this year!"
+  },
+  "sb-park-sarbojanin": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/an1sh123/status/2112236706518925395",
+   "note": "#113 Visited Thakurpukur SB park. Their theme is \"Coaliary\". Good theme pandal."
+  },
+  "haridevpur-41-pally": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/an1sh123/status/2110802127383888371",
+   "note": "Visited (@an1sh123, with photos): #33 Haridevpur 41 Pally club. Their theme is \"দ্বৈত\". Bad pandal. Decent Pratima."
+  },
+  "ahiritola-yubakbrinda": {
+   "since": "2026-10-16",
+   "evidence": "https://x.com/Ei_Samay/status/2110977142549029164",
+   "note": "পুজো মানেই আনন্দ, পুজো মানেই মিলন। তাই উৎসবের আলো ছড়িয়ে পড়ুক সবার ঘরে—প্রবীণ ও বিশেষভাবে সক্ষমদের পাশে দাঁড়িয়ে পুজোকে সবার করে তোলার উদ"
+  },
+  "chakraberia-sarbojanin": {
+   "since": "2026-10-16",
+   "evidence": "https://x.com/abasu4ever/status/2111047899362836971",
+   "note": "📍 Chakraberia Sarbojonin. 🎨 Parimal Paul, Sumi Majumder, Shubhadip Majumder &amp; Trisha Dutta. 🌟 The theme celebrates the significance of l"
+  },
+  "barisha-sarbojanin": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/an1sh123/status/2112239500701450465",
+   "note": "#114 Visited Barisha Sarbojanin. This is neighbourhoof of Saborno Roy Choudhury. He was the the jamindar of entire modern day Kolkata and ne"
+  },
+  "66-pally": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/_Hinkypunk_/status/2110676374256304313",
+   "note": "Now coming to the most special Pujo of 2020 - Badamtala, 66 Pally and Nepal Bhattacharya Street came together to celebrate Satyajit Ray's 10"
+  },
+  "baghbazar-sarbojanin": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/AhanaGhosh27197/status/2110711356949397767",
+   "note": "Baghbazar Sarbojanin Durgotsav is one of Kolkata's oldest and most iconic traditional community Durga Pujas, celebrating its 108th year in 2"
+  },
+  "ajeya-sanghati": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/abasu4ever/status/2112244700786905348",
+   "note": "Visited (@abasu4ever, with photos): 📍 Haridevpur Ajeya Sanghati. 🎨 Thinkers &amp; Arighna Saha. 🌟 N/A. 👉 The Maa Durga idol is absolutely stunning"
+  },
+  "vivekananda-park": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/an1sh123/status/2110800797806297502",
+   "note": "#31 Haridevpur Vivekananda Park Athletic club. They are typically the safe bet to produce something good from a small budget, but this year,"
+  },
+  "hatibagan-sarbojanin": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/an1sh123/status/2112258724748493179",
+   "note": "#120 Visited Hatibagan Sarbojanin."
+  },
+  "santoshpur-trikon-park": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/abasu4ever/status/2110650749772542234",
+   "note": "📍 Santoshpur Trikon Park. 🎨 Dibyendu Dey. 🌟 N/A. 👉 The pandal is made using wood &amp; ply boards only. Looks pretty. 📌 #DurgaPuja2026 🧵 1/2"
+  },
+  "sahapur-sarbojanin": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/BimanGhoshBJP/status/2111353006826688592",
+   "note": "পুরশুড়া বিধানসভার বনগ্রাম উত্তর সোয়ালুক দুর্গোৎসব কমিটি, সাহাপুর বারোয়ারি দুর্গাপূজা কমিটি এবং খুশিগঞ্জ সাহাপুর ব্যবসায় সমিতির দুর্গাপূজ"
+  },
+  "ae-block": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/BengalAntiquity/status/2112323608261562680",
+   "note": "AE block, part 2, Salt Lake By far the best pandal I visited today. Time to call it a night. BTW, avoided entering EC Block pujo. Massive cr"
+  },
+  "kalighat-milan-sangha": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/an1sh123/status/2111342265117626541",
+   "note": "#66 Visited Kalighat Milan Sangha lmao. This is just beside pisi's house. The pandal is MAITC propaganda piece against rito tmc. Lmaooooo. F"
+  },
+  "shahid-nagar-sarbojanin": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/ANI/status/2110593659662110914",
+   "note": "#WATCH | Kolkata: West Bengal BJP President Samik Bhattacharya launched the theme song of the 77th Dhakuria Shahid Nagar Durga Puja, which f"
+  },
+  "jodhpur-park-95-pally": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/an1sh123/status/2110675222689189892",
+   "note": "#5 visited Jodhpur Park 95 Pally. Only thing I can say is WHAT THE GOD DAMN FOOK. The pandal is nowhere near complete. Unreal downfall after"
+  },
+  "sikdar-bagan": {
+   "since": "2026-10-20",
+   "evidence": "https://x.com/an1sh123/status/2112406316991811792",
+   "note": "Visited (@an1sh123, with photos): #124 Sikdar Bagan."
   }
- }
+ },
+ "sigc": [
+  {
+   "kind": "crowd",
+   "label": "Crowd surge",
+   "place": "pandal",
+   "id": "chorebagan-sarbojanin",
+   "zone": null,
+   "author": "reportersujan",
+   "at": "2026-10-20T04:05:37.000Z",
+   "url": "https://x.com/reportersujan/status/2112394783662719473"
+  },
+  {
+   "kind": "clear",
+   "label": "Little crowd",
+   "place": "pandal",
+   "id": "kashi-bose-lane",
+   "zone": null,
+   "author": "an1sh123",
+   "at": "2026-10-20T04:14:57.000Z",
+   "url": "https://x.com/an1sh123/status/2112397134247149659"
+  },
+  {
+   "kind": "clear",
+   "label": "Little crowd",
+   "place": "pandal",
+   "id": "kashi-bose-lane",
+   "zone": null,
+   "author": "an1sh123",
+   "at": "2026-10-20T04:17:00.000Z",
+   "url": "https://x.com/an1sh123/status/2112397649118920718"
+  },
+  {
+   "kind": "crowd",
+   "label": "Crowd surge",
+   "place": "pandal",
+   "id": "sree-bhumi-sporting-club",
+   "zone": null,
+   "author": "hreetamp",
+   "at": "2026-10-20T04:15:39.000Z",
+   "url": "https://x.com/HreetamP/status/2112397308197523705"
+  },
+  {
+   "kind": "crowd",
+   "label": "Crowd surge",
+   "place": "pandal",
+   "id": "chorebagan-sarbojanin",
+   "zone": null,
+   "author": "extraaaa2ab",
+   "at": "2026-10-20T04:35:25.000Z",
+   "url": "https://x.com/extraaaa2ab/status/2112402284139421732"
+  },
+  {
+   "kind": "crowd",
+   "label": "Crowd surge",
+   "place": "pandal",
+   "id": "tridhara-sammilani",
+   "zone": null,
+   "author": "beinghd16",
+   "at": "2026-10-20T04:29:20.000Z",
+   "url": "https://x.com/beinghd16/status/2112400753524641996"
+  },
+  {
+   "kind": "crowd",
+   "label": "Crowd surge",
+   "place": "pandal",
+   "id": "chorebagan-sarbojanin",
+   "zone": null,
+   "author": "thevanguard2026",
+   "at": "2026-10-20T05:16:42.000Z",
+   "url": "https://x.com/TheVanguard2026/status/2112412672281203043"
+  },
+  {
+   "kind": "crowd",
+   "label": "Crowd surge",
+   "place": "pandal",
+   "id": "chorebagan-sarbojanin",
+   "zone": null,
+   "author": "ttindia",
+   "at": "2026-10-20T05:37:57.000Z",
+   "url": "https://x.com/ttindia/status/2112418020626948428"
+  },
+  {
+   "kind": "crowd",
+   "label": "Crowd surge",
+   "place": "pandal",
+   "id": "chorebagan-sarbojanin",
+   "zone": null,
+   "author": "ttindia",
+   "at": "2026-10-20T05:55:31.000Z",
+   "url": "https://x.com/ttindia/status/2112422442694254931"
+  }
+ ],
+ "area": [],
+ "roads": []
 }

@@ -1,0 +1,65 @@
+{
+ "at": "2026-10-14T08:07:00Z",
+ "at_ist": "2026-10-14 13:37 IST",
+ "source": "pujo-inauguration-web-sweep",
+ "success": true,
+ "suvenduwb": {
+  "note": "silent in this call; no posts in returned set"
+ },
+ "cmowbgov": {
+  "note": "silent in this call"
+ },
+ "trusted_visitors": {
+  "note": "@abasu4ever active with 📍 visits (Mudiali/Naktala/Tollygunge Santipally/Telipukur/Tala Barowari already open; Trikon Park/Mall Pally/Charu Avenue not in app); @_Epinephrine_ off-topic; goonereol rain; SudhanidhiB Chaturthi"
+ },
+ "inaugurators": {
+  "note": "no posts from rotated inaugurators with inauguration keywords in returned set"
+ },
+ "mudiali_ekdalia": {
+  "note": "Mudiali remains Open (override cleared earlier); Ekdalia still closed under override — no clearing X post"
+ },
+ "web_leads": [
+  {
+   "name": "Baguiati Rail Pukur United Club",
+   "in_app": false,
+   "note": "Collage theme inaugurated Oct 14; not in app"
+  },
+  {
+   "name": "Kankurgachi Milan Mela Samity",
+   "in_app": false,
+   "note": "Vande Mataram theme; not in app"
+  },
+  {
+   "name": "Ahiritola Sarbojanin",
+   "in_app": true,
+   "note": "schedule-only; opens Oct 15 evening; already in news_leads"
+  },
+  {
+   "name": "Kalighat",
+   "in_app": true,
+   "note": "already open as kalighat-milan-sangha"
+  },
+  {
+   "name": "Garima Greh Ardhanarishvara (Tollygunge)",
+   "in_app": false,
+   "note": "TOI 14 Oct inauguration; not in app"
+  }
+ ],
+ "news_leads_updated": false,
+ "x_call": {
+  "used": 1,
+  "query": "stale-closed-pass+overrides+CM/CMO/inaugs+trusted",
+  "start_time": "2026-10-10T00:00:00Z",
+  "result_count": 25,
+  "x_reads_left_today": 594,
+  "raw": "pipeline/xpoll_results/sweep_20261014T0807Z.json"
+ },
+ "confirmed": [],
+ "new_opens": [],
+ "published": true,
+ "status_open": 40,
+ "overrides_closed": [
+  "ekdalia-evergreen"
+ ],
+ "failure_streak_should_be": 0
+}

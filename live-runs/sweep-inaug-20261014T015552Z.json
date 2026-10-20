@@ -1,0 +1,70 @@
+{
+  "at": "2026-10-14T01:55:52Z",
+  "source": "pujo-inauguration-web-sweep",
+  "suvenduwb": {
+    "note": "silent since 2026-10-14T00:00:00Z (05:30 IST window)"
+  },
+  "cmowbgov": {
+    "note": "silent since 2026-10-14T00:00:00Z"
+  },
+  "iamriteshtiwari": {
+    "note": "Oct 13 roundup still names Paikpara Palli Unnayan, Paikpara Adi Sarbojanin, Campbagan (plus Belgaachia Central / Garia Amra Kajon from prior); none in app; Garia Mitali already open"
+  },
+  "trusted_visitors": {
+    "note": "abasu4ever/_Epinephrine_/SudhanidhiB silent since 2026-10-14T00:00:00Z"
+  },
+  "wide": {
+    "note": "English+Bengali openings: only Indian Express Mamata return clip; no pandal named"
+  },
+  "pass_search": {
+    "note": "Ahiritola/Haridevpur/Kumartuli/Hatibagan/Naktala empty since 13 Oct 18:00Z"
+  },
+  "mudiali_ekdalia": {
+    "note": "Mudiali theme promo only (MonojitSinha11); no visitor posts after override after=2026-10-13T13:50:00Z; stay closed"
+  },
+  "web_leads": [
+    {
+      "name": "Ahiritola Sarbojanin",
+      "in_app": true,
+      "note": "schedule-only Oct 15; already in news_leads"
+    },
+    {
+      "name": "Baguiati Rail Pukur United",
+      "in_app": false,
+      "note": "Oct 13 inauguration article; not in app"
+    },
+    {
+      "name": "Dhakuria Sahid Nagar",
+      "in_app": false,
+      "note": "scheduled/theme piece; not in app"
+    },
+    {
+      "name": "Kankurgachi Milan Mela",
+      "in_app": false,
+      "note": "ANI Vande Mataram theme; not in app"
+    },
+    {
+      "name": "Allen Park",
+      "in_app": false,
+      "note": "roundup mentions first Puja; not in app"
+    },
+    {
+      "name": "Tala Prattoy",
+      "in_app": true,
+      "note": "already open"
+    },
+    {
+      "name": "Chorebagan",
+      "in_app": true,
+      "note": "already open"
+    }
+  ],
+  "x_news": {
+    "note": "citywide crowd/Allen Park roundups + Mamata knife story; no new app pandal opens"
+  },
+  "confirmed": [],
+  "published": false,
+  "live_open_xlive": 19,
+  "status_open_ish": 31,
+  "x_reads_left_today": 871
+}
