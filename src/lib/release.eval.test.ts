@@ -15,7 +15,7 @@ describe('release eval', () => {
   })
   it('every declared status has a source link and an id in the dataset', () => {
     const ids = new Set(d.pandals.map(p => p.id))
-    for (const [id, e] of Object.entries(status.open)) { expect(ids.has(id), id).toBe(true); if ((e as any).by === 'override') { expect(e.kind).toBe('closed'); continue } expect(e.evidence).toMatch(/^https:\/\/(x|twitter)\.com\//) }
+    for (const [id, e] of Object.entries(status.open)) { expect(ids.has(id), id).toBe(true); if ((e as any).by === 'override') { if (e.kind !== 'closed') expect(e.note).toBe('DP ground call, Navami 20 Oct'); continue } expect(e.evidence).toMatch(/^https:\/\/(x|twitter)\.com\//) }
   })
   it('pins sit inside greater Kolkata and pinned pandals do not share one coordinate', () => {
     const seen = new Map<string, string>()

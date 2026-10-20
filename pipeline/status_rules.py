@@ -75,6 +75,9 @@ def decide(prev: dict | None, srcs: list[dict]) -> dict | None:
 def override(o: dict | None, d: dict | None, srcs: list[dict]) -> dict | None:
     """DP's ground truth. A 'closed' override stands until an X post dated after o['after'] (first-hand visit or dated inauguration naming it); DP 14 Oct.
     Outlet crowd/visitor clips do NOT clear it — only a first-hand visitor (visitor/trusted/hand) or a dated inauguration post (any tier)."""
+    if o and o.get('kind') == 'open':  # DP's ground call that it's open (20 Oct Navami): keep X evidence if any, else stand on DP's word
+        if d and d.get('kind') != 'closed': return d
+        return {'since': o['after'][:10], 'evidence': o.get('evidence', ''), 'note': o.get('note', 'Open'), 'kind': 'inaugurated', 'by': 'override', 'sources': []}
     if not o or o.get('kind') != 'closed': return d
     def clears(s):
         if not is_x(s['url']) or (s.get('at') or '') <= o['after'][:19]: return False

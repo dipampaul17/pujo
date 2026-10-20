@@ -61,12 +61,13 @@ with ThreadPoolExecutor(6) as ex:
         if r: leads[r[0]]={'since':r[1]['since'],'url':r[1]['evidence'],'title':r[1]['note']}
 write_json(f'{H}/raw/news_leads.json',{'_':'News headlines saying a pandal was inaugurated. Leads for X search only; not evidence.',**leads},ensure_ascii=False,indent=1)
 ids={p['id'] for p in data['pandals']}
+shown={p['id'] for p in data['pandals'] if p.get('lat') is not None and p.get('precision')!='none'}  # '*' covers what the app shows
 ev={}
 for k in ids:
     got=[c for c in (classify(s,trusted) for s in src.get(k,[])) if c]
     for c,s in zip(got,[s for s in src.get(k,[]) if classify(s,trusted)]):
         if s.get('kind_hint')=='visitors' and c['kind']!='closed': c['kind']='visitors'
-    d=override(OVR.get(k),decide(prev.get(k),got),got)
+    d=override(OVR.get(k) or (OVR.get('*') if k in shown else None),decide(prev.get(k),got),got)
     if d and d['kind']!='closed': ev[k]=d
     elif d: ev[k]=d  # closure is published too; the app shows it as closed
 os.makedirs(os.path.dirname(out),exist_ok=True)

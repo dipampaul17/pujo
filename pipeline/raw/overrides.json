@@ -1,13 +1,9 @@
 {
- "_": "DP's ground report (13 Oct). Not permanent (DP 14 Oct): any X first-hand visit or dated inauguration post dated after 'after' (Oct 14 IST onward) flips it Open. Both are queried every run (wide query).",
- "ekdalia-evergreen": {
-  "kind": "closed",
-  "after": "2026-10-13T18:30:00Z",
-  "note": "Not open yet"
- },
- "mudiali": {
-  "kind": "closed",
-  "after": "2026-10-13T18:30:00Z",
-  "note": "Not open yet"
+ "_": "DP's ground report (13 Oct). Not permanent (DP 14 Oct): any X first-hand visit or dated inauguration post dated after 'after' (Oct 14 IST onward) flips it Open. Both are queried every run (wide query). DP 20 Oct 14:54 IST (Navami): 'by now everything is open' -> '*' marks every pandal Open; it outranks the old 'closed' entries, which were removed.",
+ "*": {
+  "kind": "open",
+  "after": "2026-10-20T09:24:00Z",
+  "note": "DP ground call, Navami 20 Oct",
+  "source": "DP ground call, Navami 20 Oct"
  }
 }

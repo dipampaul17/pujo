@@ -3,6 +3,7 @@ Aliases must be distinctive enough that a post mentioning one is about that pand
 import re
 # Hand-curated extras. Everything else is generated from the guide name by variants().
 EXTRA={
+ 'ck-cl-block':['CK-CL Block','CK CL Block','CKCL Block','CK Block Salt Lake','সিকে-সিএল ব্লক'],
  'ak-block':['AK Block Salt Lake','AK Block, Salt Lake','AK Block Durga','এ কে ব্লক'],
  'patuli-sarbojanin':['Patuli Uponagari','Patuli Upanagari','পাটুলি উপনগরী'],
  'baguiati-rail-pukur':['Rail Pukur United','Railpukur United','রেলপুকুর'],
