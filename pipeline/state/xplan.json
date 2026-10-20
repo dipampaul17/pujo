@@ -1,5 +1,5 @@
 {
- "at": "2026-10-20T07:18:45.996467+00:00",
+ "at": "2026-10-20T07:26:02.039909+00:00",
  "queries": [
   {
    "ids": [
@@ -11,7 +11,7 @@
     "query": "(((inaugurated OR inaugurates OR inauguration OR udbodhon OR \"udbodhon holo\" OR উদ্বোধন OR উদ্বোধনে OR \"pandal open\" OR \"pandal opened\" OR \"opened to public\" OR \"open for visitors\" OR \"khule geche\") (Kolkata OR Calcutta OR কলকাতা OR \"durga puja\" OR \"durga pujo\" OR দুর্গাপুজো OR দুর্গাপূজা OR pandal OR pujo OR পুজো)) OR (\"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Mudiali Club\" OR \"Mudiali\" OR \"মুদিয়ালি\") OR from:_epinephrine_ OR from:abasu4ever OR from:an1sh123 OR from:goonereol OR from:indicontractor OR from:sudhanidhib OR ((from:cmowbgov OR from:suvenduwb OR from:arjunsinghwb OR from:bjp4bengal OR from:dilipghoshbjp OR from:drsukantabjp OR from:keyakahe OR from:me_locket OR from:rahulsinhabjp OR from:ravaroybjp OR from:samikbjp OR from:ssikdarindia OR from:swapan55 OR from:tusharkantibjp OR from:umeshrai_bjp OR from:upamanyu95) (inaugurated OR inaugurates OR inauguration OR উদ্বোধন OR উদ্বোধনে OR উদ্বোধনী OR pujo OR puja OR পুজো OR pandal))) -is:retweet",
     "max_results": 100,
     "sort_order": "recency",
-    "start_time": "2026-10-20T07:08:21Z",
+    "start_time": "2026-10-20T07:17:31Z",
     "expansions": "attachments.media_keys,author_id",
     "media.fields": "url,preview_image_url,type,width,height",
     "user.fields": "username,name,profile_image_url",
@@ -22,20 +22,19 @@
    "ids": [
     "chaltabagan-lohapatty",
     "ekdalia-evergreen",
-    "baghbazar-sarbojanin",
-    "beniatola-sarbojanin",
-    "bj-block",
-    "jodhpur-park-sarbojanin",
-    "kendua-shanti-sangha",
-    "santosh-mitra-square",
-    "singhi-park",
-    "sovabazar-rajbari",
-    "sree-bhumi-sporting-club",
-    "tridhara-sammilani",
-    "adi-ballygunge-sarbojanin"
+    "allen-park-sarbojanin",
+    "babubagan",
+    "baguiati-rail-pukur",
+    "bakul-bagan",
+    "ballygunge-21-pally",
+    "rupchand-mukherjee-lane",
+    "suruchi-sangha",
+    "tala-prattoy",
+    "ak-block",
+    "lake-gardens-peoples"
    ],
    "args": {
-    "query": "(\"Chaltabagan\" OR \"Chalta Bagan\" OR \"চালতাবাগান\" OR \"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Baghbazar Sarbojanin\" OR \"Bagbazar Sarbojanin\" OR \"Baghbazar Durga\" OR \"Bagbazar Durga\" OR \"বাগবাজার সার্বজনীন\" OR \"Beniatola Sarbojanin\" OR \"Beniatola Sarbajanin\" OR \"Beniatola Sarbojonin\" OR \"BJ Block\" OR \"BJ Block Salt Lake\" OR \"Jodhpur Park Sarbojanin\" OR \"Jodhpur Park Durga\" OR \"যোধপুর পার্ক সার্বজনীন\" OR \"Kendua Shanti Sangha\" OR \"Kendua Shanti\" OR \"Santosh Mitra Square\" OR \"Santosh Mitra\" OR \"Lebutala Park\" OR \"সন্তোষ মিত্র স্কোয়ার\" OR \"Singhi Park\" OR \"সিংহী পার্ক\" OR \"Sovabazar Rajbari\" OR \"Shobhabazar Rajbari\" OR \"Sobhabazar Rajbari\" OR \"শোভাবাজার রাজবাড়ি\" OR \"Sreebhumi\" OR \"Sree Bhumi\" OR \"Sribhumi\" OR \"Shreebhumi\" OR \"Sree Bhoomi\" OR \"শ্রীভূমি\" OR \"Tridhara\" OR \"Tridhara Sammilani\" OR \"ত্রিধারা\" OR \"Adi Ballygunge Sarbojanin\" OR \"Adi Ballygunge\" OR \"আদি বালিগঞ্জ\") (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো) has:images -is:retweet",
+    "query": "(\"Chaltabagan\" OR \"Chalta Bagan\" OR \"চালতাবাগান\" OR \"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Allen Park Sarbojanin\" OR \"Allen Park\" OR \"অ্যালেন পার্ক\" OR \"Kolkata Sanatani Sangha\" OR \"Babubagan\" OR \"Babu Bagan\" OR \"বাবুবাগান\" OR \"Rail Pukur United\" OR \"Railpukur United\" OR \"রেলপুকুর\" OR \"Bakul Bagan\" OR \"Ballygunge 21 Pally\" OR \"21 Pally Ballygunge\" OR \"বালিগঞ্জ ২১ পল্লী\" OR \"Rupchand Mukherjee Lane\" OR \"Rupchand Mukherjee\" OR \"রূপচাঁদ মুখার্জি লেন\" OR \"Suruchi Sangha\" OR \"Suruchi Sangh\" OR \"সুরুচি সংঘ\" OR \"Tala Prattoy\" OR \"Tala Pratyay\" OR \"Tala Prattay\" OR \"টালা প্রত্যয়\" OR \"Tala Park Prattoy\" OR \"Tala Park Prattay\" OR \"Tala Park\" OR \"AK Block Salt Lake\" OR \"AK Block, Salt Lake\" OR \"AK Block Durga\" OR \"এ কে ব্লক\" OR \"Lake Gardens People's Association\" OR \"Lake Gardens People's\" OR \"Lake Gardens Peoples\") (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো) has:images -is:retweet",
     "max_results": 25,
     "sort_order": "recency",
     "start_time": "2026-10-10T00:00:00Z",
