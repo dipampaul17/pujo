@@ -26,7 +26,7 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
     }
     // QA: list count matches rows, closed pandals visible as Closed, one 'Near you' heading; far away selects no zone.
     { const [c, p] = await mk(SPOTS.gariahat); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2500)
-      { const names = await p.locator('[data-card] h2, [data-card] .line-clamp-2').allInnerTexts(); ok(names.length > 5 && new Set(names).size === names.length, T(`a pandal appears twice on the page (${names.length - new Set(names).size} dupes)`))
+      { const names = await p.locator('[data-card] .prow-name').allInnerTexts(); ok(names.length > 5 && new Set(names).size === names.length, T(`a pandal appears twice on the page (${names.length - new Set(names).size} dupes)`))
         const dock = await p.locator('.dock [role=tablist][aria-label=Zone]').boundingBox(); ok(dock && dock.y > 600, T('zone switch not in thumb reach (bottom dock)')) }
       ok(await p.locator('.seg-count').count() === 0 && await p.locator('details.group summary .mono-num').count() === 0, T('redundant counts on zone tabs / list header'))
       ok(await p.getByRole('heading', { name: 'Near you' }).count() + await p.locator('summary', { hasText: /^Near you/ }).count() <= 1, T('"Near you" heading twice'))

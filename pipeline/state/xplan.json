@@ -1,5 +1,5 @@
 {
- "at": "2026-10-20T06:50:15.796146+00:00",
+ "at": "2026-10-20T07:06:52.230310+00:00",
  "queries": [
   {
    "ids": [
@@ -11,35 +11,7 @@
     "query": "(((inaugurated OR inaugurates OR inauguration OR udbodhon OR \"udbodhon holo\" OR উদ্বোধন OR উদ্বোধনে OR \"pandal open\" OR \"pandal opened\" OR \"opened to public\" OR \"open for visitors\" OR \"khule geche\") (Kolkata OR Calcutta OR কলকাতা OR \"durga puja\" OR \"durga pujo\" OR দুর্গাপুজো OR দুর্গাপূজা OR pandal OR pujo OR পুজো)) OR (\"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Mudiali Club\" OR \"Mudiali\" OR \"মুদিয়ালি\") OR from:_epinephrine_ OR from:abasu4ever OR from:an1sh123 OR from:goonereol OR from:indicontractor OR from:sudhanidhib OR ((from:cmowbgov OR from:suvenduwb OR from:arjunsinghwb OR from:bjp4bengal OR from:dilipghoshbjp OR from:drsukantabjp OR from:keyakahe OR from:me_locket OR from:rahulsinhabjp OR from:ravaroybjp OR from:samikbjp OR from:ssikdarindia OR from:swapan55 OR from:tusharkantibjp OR from:umeshrai_bjp OR from:upamanyu95) (inaugurated OR inaugurates OR inauguration OR উদ্বোধন OR উদ্বোধনে OR উদ্বোধনী OR pujo OR puja OR পুজো OR pandal))) -is:retweet",
     "max_results": 100,
     "sort_order": "recency",
-    "start_time": "2026-10-20T06:44:12Z",
-    "expansions": "attachments.media_keys,author_id",
-    "media.fields": "url,preview_image_url,type,width,height",
-    "user.fields": "username,name,profile_image_url",
-    "post.fields": "created_at,text,note_tweet,attachments,public_metrics"
-   }
-  },
-  {
-   "ids": [
-    "pally-saradiya-khidirpur",
-    "salkia-alapani",
-    "ahiritola-sarbojanin",
-    "behala-nutan-dal",
-    "chakraberia-sarbojanin",
-    "dum-dum-park-bharat-chakra",
-    "dum-dum-park-sarbajanin",
-    "dum-dum-park-tarun-sangha",
-    "new-town-sarbojanin",
-    "olabibitala-sarbojanin",
-    "telipukur-yuba-sangha",
-    "abasar-sarbojanin",
-    "behala-friends",
-    "dum-dum-park-tarun-dal"
-   ],
-   "args": {
-    "query": "(\"Pally Saradiya\" OR \"Pally Sarodiya\" OR \"Palli Saradiya\" OR \"Pally Sharadiya\" OR \"Pally Sharodia\" OR \"Palli Sharadiya\" OR \"পল্লী শারদীয়া\" OR \"Salkia Alapani\" OR \"Alapani Club\" OR \"সালকিয়া আলাপনী\" OR \"Ahiritola\" OR \"আহিরীটোলা\" OR \"Behala Nutan Dal\" OR \"Chakraberia Sarbojanin\" OR \"Chakraberia Sarbajanin\" OR \"Chakraberia Sarbojonin\" OR \"Dum Dum Park Bharat Chakra\" OR \"Dum Dum Park Sarbajanin\" OR \"Dum Dum Park Sarbojanin\" OR \"Dum Dum Park Tarun Sangha\" OR \"DD Park Tarun Sangha\" OR \"New Town Sarbojanin\" OR \"Newtown Sarbojanin\" OR \"Olabibitala\" OR \"Olaibibitola\" OR \"Olabibitola\" OR \"Telipukur Yuba Sangha\" OR \"Telipukur\" OR \"Nursery Bagan Adivasi\" OR \"Abasar Sarbojanin\" OR \"Abasar Sarbojonin\" OR \"Abosar Sarbojanin\" OR \"Behala Friends\" OR \"Behala Friends Club\" OR \"বেহালা ফ্রেন্ডস\" OR \"Dum Dum Park Tarun Dal\") (inaugurated OR inaugurates OR inauguration OR opened OR visited OR crowd OR queue OR darshan OR \"pandal hopping\" OR উদ্বোধন) -is:retweet",
-    "max_results": 25,
-    "sort_order": "recency",
-    "start_time": "2026-10-10T00:00:00Z",
+    "start_time": "2026-10-20T07:01:45Z",
     "expansions": "attachments.media_keys,author_id",
     "media.fields": "url,preview_image_url,type,width,height",
     "user.fields": "username,name,profile_image_url",
@@ -50,20 +22,24 @@
    "ids": [
     "chaltabagan-lohapatty",
     "ekdalia-evergreen",
-    "ak-block",
-    "netaji-colony-lowland",
-    "baguiati-rail-pukur",
-    "rupchand-mukherjee-lane",
-    "suruchi-sangha",
-    "tala-prattoy",
-    "adi-ballygunge-sarbojanin",
-    "allen-park-sarbojanin",
-    "babubagan",
-    "bakul-bagan",
-    "ballygunge-21-pally"
+    "tollygunge-santi-pally",
+    "behala-arunoday-samiti",
+    "club-muktadal-bhowanipur",
+    "22-pally-northern-park",
+    "64-pally",
+    "ae-block",
+    "fd-block",
+    "garia-mitali",
+    "golmath-durga-puja",
+    "hazra-park-durgotsab",
+    "jodhpur-park-95-pally",
+    "maddox-square",
+    "muhammad-ali-park",
+    "naba-durga",
+    "simla-byayam-samity"
    ],
    "args": {
-    "query": "(\"Chaltabagan\" OR \"Chalta Bagan\" OR \"চালতাবাগান\" OR \"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"AK Block Salt Lake\" OR \"AK Block, Salt Lake\" OR \"AK Block Durga\" OR \"এ কে ব্লক\" OR \"Netaji Colony Lowland\" OR \"Rail Pukur United\" OR \"Railpukur United\" OR \"রেলপুকুর\" OR \"Rupchand Mukherjee Lane\" OR \"Rupchand Mukherjee\" OR \"রূপচাঁদ মুখার্জি লেন\" OR \"Suruchi Sangha\" OR \"Suruchi Sangh\" OR \"সুরুচি সংঘ\" OR \"Tala Prattoy\" OR \"Tala Pratyay\" OR \"Tala Prattay\" OR \"টালা প্রত্যয়\" OR \"Tala Park Prattoy\" OR \"Tala Park Prattay\" OR \"Tala Park\" OR \"Adi Ballygunge Sarbojanin\" OR \"Adi Ballygunge\" OR \"আদি বালিগঞ্জ\" OR \"Allen Park Sarbojanin\" OR \"Allen Park\" OR \"অ্যালেন পার্ক\" OR \"Kolkata Sanatani Sangha\" OR \"Babubagan\" OR \"Babu Bagan\" OR \"বাবুবাগান\" OR \"Bakul Bagan\" OR \"Ballygunge 21 Pally\" OR \"21 Pally Ballygunge\" OR \"বালিগঞ্জ ২১ পল্লী\") (inaugurated OR inaugurates OR inauguration OR opened OR visited OR crowd OR queue OR darshan OR \"pandal hopping\" OR উদ্বোধন) -is:retweet",
+    "query": "(\"Chaltabagan\" OR \"Chalta Bagan\" OR \"চালতাবাগান\" OR \"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Tollygunge Santi Pally\" OR \"Tollygunge Santi Palli\" OR \"Arunoday Samiti\" OR \"Arunodoy Samiti\" OR \"অরুণোদয় সমিতি\" OR \"Club Muktadal\" OR \"Mukto Dal\" OR \"Muktadal Sarbojanin\" OR \"মুক্তদল\" OR \"মুক্তদল সার্বজনীন\" OR \"22 Pally\" OR \"22 Palli\" OR \"Northern Park\" OR \"64 Pally\" OR \"64 Palli\" OR \"৬৪ পল্লী\" OR \"AE Block\" OR \"AE Block Salt Lake\" OR \"FD Block\" OR \"FD Block Salt Lake\" OR \"Garia Mitali\" OR \"Golmath Durga Puja\" OR \"Gol Math\" OR \"Golmath\" OR \"Hazra Park Durgotsab\" OR \"Hazra Park\" OR \"হাজরা পার্ক\" OR \"95 Pally\" OR \"95 Palli\" OR \"Jodhpur Park 95\" OR \"৯৫ পল্লী\" OR \"Maddox Square\" OR \"ম্যাডক্স স্কোয়ার\" OR \"Muhammad Ali Park\" OR \"Mohammad Ali Park\" OR \"Md Ali Park\" OR \"মহম্মদ আলি পার্ক\" OR \"Naba Durga\" OR \"Nabadurga\" OR \"Simla Byayam Samity\" OR \"Simla Byayam Samiti\" OR \"Simla Byayam\") (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো) has:images -is:retweet",
     "max_results": 25,
     "sort_order": "recency",
     "start_time": "2026-10-10T00:00:00Z",
