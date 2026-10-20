@@ -320,37 +320,25 @@ export default function App() {
 
             {zone && (() => { const { next, rail } = pagePicks(stops, listed); const cs = chips(ordered, filters, keep)
               const uber = (s: typeof listed[number]) => uberUrl({ lat: s.lat, lng: s.lng, name: s.name, approx: s.precision === 'station', address: s.precision === 'station' ? `${s.name} Durga Puja, Kolkata` : `${s.name}, Kolkata` } as any, view?.precise && !view.approx ? view : null)
+              const Row = ({ p, go }: { p: typeof listed[number]; go?: boolean }) => { const s = statusOf(p.id, istDate, statusFile, now), Tag = go ? 'article' : 'li'
+                return <Tag data-card data-zone={zoneOf(p)} data-approx={p.precision === 'station' || undefined} className={`rail-item prow ${go ? 'go' : ''}`} key={p.id}>
+                  <span className="prow-thumb"><Photo p={p} x={xLive} /><PickBtn on={picked.includes(p.id)} name={p.name} onClick={() => togglePick(p.id)} /></span>
+                  <button onClick={() => setDetail(p.id)} aria-haspopup="dialog" className="prow-main text-left">
+                    <span className="prow-name">{p.name}</span>
+                    <span className="prow-meta"><StatusDot s={s} />{hasPass(p.id) && <PassMark />}<Surge c={xLive.crowd[p.id]} now={now} />{go && <GoHint c={xLive.crowd[p.id]} now={now} />}</span>
+                    <span className="block t-foot muted mono-num">{p.precision === 'station' ? `Approximate${p.station ? ` · near ${p.station}` : ''}` : me ? <TravelLine t={travel(p)} compact /> : null}</span>
+                  </button>
+                  <a href={uber(p)} className="btn-uber prow-act" aria-label={`Uber to ${p.name}`}>Uber</a>
+                </Tag> }
               return <>
                 {cs.length > 0 && <div className="filter-bar flex gap-2" role="group" aria-label="Filter">{cs.map(c =>
                   <button key={c.key} aria-pressed={c.on} onClick={() => setFilters({ ...filters, [c.key]: !c.on })} className={`chip ${c.on ? 'chip-on' : ''}`}>
                     {c.key === 'open' ? <span className="w-2 h-2 rounded-full" style={{ background: c.on ? 'currentColor' : 'var(--sindoor)' }} /> : <PassGlyph />}{c.key === 'open' ? 'Open' : 'Pass'}<span className="mono-num chip-n">{c.n}</span></button>)}</div>}
 {!next && <button className="btn btn-quiet w-full mt-4" onClick={() => setFilters(NO_FILTERS)}>Clear filters</button>}
-                {next && <article data-card data-zone={zoneOf(next)} data-approx={next.precision === 'station' || undefined} className="go mt-4 rise relative" key={zone + next.id}>
-                  <button onClick={() => setDetail(next.id)} aria-haspopup="dialog" className="block w-full text-left">
-                    <Photo p={next} x={xLive} big />
-                    <h2 className="t-title px-4 pt-4 pr-14">{next.name}</h2>
-                  </button>
-                  <PickBtn on={picked.includes(next.id)} name={next.name} onClick={() => togglePick(next.id)} />
-                  <div className="px-4 flex flex-wrap items-center gap-x-3"><StatusDot s={statusOf(next.id, istDate, statusFile, now)} />{hasPass(next.id) && <PassMark />}<Surge c={xLive.crowd[next.id]} now={now} /><GoHint c={xLive.crowd[next.id]} now={now} /></div>
-                  <p className="px-4 t-foot muted mono-num mt-1">{next.precision === 'station' ? `Approximate${next.station ? ` · near ${next.station}` : ''}` : me ? <TravelLine t={travel(next)} /> : null}</p>
-                  <div className="p-4 pt-3 flex gap-2 items-center">
-                    <a href={uber(next)} className="btn btn-uber flex-1">Uber here</a>
-                    <button onClick={() => setSkip(new Set(skip).add(next.id))} className="t-foot muted min-h-[44px] min-w-[44px] px-3" aria-label={`Skip ${next.name}`}>Skip</button>
-                  </div>
-                </article>}
-                {rail.length > 0 && <ul className="rail mt-5 -mx-5 px-5" aria-label={`More in ${ZLABEL[zone]}`} onTouchStart={e => e.stopPropagation()} onTouchEnd={e => e.stopPropagation()}>
-                  {rail.map(p => { const s = statusOf(p.id, istDate, statusFile, now)
-                    return <li key={p.id} data-card data-zone={zoneOf(p)} data-approx={p.precision === 'station' || undefined} className="rail-item relative">
-                      <PickBtn on={picked.includes(p.id)} name={p.name} onClick={() => togglePick(p.id)} />
-                      <button onClick={() => setDetail(p.id)} aria-haspopup="dialog" className="block w-full text-left">
-                        <span className="relative block"><Photo p={p} x={xLive} />
-                          <span className="rail-marks">{isOpen(s) && <span className="rail-dot" title={s!.label} />}{hasPass(p.id) && <span className="rail-pass"><PassGlyph /></span>}</span></span>
-                        <span className="block t-body font-medium mt-2 line-clamp-2 leading-snug min-h-[2.75em]">{p.name}</span>
-                        <span className="sr-only">{[s?.label, hasPass(p.id) ? 'Pujor Passport' : null].filter(Boolean).join(', ')}</span>
-                        {p.precision !== 'station' && me && <span className="block mt-0.5"><TravelLine t={p.t} compact /></span>}
-                      </button>
-                    </li> })}
-                  {routeUrl && sel.length === 0 && <li className="rail-item rail-end"><a href={routeUrl} target="_blank" rel="noopener" className="btn btn-walk w-full">Walk all in Maps</a><button onClick={share} className="btn btn-quiet w-full mt-2" aria-label="Share route">Share</button></li>}
+                {next && <div className="plist mt-3">{Row({ p: next, go: true })}</div>}
+                {rail.length > 0 && <ul className="rail plist" aria-label={`More in ${ZLABEL[zone]}`}>
+                  {rail.map(p => Row({ p }))}
+                  {routeUrl && sel.length === 0 && <li className="rail-item rail-end"><a href={routeUrl} target="_blank" rel="noopener" className="btn btn-walk flex-1">Walk all in Maps</a><button onClick={share} className="btn btn-quiet" aria-label="Share route">Share</button></li>}
                 </ul>}
                 <div className="mt-8 border-t hair pt-4">
                                   <div className="flex gap-2 mt-3">{['Food', 'Toilets', 'Help'].map((t, i) => <button key={t} className="btn btn-quiet flex-1" aria-haspopup="dialog" onClick={() => setTab(i + 1)}>{t}</button>)}</div>

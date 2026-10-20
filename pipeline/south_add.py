@@ -9,6 +9,9 @@ P = {o['url'].rstrip('/').split('/')[-1]: o['pin'] for o in json.load(open(os.pa
 A = {html.unescape(o['name']): o['pin'] for o in json.load(open(os.path.join(H, 'agamoni.json'))) if o['pin']}
 # id: (name, ppg slug or None, agamoni exact name or None, station override when no pin at all)
 SRC = {
+ 'baguiati-rail-pukur': ('Baguiati Rail Pukur United Club', 'baguiati_rail_pukur', 'Railpukur United Club', None),
+ 'netaji-colony-lowland': ('Netaji Colony Lowland', None, 'Netaji Colony Lowland', None),
+ 'ak-block': ('AK Block', None, 'Ak Block', None),
  '64-pally': ('64 Pally', '64_pally_durga_pujo', '64 Pally Durga Pujo', None),
  'kalighat-milan-sangha': ('Kalighat Milan Sangha', 'kalighat_milan_sangha', 'Kalighat Milan Sangha', None),
  'rupchand-mukherjee-lane': ('Rupchand Mukherjee Lane', 'rupchand_mukherjee_sarbojanin', 'Rupchand Mukherjee Lane Durga Puja', None),
@@ -53,6 +56,7 @@ SRC = {
 # Exact pins checked 14 Oct 2026 against two independent families: Google Maps place (Agamoni pins copy Google) and an
 # OpenStreetMap named feature (PPG pins copy OSM). id: (google pin, google place name, osm pin, osm feature name). Pin used: Google's.
 VERIFIED = {
+ 'ak-block': ((22.5891537, 88.4313014), 'Google: Ak Block', (22.5884012, 88.4313494), 'OSM: AK Block, Sector II'),  # 20 Oct, Nominatim
  'ballygunge-21-pally': ((22.529175, 88.368816), 'Google: Ballygunge 21 Pally', (22.5292355, 88.368908), 'OSM: Ballygunge 21 Pally'),
  'dhakuria-sarbojanin': ((22.510483, 88.371986), 'Google: Dhakuria Sarbojanin Durgotsab', (22.5100279, 88.3719874), 'OSM: Dhakuria Sarbojanin'),
  'gariahat-sarbojanin': ((22.517457, 88.366756), 'Google: Gariahat Sarbojonin Durgotsab', (22.5173511, 88.3667515), 'OSM: Gariahat Sarbojanin Durgotsab'),
