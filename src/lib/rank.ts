@@ -117,3 +117,16 @@ export function routePool<T extends Pandal>(ps: T[], at: LatLng, zone: Zone | nu
   // A walking route needs real pins: approximate (metro-station) pins are listed, never walked to.
   return ps.filter(p => haversine(at, p) < 6000 && !skip.has(p.id) && p.precision !== 'station' && (!zone || zoneOf(p) === zone) && (!keep || keep(p.id)))
 }
+/** "Best near you": two calm groups of S-tier pandals (worth ≥ 3 — iconic / big theme), open, exact pin, not seen.
+ *  Walk: ≤ 1.5 km on foot or ≤ 20 walk-min. Uber: beyond that, ≤ 8 km by road. ≤ 3 each, best grandeur-per-minute first, no overlap. */
+export const SHELF = { minWorth: 3, walkM: 1500, walkMin: 20, carM: 8000, carMin: 35, n: 3 }
+export function bestNear<T extends { id: string; worth?: number; precision: string }>(ps: T[], o: {
+  travel: (p: T) => { walkM: number; walkMin: number; carM: number; carMin: number }; open: (id: string) => boolean; seen: (id: string) => boolean
+}): { walk: T[]; uber: T[] } {
+  const ok = ps.filter(p => (p.worth ?? 0) >= SHELF.minWorth && p.precision === 'osm' && o.open(p.id) && !o.seen(p.id)).map(p => ({ p, t: o.travel(p) }))
+  const isWalk = (t: { walkM: number; walkMin: number }) => t.walkM <= SHELF.walkM || t.walkMin <= SHELF.walkMin
+  const by = (m: (t: any) => number) => (a: any, b: any) => (b.p.worth ?? 0) / (5 + m(b.t)) - (a.p.worth ?? 0) / (5 + m(a.t)) || a.p.id.localeCompare(b.p.id)
+  const walk = ok.filter(x => isWalk(x.t)).sort(by(t => t.walkMin)).slice(0, SHELF.n).map(x => x.p)
+  const uber = ok.filter(x => !isWalk(x.t) && x.t.carM <= SHELF.carM && x.t.carMin <= SHELF.carMin).sort(by(t => t.carMin)).slice(0, SHELF.n).map(x => x.p)
+  return { walk, uber }
+}

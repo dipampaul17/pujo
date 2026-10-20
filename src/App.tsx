@@ -3,7 +3,7 @@ import { reduce, initial, onLoadAction, needsChip, shouldUpdate, platform, APPRO
 import raw from './data/dhaak.v1.json'
 import { makePlanner, isOpen, helpOrigin, areas as getAreas, statusOf, tier, type StatusFile, type NowItem, zoneOf, zoneOrder, ZONE_ANCHOR, nextZone, type Zone, type Dataset, type Plan, type Amenity } from './lib/plan'
 import { uberUrl, mapsDirUrl, mapsPlaceUrl, fmtDist, walkMinutes, haversine as hav, type LatLng } from './lib/geo'
-import { recommend, routeStops, routePool, zoneTab, goHint, roadNote, type RoadSig } from './lib/rank'
+import { recommend, routeStops, routePool, zoneTab, goHint, roadNote, bestNear, type RoadSig } from './lib/rank'
 import { pagePicks } from './lib/page'
 import { planWalk, walkLegs, walkPicks } from './lib/walk'
 import { applyFilters, chips, NO_FILTERS, type Filters } from './lib/filters'
@@ -320,7 +320,9 @@ export default function App() {
             
 
 
-            {zone && (() => { const { next, rail } = pagePicks(stops, listed); const cs = chips(ordered, filters, keep)
+            {zone && (() => { const shelf = bestNear(listed, { travel: p => travel(p), open: keep.open, seen: id => seen.has(id) }), inShelf = new Set([...shelf.walk, ...shelf.uber].map(p => p.id))
+              const { next: next0, rail } = pagePicks(stops.filter(p => !inShelf.has(p.id)), listed.filter(p => !inShelf.has(p.id))), next = inShelf.size ? null : next0
+              const cs = chips(ordered, filters, keep)
               const uber = (s: typeof listed[number]) => uberUrl({ lat: s.lat, lng: s.lng, name: s.name, approx: s.precision === 'station', address: s.precision === 'station' ? `${s.name} Durga Puja, Kolkata` : `${s.name}, Kolkata` } as any, view?.precise && !view.approx ? view : null)
               const Row = ({ p, go }: { p: typeof listed[number]; go?: boolean }) => { const s = statusOf(p.id, istDate, statusFile, now), Tag = go ? 'article' : 'li'
                 return <Tag data-card data-zone={zoneOf(p)} data-approx={p.precision === 'station' || undefined} className={`rail-item prow ${go ? 'go' : ''}`} key={p.id}>
@@ -336,13 +338,29 @@ export default function App() {
                 {cs.length > 0 && <div className="filter-bar flex gap-2" role="group" aria-label="Filter">{cs.map(c =>
                   <button key={c.key} aria-pressed={c.on} onClick={() => setFilters({ ...filters, [c.key]: !c.on })} className={`chip ${c.on ? 'chip-on' : ''}`}>
                     {c.key === 'open' ? <span className="w-2 h-2 rounded-full" style={{ background: c.on ? 'currentColor' : 'var(--sindoor)' }} /> : <PassGlyph />}{c.key === 'open' ? 'Open' : 'Pass'}<span className="mono-num chip-n">{c.n}</span></button>)}</div>}
-{!next && <button className="btn btn-quiet w-full mt-4" onClick={() => setFilters(NO_FILTERS)}>Clear filters</button>}
-                {(() => { const k = [zone, next?.id, next && JSON.stringify(travel(next)), rail.map(p => p.id + JSON.stringify((p as any).t)).join(), picked.join(), xLive, statusFile, istDate, Math.floor(now / 60000), me, view?.lat, view?.lng, view?.precise, routeUrl, sel.length]
+{inShelf.size > 0 && <section className="shelf mt-3" aria-label="Best near you">
+                  <div className="shelf-h"><span className="t-foot muted">Best near you</span>{!(me && view?.precise) && <span className="t-foot muted">from {view?.label ?? ZLABEL[zone]}</span>}</div>
+                  {([['walk', shelf.walk], ['uber', shelf.uber]] as const).filter(([, l]) => l.length).map(([k, l]) => <div key={k} className="shelf-g" data-shelf={k}>
+                    <div className="shelf-k t-foot">{k === 'walk' ? 'Walk' : 'Uber'}</div>
+                    <ul>{l.map((p, i) => { const t = travel(p), h = goHint(xLive.crowd[p.id], now), a = t.basis === 'estimate' ? '~' : ''
+                      return <li key={p.id} data-card data-shelf-item={p.id} className={`shelf-i ${i === 0 ? 'top' : ''}`}>
+                        <button onClick={() => setDetail(p.id)} aria-haspopup="dialog" className="shelf-main text-left">
+                          {i === 0 && <span className="shelf-go">Go next</span>}
+                          <span className="shelf-name">{p.name}</span>
+                          <span className="t-foot muted mono-num">{a}{k === 'walk' ? `${t.walkMin} min walk` : `${t.carMin} min by car`}{h && <> · <span className={`go-hint ${h.word === 'Later' ? 'later' : 'now'}`}>{h.word === 'Later' ? 'Crowded' : 'Go now'}</span></>}</span>
+                        </button>
+                        {k === 'walk' ? <a href={mapsDirUrl(view?.precise ? view : (view ? { lat: view.lat, lng: view.lng } : null), [p])} target="_blank" rel="noopener" className={`btn ${i === 0 ? 'btn-walk' : 'btn-quiet'} shelf-act`} aria-label={`Walk to ${p.name} in Maps`}>Walk</a>
+                          : <a href={uber(p)} className={`${i === 0 ? 'btn-uber' : 'btn btn-quiet'} shelf-act`} aria-label={`Uber to ${p.name}`}>Uber</a>}
+                      </li> })}</ul>
+                  </div>)}
+                </section>}
+                {!next && !inShelf.size && !rail.length && <button className="btn btn-quiet w-full mt-4" onClick={() => setFilters(NO_FILTERS)}>Clear filters</button>}
+                {(() => { const k = [zone, [...inShelf].join(), next0?.id, next?.id, next && JSON.stringify(travel(next)), rail.map(p => p.id + JSON.stringify((p as any).t)).join(), picked.join(), xLive, statusFile, istDate, Math.floor(now / 60000), me, view?.lat, view?.lng, view?.precise, routeUrl, sel.length]
                   const c = listCache.current; if (c && c.k.length === k.length && c.k.every((v, i) => v === k[i])) return c.el
                   const el = <>
                 {next && <div className="plist mt-3">{Row({ p: next, go: true })}</div>}
-                {rail.length > 0 && <ul className="rail plist" aria-label={`More in ${ZLABEL[zone]}`}>
-                  {rail.map(p => Row({ p }))}
+                {(inShelf.size && next0 ? [next0, ...rail] : rail).length > 0 && <ul className="rail plist" aria-label={`More in ${ZLABEL[zone]}`}>
+                  {(inShelf.size && next0 ? [next0, ...rail] : rail).map(p => Row({ p }))}
                   {routeUrl && sel.length === 0 && <li className="rail-item rail-end"><a href={routeUrl} target="_blank" rel="noopener" className="btn btn-walk flex-1">Walk all in Maps</a><button onClick={share} className="btn btn-quiet min-w-[88px]" aria-label="Share route">Share</button></li>}
                 </ul>}</>
                   listCache.current = { k, el }; return el })()}
