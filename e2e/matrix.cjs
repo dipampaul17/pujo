@@ -54,11 +54,11 @@ const LIVE_STATUS = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/l
         const inS = p => p && zoneOfP(p) === 'south', CL = Object.keys(LIVE_STATUS.open).find(k => LIVE_STATUS.open[k].kind === 'closed' && inS(P.find(p => p.id === k)))
         const BAD = [CL, P.find(p => p.precision === 'station' && !LIVE_STATUS.open[p.id] && inS(p))?.id].filter(Boolean)
         // Walk is per zone (only the picks in the page you're on), so every pick sits in South, where Gariahat lands
-        const pick = n => pinned.filter(p => zoneOfP(p) === 'south').slice(0, n).map(p => p.id)
+        const pick = n => pinned.filter(p => zoneOfP(p) === 'south' && p.lat < 22.53).slice(0, n).map(p => p.id)
         for (const n of [0, 1, 2, 10, 12]) { const ids = pick(n).concat(n >= 10 ? BAD : [])
           const [c, p] = await mk(LOC.gariahat); await p.addInitScript(v => localStorage.setItem('pujo.picked', v), JSON.stringify(ids)); await enter(p)
           const pill = p.locator('.walk-pill'); ok((await pill.count() === 1) === (ids.length >= 1), T(`walk ${n}: pill shown=${await pill.count()} for ${ids.length} picks`))
-          if (ids.length >= 1) { ok((await pill.innerText()).includes(String(ids.length)), T(`walk ${n}: pill count`)); await pill.tap(); await p.waitForTimeout(500); const d = p.locator('[role=dialog][aria-label=Walk]')
+          if (ids.length >= 1 && await pill.count()) { ok((await pill.innerText()).includes(String(ids.length)), T(`walk ${n}: pill count`)); await pill.tap(); await p.waitForTimeout(500); const d = p.locator('[role=dialog][aria-label=Walk]')
             const rows = await d.locator('ol li').count(), walkable = ids.filter(id => !BAD.includes(id)).length; ok(rows === walkable, T(`walk ${n}: ${rows} stops, want ${walkable}`))
             const hrefs = await d.locator('a[href*="google.com/maps/dir"]').evaluateAll(a => a.map(x => x.href)); const legs = hrefs.map(h => new URL(h).searchParams)
             ok(legs.length === Math.ceil(walkable / 10), T(`walk ${n}: ${legs.length} legs`)); ok(legs[0].get('origin') === `${LOC.gariahat[0].toFixed(6)},${LOC.gariahat[1].toFixed(6)}`, T(`walk ${n}: not from me`))

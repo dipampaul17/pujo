@@ -207,3 +207,4 @@ a.status .status-src { text-decoration: underline; text-decoration-color: var(--
 .filter-bar .chip { min-height: 44px; font-size: 14px; }
 .prow .status-src { display: none; }
 .sheet img { -webkit-user-drag: none; user-select: none; pointer-events: none; }
+.sheet.out, .sheet-backdrop.out { pointer-events: none; }

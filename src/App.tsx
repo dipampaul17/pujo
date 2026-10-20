@@ -588,13 +588,26 @@ function HeroImg({ className = '' }: { className?: string }) {
     <img src={`${b}900.webp`} alt="" decoding="async" fetchPriority="high" onLoad={() => setOk(true)} style={{ opacity: ok ? 1 : 0 }} />
   </picture>
 }
+/** Drag state lives on the element, not in a per-render closure: a re-render mid-drag (live poll, clock tick, photo load)
+ *  used to hand the handlers a fresh closure with el = null, so the release never closed the sheet. Pointer capture keeps
+ *  the gesture on the sheet even when the finger crosses a photo or leaves the sheet. */
+const DRAG = new WeakMap<HTMLElement, { y0: number; dy: number; id: number }>()
 function dragToClose(close: () => void) {
-  let y0 = 0, dy = 0, el: HTMLElement | null = null
+  const end = (el: HTMLElement, commit: boolean) => {
+    const d = DRAG.get(el); if (!d) return; DRAG.delete(el)
+    if (el.hasPointerCapture?.(d.id)) el.releasePointerCapture(d.id)
+    el.style.transition = 'transform .24s var(--spring)'
+    if (commit && d.dy > 110) { el.style.transform = 'translateY(100%)'; setTimeout(close, 200) } else el.style.transform = ''
+  }
   return {
-    onPointerDown: (e: React.PointerEvent<HTMLElement>) => { el = e.currentTarget; if (el.scrollTop > 0) { el = null; return } y0 = e.clientY; dy = 0; el.style.transition = 'none' },
-    onPointerMove: (e: React.PointerEvent<HTMLElement>) => { if (!el) return; dy = Math.max(0, e.clientY - y0); if (dy > 4) el.style.transform = `translateY(${dy}px)` },
-    onPointerUp: () => { if (!el) return; el.style.transition = 'transform .24s var(--spring)'; if (dy > 110) { el.style.transform = 'translateY(100%)'; setTimeout(close, 200) } else el.style.transform = ''; el = null },
-    onPointerCancel: () => { if (el) { el.style.transform = ''; el = null } },
+    onPointerDown: (e: React.PointerEvent<HTMLElement>) => { const el = e.currentTarget; if (el.scrollTop > 0) return
+      DRAG.set(el, { y0: e.clientY, dy: 0, id: e.pointerId }); el.style.transition = 'none' },
+    onPointerMove: (e: React.PointerEvent<HTMLElement>) => { const el = e.currentTarget, d = DRAG.get(el); if (!d) return
+      d.dy = Math.max(0, e.clientY - d.y0)
+      if (d.dy > 4) { if (!el.hasPointerCapture?.(d.id)) { try { el.setPointerCapture(d.id) } catch { /* pointer gone */ } } el.style.transform = `translateY(${d.dy}px)` } },
+    onPointerUp: (e: React.PointerEvent<HTMLElement>) => end(e.currentTarget, true),
+    onPointerCancel: (e: React.PointerEvent<HTMLElement>) => end(e.currentTarget, false),
+    onDragStart: (e: React.DragEvent<HTMLElement>) => e.preventDefault(),  // a native image drag would cancel the gesture
   }
 }
 function ago(ms: number) { const m = Math.round(ms / 60000); return m < 1 ? 'just now' : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : `${Math.round(m / 1440)} d ago` }

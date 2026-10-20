@@ -2875,5 +2875,46 @@
     }
    ]
   }
+ ],
+ "ak-block": [
+  {
+   "id": "2112155105567097072",
+   "at": "2026-10-19T12:13:13.000Z",
+   "handle": "alostsouldown",
+   "avatar": "https://pbs.twimg.com/profile_images/2110795690431705088/GQS-oABZ_normal.jpg",
+   "score": 99,
+   "evidence": true,
+   "text": "📍AK Block Salt Lake Durga Pujo Theme- 'Anya Katha, Anner Katha' , adaptation of Bharatchandra Ray Gunakar's poem 'Annandamangal Kavya', glorifying Devi Annapurna.",
+   "url": "https://x.com/alostsouldown/status/2112155105567097072",
+   "photo": "https://pbs.twimg.com/media/HU_h06jbAAARpmQ.jpg?format=jpg&name=large",
+   "w": 3072,
+   "h": 4080,
+   "media": [
+    {
+     "src": "https://pbs.twimg.com/media/HU_h06jbAAARpmQ.jpg?format=jpg&name=large",
+     "w": 3072,
+     "h": 4080,
+     "video": false
+    },
+    {
+     "src": "https://pbs.twimg.com/media/HU_h1spaQAADorv.jpg?format=jpg&name=large",
+     "w": 3072,
+     "h": 4080,
+     "video": false
+    },
+    {
+     "src": "https://pbs.twimg.com/media/HU_h2hSb0AA1KKQ.jpg?format=jpg&name=large",
+     "w": 4080,
+     "h": 3072,
+     "video": false
+    },
+    {
+     "src": "https://pbs.twimg.com/media/HU_h3ZGaYAAGO3I.jpg?format=jpg&name=large",
+     "w": 4080,
+     "h": 3072,
+     "video": false
+    }
+   ]
+  }
  ]
 }
