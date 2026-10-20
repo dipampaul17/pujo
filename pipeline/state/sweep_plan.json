@@ -2,20 +2,19 @@
  "ids": [
   "pally-saradiya-khidirpur",
   "salkia-alapani",
-  "kamdahari-purbapara",
-  "madhya-garfa-sarbojanin",
-  "matri-mandir",
-  "paddapukur-youth",
-  "poddar-nagar-sarbojanin",
-  "sanghati-puja-samiti",
+  "naktala-pally-unnayan-samity",
+  "naskarpur-sarbojanin",
+  "notunpara-sarbojanin",
+  "shyama-pally",
   "23-pally",
   "arjunpur-amra-sabai-club",
   "bakultala-sarbojanin",
+  "kamdahari-purbapara",
   "lake-gardens-peoples",
-  "mukundapur-sarbojanin"
+  "matri-mandir"
  ],
  "args": {
-  "query": "(\"Pally Saradiya\" OR \"Pally Sarodiya\" OR \"Palli Saradiya\" OR \"Pally Sharadiya\" OR \"Pally Sharodia\" OR \"Palli Sharadiya\" OR \"পল্লী শারদীয়া\" OR \"Salkia Alapani\" OR \"Alapani Club\" OR \"সালকিয়া আলাপনী\" OR \"Kamdahari Purbapara\" OR \"Madhya Garfa Sarbojanin\" OR \"Madhya Garfa Sarbajanin\" OR \"Madhya Garfa Sarbojonin\" OR \"Madhya Garfa\" OR \"Matri Mandir Sarbojanin\" OR \"Matri Mandir Durga\" OR \"Paddapukur Youth\" OR \"Poddar Nagar Sarbojanin\" OR \"Poddar Nagar Sarbajanin\" OR \"Poddar Nagar Sarbojonin\" OR \"Poddar Nagar\" OR \"Sanghati Puja Samiti\" OR \"Sanghati Puja\" OR \"23 Pally\" OR \"23 Palli\" OR \"Arjunpur Amra Sabai Club\" OR \"Arjunpur Amra Sabai\" OR \"Bakultala Sarbojanin\" OR \"Bakultala Sarbajanin\" OR \"Bakultala Sarbojonin\" OR \"Lake Gardens People's Association\" OR \"Lake Gardens People's\" OR \"Lake Gardens Peoples\" OR \"Mukundapur Sarbojanin\" OR \"Mukundapur Sarbajanin\" OR \"Mukundapur Sarbojonin\") (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো OR visited OR inaugurated OR উদ্বোধন) -is:retweet",
+  "query": "(\"Pally Saradiya\" OR \"Pally Sarodiya\" OR \"Palli Saradiya\" OR \"Pally Sharadiya\" OR \"Pally Sharodia\" OR \"Palli Sharadiya\" OR \"পল্লী শারদীয়া\" OR \"Salkia Alapani\" OR \"Alapani Club\" OR \"সালকিয়া আলাপনী\" OR \"Naktala Pally Unnayan Samity\" OR \"Naktala Palli Unnayan Samity\" OR \"Naktala Pally Unnayan Samiti\" OR \"Naktala Palli Unnayan Samiti\" OR \"Naktala Pally Unnayan\" OR \"Naskarpur Sarbojanin\" OR \"Naskarpur Sarbajanin\" OR \"Naskarpur Sarbojonin\" OR \"Notunpara Sarbojanin\" OR \"Notunpara Sarbajanin\" OR \"Notunpara Sarbojonin\" OR \"Shyama Pally\" OR \"Shyama Palli\" OR \"23 Pally\" OR \"23 Palli\" OR \"Arjunpur Amra Sabai Club\" OR \"Arjunpur Amra Sabai\" OR \"Bakultala Sarbojanin\" OR \"Bakultala Sarbajanin\" OR \"Bakultala Sarbojonin\" OR \"Kamdahari Purbapara\" OR \"Lake Gardens People's Association\" OR \"Lake Gardens People's\" OR \"Lake Gardens Peoples\" OR \"Matri Mandir Sarbojanin\" OR \"Matri Mandir Durga\") (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো OR visited OR inaugurated OR উদ্বোধন) -is:retweet",
   "max_results": 25,
   "sort_order": "recency",
   "start_time": "2026-10-10T00:00:00Z",
@@ -24,5 +23,5 @@
   "user.fields": "username,name,profile_image_url",
   "post.fields": "created_at,text,note_tweet,attachments,public_metrics"
  },
- "at": "2026-10-20T08:47:37.485405+00:00"
+ "at": "2026-10-20T09:03:54.067504+00:00"
 }

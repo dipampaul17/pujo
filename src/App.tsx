@@ -58,6 +58,8 @@ export default function App() {
   // Detail sheet is a history entry too: system back closes it.
   // openedAt guards against the second half of a double tap landing on the fresh backdrop; dragged skips the exit animation (the finger already moved it off-screen).
   const sheetRef = useRef({ open: false, openedAt: 0, dragged: false })
+  // Same list inputs -> same elements, so React skips the list when only a sheet opens or closes (keeps gestures < 50 ms)
+  const listCache = useRef<{ k: unknown[]; el: React.ReactNode } | null>(null)
   const setDetail = (id: string | null) => {
     const r = sheetRef.current
     if (id) { if (!r.open) { r.open = true; r.openedAt = Date.now(); if (history.state?.v !== 'detail') history.pushState({ v: 'detail' }, '') } setDetailRaw(id) }
@@ -335,11 +337,15 @@ export default function App() {
                   <button key={c.key} aria-pressed={c.on} onClick={() => setFilters({ ...filters, [c.key]: !c.on })} className={`chip ${c.on ? 'chip-on' : ''}`}>
                     {c.key === 'open' ? <span className="w-2 h-2 rounded-full" style={{ background: c.on ? 'currentColor' : 'var(--sindoor)' }} /> : <PassGlyph />}{c.key === 'open' ? 'Open' : 'Pass'}<span className="mono-num chip-n">{c.n}</span></button>)}</div>}
 {!next && <button className="btn btn-quiet w-full mt-4" onClick={() => setFilters(NO_FILTERS)}>Clear filters</button>}
+                {(() => { const k = [zone, next?.id, next && JSON.stringify(travel(next)), rail.map(p => p.id + JSON.stringify((p as any).t)).join(), picked.join(), xLive, statusFile, istDate, Math.floor(now / 60000), me, view?.lat, view?.lng, view?.precise, routeUrl, sel.length]
+                  const c = listCache.current; if (c && c.k.length === k.length && c.k.every((v, i) => v === k[i])) return c.el
+                  const el = <>
                 {next && <div className="plist mt-3">{Row({ p: next, go: true })}</div>}
                 {rail.length > 0 && <ul className="rail plist" aria-label={`More in ${ZLABEL[zone]}`}>
                   {rail.map(p => Row({ p }))}
                   {routeUrl && sel.length === 0 && <li className="rail-item rail-end"><a href={routeUrl} target="_blank" rel="noopener" className="btn btn-walk flex-1">Walk all in Maps</a><button onClick={share} className="btn btn-quiet min-w-[88px]" aria-label="Share route">Share</button></li>}
-                </ul>}
+                </ul>}</>
+                  listCache.current = { k, el }; return el })()}
                 <div className="mt-8 border-t hair pt-4">
                                   <div className="flex gap-2 mt-3">{['Food', 'Toilets', 'Help'].map((t, i) => <button key={t} className="btn btn-quiet flex-1" aria-haspopup="dialog" onClick={() => setTab(i + 1)}>{t}</button>)}</div>
                   {live && <a href={live.link} target="_blank" rel="noopener" className="now-strip mt-3"><span className="now-dot" /><span className="flex-1 line-clamp-2">{live.title}</span></a>}
