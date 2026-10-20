@@ -1,5 +1,5 @@
 {
- "at": "2026-10-20T06:43:04.387164+00:00",
+ "at": "2026-10-20T06:50:15.796146+00:00",
  "queries": [
   {
    "ids": [
@@ -11,7 +11,7 @@
     "query": "(((inaugurated OR inaugurates OR inauguration OR udbodhon OR \"udbodhon holo\" OR উদ্বোধন OR উদ্বোধনে OR \"pandal open\" OR \"pandal opened\" OR \"opened to public\" OR \"open for visitors\" OR \"khule geche\") (Kolkata OR Calcutta OR কলকাতা OR \"durga puja\" OR \"durga pujo\" OR দুর্গাপুজো OR দুর্গাপূজা OR pandal OR pujo OR পুজো)) OR (\"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Mudiali Club\" OR \"Mudiali\" OR \"মুদিয়ালি\") OR from:_epinephrine_ OR from:abasu4ever OR from:an1sh123 OR from:goonereol OR from:indicontractor OR from:sudhanidhib OR ((from:cmowbgov OR from:suvenduwb OR from:arjunsinghwb OR from:bjp4bengal OR from:dilipghoshbjp OR from:drsukantabjp OR from:keyakahe OR from:me_locket OR from:rahulsinhabjp OR from:ravaroybjp OR from:samikbjp OR from:ssikdarindia OR from:swapan55 OR from:tusharkantibjp OR from:umeshrai_bjp OR from:upamanyu95) (inaugurated OR inaugurates OR inauguration OR উদ্বোধন OR উদ্বোধনে OR উদ্বোধনী OR pujo OR puja OR পুজো OR pandal))) -is:retweet",
     "max_results": 100,
     "sort_order": "recency",
-    "start_time": "2026-10-20T06:34:53Z",
+    "start_time": "2026-10-20T06:44:12Z",
     "expansions": "attachments.media_keys,author_id",
     "media.fields": "url,preview_image_url,type,width,height",
     "user.fields": "username,name,profile_image_url",
@@ -24,18 +24,19 @@
     "salkia-alapani",
     "ahiritola-sarbojanin",
     "behala-nutan-dal",
-    "kashi-bose-lane",
-    "keshtopur-prafulla-kanan",
-    "kumartuli-park",
-    "samaj-sebi-sangha",
-    "santoshpur-avenue-south",
-    "telengabagan",
-    "25-pally-khidirpur",
-    "barisha-club",
-    "bosepukur-sitala-mandir"
+    "chakraberia-sarbojanin",
+    "dum-dum-park-bharat-chakra",
+    "dum-dum-park-sarbajanin",
+    "dum-dum-park-tarun-sangha",
+    "new-town-sarbojanin",
+    "olabibitala-sarbojanin",
+    "telipukur-yuba-sangha",
+    "abasar-sarbojanin",
+    "behala-friends",
+    "dum-dum-park-tarun-dal"
    ],
    "args": {
-    "query": "(\"Pally Saradiya\" OR \"Pally Sarodiya\" OR \"Palli Saradiya\" OR \"Pally Sharadiya\" OR \"Pally Sharodia\" OR \"Palli Sharadiya\" OR \"পল্লী শারদীয়া\" OR \"Salkia Alapani\" OR \"Alapani Club\" OR \"সালকিয়া আলাপনী\" OR \"Ahiritola\" OR \"আহিরীটোলা\" OR \"Behala Nutan Dal\" OR \"Kashi Bose Lane\" OR \"Kashi Bose\" OR \"কাশী বোস লেন\" OR \"Prafulla Kanan\" OR \"Prafullakanan\" OR \"Keshtopur Prafulla Kanan\" OR \"Kumartuli Park\" OR \"কুমোরটুলি পার্ক\" OR \"Samaj Sebi Sangha\" OR \"Samaj Sebi\" OR \"সমাজসেবী\" OR \"Santoshpur Avenue South\" OR \"Avenue South Pally Mangal\" OR \"সন্তোষপুর অ্যাভিনিউ সাউথ\" OR \"Telengabagan\" OR \"Telenga Bagan\" OR \"তেলেঙ্গাবাগান\" OR \"২৫ পল্লী সার্বজনীন, খিদিরপুর\" OR \"খিদিরপুর ২৫ পল্লী\" OR \"Khidirpur 25 Pally\" OR \"Khidirpur 25 Palli\" OR \"Kidderpore 25 Pally\" OR \"25 Pally Khidirpur\" OR \"25 Pally Kidderpore\" OR \"Barisha Club\" OR \"বড়িশা ক্লাব\" OR \"Bosepukur Sitala Mandir\") (inaugurated OR inaugurates OR inauguration OR opened OR visited OR crowd OR queue OR darshan OR \"pandal hopping\" OR উদ্বোধন) -is:retweet",
+    "query": "(\"Pally Saradiya\" OR \"Pally Sarodiya\" OR \"Palli Saradiya\" OR \"Pally Sharadiya\" OR \"Pally Sharodia\" OR \"Palli Sharadiya\" OR \"পল্লী শারদীয়া\" OR \"Salkia Alapani\" OR \"Alapani Club\" OR \"সালকিয়া আলাপনী\" OR \"Ahiritola\" OR \"আহিরীটোলা\" OR \"Behala Nutan Dal\" OR \"Chakraberia Sarbojanin\" OR \"Chakraberia Sarbajanin\" OR \"Chakraberia Sarbojonin\" OR \"Dum Dum Park Bharat Chakra\" OR \"Dum Dum Park Sarbajanin\" OR \"Dum Dum Park Sarbojanin\" OR \"Dum Dum Park Tarun Sangha\" OR \"DD Park Tarun Sangha\" OR \"New Town Sarbojanin\" OR \"Newtown Sarbojanin\" OR \"Olabibitala\" OR \"Olaibibitola\" OR \"Olabibitola\" OR \"Telipukur Yuba Sangha\" OR \"Telipukur\" OR \"Nursery Bagan Adivasi\" OR \"Abasar Sarbojanin\" OR \"Abasar Sarbojonin\" OR \"Abosar Sarbojanin\" OR \"Behala Friends\" OR \"Behala Friends Club\" OR \"বেহালা ফ্রেন্ডস\" OR \"Dum Dum Park Tarun Dal\") (inaugurated OR inaugurates OR inauguration OR opened OR visited OR crowd OR queue OR darshan OR \"pandal hopping\" OR উদ্বোধন) -is:retweet",
     "max_results": 25,
     "sort_order": "recency",
     "start_time": "2026-10-10T00:00:00Z",
@@ -49,19 +50,20 @@
    "ids": [
     "chaltabagan-lohapatty",
     "ekdalia-evergreen",
-    "jodhpur-park-sarbojanin",
-    "kendua-shanti-sangha",
-    "santosh-mitra-square",
-    "singhi-park",
-    "sovabazar-rajbari",
-    "sree-bhumi-sporting-club",
-    "tridhara-sammilani",
-    "baghbazar-sarbojanin",
-    "beniatola-sarbojanin",
-    "bj-block"
+    "ak-block",
+    "netaji-colony-lowland",
+    "baguiati-rail-pukur",
+    "rupchand-mukherjee-lane",
+    "suruchi-sangha",
+    "tala-prattoy",
+    "adi-ballygunge-sarbojanin",
+    "allen-park-sarbojanin",
+    "babubagan",
+    "bakul-bagan",
+    "ballygunge-21-pally"
    ],
    "args": {
-    "query": "(\"Chaltabagan\" OR \"Chalta Bagan\" OR \"চালতাবাগান\" OR \"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Jodhpur Park Sarbojanin\" OR \"Jodhpur Park Durga\" OR \"যোধপুর পার্ক সার্বজনীন\" OR \"Kendua Shanti Sangha\" OR \"Kendua Shanti\" OR \"Santosh Mitra Square\" OR \"Santosh Mitra\" OR \"Lebutala Park\" OR \"সন্তোষ মিত্র স্কোয়ার\" OR \"Singhi Park\" OR \"সিংহী পার্ক\" OR \"Sovabazar Rajbari\" OR \"Shobhabazar Rajbari\" OR \"Sobhabazar Rajbari\" OR \"শোভাবাজার রাজবাড়ি\" OR \"Sreebhumi\" OR \"Sree Bhumi\" OR \"Sribhumi\" OR \"Shreebhumi\" OR \"Sree Bhoomi\" OR \"শ্রীভূমি\" OR \"Tridhara\" OR \"Tridhara Sammilani\" OR \"ত্রিধারা\" OR \"Baghbazar Sarbojanin\" OR \"Bagbazar Sarbojanin\" OR \"Baghbazar Durga\" OR \"Bagbazar Durga\" OR \"বাগবাজার সার্বজনীন\" OR \"Beniatola Sarbojanin\" OR \"Beniatola Sarbajanin\" OR \"Beniatola Sarbojonin\" OR \"BJ Block\" OR \"BJ Block Salt Lake\") (inaugurated OR inaugurates OR inauguration OR opened OR visited OR crowd OR queue OR darshan OR \"pandal hopping\" OR উদ্বোধন) -is:retweet",
+    "query": "(\"Chaltabagan\" OR \"Chalta Bagan\" OR \"চালতাবাগান\" OR \"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"AK Block Salt Lake\" OR \"AK Block, Salt Lake\" OR \"AK Block Durga\" OR \"এ কে ব্লক\" OR \"Netaji Colony Lowland\" OR \"Rail Pukur United\" OR \"Railpukur United\" OR \"রেলপুকুর\" OR \"Rupchand Mukherjee Lane\" OR \"Rupchand Mukherjee\" OR \"রূপচাঁদ মুখার্জি লেন\" OR \"Suruchi Sangha\" OR \"Suruchi Sangh\" OR \"সুরুচি সংঘ\" OR \"Tala Prattoy\" OR \"Tala Pratyay\" OR \"Tala Prattay\" OR \"টালা প্রত্যয়\" OR \"Tala Park Prattoy\" OR \"Tala Park Prattay\" OR \"Tala Park\" OR \"Adi Ballygunge Sarbojanin\" OR \"Adi Ballygunge\" OR \"আদি বালিগঞ্জ\" OR \"Allen Park Sarbojanin\" OR \"Allen Park\" OR \"অ্যালেন পার্ক\" OR \"Kolkata Sanatani Sangha\" OR \"Babubagan\" OR \"Babu Bagan\" OR \"বাবুবাগান\" OR \"Bakul Bagan\" OR \"Ballygunge 21 Pally\" OR \"21 Pally Ballygunge\" OR \"বালিগঞ্জ ২১ পল্লী\") (inaugurated OR inaugurates OR inauguration OR opened OR visited OR crowd OR queue OR darshan OR \"pandal hopping\" OR উদ্বোধন) -is:retweet",
     "max_results": 25,
     "sort_order": "recency",
     "start_time": "2026-10-10T00:00:00Z",
