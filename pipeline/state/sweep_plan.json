@@ -2,19 +2,22 @@
  "ids": [
   "pally-saradiya-khidirpur",
   "salkia-alapani",
-  "naktala-pally-unnayan-samity",
-  "naskarpur-sarbojanin",
+  "matri-mandir",
+  "mukundapur-sarbojanin",
+  "pallishree-sarbojanin",
+  "sahapur-sarbojanin",
+  "sanghati-puja-samiti",
+  "sinthee-sarbojanin",
+  "subodh-mallick-square",
+  "swadhin-sangha",
+  "taltala-sarbojanin",
+  "tarun-sathi",
+  "23-pally",
   "71-pally-baishakhi",
-  "76-pally",
-  "bansdroni-sarbojanin",
-  "lake-gardens-peoples",
-  "notunpara-sarbojanin",
-  "paddapukur-youth",
-  "patuli-sarbojanin",
-  "23-pally"
+  "76-pally"
  ],
  "args": {
-  "query": "(\"Pally Saradiya\" OR \"Pally Sarodiya\" OR \"Palli Saradiya\" OR \"Pally Sharadiya\" OR \"Pally Sharodia\" OR \"Palli Sharadiya\" OR \"পল্লী শারদীয়া\" OR \"Salkia Alapani\" OR \"Alapani Club\" OR \"সালকিয়া আলাপনী\" OR \"Naktala Pally Unnayan Samity\" OR \"Naktala Palli Unnayan Samity\" OR \"Naktala Pally Unnayan Samiti\" OR \"Naktala Palli Unnayan Samiti\" OR \"Naktala Pally Unnayan\" OR \"Naskarpur Sarbojanin\" OR \"Naskarpur Sarbajanin\" OR \"Naskarpur Sarbojonin\" OR \"71 Pally Baishakhi\" OR \"71 Palli Baishakhi\" OR \"76 Pally\" OR \"76 Palli\" OR \"Bansdroni Sarbojanin\" OR \"Bansdroni Sarbajanin\" OR \"Bansdroni Sarbojonin\" OR \"Lake Gardens People's Association\" OR \"Lake Gardens People's\" OR \"Lake Gardens Peoples\" OR \"Notunpara Sarbojanin\" OR \"Notunpara Sarbajanin\" OR \"Notunpara Sarbojonin\" OR \"Paddapukur Youth\" OR \"Patuli Sarbojanin\" OR \"Patuli Sarbajanin\" OR \"Patuli Sarbojonin\" OR \"23 Pally\" OR \"23 Palli\") (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো OR visited OR inaugurated OR উদ্বোধন) -is:retweet",
+  "query": "(\"Pally Saradiya\" OR \"Pally Sarodiya\" OR \"Palli Saradiya\" OR \"Pally Sharadiya\" OR \"Pally Sharodia\" OR \"Palli Sharadiya\" OR \"পল্লী শারদীয়া\" OR \"Salkia Alapani\" OR \"Alapani Club\" OR \"সালকিয়া আলাপনী\" OR \"Matri Mandir Sarbojanin\" OR \"Matri Mandir Durga\" OR \"Mukundapur Sarbojanin\" OR \"Mukundapur Sarbajanin\" OR \"Mukundapur Sarbojonin\" OR \"Pallishree Sarbojanin\" OR \"Pallishree Sarbajanin\" OR \"Pallishree Sarbojonin\" OR \"Sahapur Sarbojanin\" OR \"Sahapur Mukti Sangha\" OR \"সাহাপুর\" OR \"Sanghati Puja Samiti\" OR \"Sanghati Puja\" OR \"Sinthee Sarbojanin\" OR \"Sinthee Sarbajanin\" OR \"Sinthee Sarbojonin\" OR \"Subodh Mallick Square\" OR \"Swadhin Sangha\" OR \"Taltala Sarbojanin\" OR \"Taltala Sarbajanin\" OR \"Taltala Sarbojonin\" OR \"Tarun Sathi\" OR \"23 Pally\" OR \"23 Palli\" OR \"71 Pally Baishakhi\" OR \"71 Palli Baishakhi\" OR \"76 Pally\" OR \"76 Palli\") (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো OR visited OR inaugurated OR উদ্বোধন) -is:retweet",
   "max_results": 25,
   "sort_order": "recency",
   "start_time": "2026-10-10T00:00:00Z",
@@ -23,5 +26,5 @@
   "user.fields": "username,name,profile_image_url",
   "post.fields": "created_at,text,note_tweet,attachments,public_metrics"
  },
- "at": "2026-10-20T06:12:11.270002+00:00"
+ "at": "2026-10-20T06:29:02.258354+00:00"
 }

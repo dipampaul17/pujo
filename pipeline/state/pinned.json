@@ -2747,5 +2747,33 @@
     }
    ]
   }
+ ],
+ "chaltabagan-lohapatty": [
+  {
+   "id": "2112430444189016441",
+   "at": "2026-10-20T06:27:19.000Z",
+   "handle": "an1sh123",
+   "avatar": "https://pbs.twimg.com/profile_images/1910696171145768960/T3K0YnlK_normal.jpg",
+   "score": 10.0,
+   "text": "#137 Visited Chaltabagan Sarbojanin.",
+   "url": "https://x.com/an1sh123/status/2112430444189016441",
+   "photo": "https://pbs.twimg.com/media/HVDcRZ6bAAA9dS_.jpg?format=jpg&name=large",
+   "w": 3264,
+   "h": 2448,
+   "media": [
+    {
+     "src": "https://pbs.twimg.com/media/HVDcRZ6bAAA9dS_.jpg?format=jpg&name=large",
+     "w": 3264,
+     "h": 2448,
+     "video": false
+    },
+    {
+     "src": "https://pbs.twimg.com/media/HVDcSN0b0AAWPkU.jpg?format=jpg&name=large",
+     "w": 2448,
+     "h": 3264,
+     "video": false
+    }
+   ]
+  }
  ]
 }
