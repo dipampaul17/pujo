@@ -338,7 +338,7 @@ export default function App() {
                 {next && <div className="plist mt-3">{Row({ p: next, go: true })}</div>}
                 {rail.length > 0 && <ul className="rail plist" aria-label={`More in ${ZLABEL[zone]}`}>
                   {rail.map(p => Row({ p }))}
-                  {routeUrl && sel.length === 0 && <li className="rail-item rail-end"><a href={routeUrl} target="_blank" rel="noopener" className="btn btn-walk flex-1">Walk all in Maps</a><button onClick={share} className="btn btn-quiet" aria-label="Share route">Share</button></li>}
+                  {routeUrl && sel.length === 0 && <li className="rail-item rail-end"><a href={routeUrl} target="_blank" rel="noopener" className="btn btn-walk flex-1">Walk all in Maps</a><button onClick={share} className="btn btn-quiet min-w-[88px]" aria-label="Share route">Share</button></li>}
                 </ul>}
                 <div className="mt-8 border-t hair pt-4">
                                   <div className="flex gap-2 mt-3">{['Food', 'Toilets', 'Help'].map((t, i) => <button key={t} className="btn btn-quiet flex-1" aria-haspopup="dialog" onClick={() => setTab(i + 1)}>{t}</button>)}</div>

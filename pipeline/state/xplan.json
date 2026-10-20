@@ -1,5 +1,5 @@
 {
- "at": "2026-10-20T07:06:52.230310+00:00",
+ "at": "2026-10-20T07:18:45.996467+00:00",
  "queries": [
   {
    "ids": [
@@ -11,7 +11,7 @@
     "query": "(((inaugurated OR inaugurates OR inauguration OR udbodhon OR \"udbodhon holo\" OR উদ্বোধন OR উদ্বোধনে OR \"pandal open\" OR \"pandal opened\" OR \"opened to public\" OR \"open for visitors\" OR \"khule geche\") (Kolkata OR Calcutta OR কলকাতা OR \"durga puja\" OR \"durga pujo\" OR দুর্গাপুজো OR দুর্গাপূজা OR pandal OR pujo OR পুজো)) OR (\"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Mudiali Club\" OR \"Mudiali\" OR \"মুদিয়ালি\") OR from:_epinephrine_ OR from:abasu4ever OR from:an1sh123 OR from:goonereol OR from:indicontractor OR from:sudhanidhib OR ((from:cmowbgov OR from:suvenduwb OR from:arjunsinghwb OR from:bjp4bengal OR from:dilipghoshbjp OR from:drsukantabjp OR from:keyakahe OR from:me_locket OR from:rahulsinhabjp OR from:ravaroybjp OR from:samikbjp OR from:ssikdarindia OR from:swapan55 OR from:tusharkantibjp OR from:umeshrai_bjp OR from:upamanyu95) (inaugurated OR inaugurates OR inauguration OR উদ্বোধন OR উদ্বোধনে OR উদ্বোধনী OR pujo OR puja OR পুজো OR pandal))) -is:retweet",
     "max_results": 100,
     "sort_order": "recency",
-    "start_time": "2026-10-20T07:01:45Z",
+    "start_time": "2026-10-20T07:08:21Z",
     "expansions": "attachments.media_keys,author_id",
     "media.fields": "url,preview_image_url,type,width,height",
     "user.fields": "username,name,profile_image_url",
@@ -22,24 +22,20 @@
    "ids": [
     "chaltabagan-lohapatty",
     "ekdalia-evergreen",
-    "tollygunge-santi-pally",
-    "behala-arunoday-samiti",
-    "club-muktadal-bhowanipur",
-    "22-pally-northern-park",
-    "64-pally",
-    "ae-block",
-    "fd-block",
-    "garia-mitali",
-    "golmath-durga-puja",
-    "hazra-park-durgotsab",
-    "jodhpur-park-95-pally",
-    "maddox-square",
-    "muhammad-ali-park",
-    "naba-durga",
-    "simla-byayam-samity"
+    "baghbazar-sarbojanin",
+    "beniatola-sarbojanin",
+    "bj-block",
+    "jodhpur-park-sarbojanin",
+    "kendua-shanti-sangha",
+    "santosh-mitra-square",
+    "singhi-park",
+    "sovabazar-rajbari",
+    "sree-bhumi-sporting-club",
+    "tridhara-sammilani",
+    "adi-ballygunge-sarbojanin"
    ],
    "args": {
-    "query": "(\"Chaltabagan\" OR \"Chalta Bagan\" OR \"চালতাবাগান\" OR \"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Tollygunge Santi Pally\" OR \"Tollygunge Santi Palli\" OR \"Arunoday Samiti\" OR \"Arunodoy Samiti\" OR \"অরুণোদয় সমিতি\" OR \"Club Muktadal\" OR \"Mukto Dal\" OR \"Muktadal Sarbojanin\" OR \"মুক্তদল\" OR \"মুক্তদল সার্বজনীন\" OR \"22 Pally\" OR \"22 Palli\" OR \"Northern Park\" OR \"64 Pally\" OR \"64 Palli\" OR \"৬৪ পল্লী\" OR \"AE Block\" OR \"AE Block Salt Lake\" OR \"FD Block\" OR \"FD Block Salt Lake\" OR \"Garia Mitali\" OR \"Golmath Durga Puja\" OR \"Gol Math\" OR \"Golmath\" OR \"Hazra Park Durgotsab\" OR \"Hazra Park\" OR \"হাজরা পার্ক\" OR \"95 Pally\" OR \"95 Palli\" OR \"Jodhpur Park 95\" OR \"৯৫ পল্লী\" OR \"Maddox Square\" OR \"ম্যাডক্স স্কোয়ার\" OR \"Muhammad Ali Park\" OR \"Mohammad Ali Park\" OR \"Md Ali Park\" OR \"মহম্মদ আলি পার্ক\" OR \"Naba Durga\" OR \"Nabadurga\" OR \"Simla Byayam Samity\" OR \"Simla Byayam Samiti\" OR \"Simla Byayam\") (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো) has:images -is:retweet",
+    "query": "(\"Chaltabagan\" OR \"Chalta Bagan\" OR \"চালতাবাগান\" OR \"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Baghbazar Sarbojanin\" OR \"Bagbazar Sarbojanin\" OR \"Baghbazar Durga\" OR \"Bagbazar Durga\" OR \"বাগবাজার সার্বজনীন\" OR \"Beniatola Sarbojanin\" OR \"Beniatola Sarbajanin\" OR \"Beniatola Sarbojonin\" OR \"BJ Block\" OR \"BJ Block Salt Lake\" OR \"Jodhpur Park Sarbojanin\" OR \"Jodhpur Park Durga\" OR \"যোধপুর পার্ক সার্বজনীন\" OR \"Kendua Shanti Sangha\" OR \"Kendua Shanti\" OR \"Santosh Mitra Square\" OR \"Santosh Mitra\" OR \"Lebutala Park\" OR \"সন্তোষ মিত্র স্কোয়ার\" OR \"Singhi Park\" OR \"সিংহী পার্ক\" OR \"Sovabazar Rajbari\" OR \"Shobhabazar Rajbari\" OR \"Sobhabazar Rajbari\" OR \"শোভাবাজার রাজবাড়ি\" OR \"Sreebhumi\" OR \"Sree Bhumi\" OR \"Sribhumi\" OR \"Shreebhumi\" OR \"Sree Bhoomi\" OR \"শ্রীভূমি\" OR \"Tridhara\" OR \"Tridhara Sammilani\" OR \"ত্রিধারা\" OR \"Adi Ballygunge Sarbojanin\" OR \"Adi Ballygunge\" OR \"আদি বালিগঞ্জ\") (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো) has:images -is:retweet",
     "max_results": 25,
     "sort_order": "recency",
     "start_time": "2026-10-10T00:00:00Z",

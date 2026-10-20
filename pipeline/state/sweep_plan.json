@@ -2,23 +2,22 @@
  "ids": [
   "pally-saradiya-khidirpur",
   "salkia-alapani",
-  "bakultala-sarbojanin",
-  "behala-11-pally",
-  "behala-yma",
-  "bhola-maheshwartala",
-  "bhowanipore-durgotsab",
-  "bhowanipur-75-pally",
-  "dakshindari-youth",
-  "dakshinpara",
-  "gariahat-sarbojanin",
-  "golaghata-sammilani",
-  "harish-park",
-  "kamdahari-purbapara",
-  "poddar-nagar-sarbojanin",
-  "23-pally"
+  "agradut-udaya-sangha",
+  "bansdroni-sarbojanin",
+  "matri-mandir",
+  "mukundapur-sarbojanin",
+  "pallishree-sarbojanin",
+  "sahapur-sarbojanin",
+  "sanghati-puja-samiti",
+  "sinthee-sarbojanin",
+  "subodh-mallick-square",
+  "swadhin-sangha",
+  "taltala-sarbojanin",
+  "tarun-sathi",
+  "netaji-colony-lowland"
  ],
  "args": {
-  "query": "(\"Pally Saradiya\" OR \"Pally Sarodiya\" OR \"Palli Saradiya\" OR \"Pally Sharadiya\" OR \"Pally Sharodia\" OR \"Palli Sharadiya\" OR \"পল্লী শারদীয়া\" OR \"Salkia Alapani\" OR \"Alapani Club\" OR \"সালকিয়া আলাপনী\" OR \"Bakultala Sarbojanin\" OR \"Bakultala Sarbajanin\" OR \"Bakultala Sarbojonin\" OR \"Behala 11 Pally\" OR \"11 Pally Behala\" OR \"বেহালা ১১ পল্লী\" OR \"Behala YMA\" OR \"Bhola Maheshwartala Sarbojanin\" OR \"Bhola Maheshwartala Sarbajanin\" OR \"Bhola Maheshwartala Sarbojonin\" OR \"Bhola Maheshwartala\" OR \"Bhowanipore Durgotsab\" OR \"Bhowanipur 75 Pally\" OR \"Bhowanipur 75 Palli\" OR \"Dakshindari Youth\" OR \"Dakshinpara Durga\" OR \"Dakshinpara Sarbojanin\" OR \"Gariahat Sarbojanin\" OR \"Golaghata Sammilani\" OR \"Harish Park\" OR \"Kamdahari Purbapara\" OR \"Poddar Nagar Sarbojanin\" OR \"Poddar Nagar Sarbajanin\" OR \"Poddar Nagar Sarbojonin\" OR \"Poddar Nagar\" OR \"23 Pally\" OR \"23 Palli\") (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো OR visited OR inaugurated OR উদ্বোধন) -is:retweet",
+  "query": "(\"Pally Saradiya\" OR \"Pally Sarodiya\" OR \"Palli Saradiya\" OR \"Pally Sharadiya\" OR \"Pally Sharodia\" OR \"Palli Sharadiya\" OR \"পল্লী শারদীয়া\" OR \"Salkia Alapani\" OR \"Alapani Club\" OR \"সালকিয়া আলাপনী\" OR \"Agradut Udaya Sangha\" OR \"Agradut Udaya\" OR \"Bansdroni Sarbojanin\" OR \"Bansdroni Sarbajanin\" OR \"Bansdroni Sarbojonin\" OR \"Matri Mandir Sarbojanin\" OR \"Matri Mandir Durga\" OR \"Mukundapur Sarbojanin\" OR \"Mukundapur Sarbajanin\" OR \"Mukundapur Sarbojonin\" OR \"Pallishree Sarbojanin\" OR \"Pallishree Sarbajanin\" OR \"Pallishree Sarbojonin\" OR \"Sahapur Sarbojanin\" OR \"Sahapur Mukti Sangha\" OR \"সাহাপুর\" OR \"Sanghati Puja Samiti\" OR \"Sanghati Puja\" OR \"Sinthee Sarbojanin\" OR \"Sinthee Sarbajanin\" OR \"Sinthee Sarbojonin\" OR \"Subodh Mallick Square\" OR \"Swadhin Sangha\" OR \"Taltala Sarbojanin\" OR \"Taltala Sarbajanin\" OR \"Taltala Sarbojonin\" OR \"Tarun Sathi\" OR \"Netaji Colony Lowland\") (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো OR visited OR inaugurated OR উদ্বোধন) -is:retweet",
   "max_results": 25,
   "sort_order": "recency",
   "start_time": "2026-10-10T00:00:00Z",
@@ -27,5 +26,5 @@
   "user.fields": "username,name,profile_image_url",
   "post.fields": "created_at,text,note_tweet,attachments,public_metrics"
  },
- "at": "2026-10-20T07:03:00.043719+00:00"
+ "at": "2026-10-20T07:16:42.181143+00:00"
 }

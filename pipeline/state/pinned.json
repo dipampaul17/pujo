@@ -2775,5 +2775,45 @@
     }
    ]
   }
+ ],
+ "baghbazar-sarbojanin": [
+  {
+   "id": "2111889602676248993",
+   "at": "2026-10-18T18:38:12.000Z",
+   "handle": "abasu4ever",
+   "avatar": "https://pbs.twimg.com/profile_images/1988905391904931840/oFFI4KW3_normal.jpg",
+   "score": 6.62,
+   "text": "📍 Bagbazar Sarbojanin Durgotsab &amp; Exhibition. 🎨 Jitendra Nath Pal &amp; Sons. 🌟 No themes at all for the last 100+ years. It is strictly a 'sabeki' (traditional) Puja. 👉 Our very own 'Queen of Kolkata' is back, amidst all the uncertainties! 📌 #DurgaPuja2026",
+   "url": "https://x.com/abasu4ever/status/2111889602676248993",
+   "photo": "https://pbs.twimg.com/media/HU7wQ4taYAAW3X3.jpg?format=jpg&name=large",
+   "w": 2284,
+   "h": 3704,
+   "media": [
+    {
+     "src": "https://pbs.twimg.com/media/HU7wQ4taYAAW3X3.jpg?format=jpg&name=large",
+     "w": 2284,
+     "h": 3704,
+     "video": false
+    },
+    {
+     "src": "https://pbs.twimg.com/media/HU7wUtPaUAAAORW.jpg?format=jpg&name=large",
+     "w": 4036,
+     "h": 2270,
+     "video": false
+    },
+    {
+     "src": "https://pbs.twimg.com/media/HU7wWjVaQAAU_eY.jpg?format=jpg&name=large",
+     "w": 3932,
+     "h": 2210,
+     "video": false
+    },
+    {
+     "src": "https://pbs.twimg.com/media/HU7wYl2bAAAUL8E.jpg?format=jpg&name=large",
+     "w": 2274,
+     "h": 3882,
+     "video": false
+    }
+   ]
+  }
  ]
 }
