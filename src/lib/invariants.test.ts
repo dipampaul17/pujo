@@ -10,7 +10,7 @@ import { haversine } from './geo'
 const ps = (raw as any).pandals.filter((p: any) => p.lat != null && p.precision !== 'none') as Pandal[]
 const status: StatusFile = JSON.parse(fs.readFileSync('public/live/status.json', 'utf8'))
 const roads = attachPins(JSON.parse(fs.readFileSync('public/data/roads.json', 'utf8')) as Roads)
-const NOW = Date.parse('2026-10-14T12:00:00+05:30'), DAY = '2026-10-14'
+const NOW = Date.parse('2026-10-20T12:00:00+05:30'), DAY = '2026-10-20'
 const st = (id: string) => statusOf(id, DAY, status, NOW)
 // deterministic pseudo-random South/Central/North fixes
 let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647
