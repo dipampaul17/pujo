@@ -1,5 +1,5 @@
 {
- "at": "2026-10-20T07:36:48.765724+00:00",
+ "at": "2026-10-20T07:44:30.742272+00:00",
  "queries": [
   {
    "ids": [
@@ -11,7 +11,7 @@
     "query": "(((inaugurated OR inaugurates OR inauguration OR udbodhon OR \"udbodhon holo\" OR উদ্বোধন OR উদ্বোধনে OR \"pandal open\" OR \"pandal opened\" OR \"opened to public\" OR \"open for visitors\" OR \"khule geche\") (Kolkata OR Calcutta OR কলকাতা OR \"durga puja\" OR \"durga pujo\" OR দুর্গাপুজো OR দুর্গাপূজা OR pandal OR pujo OR পুজো)) OR (\"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Mudiali Club\" OR \"Mudiali\" OR \"মুদিয়ালি\") OR from:_epinephrine_ OR from:abasu4ever OR from:an1sh123 OR from:goonereol OR from:indicontractor OR from:sudhanidhib OR ((from:cmowbgov OR from:suvenduwb OR from:arjunsinghwb OR from:bjp4bengal OR from:dilipghoshbjp OR from:drsukantabjp OR from:keyakahe OR from:me_locket OR from:rahulsinhabjp OR from:ravaroybjp OR from:samikbjp OR from:ssikdarindia OR from:swapan55 OR from:tusharkantibjp OR from:umeshrai_bjp OR from:upamanyu95) (inaugurated OR inaugurates OR inauguration OR উদ্বোধন OR উদ্বোধনে OR উদ্বোধনী OR pujo OR puja OR পুজো OR pandal))) -is:retweet",
     "max_results": 100,
     "sort_order": "recency",
-    "start_time": "2026-10-20T07:29:22Z",
+    "start_time": "2026-10-20T07:39:27Z",
     "expansions": "attachments.media_keys,author_id",
     "media.fields": "url,preview_image_url,type,width,height",
     "user.fields": "username,name,profile_image_url",
@@ -20,27 +20,22 @@
   },
   {
    "ids": [
-    "chaltabagan-lohapatty",
-    "ekdalia-evergreen",
-    "patuli-sarbojanin",
-    "bhola-maheshwartala",
-    "bhowanipore-durgotsab",
-    "bhowanipur-75-pally",
-    "dakshindari-youth",
-    "dakshinpara",
-    "gariahat-sarbojanin",
-    "golaghata-sammilani",
-    "harish-park",
-    "kamdahari-purbapara",
-    "poddar-nagar-sarbojanin",
-    "barisha-sarbojanin",
-    "chetla-agrani",
-    "chorebagan-sarbojanin",
-    "college-square",
-    "deshapriya-park"
+    "ahiritola-sarbojanin",
+    "behala-nutan-dal",
+    "pally-saradiya-khidirpur",
+    "salkia-alapani",
+    "telipukur-yuba-sangha",
+    "ahiritola-yubakbrinda",
+    "ballygunge-cultural",
+    "bantra-mohila-sangha",
+    "haridevpur-41-pally",
+    "hatibagan-nabinpally",
+    "hatibagan-sarbojanin",
+    "hindusthan-club",
+    "hindusthan-park"
    ],
    "args": {
-    "query": "(\"Chaltabagan\" OR \"Chalta Bagan\" OR \"চালতাবাগান\" OR \"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Patuli Uponagari\" OR \"Patuli Upanagari\" OR \"পাটুলি উপনগরী\" OR \"Bhola Maheshwartala Sarbojanin\" OR \"Bhola Maheshwartala Sarbajanin\" OR \"Bhola Maheshwartala Sarbojonin\" OR \"Bhola Maheshwartala\" OR \"Bhowanipore Durgotsab\" OR \"Bhowanipur 75 Pally\" OR \"Bhowanipur 75 Palli\" OR \"Dakshindari Youth\" OR \"Dakshinpara Durga\" OR \"Dakshinpara Sarbojanin\" OR \"Gariahat Sarbojanin\" OR \"Golaghata Sammilani\" OR \"Harish Park\" OR \"Kamdahari Purbapara\" OR \"Poddar Nagar Sarbojanin\" OR \"Poddar Nagar Sarbajanin\" OR \"Poddar Nagar Sarbojonin\" OR \"Poddar Nagar\" OR \"Barisha Sarbojanin\" OR \"Barisha Sarbojonin\" OR \"বড়িশা সার্বজনীন\" OR \"Chetla Agrani\" OR \"Chetla Agrani Club\" OR \"চেতলা অগ্রণী\" OR \"Chorebagan\" OR \"Chore Bagan\" OR \"চোরবাগান\" OR \"College Square\" OR \"কলেজ স্কোয়ার\" OR \"Deshapriya Park\" OR \"Deshapriya\" OR \"দেশপ্রিয় পার্ক\") (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো) has:images -is:retweet",
+    "query": "(\"Ahiritola\" OR \"আহিরীটোলা\" OR \"Behala Nutan Dal\" OR \"Pally Saradiya\" OR \"Pally Sarodiya\" OR \"Palli Saradiya\" OR \"Pally Sharadiya\" OR \"Pally Sharodia\" OR \"Palli Sharadiya\" OR \"পল্লী শারদীয়া\" OR \"Salkia Alapani\" OR \"Alapani Club\" OR \"সালকিয়া আলাপনী\" OR \"Telipukur Yuba Sangha\" OR \"Telipukur\" OR \"Nursery Bagan Adivasi\" OR \"Ahiritola Yubakbrinda\" OR \"Ahiritola Yuvak Brinda\" OR \"Ahiritola Yubak Brinda\" OR \"Ahiritola Jubak Brinda\" OR \"আহিরীটোলা যুবকবৃন্দ\" OR \"Ballygunge Cultural\" OR \"Bantra Mohila Sangha\" OR \"Bantra Mohila\" OR \"Haridevpur 41 Pally\" OR \"Haridevpur 41 Palli\" OR \"Hatibagan Nabinpally\" OR \"Nabinpally\" OR \"নবীনপল্লী\" OR \"Hatibagan Sarbojanin\" OR \"হাতিবাগান সার্বজনীন\" OR \"Hindusthan Club\" OR \"Hindustan Club\" OR \"Hindusthan Park\" OR \"Hindustan Park\") (inaugurated OR inaugurates OR inauguration OR opened OR visited OR crowd OR queue OR darshan OR \"pandal hopping\" OR উদ্বোধন) -is:retweet",
     "max_results": 25,
     "sort_order": "recency",
     "start_time": "2026-10-10T00:00:00Z",
