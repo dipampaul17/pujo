@@ -1,34 +1,40 @@
 {
- "updated": "2026-10-20T18:42:05Z",
+ "updated": "2026-10-20T18:48:05Z",
  "puja": {
   "start": "2026-10-16",
   "end": "2026-10-21",
   "public_from": "2026-10-15T18:00:00+05:30"
  },
  "open": {
-  "salkia-alapani": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "new-sporting-club": {
-   "since": "2026-10-15",
-   "evidence": "https://x.com/an1sh123/status/2110798359850279219",
-   "note": "Visited 15 Oct with own photos: @an1sh123 \"#28 Haridevpur New sporting club. Their theme is শৈশব. Decent pandal.\"",
+  "tala-prattoy": {
+   "since": "2026-10-10",
+   "evidence": "https://x.com/TheWallTweets/status/2109624632395595878",
+   "note": "Tala Prattoy Durga Puja 2026 Opening: টালা প্রত্যয়ের পুজো উদ্বোধন করলেন মুখ্যমন্ত্রী #talaprattoy #durgapuja2026 #cmsuvenduadhikari #shorts",
    "kind": "visitors",
-   "corroborated": false,
+   "corroborated": true,
    "sources": [
     {
-     "url": "https://x.com/an1sh123/status/2110798359850279219",
-     "at": "2026-10-15",
-     "text": "Visited 15 Oct with own photos: @an1sh123 \"#28 Haridevpur New sporting club. Their theme is শৈশব. Decent pandal.\"",
+     "url": "https://x.com/TheWallTweets/status/2109624632395595878",
+     "at": "2026-10-12",
+     "text": "Tala Prattoy Durga Puja 2026 Opening: টালা প্রত্যয়ের পুজো উদ্বোধন করলেন মুখ্যমন্ত্রী #talaprattoy #durgapuja2026 #cmsuvenduadhikari #shorts",
+     "by": "thewalltweets",
+     "tier": "outlet",
+     "kind": "inaugurated"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2108960710332191159",
+     "at": "2026-10-10",
+     "text": "Visited 10 Oct with photos (@abasu4ever: 'First Durga Puja of the year, and it was FANTASTIC'); CM inaugurated 12 Oct (The Wall)",
+     "tier": "hand",
+     "kind": "visitors",
+     "by": "abasu4ever"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2108960827734892841",
+     "at": "2026-10-10T16:40:18.000Z",
+     "text": "📍 Tala Prattoy. 🎨 Susanta Shibani Paul. 🐐 👉 As usual, Susanta da has taken us to the mystical world of his. Absolutely mesmerizing. I loved it. Tala Prattoy is well &amp; truly back! 📌 #DurgaPuja2026 🧵 2/2",
      "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "an1sh123",
+     "by": "abasu4ever",
      "tier": "hand",
      "kind": "visitors"
     }
@@ -59,7 +65,7 @@
     }
    ]
   },
-  "gariahat-sarbojanin": {
+  "sahapur-sarbojanin": {
    "since": "2026-10-20",
    "evidence": "",
    "note": "DP ground call, Navami 20 Oct",
@@ -67,23 +73,298 @@
    "by": "override",
    "sources": []
   },
-  "ahiritola-sarbojanin": {
-   "since": "2026-10-17",
-   "evidence": "https://x.com/SudhanidhiB/status/2111427846212342175",
-   "note": "#29 Visited Ahiritola Sarbojonin, with photo — trusted visitor @SudhanidhiB, 17 Oct",
+  "ajeya-sanghati": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/milindmghosh/status/2110828411073814812",
+   "note": "\"5. Ajeya Sanghati\" photo post in pandal-visit thread — @milindmghosh, 15 Oct",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/milindmghosh/status/2110828411073814812",
+     "at": "2026-10-15",
+     "text": "\"5. Ajeya Sanghati\" photo post in pandal-visit thread — @milindmghosh, 15 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "milindmghosh",
+     "tier": "hand",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2112244700786905348",
+     "at": "2026-10-19",
+     "text": "Visited (@abasu4ever, with photos): 📍 Haridevpur Ajeya Sanghati. 🎨 Thinkers &amp; Arighna Saha. 🌟 N/A. 👉 The Maa Durga idol is absolutely stunning",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/SudhanidhiB/status/2112530271786684906",
+     "at": "2026-10-20T13:04:00.000Z",
+     "text": "#44 Visited Ajeya Sanghati",
+     "by": "sudhanidhib",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "new-town-sarbojanin": {
+   "since": "2026-10-11",
+   "evidence": "https://x.com/abasu4ever/status/2109676575524598226",
+   "note": "📍 New Town Sarbojanin. 🎨 Rintu Das, RSS &amp; BJP. 🌟 The theme celebrates the significance of 'lotus' in Hinduism. 👉 With the regime change, New Town Sarbojanin are doing traditional Durga Puja for th",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2109676575524598226",
+     "at": "2026-10-12T16:04:26.000Z",
+     "text": "📍 New Town Sarbojanin. 🎨 Rintu Das, RSS &amp; BJP. 🌟 The theme celebrates the significance of 'lotus' in Hinduism. 👉 With the regime change, New Town Sarbojanin are doing traditional Durga Puja for the first time. I really loved the pandal, but not the idol. 📌 #DurgaPuja2026",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/DrSukantaBJP/status/2109328252062113979",
+     "at": "2026-10-11",
+     "text": "Attended the auspicious inauguration ceremony of the Durga Puja organised by New Town Sarbojanin Durgotsav Samiti. Jai Maa Durga! 🙏",
+     "by": "drsukantabjp",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "bosepukur-sitala-mandir": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/rathindraOFC/status/2110020899969630508",
+   "note": "Speaker Rathindra Bose's own dated X post (13 Oct, with photos): inaugurated Bosepukur Sitala Mandir Durgotsav in Kasba today; corroboration The Wall",
+   "kind": "inaugurated",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/TheWallTweets/status/2110006276986130827",
+     "at": "2026-10-13",
+     "text": "বোসপুকুর শীতলা মন্দিরের পুজো উদ্বোধনে স্পিকার রথীন্দ্র বোস (The Wall)",
+     "outlet": true,
+     "hand": true,
+     "by": "thewalltweets",
+     "tier": "outlet",
+     "kind": "inaugurated"
+    },
+    {
+     "url": "https://x.com/rathindraOFC/status/2110020899969630508",
+     "at": "2026-10-13",
+     "text": "Speaker Rathindra Bose's own dated X post (13 Oct, with photos): inaugurated Bosepukur Sitala Mandir Durgotsav in Kasba today; corroboration The Wall",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "inaugurated",
+     "by": "rathindraofc",
+     "tier": "hand",
+     "kind": "inaugurated"
+    }
+   ]
+  },
+  "kumartuli-park": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/SuvamDu76552490/status/2112225699780350376",
+   "note": "Seen 19 Oct (Ashtami): visitor reports a long queue in the lane at Kumartuli Park",
    "kind": "visitors",
    "corroborated": false,
    "sources": [
     {
-     "url": "https://x.com/SudhanidhiB/status/2111427846212342175",
+     "url": "https://x.com/SuvamDu76552490/status/2112225699780350376",
+     "at": "2026-10-19",
+     "text": "Seen 19 Oct (Ashtami): visitor reports a long queue in the lane at Kumartuli Park",
+     "hand": true,
+     "primary": true,
+     "by": "suvamdu76552490",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "subodh-mallick-square": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "forward-club": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/NewsStar69313/status/2111338785564979685",
+   "note": "Durga Puja 2026 : Chief Minister Dr. Manik Saha Inaugurates Durga Puja Pandal Organized By Forward Club. #Durga #Puja #Chief #Minister #Dr #",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/NewsStar69313/status/2111338785564979685",
      "at": "2026-10-17",
-     "text": "#29 Visited Ahiritola Sarbojonin, with photo — trusted visitor @SudhanidhiB, 17 Oct",
+     "text": "Durga Puja 2026 : Chief Minister Dr. Manik Saha Inaugurates Durga Puja Pandal Organized By Forward Club. #Durga #Puja #Chief #Minister #Dr #",
+     "by": "newsstar69313",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "garia-mitali": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/IamRiteshTiwari/status/2110096538911547668",
+   "note": "MLA Ritesh Tiwari's own dated X post (14 Oct 01:23 IST, with video): attended the formal inauguration of Garia Mitali Sangha Nabadurga today (13 Oct)",
+   "kind": "inaugurated",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/IamRiteshTiwari/status/2110096538911547668",
+     "at": "2026-10-13",
+     "text": "MLA Ritesh Tiwari's own dated X post (14 Oct 01:23 IST, with video): attended the formal inauguration of Garia Mitali Sangha Nabadurga today (13 Oct)",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "inaugurated",
+     "by": "iamriteshtiwari",
+     "tier": "hand",
+     "kind": "inaugurated"
+    }
+   ]
+  },
+  "selimpur-pally": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/titan_rc13/status/2111911153102406088",
+   "note": "\"Durga Puja Diary 2026, Selimpur Pally Association\" own photos — @titan_rc13, 18 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/titan_rc13/status/2111911153102406088",
+     "at": "2026-10-18",
+     "text": "\"Durga Puja Diary 2026, Selimpur Pally Association\" own photos — @titan_rc13, 18 Oct",
      "hand": true,
      "primary": true,
      "kind_hint": "visitors",
-     "by": "sudhanidhib",
+     "by": "titan_rc13",
      "tier": "hand",
      "kind": "visitors"
+    }
+   ]
+  },
+  "76-pally": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "sovabazar-rajbari": {
+   "since": "2026-10-16",
+   "evidence": "https://x.com/smitabarooah/status/2111163028838261147",
+   "note": "\"Today we went to Shobhabazar Rajbari\" own photos — @smitabarooah, 16 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/smitabarooah/status/2111163028838261147",
+     "at": "2026-10-16",
+     "text": "\"Today we went to Shobhabazar Rajbari\" own photos — @smitabarooah, 16 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "smitabarooah",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "hazra-park-durgotsab": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/SudhanidhiB/status/2111838956790906923",
+   "note": "#33 Visited the Hazra Park Durgatsav— This is @SobhandebChatt1's Puja, theme showcases Bengal's own folk arts",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/SudhanidhiB/status/2111838956790906923",
+     "at": "2026-10-18",
+     "text": "#33 Visited the Hazra Park Durgatsav— This is @SobhandebChatt1's Puja, theme showcases Bengal's own folk arts",
+     "by": "sudhanidhib",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "beleghata-33-pally": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/abasu4ever/status/2111410946564645371",
+   "note": "📍 Beliaghata 33 Pally review with photos — trusted visitor @abasu4ever, 17 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2111410946564645371",
+     "at": "2026-10-17",
+     "text": "📍 Beliaghata 33 Pally review with photos — trusted visitor @abasu4ever, 17 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "abasu4ever",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "behala-11-pally": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "santoshpur-trikon-park": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/SeemaSengupta5/status/2111141174518092220",
+   "note": "Photo post describing the forest-temple pandal and idol — @SeemaSengupta5, 16 Oct; also @titan_rc13 photo 17 Oct",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2110650749772542234",
+     "at": "2026-10-15",
+     "text": "📍 Santoshpur Trikon Park. 🎨 Dibyendu Dey. 🌟 N/A. 👉 The pandal is made using wood &amp; ply boards only. Looks pretty. 📌 #DurgaPuja2026 🧵 1/2",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/SeemaSengupta5/status/2111141174518092220",
+     "at": "2026-10-16",
+     "text": "Photo post describing the forest-temple pandal and idol — @SeemaSengupta5, 16 Oct; also @titan_rc13 photo 17 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "seemasengupta5",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "rupchand-mukherjee-lane": {
+   "since": "2026-10-16",
+   "evidence": "https://x.com/t2telegraph/status/2111129593776320722",
+   "note": "On-site video 16 Oct (t2 Telegraph): Tota Roy Choudhury playing the dhak at Rupchand Mukherjee Lane Sarbojanin Durgotsav",
+   "kind": "inaugurated",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/t2telegraph/status/2111129593776320722",
+     "at": "2026-10-16",
+     "text": "On-site video 16 Oct (t2 Telegraph): Tota Roy Choudhury playing the dhak at Rupchand Mukherjee Lane Sarbojanin Durgotsav",
+     "hand": true,
+     "primary": true,
+     "by": "t2telegraph",
+     "tier": "hand",
+     "kind": "inaugurated"
     }
    ]
   },
@@ -115,17 +396,331 @@
     }
    ]
   },
-  "chakraberia-sarbojanin": {
-   "since": "2026-10-16",
-   "evidence": "https://x.com/abasu4ever/status/2111047899362836971",
-   "note": "📍 Chakraberia Sarbojonin review with photos — trusted visitor @abasu4ever, 16 Oct",
+  "singhi-park": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/_Epinephrine_/status/2110072254080127323",
+   "note": "📍Singhi Park — first-hand visitor photos (3) in @_Epinephrine_'s pandal-hopping thread, 13 Oct 23:46 IST",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/_Epinephrine_/status/2110072254080127323",
+     "at": "2026-10-13",
+     "text": "📍Singhi Park — first-hand visitor photos (3) in @_Epinephrine_'s pandal-hopping thread, 13 Oct 23:46 IST",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "_epinephrine_",
+     "tier": "hand",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/an1sh123/status/2111889089515684030",
+     "at": "2026-10-18T18:36:10.000Z",
+     "text": "#90 Visited Singhi Park. Great as always. Great pandal and their traditional pratima style. They maintain their tradition and royalty.",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "barisha-sarbojanin": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/an1sh123/status/2112239500701450465",
+   "note": "#114 Visited Barisha Sarbojanin. This is neighbourhoof of Saborno Roy Choudhury. He was the the jamindar of entire modern day Kolkata and ne",
    "kind": "visitors",
    "corroborated": false,
    "sources": [
     {
-     "url": "https://x.com/abasu4ever/status/2111047899362836971",
+     "url": "https://x.com/an1sh123/status/2112239500701450465",
+     "at": "2026-10-19",
+     "text": "#114 Visited Barisha Sarbojanin. This is neighbourhoof of Saborno Roy Choudhury. He was the the jamindar of entire modern day Kolkata and ne",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "baguiati-rail-pukur": {
+   "since": "2026-10-14",
+   "evidence": "https://x.com/NewsStar69313/status/2110413557846454779",
+   "note": "Baguiati Rail Pukur United Club inaugurated its 73rd Durga Puja with the unveiling of its distinctive pandal themed ‘Collage’, conceptualise",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/NewsStar69313/status/2110413557846454779",
+     "at": "2026-10-14",
+     "text": "Baguiati Rail Pukur United Club inaugurated its 73rd Durga Puja with the unveiling of its distinctive pandal themed ‘Collage’, conceptualise",
+     "by": "newsstar69313",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "fd-block": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/RakheeVaze/status/2112196899604422775",
+   "note": "\"Gond Art-inspired... masterpiece from Salt Lake FD Block\" own photos and videos — @RakheeVaze, 19 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/RakheeVaze/status/2112196899604422775",
+     "at": "2026-10-19",
+     "text": "\"Gond Art-inspired... masterpiece from Salt Lake FD Block\" own photos and videos — @RakheeVaze, 19 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "rakheevaze",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "dum-dum-park-bharat-chakra": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/goonereol/status/2110045552402677947",
+   "note": "Dum Dum Park Bharat Chakra 'Bonger Rath Kotha' — first-hand visitor photos (4) of the lit pandal and pratima (@goonereol pandal-hopping thread, 13 Oct evening)",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/goonereol/status/2110045552402677947",
+     "at": "2026-10-13",
+     "text": "Dum Dum Park Bharat Chakra 'Bonger Rath Kotha' — first-hand visitor photos (4) of the lit pandal and pratima (@goonereol pandal-hopping thread, 13 Oct evening)",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "goonereol",
+     "tier": "hand",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2110650926415667478",
+     "at": "2026-10-15",
+     "text": "Visited (@abasu4ever, with photos): 📍 Dum Dum Park Bharat Chakra. 🎨 Manas Das &amp; Co. 🌟 The theme is \"The Tale of Bengal's Chariots.\" It depicts",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "naskarpur-sarbojanin": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "nalin-sarkar-street": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/abasu4ever/status/2109541667170848837",
+   "note": "📍 Nalin Sarkar Street Sarbojanin. 🎨 Sanatan Dinda. 👉 The pandal was fantastic too. But, oh boy, I bet that it's gonna be as iconic as 2011 &",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2109541667170848837",
+     "at": "2026-10-12",
+     "text": "📍 Nalin Sarkar Street Sarbojanin. 🎨 Sanatan Dinda. 👉 The pandal was fantastic too. But, oh boy, I bet that it's gonna be as iconic as 2011 &",
+     "tier": "hand",
+     "kind": "visitors",
+     "by": "abasu4ever"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2109541619070599222",
+     "at": "2026-10-12T07:08:10.000Z",
+     "text": "📍 Nalin Sarkar Street Sarbojanin. 🎨 Sanatan Dinda. 🌟 The theme depicts the significance of water bodies in our life, and our deliberate attempt to not recognise its significance — leading to more water pollution. 👉 THE MAA DURGA IDOL IS STUNNING! 📌 #DurgaPuja2026 🧵 1/2",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/an1sh123/status/2112259925984543076",
+     "at": "2026-10-19T19:09:44.000Z",
+     "text": "#121 Visited Nalin Sarkar Street. Good pandal and pratima.",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "kapalitola-sarbajanin": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "sanghati-puja-samiti": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "bhowanipore-durgotsab": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "jodhpur-park-sarbojanin": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/titan_rc13/status/2111910531363995715",
+   "note": "\"Durga Puja Diary 2026, Jodhpur Park\" own photos — @titan_rc13, 18 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/titan_rc13/status/2111910531363995715",
+     "at": "2026-10-18",
+     "text": "\"Durga Puja Diary 2026, Jodhpur Park\" own photos — @titan_rc13, 18 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "titan_rc13",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "lake-gardens-peoples": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "samaj-sebi-sangha": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/an1sh123/status/2111876272641179854",
+   "note": "#83 Visited Ballygunge Samaj sebi. They have also paid tribute to Mahanayak. Many pujos have done the same but Samaj sebi is the best of the lot by far.",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/an1sh123/status/2111876272641179854",
+     "at": "2026-10-18T17:45:14.000Z",
+     "text": "#83 Visited Ballygunge Samaj sebi. They have also paid tribute to Mahanayak. Many pujos have done the same but Samaj sebi is the best of the lot by far.",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/SudhanidhiB/status/2110081026114584782",
+     "at": "2026-10-13",
+     "text": "#12 Visited Samaj Sebi Sangha. Theme on 100 years of Mahanayak Uttam Kumar.",
+     "by": "sudhanidhib",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "chorebagan-sarbojanin": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/ANI/status/2109761171071152276",
+   "note": "CM inaugurated 12 Oct (ANI); organisers: public entry from Chaturthi 6 pm",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/ANI/status/2109761171071152276",
+     "at": "2026-10-12",
+     "text": "CM inaugurated 12 Oct (ANI); organisers: public entry from Chaturthi 6 pm",
+     "tier": "hand",
+     "kind": "inaugurated",
+     "by": "ani"
+    },
+    {
+     "url": "https://x.com/uniindianews/status/2112524269158826186",
+     "at": "2026-10-20T12:40:09.000Z",
+     "text": "Watch | West Bengal Chief Minister Suvendu Adhikari shared a video on social media and wrote, \"Nineteen of my fellow citizens lost their lives in a tragic accident at Chorebagan in Kolkata. This irreparable loss is extremely painful. Today, I personally visited the residences of",
+     "by": "uniindianews",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "olabibitala-sarbojanin": {
+   "since": "2026-10-16",
+   "evidence": "https://x.com/KumarVidhyasag2/status/2111059390254170224",
+   "note": "\"Shibpur Olabibitala, Howrah\" own photos — @KumarVidhyasag2, 16 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/KumarVidhyasag2/status/2111059390254170224",
      "at": "2026-10-16",
-     "text": "📍 Chakraberia Sarbojonin review with photos — trusted visitor @abasu4ever, 16 Oct",
+     "text": "\"Shibpur Olabibitala, Howrah\" own photos — @KumarVidhyasag2, 16 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "kumarvidhyasag2",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "hatibagan-nabinpally": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/Umasankar2019/status/2111564063922913482",
+   "note": "Dear @SuvenduWB Ji, I have visited today Hatibagan Nabinpally pandel on 17th oct 2026, I had VIP pass but they are entering all public in VI",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/Umasankar2019/status/2111564063922913482",
+     "at": "2026-10-17",
+     "text": "Dear @SuvenduWB Ji, I have visited today Hatibagan Nabinpally pandel on 17th oct 2026, I had VIP pass but they are entering all public in VI",
+     "by": "umasankar2019",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "sinthee-sarbojanin": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "arjunpur-amra-sabai-club": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "golaghata-sammilani": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "beniatola-sarbojanin": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/abasu4ever/status/2111883796677304321",
+   "note": "First-hand 📍 visitor post with photos 18 Oct (@abasu4ever): Shovabazar Beniatola Sarbojanin, \"Looks nice\"",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2111883796677304321",
+     "at": "2026-10-18",
+     "text": "First-hand 📍 visitor post with photos 18 Oct (@abasu4ever): Shovabazar Beniatola Sarbojanin, \"Looks nice\"",
      "hand": true,
      "primary": true,
      "kind_hint": "visitors",
@@ -135,13 +730,64 @@
     }
    ]
   },
-  "pally-saradiya-khidirpur": {
+  "chetla-agrani": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/TheWallTweets/status/2109685707363238252",
+   "note": "CM Suvendu Adhikari inaugurated Chetla Agrani (The Wall, 12 Oct); visitor theme posts 12-13 Oct",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/TheWallTweets/status/2109685707363238252",
+     "at": "2026-10-12",
+     "text": "CM Suvendu Adhikari inaugurated Chetla Agrani (The Wall, 12 Oct); visitor theme posts 12-13 Oct",
+     "tier": "hand",
+     "kind": "visitors",
+     "by": "thewalltweets"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2109591649815007260",
+     "at": "2026-10-12",
+     "text": "📍 Chetla Agrani. 🎨 N/A. 🌟 N/A. 👉 The pandal looks pretty good, but nothing extraordinary for their usual standards. 📌 #DurgaPuja2026 🧵 1/3",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2109591715275575775",
+     "at": "2026-10-12T10:27:13.000Z",
+     "text": "📍 Chetla Agrani. 📌 #DurgaPuja2026 🧵 2/3",
+     "hand": true,
+     "by": "abasu4ever",
+     "tier": "hand",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/PKSpeaks07/status/2112259840919900226",
+     "at": "2026-10-19T19:09:24.000Z",
+     "text": "The most mesmerizing Puja Pandal I ever visited !! Thank you Chetla Agrani Club for this 🙏🏻🙏🏻 Thank you my Bengali People for this !! 🙏🏻🙏🏻 May Maa Durga give me a chance to serve the people of West Bengal with full dedication and pride !! 🙏🏻🙏🏻 #DurgaPuja2026",
+     "by": "pkspeaks07",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "lalabagan-nabankur": {
    "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
+   "evidence": "https://x.com/abasu4ever/status/2112447933152956619",
+   "note": "📍 Lalabagan Nabankur. 🎨 Sushovan Roy. 🌟 The entire pandal is made using sarees! 👉 Looks very stunning! 📌 #DurgaPuja2026 🧵 1/2",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2112447933152956619",
+     "at": "2026-10-20",
+     "text": "📍 Lalabagan Nabankur. 🎨 Sushovan Roy. 🌟 The entire pandal is made using sarees! 👉 Looks very stunning! 📌 #DurgaPuja2026 🧵 1/2",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
   },
   "agradut-udaya-sangha": {
    "since": "2026-10-20",
@@ -151,357 +797,66 @@
    "by": "override",
    "sources": []
   },
-  "jagat-mukherjee-park": {
-   "since": "2026-10-17",
-   "evidence": "https://x.com/alostsouldown/status/2111535066967085109",
-   "note": "\"I visited Jagat Mukherjee Park tonight, it was crowded\" with photos — first-hand visitor @alostsouldown, 17 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/alostsouldown/status/2111535066967085109",
-     "at": "2026-10-17",
-     "text": "\"I visited Jagat Mukherjee Park tonight, it was crowded\" with photos — first-hand visitor @alostsouldown, 17 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "alostsouldown",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "selimpur-pally": {
-   "since": "2026-10-18",
-   "evidence": "https://x.com/titan_rc13/status/2111911153102406088",
-   "note": "\"Durga Puja Diary 2026, Selimpur Pally Association\" own photos — @titan_rc13, 18 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/titan_rc13/status/2111911153102406088",
-     "at": "2026-10-18",
-     "text": "\"Durga Puja Diary 2026, Selimpur Pally Association\" own photos — @titan_rc13, 18 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "titan_rc13",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "santoshpur-avenue-south": {
-   "since": "2026-10-15",
-   "evidence": "https://x.com/SudhanidhiB/status/2112167264409813235",
-   "note": "Visited Santoshpur Avenue South Durga Puja — trusted visitor @SudhanidhiB, 19 Oct",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/an1sh123/status/2110763346060529991",
-     "at": "2026-10-15",
-     "text": "#14 Visited Santoshpur Avenue South. Great great pandal. Highly recommend.",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/SudhanidhiB/status/2112167264409813235",
-     "at": "2026-10-19",
-     "text": "Visited Santoshpur Avenue South Durga Puja — trusted visitor @SudhanidhiB, 19 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "sudhanidhib",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "shahid-nagar-sarbojanin": {
-   "since": "2026-10-14",
-   "evidence": "https://x.com/ANI/status/2110445329648853482",
-   "note": "Dated inauguration video (ANI, 14 Oct): Governor R.N. Ravi inaugurated the 77th Dhakuria Shahid Nagar Durga Puja",
-   "kind": "inaugurated",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/ANI/status/2110445329648853482",
-     "at": "2026-10-14",
-     "text": "Dated inauguration video (ANI, 14 Oct): Governor R.N. Ravi inaugurated the 77th Dhakuria Shahid Nagar Durga Puja",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "inaugurated",
-     "by": "ani",
-     "tier": "outlet",
-     "kind": "inaugurated"
-    },
-    {
-     "url": "https://x.com/ANI/status/2110593659662110914",
-     "at": "2026-10-15",
-     "text": "#WATCH | Kolkata: West Bengal BJP President Samik Bhattacharya launched the theme song of the 77th Dhakuria Shahid Nagar Durga Puja, which f",
-     "by": "ani",
-     "tier": "outlet",
-     "kind": "inaugurated"
-    }
-   ]
-  },
-  "dum-dum-park-tarun-dal": {
-   "since": "2026-10-15",
-   "evidence": "https://x.com/_iamsrb__/status/2111478634162917760",
-   "note": "\"Dum Dum Park Tarun Dal 📍\" with photos — visitor @_iamsrb__, 17 Oct",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/abasu4ever/status/2110650917993476416",
-     "at": "2026-10-15",
-     "text": "Visited (@abasu4ever, with photos): 📍 Dum Dum Park Tarun Dal. 🎨 Purnendu Dey. 🌟 The theme is \"history of connection, strength of bond.\" 👉 One of t",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/_iamsrb__/status/2111478634162917760",
-     "at": "2026-10-17",
-     "text": "\"Dum Dum Park Tarun Dal 📍\" with photos — visitor @_iamsrb__, 17 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "_iamsrb__",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "behala-yma": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "suruchi-sangha": {
+  "behala-friends": {
    "since": "2026-10-19",
-   "evidence": "https://x.com/ians_india/status/2112155058645426387",
-   "note": "Kolkata, West Bengal: On Suruchi Sangha Durga Puja Crowd, BJP leader Sourav Sikdar says, \"See, the arrangements here are very well-organised. Yesterday, there was a huge crowd, and today, even though ",
+   "evidence": "https://x.com/abasu4ever/status/2112235750934839737",
+   "note": "📍 Behala Friends, with photos — trusted visitor @abasu4ever, 19 Oct",
    "kind": "visitors",
-   "corroborated": true,
+   "corroborated": false,
    "sources": [
     {
-     "url": "https://x.com/ians_india/status/2112155058645426387",
-     "at": "2026-10-19T12:13:02.000Z",
-     "text": "Kolkata, West Bengal: On Suruchi Sangha Durga Puja Crowd, BJP leader Sourav Sikdar says, \"See, the arrangements here are very well-organised. Yesterday, there was a huge crowd, and today, even though it is just after lunchtime, look at the crowd gathering again. However, the…",
-     "by": "ians_india",
-     "tier": "outlet",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2112234122827776161",
+     "url": "https://x.com/abasu4ever/status/2112235750934839737",
      "at": "2026-10-19",
-     "text": "Visited (@abasu4ever, with photos): 📍 Suruchi Sangha. 🎨 Anirban Das. 🌟 The theme pays tribute to some unknown person named Shyama Prasad Mukherjee",
+     "text": "📍 Behala Friends, with photos — trusted visitor @abasu4ever, 19 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
      "by": "abasu4ever",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "sanghasree": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/upamanyu95/status/2109932001646289197",
+   "note": "Our Sanghashri Durga Puja Pandal will be inaugurated by Finance Minister Dr Swapan Dasgupta today. I invite you all. Joy Maa Durga.",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/upamanyu95/status/2109932001646289197",
+     "at": "2026-10-13T08:59:24.000Z",
+     "text": "Our Sanghashri Durga Puja Pandal will be inaugurated by Finance Minister Dr Swapan Dasgupta today. I invite you all. Joy Maa Durga.",
+     "by": "upamanyu95",
      "tier": "trusted",
      "kind": "visitors"
     },
     {
-     "url": "https://x.com/an1sh123/status/2112041733580316771",
-     "at": "2026-10-19T04:42:43.000Z",
-     "text": "#98 Visited Suruchi Sangha. Their theme this year is about Shyama Prasad Mukherjee. The ouho that used to make their theme song by pisi is now paying tribute to Shyama Prasad Mukherjee. Not criticising don't get me wrong but it's true that \"",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/OpIndia_com/status/2112161293914509664",
-     "at": "2026-10-19T12:37:49.000Z",
-     "text": "A 50-year-old Kolkata Armed Police ASI, Kabirul Islam, has been arrested for sexually harassing a 21-year-old woman volunteer at the Suruchi Sangha Durga Puja pandal. The incident occurred while she was on duty at the pandal’s exit gate. A viral video and the woman’s formal",
-     "by": "opindia_com",
+     "url": "https://x.com/upamanyu95/status/2110074385768075323",
+     "at": "2026-10-13",
+     "text": "Our Sanghashri Durga Puja Pandal in Kalighat was inaugurated by West Bengal Finance Minister and MLA, Rashbehari Assembly, Dr Swapan Dasgupt",
+     "by": "upamanyu95",
      "tier": "visitor",
      "kind": "visitors"
     }
    ]
   },
-  "rupchand-mukherjee-lane": {
-   "since": "2026-10-16",
-   "evidence": "https://x.com/t2telegraph/status/2111129593776320722",
-   "note": "On-site video 16 Oct (t2 Telegraph): Tota Roy Choudhury playing the dhak at Rupchand Mukherjee Lane Sarbojanin Durgotsav",
-   "kind": "inaugurated",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/t2telegraph/status/2111129593776320722",
-     "at": "2026-10-16",
-     "text": "On-site video 16 Oct (t2 Telegraph): Tota Roy Choudhury playing the dhak at Rupchand Mukherjee Lane Sarbojanin Durgotsav",
-     "hand": true,
-     "primary": true,
-     "by": "t2telegraph",
-     "tier": "hand",
-     "kind": "inaugurated"
-    }
-   ]
-  },
-  "shib-mandir": {
-   "since": "2026-10-14",
-   "evidence": "https://x.com/abasu4ever/status/2110268065644728589",
-   "note": "Visited (@abasu4ever, with photos): 📍 Shibmandir Sarbojanin @ 90. 🎨 Prasanta Pal. 🌟 The theme celebrates 'Gangaur', a form of Durga Puja that is d",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/abasu4ever/status/2110268065644728589",
-     "at": "2026-10-14",
-     "text": "Visited (@abasu4ever, with photos): 📍 Shibmandir Sarbojanin @ 90. 🎨 Prasanta Pal. 🌟 The theme celebrates 'Gangaur', a form of Durga Puja that is d",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "hatibagan-sarbojanin": {
-   "since": "2026-10-17",
-   "evidence": "https://x.com/EleenaBiswas/status/2111553255713214497",
-   "note": "Saptami photo post \"হাতিবাগান সার্বজনীন Hatibagan Sarbojonin\" — visitor @EleenaBiswas, 17 Oct; also @n_aficionado photo 18 Oct",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/EleenaBiswas/status/2111553255713214497",
-     "at": "2026-10-17",
-     "text": "Saptami photo post \"হাতিবাগান সার্বজনীন Hatibagan Sarbojonin\" — visitor @EleenaBiswas, 17 Oct; also @n_aficionado photo 18 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "eleenabiswas",
-     "tier": "hand",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/an1sh123/status/2112258724748493179",
-     "at": "2026-10-19",
-     "text": "#120 Visited Hatibagan Sarbojanin.",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2112563160028950998",
-     "at": "2026-10-20T15:14:41.000Z",
-     "text": "📍 Hatibagan Sarbojanin. 🎨 Rabin Roy &amp; Co. 🌟 N/A. 👉 Very aesthetic artwork! 📌 #DurgaPuja2026",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "sikdar-bagan": {
-   "since": "2026-10-18",
-   "evidence": "https://x.com/alostsouldown/status/2111871736623104246",
-   "note": "\"📍Sikdar Bagan Sadharon Durga Pujo, Hatibagan\" own photos — @alostsouldown, 18 Oct",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/alostsouldown/status/2111871736623104246",
-     "at": "2026-10-18",
-     "text": "\"📍Sikdar Bagan Sadharon Durga Pujo, Hatibagan\" own photos — @alostsouldown, 18 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "alostsouldown",
-     "tier": "hand",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/an1sh123/status/2112406316991811792",
-     "at": "2026-10-20",
-     "text": "Visited (@an1sh123, with photos): #124 Sikdar Bagan.",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2112564457964814479",
-     "at": "2026-10-20T15:19:50.000Z",
-     "text": "📍 Sikdar Bagan Sarbojanin. 🎨 Sanatan Rudra Pal &amp; Bibhash Mukherjee. 🌟 N/A. 👉 Looks pretty. 📌 #DurgaPuja2026",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "behala-arunoday-samiti": {
-   "since": "2026-10-12",
-   "evidence": "https://x.com/SuvenduWB/status/2109717078550978709",
-   "note": "CM attended the inauguration: অরুণোদয় সমিতি, বেহালা",
-   "kind": "inaugurated",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/SuvenduWB/status/2109717078550978709",
-     "at": "2026-10-12",
-     "text": "CM attended the inauguration: অরুণোদয় সমিতি, বেহালা",
-     "primary": true,
-     "hand": true,
-     "by": "suvenduwb",
-     "tier": "outlet",
-     "kind": "inaugurated"
-    }
-   ]
-  },
-  "haridevpur-41-pally": {
+  "golmath-durga-puja": {
    "since": "2026-10-15",
-   "evidence": "https://x.com/titan_rc13/status/2111912919365763425",
-   "note": "Durga Puja Diary photo of Haridevpur 41 Pally — visitor @titan_rc13, 18 Oct",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/an1sh123/status/2110802127383888371",
-     "at": "2026-10-15",
-     "text": "Visited (@an1sh123, with photos): #33 Haridevpur 41 Pally club. Their theme is \"দ্বৈত\". Bad pandal. Decent Pratima.",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/titan_rc13/status/2111912919365763425",
-     "at": "2026-10-18",
-     "text": "Durga Puja Diary photo of Haridevpur 41 Pally — visitor @titan_rc13, 18 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "titan_rc13",
-     "tier": "hand",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/SudhanidhiB/status/2112503096815616234",
-     "at": "2026-10-20T11:16:01.000Z",
-     "text": "#41 Visited Haridevpur 41 Pally",
-     "by": "sudhanidhib",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "purbachal-shakti-sangha": {
-   "since": "2026-10-15",
-   "evidence": "https://x.com/abasu4ever/status/2110650875190648895",
-   "note": "📍 Purbachal Shakti Sangha, with photos — trusted visitor @abasu4ever, 15 Oct",
+   "evidence": "https://x.com/beinghd16/status/2110919865733378331",
+   "note": "\"Started pandal hopping yesterday. #1 Golmath Sarbojonin\" own photo — @beinghd16, 16 Oct",
    "kind": "visitors",
    "corroborated": false,
    "sources": [
     {
-     "url": "https://x.com/abasu4ever/status/2110650875190648895",
+     "url": "https://x.com/beinghd16/status/2110919865733378331",
      "at": "2026-10-15",
-     "text": "📍 Purbachal Shakti Sangha, with photos — trusted visitor @abasu4ever, 15 Oct",
+     "text": "\"Started pandal hopping yesterday. #1 Golmath Sarbojonin\" own photo — @beinghd16, 16 Oct",
      "hand": true,
      "primary": true,
      "kind_hint": "visitors",
-     "by": "abasu4ever",
+     "by": "beinghd16",
      "tier": "hand",
      "kind": "visitors"
     }
@@ -540,7 +895,106 @@
     }
    ]
   },
-  "naktala-pally-unnayan-samity": {
+  "chakraberia-sarbojanin": {
+   "since": "2026-10-16",
+   "evidence": "https://x.com/abasu4ever/status/2111047899362836971",
+   "note": "📍 Chakraberia Sarbojonin review with photos — trusted visitor @abasu4ever, 16 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2111047899362836971",
+     "at": "2026-10-16",
+     "text": "📍 Chakraberia Sarbojonin review with photos — trusted visitor @abasu4ever, 16 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "abasu4ever",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "alipore-sarbojanin": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/abasu4ever/status/2109611106532724789",
+   "note": "📍 Alipore Sarbojanin. Visited, with photos (trusted visitor)",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://timesofindia.indiatimes.com/city/kolkata/office-goersschoolkidspuja-shoppers-revellers-post-afternoon-traffic-gridlock/articleshow/134900607.cms",
+     "at": "2026-10-12",
+     "text": "Considerable rush of revellers (crowds) at Alipore Sarbojanin in the evening (TOI)",
+     "outlet": true,
+     "primary": true,
+     "hand": true,
+     "by": "timesofindia.indiatimes.com",
+     "tier": "outlet",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2109611106532724789",
+     "at": "2026-10-12",
+     "text": "📍 Alipore Sarbojanin. Visited, with photos (trusted visitor)",
+     "primary": true,
+     "hand": true,
+     "by": "abasu4ever",
+     "tier": "hand",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/an1sh123/status/2111320756642804023",
+     "at": "2026-10-17",
+     "text": "#56 Visited Alipore Sarbojanin. Their theme thi year is Ramayan. They have a permanent Ram mandir in there ground. During tmc rule, making r",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "sree-bhumi-sporting-club": {
+   "since": "2026-10-11",
+   "evidence": "https://x.com/cmowbgov/status/2109530787431465212",
+   "note": "Inaugurated 11 Oct (CMO WB); crowds reported on Prathama",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/cmowbgov/status/2109530787431465212",
+     "at": "2026-10-11",
+     "text": "Inaugurated 11 Oct (CMO WB); crowds reported on Prathama",
+     "tier": "hand",
+     "kind": "visitors",
+     "by": "cmowbgov"
+    },
+    {
+     "url": "https://x.com/HeyyyyShubham/status/2109275327331537045",
+     "at": "2026-10-11T13:30:01.000Z",
+     "text": "I'm already missing the days when I was in Kolkata during Navratri and Durga Puja! When I was studying for CA Foundation, I had coaching friends, and we went to Sreebhumi Sporting Club together. Another year, I went with a female friend I met during my IT training.",
+     "by": "heyyyyshubham",
+     "tier": "visitor",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/an1sh123/status/2109971486106886421",
+     "at": "2026-10-13T11:36:18.000Z",
+     "text": "#1 Visited Sreebhumi for the first and last time. Pandal is closed lmao. They haven't even finished the pandal but still inaugurated it last night. Nothing spectacular. No point in travelling that much to see it.",
+     "by": "an1sh123",
+     "tier": "visitor",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/RadhikaBarman5/status/2112128344032714977",
+     "at": "2026-10-19T10:26:53.000Z",
+     "text": "Two Muslim women I know, one wearing a hijab and the other a niqab, went to visit Sreebhumi Durga Puja, with VIP parking arranged for their car. Instead of being welcomed, club members allegedly told them: “Don't come wearing a hijab. You are Muslim Puja is not for you. Go back.\"",
+     "by": "radhikabarman5",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "68-pally": {
    "since": "2026-10-20",
    "evidence": "",
    "note": "DP ground call, Navami 20 Oct",
@@ -548,7 +1002,24 @@
    "by": "override",
    "sources": []
   },
-  "lake-gardens-peoples": {
+  "adi-ballygunge-sarbojanin": {
+   "since": "2026-10-11",
+   "evidence": "https://x.com/DrSukantaBJP/status/2109339245676802270",
+   "note": "Attended the auspicious inauguration of the Durga Puja organised by Adi Ballygunge Sarbojanin Durga Puja Parishad at Golpark, Dakshin Kolkat",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/DrSukantaBJP/status/2109339245676802270",
+     "at": "2026-10-11",
+     "text": "Attended the auspicious inauguration of the Durga Puja organised by Adi Ballygunge Sarbojanin Durga Puja Parishad at Golpark, Dakshin Kolkat",
+     "by": "drsukantabjp",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "harish-park": {
    "since": "2026-10-20",
    "evidence": "",
    "note": "DP ground call, Navami 20 Oct",
@@ -556,7 +1027,27 @@
    "by": "override",
    "sources": []
   },
-  "paddapukur-youth": {
+  "dum-dum-park-sarbajanin": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/abasu4ever/status/2110650927464030584",
+   "note": "📍 Dum Dum Park Sarbojanin, with photos — trusted visitor @abasu4ever, 15 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2110650927464030584",
+     "at": "2026-10-15",
+     "text": "📍 Dum Dum Park Sarbojanin, with photos — trusted visitor @abasu4ever, 15 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "abasu4ever",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "poddar-nagar-sarbojanin": {
    "since": "2026-10-20",
    "evidence": "",
    "note": "DP ground call, Navami 20 Oct",
@@ -564,7 +1055,134 @@
    "by": "override",
    "sources": []
   },
-  "subodh-mallick-square": {
+  "badamtala-ashar-sangha": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/TusharKantiBJP/status/2110045840765284796",
+   "note": "The auspicious inauguration of Badamtala Ashar Sangha’s Durga Puja became a moment of immense joy with the presence of Hon’ble State Ministe",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/TusharKantiBJP/status/2110045840765284796",
+     "at": "2026-10-13",
+     "text": "The auspicious inauguration of Badamtala Ashar Sangha’s Durga Puja became a moment of immense joy with the presence of Hon’ble State Ministe",
+     "by": "tusharkantibjp",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "tarun-sathi": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "dhakuria-sarbojanin": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/an1sh123/status/2110705482948292699",
+   "note": "\"Visited Dhakuria sarbojanin\" own photos — @an1sh123, 15 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/an1sh123/status/2110705482948292699",
+     "at": "2026-10-15",
+     "text": "\"Visited Dhakuria sarbojanin\" own photos — @an1sh123, 15 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "an1sh123",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "behala-arunoday-samiti": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/SuvenduWB/status/2109717078550978709",
+   "note": "CM attended the inauguration: অরুণোদয় সমিতি, বেহালা",
+   "kind": "inaugurated",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/SuvenduWB/status/2109717078550978709",
+     "at": "2026-10-12",
+     "text": "CM attended the inauguration: অরুণোদয় সমিতি, বেহালা",
+     "primary": true,
+     "hand": true,
+     "by": "suvenduwb",
+     "tier": "outlet",
+     "kind": "inaugurated"
+    }
+   ]
+  },
+  "dum-dum-park-tarun-sangha": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/toherheartbeats/status/2110096358128722229",
+   "note": "📍 DumDum park tarun sangha — first-hand visitor video of the lit floating ship pandal (@toherheartbeats, 13 Oct evening)",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/toherheartbeats/status/2110096358128722229",
+     "at": "2026-10-13",
+     "text": "📍 DumDum park tarun sangha — first-hand visitor video of the lit floating ship pandal (@toherheartbeats, 13 Oct evening)",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "toherheartbeats",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "25-pally-khidirpur": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/SuvenduWB/status/2109717078550978709",
+   "note": "CM Suvendu Adhikari's own dated X post (12 Oct, with video): '📍২৫ পল্লী'; TOI itinerary names it Kidderpore 25 Pally",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/SuvenduWB/status/2109717078550978709",
+     "at": "2026-10-12",
+     "text": "CM Suvendu Adhikari's own dated X post (12 Oct, with video): '📍২৫ পল্লী'; TOI itinerary names it Kidderpore 25 Pally",
+     "hand": true,
+     "by": "suvenduwb",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "gariahat-sarbojanin": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "shib-mandir": {
+   "since": "2026-10-14",
+   "evidence": "https://x.com/abasu4ever/status/2110268065644728589",
+   "note": "Visited (@abasu4ever, with photos): 📍 Shibmandir Sarbojanin @ 90. 🎨 Prasanta Pal. 🌟 The theme celebrates 'Gangaur', a form of Durga Puja that is d",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2110268065644728589",
+     "at": "2026-10-14",
+     "text": "Visited (@abasu4ever, with photos): 📍 Shibmandir Sarbojanin @ 90. 🎨 Prasanta Pal. 🌟 The theme celebrates 'Gangaur', a form of Durga Puja that is d",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "salkia-alapani": {
    "since": "2026-10-20",
    "evidence": "",
    "note": "DP ground call, Navami 20 Oct",
@@ -615,370 +1233,88 @@
     }
    ]
   },
-  "jodhpur-park-95-pally": {
-   "since": "2026-10-15",
-   "evidence": "https://x.com/abasu4ever/status/2111047769515503971",
-   "note": "📍 Jodhpur Park 95 Pally Association own photos — @abasu4ever, 16 Oct (also 📍95 Pally @avnsh08, 18 Oct)",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/an1sh123/status/2110675222689189892",
-     "at": "2026-10-15",
-     "text": "#5 visited Jodhpur Park 95 Pally. Only thing I can say is WHAT THE GOD DAMN FOOK. The pandal is nowhere near complete. Unreal downfall after",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2111047769515503971",
-     "at": "2026-10-16",
-     "text": "📍 Jodhpur Park 95 Pally Association own photos — @abasu4ever, 16 Oct (also 📍95 Pally @avnsh08, 18 Oct)",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "abasu4ever",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "sb-park-sarbojanin": {
-   "since": "2026-10-12",
-   "evidence": "https://x.com/Biswaru94784015/status/2109538049675936237",
-   "note": "SB PARK SARBOJANIN 📍 Theme: colliery (coal miners) — visitor photos 12 Oct",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/Biswaru94784015/status/2109538049675936237",
-     "at": "2026-10-12",
-     "text": "SB PARK SARBOJANIN 📍 Theme: colliery (coal miners) — visitor photos 12 Oct",
-     "hand": true,
-     "kind_hint": "visitors",
-     "by": "biswaru94784015",
-     "tier": "hand",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/an1sh123/status/2112236706518925395",
-     "at": "2026-10-19",
-     "text": "#113 Visited Thakurpukur SB park. Their theme is \"Coaliary\". Good theme pandal.",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2112344177963118938",
-     "at": "2026-10-20T00:44:32.000Z",
-     "text": "📍 Thakurpukur SB Park Sarbojanin. 🎨 Debabrata Maity, Sujoyneel, Raju Sarkar, Pritam Pal &amp; Somnath Mondal. 🌟 The theme depicts the history &amp; implications of coal mining in Bengal. 👉 Arguably one of the best themes and artwork this year! SPLENDID! 📌 #DurgaPuja2026 🧵 1/4",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "mudiali": {
-   "since": "2026-10-14",
-   "evidence": "https://x.com/ndtv/status/2110259988417458339",
-   "note": "Crowds of pandal hoppers thronged South Kolkata's iconic Mudiali Club on Tritiya, the third day of Durga Puja festivities. Celebrating its 9",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/ndtv/status/2110259988417458339",
-     "at": "2026-10-14",
-     "text": "Crowds of pandal hoppers thronged South Kolkata's iconic Mudiali Club on Tritiya, the third day of Durga Puja festivities. Celebrating its 9",
-     "by": "ndtv",
-     "tier": "outlet",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2110275846061818156",
-     "at": "2026-10-14T07:45:43.000Z",
-     "text": "📍 Mudiali Club. 🎨 Biman Saha. 🌟 They always do traditional Durga Puja, inside a vibrant and catchy pandal. 👉 Gorgeous! Especially the Chandannagar style Maa Durga! As I always say, they do the best 'sabeki' puja! 📌 #DurgaPuja2026 🧵 1/2",
-     "hand": true,
-     "by": "abasu4ever",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "barisha-club": {
-   "since": "2026-10-12",
-   "evidence": "https://x.com/SudhanidhiB/status/2109688083897827734",
-   "note": "#4 Visited Barisha Club One outstanding creation.",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/SudhanidhiB/status/2109688083897827734",
-     "at": "2026-10-12",
-     "text": "#4 Visited Barisha Club One outstanding creation.",
-     "tier": "hand",
-     "kind": "visitors",
-     "by": "sudhanidhib"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2112239907125281231",
-     "at": "2026-10-19T17:50:12.000Z",
-     "text": "📍 Barisha Club. 🎨 Deep, Eshika &amp; Saikat. 🌟 N/A. 👉 Behala Pujas never fail to win my heart! 📌 #DurgaPuja2026 🧵 1/2",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/an1sh123/status/2112241009581260947",
-     "at": "2026-10-19T17:54:34.000Z",
-     "text": "#115 Visited Barisha Club. Good pandal. They have showcased Gupta era architecture, history and Gupta period Durga iconography.",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "new-town-sarbojanin": {
-   "since": "2026-10-11",
-   "evidence": "https://x.com/abasu4ever/status/2109676575524598226",
-   "note": "📍 New Town Sarbojanin. 🎨 Rintu Das, RSS &amp; BJP. 🌟 The theme celebrates the significance of 'lotus' in Hinduism. 👉 With the regime change, New Town Sarbojanin are doing traditional Durga Puja for th",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/abasu4ever/status/2109676575524598226",
-     "at": "2026-10-12T16:04:26.000Z",
-     "text": "📍 New Town Sarbojanin. 🎨 Rintu Das, RSS &amp; BJP. 🌟 The theme celebrates the significance of 'lotus' in Hinduism. 👉 With the regime change, New Town Sarbojanin are doing traditional Durga Puja for the first time. I really loved the pandal, but not the idol. 📌 #DurgaPuja2026",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/DrSukantaBJP/status/2109328252062113979",
-     "at": "2026-10-11",
-     "text": "Attended the auspicious inauguration ceremony of the Durga Puja organised by New Town Sarbojanin Durgotsav Samiti. Jai Maa Durga! 🙏",
-     "by": "drsukantabjp",
-     "tier": "visitor",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "telipukur-yuba-sangha": {
-   "since": "2026-10-11",
-   "evidence": "https://x.com/goonereol/status/2109304631360901567",
-   "note": "Yuba Sangha Telipukur 'Ek Pukur Bhalobasa' — first-hand visitor photos (4) starting @goonereol's pandal-hopping thread (11 Oct evening, preview pass)",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/ians_india/status/2110253889069138416",
-     "at": "2026-10-14",
-     "text": "Dum Dum, Kolkata: Chief Minister Suvendu Adhikari inaugurated the Durga Puja organised by MLA Tarun Jyoti Tiwari at Telipukur Yuba Sangha. O",
-     "by": "ians_india",
-     "tier": "outlet",
-     "kind": "inaugurated"
-    },
-    {
-     "url": "https://x.com/goonereol/status/2109304631360901567",
-     "at": "2026-10-11",
-     "text": "Yuba Sangha Telipukur 'Ek Pukur Bhalobasa' — first-hand visitor photos (4) starting @goonereol's pandal-hopping thread (11 Oct evening, preview pass)",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "goonereol",
-     "tier": "hand",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2110275815103713459",
-     "at": "2026-10-14T07:45:36.000Z",
-     "text": "📍 Telipukur Yuba Sangha. 🎨 Bhabatosh Sutar. 🌟 The theme is named \"Ek Pukur Bhalobasha\", meaning \"A Pond of Love.\" It showcases the significance, history &amp; present of ponds in our daily lives. 👉 Good concept, but nothing too extraordinary. 📌 #DurgaPuja2026 🧵 1/2",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "college-square": {
-   "since": "2026-10-12",
-   "evidence": "https://x.com/PathakSounak/status/2109464905372008914",
-   "note": "Invited guest at the College Square inauguration (12 Oct); VIDA lighting tribute live same night",
+  "naktala-pally-unnayan-samity": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
    "kind": "inaugurated",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/PathakSounak/status/2109464905372008914",
-     "at": "2026-10-12",
-     "text": "Invited guest at the College Square inauguration (12 Oct); VIDA lighting tribute live same night",
-     "tier": "hand",
-     "kind": "inaugurated",
-     "by": "pathaksounak"
-    }
-   ]
+   "by": "override",
+   "sources": []
   },
-  "patuli-sarbojanin": {
+  "new-sporting-club": {
    "since": "2026-10-15",
-   "evidence": "https://x.com/abasu4ever/status/2110650787106042344",
-   "note": "Visited (@abasu4ever, with photos): 📍 Baishnabghata Patuli Upanagari Sarbojanin. 🎨 Partha Joardar. 🌟 The theme shows the discovering of a Maa Durg",
+   "evidence": "https://x.com/an1sh123/status/2110798359850279219",
+   "note": "Visited 15 Oct with own photos: @an1sh123 \"#28 Haridevpur New sporting club. Their theme is শৈশব. Decent pandal.\"",
    "kind": "visitors",
    "corroborated": false,
    "sources": [
     {
-     "url": "https://x.com/abasu4ever/status/2110650787106042344",
+     "url": "https://x.com/an1sh123/status/2110798359850279219",
      "at": "2026-10-15",
-     "text": "Visited (@abasu4ever, with photos): 📍 Baishnabghata Patuli Upanagari Sarbojanin. 🎨 Partha Joardar. 🌟 The theme shows the discovering of a Maa Durg",
-     "by": "abasu4ever",
-     "tier": "trusted",
+     "text": "Visited 15 Oct with own photos: @an1sh123 \"#28 Haridevpur New sporting club. Their theme is শৈশব. Decent pandal.\"",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "an1sh123",
+     "tier": "hand",
      "kind": "visitors"
     }
    ]
   },
-  "hazra-park-durgotsab": {
-   "since": "2026-10-18",
-   "evidence": "https://x.com/SudhanidhiB/status/2111838956790906923",
-   "note": "#33 Visited the Hazra Park Durgatsav— This is @SobhandebChatt1's Puja, theme showcases Bengal's own folk arts",
+  "pally-mangal": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/an1sh123/status/2110671990084493596",
+   "note": "#3 Visited Taltala Pally Mangal Samiti. Good pandal.",
    "kind": "visitors",
    "corroborated": false,
    "sources": [
     {
-     "url": "https://x.com/SudhanidhiB/status/2111838956790906923",
-     "at": "2026-10-18",
-     "text": "#33 Visited the Hazra Park Durgatsav— This is @SobhandebChatt1's Puja, theme showcases Bengal's own folk arts",
-     "by": "sudhanidhib",
+     "url": "https://x.com/an1sh123/status/2110671990084493596",
+     "at": "2026-10-15",
+     "text": "#3 Visited Taltala Pally Mangal Samiti. Good pandal.",
+     "by": "an1sh123",
      "tier": "trusted",
      "kind": "visitors"
     }
    ]
   },
-  "forward-club": {
+  "hatibagan-sarbojanin": {
    "since": "2026-10-17",
-   "evidence": "https://x.com/NewsStar69313/status/2111338785564979685",
-   "note": "Durga Puja 2026 : Chief Minister Dr. Manik Saha Inaugurates Durga Puja Pandal Organized By Forward Club. #Durga #Puja #Chief #Minister #Dr #",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/NewsStar69313/status/2111338785564979685",
-     "at": "2026-10-17",
-     "text": "Durga Puja 2026 : Chief Minister Dr. Manik Saha Inaugurates Durga Puja Pandal Organized By Forward Club. #Durga #Puja #Chief #Minister #Dr #",
-     "by": "newsstar69313",
-     "tier": "visitor",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "kumartuli-sarbojanin": {
-   "since": "2026-10-19",
-   "evidence": "https://x.com/abasu4ever/status/2111960547898110173",
-   "note": "📍 Kumartuli Sarbojanin, with photos — trusted visitor @abasu4ever, 19 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/abasu4ever/status/2111960547898110173",
-     "at": "2026-10-19",
-     "text": "📍 Kumartuli Sarbojanin, with photos — trusted visitor @abasu4ever, 19 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "abasu4ever",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "poddar-nagar-sarbojanin": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "dum-dum-park-tarun-sangha": {
-   "since": "2026-10-13",
-   "evidence": "https://x.com/toherheartbeats/status/2110096358128722229",
-   "note": "📍 DumDum park tarun sangha — first-hand visitor video of the lit floating ship pandal (@toherheartbeats, 13 Oct evening)",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/toherheartbeats/status/2110096358128722229",
-     "at": "2026-10-13",
-     "text": "📍 DumDum park tarun sangha — first-hand visitor video of the lit floating ship pandal (@toherheartbeats, 13 Oct evening)",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "toherheartbeats",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "76-pally": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "kapalitola-sarbajanin": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "hindusthan-park": {
-   "since": "2026-10-13",
-   "evidence": "https://x.com/_Epinephrine_/status/2110082080801739151",
-   "note": "📍Hindustan Park — first-hand visitor photos (4) in @_Epinephrine_'s pandal-hopping thread, 14 Oct 00:25 IST",
+   "evidence": "https://x.com/EleenaBiswas/status/2111553255713214497",
+   "note": "Saptami photo post \"হাতিবাগান সার্বজনীন Hatibagan Sarbojonin\" — visitor @EleenaBiswas, 17 Oct; also @n_aficionado photo 18 Oct",
    "kind": "visitors",
    "corroborated": true,
    "sources": [
     {
-     "url": "https://x.com/_Epinephrine_/status/2110082080801739151",
-     "at": "2026-10-13",
-     "text": "📍Hindustan Park — first-hand visitor photos (4) in @_Epinephrine_'s pandal-hopping thread, 14 Oct 00:25 IST",
+     "url": "https://x.com/EleenaBiswas/status/2111553255713214497",
+     "at": "2026-10-17",
+     "text": "Saptami photo post \"হাতিবাগান সার্বজনীন Hatibagan Sarbojonin\" — visitor @EleenaBiswas, 17 Oct; also @n_aficionado photo 18 Oct",
      "hand": true,
      "primary": true,
      "kind_hint": "visitors",
-     "by": "_epinephrine_",
+     "by": "eleenabiswas",
      "tier": "hand",
      "kind": "visitors"
     },
     {
-     "url": "https://x.com/an1sh123/status/2111891319358701928",
-     "at": "2026-10-18T18:45:02.000Z",
-     "text": "#92 Visited Hindustan Park. Decent",
+     "url": "https://x.com/an1sh123/status/2112258724748493179",
+     "at": "2026-10-19",
+     "text": "#120 Visited Hatibagan Sarbojanin.",
      "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2112563160028950998",
+     "at": "2026-10-20T15:14:41.000Z",
+     "text": "📍 Hatibagan Sarbojanin. 🎨 Rabin Roy &amp; Co. 🌟 N/A. 👉 Very aesthetic artwork! 📌 #DurgaPuja2026",
+     "by": "abasu4ever",
      "tier": "trusted",
      "kind": "visitors"
     }
    ]
   },
-  "bj-block": {
-   "since": "2026-10-19",
-   "evidence": "https://x.com/alostsouldown/status/2112112499139227709",
-   "note": "\"📍BJ Block Durga Pujo, Salt Lake\" own photos, theme Somnath Temple — @alostsouldown, 19 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/alostsouldown/status/2112112499139227709",
-     "at": "2026-10-19",
-     "text": "\"📍BJ Block Durga Pujo, Salt Lake\" own photos, theme Somnath Temple — @alostsouldown, 19 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "alostsouldown",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "rabindra-pally-sarbojanin": {
+  "notunpara-sarbojanin": {
    "since": "2026-10-20",
    "evidence": "",
    "note": "DP ground call, Navami 20 Oct",
@@ -986,19 +1322,86 @@
    "by": "override",
    "sources": []
   },
-  "deshapriya-park": {
-   "since": "2026-10-18",
-   "evidence": "https://x.com/sayan_dey/status/2111793201279639611",
-   "note": "Just because it has happened at one pandal, doesn't mean that the others are completely fine and risk-free. For folks who have visited the Deshapriya Park Puja Pandal will agree that the entry point t",
+  "23-pally": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "santoshpur-avenue-south": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/SudhanidhiB/status/2112167264409813235",
+   "note": "Visited Santoshpur Avenue South Durga Puja — trusted visitor @SudhanidhiB, 19 Oct",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/an1sh123/status/2110763346060529991",
+     "at": "2026-10-15",
+     "text": "#14 Visited Santoshpur Avenue South. Great great pandal. Highly recommend.",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/SudhanidhiB/status/2112167264409813235",
+     "at": "2026-10-19",
+     "text": "Visited Santoshpur Avenue South Durga Puja — trusted visitor @SudhanidhiB, 19 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "sudhanidhib",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "tala-barowari": {
+   "since": "2026-10-10",
+   "evidence": "https://x.com/IndiContractor/status/2108959990174323066",
+   "note": "📍 Tala Barowari, Kolkata — first-hand visitor video (@IndiContractor, 10 Oct)",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/IndiContractor/status/2108959990174323066",
+     "at": "2026-10-10",
+     "text": "📍 Tala Barowari, Kolkata — first-hand visitor video (@IndiContractor, 10 Oct)",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "indicontractor",
+     "tier": "hand",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2110275928333123625",
+     "at": "2026-10-14",
+     "text": "📍 Tala Barowari. 🎨 Prasanta Pal. 🌟 The theme is \"Durga Bari\", meaning the \"Home of Durga.\" It depicts the various avatars of shakti. 👉 The p",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "abasar-sarbojanin": {
+   "since": "2026-10-16",
+   "evidence": "https://x.com/abasu4ever/status/2111048096079880623",
+   "note": "📍 Abasar Sarbojanin, with photos — trusted visitor @abasu4ever, 16 Oct",
    "kind": "visitors",
    "corroborated": false,
    "sources": [
     {
-     "url": "https://x.com/sayan_dey/status/2111793201279639611",
-     "at": "2026-10-18T12:15:09.000Z",
-     "text": "Just because it has happened at one pandal, doesn't mean that the others are completely fine and risk-free. For folks who have visited the Deshapriya Park Puja Pandal will agree that the entry point to the main pandal is perhaps narrower than even this. [1]",
-     "by": "sayan_dey",
-     "tier": "visitor",
+     "url": "https://x.com/abasu4ever/status/2111048096079880623",
+     "at": "2026-10-16",
+     "text": "📍 Abasar Sarbojanin, with photos — trusted visitor @abasu4ever, 16 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "abasu4ever",
+     "tier": "hand",
      "kind": "visitors"
     }
    ]
@@ -1010,484 +1413,6 @@
    "kind": "inaugurated",
    "by": "override",
    "sources": []
-  },
-  "behala-friends": {
-   "since": "2026-10-19",
-   "evidence": "https://x.com/abasu4ever/status/2112235750934839737",
-   "note": "📍 Behala Friends, with photos — trusted visitor @abasu4ever, 19 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/abasu4ever/status/2112235750934839737",
-     "at": "2026-10-19",
-     "text": "📍 Behala Friends, with photos — trusted visitor @abasu4ever, 19 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "abasu4ever",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "barisha-sarbojanin": {
-   "since": "2026-10-19",
-   "evidence": "https://x.com/an1sh123/status/2112239500701450465",
-   "note": "#114 Visited Barisha Sarbojanin. This is neighbourhoof of Saborno Roy Choudhury. He was the the jamindar of entire modern day Kolkata and ne",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/an1sh123/status/2112239500701450465",
-     "at": "2026-10-19",
-     "text": "#114 Visited Barisha Sarbojanin. This is neighbourhoof of Saborno Roy Choudhury. He was the the jamindar of entire modern day Kolkata and ne",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "golmath-durga-puja": {
-   "since": "2026-10-15",
-   "evidence": "https://x.com/beinghd16/status/2110919865733378331",
-   "note": "\"Started pandal hopping yesterday. #1 Golmath Sarbojonin\" own photo — @beinghd16, 16 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/beinghd16/status/2110919865733378331",
-     "at": "2026-10-15",
-     "text": "\"Started pandal hopping yesterday. #1 Golmath Sarbojonin\" own photo — @beinghd16, 16 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "beinghd16",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "jorasanko-sadharan": {
-   "since": "2026-10-17",
-   "evidence": "https://x.com/abasu4ever/status/2111466592714518606",
-   "note": "First-hand 📍 visitor post with 4 photos 17 Oct (@abasu4ever): Jorasanko Sadharan Durgotsab (7 Pally), \"the idol was pretty\"",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/abasu4ever/status/2111466592714518606",
-     "at": "2026-10-17",
-     "text": "First-hand 📍 visitor post with 4 photos 17 Oct (@abasu4ever): Jorasanko Sadharan Durgotsab (7 Pally), \"the idol was pretty\"",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "abasu4ever",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "keshtopur-prafulla-kanan": {
-   "since": "2026-10-12",
-   "evidence": "https://x.com/DrSukantaBJP/status/2109717228019171449",
-   "note": "Glimpses from the auspicious inauguration ceremony of the Durga Puja organised by the Kestopur Prafulla Kanan (Paschim) Adhibasibrinda.",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/DrSukantaBJP/status/2109717228019171449",
-     "at": "2026-10-12",
-     "text": "Glimpses from the auspicious inauguration ceremony of the Durga Puja organised by the Kestopur Prafulla Kanan (Paschim) Adhibasibrinda.",
-     "by": "drsukantabjp",
-     "tier": "visitor",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "golaghata-sammilani": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "olabibitala-sarbojanin": {
-   "since": "2026-10-16",
-   "evidence": "https://x.com/KumarVidhyasag2/status/2111059390254170224",
-   "note": "\"Shibpur Olabibitala, Howrah\" own photos — @KumarVidhyasag2, 16 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/KumarVidhyasag2/status/2111059390254170224",
-     "at": "2026-10-16",
-     "text": "\"Shibpur Olabibitala, Howrah\" own photos — @KumarVidhyasag2, 16 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "kumarvidhyasag2",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "dum-dum-park-sarbajanin": {
-   "since": "2026-10-15",
-   "evidence": "https://x.com/abasu4ever/status/2110650927464030584",
-   "note": "📍 Dum Dum Park Sarbojanin, with photos — trusted visitor @abasu4ever, 15 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/abasu4ever/status/2110650927464030584",
-     "at": "2026-10-15",
-     "text": "📍 Dum Dum Park Sarbojanin, with photos — trusted visitor @abasu4ever, 15 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "abasu4ever",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "mukundapur-sarbojanin": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "rajdanga-naba-uday-sangha": {
-   "since": "2026-10-11",
-   "evidence": "https://x.com/SudhanidhiB/status/2109349903600374159",
-   "note": "#2 Visited Didi @keyakahe's Durga Puja at Rajdanga Naba Uday Sangha. Unreal colour combination as theme.",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/SudhanidhiB/status/2109349903600374159",
-     "at": "2026-10-11",
-     "text": "#2 Visited Didi @keyakahe's Durga Puja at Rajdanga Naba Uday Sangha. Unreal colour combination as theme.",
-     "tier": "hand",
-     "kind": "visitors",
-     "by": "sudhanidhib"
-    }
-   ]
-  },
-  "dakshindari-youth": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "simla-byayam-samity": {
-   "since": "2026-10-17",
-   "evidence": "https://x.com/SudhanidhiB/status/2111411698179637733",
-   "note": "#28 Visited Netaji Subhash Chandra's Durga Puja at Simla Byayam Sammity— This Mother was used as a symbol of resistance",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/SudhanidhiB/status/2111411698179637733",
-     "at": "2026-10-17",
-     "text": "#28 Visited Netaji Subhash Chandra's Durga Puja at Simla Byayam Sammity— This Mother was used as a symbol of resistance",
-     "by": "sudhanidhib",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "pallishree-sarbojanin": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "madhya-garfa-sarbojanin": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "tala-prattoy": {
-   "since": "2026-10-10",
-   "evidence": "https://x.com/TheWallTweets/status/2109624632395595878",
-   "note": "Tala Prattoy Durga Puja 2026 Opening: টালা প্রত্যয়ের পুজো উদ্বোধন করলেন মুখ্যমন্ত্রী #talaprattoy #durgapuja2026 #cmsuvenduadhikari #shorts",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/TheWallTweets/status/2109624632395595878",
-     "at": "2026-10-12",
-     "text": "Tala Prattoy Durga Puja 2026 Opening: টালা প্রত্যয়ের পুজো উদ্বোধন করলেন মুখ্যমন্ত্রী #talaprattoy #durgapuja2026 #cmsuvenduadhikari #shorts",
-     "by": "thewalltweets",
-     "tier": "outlet",
-     "kind": "inaugurated"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2108960710332191159",
-     "at": "2026-10-10",
-     "text": "Visited 10 Oct with photos (@abasu4ever: 'First Durga Puja of the year, and it was FANTASTIC'); CM inaugurated 12 Oct (The Wall)",
-     "tier": "hand",
-     "kind": "visitors",
-     "by": "abasu4ever"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2108960827734892841",
-     "at": "2026-10-10T16:40:18.000Z",
-     "text": "📍 Tala Prattoy. 🎨 Susanta Shibani Paul. 🐐 👉 As usual, Susanta da has taken us to the mystical world of his. Absolutely mesmerizing. I loved it. Tala Prattoy is well &amp; truly back! 📌 #DurgaPuja2026 🧵 2/2",
-     "hand": true,
-     "by": "abasu4ever",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "fd-block": {
-   "since": "2026-10-19",
-   "evidence": "https://x.com/RakheeVaze/status/2112196899604422775",
-   "note": "\"Gond Art-inspired... masterpiece from Salt Lake FD Block\" own photos and videos — @RakheeVaze, 19 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/RakheeVaze/status/2112196899604422775",
-     "at": "2026-10-19",
-     "text": "\"Gond Art-inspired... masterpiece from Salt Lake FD Block\" own photos and videos — @RakheeVaze, 19 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "rakheevaze",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "ultadanga-bidhan-sangha": {
-   "since": "2026-10-17",
-   "evidence": "https://x.com/abasu4ever/status/2111410304806424692",
-   "note": "📍 Ultadanga Bidhan Sangha, with photos — trusted visitor @abasu4ever, 17 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/abasu4ever/status/2111410304806424692",
-     "at": "2026-10-17",
-     "text": "📍 Ultadanga Bidhan Sangha, with photos — trusted visitor @abasu4ever, 17 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "abasu4ever",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "ae-block": {
-   "since": "2026-10-15",
-   "evidence": "https://x.com/Only_Redacted/status/2110969400119685299",
-   "note": "First-hand post 16 Oct (@Only_Redacted): entry to the AE Block pandal was held up the day before because an MLA was visiting; visitor post 19 Oct (@Atrueindpatriot) on a stall at the AE Block Salt Lak",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/Only_Redacted/status/2110969400119685299",
-     "at": "2026-10-15",
-     "text": "First-hand post 16 Oct (@Only_Redacted): entry to the AE Block pandal was held up the day before because an MLA was visiting; visitor post 19 Oct (@Atrueindpatriot) on a stall at the AE Block Salt Lake pandal",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "only_redacted",
-     "tier": "hand",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/BengalAntiquity/status/2112323608261562680",
-     "at": "2026-10-19",
-     "text": "AE block, part 2, Salt Lake By far the best pandal I visited today. Time to call it a night. BTW, avoided entering EC Block pujo. Massive cr",
-     "by": "bengalantiquity",
-     "tier": "visitor",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "janbazar-rajbari": {
-   "since": "2026-10-18",
-   "evidence": "https://x.com/sanjeevsanyal/status/2111840532519637462",
-   "note": "\"The Durga Pujo in the home of Rani Rashmoni... This is the Protima\" own photos — @sanjeevsanyal, 18 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/sanjeevsanyal/status/2111840532519637462",
-     "at": "2026-10-18",
-     "text": "\"The Durga Pujo in the home of Rani Rashmoni... This is the Protima\" own photos — @sanjeevsanyal, 18 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "sanjeevsanyal",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "ichapur-shivaji-sangha": {
-   "since": "2026-10-16",
-   "evidence": "https://x.com/KumarVidhyasag2/status/2111178133198295283",
-   "note": "\"Icchapur Shivaji Sangha, Howrah\" with own photo — visitor @KumarVidhyasag2, 16 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/KumarVidhyasag2/status/2111178133198295283",
-     "at": "2026-10-16",
-     "text": "\"Icchapur Shivaji Sangha, Howrah\" with own photo — visitor @KumarVidhyasag2, 16 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "kumarvidhyasag2",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "swadhin-sangha": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "tarun-sathi": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "sanghati-puja-samiti": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "sahapur-sarbojanin": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "ajeya-sanghati": {
-   "since": "2026-10-15",
-   "evidence": "https://x.com/milindmghosh/status/2110828411073814812",
-   "note": "\"5. Ajeya Sanghati\" photo post in pandal-visit thread — @milindmghosh, 15 Oct",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/milindmghosh/status/2110828411073814812",
-     "at": "2026-10-15",
-     "text": "\"5. Ajeya Sanghati\" photo post in pandal-visit thread — @milindmghosh, 15 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "milindmghosh",
-     "tier": "hand",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2112244700786905348",
-     "at": "2026-10-19",
-     "text": "Visited (@abasu4ever, with photos): 📍 Haridevpur Ajeya Sanghati. 🎨 Thinkers &amp; Arighna Saha. 🌟 N/A. 👉 The Maa Durga idol is absolutely stunning",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/SudhanidhiB/status/2112530271786684906",
-     "at": "2026-10-20T13:04:00.000Z",
-     "text": "#44 Visited Ajeya Sanghati",
-     "by": "sudhanidhib",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "bantra-mohila-sangha": {
-   "since": "2026-10-16",
-   "evidence": "https://x.com/KumarVidhyasag2/status/2111179090321625162",
-   "note": "\"Bantra Mohila Sangha, Howrah\" own photos — @KumarVidhyasag2, 16 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/KumarVidhyasag2/status/2111179090321625162",
-     "at": "2026-10-16",
-     "text": "\"Bantra Mohila Sangha, Howrah\" own photos — @KumarVidhyasag2, 16 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "kumarvidhyasag2",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "beleghata-33-pally": {
-   "since": "2026-10-17",
-   "evidence": "https://x.com/abasu4ever/status/2111410946564645371",
-   "note": "📍 Beliaghata 33 Pally review with photos — trusted visitor @abasu4ever, 17 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/abasu4ever/status/2111410946564645371",
-     "at": "2026-10-17",
-     "text": "📍 Beliaghata 33 Pally review with photos — trusted visitor @abasu4ever, 17 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "abasu4ever",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "ak-block": {
-   "since": "2026-10-17",
-   "evidence": "https://x.com/alostsouldown/status/2112155105567097072",
-   "note": "First-hand 📍 visitor posts with own photos: @not_rishy 17 Oct (2 photos, AK Block, Salt Lake Durga Pujo) and @alostsouldown 19 Oct (4 photos, theme 'Anya Katha, Anner Katha')",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/alostsouldown/status/2112155105567097072",
-     "at": "2026-10-17",
-     "text": "First-hand 📍 visitor posts with own photos: @not_rishy 17 Oct (2 photos, AK Block, Salt Lake Durga Pujo) and @alostsouldown 19 Oct (4 photos, theme 'Anya Katha, Anner Katha')",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "alostsouldown",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
   },
   "santosh-mitra-square": {
    "since": "2026-10-11",
@@ -1568,175 +1493,91 @@
     }
    ]
   },
-  "kalighat-milan-sangha": {
-   "since": "2026-10-13",
-   "evidence": "https://x.com/ians_india/status/2110039896585052233",
-   "note": "Mamata Banerjee attended the inauguration ceremony of Kalighat Milan Sangha (IANS)",
+  "kendua-shanti-sangha": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/ANI/status/2112006522649927733",
+   "note": "On-site video 19 Oct (ANI): devotees at the Maha Ashtami Pushpanjali at Kendua Shanti Sangha pandal, Patuli; theme Aishwaryi (ANI 15 Oct)",
    "kind": "visitors",
-   "corroborated": true,
+   "corroborated": false,
    "sources": [
     {
-     "url": "https://x.com/ians_india/status/2110039896585052233",
-     "at": "2026-10-13",
-     "text": "Mamata Banerjee attended the inauguration ceremony of Kalighat Milan Sangha (IANS)",
-     "primary": true,
+     "url": "https://x.com/ANI/status/2112006522649927733",
+     "at": "2026-10-19",
+     "text": "On-site video 19 Oct (ANI): devotees at the Maha Ashtami Pushpanjali at Kendua Shanti Sangha pandal, Patuli; theme Aishwaryi (ANI 15 Oct)",
      "hand": true,
-     "by": "ians_india",
-     "tier": "outlet",
-     "kind": "inaugurated"
-    },
-    {
-     "url": "https://x.com/an1sh123/status/2111342265117626541",
-     "at": "2026-10-17",
-     "text": "#66 Visited Kalighat Milan Sangha lmao. This is just beside pisi's house. The pandal is MAITC propaganda piece against rito tmc. Lmaooooo. F",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "arjunpur-amra-sabai-club": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "bhola-maheshwartala": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "baguiati-rail-pukur": {
-   "since": "2026-10-14",
-   "evidence": "https://x.com/NewsStar69313/status/2110413557846454779",
-   "note": "Baguiati Rail Pukur United Club inaugurated its 73rd Durga Puja with the unveiling of its distinctive pandal themed ‘Collage’, conceptualise",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/NewsStar69313/status/2110413557846454779",
-     "at": "2026-10-14",
-     "text": "Baguiati Rail Pukur United Club inaugurated its 73rd Durga Puja with the unveiling of its distinctive pandal themed ‘Collage’, conceptualise",
-     "by": "newsstar69313",
-     "tier": "visitor",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "bhowanipore-durgotsab": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "sinthee-sarbojanin": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "bansdroni-sarbojanin": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "behala-11-pally": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "sanghasree": {
-   "since": "2026-10-13",
-   "evidence": "https://x.com/upamanyu95/status/2109932001646289197",
-   "note": "Our Sanghashri Durga Puja Pandal will be inaugurated by Finance Minister Dr Swapan Dasgupta today. I invite you all. Joy Maa Durga.",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/upamanyu95/status/2109932001646289197",
-     "at": "2026-10-13T08:59:24.000Z",
-     "text": "Our Sanghashri Durga Puja Pandal will be inaugurated by Finance Minister Dr Swapan Dasgupta today. I invite you all. Joy Maa Durga.",
-     "by": "upamanyu95",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/upamanyu95/status/2110074385768075323",
-     "at": "2026-10-13",
-     "text": "Our Sanghashri Durga Puja Pandal in Kalighat was inaugurated by West Bengal Finance Minister and MLA, Rashbehari Assembly, Dr Swapan Dasgupt",
-     "by": "upamanyu95",
-     "tier": "visitor",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "ballygunge-cultural": {
-   "since": "2026-10-11",
-   "evidence": "https://x.com/ians_india/status/2110071421343088809",
-   "note": "Kolkata, West Bengal: Foreign diplomats are experiencing the city’s iconic Durga Puja pandals under the Indian Chamber of Commerce’s “UNITE Theme 2026–2027” initiative, titled “Kolkata Connect: Connec",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/ians_india/status/2110071421343088809",
-     "at": "2026-10-13T18:13:24.000Z",
-     "text": "Kolkata, West Bengal: Foreign diplomats are experiencing the city’s iconic Durga Puja pandals under the Indian Chamber of Commerce’s “UNITE Theme 2026–2027” initiative, titled “Kolkata Connect: Connecting Nations Through Culture.” As part of the initiative, diplomats from…",
-     "by": "ians_india",
-     "tier": "outlet",
-     "kind": "inaugurated"
-    },
-    {
-     "url": "https://x.com/ANI/status/2110148600722489509",
-     "at": "2026-10-13T23:20:05.000Z",
-     "text": "#WATCH | Kolkata, West Bengal: A high-level delegation of foreign ambassadors, consuls general, and international representatives visited several prominent Durga Puja pandals across Kolkata on Tuesday. The foreign delegates toured iconic pandals including Alipore Sarbojonin,…",
+     "primary": true,
+     "kind_hint": "visitors",
      "by": "ani",
      "tier": "outlet",
      "kind": "visitors"
-    },
+    }
+   ]
+  },
+  "sikdar-bagan": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/alostsouldown/status/2111871736623104246",
+   "note": "\"📍Sikdar Bagan Sadharon Durga Pujo, Hatibagan\" own photos — @alostsouldown, 18 Oct",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
     {
-     "url": "https://x.com/IndiContractor/status/2109357968911376776",
-     "at": "2026-10-11",
-     "text": "📍 Ballygunge Cultural Association, Kolkata — first-hand visitor video (@IndiContractor, 11 Oct)",
+     "url": "https://x.com/alostsouldown/status/2111871736623104246",
+     "at": "2026-10-18",
+     "text": "\"📍Sikdar Bagan Sadharon Durga Pujo, Hatibagan\" own photos — @alostsouldown, 18 Oct",
      "hand": true,
+     "primary": true,
      "kind_hint": "visitors",
-     "by": "indicontractor",
+     "by": "alostsouldown",
      "tier": "hand",
      "kind": "visitors"
     },
     {
-     "url": "https://x.com/an1sh123/status/2111875032985321885",
-     "at": "2026-10-18T17:40:19.000Z",
-     "text": "#82 Visited Ballygunge Cultural. Good pandal, bad pratima.",
+     "url": "https://x.com/an1sh123/status/2112406316991811792",
+     "at": "2026-10-20",
+     "text": "Visited (@an1sh123, with photos): #124 Sikdar Bagan.",
      "by": "an1sh123",
      "tier": "trusted",
      "kind": "visitors"
     },
     {
-     "url": "https://x.com/SudhanidhiB/status/2110075829330002421",
-     "at": "2026-10-13",
-     "text": "#11 Visited Ballygunge Cultural.",
-     "by": "sudhanidhib",
-     "tier": "visitor",
+     "url": "https://x.com/abasu4ever/status/2112564457964814479",
+     "at": "2026-10-20T15:19:50.000Z",
+     "text": "📍 Sikdar Bagan Sarbojanin. 🎨 Sanatan Rudra Pal &amp; Bibhash Mukherjee. 🌟 N/A. 👉 Looks pretty. 📌 #DurgaPuja2026",
+     "by": "abasu4ever",
+     "tier": "trusted",
      "kind": "visitors"
     }
    ]
   },
-  "bhowanipur-75-pally": {
+  "hindusthan-park": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/_Epinephrine_/status/2110082080801739151",
+   "note": "📍Hindustan Park — first-hand visitor photos (4) in @_Epinephrine_'s pandal-hopping thread, 14 Oct 00:25 IST",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/_Epinephrine_/status/2110082080801739151",
+     "at": "2026-10-13",
+     "text": "📍Hindustan Park — first-hand visitor photos (4) in @_Epinephrine_'s pandal-hopping thread, 14 Oct 00:25 IST",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "_epinephrine_",
+     "tier": "hand",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/an1sh123/status/2111891319358701928",
+     "at": "2026-10-18T18:45:02.000Z",
+     "text": "#92 Visited Hindustan Park. Decent",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "swadhin-sangha": {
    "since": "2026-10-20",
    "evidence": "",
    "note": "DP ground call, Navami 20 Oct",
@@ -1744,35 +1585,18 @@
    "by": "override",
    "sources": []
   },
-  "tollygunge-santi-pally": {
-   "since": "2026-10-14",
-   "evidence": "https://x.com/abasu4ever/status/2110275877611425944",
-   "note": "Visited (@abasu4ever, with photos): 📍 Tollygunge Santipally. 🎨 N/A. 🌟 The theme encourages education, and condemns child labour. 👉 It was okayish.",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/abasu4ever/status/2110275877611425944",
-     "at": "2026-10-14",
-     "text": "Visited (@abasu4ever, with photos): 📍 Tollygunge Santipally. 🎨 N/A. 🌟 The theme encourages education, and condemns child labour. 👉 It was okayish.",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "telengabagan": {
+  "simla-byayam-samity": {
    "since": "2026-10-17",
-   "evidence": "https://x.com/abasu4ever/status/2111410196602106090",
-   "note": "Visited (@abasu4ever, with photos): 📍 Telengabagan Sarbojanin. 🎨 Prasanta Pal. 🌟 An old house (Bonedi Bari) of Kolkata. 👉 Another Durga Puja that ",
+   "evidence": "https://x.com/SudhanidhiB/status/2111411698179637733",
+   "note": "#28 Visited Netaji Subhash Chandra's Durga Puja at Simla Byayam Sammity— This Mother was used as a symbol of resistance",
    "kind": "visitors",
    "corroborated": false,
    "sources": [
     {
-     "url": "https://x.com/abasu4ever/status/2111410196602106090",
+     "url": "https://x.com/SudhanidhiB/status/2111411698179637733",
      "at": "2026-10-17",
-     "text": "Visited (@abasu4ever, with photos): 📍 Telengabagan Sarbojanin. 🎨 Prasanta Pal. 🌟 An old house (Bonedi Bari) of Kolkata. 👉 Another Durga Puja that ",
-     "by": "abasu4ever",
+     "text": "#28 Visited Netaji Subhash Chandra's Durga Puja at Simla Byayam Sammity— This Mother was used as a symbol of resistance",
+     "by": "sudhanidhib",
      "tier": "trusted",
      "kind": "visitors"
     }
@@ -1795,43 +1619,600 @@
     }
    ]
   },
-  "sree-bhumi-sporting-club": {
-   "since": "2026-10-11",
-   "evidence": "https://x.com/cmowbgov/status/2109530787431465212",
-   "note": "Inaugurated 11 Oct (CMO WB); crowds reported on Prathama",
+  "ultadanga-bidhan-sangha": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/abasu4ever/status/2111410304806424692",
+   "note": "📍 Ultadanga Bidhan Sangha, with photos — trusted visitor @abasu4ever, 17 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2111410304806424692",
+     "at": "2026-10-17",
+     "text": "📍 Ultadanga Bidhan Sangha, with photos — trusted visitor @abasu4ever, 17 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "abasu4ever",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "purbachal-shakti-sangha": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/abasu4ever/status/2110650875190648895",
+   "note": "📍 Purbachal Shakti Sangha, with photos — trusted visitor @abasu4ever, 15 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2110650875190648895",
+     "at": "2026-10-15",
+     "text": "📍 Purbachal Shakti Sangha, with photos — trusted visitor @abasu4ever, 15 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "abasu4ever",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "22-pally-northern-park": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/PinkiRMahapatra/status/2111556789913416162",
+   "note": "\"Puri Jagannath Temple theme, Northern Park, Bhawanipur\" own photo and video — @PinkiRMahapatra, 17 Oct",
    "kind": "visitors",
    "corroborated": true,
    "sources": [
     {
-     "url": "https://x.com/cmowbgov/status/2109530787431465212",
+     "url": "https://x.com/PinkiRMahapatra/status/2111556789913416162",
+     "at": "2026-10-17",
+     "text": "\"Puri Jagannath Temple theme, Northern Park, Bhawanipur\" own photo and video — @PinkiRMahapatra, 17 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "pinkirmahapatra",
+     "tier": "hand",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/SudhanidhiB/status/2112520937577103595",
+     "at": "2026-10-20",
+     "text": "Visited (@SudhanidhiB, with photos): #43 The story at Northern Park is actually sweet— Given no Aunt's home, every year Khidderpore Jagannath Templ",
+     "by": "sudhanidhib",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "tollygunge-santi-pally": {
+   "since": "2026-10-14",
+   "evidence": "https://x.com/abasu4ever/status/2110275877611425944",
+   "note": "Visited (@abasu4ever, with photos): 📍 Tollygunge Santipally. 🎨 N/A. 🌟 The theme encourages education, and condemns child labour. 👉 It was okayish.",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2110275877611425944",
+     "at": "2026-10-14",
+     "text": "Visited (@abasu4ever, with photos): 📍 Tollygunge Santipally. 🎨 N/A. 🌟 The theme encourages education, and condemns child labour. 👉 It was okayish.",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "matri-mandir": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "71-pally-baishakhi": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "bhowanipur-75-pally": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "ichapur-shivaji-sangha": {
+   "since": "2026-10-16",
+   "evidence": "https://x.com/KumarVidhyasag2/status/2111178133198295283",
+   "note": "\"Icchapur Shivaji Sangha, Howrah\" with own photo — visitor @KumarVidhyasag2, 16 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/KumarVidhyasag2/status/2111178133198295283",
+     "at": "2026-10-16",
+     "text": "\"Icchapur Shivaji Sangha, Howrah\" with own photo — visitor @KumarVidhyasag2, 16 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "kumarvidhyasag2",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "deshapriya-park": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/sayan_dey/status/2111793201279639611",
+   "note": "Just because it has happened at one pandal, doesn't mean that the others are completely fine and risk-free. For folks who have visited the Deshapriya Park Puja Pandal will agree that the entry point t",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/sayan_dey/status/2111793201279639611",
+     "at": "2026-10-18T12:15:09.000Z",
+     "text": "Just because it has happened at one pandal, doesn't mean that the others are completely fine and risk-free. For folks who have visited the Deshapriya Park Puja Pandal will agree that the entry point to the main pandal is perhaps narrower than even this. [1]",
+     "by": "sayan_dey",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "dakshindari-youth": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "madhya-garfa-sarbojanin": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "bhola-maheshwartala": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "ae-block": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/Only_Redacted/status/2110969400119685299",
+   "note": "First-hand post 16 Oct (@Only_Redacted): entry to the AE Block pandal was held up the day before because an MLA was visiting; visitor post 19 Oct (@Atrueindpatriot) on a stall at the AE Block Salt Lak",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/Only_Redacted/status/2110969400119685299",
+     "at": "2026-10-15",
+     "text": "First-hand post 16 Oct (@Only_Redacted): entry to the AE Block pandal was held up the day before because an MLA was visiting; visitor post 19 Oct (@Atrueindpatriot) on a stall at the AE Block Salt Lake pandal",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "only_redacted",
+     "tier": "hand",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/BengalAntiquity/status/2112323608261562680",
+     "at": "2026-10-19",
+     "text": "AE block, part 2, Salt Lake By far the best pandal I visited today. Time to call it a night. BTW, avoided entering EC Block pujo. Massive cr",
+     "by": "bengalantiquity",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "behala-yma": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "pally-saradiya-khidirpur": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "telengabagan": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/abasu4ever/status/2111410196602106090",
+   "note": "Visited (@abasu4ever, with photos): 📍 Telengabagan Sarbojanin. 🎨 Prasanta Pal. 🌟 An old house (Bonedi Bari) of Kolkata. 👉 Another Durga Puja that ",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2111410196602106090",
+     "at": "2026-10-17",
+     "text": "Visited (@abasu4ever, with photos): 📍 Telengabagan Sarbojanin. 🎨 Prasanta Pal. 🌟 An old house (Bonedi Bari) of Kolkata. 👉 Another Durga Puja that ",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "66-pally": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/abhishekojhaa2/status/2109996810538533291",
+   "note": "66 Pally 'Agni Yug' — first-hand visitor photos + video of the lit pandal with crowds (@abhishekojhaa2, 13 Oct evening)",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/abhishekojhaa2/status/2109996810538533291",
+     "at": "2026-10-13",
+     "text": "66 Pally 'Agni Yug' — first-hand visitor photos + video of the lit pandal with crowds (@abhishekojhaa2, 13 Oct evening)",
+     "hand": true,
+     "kind_hint": "visitors",
+     "by": "abhishekojhaa2",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "bansdroni-sarbojanin": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "patuli-sarbojanin": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/abasu4ever/status/2110650787106042344",
+   "note": "Visited (@abasu4ever, with photos): 📍 Baishnabghata Patuli Upanagari Sarbojanin. 🎨 Partha Joardar. 🌟 The theme shows the discovering of a Maa Durg",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2110650787106042344",
+     "at": "2026-10-15",
+     "text": "Visited (@abasu4ever, with photos): 📍 Baishnabghata Patuli Upanagari Sarbojanin. 🎨 Partha Joardar. 🌟 The theme shows the discovering of a Maa Durg",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "sahajatri": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "keshtopur-prafulla-kanan": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/DrSukantaBJP/status/2109717228019171449",
+   "note": "Glimpses from the auspicious inauguration ceremony of the Durga Puja organised by the Kestopur Prafulla Kanan (Paschim) Adhibasibrinda.",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/DrSukantaBJP/status/2109717228019171449",
+     "at": "2026-10-12",
+     "text": "Glimpses from the auspicious inauguration ceremony of the Durga Puja organised by the Kestopur Prafulla Kanan (Paschim) Adhibasibrinda.",
+     "by": "drsukantabjp",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "mukundapur-sarbojanin": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "haridevpur-41-pally": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/titan_rc13/status/2111912919365763425",
+   "note": "Durga Puja Diary photo of Haridevpur 41 Pally — visitor @titan_rc13, 18 Oct",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/an1sh123/status/2110802127383888371",
+     "at": "2026-10-15",
+     "text": "Visited (@an1sh123, with photos): #33 Haridevpur 41 Pally club. Their theme is \"দ্বৈত\". Bad pandal. Decent Pratima.",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/titan_rc13/status/2111912919365763425",
+     "at": "2026-10-18",
+     "text": "Durga Puja Diary photo of Haridevpur 41 Pally — visitor @titan_rc13, 18 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "titan_rc13",
+     "tier": "hand",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/SudhanidhiB/status/2112503096815616234",
+     "at": "2026-10-20T11:16:01.000Z",
+     "text": "#41 Visited Haridevpur 41 Pally",
+     "by": "sudhanidhib",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "chaltabagan-lohapatty": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/ians_india/status/2110736067616018849",
+   "note": "Kolkata, West Bengal: Governor R. N. Ravi, Minister Tapas Roy and BJP leader Locket Chatterjee attended the inauguration ceremony of the Cha",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/ians_india/status/2110736067616018849",
+     "at": "2026-10-15",
+     "text": "Kolkata, West Bengal: Governor R. N. Ravi, Minister Tapas Roy and BJP leader Locket Chatterjee attended the inauguration ceremony of the Cha",
+     "by": "ians_india",
+     "tier": "outlet",
+     "kind": "inaugurated"
+    },
+    {
+     "url": "https://x.com/an1sh123/status/2112430444189016441",
+     "at": "2026-10-20T06:27:19.000Z",
+     "text": "#137 Visited Chaltabagan Sarbojanin.",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2112561296973693251",
+     "at": "2026-10-20T15:07:17.000Z",
+     "text": "📍 Manicktala Chaltabagan Lohapatty Sarbojanin. 🎨 Aditi Chakraborty &amp; Co. 🌟 The theme depicts Maa Durga as a tribal woman. 👉 One of the best idols this year! 📌 #DurgaPuja2026 🧵 1/2",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "hindusthan-club": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/an1sh123/status/2111889804854215094",
+   "note": "#91 Visited Hindustan Club. They are famous for their lighting.",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/an1sh123/status/2111889804854215094",
+     "at": "2026-10-18",
+     "text": "#91 Visited Hindustan Club. They are famous for their lighting.",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "jagat-mukherjee-park": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/alostsouldown/status/2111535066967085109",
+   "note": "\"I visited Jagat Mukherjee Park tonight, it was crowded\" with photos — first-hand visitor @alostsouldown, 17 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/alostsouldown/status/2111535066967085109",
+     "at": "2026-10-17",
+     "text": "\"I visited Jagat Mukherjee Park tonight, it was crowded\" with photos — first-hand visitor @alostsouldown, 17 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "alostsouldown",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "club-muktadal-bhowanipur": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/SuvenduWB/status/2109717078550978709",
+   "note": "CM attended the inauguration: ক্লাব মুক্তদল সার্বজনীন, ভবানীপুর",
+   "kind": "inaugurated",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/SuvenduWB/status/2109717078550978709",
+     "at": "2026-10-12",
+     "text": "CM attended the inauguration: ক্লাব মুক্তদল সার্বজনীন, ভবানীপুর",
+     "primary": true,
+     "hand": true,
+     "by": "suvenduwb",
+     "tier": "outlet",
+     "kind": "inaugurated"
+    }
+   ]
+  },
+  "rajdanga-naba-uday-sangha": {
+   "since": "2026-10-11",
+   "evidence": "https://x.com/SudhanidhiB/status/2109349903600374159",
+   "note": "#2 Visited Didi @keyakahe's Durga Puja at Rajdanga Naba Uday Sangha. Unreal colour combination as theme.",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/SudhanidhiB/status/2109349903600374159",
      "at": "2026-10-11",
-     "text": "Inaugurated 11 Oct (CMO WB); crowds reported on Prathama",
+     "text": "#2 Visited Didi @keyakahe's Durga Puja at Rajdanga Naba Uday Sangha. Unreal colour combination as theme.",
      "tier": "hand",
      "kind": "visitors",
-     "by": "cmowbgov"
-    },
+     "by": "sudhanidhib"
+    }
+   ]
+  },
+  "vivekananda-park": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/titan_rc13/status/2111912520655261949",
+   "note": "Durga Puja Diary photo of Haridevpur Vivekananda Park — visitor @titan_rc13, 18 Oct",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
     {
-     "url": "https://x.com/HeyyyyShubham/status/2109275327331537045",
-     "at": "2026-10-11T13:30:01.000Z",
-     "text": "I'm already missing the days when I was in Kolkata during Navratri and Durga Puja! When I was studying for CA Foundation, I had coaching friends, and we went to Sreebhumi Sporting Club together. Another year, I went with a female friend I met during my IT training.",
-     "by": "heyyyyshubham",
-     "tier": "visitor",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/an1sh123/status/2109971486106886421",
-     "at": "2026-10-13T11:36:18.000Z",
-     "text": "#1 Visited Sreebhumi for the first and last time. Pandal is closed lmao. They haven't even finished the pandal but still inaugurated it last night. Nothing spectacular. No point in travelling that much to see it.",
+     "url": "https://x.com/an1sh123/status/2110800797806297502",
+     "at": "2026-10-15",
+     "text": "#31 Haridevpur Vivekananda Park Athletic club. They are typically the safe bet to produce something good from a small budget, but this year,",
      "by": "an1sh123",
-     "tier": "visitor",
+     "tier": "trusted",
      "kind": "visitors"
     },
     {
-     "url": "https://x.com/RadhikaBarman5/status/2112128344032714977",
-     "at": "2026-10-19T10:26:53.000Z",
-     "text": "Two Muslim women I know, one wearing a hijab and the other a niqab, went to visit Sreebhumi Durga Puja, with VIP parking arranged for their car. Instead of being welcomed, club members allegedly told them: “Don't come wearing a hijab. You are Muslim Puja is not for you. Go back.\"",
-     "by": "radhikabarman5",
-     "tier": "visitor",
+     "url": "https://x.com/titan_rc13/status/2111912520655261949",
+     "at": "2026-10-18",
+     "text": "Durga Puja Diary photo of Haridevpur Vivekananda Park — visitor @titan_rc13, 18 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "titan_rc13",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "baghbazar-sarbojanin": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/IndiContractor/status/2111396965678526719",
+   "note": "\"📍Baghbazar Sarbojanin, Kolkata\" own video — @IndiContractor, 17 Oct",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/IndiContractor/status/2111396965678526719",
+     "at": "2026-10-17",
+     "text": "\"📍Baghbazar Sarbojanin, Kolkata\" own video — @IndiContractor, 17 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "indicontractor",
+     "tier": "hand",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2111889602676248993",
+     "at": "2026-10-18T18:38:12.000Z",
+     "text": "📍 Bagbazar Sarbojanin Durgotsab &amp; Exhibition. 🎨 Jitendra Nath Pal &amp; Sons. 🌟 No themes at all for the last 100+ years. It is strictly a 'sabeki' (traditional) Puja. 👉 Our very own 'Queen of Kolkata' is back, amidst all the uncertainties! 📌 #DurgaPuja2026",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/an1sh123/status/2112576004250358085",
+     "at": "2026-10-20T16:05:43.000Z",
+     "text": "#146 Visited the mighty Bagbazar Sarbojanin. Nothing to comment. The name is enough.",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "dum-dum-park-tarun-dal": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/_iamsrb__/status/2111478634162917760",
+   "note": "\"Dum Dum Park Tarun Dal 📍\" with photos — visitor @_iamsrb__, 17 Oct",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2110650917993476416",
+     "at": "2026-10-15",
+     "text": "Visited (@abasu4ever, with photos): 📍 Dum Dum Park Tarun Dal. 🎨 Purnendu Dey. 🌟 The theme is \"history of connection, strength of bond.\" 👉 One of t",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/_iamsrb__/status/2111478634162917760",
+     "at": "2026-10-17",
+     "text": "\"Dum Dum Park Tarun Dal 📍\" with photos — visitor @_iamsrb__, 17 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "_iamsrb__",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "pallishree-sarbojanin": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "ak-block": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/alostsouldown/status/2112155105567097072",
+   "note": "First-hand 📍 visitor posts with own photos: @not_rishy 17 Oct (2 photos, AK Block, Salt Lake Durga Pujo) and @alostsouldown 19 Oct (4 photos, theme 'Anya Katha, Anner Katha')",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/alostsouldown/status/2112155105567097072",
+     "at": "2026-10-17",
+     "text": "First-hand 📍 visitor posts with own photos: @not_rishy 17 Oct (2 photos, AK Block, Salt Lake Durga Pujo) and @alostsouldown 19 Oct (4 photos, theme 'Anya Katha, Anner Katha')",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "alostsouldown",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "rk-chatterjee-sarbojanin": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "ahiritola-sarbojanin": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/SudhanidhiB/status/2111427846212342175",
+   "note": "#29 Visited Ahiritola Sarbojonin, with photo — trusted visitor @SudhanidhiB, 17 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/SudhanidhiB/status/2111427846212342175",
+     "at": "2026-10-17",
+     "text": "#29 Visited Ahiritola Sarbojonin, with photo — trusted visitor @SudhanidhiB, 17 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "sudhanidhib",
+     "tier": "hand",
      "kind": "visitors"
     }
    ]
@@ -1916,346 +2297,215 @@
     }
    ]
   },
-  "singhi-park": {
-   "since": "2026-10-13",
-   "evidence": "https://x.com/_Epinephrine_/status/2110072254080127323",
-   "note": "📍Singhi Park — first-hand visitor photos (3) in @_Epinephrine_'s pandal-hopping thread, 13 Oct 23:46 IST",
+  "behala-club": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/an1sh123/status/2112210120495247544",
+   "note": "#107 Visited Behala Club. Very good themes. Their theme is \"They have depicted the importance of Oil in human society. Very good themes pandal for people who are into these things.",
    "kind": "visitors",
    "corroborated": true,
    "sources": [
     {
-     "url": "https://x.com/_Epinephrine_/status/2110072254080127323",
-     "at": "2026-10-13",
-     "text": "📍Singhi Park — first-hand visitor photos (3) in @_Epinephrine_'s pandal-hopping thread, 13 Oct 23:46 IST",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "_epinephrine_",
-     "tier": "hand",
+     "url": "https://x.com/an1sh123/status/2112210120495247544",
+     "at": "2026-10-19T15:51:50.000Z",
+     "text": "#107 Visited Behala Club. Very good themes. Their theme is \"They have depicted the importance of Oil in human society. Very good themes pandal for people who are into these things.",
+     "by": "an1sh123",
+     "tier": "trusted",
      "kind": "visitors"
     },
     {
-     "url": "https://x.com/an1sh123/status/2111889089515684030",
-     "at": "2026-10-18T18:36:10.000Z",
-     "text": "#90 Visited Singhi Park. Great as always. Great pandal and their traditional pratima style. They maintain their tradition and royalty.",
-     "by": "an1sh123",
+     "url": "https://x.com/abasu4ever/status/2112234622331576354",
+     "at": "2026-10-19T17:29:12.000Z",
+     "text": "📍 Behala Club. 🎨 Pradip Das. 🌟 The theme showcases the significance of 'oil' in our lives, and its implications on the environment. 👉 Nice one, but definitely not Asian Paints worthy. 📌 #DurgaPuja2026",
+     "by": "abasu4ever",
      "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/SudhanidhiB/status/2109695250826735686",
+     "at": "2026-10-12",
+     "text": "#5 Visited Behala Club. Theme is on Oil as an essential commodity in our daily life, from cooking to travel, we remain dependent on it.",
+     "by": "sudhanidhib",
+     "tier": "visitor",
      "kind": "visitors"
     }
    ]
   },
-  "baghbazar-sarbojanin": {
-   "since": "2026-10-17",
-   "evidence": "https://x.com/IndiContractor/status/2111396965678526719",
-   "note": "\"📍Baghbazar Sarbojanin, Kolkata\" own video — @IndiContractor, 17 Oct",
+  "ballygunge-cultural": {
+   "since": "2026-10-11",
+   "evidence": "https://x.com/ians_india/status/2110071421343088809",
+   "note": "Kolkata, West Bengal: Foreign diplomats are experiencing the city’s iconic Durga Puja pandals under the Indian Chamber of Commerce’s “UNITE Theme 2026–2027” initiative, titled “Kolkata Connect: Connec",
    "kind": "visitors",
    "corroborated": true,
    "sources": [
     {
-     "url": "https://x.com/IndiContractor/status/2111396965678526719",
-     "at": "2026-10-17",
-     "text": "\"📍Baghbazar Sarbojanin, Kolkata\" own video — @IndiContractor, 17 Oct",
+     "url": "https://x.com/ians_india/status/2110071421343088809",
+     "at": "2026-10-13T18:13:24.000Z",
+     "text": "Kolkata, West Bengal: Foreign diplomats are experiencing the city’s iconic Durga Puja pandals under the Indian Chamber of Commerce’s “UNITE Theme 2026–2027” initiative, titled “Kolkata Connect: Connecting Nations Through Culture.” As part of the initiative, diplomats from…",
+     "by": "ians_india",
+     "tier": "outlet",
+     "kind": "inaugurated"
+    },
+    {
+     "url": "https://x.com/ANI/status/2110148600722489509",
+     "at": "2026-10-13T23:20:05.000Z",
+     "text": "#WATCH | Kolkata, West Bengal: A high-level delegation of foreign ambassadors, consuls general, and international representatives visited several prominent Durga Puja pandals across Kolkata on Tuesday. The foreign delegates toured iconic pandals including Alipore Sarbojonin,…",
+     "by": "ani",
+     "tier": "outlet",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/IndiContractor/status/2109357968911376776",
+     "at": "2026-10-11",
+     "text": "📍 Ballygunge Cultural Association, Kolkata — first-hand visitor video (@IndiContractor, 11 Oct)",
      "hand": true,
-     "primary": true,
      "kind_hint": "visitors",
      "by": "indicontractor",
      "tier": "hand",
      "kind": "visitors"
     },
     {
-     "url": "https://x.com/abasu4ever/status/2111889602676248993",
-     "at": "2026-10-18T18:38:12.000Z",
-     "text": "📍 Bagbazar Sarbojanin Durgotsab &amp; Exhibition. 🎨 Jitendra Nath Pal &amp; Sons. 🌟 No themes at all for the last 100+ years. It is strictly a 'sabeki' (traditional) Puja. 👉 Our very own 'Queen of Kolkata' is back, amidst all the uncertainties! 📌 #DurgaPuja2026",
-     "by": "abasu4ever",
+     "url": "https://x.com/an1sh123/status/2111875032985321885",
+     "at": "2026-10-18T17:40:19.000Z",
+     "text": "#82 Visited Ballygunge Cultural. Good pandal, bad pratima.",
+     "by": "an1sh123",
      "tier": "trusted",
      "kind": "visitors"
     },
     {
-     "url": "https://x.com/an1sh123/status/2112576004250358085",
-     "at": "2026-10-20T16:05:43.000Z",
-     "text": "#146 Visited the mighty Bagbazar Sarbojanin. Nothing to comment. The name is enough.",
+     "url": "https://x.com/SudhanidhiB/status/2110075829330002421",
+     "at": "2026-10-13",
+     "text": "#11 Visited Ballygunge Cultural.",
+     "by": "sudhanidhib",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "shahid-nagar-sarbojanin": {
+   "since": "2026-10-14",
+   "evidence": "https://x.com/ANI/status/2110445329648853482",
+   "note": "Dated inauguration video (ANI, 14 Oct): Governor R.N. Ravi inaugurated the 77th Dhakuria Shahid Nagar Durga Puja",
+   "kind": "inaugurated",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/ANI/status/2110445329648853482",
+     "at": "2026-10-14",
+     "text": "Dated inauguration video (ANI, 14 Oct): Governor R.N. Ravi inaugurated the 77th Dhakuria Shahid Nagar Durga Puja",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "inaugurated",
+     "by": "ani",
+     "tier": "outlet",
+     "kind": "inaugurated"
+    },
+    {
+     "url": "https://x.com/ANI/status/2110593659662110914",
+     "at": "2026-10-15",
+     "text": "#WATCH | Kolkata: West Bengal BJP President Samik Bhattacharya launched the theme song of the 77th Dhakuria Shahid Nagar Durga Puja, which f",
+     "by": "ani",
+     "tier": "outlet",
+     "kind": "inaugurated"
+    }
+   ]
+  },
+  "paddapukur-youth": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "bosepukur-talbagan": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/an1sh123/status/2111896164836774058",
+   "note": "#97 Visited Bosepukur Talbagan. Decent pandal and good pratima.",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/an1sh123/status/2111896164836774058",
+     "at": "2026-10-18",
+     "text": "#97 Visited Bosepukur Talbagan. Decent pandal and good pratima.",
      "by": "an1sh123",
      "tier": "trusted",
      "kind": "visitors"
     }
    ]
   },
-  "notunpara-sarbojanin": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "abasar-sarbojanin": {
-   "since": "2026-10-16",
-   "evidence": "https://x.com/abasu4ever/status/2111048096079880623",
-   "note": "📍 Abasar Sarbojanin, with photos — trusted visitor @abasu4ever, 16 Oct",
+  "janbazar-rajbari": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/sanjeevsanyal/status/2111840532519637462",
+   "note": "\"The Durga Pujo in the home of Rani Rashmoni... This is the Protima\" own photos — @sanjeevsanyal, 18 Oct",
    "kind": "visitors",
    "corroborated": false,
    "sources": [
     {
-     "url": "https://x.com/abasu4ever/status/2111048096079880623",
-     "at": "2026-10-16",
-     "text": "📍 Abasar Sarbojanin, with photos — trusted visitor @abasu4ever, 16 Oct",
+     "url": "https://x.com/sanjeevsanyal/status/2111840532519637462",
+     "at": "2026-10-18",
+     "text": "\"The Durga Pujo in the home of Rani Rashmoni... This is the Protima\" own photos — @sanjeevsanyal, 18 Oct",
      "hand": true,
      "primary": true,
      "kind_hint": "visitors",
-     "by": "abasu4ever",
+     "by": "sanjeevsanyal",
      "tier": "hand",
      "kind": "visitors"
     }
    ]
   },
-  "taltala-sarbojanin": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "chetla-agrani": {
-   "since": "2026-10-12",
-   "evidence": "https://x.com/TheWallTweets/status/2109685707363238252",
-   "note": "CM Suvendu Adhikari inaugurated Chetla Agrani (The Wall, 12 Oct); visitor theme posts 12-13 Oct",
+  "bj-block": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/alostsouldown/status/2112112499139227709",
+   "note": "\"📍BJ Block Durga Pujo, Salt Lake\" own photos, theme Somnath Temple — @alostsouldown, 19 Oct",
    "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/TheWallTweets/status/2109685707363238252",
-     "at": "2026-10-12",
-     "text": "CM Suvendu Adhikari inaugurated Chetla Agrani (The Wall, 12 Oct); visitor theme posts 12-13 Oct",
-     "tier": "hand",
-     "kind": "visitors",
-     "by": "thewalltweets"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2109591649815007260",
-     "at": "2026-10-12",
-     "text": "📍 Chetla Agrani. 🎨 N/A. 🌟 N/A. 👉 The pandal looks pretty good, but nothing extraordinary for their usual standards. 📌 #DurgaPuja2026 🧵 1/3",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2109591715275575775",
-     "at": "2026-10-12T10:27:13.000Z",
-     "text": "📍 Chetla Agrani. 📌 #DurgaPuja2026 🧵 2/3",
-     "hand": true,
-     "by": "abasu4ever",
-     "tier": "hand",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/PKSpeaks07/status/2112259840919900226",
-     "at": "2026-10-19T19:09:24.000Z",
-     "text": "The most mesmerizing Puja Pandal I ever visited !! Thank you Chetla Agrani Club for this 🙏🏻🙏🏻 Thank you my Bengali People for this !! 🙏🏻🙏🏻 May Maa Durga give me a chance to serve the people of West Bengal with full dedication and pride !! 🙏🏻🙏🏻 #DurgaPuja2026",
-     "by": "pkspeaks07",
-     "tier": "visitor",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "garia-mitali": {
-   "since": "2026-10-13",
-   "evidence": "https://x.com/IamRiteshTiwari/status/2110096538911547668",
-   "note": "MLA Ritesh Tiwari's own dated X post (14 Oct 01:23 IST, with video): attended the formal inauguration of Garia Mitali Sangha Nabadurga today (13 Oct)",
-   "kind": "inaugurated",
    "corroborated": false,
    "sources": [
     {
-     "url": "https://x.com/IamRiteshTiwari/status/2110096538911547668",
-     "at": "2026-10-13",
-     "text": "MLA Ritesh Tiwari's own dated X post (14 Oct 01:23 IST, with video): attended the formal inauguration of Garia Mitali Sangha Nabadurga today (13 Oct)",
+     "url": "https://x.com/alostsouldown/status/2112112499139227709",
+     "at": "2026-10-19",
+     "text": "\"📍BJ Block Durga Pujo, Salt Lake\" own photos, theme Somnath Temple — @alostsouldown, 19 Oct",
      "hand": true,
      "primary": true,
-     "kind_hint": "inaugurated",
-     "by": "iamriteshtiwari",
+     "kind_hint": "visitors",
+     "by": "alostsouldown",
      "tier": "hand",
-     "kind": "inaugurated"
-    }
-   ]
-  },
-  "lalabagan-nabankur": {
-   "since": "2026-10-20",
-   "evidence": "https://x.com/abasu4ever/status/2112447933152956619",
-   "note": "📍 Lalabagan Nabankur. 🎨 Sushovan Roy. 🌟 The entire pandal is made using sarees! 👉 Looks very stunning! 📌 #DurgaPuja2026 🧵 1/2",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/abasu4ever/status/2112447933152956619",
-     "at": "2026-10-20",
-     "text": "📍 Lalabagan Nabankur. 🎨 Sushovan Roy. 🌟 The entire pandal is made using sarees! 👉 Looks very stunning! 📌 #DurgaPuja2026 🧵 1/2",
-     "by": "abasu4ever",
-     "tier": "trusted",
      "kind": "visitors"
     }
    ]
   },
-  "chaltabagan-lohapatty": {
-   "since": "2026-10-15",
-   "evidence": "https://x.com/ians_india/status/2110736067616018849",
-   "note": "Kolkata, West Bengal: Governor R. N. Ravi, Minister Tapas Roy and BJP leader Locket Chatterjee attended the inauguration ceremony of the Cha",
+  "telipukur-yuba-sangha": {
+   "since": "2026-10-11",
+   "evidence": "https://x.com/goonereol/status/2109304631360901567",
+   "note": "Yuba Sangha Telipukur 'Ek Pukur Bhalobasa' — first-hand visitor photos (4) starting @goonereol's pandal-hopping thread (11 Oct evening, preview pass)",
    "kind": "visitors",
    "corroborated": true,
    "sources": [
     {
-     "url": "https://x.com/ians_india/status/2110736067616018849",
-     "at": "2026-10-15",
-     "text": "Kolkata, West Bengal: Governor R. N. Ravi, Minister Tapas Roy and BJP leader Locket Chatterjee attended the inauguration ceremony of the Cha",
+     "url": "https://x.com/ians_india/status/2110253889069138416",
+     "at": "2026-10-14",
+     "text": "Dum Dum, Kolkata: Chief Minister Suvendu Adhikari inaugurated the Durga Puja organised by MLA Tarun Jyoti Tiwari at Telipukur Yuba Sangha. O",
      "by": "ians_india",
      "tier": "outlet",
      "kind": "inaugurated"
     },
     {
-     "url": "https://x.com/an1sh123/status/2112430444189016441",
-     "at": "2026-10-20T06:27:19.000Z",
-     "text": "#137 Visited Chaltabagan Sarbojanin.",
-     "by": "an1sh123",
-     "tier": "trusted",
+     "url": "https://x.com/goonereol/status/2109304631360901567",
+     "at": "2026-10-11",
+     "text": "Yuba Sangha Telipukur 'Ek Pukur Bhalobasa' — first-hand visitor photos (4) starting @goonereol's pandal-hopping thread (11 Oct evening, preview pass)",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "goonereol",
+     "tier": "hand",
      "kind": "visitors"
     },
     {
-     "url": "https://x.com/abasu4ever/status/2112561296973693251",
-     "at": "2026-10-20T15:07:17.000Z",
-     "text": "📍 Manicktala Chaltabagan Lohapatty Sarbojanin. 🎨 Aditi Chakraborty &amp; Co. 🌟 The theme depicts Maa Durga as a tribal woman. 👉 One of the best idols this year! 📌 #DurgaPuja2026 🧵 1/2",
+     "url": "https://x.com/abasu4ever/status/2110275815103713459",
+     "at": "2026-10-14T07:45:36.000Z",
+     "text": "📍 Telipukur Yuba Sangha. 🎨 Bhabatosh Sutar. 🌟 The theme is named \"Ek Pukur Bhalobasha\", meaning \"A Pond of Love.\" It showcases the significance, history &amp; present of ponds in our daily lives. 👉 Good concept, but nothing too extraordinary. 📌 #DurgaPuja2026 🧵 1/2",
      "by": "abasu4ever",
      "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "club-muktadal-bhowanipur": {
-   "since": "2026-10-12",
-   "evidence": "https://x.com/SuvenduWB/status/2109717078550978709",
-   "note": "CM attended the inauguration: ক্লাব মুক্তদল সার্বজনীন, ভবানীপুর",
-   "kind": "inaugurated",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/SuvenduWB/status/2109717078550978709",
-     "at": "2026-10-12",
-     "text": "CM attended the inauguration: ক্লাব মুক্তদল সার্বজনীন, ভবানীপুর",
-     "primary": true,
-     "hand": true,
-     "by": "suvenduwb",
-     "tier": "outlet",
-     "kind": "inaugurated"
-    }
-   ]
-  },
-  "adi-ballygunge-sarbojanin": {
-   "since": "2026-10-11",
-   "evidence": "https://x.com/DrSukantaBJP/status/2109339245676802270",
-   "note": "Attended the auspicious inauguration of the Durga Puja organised by Adi Ballygunge Sarbojanin Durga Puja Parishad at Golpark, Dakshin Kolkat",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/DrSukantaBJP/status/2109339245676802270",
-     "at": "2026-10-11",
-     "text": "Attended the auspicious inauguration of the Durga Puja organised by Adi Ballygunge Sarbojanin Durga Puja Parishad at Golpark, Dakshin Kolkat",
-     "by": "drsukantabjp",
-     "tier": "visitor",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "jodhpur-park-sarbojanin": {
-   "since": "2026-10-18",
-   "evidence": "https://x.com/titan_rc13/status/2111910531363995715",
-   "note": "\"Durga Puja Diary 2026, Jodhpur Park\" own photos — @titan_rc13, 18 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/titan_rc13/status/2111910531363995715",
-     "at": "2026-10-18",
-     "text": "\"Durga Puja Diary 2026, Jodhpur Park\" own photos — @titan_rc13, 18 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "titan_rc13",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "dhakuria-sarbojanin": {
-   "since": "2026-10-15",
-   "evidence": "https://x.com/an1sh123/status/2110705482948292699",
-   "note": "\"Visited Dhakuria sarbojanin\" own photos — @an1sh123, 15 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/an1sh123/status/2110705482948292699",
-     "at": "2026-10-15",
-     "text": "\"Visited Dhakuria sarbojanin\" own photos — @an1sh123, 15 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "an1sh123",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "beniatola-sarbojanin": {
-   "since": "2026-10-18",
-   "evidence": "https://x.com/abasu4ever/status/2111883796677304321",
-   "note": "First-hand 📍 visitor post with photos 18 Oct (@abasu4ever): Shovabazar Beniatola Sarbojanin, \"Looks nice\"",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/abasu4ever/status/2111883796677304321",
-     "at": "2026-10-18",
-     "text": "First-hand 📍 visitor post with photos 18 Oct (@abasu4ever): Shovabazar Beniatola Sarbojanin, \"Looks nice\"",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "abasu4ever",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "badamtala-ashar-sangha": {
-   "since": "2026-10-13",
-   "evidence": "https://x.com/TusharKantiBJP/status/2110045840765284796",
-   "note": "The auspicious inauguration of Badamtala Ashar Sangha’s Durga Puja became a moment of immense joy with the presence of Hon’ble State Ministe",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/TusharKantiBJP/status/2110045840765284796",
-     "at": "2026-10-13",
-     "text": "The auspicious inauguration of Badamtala Ashar Sangha’s Durga Puja became a moment of immense joy with the presence of Hon’ble State Ministe",
-     "by": "tusharkantibjp",
-     "tier": "visitor",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "kumartuli-park": {
-   "since": "2026-10-19",
-   "evidence": "https://x.com/SuvamDu76552490/status/2112225699780350376",
-   "note": "Seen 19 Oct (Ashtami): visitor reports a long queue in the lane at Kumartuli Park",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/SuvamDu76552490/status/2112225699780350376",
-     "at": "2026-10-19",
-     "text": "Seen 19 Oct (Ashtami): visitor reports a long queue in the lane at Kumartuli Park",
-     "hand": true,
-     "primary": true,
-     "by": "suvamdu76552490",
-     "tier": "hand",
      "kind": "visitors"
     }
    ]
@@ -2322,382 +2572,33 @@
     }
    ]
   },
-  "hindusthan-club": {
-   "since": "2026-10-18",
-   "evidence": "https://x.com/an1sh123/status/2111889804854215094",
-   "note": "#91 Visited Hindustan Club. They are famous for their lighting.",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/an1sh123/status/2111889804854215094",
-     "at": "2026-10-18",
-     "text": "#91 Visited Hindustan Club. They are famous for their lighting.",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "23-pally": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "pally-mangal": {
+  "jodhpur-park-95-pally": {
    "since": "2026-10-15",
-   "evidence": "https://x.com/an1sh123/status/2110671990084493596",
-   "note": "#3 Visited Taltala Pally Mangal Samiti. Good pandal.",
+   "evidence": "https://x.com/abasu4ever/status/2111047769515503971",
+   "note": "📍 Jodhpur Park 95 Pally Association own photos — @abasu4ever, 16 Oct (also 📍95 Pally @avnsh08, 18 Oct)",
    "kind": "visitors",
-   "corroborated": false,
+   "corroborated": true,
    "sources": [
     {
-     "url": "https://x.com/an1sh123/status/2110671990084493596",
+     "url": "https://x.com/an1sh123/status/2110675222689189892",
      "at": "2026-10-15",
-     "text": "#3 Visited Taltala Pally Mangal Samiti. Good pandal.",
+     "text": "#5 visited Jodhpur Park 95 Pally. Only thing I can say is WHAT THE GOD DAMN FOOK. The pandal is nowhere near complete. Unreal downfall after",
      "by": "an1sh123",
      "tier": "trusted",
      "kind": "visitors"
-    }
-   ]
-  },
-  "sealdah-athletic-club": {
-   "since": "2026-10-18",
-   "evidence": "https://x.com/sanchaita4577/status/2111805755787809118",
-   "note": "First-hand visitor photo post (2 own photos): \"Sealdah athletic Club\" — @sanchaita4577, 18 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
+    },
     {
-     "url": "https://x.com/sanchaita4577/status/2111805755787809118",
-     "at": "2026-10-18",
-     "text": "First-hand visitor photo post (2 own photos): \"Sealdah athletic Club\" — @sanchaita4577, 18 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "sanchaita4577",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "25-pally-khidirpur": {
-   "since": "2026-10-12",
-   "evidence": "https://x.com/SuvenduWB/status/2109717078550978709",
-   "note": "CM Suvendu Adhikari's own dated X post (12 Oct, with video): '📍২৫ পল্লী'; TOI itinerary names it Kidderpore 25 Pally",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/SuvenduWB/status/2109717078550978709",
-     "at": "2026-10-12",
-     "text": "CM Suvendu Adhikari's own dated X post (12 Oct, with video): '📍২৫ পল্লী'; TOI itinerary names it Kidderpore 25 Pally",
-     "hand": true,
-     "by": "suvenduwb",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "harish-park": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "sovabazar-rajbari": {
-   "since": "2026-10-16",
-   "evidence": "https://x.com/smitabarooah/status/2111163028838261147",
-   "note": "\"Today we went to Shobhabazar Rajbari\" own photos — @smitabarooah, 16 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/smitabarooah/status/2111163028838261147",
+     "url": "https://x.com/abasu4ever/status/2111047769515503971",
      "at": "2026-10-16",
-     "text": "\"Today we went to Shobhabazar Rajbari\" own photos — @smitabarooah, 16 Oct",
+     "text": "📍 Jodhpur Park 95 Pally Association own photos — @abasu4ever, 16 Oct (also 📍95 Pally @avnsh08, 18 Oct)",
      "hand": true,
      "primary": true,
      "kind_hint": "visitors",
-     "by": "smitabarooah",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "bakultala-sarbojanin": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "ballygunge-21-pally": {
-   "since": "2026-10-17",
-   "evidence": "https://x.com/titan_rc13/status/2111359323947577622",
-   "note": "\"DURGA PUJA DIARY 2026 Ballygunge 21 Pally\" own photos and video — @titan_rc13, 17 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/titan_rc13/status/2111359323947577622",
-     "at": "2026-10-17",
-     "text": "\"DURGA PUJA DIARY 2026 Ballygunge 21 Pally\" own photos and video — @titan_rc13, 17 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "titan_rc13",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "chorebagan-sarbojanin": {
-   "since": "2026-10-12",
-   "evidence": "https://x.com/ANI/status/2109761171071152276",
-   "note": "CM inaugurated 12 Oct (ANI); organisers: public entry from Chaturthi 6 pm",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/ANI/status/2109761171071152276",
-     "at": "2026-10-12",
-     "text": "CM inaugurated 12 Oct (ANI); organisers: public entry from Chaturthi 6 pm",
-     "tier": "hand",
-     "kind": "inaugurated",
-     "by": "ani"
-    },
-    {
-     "url": "https://x.com/uniindianews/status/2112524269158826186",
-     "at": "2026-10-20T12:40:09.000Z",
-     "text": "Watch | West Bengal Chief Minister Suvendu Adhikari shared a video on social media and wrote, \"Nineteen of my fellow citizens lost their lives in a tragic accident at Chorebagan in Kolkata. This irreparable loss is extremely painful. Today, I personally visited the residences of",
-     "by": "uniindianews",
-     "tier": "visitor",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "hatibagan-nabinpally": {
-   "since": "2026-10-17",
-   "evidence": "https://x.com/Umasankar2019/status/2111564063922913482",
-   "note": "Dear @SuvenduWB Ji, I have visited today Hatibagan Nabinpally pandel on 17th oct 2026, I had VIP pass but they are entering all public in VI",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/Umasankar2019/status/2111564063922913482",
-     "at": "2026-10-17",
-     "text": "Dear @SuvenduWB Ji, I have visited today Hatibagan Nabinpally pandel on 17th oct 2026, I had VIP pass but they are entering all public in VI",
-     "by": "umasankar2019",
-     "tier": "visitor",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "22-pally-northern-park": {
-   "since": "2026-10-17",
-   "evidence": "https://x.com/PinkiRMahapatra/status/2111556789913416162",
-   "note": "\"Puri Jagannath Temple theme, Northern Park, Bhawanipur\" own photo and video — @PinkiRMahapatra, 17 Oct",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/PinkiRMahapatra/status/2111556789913416162",
-     "at": "2026-10-17",
-     "text": "\"Puri Jagannath Temple theme, Northern Park, Bhawanipur\" own photo and video — @PinkiRMahapatra, 17 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "pinkirmahapatra",
-     "tier": "hand",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/SudhanidhiB/status/2112520937577103595",
-     "at": "2026-10-20",
-     "text": "Visited (@SudhanidhiB, with photos): #43 The story at Northern Park is actually sweet— Given no Aunt's home, every year Khidderpore Jagannath Templ",
-     "by": "sudhanidhib",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "naskarpur-sarbojanin": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "64-pally": {
-   "since": "2026-10-15",
-   "evidence": "https://x.com/Anay05121992/status/2110778446591008792",
-   "note": "\"64 Pally Durga Puja 2026\" own photo — @Anay05121992, 15 Oct",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/Anay05121992/status/2110778446591008792",
-     "at": "2026-10-15",
-     "text": "\"64 Pally Durga Puja 2026\" own photo — @Anay05121992, 15 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "anay05121992",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "naba-durga": {
-   "since": "2026-10-18",
-   "evidence": "https://x.com/SudhanidhiB/status/2112243960873939017",
-   "note": "Video 19 Oct (@SudhanidhiB): the 9 forms of Durga at Garia Mitali Sangha, known as Naba Durga; visitor video 18 Oct (@jaydip89832316)",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/SudhanidhiB/status/2112243960873939017",
-     "at": "2026-10-18",
-     "text": "Video 19 Oct (@SudhanidhiB): the 9 forms of Durga at Garia Mitali Sangha, known as Naba Durga; visitor video 18 Oct (@jaydip89832316)",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "sudhanidhib",
-     "tier": "hand",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/an1sh123/status/2112585755902321082",
-     "at": "2026-10-20",
-     "text": "#149 Visited Garia Nabadurga. Every year I conclude my pujo pandal hopping by the darshan of Garia Nabadurga. Such beautiful Pratima. The be",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "66-pally": {
-   "since": "2026-10-13",
-   "evidence": "https://x.com/abhishekojhaa2/status/2109996810538533291",
-   "note": "66 Pally 'Agni Yug' — first-hand visitor photos + video of the lit pandal with crowds (@abhishekojhaa2, 13 Oct evening)",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/abhishekojhaa2/status/2109996810538533291",
-     "at": "2026-10-13",
-     "text": "66 Pally 'Agni Yug' — first-hand visitor photos + video of the lit pandal with crowds (@abhishekojhaa2, 13 Oct evening)",
-     "hand": true,
-     "kind_hint": "visitors",
-     "by": "abhishekojhaa2",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "samaj-sebi-sangha": {
-   "since": "2026-10-13",
-   "evidence": "https://x.com/an1sh123/status/2111876272641179854",
-   "note": "#83 Visited Ballygunge Samaj sebi. They have also paid tribute to Mahanayak. Many pujos have done the same but Samaj sebi is the best of the lot by far.",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/an1sh123/status/2111876272641179854",
-     "at": "2026-10-18T17:45:14.000Z",
-     "text": "#83 Visited Ballygunge Samaj sebi. They have also paid tribute to Mahanayak. Many pujos have done the same but Samaj sebi is the best of the lot by far.",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/SudhanidhiB/status/2110081026114584782",
-     "at": "2026-10-13",
-     "text": "#12 Visited Samaj Sebi Sangha. Theme on 100 years of Mahanayak Uttam Kumar.",
-     "by": "sudhanidhib",
-     "tier": "visitor",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "babubagan": {
-   "since": "2026-10-15",
-   "evidence": "https://x.com/an1sh123/status/2110708063728767413",
-   "note": "#8 Visited Babu Bagan.",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/an1sh123/status/2110708063728767413",
-     "at": "2026-10-15",
-     "text": "#8 Visited Babu Bagan.",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "matri-mandir": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "alipore-sarbojanin": {
-   "since": "2026-10-12",
-   "evidence": "https://x.com/abasu4ever/status/2109611106532724789",
-   "note": "📍 Alipore Sarbojanin. Visited, with photos (trusted visitor)",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://timesofindia.indiatimes.com/city/kolkata/office-goersschoolkidspuja-shoppers-revellers-post-afternoon-traffic-gridlock/articleshow/134900607.cms",
-     "at": "2026-10-12",
-     "text": "Considerable rush of revellers (crowds) at Alipore Sarbojanin in the evening (TOI)",
-     "outlet": true,
-     "primary": true,
-     "hand": true,
-     "by": "timesofindia.indiatimes.com",
-     "tier": "outlet",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2109611106532724789",
-     "at": "2026-10-12",
-     "text": "📍 Alipore Sarbojanin. Visited, with photos (trusted visitor)",
-     "primary": true,
-     "hand": true,
      "by": "abasu4ever",
      "tier": "hand",
      "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/an1sh123/status/2111320756642804023",
-     "at": "2026-10-17",
-     "text": "#56 Visited Alipore Sarbojanin. Their theme thi year is Ramayan. They have a permanent Ram mandir in there ground. During tmc rule, making r",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
     }
    ]
-  },
-  "68-pally": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
   },
   "muhammad-ali-park": {
    "since": "2026-10-17",
@@ -2718,47 +2619,6 @@
      "kind": "visitors"
     }
    ]
-  },
-  "nalin-sarkar-street": {
-   "since": "2026-10-12",
-   "evidence": "https://x.com/abasu4ever/status/2109541667170848837",
-   "note": "📍 Nalin Sarkar Street Sarbojanin. 🎨 Sanatan Dinda. 👉 The pandal was fantastic too. But, oh boy, I bet that it's gonna be as iconic as 2011 &",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/abasu4ever/status/2109541667170848837",
-     "at": "2026-10-12",
-     "text": "📍 Nalin Sarkar Street Sarbojanin. 🎨 Sanatan Dinda. 👉 The pandal was fantastic too. But, oh boy, I bet that it's gonna be as iconic as 2011 &",
-     "tier": "hand",
-     "kind": "visitors",
-     "by": "abasu4ever"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2109541619070599222",
-     "at": "2026-10-12T07:08:10.000Z",
-     "text": "📍 Nalin Sarkar Street Sarbojanin. 🎨 Sanatan Dinda. 🌟 The theme depicts the significance of water bodies in our life, and our deliberate attempt to not recognise its significance — leading to more water pollution. 👉 THE MAA DURGA IDOL IS STUNNING! 📌 #DurgaPuja2026 🧵 1/2",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/an1sh123/status/2112259925984543076",
-     "at": "2026-10-19T19:09:44.000Z",
-     "text": "#121 Visited Nalin Sarkar Street. Good pandal and pratima.",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "sahajatri": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
   },
   "santoshpur-lake-pally": {
    "since": "2026-10-12",
@@ -2786,263 +2646,87 @@
     }
    ]
   },
-  "dum-dum-park-bharat-chakra": {
-   "since": "2026-10-13",
-   "evidence": "https://x.com/goonereol/status/2110045552402677947",
-   "note": "Dum Dum Park Bharat Chakra 'Bonger Rath Kotha' — first-hand visitor photos (4) of the lit pandal and pratima (@goonereol pandal-hopping thread, 13 Oct evening)",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/goonereol/status/2110045552402677947",
-     "at": "2026-10-13",
-     "text": "Dum Dum Park Bharat Chakra 'Bonger Rath Kotha' — first-hand visitor photos (4) of the lit pandal and pratima (@goonereol pandal-hopping thread, 13 Oct evening)",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "goonereol",
-     "tier": "hand",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2110650926415667478",
-     "at": "2026-10-15",
-     "text": "Visited (@abasu4ever, with photos): 📍 Dum Dum Park Bharat Chakra. 🎨 Manas Das &amp; Co. 🌟 The theme is \"The Tale of Bengal's Chariots.\" It depicts",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "shyama-pally": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "rk-chatterjee-sarbojanin": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "71-pally-baishakhi": {
-   "since": "2026-10-20",
-   "evidence": "",
-   "note": "DP ground call, Navami 20 Oct",
-   "kind": "inaugurated",
-   "by": "override",
-   "sources": []
-  },
-  "tala-barowari": {
-   "since": "2026-10-10",
-   "evidence": "https://x.com/IndiContractor/status/2108959990174323066",
-   "note": "📍 Tala Barowari, Kolkata — first-hand visitor video (@IndiContractor, 10 Oct)",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/IndiContractor/status/2108959990174323066",
-     "at": "2026-10-10",
-     "text": "📍 Tala Barowari, Kolkata — first-hand visitor video (@IndiContractor, 10 Oct)",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "indicontractor",
-     "tier": "hand",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2110275928333123625",
-     "at": "2026-10-14",
-     "text": "📍 Tala Barowari. 🎨 Prasanta Pal. 🌟 The theme is \"Durga Bari\", meaning the \"Home of Durga.\" It depicts the various avatars of shakti. 👉 The p",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "kendua-shanti-sangha": {
-   "since": "2026-10-19",
-   "evidence": "https://x.com/ANI/status/2112006522649927733",
-   "note": "On-site video 19 Oct (ANI): devotees at the Maha Ashtami Pushpanjali at Kendua Shanti Sangha pandal, Patuli; theme Aishwaryi (ANI 15 Oct)",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/ANI/status/2112006522649927733",
-     "at": "2026-10-19",
-     "text": "On-site video 19 Oct (ANI): devotees at the Maha Ashtami Pushpanjali at Kendua Shanti Sangha pandal, Patuli; theme Aishwaryi (ANI 15 Oct)",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "ani",
-     "tier": "outlet",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "behala-club": {
+  "college-square": {
    "since": "2026-10-12",
-   "evidence": "https://x.com/an1sh123/status/2112210120495247544",
-   "note": "#107 Visited Behala Club. Very good themes. Their theme is \"They have depicted the importance of Oil in human society. Very good themes pandal for people who are into these things.",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/an1sh123/status/2112210120495247544",
-     "at": "2026-10-19T15:51:50.000Z",
-     "text": "#107 Visited Behala Club. Very good themes. Their theme is \"They have depicted the importance of Oil in human society. Very good themes pandal for people who are into these things.",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/abasu4ever/status/2112234622331576354",
-     "at": "2026-10-19T17:29:12.000Z",
-     "text": "📍 Behala Club. 🎨 Pradip Das. 🌟 The theme showcases the significance of 'oil' in our lives, and its implications on the environment. 👉 Nice one, but definitely not Asian Paints worthy. 📌 #DurgaPuja2026",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/SudhanidhiB/status/2109695250826735686",
-     "at": "2026-10-12",
-     "text": "#5 Visited Behala Club. Theme is on Oil as an essential commodity in our daily life, from cooking to travel, we remain dependent on it.",
-     "by": "sudhanidhib",
-     "tier": "visitor",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "vivekananda-park": {
-   "since": "2026-10-15",
-   "evidence": "https://x.com/titan_rc13/status/2111912520655261949",
-   "note": "Durga Puja Diary photo of Haridevpur Vivekananda Park — visitor @titan_rc13, 18 Oct",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/an1sh123/status/2110800797806297502",
-     "at": "2026-10-15",
-     "text": "#31 Haridevpur Vivekananda Park Athletic club. They are typically the safe bet to produce something good from a small budget, but this year,",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/titan_rc13/status/2111912520655261949",
-     "at": "2026-10-18",
-     "text": "Durga Puja Diary photo of Haridevpur Vivekananda Park — visitor @titan_rc13, 18 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "titan_rc13",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "santoshpur-trikon-park": {
-   "since": "2026-10-15",
-   "evidence": "https://x.com/SeemaSengupta5/status/2111141174518092220",
-   "note": "Photo post describing the forest-temple pandal and idol — @SeemaSengupta5, 16 Oct; also @titan_rc13 photo 17 Oct",
-   "kind": "visitors",
-   "corroborated": true,
-   "sources": [
-    {
-     "url": "https://x.com/abasu4ever/status/2110650749772542234",
-     "at": "2026-10-15",
-     "text": "📍 Santoshpur Trikon Park. 🎨 Dibyendu Dey. 🌟 N/A. 👉 The pandal is made using wood &amp; ply boards only. Looks pretty. 📌 #DurgaPuja2026 🧵 1/2",
-     "by": "abasu4ever",
-     "tier": "trusted",
-     "kind": "visitors"
-    },
-    {
-     "url": "https://x.com/SeemaSengupta5/status/2111141174518092220",
-     "at": "2026-10-16",
-     "text": "Photo post describing the forest-temple pandal and idol — @SeemaSengupta5, 16 Oct; also @titan_rc13 photo 17 Oct",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "seemasengupta5",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "bosepukur-talbagan": {
-   "since": "2026-10-18",
-   "evidence": "https://x.com/an1sh123/status/2111896164836774058",
-   "note": "#97 Visited Bosepukur Talbagan. Decent pandal and good pratima.",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/an1sh123/status/2111896164836774058",
-     "at": "2026-10-18",
-     "text": "#97 Visited Bosepukur Talbagan. Decent pandal and good pratima.",
-     "by": "an1sh123",
-     "tier": "trusted",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "netaji-colony-lowland": {
-   "since": "2026-10-16",
-   "evidence": "https://x.com/idctriz/status/2111167454026334663",
-   "note": "First-hand 📍 visitor post with 4 own photos: \"Subho Sasthi everyone, Place: netaji colony lowland, baranagar\" — @idctriz, 17 Oct IST",
-   "kind": "visitors",
-   "corroborated": false,
-   "sources": [
-    {
-     "url": "https://x.com/idctriz/status/2111167454026334663",
-     "at": "2026-10-16",
-     "text": "First-hand 📍 visitor post with 4 own photos: \"Subho Sasthi everyone, Place: netaji colony lowland, baranagar\" — @idctriz, 17 Oct IST",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "visitors",
-     "by": "idctriz",
-     "tier": "hand",
-     "kind": "visitors"
-    }
-   ]
-  },
-  "bosepukur-sitala-mandir": {
-   "since": "2026-10-13",
-   "evidence": "https://x.com/rathindraOFC/status/2110020899969630508",
-   "note": "Speaker Rathindra Bose's own dated X post (13 Oct, with photos): inaugurated Bosepukur Sitala Mandir Durgotsav in Kasba today; corroboration The Wall",
+   "evidence": "https://x.com/PathakSounak/status/2109464905372008914",
+   "note": "Invited guest at the College Square inauguration (12 Oct); VIDA lighting tribute live same night",
    "kind": "inaugurated",
-   "corroborated": true,
+   "corroborated": false,
    "sources": [
     {
-     "url": "https://x.com/TheWallTweets/status/2110006276986130827",
-     "at": "2026-10-13",
-     "text": "বোসপুকুর শীতলা মন্দিরের পুজো উদ্বোধনে স্পিকার রথীন্দ্র বোস (The Wall)",
-     "outlet": true,
-     "hand": true,
-     "by": "thewalltweets",
-     "tier": "outlet",
-     "kind": "inaugurated"
-    },
-    {
-     "url": "https://x.com/rathindraOFC/status/2110020899969630508",
-     "at": "2026-10-13",
-     "text": "Speaker Rathindra Bose's own dated X post (13 Oct, with photos): inaugurated Bosepukur Sitala Mandir Durgotsav in Kasba today; corroboration The Wall",
-     "hand": true,
-     "primary": true,
-     "kind_hint": "inaugurated",
-     "by": "rathindraofc",
+     "url": "https://x.com/PathakSounak/status/2109464905372008914",
+     "at": "2026-10-12",
+     "text": "Invited guest at the College Square inauguration (12 Oct); VIDA lighting tribute live same night",
      "tier": "hand",
-     "kind": "inaugurated"
+     "kind": "inaugurated",
+     "by": "pathaksounak"
     }
    ]
   },
-  "kamdahari-purbapara": {
+  "jorasanko-sadharan": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/abasu4ever/status/2111466592714518606",
+   "note": "First-hand 📍 visitor post with 4 photos 17 Oct (@abasu4ever): Jorasanko Sadharan Durgotsab (7 Pally), \"the idol was pretty\"",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2111466592714518606",
+     "at": "2026-10-17",
+     "text": "First-hand 📍 visitor post with 4 photos 17 Oct (@abasu4ever): Jorasanko Sadharan Durgotsab (7 Pally), \"the idol was pretty\"",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "abasu4ever",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "sb-park-sarbojanin": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/Biswaru94784015/status/2109538049675936237",
+   "note": "SB PARK SARBOJANIN 📍 Theme: colliery (coal miners) — visitor photos 12 Oct",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/Biswaru94784015/status/2109538049675936237",
+     "at": "2026-10-12",
+     "text": "SB PARK SARBOJANIN 📍 Theme: colliery (coal miners) — visitor photos 12 Oct",
+     "hand": true,
+     "kind_hint": "visitors",
+     "by": "biswaru94784015",
+     "tier": "hand",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/an1sh123/status/2112236706518925395",
+     "at": "2026-10-19",
+     "text": "#113 Visited Thakurpukur SB park. Their theme is \"Coaliary\". Good theme pandal.",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2112344177963118938",
+     "at": "2026-10-20T00:44:32.000Z",
+     "text": "📍 Thakurpukur SB Park Sarbojanin. 🎨 Debabrata Maity, Sujoyneel, Raju Sarkar, Pritam Pal &amp; Somnath Mondal. 🌟 The theme depicts the history &amp; implications of coal mining in Bengal. 👉 Arguably one of the best themes and artwork this year! SPLENDID! 📌 #DurgaPuja2026 🧵 1/4",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "bakultala-sarbojanin": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "taltala-sarbojanin": {
    "since": "2026-10-20",
    "evidence": "",
    "note": "DP ground call, Navami 20 Oct",
@@ -3086,6 +2770,233 @@
     }
    ]
   },
+  "naba-durga": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/SudhanidhiB/status/2112243960873939017",
+   "note": "Video 19 Oct (@SudhanidhiB): the 9 forms of Durga at Garia Mitali Sangha, known as Naba Durga; visitor video 18 Oct (@jaydip89832316)",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/SudhanidhiB/status/2112243960873939017",
+     "at": "2026-10-18",
+     "text": "Video 19 Oct (@SudhanidhiB): the 9 forms of Durga at Garia Mitali Sangha, known as Naba Durga; visitor video 18 Oct (@jaydip89832316)",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "sudhanidhib",
+     "tier": "hand",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/an1sh123/status/2112585755902321082",
+     "at": "2026-10-20",
+     "text": "#149 Visited Garia Nabadurga. Every year I conclude my pujo pandal hopping by the darshan of Garia Nabadurga. Such beautiful Pratima. The be",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "babubagan": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/an1sh123/status/2110708063728767413",
+   "note": "#8 Visited Babu Bagan.",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/an1sh123/status/2110708063728767413",
+     "at": "2026-10-15",
+     "text": "#8 Visited Babu Bagan.",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "barisha-club": {
+   "since": "2026-10-12",
+   "evidence": "https://x.com/SudhanidhiB/status/2109688083897827734",
+   "note": "#4 Visited Barisha Club One outstanding creation.",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/SudhanidhiB/status/2109688083897827734",
+     "at": "2026-10-12",
+     "text": "#4 Visited Barisha Club One outstanding creation.",
+     "tier": "hand",
+     "kind": "visitors",
+     "by": "sudhanidhib"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2112239907125281231",
+     "at": "2026-10-19T17:50:12.000Z",
+     "text": "📍 Barisha Club. 🎨 Deep, Eshika &amp; Saikat. 🌟 N/A. 👉 Behala Pujas never fail to win my heart! 📌 #DurgaPuja2026 🧵 1/2",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/an1sh123/status/2112241009581260947",
+     "at": "2026-10-19T17:54:34.000Z",
+     "text": "#115 Visited Barisha Club. Good pandal. They have showcased Gupta era architecture, history and Gupta period Durga iconography.",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "netaji-colony-lowland": {
+   "since": "2026-10-16",
+   "evidence": "https://x.com/idctriz/status/2111167454026334663",
+   "note": "First-hand 📍 visitor post with 4 own photos: \"Subho Sasthi everyone, Place: netaji colony lowland, baranagar\" — @idctriz, 17 Oct IST",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/idctriz/status/2111167454026334663",
+     "at": "2026-10-16",
+     "text": "First-hand 📍 visitor post with 4 own photos: \"Subho Sasthi everyone, Place: netaji colony lowland, baranagar\" — @idctriz, 17 Oct IST",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "idctriz",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "sealdah-athletic-club": {
+   "since": "2026-10-18",
+   "evidence": "https://x.com/sanchaita4577/status/2111805755787809118",
+   "note": "First-hand visitor photo post (2 own photos): \"Sealdah athletic Club\" — @sanchaita4577, 18 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/sanchaita4577/status/2111805755787809118",
+     "at": "2026-10-18",
+     "text": "First-hand visitor photo post (2 own photos): \"Sealdah athletic Club\" — @sanchaita4577, 18 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "sanchaita4577",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "64-pally": {
+   "since": "2026-10-15",
+   "evidence": "https://x.com/Anay05121992/status/2110778446591008792",
+   "note": "\"64 Pally Durga Puja 2026\" own photo — @Anay05121992, 15 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/Anay05121992/status/2110778446591008792",
+     "at": "2026-10-15",
+     "text": "\"64 Pally Durga Puja 2026\" own photo — @Anay05121992, 15 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "anay05121992",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "kumartuli-sarbojanin": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/abasu4ever/status/2111960547898110173",
+   "note": "📍 Kumartuli Sarbojanin, with photos — trusted visitor @abasu4ever, 19 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/abasu4ever/status/2111960547898110173",
+     "at": "2026-10-19",
+     "text": "📍 Kumartuli Sarbojanin, with photos — trusted visitor @abasu4ever, 19 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "abasu4ever",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "kalighat-milan-sangha": {
+   "since": "2026-10-13",
+   "evidence": "https://x.com/ians_india/status/2110039896585052233",
+   "note": "Mamata Banerjee attended the inauguration ceremony of Kalighat Milan Sangha (IANS)",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/ians_india/status/2110039896585052233",
+     "at": "2026-10-13",
+     "text": "Mamata Banerjee attended the inauguration ceremony of Kalighat Milan Sangha (IANS)",
+     "primary": true,
+     "hand": true,
+     "by": "ians_india",
+     "tier": "outlet",
+     "kind": "inaugurated"
+    },
+    {
+     "url": "https://x.com/an1sh123/status/2111342265117626541",
+     "at": "2026-10-17",
+     "text": "#66 Visited Kalighat Milan Sangha lmao. This is just beside pisi's house. The pandal is MAITC propaganda piece against rito tmc. Lmaooooo. F",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "mudiali": {
+   "since": "2026-10-14",
+   "evidence": "https://x.com/ndtv/status/2110259988417458339",
+   "note": "Crowds of pandal hoppers thronged South Kolkata's iconic Mudiali Club on Tritiya, the third day of Durga Puja festivities. Celebrating its 9",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/ndtv/status/2110259988417458339",
+     "at": "2026-10-14",
+     "text": "Crowds of pandal hoppers thronged South Kolkata's iconic Mudiali Club on Tritiya, the third day of Durga Puja festivities. Celebrating its 9",
+     "by": "ndtv",
+     "tier": "outlet",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2110275846061818156",
+     "at": "2026-10-14T07:45:43.000Z",
+     "text": "📍 Mudiali Club. 🎨 Biman Saha. 🌟 They always do traditional Durga Puja, inside a vibrant and catchy pandal. 👉 Gorgeous! Especially the Chandannagar style Maa Durga! As I always say, they do the best 'sabeki' puja! 📌 #DurgaPuja2026 🧵 1/2",
+     "hand": true,
+     "by": "abasu4ever",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "rabindra-pally-sarbojanin": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "kamdahari-purbapara": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
   "bakul-bagan": {
    "since": "2026-10-13",
    "evidence": "https://x.com/SudhanidhiB/status/2110062708020461966",
@@ -3101,6 +3012,95 @@
      "primary": true,
      "kind_hint": "visitors",
      "by": "sudhanidhib",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "suruchi-sangha": {
+   "since": "2026-10-19",
+   "evidence": "https://x.com/ians_india/status/2112155058645426387",
+   "note": "Kolkata, West Bengal: On Suruchi Sangha Durga Puja Crowd, BJP leader Sourav Sikdar says, \"See, the arrangements here are very well-organised. Yesterday, there was a huge crowd, and today, even though ",
+   "kind": "visitors",
+   "corroborated": true,
+   "sources": [
+    {
+     "url": "https://x.com/ians_india/status/2112155058645426387",
+     "at": "2026-10-19T12:13:02.000Z",
+     "text": "Kolkata, West Bengal: On Suruchi Sangha Durga Puja Crowd, BJP leader Sourav Sikdar says, \"See, the arrangements here are very well-organised. Yesterday, there was a huge crowd, and today, even though it is just after lunchtime, look at the crowd gathering again. However, the…",
+     "by": "ians_india",
+     "tier": "outlet",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/abasu4ever/status/2112234122827776161",
+     "at": "2026-10-19",
+     "text": "Visited (@abasu4ever, with photos): 📍 Suruchi Sangha. 🎨 Anirban Das. 🌟 The theme pays tribute to some unknown person named Shyama Prasad Mukherjee",
+     "by": "abasu4ever",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/an1sh123/status/2112041733580316771",
+     "at": "2026-10-19T04:42:43.000Z",
+     "text": "#98 Visited Suruchi Sangha. Their theme this year is about Shyama Prasad Mukherjee. The ouho that used to make their theme song by pisi is now paying tribute to Shyama Prasad Mukherjee. Not criticising don't get me wrong but it's true that \"",
+     "by": "an1sh123",
+     "tier": "trusted",
+     "kind": "visitors"
+    },
+    {
+     "url": "https://x.com/OpIndia_com/status/2112161293914509664",
+     "at": "2026-10-19T12:37:49.000Z",
+     "text": "A 50-year-old Kolkata Armed Police ASI, Kabirul Islam, has been arrested for sexually harassing a 21-year-old woman volunteer at the Suruchi Sangha Durga Puja pandal. The incident occurred while she was on duty at the pandal’s exit gate. A viral video and the woman’s formal",
+     "by": "opindia_com",
+     "tier": "visitor",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "ballygunge-21-pally": {
+   "since": "2026-10-17",
+   "evidence": "https://x.com/titan_rc13/status/2111359323947577622",
+   "note": "\"DURGA PUJA DIARY 2026 Ballygunge 21 Pally\" own photos and video — @titan_rc13, 17 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/titan_rc13/status/2111359323947577622",
+     "at": "2026-10-17",
+     "text": "\"DURGA PUJA DIARY 2026 Ballygunge 21 Pally\" own photos and video — @titan_rc13, 17 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "titan_rc13",
+     "tier": "hand",
+     "kind": "visitors"
+    }
+   ]
+  },
+  "shyama-pally": {
+   "since": "2026-10-20",
+   "evidence": "",
+   "note": "DP ground call, Navami 20 Oct",
+   "kind": "inaugurated",
+   "by": "override",
+   "sources": []
+  },
+  "bantra-mohila-sangha": {
+   "since": "2026-10-16",
+   "evidence": "https://x.com/KumarVidhyasag2/status/2111179090321625162",
+   "note": "\"Bantra Mohila Sangha, Howrah\" own photos — @KumarVidhyasag2, 16 Oct",
+   "kind": "visitors",
+   "corroborated": false,
+   "sources": [
+    {
+     "url": "https://x.com/KumarVidhyasag2/status/2111179090321625162",
+     "at": "2026-10-16",
+     "text": "\"Bantra Mohila Sangha, Howrah\" own photos — @KumarVidhyasag2, 16 Oct",
+     "hand": true,
+     "primary": true,
+     "kind_hint": "visitors",
+     "by": "kumarvidhyasag2",
      "tier": "hand",
      "kind": "visitors"
     }
