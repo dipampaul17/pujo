@@ -326,7 +326,7 @@ export default function App() {
                   <button onClick={() => setDetail(p.id)} aria-haspopup="dialog" className="prow-main text-left">
                     <span className="prow-name">{p.name}</span>
                     <span className="prow-meta"><StatusDot s={s} />{hasPass(p.id) && <PassMark />}<Surge c={xLive.crowd[p.id]} now={now} />{go && <GoHint c={xLive.crowd[p.id]} now={now} />}</span>
-                    <span className="block t-foot muted mono-num">{p.precision === 'station' ? `Approximate${p.station ? ` · near ${p.station}` : ''}` : me ? <TravelLine t={travel(p)} compact /> : null}</span>
+                    <span className="block t-foot muted mono-num">{p.precision === 'station' ? `Approximate${p.station ? ` · near ${p.station}` : ''}` : me ? <TravelLine t={go ? travel(p) : (p as any).t} compact /> : null}</span>
                   </button>
                   <a href={uber(p)} className="btn-uber prow-act" aria-label={`Uber to ${p.name}`}>Uber</a>
                 </Tag> }

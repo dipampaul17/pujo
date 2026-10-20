@@ -208,3 +208,12 @@ a.status .status-src { text-decoration: underline; text-decoration-color: var(--
 .prow .status-src { display: none; }
 .sheet img { -webkit-user-drag: none; user-select: none; pointer-events: none; }
 .sheet.out, .sheet-backdrop.out { pointer-events: none; }
+/* List polish: iOS inset separators aligned to the text, quieter meta, compact Uber pill with a 44pt hit area */
+.prow { border-bottom: 0; padding: 14px 0; gap: 14px; }
+.prow::after { content: ''; position: absolute; left: 86px; right: 0; bottom: 0; border-bottom: 0.5px solid color-mix(in oklab, var(--ink) 12%, transparent); }
+.go.prow { border-bottom: 0; }
+.prow-name { font-size: 17px; line-height: 1.25; letter-spacing: -0.015em; }
+.prow-meta { font-size: 13px; }
+.prow-meta .status { min-height: 0; margin: 0; }
+.prow-act { min-height: 34px; min-width: 60px; padding: 0 14px; font-size: 14px; position: relative; }
+.prow-act::before { content: ''; position: absolute; inset: -5px -4px; }
