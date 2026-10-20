@@ -2835,5 +2835,45 @@
     }
    ]
   }
+ ],
+ "lalabagan-nabankur": [
+  {
+   "id": "2112447933152956619",
+   "at": "2026-10-20T07:36:49.000Z",
+   "handle": "abasu4ever",
+   "avatar": "https://pbs.twimg.com/profile_images/1988905391904931840/oFFI4KW3_normal.jpg",
+   "score": 7.3,
+   "text": "📍 Lalabagan Nabankur. 🎨 Sushovan Roy. 🌟 The entire pandal is made using sarees! 👉 Looks very stunning! 📌 #DurgaPuja2026 🧵 1/2",
+   "url": "https://x.com/abasu4ever/status/2112447933152956619",
+   "photo": "https://pbs.twimg.com/media/HVDsKLYakAAZJ1g.jpg?format=jpg&name=large",
+   "w": 1968,
+   "h": 2854,
+   "media": [
+    {
+     "src": "https://pbs.twimg.com/media/HVDsKLYakAAZJ1g.jpg?format=jpg&name=large",
+     "w": 1968,
+     "h": 2854,
+     "video": false
+    },
+    {
+     "src": "https://pbs.twimg.com/media/HVDsKzJasAAv670.jpg?format=jpg&name=large",
+     "w": 4096,
+     "h": 2304,
+     "video": false
+    },
+    {
+     "src": "https://pbs.twimg.com/media/HVDsLpWacAAZSgB.jpg?format=jpg&name=large",
+     "w": 4096,
+     "h": 2304,
+     "video": false
+    },
+    {
+     "src": "https://pbs.twimg.com/media/HVDsMX2aMAAoZQ6.jpg?format=jpg&name=large",
+     "w": 4096,
+     "h": 2304,
+     "video": false
+    }
+   ]
+  }
  ]
 }

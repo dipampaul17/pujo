@@ -82,11 +82,14 @@
   "verdict": "verified"
  },
  "arjunpur-amra-sabai-club": {
-  "verdict": "unresolved-approx",
+  "verdict": "corrected",
   "have": [
    "agamoni",
    "pujoparikramaguide"
-  ]
+  ],
+  "lat": 22.62429,
+  "lng": 88.42454,
+  "note": "20 Oct 2026: Pandal Pathik 22.62429,88.42454 = Agamoni/Google 22.624705,88.424566"
  },
  "badamtala-ashar-sangha": {
   "lat": 22.517927,
@@ -244,24 +247,33 @@
   "verdict": "verified"
  },
  "dum-dum-park-bharat-chakra": {
-  "verdict": "unresolved-approx",
+  "verdict": "corrected",
   "have": [
    "agamoni",
    "pujoparikramaguide"
-  ]
+  ],
+  "lat": 22.61082,
+  "lng": 88.4146,
+  "note": "20 Oct 2026: Pandal Pathik 22.61082,88.4146 = Agamoni/Google 22.610821,88.414600 = Pujo Map 22.61080,88.41456"
  },
  "dum-dum-park-sarbajanin": {
-  "verdict": "unresolved-approx",
+  "verdict": "corrected",
   "have": [
    "agamoni",
    "pujoparikramaguide"
-  ]
+  ],
+  "lat": 22.60962,
+  "lng": 88.41643,
+  "note": "20 Oct 2026: Pujo Map 22.60962,88.41643 = Agamoni/Google 22.609436,88.416405"
  },
  "dum-dum-park-tarun-dal": {
-  "verdict": "unresolved-approx",
+  "verdict": "corrected",
   "have": [
    "pujoparikramaguide"
-  ]
+  ],
+  "lat": 22.61161,
+  "lng": 88.4189,
+  "note": "20 Oct 2026: Pujo Map 22.61161,88.41890 = Agamoni/Google 22.611732,88.418739 = Pandal Pathik 22.6112,88.41875"
  },
  "ekdalia-evergreen": {
   "lat": 22.521283,
@@ -300,8 +312,11 @@
   ]
  },
  "golaghata-sammilani": {
-  "verdict": "unresolved-approx",
-  "have": []
+  "verdict": "corrected",
+  "have": [],
+  "lat": 22.59734,
+  "lng": 88.39915,
+  "note": "20 Oct 2026: Pandal Pathik 22.59734,88.39915; OSM Golaghata locality 22.59611,88.40030 (180 m)"
  },
  "haridevpur-41-pally": {
   "verdict": "unresolved-approx",

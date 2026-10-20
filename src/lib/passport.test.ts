@@ -38,7 +38,7 @@ describe('service worker freshness', () => {
 describe('added pass pandals', () => {
   const P = (raw as any).pandals as any[]
   it('verified pins only where two sources agreed; the rest are approximate (station), never invented', () => {
-    const pinned = ['tala-barowari', 'beleghata-33-pally', 'alipore-sarbojanin', 'samaj-sebi-sangha', 'behala-club']
+    const pinned = ['dum-dum-park-tarun-sangha', 'arjunpur-amra-sabai-club', 'golaghata-sammilani', 'dum-dum-park-tarun-dal', 'dum-dum-park-bharat-chakra', 'dum-dum-park-sarbajanin', 'tala-barowari', 'beleghata-33-pally', 'alipore-sarbojanin', 'samaj-sebi-sangha', 'behala-club']
     for (const p of P.filter(p => ['tala-barowari','ahiritola-yubakbrinda','ultadanga-bidhan-sangha','beleghata-33-pally','dum-dum-park-tarun-sangha','keshtopur-prafulla-kanan','telipukur-yuba-sangha','new-town-sarbojanin','abasar-sarbojanin','alipore-sarbojanin','samaj-sebi-sangha','bosepukur-talbagan','purbachal-shakti-sangha','santoshpur-avenue-south','25-pally-khidirpur','pally-saradiya-khidirpur','behala-nutan-dal','behala-friends','behala-club','sb-park-sarbojanin','bantra-mohila-sangha','olabibitala-sarbojanin','salkia-alapani','ichapur-shivaji-sangha'].includes(p.id)))
       expect(p.precision, p.id).toBe(pinned.includes(p.id) ? 'osm' : 'station')
   })
