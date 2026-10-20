@@ -1,5 +1,5 @@
 {
- "at": "2026-10-20T07:51:33.845020+00:00",
+ "at": "2026-10-20T08:06:16.827205+00:00",
  "queries": [
   {
    "ids": [
@@ -11,7 +11,7 @@
     "query": "(((inaugurated OR inaugurates OR inauguration OR udbodhon OR \"udbodhon holo\" OR উদ্বোধন OR উদ্বোধনে OR \"pandal open\" OR \"pandal opened\" OR \"opened to public\" OR \"open for visitors\" OR \"khule geche\") (Kolkata OR Calcutta OR কলকাতা OR \"durga puja\" OR \"durga pujo\" OR দুর্গাপুজো OR দুর্গাপূজা OR pandal OR pujo OR পুজো)) OR (\"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Mudiali Club\" OR \"Mudiali\" OR \"মুদিয়ালি\") OR from:_epinephrine_ OR from:abasu4ever OR from:an1sh123 OR from:goonereol OR from:indicontractor OR from:sudhanidhib OR ((from:cmowbgov OR from:suvenduwb OR from:arjunsinghwb OR from:bjp4bengal OR from:dilipghoshbjp OR from:drsukantabjp OR from:keyakahe OR from:me_locket OR from:rahulsinhabjp OR from:ravaroybjp OR from:samikbjp OR from:ssikdarindia OR from:swapan55 OR from:tusharkantibjp OR from:umeshrai_bjp OR from:upamanyu95) (inaugurated OR inaugurates OR inauguration OR উদ্বোধন OR উদ্বোধনে OR উদ্বোধনী OR pujo OR puja OR পুজো OR pandal))) -is:retweet",
     "max_results": 100,
     "sort_order": "recency",
-    "start_time": "2026-10-20T07:42:29Z",
+    "start_time": "2026-10-20T07:58:03Z",
     "expansions": "attachments.media_keys,author_id",
     "media.fields": "url,preview_image_url,type,width,height",
     "user.fields": "username,name,profile_image_url",
@@ -20,21 +20,22 @@
   },
   {
    "ids": [
-    "pally-saradiya-khidirpur",
-    "salkia-alapani",
-    "ahiritola-sarbojanin",
-    "behala-nutan-dal",
-    "santoshpur-lake-pally",
-    "santoshpur-trikon-park",
-    "beleghata-33-pally",
-    "ichapur-shivaji-sangha",
-    "jagat-mukherjee-park",
-    "purbachal-shakti-sangha",
-    "rajdanga-naba-uday-sangha",
-    "sb-park-sarbojanin"
+    "chaltabagan-lohapatty",
+    "ekdalia-evergreen",
+    "rabindra-pally-sarbojanin",
+    "rk-chatterjee-sarbojanin",
+    "sahajatri",
+    "sealdah-athletic-club",
+    "shyama-pally",
+    "lalabagan-nabankur",
+    "agradut-udaya-sangha",
+    "bansdroni-sarbojanin",
+    "matri-mandir",
+    "mukundapur-sarbojanin",
+    "netaji-colony-lowland"
    ],
    "args": {
-    "query": "(\"Pally Saradiya\" OR \"Pally Sarodiya\" OR \"Palli Saradiya\" OR \"Pally Sharadiya\" OR \"Pally Sharodia\" OR \"Palli Sharadiya\" OR \"পল্লী শারদীয়া\" OR \"Salkia Alapani\" OR \"Alapani Club\" OR \"সালকিয়া আলাপনী\" OR \"Ahiritola\" OR \"আহিরীটোলা\" OR \"Behala Nutan Dal\" OR \"Santoshpur Lake Pally\" OR \"Santoshpur Lake Palli\" OR \"Lake Pally Santoshpur\" OR \"লেকপল্লী সার্বজনীন, সন্তোষপুর\" OR \"সন্তোষপুর লেকপল্লী\" OR \"সন্তোষপুর লেক পল্লী\" OR \"Santoshpur Trikon Park\" OR \"Beleghata 33 Pally\" OR \"Beliaghata 33 Pally\" OR \"Beleghata 33 Palli\" OR \"বেলেঘাটা ৩৩ পল্লী\" OR \"Ichapur Shivaji Sangha\" OR \"Shivaji Sangha Ichapur\" OR \"Jagat Mukherjee Park\" OR \"জগৎ মুখার্জি পার্ক\" OR \"Purbachal Shakti Sangha\" OR \"Purbachal Shakti\" OR \"Rajdanga Naba Uday Sangha\" OR \"Rajdanga Naba Uday\" OR \"SB Park Sarbojanin\" OR \"SB Park Sarbajanin\" OR \"SB Park Sarbojonin\" OR \"SB Park\") (inaugurated OR inaugurates OR inauguration OR opened OR visited OR crowd OR queue OR darshan OR \"pandal hopping\" OR উদ্বোধন) -is:retweet",
+    "query": "(\"Chaltabagan\" OR \"Chalta Bagan\" OR \"চালতাবাগান\" OR \"Ekdalia Evergreen\" OR \"Ekdalia\" OR \"একডালিয়া\" OR \"Rabindra Pally Sarbojanin\" OR \"Rabindra Pally Sarbajanin\" OR \"Rabindra Pally Sarbojonin\" OR \"Rabindra Palli Sarbojanin\" OR \"Rabindra Palli Sarbajanin\" OR \"Rabindra Palli Sarbojonin\" OR \"Rabindra Pally\" OR \"R K Chatterjee Road Sarbojanin\" OR \"R K Chatterjee Road Sarbajanin\" OR \"R K Chatterjee Road Sarbojonin\" OR \"R K Chatterjee Road\" OR \"Sahajatri\" OR \"Sealdah Athletic Club\" OR \"Sealdah Athletic\" OR \"Shyama Pally\" OR \"Shyama Palli\" OR \"Lalabagan Nabankur\" OR \"Agradut Udaya Sangha\" OR \"Agradut Udaya\" OR \"Bansdroni Sarbojanin\" OR \"Bansdroni Sarbajanin\" OR \"Bansdroni Sarbojonin\" OR \"Matri Mandir Sarbojanin\" OR \"Matri Mandir Durga\" OR \"Mukundapur Sarbojanin\" OR \"Mukundapur Sarbajanin\" OR \"Mukundapur Sarbojonin\" OR \"Netaji Colony Lowland\") (puja OR pujo OR pandal OR durga OR দুর্গা OR পুজো) has:images -is:retweet",
     "max_results": 25,
     "sort_order": "recency",
     "start_time": "2026-10-10T00:00:00Z",

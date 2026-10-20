@@ -206,3 +206,4 @@ a.status .status-src { text-decoration: underline; text-decoration-color: var(--
 .filter-bar { position: sticky; top: 0; z-index: 15; margin: 0 -1.25rem; padding: calc(env(safe-area-inset-top) + 6px) 1.25rem 6px; background: color-mix(in srgb, var(--bg, #fbf8f3) 88%, transparent); -webkit-backdrop-filter: saturate(1.6) blur(16px); backdrop-filter: saturate(1.6) blur(16px); }
 .filter-bar .chip { min-height: 44px; font-size: 14px; }
 .prow .status-src { display: none; }
+.sheet img { -webkit-user-drag: none; user-select: none; pointer-events: none; }
