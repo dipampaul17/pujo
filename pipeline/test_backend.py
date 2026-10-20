@@ -33,7 +33,11 @@ def test_publish_retries_push():
 def test_overrides_queried_every_run():
     import xpoll as X, datetime as dt, io, contextlib
     X.ST = tempfile.mkdtemp(); X.now = dt.datetime(2026, 10, 14, 7, tzinfo=dt.UTC)
-    with contextlib.redirect_stdout(io.StringIO()): qs = X.plan()
+    real = X.load  # DP's closed reports (none live since the 20 Oct all-open call): a fixture keeps the rule tested
+    X.load = lambda f, d=None: {'ekdalia-evergreen': {'kind': 'closed'}, 'mudiali': {'kind': 'closed'}} if f.endswith('raw/overrides.json') else real(f, d)
+    try:
+        with contextlib.redirect_stdout(io.StringIO()): qs = X.plan()
+    finally: X.load = real
     w = [q for q in qs if q.get('kind') == 'wide'][0]['args']['query']
     assert 'Ekdalia' in w and 'একডালিয়া' in w and 'Mudiali' in w, w
 def test_status_trusts_verified_inaugurators():
