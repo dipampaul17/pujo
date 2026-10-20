@@ -320,7 +320,7 @@ export default function App() {
             
 
 
-            {zone && (() => { const shelf = bestNear(listed, { travel: p => travel(p), open: keep.open, seen: id => seen.has(id) }), inShelf = new Set([...shelf.walk, ...shelf.uber].map(p => p.id))
+            {zone && (() => { const shelf = !me ? { walk: [], uber: [] } as ReturnType<typeof bestNear<typeof listed[number]>> : bestNear(listed, { travel: p => travel(p), open: keep.open, seen: id => seen.has(id) }), inShelf = new Set([...shelf.walk, ...shelf.uber].map(p => p.id))
               const { next: next0, rail } = pagePicks(stops.filter(p => !inShelf.has(p.id)), listed.filter(p => !inShelf.has(p.id))), next = inShelf.size ? null : next0
               const cs = chips(ordered, filters, keep)
               const uber = (s: typeof listed[number]) => uberUrl({ lat: s.lat, lng: s.lng, name: s.name, approx: s.precision === 'station', address: s.precision === 'station' ? `${s.name} Durga Puja, Kolkata` : `${s.name}, Kolkata` } as any, view?.precise && !view.approx ? view : null)
@@ -343,11 +343,11 @@ export default function App() {
                   {([['walk', shelf.walk], ['uber', shelf.uber]] as const).filter(([, l]) => l.length).map(([k, l]) => <div key={k} className="shelf-g" data-shelf={k}>
                     <div className="shelf-k t-foot">{k === 'walk' ? 'Walk' : 'Uber'}</div>
                     <ul>{l.map((p, i) => { const t = travel(p), h = goHint(xLive.crowd[p.id], now), a = t.basis === 'estimate' ? '~' : ''
-                      return <li key={p.id} data-card data-shelf-item={p.id} className={`shelf-i ${i === 0 ? 'top' : ''}`}>
+                      return <li key={p.id} data-card data-zone={zoneOf(p)} data-shelf-item={p.id} className={`shelf-i ${i === 0 ? 'top' : ''}`}>
                         <button onClick={() => setDetail(p.id)} aria-haspopup="dialog" className="shelf-main text-left">
                           {i === 0 && <span className="shelf-go">Go next</span>}
                           <span className="shelf-name">{p.name}</span>
-                          <span className="t-foot muted mono-num" aria-label={`${t.carMin} minutes by car, ${t.walkMin} minutes on foot`}><span className="sr-only">Open · </span>{a}{k === 'walk' ? `${t.walkMin} min walk` : `${t.carMin} min by car`}{h && <> · <span className={`go-hint ${h.word === 'Later' ? 'later' : 'now'}`}>{h.word === 'Later' ? 'Crowded' : 'Go now'}</span></>}</span>
+                          <span className="t-foot muted mono-num" aria-label={`${t.carMin} minutes by car, ${t.walkMin} minutes on foot`}><span className="sr-only">Open{hasPass(p.id) ? ' · Pass' : ''} · </span>{a}{k === 'walk' ? `${t.walkMin} min walk` : `${t.carMin} min by car`}{h && <> · <span className={`go-hint ${h.word === 'Later' ? 'later' : 'now'}`}>{h.word === 'Later' ? 'Crowded' : 'Go now'}</span></>}</span>
                         </button>
                         {k === 'walk' ? <a href={mapsDirUrl(view?.precise ? view : (view ? { lat: view.lat, lng: view.lng } : null), [p])} target="_blank" rel="noopener" className={`btn ${i === 0 ? 'btn-walk' : 'btn-quiet'} shelf-act`} aria-label={`Walk to ${p.name} in Maps`}>Walk</a>
                           : <a href={uber(p)} className={`${i === 0 ? 'btn-uber' : 'btn btn-quiet'} shelf-act`} aria-label={`Uber to ${p.name}`}>Uber</a>}

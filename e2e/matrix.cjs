@@ -17,13 +17,13 @@ const LIVE_STATUS = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/l
       const pageOk = async (p, z, tag) => {
         const zones = await cards(p).evaluateAll(e => e.map(x => x.dataset.zone)); const want = { North: 'north', Central: 'central', South: 'south', 'Salt Lake': 'saltlake' }[z]
         ok(zones.length > 0 && zones.every(x => x === want), T(`${tag} ${z}: card outside zone (${[...new Set(zones)]})`))
-        const names = await cards(p).evaluateAll(e => e.map(x => x.querySelector('h2, .line-clamp-2')?.textContent)); ok(new Set(names).size === names.length, T(`${tag} ${z}: duplicate card`))
+        const names = await cards(p).evaluateAll(e => e.map(x => x.querySelector('h2, .line-clamp-2, .prow-name, .shelf-name')?.textContent)); ok(new Set(names).size === names.length, T(`${tag} ${z}: duplicate card`))
         ok(await p.locator('[data-card][data-approx] [aria-label*="by car"]').count() === 0, T(`${tag} ${z}: approximate pin shows a time`))
         ok(!(await p.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1)), T(`${tag} ${z}: horizontal overflow`)) }
       // Locations × zones
       for (const [k, [la, ln, own]] of Object.entries(LOC)) { const [c, p] = await mk([la, ln]); await p.goto(url, { waitUntil: 'networkidle' }); ok(await p.evaluate(() => scrollY) === 0 && await p.locator('main.landing').count() === 1, T(`${k}: does not open on hero`)); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(1800)
         ok((await p.locator('.dock [aria-selected=true]').innerText()).includes(own), T(`${k}: own zone ${own} not selected`)); ok((await p.locator('.dock [role=tab]').first().innerText()).includes(own), T(`${k}: own zone not first`))
-        const uber = await p.locator('article.go a.btn-uber').getAttribute('href'); ok(uber.includes(`pickup%5Blatitude%5D=${la.toFixed(6)}`), T(`${k}: go-next Uber pickup not my position`))
+        const uber = await p.locator('article.go a.btn-uber, .shelf a.btn-uber, [data-card] a.btn-uber').first().getAttribute('href'); ok(uber.includes(`pickup%5Blatitude%5D=${la.toFixed(6)}`), T(`${k}: go-next Uber pickup not my position`))
         for (const z of ['North', 'Central', 'South', 'Salt Lake']) { await zoneTap(p, z); await pageOk(p, z, k) }
         if (W === 390) await p.screenshot({ path: `${out}/${bn}-${k}.png` }); await c.close() }
       // Denied, timeout, far
@@ -37,7 +37,8 @@ const LIVE_STATUS = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/l
       // Filters: none / open / pass / both / empty
       { const [c, p] = await mk(LOC.gariahat); await enter(p); const all = await cards(p).count()
         const chip = n => p.locator('[aria-label=Filter] button', { hasText: n })
-        for (const combo of [['Open'], ['Pass'], ['Open', 'Pass']]) { for (const n of combo) await chip(n).tap(); await p.waitForTimeout(400)
+        const hasOpen = await chip('Open').count() > 0  // the Open chip hides when every pandal is open (nothing to filter)
+        for (const combo of (hasOpen ? [['Open'], ['Pass'], ['Open', 'Pass']] : [['Pass']])) { for (const n of combo) await chip(n).tap(); await p.waitForTimeout(400)
           const t = await cards(p).allInnerTexts(); ok(t.length > 0 && t.length <= all, T(`filter ${combo}: ${t.length} cards`))
           if (combo.includes('Open')) ok(t.every(x => /\b(Open|Inaugurated)\b/.test(x)), T(`filter ${combo}: non-open card`)); if (combo.includes('Pass')) ok(t.every(x => /Pass|Pujor Passport/.test(x)), T(`filter ${combo}: non-pass card`))
           const route = await p.locator('.rail-end a').getAttribute('href').catch(() => null); if (route) { const ids = await cards(p).count(); ok(ids > 0, T(`filter ${combo}: route without cards`)) }
@@ -52,7 +53,7 @@ const LIVE_STATUS = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/l
         // one closed (from the live status file) + one approximate pin; live data decides which, so the test never goes stale
         const zoneOfP = p => (p.lng >= 88.40 && p.lat >= 22.555 && p.lat < 22.605 ? 'saltlake' : p.lat >= 22.58 ? 'north' : p.lat >= 22.54 ? 'central' : 'south')
         const inS = p => p && zoneOfP(p) === 'south', CL = Object.keys(LIVE_STATUS.open).find(k => LIVE_STATUS.open[k].kind === 'closed' && inS(P.find(p => p.id === k)))
-        const BAD = [CL, P.find(p => p.precision === 'station' && !LIVE_STATUS.open[p.id] && inS(p))?.id].filter(Boolean)
+        const BAD = [CL, P.find(p => p.precision === 'station' && inS(p))?.id].filter(Boolean)
         // Walk is per zone (only the picks in the page you're on), so every pick sits in South, where Gariahat lands
         const pick = n => pinned.filter(p => zoneOfP(p) === 'south' && p.lat < 22.53).slice(0, n).map(p => p.id)
         for (const n of [0, 1, 2, 10, 12]) { const ids = pick(n).concat(n >= 10 ? BAD : [])
