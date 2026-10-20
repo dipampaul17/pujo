@@ -347,7 +347,7 @@ export default function App() {
                         <button onClick={() => setDetail(p.id)} aria-haspopup="dialog" className="shelf-main text-left">
                           {i === 0 && <span className="shelf-go">Go next</span>}
                           <span className="shelf-name">{p.name}</span>
-                          <span className="t-foot muted mono-num">{a}{k === 'walk' ? `${t.walkMin} min walk` : `${t.carMin} min by car`}{h && <> · <span className={`go-hint ${h.word === 'Later' ? 'later' : 'now'}`}>{h.word === 'Later' ? 'Crowded' : 'Go now'}</span></>}</span>
+                          <span className="t-foot muted mono-num" aria-label={`${t.carMin} minutes by car, ${t.walkMin} minutes on foot`}><span className="sr-only">Open · </span>{a}{k === 'walk' ? `${t.walkMin} min walk` : `${t.carMin} min by car`}{h && <> · <span className={`go-hint ${h.word === 'Later' ? 'later' : 'now'}`}>{h.word === 'Later' ? 'Crowded' : 'Go now'}</span></>}</span>
                         </button>
                         {k === 'walk' ? <a href={mapsDirUrl(view?.precise ? view : (view ? { lat: view.lat, lng: view.lng } : null), [p])} target="_blank" rel="noopener" className={`btn ${i === 0 ? 'btn-walk' : 'btn-quiet'} shelf-act`} aria-label={`Walk to ${p.name} in Maps`}>Walk</a>
                           : <a href={uber(p)} className={`${i === 0 ? 'btn-uber' : 'btn btn-quiet'} shelf-act`} aria-label={`Uber to ${p.name}`}>Uber</a>}

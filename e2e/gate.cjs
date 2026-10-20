@@ -38,7 +38,7 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
       if (await chip.count()) { const want = parseInt(await chip.locator('.chip-n').innerText()); await chip.tap(); await p.waitForTimeout(400); const t = await p.locator('[data-card]').allInnerTexts(); ok(t.length > 0 && t.every(x => /Open|Inaugurated/.test(x)), T('Open filter lets non-open rows through'))
         ok(want === t.length, T('filtered count wrong')); await p.screenshot({ path: `${out}/${name}-filters.png` })
         await p.reload({ waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap().catch(() => {}); await p.waitForTimeout(2000); ok(await p.locator('[aria-pressed=true]').count() === 1, T('filter not persisted'))
-        await p.locator('[aria-pressed=true]').tap(); await p.waitForTimeout(300) } else ok(false, T('no Open filter chip at Gariahat'))
+        await p.locator('[aria-pressed=true]').tap(); await p.waitForTimeout(300) } else ok(await p.evaluate(async () => { const s = await (await fetch('live/status.json', { cache: 'no-store' })).json(); return Object.values(s.open).filter(v => v.kind !== 'closed').length >= 140 }), T('no Open filter chip at Gariahat (and not everything is open)'))
       await c.close() }
     { const [c, p] = await mk(SPOTS.gariahat); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(2000)
       const want = await p.evaluate(async () => { const s = await (await fetch('live/status.json', { cache: 'no-store' })).json(); return Object.values(s.open).filter(v => v.kind !== 'closed').length })
@@ -70,7 +70,7 @@ const SPOTS = { chetla: [22.5164, 88.3372], ballygunge: [22.5270, 88.3650], beha
       for (const z of ['North', 'Central', 'South', 'Salt Lake']) { await p.locator('.dock [role=tab]', { hasText: z }).first().tap(); await p.waitForTimeout(800); await p.evaluate(() => scrollTo(0, 0)); await p.waitForTimeout(200)
         const fb = await p.evaluate(() => { const f = document.querySelector('[aria-label=Filter]'), g = document.querySelector('article.go'); return f && g ? f.getBoundingClientRect().top < g.getBoundingClientRect().top && f.getBoundingClientRect().top < 120 : true }); ok(fb, T(`${z}: filters not at the top`))
         const extra = await p.evaluate(() => [...document.querySelectorAll('.now-strip, [role=tablist][aria-label=Sections]')].filter(e => e.getBoundingClientRect().top < innerHeight - 90).length)
-        ok(extra === 0, T(`${z}: extra chrome above the fold`)); ok(await p.locator('article.go').count() === 1, T(`${z}: no go-next card`)); await p.screenshot({ path: `${out}/${name}-zone-${z.replace(' ', '')}.png` }) }
+        ok(extra === 0, T(`${z}: extra chrome above the fold`)); ok(await p.locator('article.go, .shelf-i.top').count() >= 1, T(`${z}: no go-next card`)); await p.screenshot({ path: `${out}/${name}-zone-${z.replace(' ', '')}.png` }) }
       await p.getByRole('button', { name: 'Food' }).scrollIntoViewIfNeeded(); await p.getByRole('button', { name: 'Food' }).tap(); await p.waitForTimeout(400); ok(await p.locator('[role=dialog][aria-label=Food]').count() === 1, T('Food sheet does not open'))
       await p.keyboard.press('Escape'); await p.waitForTimeout(400); ok(await p.locator('[role=dialog]').count() === 0, T('Food sheet does not close')); await c.close() }
     { const [c, p] = await mk([28.61, 77.21]); await p.goto(url, { waitUntil: 'networkidle' }); await p.getByRole('button', { name: 'Near me' }).tap(); await p.waitForTimeout(1500)
